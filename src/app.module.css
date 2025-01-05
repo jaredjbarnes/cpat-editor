@@ -1,0 +1,22 @@
+.examples {
+  background-color: var(--surface-input-color);
+  border-radius: 8px;
+  box-shadow: var(--inset-box-shadow);
+}
+
+.toolbar {
+  height: 40px;
+  border-block-end: 1px solid var(--border-primary-color);
+}
+
+.grammar {
+  border-inline-end: 1px solid var(--border-primary-color);
+}
+
+.top {
+  border-block-end: 1px solid var(--border-primary-color);
+}
+
+.left {
+  border-inline-end: 1px solid var(--border-primary-color);
+}

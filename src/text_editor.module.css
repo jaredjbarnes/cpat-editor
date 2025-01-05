@@ -1,0 +1,27 @@
+:global(.ql-editor) {
+  font-size: 16px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  background-color: var(--surface-input-color);
+}
+
+:global(svg):global(.railroad-diagram) path {
+  stroke: black;
+}
+
+:global(.dark-mode) :global(svg):global(.railroad-diagram) path {
+  stroke: rgb(199, 199, 199);
+}
+
+:global(.dark-mode) :global(svg):global(.railroad-diagram) rect {
+  stroke: rgb(199, 199, 199);
+  fill: var(--surface-input-color);
+}
+
+:global(.dark-mode) :global(svg):global(.railroad-diagram) text {
+  fill: rgb(199, 199, 199);
+}
+
+:global(.ql-container):global(.ql-snow) {
+  border: 0 !important;
+}

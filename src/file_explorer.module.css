@@ -1,0 +1,19 @@
+.file-explorer-side-panel {
+    border-inline: 1px solid var(--border-primary-color);
+    overflow: hidden;
+  }
+  
+  .panel-header {
+    z-index: 2;
+  }
+  
+  .panel-body {
+    z-index: 1;
+    overflow-y: auto;
+  }
+
+  .file-item {
+    padding-block: 8px;
+    padding-inline: 16px 8px;
+  }
+  

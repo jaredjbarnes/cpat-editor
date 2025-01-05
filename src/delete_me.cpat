@@ -1,0 +1,21 @@
+lt = "<"
+gt = ">"
+space = /\s+/
+
+name = /[a-zA-Z-]+[a-zA-Z0-9-]*/
+
+attribute-name = name
+attribute-value-content = /(?:\\.|[^"\\])+/
+attribute-value = "\"" + attribute-value-content? + "\""
+attribute = attribute-name + space? + "=" + space? + attribute-value 
+attributes = ((attribute | space | attribute-name))+
+
+tag-name = name
+open-tag = lt + tag-name + attributes? + space? + gt
+close-tag = lt + "/" + tag-name + space? + gt
+
+text = /[^<]+/
+child = text | element
+children = (child)+
+
+element = open-tag + children? + close-tag

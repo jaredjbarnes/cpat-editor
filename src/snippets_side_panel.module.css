@@ -1,0 +1,12 @@
+.snippets-side-panel {
+  border-inline: 1px solid var(--border-primary-color);
+  overflow: hidden;
+}
+
+.panel-header {
+  z-index: 2;
+}
+
+.panel-body {
+  z-index: 1;
+}
