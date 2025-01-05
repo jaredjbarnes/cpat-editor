@@ -28,21 +28,24 @@ export function App({ presenter }: AppProps) {
     presenter.initialize();
   }, [presenter]);
 
+  function closeDocumenation() {
+    presenter.toggleDocumentation();
+  }
+
   return (
     <VStack>
       <HStack zIndex={2} className={styles.toolbar}>
         <HStack width="auto">
           <Spacer width="8px" />
-          <IconButton iconSize="20px" iconName="menu" />
         </HStack>
         <Spacer />
         <Header>CPAT Playground</Header>
         <Spacer />
         <HStack width="auto">
           <IconButton
-            iconSize="20px"
+            iconSize="25px"
             onClick={toggleDocumentation}
-            iconName="learning_center_real"
+            iconName="question"
           />
           <Spacer width="8px" />
         </HStack>
@@ -84,7 +87,7 @@ export function App({ presenter }: AppProps) {
             width="33%"
             enableResizeOnStart
           >
-            <SnippetsSidePanel />
+            <SnippetsSidePanel onClose={closeDocumenation} />
           </Box>
         )}
       </HStack>

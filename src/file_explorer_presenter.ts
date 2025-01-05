@@ -1,5 +1,6 @@
 import { Signal } from "@tcn/state";
 import { FileSystem } from "./file_system.ts";
+import { FileCreation } from "./file_creation.ts";
 
 export interface File {
     type: 'file';
@@ -16,6 +17,13 @@ export interface Directory {
     items: (File | Directory)[];
 }
 
+
+
+export interface FileExplorerOptions {
+    fileSystem: FileSystem;
+    onPathFocus: (path: string, oldPath: string | null) => void;
+}
+
 export class FileExplorerPresenter {
     private _fileSystem: FileSystem;
     private _directory: Signal<Directory>;
@@ -23,6 +31,8 @@ export class FileExplorerPresenter {
     private _files: Map<string, File>;
     private _openDirectories: Signal<Map<string, boolean>>;
     private _focusedItem: Signal<File | Directory | null>;
+    private _onPathFocus: (path: string, oldPath: string | null) => void;
+    private _pendingFileCreation: Signal<FileCreation | null>;
 
     get directoryBroadcast() {
         return this._directory.broadcast;
@@ -32,8 +42,17 @@ export class FileExplorerPresenter {
         return this._openDirectories.broadcast;
     }
 
-    constructor() {
-        this._fileSystem = new FileSystem();
+    get focusedItemBroadcast() {
+        return this._focusedItem.broadcast;
+    }
+
+    get pendingFileCreationBroadcast() {
+        return this._pendingFileCreation.broadcast;
+    }
+
+    constructor(options: FileExplorerOptions) {
+        this._fileSystem = options.fileSystem;
+        this._onPathFocus = options.onPathFocus;
         this._directory = new Signal<Directory>({
             type: "directory",
             name: "",
@@ -46,9 +65,10 @@ export class FileExplorerPresenter {
         this._openDirectories = new Signal(new Map());
         this._directories.set(this._directory.get().path, this._directory.get());
         this._focusedItem = new Signal<File | Directory | null>(null);
+        this._pendingFileCreation = new Signal<FileCreation | null>(null);
     }
 
-   async initialize() {
+    async initialize() {
         await this._updateDirectories();
     }
 
@@ -95,15 +115,40 @@ export class FileExplorerPresenter {
 
     focus(path: string) {
         const file = this._files.get(path);
+        const focusedItem = this._focusedItem.get();
+        const oldPath = focusedItem == null ? null : focusedItem.path;
+
+        if (oldPath === path) {
+            return;
+        }
+
         if (file != null) {
             this._focusedItem.set(file);
+            this._onPathFocus(path, oldPath);
             return;
         }
 
         const directory = this._directories.get(path);
         if (directory != null) {
             this._focusedItem.set(directory);
+            this._onPathFocus(path, oldPath);
+            return;
         }
+    }
+
+    startFileCreation() {
+        const currentDirectory = this._focusedItem.get();
+        let path = "/";
+
+        if (currentDirectory && currentDirectory.type === "file") {
+            path = currentDirectory.directory;
+        } else if (currentDirectory && currentDirectory.type === "directory") {
+            path = currentDirectory.path;
+        }
+
+        this._pendingFileCreation.set(new FileCreation(path, this._fileSystem, () => {
+            this._pendingFileCreation.set(null);
+        }));
     }
 
     async createFile(name: string, content = "") {
@@ -126,7 +171,7 @@ export class FileExplorerPresenter {
             await this._fileSystem.deleteFile(path);
         } catch (_) {
         }
-        
+
         await this._updateDirectories();
     }
 
@@ -135,7 +180,7 @@ export class FileExplorerPresenter {
         await this._updateDirectories();
     }
 
-   async createDirectory(name: string) {
+    async createDirectory(name: string) {
         name = name.endsWith("/") ? name : `${name}/`;
 
         const currentDirectory = this._focusedItem.get();
@@ -143,7 +188,7 @@ export class FileExplorerPresenter {
         if (currentDirectory == null) {
             await this._fileSystem.createDirectory(`/${name}`);
         } else if (currentDirectory.type === "directory") {
-           await this._fileSystem.createDirectory(currentDirectory.path + name);
+            await this._fileSystem.createDirectory(currentDirectory.path + name);
         } else {
             await this._fileSystem.createDirectory(`${currentDirectory.directory}/${name}`);
         }

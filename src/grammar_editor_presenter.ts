@@ -44,23 +44,38 @@ const nodeColorMap = {
 
     // Regex
     "regex-literal": REGEX_CLASS
+};
+
+export interface GrammarEditorOptions {
+    onGrammarProcess: (patterns: Record<string, Pattern>) => void;
+    onSave: (content: string) => void;
 }
 
 export class GrammarEditorPresenter {
     private _onGrammarProcess: (patterns: Record<string, Pattern>) => void;
+    private _onSave: (content: string) => void;
     readonly textEditor: TextEditorPresenter;
 
-    constructor(onGrammarProcess: (patterns: Record<string, Pattern>) => void) {
+    constructor({ onGrammarProcess, onSave }: GrammarEditorOptions) {
         this._onGrammarProcess = onGrammarProcess;
+        this._onSave = onSave;
         this.textEditor = new TextEditorPresenter();
     }
 
     initialize() {
-        this.textEditor.onChange((delta, _, source) => {
+        this.textEditor.onChange((_1, _2, source) => {
             if (source === "user") {
                 this._processGrammar();
-                this._highlight(delta);
+                this._highlight();
             }
+        });
+        
+        this.textEditor.editor.keyboard.addBinding({
+            key: 's',
+            shortKey: true
+        }, () => {
+            this._onSave(this.textEditor.getText());
+            return false;
         });
     }
 
@@ -73,12 +88,12 @@ export class GrammarEditorPresenter {
             console.log("Bad Grammar");
         }
 
-        if (text === ""){
+        if (text === "") {
             this._onGrammarProcess({});
         }
     }
 
-    private _highlight(_: Delta) {
+    private _highlight() {
         const textEditor = this.textEditor;
         const text = textEditor.getText();
         //const [start, end] = this._getDeltaIndex(delta);
@@ -101,6 +116,12 @@ export class GrammarEditorPresenter {
                 textEditor.syntaxHighlight(0, cursor.length, "syntax-error");
             }
         }
+    }
+
+    setText(text: string){
+        this.textEditor.setText(text);
+        this._processGrammar();
+        this._highlight();
     }
 
 }

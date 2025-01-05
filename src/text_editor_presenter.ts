@@ -24,7 +24,7 @@ export class TextEditorPresenter {
         if (this._editor != null) {
             return;
         }
-        element.setAttribute('spellcheck', 'false')
+        element.setAttribute('spellcheck', 'false');
         this._editorElement = element;
         this._editor = new Quill(element, {
             theme: 'snow',

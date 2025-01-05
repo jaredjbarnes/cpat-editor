@@ -28,7 +28,6 @@ export class TestEditorPresenter {
     }
 
     initialize() {
-
         this.textEditor.onChange((_d, _od, source) => {
             if (source === "user") {
                 this._process();
@@ -74,6 +73,7 @@ export class TestEditorPresenter {
 
     setPatterns(patterns: Record<string, Pattern>) {
         this._patterns.set(patterns);
+        this._process();
     }
 
     selectPattern(name: string) {
