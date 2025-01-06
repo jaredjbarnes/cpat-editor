@@ -1,7 +1,7 @@
 import "./syntax_highlight_blot.ts";
 import { grammar, Grammar, Pattern } from "clarity-pattern-parser";
 import { TextEditorPresenter } from "./text_editor_presenter.ts";
-import { Delta } from "quill";
+import { FileSystem } from "./file_system.ts";
 
 const KEYWORD_CLASS = 'syntax-keyword';
 const LITERAL_CLASS = 'syntax-literal';
@@ -47,16 +47,21 @@ const nodeColorMap = {
 };
 
 export interface GrammarEditorOptions {
+    fileSystem: FileSystem;
     onGrammarProcess: (patterns: Record<string, Pattern>) => void;
     onSave: (content: string) => void;
 }
 
 export class GrammarEditorPresenter {
+    private _fileSystem: FileSystem;
+    private _path: string;
     private _onGrammarProcess: (patterns: Record<string, Pattern>) => void;
     private _onSave: (content: string) => void;
     readonly textEditor: TextEditorPresenter;
 
-    constructor({ onGrammarProcess, onSave }: GrammarEditorOptions) {
+    constructor({ onGrammarProcess, onSave, fileSystem }: GrammarEditorOptions) {
+        this._fileSystem = fileSystem;
+        this._path = "";
         this._onGrammarProcess = onGrammarProcess;
         this._onSave = onSave;
         this.textEditor = new TextEditorPresenter();
@@ -69,7 +74,7 @@ export class GrammarEditorPresenter {
                 this._highlight();
             }
         });
-        
+
         this.textEditor.editor.keyboard.addBinding({
             key: 's',
             shortKey: true
@@ -79,10 +84,25 @@ export class GrammarEditorPresenter {
         });
     }
 
-    private _processGrammar() {
+    private async _processGrammar() {
         const text = this.textEditor.getText();
         try {
-            const allPatterns = Grammar.parseString(text);
+            const allPatterns = await Grammar.parse(text, {
+                originResource: this._path,
+                resolveImport: async (resource, originResource) => {
+                    const origin = originResource == null ? "/" : originResource;
+                    const url = new URL(resource, window.location.origin + origin);
+                    const path = url.pathname;
+
+                    try {
+                        const expression = await this._fileSystem.readFile(path);
+                        return { expression, resource: path };
+                    } catch {
+                        throw new Error(`File not found: ${path}`);
+                    }
+                }
+            });
+
             this._onGrammarProcess(allPatterns);
         } catch (_) {
             console.log("Bad Grammar");
@@ -118,7 +138,8 @@ export class GrammarEditorPresenter {
         }
     }
 
-    setText(text: string){
+    setText(text: string, path: string) {
+        this._path = path;
         this.textEditor.setText(text);
         this._processGrammar();
         this._highlight();

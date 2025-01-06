@@ -31,7 +31,8 @@ export class AppPresenter {
                 if (this._currentPath != null) {
                     this._fileSystem.writeFile(this._currentPath, content);
                 }
-            }
+            },
+            fileSystem: this._fileSystem
         });
         this.testEditor = new TestEditorPresenter();
         this.diagramPresenter = new DiagramPresenter();
@@ -49,7 +50,7 @@ export class AppPresenter {
 
                 try {
                     const content = await this._fileSystem.readFile(path);
-                    this.grammarEditor.setText(content);
+                    this.grammarEditor.setText(content, path);
                 } catch { }
             }
         });

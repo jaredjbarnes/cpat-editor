@@ -72,6 +72,10 @@ export class FileExplorerPresenter {
         await this._updateDirectories();
     }
 
+    async refresh(){
+        return this._updateDirectories();
+    }
+
     private async _updateDirectories() {
         this._directories.clear();
         this._files.clear();
@@ -146,8 +150,10 @@ export class FileExplorerPresenter {
             path = currentDirectory.path;
         }
 
-        this._pendingFileCreation.set(new FileCreation(path, this._fileSystem, () => {
+        this._pendingFileCreation.set(new FileCreation(path, this._fileSystem, async () => {
             this._pendingFileCreation.set(null);
+            await this.refresh();
+            this.focus(path);
         }));
     }
 

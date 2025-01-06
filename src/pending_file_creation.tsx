@@ -18,11 +18,17 @@ export function PendingFileCreation({ presenter }: PendingFileCreationProps) {
     if (event.key === 'Enter') {
       presenter.commit();
       console.log('Committed');
+    } else if (event.key === "Escape"){
+        presenter.abort();
     }
   }
 
   function updateName(value: string) {
     presenter.updateName(value);
+  }
+
+  function abort(){
+    presenter.abort();
   }
 
   useEffect(() => {
@@ -39,6 +45,7 @@ export function PendingFileCreation({ presenter }: PendingFileCreationProps) {
         value={name}
         onKeyDown={checkForEnter}
         onChange={updateName}
+        onBlur={abort}
       />
       {error && <BodyText color="--default-error-color">{error}</BodyText>}
     </HStack>

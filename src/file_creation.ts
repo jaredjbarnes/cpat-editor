@@ -6,7 +6,7 @@ export class FileCreation {
     private _name: Signal<string>;
     private _error: Signal<string | null>;
     private _path: string;
-    private _onComplete: ()=>void;
+    private _onComplete: () => void;
 
     get directory() {
         return this._path;
@@ -30,6 +30,11 @@ export class FileCreation {
 
     updateName(value: string) {
         this._name.set(value);
+
+        if (value.length === 0){
+            this._error.set("File name cannot be empty.");
+        }
+
         if (value.includes(" ")) {
             this._error.set("Cannot have spaces in file name.");
             return;
@@ -46,5 +51,9 @@ export class FileCreation {
             await this._fileSystem.writeFile(this._path + this._name.get(), "");
             this._onComplete();
         }
+    }
+
+    async abort() {
+        this._onComplete();
     }
 }
