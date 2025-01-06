@@ -31,8 +31,9 @@ export class FileCreation {
     updateName(value: string) {
         this._name.set(value);
 
-        if (value.trim().length === 0){
+        if (value.trim().length === 0) {
             this._error.set("File name cannot be empty.");
+            return;
         }
 
         if (value.includes(" ")) {
@@ -44,6 +45,8 @@ export class FileCreation {
             this._error.set("Cannot have forward slashes in file name.");
             return;
         }
+
+        this._error.set(null);
     }
 
     async commit() {

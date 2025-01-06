@@ -58,7 +58,7 @@ export function App({ presenter }: AppProps) {
         </Box>
         <VStack zIndex={1} flex overflowX="hidden">
           <HStack flex className={styles.top}>
-            <FlexBox className={styles.left}>
+            <FlexBox minWidth="200px" className={styles.left}>
               <GrammarEditor presenter={presenter.grammarEditor}></GrammarEditor>
             </FlexBox>
             <Box width="50%" enableResizeOnStart>
@@ -67,7 +67,7 @@ export function App({ presenter }: AppProps) {
           </HStack>
           <Box height="50%" enableResizeOnTop>
             <HStack>
-              <FlexBox className={styles.left}>
+              <FlexBox minWidth="200px" className={styles.left}>
                 <TestEditor presenter={presenter.testEditor} />
               </FlexBox>
               <Box width="50%" enableResizeOnStart>

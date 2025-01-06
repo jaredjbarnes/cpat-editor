@@ -20,7 +20,7 @@ export function TestEditor({ presenter }: TestEditorProps) {
     presenter.selectPattern(value);
   }
 
-  options.unshift(<option key="null" value="null">-- Choose Pattern --</option>);
+  options.unshift(<option key="null" value="null">-- Choose Pattern To Test --</option>);
 
   useLayoutEffect(() => {
     presenter.initialize();

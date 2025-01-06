@@ -53,7 +53,8 @@ export class TestEditorPresenter {
             const { ast, cursor } = editorPattern.exec(text);
 
             if (ast != null) {
-                this._ast.set(ast.toJson(2));
+                const rootAst = ast.children[0];
+                this._ast.set(rootAst.toJson(2));
             } else {
                 this._ast.set("");
 
