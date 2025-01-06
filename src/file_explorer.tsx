@@ -1,11 +1,18 @@
-import { Accordion, IconButton } from '@tcn/ui-controls';
+import {
+  Accordion,
+  ContextMenu,
+  FreeformMultiselect,
+  IconButton,
+  MenuItem,
+  Multiselect,
+} from '@tcn/ui-controls';
 import { Directory, File, FileExplorerPresenter } from './file_explorer_presenter.ts';
 import { FlexBox, HStack, Spacer, VStack } from '@tcn/ui-layout';
 import { useSignalValue } from '@tcn/state';
 import { PanelHeader } from './panel_header.tsx';
 import styles from './file_explorer.module.css';
-import { BodyText } from '@tcn/ui-core';
-import { useLayoutEffect } from 'react';
+import { BodyText, Icon, Position } from '@tcn/ui-core';
+import { useState } from 'react';
 import { PendingFileCreation } from './pending_file_creation.tsx';
 
 export interface FileExplorerProps {
@@ -49,20 +56,45 @@ interface FileItemProps {
 function FileItem({ file, presenter }: FileItemProps) {
   const focusedItem = useSignalValue(presenter.focusedItemBroadcast);
   const isFocused = file.path === focusedItem?.path;
+  const [isOpen, setIsOpen] = useState(false);
+  const [position, setPosition] = useState<Position | null>(null);
 
-  function selectItem() {
+  function selectItem(event: React.MouseEvent<HTMLElement>) {
+    console.log('CLICK');
     presenter.focus(file.path);
+    event?.preventDefault();
+  }
+
+  function placeMenu(event: React.MouseEvent<HTMLElement>) {
+    console.log('RIGHT_CLICK');
+    setPosition({ x: event.clientX, y: event.clientY });
+    setIsOpen(true);
+    event.preventDefault();
+  }
+
+  function close() {
+    setIsOpen(false);
+  }
+
+  function deleteFile() {
+    presenter.deleteFile(file.path);
   }
 
   return (
-    <HStack
-      className={styles['file-item']}
-      data-is-focused={isFocused}
-      onClick={selectItem}
-      height="auto"
-    >
-      <BodyText variant="large">{file.name}</BodyText>
-    </HStack>
+    <>
+      <HStack
+        className={styles['file-item']}
+        data-is-focused={isFocused}
+        height="auto"
+        onContextMenu={placeMenu}
+        onClick={selectItem}
+      >
+        <BodyText variant="large">{file.name}</BodyText>
+      </HStack>
+      <ContextMenu open={isOpen} position={position} onClose={close}>
+        <MenuItem label="Delete" onClick={deleteFile} />
+      </ContextMenu>
+    </>
   );
 }
 

@@ -72,6 +72,10 @@ export class FileSystem {
     }
 
     async writeFile(path: string, content: string): Promise<void> {
+        if (path === "/"){
+            throw new Error("Cannot save a file to the root path.");
+        }
+        
         this._setMetadata(path, { isFile: true, path, name: this._getFileName(path) });
         this._storage.setItem(path, content);
     }

@@ -1,4 +1,4 @@
-import { Box, FlexBox, HStack, Spacer, VStack } from '@tcn/ui-layout';
+import { Box, FlexBox, HStack, Portal, Spacer, StyleBox, VStack } from '@tcn/ui-layout';
 import { AppPresenter } from './app_presenter.ts';
 import { Diagram } from './diagram.tsx';
 import { Ast } from './ast.tsx';
@@ -42,11 +42,7 @@ export function App({ presenter }: AppProps) {
         <Header>CPAT Playground</Header>
         <Spacer />
         <HStack width="auto">
-          <IconButton
-            iconSize="25px"
-            onClick={toggleDocumentation}
-            iconName="question"
-          />
+          <IconButton iconSize="25px" onClick={toggleDocumentation} iconName="question" />
           <Spacer width="8px" />
         </HStack>
       </HStack>
@@ -55,7 +51,7 @@ export function App({ presenter }: AppProps) {
           zIndex={2}
           className={styles.examples}
           minWidth="100px"
-          width="33%"
+          width="300px"
           enableResizeOnEnd
         >
           <FileExplorer presenter={presenter.fileExplorer} />

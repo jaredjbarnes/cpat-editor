@@ -31,7 +31,7 @@ export class FileCreation {
     updateName(value: string) {
         this._name.set(value);
 
-        if (value.length === 0){
+        if (value.trim().length === 0){
             this._error.set("File name cannot be empty.");
         }
 
