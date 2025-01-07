@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@tcn/state": "^0.0.4",
-    "@tcn/ui-controls": "^0.2.29",
+    "@tcn/ui-controls": "^0.2.30",
     "@tcn/ui-core": "^0.3.16",
     "@tcn/ui-layout": "^0.3.37",
     "@vitejs/plugin-react": "^4.3.4",

@@ -138,7 +138,12 @@ export class GrammarEditorPresenter {
         }
     }
 
+    disable(){
+        this.textEditor.editor.disable();
+    }
+
     setText(text: string, path: string) {
+        this.textEditor.editor.enable();
         this._path = path;
         this.textEditor.setText(text);
         this._processGrammar();

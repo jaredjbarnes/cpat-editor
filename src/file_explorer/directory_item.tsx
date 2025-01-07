@@ -5,8 +5,8 @@ import { PendingFileCreation } from './pending_file_creation.tsx';
 import { FileItem } from './file_item.tsx';
 import { PendingDirectoryCreation } from './pending_directory_creation.tsx';
 import styles from './directory_item.module.css';
-import { HStack } from '@tcn/ui-layout';
-import { Position, BodyText } from '@tcn/ui-core';
+import { HStack, VStack } from '@tcn/ui-layout';
+import { Position, BodyText, Icon } from '@tcn/ui-core';
 import { useLayoutEffect, useState } from 'react';
 
 export interface DirectoryItemProps {
@@ -52,6 +52,7 @@ export function DirectoryItem({ directory, presenter }: DirectoryItemProps) {
   }
 
   function selectItem(event: React.MouseEvent<HTMLElement>) {
+    presenter.toggleDirectory(directory.path);
     presenter.focus(directory.path);
     event.stopPropagation();
     event.preventDefault();
@@ -77,18 +78,22 @@ export function DirectoryItem({ directory, presenter }: DirectoryItemProps) {
     }
   }, [isPending, presenter, path]);
 
+  const padding = path.split('/').length * 5;
+
   return (
     <>
-      <Accordion
-        className={styles['directory-item']}
+      <HStack
+        height="auto"
         data-is-focused={isFocused}
         onContextMenu={placeMenu}
         onClick={selectItem}
-        open={isOpen}
-        label={<BodyText variant="large">{directory.name}</BodyText>}
+        className={styles['directory-item']}
+        paddingInlineStart={`${padding}px`}
       >
-        {children}
-      </Accordion>
+        <Icon name={isOpen ? 'chevron_down' : 'chevron_right'} flipOnRtl size="25px" />
+        <BodyText variant="large">{directory.name}</BodyText>
+      </HStack>
+      {isOpen && <VStack height="auto">{children}</VStack>}
       <ContextMenu open={isContextMenuOpen} position={position} onClose={close}>
         <MenuItem label="Delete" onClick={deleteFile} />
       </ContextMenu>

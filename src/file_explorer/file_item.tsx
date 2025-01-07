@@ -38,6 +38,8 @@ export function FileItem({ file, presenter }: FileItemProps) {
     presenter.deleteFile(file.path);
   }
 
+  const padding = (file.path.split('/').length + 1) * 5;
+
   return (
     <>
       <HStack
@@ -46,6 +48,7 @@ export function FileItem({ file, presenter }: FileItemProps) {
         height="auto"
         onContextMenu={placeMenu}
         onClick={selectItem}
+        paddingInlineStart={`${padding}px`}
       >
         <Icon name="file" size="25px" />
         <BodyText variant="large">{file.name}</BodyText>

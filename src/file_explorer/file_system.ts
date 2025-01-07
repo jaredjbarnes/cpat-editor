@@ -167,7 +167,7 @@ export class FileSystem {
                     const metadata = this._getMetadata(storagePath.split("$$Meta$$_")[1]);
                     const isCorrectDepth = metadata.path.split("/").length - 1 === depth;
 
-                    if (isCorrectDepth) {
+                    if (isCorrectDepth && metadata.path.startsWith(path)) {
                         allMetadata.push(metadata);
                     }
                 }

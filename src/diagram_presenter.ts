@@ -85,7 +85,7 @@ export class DiagramPresenter {
                 return terminal;
             }
             case "not": {
-                const text = `NOT ${pattern.name}`;
+                const text = `${pattern.name}`;
                 const terminal = new Terminal(text, { href: `/#pattern=${pattern.id}` });
                 return terminal;
             }
