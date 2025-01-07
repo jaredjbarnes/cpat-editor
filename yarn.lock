@@ -659,9 +659,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tcn/ui-controls@npm:^0.2.29":
-  version: 0.2.29
-  resolution: "@tcn/ui-controls@npm:0.2.29"
+"@tcn/ui-controls@npm:^0.2.30":
+  version: 0.2.30
+  resolution: "@tcn/ui-controls@npm:0.2.30"
   dependencies:
     "@tcn/state": "npm:^0.0.4"
     "@tcn/ui-core": "npm:^0.3.16"
@@ -671,7 +671,7 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10c0/76726853a67fca7f43a6e828aae2acc5ebdecc80264af0d2b6969ec360cf1d88d24c628cca127d64baf282a22d8f7d4233975bbd477333682c4c1591c8f4798b
+  checksum: 10c0/a5757bd3cfba2f078738f94d226f8760500dd79a617041908902ca0490c4a50b151a214a89707a82955480ae5c6af7003102c12e12741eef0ae63e321b49797c
   languageName: node
   linkType: hard
 
@@ -950,7 +950,7 @@ __metadata:
   resolution: "cpat-railroad-diagrams@workspace:."
   dependencies:
     "@tcn/state": "npm:^0.0.4"
-    "@tcn/ui-controls": "npm:^0.2.29"
+    "@tcn/ui-controls": "npm:^0.2.30"
     "@tcn/ui-core": "npm:^0.3.16"
     "@tcn/ui-layout": "npm:^0.3.37"
     "@types/node": "npm:^20.11.30"

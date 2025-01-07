@@ -46,7 +46,7 @@ export class AppPresenter {
                         const hasFile = await this._fileSystem.hasFile(oldPath);
 
                         if (!hasFile) {
-                            return;
+                            throw new Error("File Not Found.");
                         }
 
                         const content = this.grammarEditor.textEditor.getText();
@@ -57,7 +57,10 @@ export class AppPresenter {
                 try {
                     const content = await this._fileSystem.readFile(path);
                     this.grammarEditor.setText(content, path);
-                } catch { }
+                } catch { 
+                    this.grammarEditor.setText("", path);
+                    this.grammarEditor.disable();
+                }
             }
         });
     }

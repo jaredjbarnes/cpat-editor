@@ -1,13 +1,10 @@
 .directory-item {
-  padding-block: 8px;
-  padding-inline: 16px 8px;
+  padding-block: 4px;
+  padding-inline: 0px 8px;
   cursor: pointer;
 }
 
-.directory-item[data-is-focused="true"]  {
-  color: var(--default-accent-color);
+.directory-item[data-is-focused="true"] {
+  background-color: var(--default-accent-color);
+  color: white;
 }
-
-.directory-item[data-is-focused="true"] :global(.accordion-body) {
-    color: var(--text-primary-color);
-  }

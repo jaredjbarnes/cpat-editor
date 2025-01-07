@@ -37,8 +37,15 @@ export function PendingFileCreation({ presenter }: PendingFileCreationProps) {
     }
   }, []);
 
+  const padding = (presenter.directory.split('/').length + 2) * 5;
+
   return (
-    <VStack height="auto" gap="8px">
+    <VStack
+      height="auto"
+      gap="8px"
+      paddingInlineStart={`${padding}px`}
+      paddingBlock="6px 6px"
+    >
       <Input
         ref={inputRef}
         value={name}

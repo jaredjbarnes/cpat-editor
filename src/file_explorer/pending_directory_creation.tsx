@@ -38,8 +38,15 @@ export function PendingDirectoryCreation({ presenter }: PendingDirectoryCreation
     }
   }, []);
 
+  const padding = (presenter.directory.split('/').length + 2) * 5;
+
   return (
-    <VStack height="auto" gap="8px">
+    <VStack
+      height="auto"
+      paddingInlineStart={`${padding}px`}
+      paddingBlock="6px 6px"
+      gap="8px"
+    >
       <Input
         ref={inputRef}
         value={name}
