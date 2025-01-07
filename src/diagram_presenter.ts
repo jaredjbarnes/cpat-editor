@@ -59,9 +59,9 @@ export class DiagramPresenter {
                     const children = pattern.children.map(p => this._buildPattern(p));
                     return new Diagram(new Group(new Sequence(...children), pattern.name));
                 }
-                case "finite-repeat": {
-                    // fall through
-                }
+                // case "finite-repeat": {
+                //     // fall through
+                // }
                 case "infinite-repeat": {
                     return new Diagram(new Group(this._buildPattern(pattern), pattern.name));
                 }
@@ -107,9 +107,9 @@ export class DiagramPresenter {
                 // const terminal = new Terminal(text, { href: `/#pattern=${pattern.id}` });
                 // return terminal;
             }
-            case "finite-repeat": {
-                // Fall Through
-            }
+            // case "finite-repeat": {
+            //     // Fall Through
+            // }
             case "infinite-repeat": {
                 const children = pattern.children[0].children.map(p => this._buildPattern(p));
                 return new OneOrMore(...children);

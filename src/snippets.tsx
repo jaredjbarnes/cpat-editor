@@ -100,6 +100,7 @@ export function Snippets({ className, style }: SnippetsProps) {
       <Literal />
       <Regex />
       <Options />
+      <Repeat />
     </VStack>
   );
 }

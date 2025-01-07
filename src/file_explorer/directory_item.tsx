@@ -5,7 +5,6 @@ import { PendingFileCreation } from './pending_file_creation.tsx';
 import { FileItem } from './file_item.tsx';
 import { PendingDirectoryCreation } from './pending_directory_creation.tsx';
 import styles from './directory_item.module.css';
-import { HStack } from '@tcn/ui-layout';
 import { Position, BodyText } from '@tcn/ui-core';
 import { useLayoutEffect, useState } from 'react';
 

@@ -1,4 +1,4 @@
-import { Box, FlexBox, HStack, Portal, Spacer, StyleBox, VStack } from '@tcn/ui-layout';
+import { Box, FlexBox, HStack, Spacer, VStack } from '@tcn/ui-layout';
 import { AppPresenter } from './app_presenter.ts';
 import { Diagram } from './diagram.tsx';
 import { Ast } from './ast.tsx';

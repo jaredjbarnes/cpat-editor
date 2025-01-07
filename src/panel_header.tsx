@@ -1,4 +1,3 @@
-import { Header } from '@tcn/ui-core';
 import styles from './panel_header.module.css';
 import classNames from 'classnames';
 import { HStack } from '@tcn/ui-layout';

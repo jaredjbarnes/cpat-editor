@@ -2,7 +2,7 @@ import { DiagramPresenter } from './diagram_presenter.ts';
 import { useRef } from 'react';
 import { useSignalValueEffect } from '@tcn/state';
 import { Diagram as RailroadDiagram } from './railroad_diagrams/railroad.js';
-import { Box, StyleBox } from '@tcn/ui-layout';
+import { StyleBox } from '@tcn/ui-layout';
 
 export interface DiagramProps {
   presenter: DiagramPresenter;
