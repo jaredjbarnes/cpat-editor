@@ -2,8 +2,8 @@ import { DiagramPresenter } from "./diagram_presenter.ts";
 import { TestEditorPresenter } from "./test_editor_presenter.ts";
 import { GrammarEditorPresenter } from "./grammar_editor_presenter.ts";
 import { Signal } from "@tcn/state";
-import { FileExplorerPresenter } from "./file_explorer_presenter.ts";
-import { FileSystem } from "./file_system.ts";
+import { FileExplorerPresenter } from "./file_explorer/file_explorer_presenter.ts";
+import { FileSystem } from "./file_explorer/file_system.ts";
 
 export class AppPresenter {
     private _isDocumentationOpen: Signal<boolean>;
@@ -43,6 +43,12 @@ export class AppPresenter {
 
                 if (oldPath != null) {
                     try {
+                        const hasFile = await this._fileSystem.hasFile(oldPath);
+
+                        if (!hasFile) {
+                            return;
+                        }
+
                         const content = this.grammarEditor.textEditor.getText();
                         await this._fileSystem.writeFile(oldPath, content);
                     } catch { }

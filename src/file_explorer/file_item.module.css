@@ -1,0 +1,10 @@
+.file-item {
+  padding-block: 8px;
+  padding-inline: 16px 8px;
+  cursor: pointer;
+}
+
+.file-item[data-is-focused="true"] {
+  background-color: var(--default-accent-color);
+  color: white;
+}

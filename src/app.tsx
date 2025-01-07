@@ -9,7 +9,7 @@ import styles from './app.module.css';
 import { IconButton } from '@tcn/ui-controls';
 import { Header } from '@tcn/ui-core';
 import { SnippetsSidePanel } from './snippets_side_panel.tsx';
-import { FileExplorer } from './file_explorer.tsx';
+import { FileExplorer } from './file_explorer/file_explorer.tsx';
 import { useLayoutEffect } from 'react';
 
 export interface AppProps {

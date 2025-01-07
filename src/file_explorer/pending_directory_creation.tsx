@@ -1,15 +1,15 @@
-import { HStack } from '@tcn/ui-layout';
-import { FileCreation } from './file_creation.ts';
+import { VStack } from '@tcn/ui-layout';
 import { Input } from '@tcn/ui-controls';
 import { useSignalValue } from '@tcn/state';
 import { BodyText } from '@tcn/ui-core';
 import { useEffect, useRef } from 'react';
+import { DirectoryCreation } from './directory_creation.ts';
 
-export interface PendingFileCreationProps {
-  presenter: FileCreation;
+export interface PendingDirectoryCreationProps {
+  presenter: DirectoryCreation;
 }
 
-export function PendingFileCreation({ presenter }: PendingFileCreationProps) {
+export function PendingDirectoryCreation({ presenter }: PendingDirectoryCreationProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const name = useSignalValue(presenter.nameBroadcast);
   const error = useSignalValue(presenter.errorBroadcast);
@@ -18,8 +18,8 @@ export function PendingFileCreation({ presenter }: PendingFileCreationProps) {
     if (event.key === 'Enter') {
       presenter.commit();
       console.log('Committed');
-    } else if (event.key === "Escape"){
-        presenter.abort();
+    } else if (event.key === 'Escape') {
+      presenter.abort();
     }
   }
 
@@ -27,7 +27,7 @@ export function PendingFileCreation({ presenter }: PendingFileCreationProps) {
     presenter.updateName(value);
   }
 
-  function abort(){
+  function abort() {
     presenter.abort();
   }
 
@@ -39,7 +39,7 @@ export function PendingFileCreation({ presenter }: PendingFileCreationProps) {
   }, []);
 
   return (
-    <HStack height="auto">
+    <VStack height="auto" gap="8px">
       <Input
         ref={inputRef}
         value={name}
@@ -48,6 +48,6 @@ export function PendingFileCreation({ presenter }: PendingFileCreationProps) {
         onBlur={abort}
       />
       {error && <BodyText color="--default-error-color">{error}</BodyText>}
-    </HStack>
+    </VStack>
   );
 }

@@ -1,7 +1,7 @@
 import "./syntax_highlight_blot.ts";
 import { grammar, Grammar, Pattern } from "clarity-pattern-parser";
 import { TextEditorPresenter } from "./text_editor_presenter.ts";
-import { FileSystem } from "./file_system.ts";
+import { FileSystem } from "./file_explorer/file_system.ts";
 
 const KEYWORD_CLASS = 'syntax-keyword';
 const LITERAL_CLASS = 'syntax-literal';

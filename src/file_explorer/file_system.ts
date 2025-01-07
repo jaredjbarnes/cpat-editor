@@ -72,10 +72,10 @@ export class FileSystem {
     }
 
     async writeFile(path: string, content: string): Promise<void> {
-        if (path === "/"){
+        if (path === "/") {
             throw new Error("Cannot save a file to the root path.");
         }
-        
+
         this._setMetadata(path, { isFile: true, path, name: this._getFileName(path) });
         this._storage.setItem(path, content);
     }
@@ -92,6 +92,15 @@ export class FileSystem {
         this._storage.removeItem(this._getMetadataPath(path));
     }
 
+    async hasFile(path: string) {
+        const content = this._storage.getItem(path);
+        if (content == null) {
+            return false;
+        }
+
+        return true;
+    }
+
     async deleteFile(path: string) {
         const content = this._storage.getItem(path);
         if (content == null) {
@@ -104,7 +113,7 @@ export class FileSystem {
 
     async createDirectory(path: string) {
         path = path.endsWith("/") ? path : path + "/";
-        const name = path.split("/").slice(-1)[0];
+        const name = path.split("/").slice(-2)[0];
         this._setMetadata(path, { isFile: false, path, name });
     }
 
@@ -140,16 +149,29 @@ export class FileSystem {
         for (let x = 0; x < this._storage.length; x++) {
             try {
                 const storagePath = this._storage.key(x);
-                if (storagePath == null || storagePath.startsWith("$$Meta$$_")) {
+
+                if (storagePath == null) {
                     continue;
                 }
 
-                const metadata = this._getMetadata(storagePath);
-                const isCorrectDepth = storagePath.split("/").length === depth;
+                const isFile = !storagePath.startsWith("$$Meta$$_");
+                const isDirectory = storagePath.endsWith("/");
 
-                if (storagePath.startsWith(path) && isCorrectDepth) {
-                    allMetadata.push(metadata);
+                if (isFile) {
+                    const metadata = this._getMetadata(storagePath);
+                    const isCorrectDepth = metadata.path.split("/").length === depth;
+                    if (storagePath.startsWith(path) && isCorrectDepth) {
+                        allMetadata.push(metadata);
+                    }
+                } else if (isDirectory) {
+                    const metadata = this._getMetadata(storagePath.split("$$Meta$$_")[1]);
+                    const isCorrectDepth = metadata.path.split("/").length - 1 === depth;
+
+                    if (isCorrectDepth) {
+                        allMetadata.push(metadata);
+                    }
                 }
+
             } catch (_) {
             }
         }
@@ -158,12 +180,11 @@ export class FileSystem {
     }
 
     async walkDirectory(callback: (directory: string, name: string, path: string, isFile: boolean) => void, fromPath = "/") {
-
         const items = await this.readDirectory(fromPath);
         const directories: Metadata[] = [];
         const pathParts = fromPath.split("/");
-        const name = pathParts.slice(-1)[0];
-        const directory = pathParts.slice(0, -1)[0] + "/";
+        const name = pathParts.length > 2 ? pathParts.slice(-2)[0] : pathParts.slice(-1)[0];
+        const directory = pathParts.slice(0, -2).join("/") + "/";
 
         callback(directory, name, fromPath, false);
 
