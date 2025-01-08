@@ -164,12 +164,6 @@ function Repeat() {
           <span className="syntax-literal">", "</span>
         </div>
         <div>
-          <span className="syntax-name">repeat</span>
-          <span> </span>
-          <span>=</span>
-          <span> </span>(<span className="syntax-name">name</span>, <span className="syntax-name">comma</span>)
-        </div>
-        <div>
           <span className="syntax-name">zero-or-more</span>
           <span> </span>
           <span>=</span>
