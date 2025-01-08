@@ -5,9 +5,12 @@ import { PendingFileCreation } from './pending_file_creation.tsx';
 import { FileItem } from './file_item.tsx';
 import { PendingDirectoryCreation } from './pending_directory_creation.tsx';
 import styles from './directory_item.module.css';
-import { Position, BodyText, Icon } from '@tcn/ui-core';
+import moduleStyles from '../app.module.css';
+import { Position, BodyText } from '@tcn/ui-core';
 import { HStack, VStack } from '@tcn/ui-layout';
 import { useLayoutEffect, useState } from 'react';
+import ChevronDownIcon from "../icons/chevron_down.svg?react";
+import ChevronRightIcon from "../icons/chevron_right.svg?react";
 
 export interface DirectoryItemProps {
   directory: Directory;
@@ -90,7 +93,11 @@ export function DirectoryItem({ directory, presenter }: DirectoryItemProps) {
         className={styles['directory-item']}
         paddingInlineStart={`${padding}px`}
       >
-        <Icon name={isOpen ? 'chevron_down' : 'chevron_right'} flipOnRtl size="25px" />
+        {
+          isOpen 
+            ? <ChevronDownIcon className={`${moduleStyles["icon"]} ${moduleStyles["black"]}`}/> 
+            : <ChevronRightIcon className={`${moduleStyles["icon"]} ${moduleStyles["black"]}`}/>
+        }
         <BodyText variant="large">{directory.name}</BodyText>
       </HStack>
       {isOpen && <VStack height="auto">{children}</VStack>}

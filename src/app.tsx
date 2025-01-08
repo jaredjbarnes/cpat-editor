@@ -6,11 +6,12 @@ import { useSignalValue } from '@tcn/state';
 import { TestEditor } from './test_editor.tsx';
 import { GrammarEditor } from './grammar_editor.tsx';
 import styles from './app.module.css';
-import { IconButton } from '@tcn/ui-controls';
+import { Button } from '@tcn/ui-controls';
 import { Header } from '@tcn/ui-core';
 import { SnippetsSidePanel } from './snippets_side_panel.tsx';
 import { FileExplorer } from './file_explorer/file_explorer.tsx';
 import { useLayoutEffect } from 'react';
+import QuestionIcon from "./icons/question.svg?react";
 
 export interface AppProps {
   presenter: AppPresenter;
@@ -42,7 +43,9 @@ export function App({ presenter }: AppProps) {
         <Header>CPAT Playground</Header>
         <Spacer />
         <HStack width="auto">
-          <IconButton iconSize="25px" onClick={toggleDocumentation} iconName="question" />
+          <Button className={styles["icon-button"]} onClick={toggleDocumentation}>
+            <QuestionIcon className={styles["icon"]}/>
+          </Button>
           <Spacer width="8px" />
         </HStack>
       </HStack>
