@@ -102,6 +102,48 @@ function Sequence() {
   );
 }
 
+function OptionalPattern() {
+  return (
+    <VStack height="auto" horizontalAlignment="start">
+      <GrammarExampleHeader text="Optional Pattern" />
+      <div className={styles['snippet-code']}>
+        <div>
+          <span className="syntax-name">prefix</span>
+          <span> </span>
+          <span>=</span>
+          <span> </span>
+          <span className="syntax-literal">"I am "</span>
+        </div>
+        <div>
+          <span className="syntax-name">super</span>
+          <span> </span>
+          <span>=</span>
+          <span> </span>
+          <span className="syntax-literal">"super "</span>
+        </div>
+        <div>
+          <span className="syntax-name">adjective</span>
+          <span> </span>
+          <span>=</span>
+          <span> </span>
+          <span className="syntax-literal">"happy"</span>
+        </div>
+        <div>
+          <span className="syntax-name">mood</span>
+          <span> </span>
+          <span>=</span>
+          <span> </span>
+          <span className="syntax-name">prefix</span>
+          <span> + </span>
+          <span className="syntax-name">super</span>
+          <span>? + </span>
+          <span className="syntax-name">adjective</span>
+        </div>
+      </div>
+    </VStack>
+  );
+}
+
 function Repeat() {
   return (
     <VStack height="auto" horizontalAlignment="start">
@@ -357,6 +399,7 @@ export function Snippets({ className, style }: SnippetsProps) {
       <Regex />
       <Options />
       <Sequence />
+      <OptionalPattern />
       <Repeat />
       <NegativeLookahead />
       <Import />
