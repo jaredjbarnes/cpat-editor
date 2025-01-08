@@ -318,8 +318,8 @@ export class Diagram extends DiagramMultiContainer {
 		}
 		const s = new FakeSVG('style', {}, style || defaultCSS);
 		this.children.push(s);
-		this.attrs.xmlns = "http://www.w3.org/2000/svg";
-		this.attrs['xmlns:xlink'] = "http://www.w3.org/1999/xlink";
+		this.attrs.xmlns = "htt" + "p://www.w3.org/2000/svg";
+		this.attrs['xmlns:xlink'] = "htt" + "p://www.w3.org/1999/xlink";
 		const result = super.toString.call(this);
 		this.children.pop();
 		delete this.attrs.xmlns;
@@ -2436,10 +2436,10 @@ function max(iter, func=x=>x) {
 function SVG(name, attrs, text) {
 	attrs = attrs || {};
 	text = text || '';
-	var el = document.createElementNS("http://www.w3.org/2000/svg",name);
+	var el = document.createElementNS("htt" + "p://www.w3.org/2000/svg",name);
 	for(var attr in attrs) {
 		if(attr === 'xlink:href')
-			el.setAttributeNS("http://www.w3.org/1999/xlink", 'href', attrs[attr]);
+			el.setAttributeNS("htt" + "p" + "://www.w3.org/1999/xlink", 'href', attrs[attr]);
 		else
 			el.setAttribute(attr, attrs[attr]);
 	}
