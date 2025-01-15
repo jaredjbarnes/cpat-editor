@@ -2,6 +2,7 @@ import { Signal } from "@tcn/state";
 import { FileSystem } from "./file_system.ts";
 import { FileCreation } from "./file_creation.ts";
 import { DirectoryCreation as DirectoryCreation } from "./directory_creation.ts";
+import { FileRenaming } from "./file_renaming.ts";
 
 export interface File {
     type: 'file';
@@ -33,6 +34,7 @@ export class FileExplorerPresenter {
     private _onPathFocus: (path: string, oldPath: string | null) => void;
     private _pendingFileCreation: Signal<FileCreation | null>;
     private _pendingDirectoryCreation: Signal<DirectoryCreation | null>;
+    private _pendingFileRenaming: Signal<FileRenaming | null>;
 
     get directoryBroadcast() {
         return this._directory.broadcast;
@@ -54,6 +56,10 @@ export class FileExplorerPresenter {
         return this._pendingDirectoryCreation.broadcast;
     }
 
+    get pendingFileRenamingBroadcast() {
+        return this._pendingFileRenaming.broadcast;
+    }
+
     constructor(options: FileExplorerOptions) {
         this._fileSystem = options.fileSystem;
         this._onPathFocus = options.onPathFocus;
@@ -71,6 +77,7 @@ export class FileExplorerPresenter {
         this._focusedItem = new Signal<File | Directory | null>(null);
         this._pendingFileCreation = new Signal<FileCreation | null>(null);
         this._pendingDirectoryCreation = new Signal<DirectoryCreation | null>(null);
+        this._pendingFileRenaming = new Signal<FileRenaming | null>(null);
     }
 
     async initialize() {
@@ -132,8 +139,10 @@ export class FileExplorerPresenter {
                     return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
                 } else if (a.path.endsWith("/") && !b.path.endsWith("/")) {
                     return -1;
-                } else {
+                } else if (!a.path.endsWith("/") && b.path.endsWith("/")) {
                     return 1;
+                } else {
+                    return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
                 }
             });
         });
@@ -180,6 +189,17 @@ export class FileExplorerPresenter {
         }
     }
 
+    startRenamingFile(filePath: string) {
+        this._pendingFileRenaming.set(new FileRenaming(filePath, this._fileSystem, async (filePath: string) => {
+            this._pendingFileRenaming.set(null);
+            await this.refresh();
+            this.focus(filePath);
+        }, async () => {
+            this._pendingFileRenaming.set(null);
+            await this.refresh();
+        }));
+    }
+
     startFileCreation() {
         const currentDirectory = this._focusedItem.get();
         let path = "/";
@@ -190,10 +210,13 @@ export class FileExplorerPresenter {
             path = currentDirectory.path;
         }
 
-        this._pendingFileCreation.set(new FileCreation(path, this._fileSystem, async () => {
+        this._pendingFileCreation.set(new FileCreation(path, this._fileSystem, async (filePath: string) => {
             this._pendingFileCreation.set(null);
             await this.refresh();
-            this.focus(path);
+            this.focus(filePath);
+        }, async () => {
+            this._pendingFileCreation.set(null);
+            await this.refresh();
         }));
     }
 

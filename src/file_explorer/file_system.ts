@@ -80,6 +80,18 @@ export class FileSystem {
         this._storage.setItem(path, content);
     }
 
+    async renameFile(path: string, newPath: string): Promise<void> {
+        const hasFile = await this.hasFile(path);
+
+        if (hasFile) {
+            const content = await this.readFile(path);
+            await this.writeFile(newPath, content);
+            await this.deleteFile(path);
+        } else {
+            throw new Error("Cannot find file to rename.");
+        }
+    }
+
     private _getFileName(path: string) {
         return path.split("/").slice(-1)[0];
     }

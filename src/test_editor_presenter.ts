@@ -50,8 +50,11 @@ export class TestEditorPresenter {
             this.textEditor.clearFormatting();
 
             const text = this.textEditor.getText();
+            const startTime = performance.now();
             const { ast, cursor } = editorPattern.exec(text);
+            const parseDuration = performance.now() - startTime;
 
+            console.log("Test Parse Time: ", parseDuration);
             if (ast != null) {
                 const rootAst = ast.children[0];
                 this._ast.set(rootAst.toJson(2));

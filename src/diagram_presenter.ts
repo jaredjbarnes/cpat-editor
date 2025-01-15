@@ -41,7 +41,7 @@ export class DiagramPresenter {
                     return new Diagram(new Group(this._buildPattern(pattern), pattern.name));
                 }
                 case "regex": {
-                    return new Diagram(new Group(`/${(pattern as Regex).value}/`, pattern.name));
+                    return new Diagram(new Group(`/${(pattern as Regex).regex}/`, pattern.name));
                 }
                 case "not": {
                     return new Diagram(new Group(this._buildPattern(pattern), pattern.name));
@@ -50,7 +50,9 @@ export class DiagramPresenter {
                     return new Diagram(new Group(this._buildPattern(pattern), pattern.name));
                 }
                 case "options": {
-                    return new Diagram(new Group(this._buildPattern(pattern), pattern.name));
+                    const children = pattern.children.map(p => this._buildPattern(p));
+                    const options = new Choice(0, ...children);
+                    return new Diagram(new Group(options, pattern.name));
                 }
                 case "reference": {
                     return new Diagram(new Group(this._buildPattern(pattern), pattern.name));
@@ -59,9 +61,9 @@ export class DiagramPresenter {
                     const children = pattern.children.map(p => this._buildPattern(p));
                     return new Diagram(new Group(new Sequence(...children), pattern.name));
                 }
-                // case "finite-repeat": {
-                //     // fall through
-                // }
+                case "finite-repeat": {
+                    return new Diagram(new Group(this._buildPattern(pattern), pattern.name));
+                }
                 case "infinite-repeat": {
                     return new Diagram(new Group(this._buildPattern(pattern), pattern.name));
                 }
@@ -75,41 +77,40 @@ export class DiagramPresenter {
     private _buildPattern(pattern: Pattern): any {
         switch (pattern.type) {
             case "literal": {
-                const text = this.replaceSpecialCharacters((pattern as Literal).value);
-                const terminal = new Terminal(text, { href: `/#pattern=${pattern.id}` });
+                const text = this.replaceSpecialCharacters((pattern as Literal).token);
+                const terminal = new Terminal(text, { href: `#${pattern.name}` });
                 return terminal;
             }
             case "regex": {
                 const text = (pattern as Regex).name;
-                const terminal = new Terminal(text, { href: `/#pattern=${pattern.id}` });
+                const terminal = new Terminal(text, { href: `#${pattern.name}` });
                 return terminal;
             }
             case "not": {
                 const text = `${pattern.name}`;
-                const terminal = new Terminal(text, { href: `/#pattern=${pattern.id}` });
+                const terminal = new Terminal(text, { href: `#${pattern.name}` });
                 return terminal;
             }
             case "optional": {
                 return new Optional(this._buildPattern(pattern.children[0]));
             }
             case "options": {
-                const children = pattern.children.map(p => this._buildPattern(p));
-                return new Choice(0, ...children);
+                const text = `${pattern.name}`;
+                const terminal = new Terminal(text, { href: `#${pattern.name}` });
+                return terminal;
             }
             case "reference": {
-                return pattern.name;
+                return new Terminal(pattern.name, { href: `#${pattern.name}` });
             }
             case "sequence": {
-                const children = pattern.children.map(p => this._buildPattern(p));
-                return new Sequence(...children);
-
-                // const text = pattern.name;
-                // const terminal = new Terminal(text, { href: `/#pattern=${pattern.id}` });
-                // return terminal;
+                const text = pattern.name;
+                const terminal = new Terminal(text, { href: `#${pattern.name}` });
+                return terminal;
             }
-            // case "finite-repeat": {
-            //     // Fall Through
-            // }
+            case "finite-repeat": {
+                const children = pattern.children[0].children.map(p => this._buildPattern(p));
+                return new OneOrMore(...children);
+            }
             case "infinite-repeat": {
                 const children = pattern.children[0].children.map(p => this._buildPattern(p));
                 return new OneOrMore(...children);

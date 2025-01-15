@@ -87,6 +87,7 @@ export class GrammarEditorPresenter {
     private async _processGrammar() {
         const text = this.textEditor.getText();
         try {
+            const startTime = performance.now();
             const allPatterns = await Grammar.parse(text, {
                 originResource: this._path,
                 resolveImport: async (resource, originResource) => {
@@ -102,6 +103,7 @@ export class GrammarEditorPresenter {
                     }
                 }
             });
+            console.log("Build Pattern Time: ", performance.now() - startTime);
 
             this._onGrammarProcess(allPatterns);
         } catch (_) {
@@ -138,7 +140,7 @@ export class GrammarEditorPresenter {
         }
     }
 
-    disable(){
+    disable() {
         this.textEditor.editor.disable();
     }
 
@@ -148,6 +150,16 @@ export class GrammarEditorPresenter {
         this.textEditor.setText(text);
         this._processGrammar();
         this._highlight();
+        this._clearEditorState();
+    }
+
+    private _clearEditorState() {
+        const history = this.textEditor.editor.getModule("history") as any;
+
+        if (history != null) {
+            history.stack.undo = [];
+            history.stack.redo = [];
+        }
     }
 
 }
