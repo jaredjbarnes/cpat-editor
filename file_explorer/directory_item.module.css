@@ -1,0 +1,10 @@
+._directory-item_3c48b80 {
+  padding-block: 4px;
+  padding-inline: 0px 8px;
+  cursor: pointer;
+}
+
+._directory-item_3c48b80[data-is-focused="true"] {
+  background-color: var(--default-accent-color);
+  color: white;
+}

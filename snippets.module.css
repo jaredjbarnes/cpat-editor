@@ -1,0 +1,20 @@
+._snippets_73f43d3 {
+  overflow: auto;
+  line-height: 1.42;
+}
+
+._snippet-header_6242ed9 {
+  background-color: var(--surface-secondary-color);
+  padding-block: 8px;
+  padding-inline: 16px;
+  width: 100%;
+  font-size: 18px;
+}
+
+._snippet-code_aae714b {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 16px;
+}

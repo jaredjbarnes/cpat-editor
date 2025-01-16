@@ -1,0 +1,10 @@
+._file-item_7c1f760 {
+  padding-block: 4px;
+  padding-inline: 0px 8px;
+  cursor: pointer;
+}
+
+._file-item_7c1f760[data-is-focused="true"] {
+  background-color: var(--default-accent-color);
+  color: white;
+}
