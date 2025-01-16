@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-D7yXmd4I.js"(exports, module) {
+  "assets/index-0PX6AoYM.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -26399,6 +26399,7 @@ var require_index_001 = __commonJS({
         this._name = name2;
         this._parent = null;
         this._pattern = null;
+        this._cachedPattern = null;
         this._children = [];
       }
       test(text) {
@@ -26420,7 +26421,12 @@ var require_index_001 = __commonJS({
       }
       _getPatternSafely() {
         if (this._pattern === null) {
-          const pattern2 = this._findPattern();
+          let pattern2 = null;
+          if (this._cachedPattern == null) {
+            pattern2 = this._findPattern();
+          } else {
+            pattern2 = this._cachedPattern;
+          }
           if (pattern2 === null) {
             throw new Error(`Couldn't find '${this._name}' pattern within tree.`);
           }
@@ -26485,6 +26491,9 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         const clone = new Reference(name2);
         clone._id = this._id;
+        if (this._pattern != null) {
+          clone._cachedPattern = this._pattern;
+        }
         return clone;
       }
       isEqual(pattern2) {
@@ -39167,4 +39176,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-D7yXmd4I.js.map
+//# sourceMappingURL=index-0PX6AoYM.js.map
