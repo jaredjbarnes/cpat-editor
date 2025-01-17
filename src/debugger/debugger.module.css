@@ -1,0 +1,23 @@
+.debugger-header {
+  background-color: var(--surface-secondary-color);
+  z-index: 2;
+  border-block-end: 1px solid var(--border-primary-color);
+}
+
+:global(.move),
+:global(.error), 
+:global(.match) {
+  fill: white;
+}
+
+:global(.move) > rect {
+  fill: var(--default-accent-color) !important;
+}
+
+:global(.error) > rect {
+  fill: var(--default-error-color) !important;
+}
+
+:global(.match) > rect {
+  fill: #67c71e  !important;
+}

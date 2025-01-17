@@ -127,7 +127,14 @@ export class DiagramPresenter {
         switch (pattern.type) {
             case "literal": {
                 const text = this.replaceSpecialCharacters((pattern as Literal).token);
-                const terminal = new Terminal(text);
+                const path = generatePath(pattern);
+                const terminalOptions: any = {};
+                const classNames = this._classNames.get(path);
+                if (classNames != null) {
+                    terminalOptions.cls = classNames;
+                }
+
+                const terminal = new Terminal(text, terminalOptions);
                 terminal.attrs.id = generatePath(pattern);
                 terminal.attrs["data-type"] = "literal";
 
@@ -138,14 +145,26 @@ export class DiagramPresenter {
 
                 if (this._expandedPatternPaths.get(path)) {
                     const text = (pattern as Regex).regex;
-                    const terminal = new Terminal(text);
+                    const terminalOptions: any = {};
+                    const classNames = this._classNames.get(path);
+                    if (classNames != null) {
+                        terminalOptions.cls = classNames;
+                    }
+
+                    const terminal = new Terminal(text, terminalOptions);
                     terminal.attrs.id = generatePath(pattern);
                     terminal.attrs["data-type"] = "regex";
 
                     return terminal;
                 } else {
                     const text = pattern.name;
-                    const terminal = new Terminal(text);
+                    const termninalOptions: any = {};
+                    const classNames = this._classNames.get(path);
+                    if (classNames != null) {
+                        termninalOptions.cls = classNames;
+                    }
+
+                    const terminal = new Terminal(text, termninalOptions);
                     terminal.attrs.id = generatePath(pattern);
                     terminal.attrs["data-type"] = "regex";
 
@@ -154,7 +173,14 @@ export class DiagramPresenter {
             }
             case "not": {
                 const text = pattern.name;
-                const terminal = new Terminal(text);
+                const path = generatePath(pattern);
+                const terminalOptions: any = {};
+                const classNames = this._classNames.get(path);
+                if (classNames != null) {
+                    terminalOptions.cls = classNames;
+                }
+
+                const terminal = new Terminal(text, terminalOptions);
                 terminal.attrs.id = generatePath(pattern);
                 terminal.attrs["data-type"] = "not";
 
@@ -173,9 +199,14 @@ export class DiagramPresenter {
                     const children = pattern.children.map(p => this._buildPattern(p));
                     const options = new Choice(0, ...children);
                     options.attrs.id = pattern.id;
-                    
 
-                    const label = new Terminal(`${text}:`);
+                    const terminalOptions: any = {};
+                    const classNames = this._classNames.get(path);
+                    if (classNames != null) {
+                        terminalOptions.cls = classNames;
+                    }
+
+                    const label = new Terminal(`${text}:`, terminalOptions);
                     label.attrs.id = path;
                     label.attrs["data-group"] = "true";
                     label.attrs["data-type"] = "options";
@@ -186,7 +217,13 @@ export class DiagramPresenter {
 
                     return group;
                 } else {
-                    const terminal = new Terminal(text);
+                    const terminalOptions: any = {};
+                    const classNames = this._classNames.get(path);
+                    if (classNames != null) {
+                        terminalOptions.cls = classNames;
+                    }
+
+                    const terminal = new Terminal(text, terminalOptions);
                     terminal.attrs.id = path;
                     terminal.attrs["data-type"] = "options";
 
@@ -205,8 +242,13 @@ export class DiagramPresenter {
 
                     return node;
                 } else {
+                    const terminalOptions: any = {};
+                    const classNames = this._classNames.get(path);
+                    if (classNames != null) {
+                        terminalOptions.cls = classNames;
+                    }
 
-                    const terminal = new Terminal(pattern.name);
+                    const terminal = new Terminal(pattern.name, terminalOptions);
                     terminal.attrs.id = generatePath(pattern);
                     terminal.attrs["data-type"] = "reference";
 
@@ -223,7 +265,12 @@ export class DiagramPresenter {
                     const children = pattern.children.map(p => this._buildPattern(p));
                     const sequence = new Sequence(...children);
 
-                    const label = new Terminal(`${text}:`);
+                    const terminalOptions: any = {};
+                    const classNames = this._classNames.get(path);
+                    if (classNames != null) {
+                        terminalOptions.cls = classNames;
+                    }
+                    const label = new Terminal(`${text}:`, terminalOptions);
                     label.attrs.id = path;
                     label.attrs["data-group"] = "true";
                     label.attrs["data-type"] = "sequence";
@@ -233,7 +280,13 @@ export class DiagramPresenter {
 
                     return group;
                 } else {
-                    const terminal = new Terminal(text);
+                    const terminalOptions: any = {};
+                    const classNames = this._classNames.get(path);
+                    if (classNames != null) {
+                        terminalOptions.cls = classNames;
+                    }
+
+                    const terminal = new Terminal(text, terminalOptions);
                     terminal.attrs.id = path;
                     terminal.attrs['data-type'] = "sequence";
 

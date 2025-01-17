@@ -1,7 +1,7 @@
 import { Pattern } from "clarity-pattern-parser";
 import { HistoryRecord } from "clarity-pattern-parser/dist/patterns/CursorHistory";
 
-interface Step {
+export interface DebuggerStep {
     type: "move" | "match" | "error";
     pattern: Pattern;
     path: string;
@@ -9,7 +9,7 @@ interface Step {
 }
 
 export function generateSteps(rootPattern: Pattern, records: HistoryRecord[]) {
-    const steps: Step[] = [];
+    const steps: DebuggerStep[] = [];
     let currentPattern = rootPattern;
 
     records.forEach((record) => {
@@ -17,9 +17,19 @@ export function generateSteps(rootPattern: Pattern, records: HistoryRecord[]) {
         const to = record.pattern;
         const path = getPathFromPatternToPattern(from, to);
         const isSibling = to.parent === from.parent;
+        currentPattern = to;
 
         if (!isSibling) {
             path.forEach((pattern) => {
+                if (pattern.type === "repeat" ||
+                    pattern.type === "infinite-repeat" ||
+                    pattern.type === "finite-repeat" ||
+                    pattern.type === "optional" ||
+                    (pattern.parent?.type === "optional" && record.error != null)
+                ) {
+                    return;
+                }
+
                 steps.push({
                     type: "move",
                     pattern,
@@ -85,8 +95,7 @@ export function getPathFromPatternToPattern(from: Pattern, to: Pattern) {
     const toPatternPath: Pattern[] = [];
     const toAncestorMap = new Map<Pattern, boolean>();
 
-
-    let onPattern: Pattern | null = from;
+    let onPattern: Pattern | null = from.parent;
     while (onPattern != null) {
         fromAncestorMap.set(onPattern, true);
         fromPatternPath.push(onPattern);

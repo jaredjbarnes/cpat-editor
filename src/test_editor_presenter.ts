@@ -20,6 +20,11 @@ export class TestEditorPresenter {
         return this._ast.broadcast;
     }
 
+    get selectedPattern(): Pattern | null {
+        const name = this.selectedPatternBroadcast.get();
+        return this._patterns.get()[String(name)] || null;
+    }
+
     constructor() {
         this._ast = new Signal("");
         this._selectedPattern = new Signal<string | null>(null);

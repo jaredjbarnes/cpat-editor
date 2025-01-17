@@ -6,7 +6,7 @@ import styles from "./diagram.module.css";
 
 export interface DiagramProps {
   presenter: DiagramPresenter;
-  onPatternClick?: (patternId: string) => void;
+  onPatternClick?: (patternPath: string) => void;
 }
 
 export function Diagram({ presenter, onPatternClick }: DiagramProps) {

@@ -5,6 +5,7 @@ import { Signal } from "@tcn/state";
 import { FileExplorerPresenter } from "./file_explorer/file_explorer_presenter.ts";
 import { FileSystem } from "./file_explorer/file_system.ts";
 import { Pattern } from "clarity-pattern-parser";
+import { DebuggerPresenter } from "./debugger/debugger_presenter.ts";
 
 export class AppPresenter {
     private _isDocumentationOpen: Signal<boolean>;
@@ -14,6 +15,7 @@ export class AppPresenter {
     readonly testEditor: TestEditorPresenter;
     readonly diagramPresenter: DiagramPresenter;
     readonly fileExplorer: FileExplorerPresenter;
+    readonly debuggerPresenter: Signal<DebuggerPresenter | null>;
 
     get isDocumentationOpenBroadcast() {
         return this._isDocumentationOpen.broadcast;
@@ -70,6 +72,8 @@ export class AppPresenter {
                 }
             }
         });
+
+        this.debuggerPresenter = new Signal<DebuggerPresenter | null>(null);
     }
 
     async initialize() {
@@ -85,6 +89,21 @@ export class AppPresenter {
 
     toggleDocumentation() {
         this._isDocumentationOpen.transform((v) => !v);
+    }
+
+    showDebugger() {
+        const pattern = this.testEditor.selectedPattern;
+
+        if (pattern != null) {
+            const presenter = new DebuggerPresenter(this.testEditor.textEditor.getText(), pattern);
+            this.debuggerPresenter.set(presenter);
+        } else {
+            alert("Select a pattern to debug.");
+        }
+    }
+
+    closeDebugger() {
+        this.debuggerPresenter.set(null);
     }
 
     dispose() {
