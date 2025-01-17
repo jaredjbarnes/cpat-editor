@@ -1005,9 +1005,13 @@ body > * {
   height: 100%;
 }
 
-.terminal {
+.terminal:not([data-type="literal"]) {
   cursor: pointer;
   user-select: none;
+}
+
+.terminal:hover:not([data-type="literal"]) > rect {
+    fill: var(--surface-secondary-color);
 }
 
 .terminal[data-group="true"] > rect {
@@ -3522,6 +3526,29 @@ svg.railroad-diagram path {
 ._directory-item_3c48b80[data-is-focused="true"] {
   background-color: var(--default-accent-color);
   color: white;
+}
+._debugger-header_54fa375 {
+  background-color: var(--surface-secondary-color);
+  z-index: 2;
+  border-block-end: 1px solid var(--border-primary-color);
+}
+
+.move,
+.error, 
+.match {
+  fill: white;
+}
+
+.move > rect {
+  fill: var(--default-accent-color) !important;
+}
+
+.error > rect {
+  fill: var(--default-error-color) !important;
+}
+
+.match > rect {
+  fill: #67c71e  !important;
 }
 svg.railroad-diagram {
     

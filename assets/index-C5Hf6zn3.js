@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-BAoTwniV.js"(exports, module) {
+  "assets/index-C5Hf6zn3.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -7130,7 +7130,7 @@ var require_index_001 = __commonJS({
     var classnamesExports = requireClassnames();
     const classNames = /* @__PURE__ */ getDefaultExportFromCjs(classnamesExports);
     const padding = `_padding_72bf970`;
-    const styles$11 = { padding };
+    const styles$12 = { padding };
     const Pad = React.forwardRef(function Pad2({ children, inline, start, end, top: top2, bottom, amount, minWidth, width, maxWidth, minHeight, height, maxHeight, style: defaultStyle, className, ...props }, ref) {
       const style = {
         ...defaultStyle,
@@ -7156,7 +7156,7 @@ var require_index_001 = __commonJS({
       if (bottom) {
         style.paddingBottom = bottom;
       }
-      return React.createElement("div", { ref, className: classNames(className, styles$11.padding), style, "data-inline": String(inline), ...props }, children);
+      return React.createElement("div", { ref, className: classNames(className, styles$12.padding), style, "data-inline": String(inline), ...props }, children);
     });
     function useForkRef(...args) {
       return reactExports.useCallback((obj) => {
@@ -7298,7 +7298,7 @@ var require_index_001 = __commonJS({
       return React.createElement("div", { style });
     }
     const icon$1 = `_icon_b200233`;
-    const styles$10 = { icon: icon$1 };
+    const styles$11 = { icon: icon$1 };
     let repository = window.location.origin;
     if (!window.location.origin.includes("tcn.com")) {
       repository = "https://op-dev.tcn.com";
@@ -7311,10 +7311,10 @@ var require_index_001 = __commonJS({
       style.verticalAlign = verticalAlign;
       style.background = color;
       style.maskImage = `url('${repository}/icons/${name2}.svg')`;
-      return React.createElement("div", { "data-flip-on-rtl": flipOnRtl, className: classNames(styles$10.icon, className), style: { ...style }, "data-variant": variant, ...props });
+      return React.createElement("div", { "data-flip-on-rtl": flipOnRtl, className: classNames(styles$11.icon, className), style: { ...style }, "data-variant": variant, ...props });
     }
     const bodyText = `_body-text_13bfe84`;
-    const styles$$ = { "body-text": bodyText };
+    const styles$10 = { "body-text": bodyText };
     function BodyText({ variant = "medium", emphasis = "normal", contrast = "normal", color, children, className, style = {}, padStart, padEnd, padBottom, padTop, pad, selectable = false, breakWords = false }) {
       if (pad) {
         style.padding = pad;
@@ -7334,10 +7334,10 @@ var require_index_001 = __commonJS({
       if (color) {
         style.color = color;
       }
-      return React.createElement("div", { "data-contrast": contrast, "data-emphasis": emphasis, "data-selectable": selectable, className: classNames(styles$$["body-text"], className), style, "data-variant": variant, "data-word-break": breakWords }, children);
+      return React.createElement("div", { "data-contrast": contrast, "data-emphasis": emphasis, "data-selectable": selectable, className: classNames(styles$10["body-text"], className), style, "data-variant": variant, "data-word-break": breakWords }, children);
     }
     const header = `_header_bc358ce`;
-    const styles$_ = { header };
+    const styles$$ = { header };
     function Header$1({ variant = "medium", emphasis = "normal", contrast = "normal", color, children, className, style = {}, padStart, padEnd, padBottom, padTop, pad, selectable = false }) {
       let As;
       if (variant === "large") {
@@ -7365,7 +7365,7 @@ var require_index_001 = __commonJS({
       if (color) {
         style.color = color;
       }
-      return React.createElement(As, { "data-contrast": contrast, "data-emphasis": emphasis, "data-selectable": selectable, className: classNames(styles$_["header"], className), style, "data-variant": variant }, children);
+      return React.createElement(As, { "data-contrast": contrast, "data-emphasis": emphasis, "data-selectable": selectable, className: classNames(styles$$["header"], className), style, "data-variant": variant }, children);
     }
     const eventMap = {
       onClick: "click",
@@ -7465,7 +7465,7 @@ var require_index_001 = __commonJS({
       return value2 == null ? defaultValue2 : value2;
     }
     const leftResizeHandle = `_left-resize-handle_a23e04e`;
-    const styles$Z = { "left-resize-handle": leftResizeHandle };
+    const styles$_ = { "left-resize-handle": leftResizeHandle };
     function createVeil() {
       const veil = window.document.createElement("div");
       veil.style.position = "absolute";
@@ -7568,10 +7568,10 @@ var require_index_001 = __commonJS({
         "--resize-offset": `${offset}px`,
         width: (handleProps == null ? void 0 : handleProps.size) || "16px"
       };
-      return React.createElement("div", { className: styles$Z["left-resize-handle"], onMouseDown: resizeHandler, style: leftResizeHandleStyle });
+      return React.createElement("div", { className: styles$_["left-resize-handle"], onMouseDown: resizeHandler, style: leftResizeHandleStyle });
     }
     const rightResizeHandle = `_right-resize-handle_3cef4e2`;
-    const styles$Y = { "right-resize-handle": rightResizeHandle };
+    const styles$Z = { "right-resize-handle": rightResizeHandle };
     function RightResizeHandle({ targetRef, handleProps, onWidthResize, onWidthResizeEnd }) {
       const resizeHandler = createHorizontalResizeHandler(targetRef, onWidthResize, onWidthResizeEnd, false, true);
       const offset = (handleProps == null ? void 0 : handleProps.offset) ? handleProps.offset : -8;
@@ -7580,10 +7580,10 @@ var require_index_001 = __commonJS({
         "--resize-offset": `${offset}px`,
         width: (handleProps == null ? void 0 : handleProps.size) || "16px"
       };
-      return React.createElement("div", { className: styles$Y["right-resize-handle"], onMouseDown: resizeHandler, style: rightResizeHandleStyle });
+      return React.createElement("div", { className: styles$Z["right-resize-handle"], onMouseDown: resizeHandler, style: rightResizeHandleStyle });
     }
     const bottomResizeHandle = `_bottom-resize-handle_ef7c02c`;
-    const styles$X = { "bottom-resize-handle": bottomResizeHandle };
+    const styles$Y = { "bottom-resize-handle": bottomResizeHandle };
     function BottomResizeHandle({ targetRef, handleProps, onHeightResize, onHeightResizeEnd }) {
       const resizeHandler = createVerticalResizeHandler(targetRef, onHeightResize, onHeightResizeEnd);
       const offset = (handleProps == null ? void 0 : handleProps.offset) ? handleProps.offset : -8;
@@ -7592,10 +7592,10 @@ var require_index_001 = __commonJS({
         bottom: `${offset}px`,
         height: (handleProps == null ? void 0 : handleProps.size) || "16px"
       };
-      return React.createElement("div", { className: styles$X["bottom-resize-handle"], onMouseDown: resizeHandler, style: bottomResizeHandleStyle });
+      return React.createElement("div", { className: styles$Y["bottom-resize-handle"], onMouseDown: resizeHandler, style: bottomResizeHandleStyle });
     }
     const endResizeHandle = `_end-resize-handle_16fb47e`;
-    const styles$W = { "end-resize-handle": endResizeHandle };
+    const styles$X = { "end-resize-handle": endResizeHandle };
     function EndResizeHandle({ targetRef, handleProps, onWidthResize, onWidthResizeEnd }) {
       const resizeHandler = createHorizontalResizeHandler(targetRef, onWidthResize, onWidthResizeEnd);
       const offset = (handleProps == null ? void 0 : handleProps.offset) ? handleProps.offset : -8;
@@ -7604,10 +7604,10 @@ var require_index_001 = __commonJS({
         "--resize-offset": `${offset}px`,
         width: (handleProps == null ? void 0 : handleProps.size) || "16px"
       };
-      return React.createElement("div", { className: styles$W["end-resize-handle"], onMouseDown: resizeHandler, style: endResizeHandleStyle });
+      return React.createElement("div", { className: styles$X["end-resize-handle"], onMouseDown: resizeHandler, style: endResizeHandleStyle });
     }
     const startResizeHandle = `_start-resize-handle_051d311`;
-    const styles$V = { "start-resize-handle": startResizeHandle };
+    const styles$W = { "start-resize-handle": startResizeHandle };
     function StartResizeHandle({ targetRef, handleProps, onWidthResize, onWidthResizeEnd }) {
       const resizeHandler = createHorizontalResizeHandler(targetRef, onWidthResize, onWidthResizeEnd, true);
       const offset = (handleProps == null ? void 0 : handleProps.offset) ? handleProps.offset : -8;
@@ -7616,10 +7616,10 @@ var require_index_001 = __commonJS({
         "--resize-offset": `${offset}px`,
         width: (handleProps == null ? void 0 : handleProps.size) || "16px"
       };
-      return React.createElement("div", { className: styles$V["start-resize-handle"], onMouseDown: resizeHandler, style: startResizeHandleStyle });
+      return React.createElement("div", { className: styles$W["start-resize-handle"], onMouseDown: resizeHandler, style: startResizeHandleStyle });
     }
     const topResizeHandle = `_top-resize-handle_01731cd`;
-    const styles$U = { "top-resize-handle": topResizeHandle };
+    const styles$V = { "top-resize-handle": topResizeHandle };
     function TopResizeHandle({ targetRef, handleProps, onHeightResize, onHeightResizeEnd }) {
       const resizeHandler = createVerticalResizeHandler(targetRef, onHeightResize, onHeightResizeEnd, true);
       const offset = (handleProps == null ? void 0 : handleProps.offset) ? handleProps.offset : -8;
@@ -7628,7 +7628,7 @@ var require_index_001 = __commonJS({
         top: `${offset}px`,
         height: (handleProps == null ? void 0 : handleProps.size) || "16px"
       };
-      return React.createElement("div", { className: styles$U["top-resize-handle"], onMouseDown: resizeHandler, style: topResizeHandleStyle });
+      return React.createElement("div", { className: styles$V["top-resize-handle"], onMouseDown: resizeHandler, style: topResizeHandleStyle });
     }
     const Box = React.forwardRef(function Box2({ style, className, as = "div", children, width = "100%", minWidth, maxWidth, height = "100%", minHeight, maxHeight, zIndex = 0, padding: padding2, paddingInline, paddingBlock, overflow, enableResizeOnTop = false, enableResizeOnEnd = false, enableResizeOnBottom = false, enableResizeOnStart = false, enableResizeOnLeft = false, enableResizeOnRight = false, onWidthResize, onHeightResize, onWidthResizeEnd, onHeightResizeEnd, handleProps, ...otherProps }, ref) {
       const As = as;
@@ -7672,11 +7672,11 @@ var require_index_001 = __commonJS({
       );
     });
     const flexBox = `_flex-box_2b136c5`;
-    const styles$T = { "flex-box": flexBox };
+    const styles$U = { "flex-box": flexBox };
     const FlexBox = React.forwardRef(function FillBox({ growWeight, shrinkWeight, children, minWidth, width, maxWidth, minHeight, height, maxHeight, style, className, zIndex, ...props }, ref) {
       const fillBoxRef = reactExports.useRef(null);
       const forkedRef = useForkRef(ref, fillBoxRef);
-      return React.createElement("div", { ref: forkedRef, "data-height": height, "data-width": height, className: classNames(className, styles$T["flex-box"], "stack-flex-box"), style: {
+      return React.createElement("div", { ref: forkedRef, "data-height": height, "data-width": height, className: classNames(className, styles$U["flex-box"], "stack-flex-box"), style: {
         flexGrow: growWeight,
         flexShrink: shrinkWeight,
         minHeight,
@@ -7699,7 +7699,7 @@ var require_index_001 = __commonJS({
       return result;
     }
     const hStack = `_h-stack_387ef68`;
-    const styles$S = { "h-stack": hStack };
+    const styles$T = { "h-stack": hStack };
     const HStack = React.forwardRef(function HStack2({ as = "div", children, style, className, horizontalAlignment = "start", verticalAlignment = "center", inline, allowFlow, width, minWidth, maxWidth, height, minHeight, maxHeight, padding: padding2, paddingBlock, paddingInline, paddingInlineStart, paddingInlineEnd, paddingTop, paddingBottom, margin, marginBlock, marginInline, marginInlineStart, marginInlineEnd, marginTop, marginBottom, zIndex, overflowX, overflowY, flex, gap, rowGap, columnGap, ...attr }, ref) {
       const As = as;
       const defaultStyles = {
@@ -7734,7 +7734,7 @@ var require_index_001 = __commonJS({
         ...removeUndefinedProperties(defaultStyles),
         ...style
       };
-      return React.createElement(As, { ref, className: classNames(className, styles$S["h-stack"], flex && "stack-flex-box"), style: finalStyles, "data-inline": Boolean(inline), "data-allow-flow": Boolean(allowFlow), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, children);
+      return React.createElement(As, { ref, className: classNames(className, styles$T["h-stack"], flex && "stack-flex-box"), style: finalStyles, "data-inline": Boolean(inline), "data-allow-flow": Boolean(allowFlow), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, children);
     });
     const Spacer = React.forwardRef(function Spacer2({ width = "auto", height = "auto", fullHeight = false, fullWidth = false, fillSpaceWeight = 1, style, className }, ref) {
       const flex = width === "auto" && height === "auto" ? fillSpaceWeight : void 0;
@@ -7754,7 +7754,7 @@ var require_index_001 = __commonJS({
       }, className });
     });
     const vStack = `_v-stack_97b2e87`;
-    const styles$R = { "v-stack": vStack };
+    const styles$S = { "v-stack": vStack };
     const VStack = React.forwardRef(function VStack2({ as = "div", children, style, className, horizontalAlignment = "center", verticalAlignment = "start", inline, allowFlow, width, minWidth, maxWidth, height, minHeight, maxHeight, padding: padding2, paddingBlock, paddingInline, paddingInlineStart, paddingInlineEnd, paddingTop, paddingBottom, margin, marginBlock, marginInline, marginInlineStart, marginInlineEnd, marginTop, marginBottom, zIndex, overflowY, overflowX, flex, gap, rowGap, columnGap, ...attr }, ref) {
       const As = as;
       const defaultStyles = {
@@ -7790,10 +7790,10 @@ var require_index_001 = __commonJS({
         ...removeUndefinedProperties(defaultStyles),
         ...style
       };
-      return React.createElement(As, { ref, className: classNames(className, styles$R["v-stack"], flex && "stack-flex-box"), style: finalStyles, "data-inline": Boolean(inline), "data-allow-flow": Boolean(allowFlow), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, children);
+      return React.createElement(As, { ref, className: classNames(className, styles$S["v-stack"], flex && "stack-flex-box"), style: finalStyles, "data-inline": Boolean(inline), "data-allow-flow": Boolean(allowFlow), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, children);
     });
     const zStack = `_z-stack_f623b5e`;
-    const styles$Q = { "z-stack": zStack };
+    const styles$R = { "z-stack": zStack };
     const ZStack = React.forwardRef(function ZStack2({ as = "div", children, style, horizontalAlignment = "center", verticalAlignment = "center", inline, width, minWidth, maxWidth, height, minHeight, maxHeight, padding: padding2, paddingBlock, paddingInline, paddingInlineStart, paddingInlineEnd, paddingTop, paddingBottom, margin, marginBlock, marginInline, marginInlineStart, marginInlineEnd, marginTop, marginBottom, zIndex, className, overflow, flex, ...attr }, ref) {
       const As = as;
       const defaultStyles = {
@@ -7823,7 +7823,7 @@ var require_index_001 = __commonJS({
       return React.createElement(As, { ref, style: {
         ...removeUndefinedProperties(defaultStyles),
         ...style
-      }, className: classNames(className, styles$Q["z-stack"], flex && "stack-flex-box"), "data-inline": Boolean(inline), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, typeof children === "string" ? React.createElement("span", null, children) : children);
+      }, className: classNames(className, styles$R["z-stack"], flex && "stack-flex-box"), "data-inline": Boolean(inline), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, typeof children === "string" ? React.createElement("span", null, children) : children);
     });
     var Status;
     (function(Status2) {
@@ -7947,7 +7947,7 @@ var require_index_001 = __commonJS({
       }, [broadcast]);
     }
     const gridItem = `_grid-item_6058f1d`;
-    const styles$P = { "grid-item": gridItem };
+    const styles$Q = { "grid-item": gridItem };
     function GridElement({ child, item, presenter: masonryLayoutEngine }) {
       const ref = reactExports.useRef(null);
       const resizeRef = useResizeObserver((_, height) => {
@@ -7970,14 +7970,14 @@ var require_index_001 = __commonJS({
           ...originalStyle,
           ...style
         },
-        className: classNames(className, styles$P["grid-item"]),
+        className: classNames(className, styles$Q["grid-item"]),
         key: item.index,
         ref: forkedRef
       });
     }
     const virtualizedGrid = `_virtualized-grid_f56373f`;
     const virtualizedGridContent = `_virtualized-grid-content_ccec1b8`;
-    const styles$O = { "virtualized-grid": virtualizedGrid, "virtualized-grid-content": virtualizedGridContent };
+    const styles$P = { "virtualized-grid": virtualizedGrid, "virtualized-grid-content": virtualizedGridContent };
     const defaultRender = () => React.createElement("div", null);
     const VirtualizedGrid = React.forwardRef(function VirtualizedGrid2({ as = "div", alignment = "center", minWidth, width, maxWidth, minHeight, height, maxHeight, renderItem = defaultRender, style, className, onScroll, children, presenter: presenter2, ...props }, ref) {
       useSignalValue(presenter2.isDirtyBroadcast);
@@ -8014,8 +8014,8 @@ var require_index_001 = __commonJS({
         { ref: forkedRef, style: {
           ...style,
           ...gridStyles
-        }, className: classNames(className, styles$O["virtualized-grid"]), onScroll: updateViewport, ...props },
-        React.createElement("div", { className: styles$O["virtualized-grid-content"], "data-alignment": alignment, style: contentStyle }, visibleItems.map((item) => {
+        }, className: classNames(className, styles$P["virtualized-grid"]), onScroll: updateViewport, ...props },
+        React.createElement("div", { className: styles$P["virtualized-grid-content"], "data-alignment": alignment, style: contentStyle }, visibleItems.map((item) => {
           const child = renderItem(item, item.index);
           return React.createElement(GridElement, { key: item.index, child, item, presenter: presenter2 });
         })),
@@ -8623,7 +8623,7 @@ var require_index_001 = __commonJS({
     };
     const popover$2 = `_popover_abf288d`;
     const popoverVeil = `_popover-veil_cf97091`;
-    const styles$N = { popover: popover$2, "popover-veil": popoverVeil };
+    const styles$O = { popover: popover$2, "popover-veil": popoverVeil };
     function Popover({ anchorElement, verticalAnchor = "bottom", verticalOrigin = "top", verticalOffset = 0, horizontalAnchor = "start", horizontalOrigin = "start", horizontalOffset = 0, restoreFocus = false, veil = false, open, onClose, children }) {
       const anchorElementRef = reactExports.useRef(anchorElement);
       const [position, setPosition] = reactExports.useState({ top: 0, left: 0 });
@@ -8728,14 +8728,14 @@ var require_index_001 = __commonJS({
         null,
         veil && React.createElement(
           "div",
-          { className: styles$N["popover-veil"] },
+          { className: styles$O["popover-veil"] },
           React.createElement(
             ScrollAwayListener,
             { onScrollAway: close },
             React.createElement(
               ClickAwayListener,
               { onClickAway: close, refs: [anchorElementRef] },
-              React.createElement("div", { ref: popoverRef, className: styles$N.popover, style: {
+              React.createElement("div", { ref: popoverRef, className: styles$O.popover, style: {
                 top: `${position.top}px`,
                 left: `${position.left}px`
               } }, children)
@@ -8748,7 +8748,7 @@ var require_index_001 = __commonJS({
           React.createElement(
             ScrollAwayListener,
             { onScrollAway: close },
-            React.createElement("div", { ref: popoverRef, className: styles$N.popover, style: {
+            React.createElement("div", { ref: popoverRef, className: styles$O.popover, style: {
               top: `${position.top}px`,
               left: `${position.left}px`
             } }, children)
@@ -8757,7 +8757,7 @@ var require_index_001 = __commonJS({
       );
     }
     const diagram = `_diagram_a292eaf`;
-    const styles$M = { diagram };
+    const styles$N = { diagram };
     function Diagram$1({ presenter: presenter2, onPatternClick }) {
       const ref = reactExports.useRef(null);
       useSignalValueEffect((diagrams) => {
@@ -8772,16 +8772,21 @@ var require_index_001 = __commonJS({
         }
       }, presenter2.diagramsBroadcast);
       function handleClick(event) {
+        var _a2, _b;
         let target = event.target;
         while (target.parentElement != null) {
           if (target.id) {
-            onPatternClick && onPatternClick(target.id);
+            if (((_a2 = target.parentElement) == null ? void 0 : _a2.dataset["referencePath"]) != null) {
+              onPatternClick && onPatternClick((_b = target.parentElement) == null ? void 0 : _b.dataset["referencePath"]);
+            } else {
+              onPatternClick && onPatternClick(target.id);
+            }
             break;
           }
           target = target.parentElement;
         }
       }
-      return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { onClick: handleClick, ref, className: styles$M.diagram });
+      return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { onClick: handleClick, ref, className: styles$N.diagram });
     }
     function Ast({ text }) {
       return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -8798,9 +8803,9 @@ var require_index_001 = __commonJS({
     }
     const button$3 = `_button_059b768`;
     const buttonStringLabel = `_button-string-label_3a049f3`;
-    const styles$L = { button: button$3, "button-string-label": buttonStringLabel };
+    const styles$M = { button: button$3, "button-string-label": buttonStringLabel };
     const Button = React.forwardRef(function Button2({ children, className, style, textColor: color, color: backgroundColor, variant = "secondary", onTouchStart, onContextMenu, ...props }, ref) {
-      return React.createElement(HStack, { ref, as: "button", inline: true, verticalAlignment: "center", horizontalAlignment: "center", "data-variant": variant, "data-is-disabled": props.disabled || false, className: classNames(styles$L.button, className, "button"), style: { ...style, backgroundColor, color }, onTouchStart: (e) => {
+      return React.createElement(HStack, { ref, as: "button", inline: true, verticalAlignment: "center", horizontalAlignment: "center", "data-variant": variant, "data-is-disabled": props.disabled || false, className: classNames(styles$M.button, className, "button"), style: { ...style, backgroundColor, color }, onTouchStart: (e) => {
         if (onTouchStart == null) {
           e.preventDefault();
           return;
@@ -8812,42 +8817,42 @@ var require_index_001 = __commonJS({
           return;
         }
         onContextMenu(e);
-      }, ...props }, typeof children === "string" ? React.createElement("span", { className: styles$L["button-string-label"] }, children) : children);
+      }, ...props }, typeof children === "string" ? React.createElement("span", { className: styles$M["button-string-label"] }, children) : children);
     });
     const iconButton$1 = `_icon-button_11360be`;
-    const styles$K = { "icon-button": iconButton$1 };
+    const styles$L = { "icon-button": iconButton$1 };
     const IconButton = ({ iconName, title, style, variant = "tertiary", iconSize = "20px", flipOnRtl, width = iconSize, height = iconSize, className, ...props }) => {
       return React.createElement(
         Button,
-        { title, variant, width, height, style, className: classNames(styles$K["icon-button"], className, "icon-button"), ...props },
+        { title, variant, width, height, style, className: classNames(styles$L["icon-button"], className, "icon-button"), ...props },
         React.createElement(Icon, { flipOnRtl, name: iconName, size: iconSize })
       );
     };
     const checkboxWrapper = `_checkbox-wrapper_d9eee15`;
     const checkbox = `_checkbox_4042987`;
     const checkboxSvg = `_checkbox-svg_0251a0a`;
-    const styles$J = { "checkbox-wrapper": checkboxWrapper, checkbox, "checkbox-svg": checkboxSvg };
+    const styles$K = { "checkbox-wrapper": checkboxWrapper, checkbox, "checkbox-svg": checkboxSvg };
     React.forwardRef(function Checkbox({ style, className, width, height, checked, inputRef, onChange, ...props }, ref) {
       return React.createElement(
         ZStack,
-        { ref, className: classNames(styles$J["checkbox-wrapper"], "checkbox-wrapper"), "data-is-disabled": props.disabled, width: "15px", height: "15px" },
+        { ref, className: classNames(styles$K["checkbox-wrapper"], "checkbox-wrapper"), "data-is-disabled": props.disabled, width: "15px", height: "15px" },
         React.createElement("input", { "data-checked": checked, "data-is-disabled": props.disabled || false, checked, type: "checkbox", ref: inputRef, onChange: (e) => {
           onChange && onChange(Boolean(e.currentTarget.checked), e);
-        }, ...props, className: classNames(className, styles$J.checkbox, "checkbox"), style: { width, height, ...style } }),
+        }, ...props, className: classNames(className, styles$K.checkbox, "checkbox"), style: { width, height, ...style } }),
         checked && React.createElement(
           "svg",
-          { className: classNames(styles$J["checkbox-svg"], "checkbox-svg"), width: "12px", height: "12px", viewBox: "0 0 24 24", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg" },
+          { className: classNames(styles$K["checkbox-svg"], "checkbox-svg"), width: "12px", height: "12px", viewBox: "0 0 24 24", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg" },
           React.createElement("path", { d: "M20.5068 5.44714C20.8121 5.72703 20.8328 6.20146 20.5529 6.5068L9.55287 18.5068C9.41464 18.6576 9.22081 18.7454 9.01629 18.7498C8.81178 18.7543 8.61432 18.675 8.46967 18.5303L3.46967 13.5303C3.17678 13.2374 3.17678 12.7626 3.46967 12.4697C3.76256 12.1768 4.23744 12.1768 4.53033 12.4697L8.97644 16.9158L19.4471 5.49321C19.727 5.18787 20.2015 5.16724 20.5068 5.44714Z", stroke: "currentColor", strokeWidth: "2" })
         )
       );
     });
     const radio = `_radio_e801425`;
-    const styles$I = { radio };
+    const styles$J = { radio };
     React.forwardRef(function Radio({ name: name2, id, label, className, checked, backgroundColor: color, value: value2, onChange, ...props }, ref) {
       return React.createElement(
         React.Fragment,
         null,
-        React.createElement("input", { ref, className: classNames(className, styles$I.radio, "radio"), type: "radio", id, name: name2, value: value2, style: { backgroundColor: color }, checked, "data-checked": checked, "data-is-disabled": props.disabled, onChange: (e) => {
+        React.createElement("input", { ref, className: classNames(className, styles$J.radio, "radio"), type: "radio", id, name: name2, value: value2, style: { backgroundColor: color }, checked, "data-checked": checked, "data-is-disabled": props.disabled, onChange: (e) => {
           onChange && onChange(e.currentTarget.value, e);
         }, ...props }),
         label && React.createElement("label", { className: "radio-label", style: { pointerEvents: props.disabled ? "none" : "auto" }, htmlFor: id }, label)
@@ -8855,7 +8860,7 @@ var require_index_001 = __commonJS({
     });
     const switchWrapper = `_switch-wrapper_2017a44`;
     const _switch = `_switch_63d662e`;
-    const styles$H = { "switch-wrapper": switchWrapper, "switch": _switch };
+    const styles$I = { "switch-wrapper": switchWrapper, "switch": _switch };
     React.forwardRef(function Switch({ checked, backgroundColor: onColor, style, className, inputRef, onChange, ...props }, ref) {
       const [isFocused, setIsFocused] = reactExports.useState(false);
       const internalInputRef = reactExports.useRef(null);
@@ -8874,48 +8879,48 @@ var require_index_001 = __commonJS({
       }
       return React.createElement(
         "div",
-        { ref, "data-focused": isFocused, "data-ischecked": Boolean(checked), className: classNames(styles$H["switch-wrapper"], className) },
-        React.createElement("input", { ref: forkedInputRef, type: "checkbox", className: styles$H.switch, onBlur: blur, onFocus: focus, style: { ...style, ...customStyles }, checked, "data-is-disabled": props.disabled || false, onChange: (e) => {
+        { ref, "data-focused": isFocused, "data-ischecked": Boolean(checked), className: classNames(styles$I["switch-wrapper"], className) },
+        React.createElement("input", { ref: forkedInputRef, type: "checkbox", className: styles$I.switch, onBlur: blur, onFocus: focus, style: { ...style, ...customStyles }, checked, "data-is-disabled": props.disabled || false, onChange: (e) => {
           onChange && onChange(Boolean(e.currentTarget.checked), e);
         }, ...props })
       );
     });
     const slider = `_slider_dd8d708`;
-    const styles$G = { slider };
+    const styles$H = { slider };
     React.forwardRef(function Slider2({ style, className, width, onChange, ...props }, ref) {
-      return React.createElement("input", { type: "range", className: classNames(className, styles$G.slider), "data-is-disabled": props.disabled || false, ref, onChange: (e) => {
+      return React.createElement("input", { type: "range", className: classNames(className, styles$H.slider), "data-is-disabled": props.disabled || false, ref, onChange: (e) => {
         onChange && onChange(e.currentTarget.value, e);
       }, ...props, style: { width, ...style } });
     });
     const input = `_input_a485f55`;
-    const styles$F = { input };
+    const styles$G = { input };
     const Input$1 = React.forwardRef(function Input2({ type = "text", style, className, width, height, onChange, ...props }, ref) {
-      return React.createElement("input", { className: classNames(styles$F.input, className, "input"), type, ref, "data-is-disabled": props.disabled || false, onChange: (e) => {
+      return React.createElement("input", { className: classNames(styles$G.input, className, "input"), type, ref, "data-is-disabled": props.disabled || false, onChange: (e) => {
         onChange && onChange(e.currentTarget.value, e);
       }, ...props, style: { width, height, ...style } });
     });
     const textarea = `_textarea_145d0f7`;
-    const styles$E = { textarea };
+    const styles$F = { textarea };
     React.forwardRef(function Textarea({ className, width, height, style, onChange, ...props }, ref) {
-      return React.createElement("textarea", { style: { width, height, ...style }, className: classNames(className, styles$E.textarea, "textarea"), "data-is-disabled": props.disabled || false, ref, onChange: (e) => {
+      return React.createElement("textarea", { style: { width, height, ...style }, className: classNames(className, styles$F.textarea, "textarea"), "data-is-disabled": props.disabled || false, ref, onChange: (e) => {
         onChange && onChange(e.currentTarget.value, e);
       }, ...props });
     });
     const selectWrapper = `_select-wrapper_85c0db7`;
     const select = `_select_26c5629`;
     const chevron$1 = `_chevron_3b2c9f3`;
-    const styles$D = { "select-wrapper": selectWrapper, select, chevron: chevron$1 };
+    const styles$E = { "select-wrapper": selectWrapper, select, chevron: chevron$1 };
     const Select = React.forwardRef(function Select2({ children, width = "100%", maxWidth, minWidth, className, onChange, selectRef, selectClassName, selectProps, style, value: value2, defaultValue: defaultValue2, variant = "secondary", ...props }, ref) {
       const { style: selectStyle, ...finalSelectProps } = { ...selectProps };
       return React.createElement(
         "div",
-        { "data-variant": variant, className: classNames(className, styles$D["select-wrapper"], "select-container"), ref, "data-disabled": props.disabled, style: { display: "inline-block", width, ...style }, ...props },
-        React.createElement("select", { "data-variant": variant, "data-is-disabled": props.disabled || false, disabled: props.disabled, className: classNames(selectClassName, styles$D.select, "select"), defaultValue: defaultValue2, value: value2, ref: selectRef, onChange: (e) => {
+        { "data-variant": variant, className: classNames(className, styles$E["select-wrapper"], "select-container"), ref, "data-disabled": props.disabled, style: { display: "inline-block", width, ...style }, ...props },
+        React.createElement("select", { "data-variant": variant, "data-is-disabled": props.disabled || false, disabled: props.disabled, className: classNames(selectClassName, styles$E.select, "select"), defaultValue: defaultValue2, value: value2, ref: selectRef, onChange: (e) => {
           onChange && onChange(e.currentTarget.value, e);
         }, style: { width, maxWidth, minWidth, ...selectStyle }, ...finalSelectProps }, children),
         React.createElement(
           HStack,
-          { className: styles$D.chevron },
+          { className: styles$E.chevron },
           React.createElement(Spacer, null),
           React.createElement(Icon, { name: "chevron_down", size: "20px" }),
           React.createElement(Spacer, { width: "4px" })
@@ -8923,19 +8928,19 @@ var require_index_001 = __commonJS({
       );
     });
     const chip$1 = `_chip_e5816f3`;
-    const styles$C = { chip: chip$1 };
+    const styles$D = { chip: chip$1 };
     const Chip = React.forwardRef(function Button2({ children, style, className, variant = "secondary", variantSize = "medium", ...props }, ref) {
-      return React.createElement(HStack, { ref, inline: true, verticalAlignment: "center", className: classNames(styles$C.chip, className, "chip"), "data-size": variantSize, "data-variant": variant, padding: "6px 8px", ...props }, children);
+      return React.createElement(HStack, { ref, inline: true, verticalAlignment: "center", className: classNames(styles$D.chip, className, "chip"), "data-size": variantSize, "data-variant": variant, padding: "6px 8px", ...props }, children);
     });
     const chip = `_chip_2b9efdd`;
     const remove = `_remove_fd78511`;
     const itemContainer = `_item-container_a23a131`;
-    const styles$B = { chip, remove, "item-container": itemContainer };
+    const styles$C = { chip, remove, "item-container": itemContainer };
     function MultiselectInlineValue({ values, disabled, onRemove }) {
       const items = values.map((v, index) => {
         return React.createElement(
           Chip,
-          { className: styles$B.chip, key: index, padding: "6px 8px 6px 12px" },
+          { className: styles$C.chip, key: index, padding: "6px 8px 6px 12px" },
           React.createElement("span", null, v.label),
           React.createElement(Spacer, { width: "4px" }),
           !disabled && React.createElement(IconButton, { iconName: "cross", iconSize: "15px", onClick: () => {
@@ -8952,10 +8957,10 @@ var require_index_001 = __commonJS({
       const items = values.map((v, index) => {
         return React.createElement(
           Chip,
-          { className: styles$B.chip, key: index, padding: "6px 8px 6px 12px" },
+          { className: styles$C.chip, key: index, padding: "6px 8px 6px 12px" },
           React.createElement("span", null, v.label),
           React.createElement(Spacer, { width: "4px" }),
-          !disabled && React.createElement(IconButton, { className: styles$B.remove, iconName: "cross", iconSize: "15px", onClick: () => {
+          !disabled && React.createElement(IconButton, { className: styles$C.remove, iconName: "cross", iconSize: "15px", onClick: () => {
             onRemove(v);
           } })
         );
@@ -8963,7 +8968,7 @@ var require_index_001 = __commonJS({
       if (items.length === 0) {
         return null;
       }
-      return React.createElement("div", { className: classNames(styles$B["item-container"], "multiselect-values-container"), "data-is-disabled": disabled }, items);
+      return React.createElement("div", { className: classNames(styles$C["item-container"], "multiselect-values-container"), "data-is-disabled": disabled }, items);
     }
     function htmlOptionsToInternalOptions(options) {
       return React.Children.map(options, (o) => {
@@ -9055,7 +9060,7 @@ var require_index_001 = __commonJS({
       );
     });
     const suggestion = `_suggestion_d0f20dd`;
-    const styles$A = { suggestion };
+    const styles$B = { suggestion };
     function Suggestion({ isSelected, option: option2, onClick }) {
       const buttonRef = reactExports.useRef(null);
       reactExports.useLayoutEffect(() => {
@@ -9066,7 +9071,7 @@ var require_index_001 = __commonJS({
       }, [isSelected]);
       return React.createElement(
         "button",
-        { ref: buttonRef, className: classNames(styles$A.suggestion, "auto-complete-input-suggestion"), "data-is-selected": isSelected, onClick: () => {
+        { ref: buttonRef, className: classNames(styles$B.suggestion, "auto-complete-input-suggestion"), "data-is-selected": isSelected, onClick: () => {
           onClick && onClick(option2);
         } },
         React.createElement(BodyText, null, option2.label)
@@ -9085,7 +9090,7 @@ var require_index_001 = __commonJS({
     const suggestions = `_suggestions_081f70f`;
     const value = `_value_bbce639`;
     const noResults = `_no-results_f489d9e`;
-    const styles$z = { suggestions, value, "no-results": noResults };
+    const styles$A = { suggestions, value, "no-results": noResults };
     function Suggestions({ value: value2 = "", anchorElement, options: suggestions2 = [], onOptionSelect, noSuggestionMessage = "-- No Matches --", onClose, onKeyUp, onKeyDown, trimCustomInput = false, ...props }) {
       const [selectedIndex, setSelectedIndex] = reactExports.useState(-1);
       const [internalValue, setInernalValue] = reactExports.useState(value2);
@@ -9199,16 +9204,16 @@ var require_index_001 = __commonJS({
         { open: true, anchorElement, onClose: handleUseClose, verticalAnchor: "top", verticalOrigin: "top", verticalOffset: -4 },
         React.createElement(
           VStack,
-          { minHeight: `calc(${suggestionsHeight}, 8px)`, maxHeight: "300px", width: suggestionsWidth, height: "auto", overflowY: "auto", className: classNames(styles$z.suggestions, "auto-complete-input-suggestions") },
+          { minHeight: `calc(${suggestionsHeight}, 8px)`, maxHeight: "300px", width: suggestionsWidth, height: "auto", overflowY: "auto", className: classNames(styles$A.suggestions, "auto-complete-input-suggestions") },
           React.createElement("input", { ref: internalInputRef, key: -1, value: internalValue, onKeyUp: captureKeyUp, onKeyDown: captureKeyDown, onChange: (event) => {
             setInernalValue(event.target.value);
-          }, className: classNames(styles$z.value, "auto-complete-input-suggestions-input"), ...props }),
+          }, className: classNames(styles$A.value, "auto-complete-input-suggestions-input"), ...props }),
           matchedOptions.map((m, index) => {
             return React.createElement(Suggestion, { key: index, option: m, isSelected: index === selectedIndex, onClick: onOptionSelect });
           }),
           matchedOptions.length === 0 && React.createElement(
             ZStack,
-            { className: styles$z["no-results"] },
+            { className: styles$A["no-results"] },
             React.createElement(BodyText, null, noSuggestionMessage)
           ),
           React.createElement(FocusRedirect, { key: matchedOptions.length, onRedirect: focusInput })
@@ -9336,7 +9341,7 @@ var require_index_001 = __commonJS({
     });
     const datePickerDate = `_date-picker-date_7210f85`;
     const datePickerToday$1 = `_date-picker-today_1950dee`;
-    const styles$y = { "date-picker-date": datePickerDate, "date-picker-today": datePickerToday$1 };
+    const styles$z = { "date-picker-date": datePickerDate, "date-picker-today": datePickerToday$1 };
     function DatePickerDate({ presenter: presenter2, date: calendarDate }) {
       const { visibleMonth, disabledDates, min: minDate, max: maxDate } = useSignalValue(presenter2.stateBroadcast);
       const selectedDate = useSignalValue(presenter2.valueBroadcast);
@@ -9367,29 +9372,29 @@ var require_index_001 = __commonJS({
       }
       return React.createElement(
         "button",
-        { disabled: !isWithinMonth || isDisabled || !isWithinRange, className: styles$y["date-picker-date"], onClick: select2, "data-is-within-month": String(isWithinMonth), "data-is-selected": String(isSelected), "data-is-disabled": String(isDisabled), "data-is-within-range": String(isWithinRange), "data-is-today": String(isToday) },
+        { disabled: !isWithinMonth || isDisabled || !isWithinRange, className: styles$z["date-picker-date"], onClick: select2, "data-is-within-month": String(isWithinMonth), "data-is-selected": String(isSelected), "data-is-disabled": String(isDisabled), "data-is-within-range": String(isWithinRange), "data-is-today": String(isToday) },
         React.createElement(
           ZStack,
           null,
           React.createElement(BodyText, null, String(calendarDate.date)),
-          isToday && React.createElement("div", { className: styles$y["date-picker-today"], "data-is-selected": String(isSelected) })
+          isToday && React.createElement("div", { className: styles$z["date-picker-today"], "data-is-selected": String(isSelected) })
         )
       );
     }
     const datePickerDayText = `_date-picker-day-text_f7b1f22`;
     const datePickerDay = `_date-picker-day_e1128cd`;
-    const styles$x = { "date-picker-day-text": datePickerDayText, "date-picker-day": datePickerDay };
+    const styles$y = { "date-picker-day-text": datePickerDayText, "date-picker-day": datePickerDay };
     function DatePickerDay({ dayOfTheWeek, countryCode }) {
       const date = /* @__PURE__ */ new Date();
       date.setDate(date.getDate() - date.getDay() + dayOfTheWeek);
       const weekdayName = new Intl.DateTimeFormat(countryCode, { weekday: "short" }).format(date).toLocaleUpperCase();
       return React.createElement(
         "div",
-        { className: styles$x["date-picker-day"] },
+        { className: styles$y["date-picker-day"] },
         React.createElement(
           ZStack,
           null,
-          React.createElement(BodyText, { className: styles$x["date-picker-day-text"] }, weekdayName[0])
+          React.createElement(BodyText, { className: styles$y["date-picker-day-text"] }, weekdayName[0])
         )
       );
     }
@@ -9820,7 +9825,7 @@ var require_index_001 = __commonJS({
     const timeBox = `_time-box_b58dd27`;
     const timeBoxTitle = `_time-box-title_51ba1dd`;
     const selectedTime = `_selected-time_7779813`;
-    const styles$w = { "time-box": timeBox, "time-box-title": timeBoxTitle, "selected-time": selectedTime };
+    const styles$x = { "time-box": timeBox, "time-box-title": timeBoxTitle, "selected-time": selectedTime };
     function DatePickerTimeSelector({ origin, intervalInMinutes, max: max2, min: min2, minVisibleTimeInMilliseconds, maxVisibleTimeInMilliseconds, onSelect, disabled, height }) {
       const stepInMilliseconds = intervalInMinutes * 1e3 * 60;
       const amountOfSteps = 24 * 1e3 * 60 * 60 / stepInMilliseconds;
@@ -9840,7 +9845,7 @@ var require_index_001 = __commonJS({
         const isSelected = origin != null && date.getHours() === origin.getHours() && date.getMinutes() === origin.getMinutes() && date.getSeconds() === origin.getSeconds();
         const time = date.getTime();
         const isOutOfRange = time < minTime || time > maxTime;
-        const button2 = React.createElement(Button, { key: x, variant: "tertiary", className: isSelected && styles$w["selected-time"], disabled: origin == null || disabled || isOutOfRange, onClick: () => {
+        const button2 = React.createElement(Button, { key: x, variant: "tertiary", className: isSelected && styles$x["selected-time"], disabled: origin == null || disabled || isOutOfRange, onClick: () => {
           onSelect(date.getHours(), date.getMinutes(), date.getSeconds());
         } }, `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")} ${meridiem}`);
         if (offsetFromZero >= minVisibleTimeInMilliseconds && offsetFromZero <= maxVisibleTimeInMilliseconds) {
@@ -9851,13 +9856,13 @@ var require_index_001 = __commonJS({
       }
       return React.createElement(
         VStack,
-        { width: "auto", height, "data-is-disabled": disabled || origin == null, className: styles$w["time-box"] },
+        { width: "auto", height, "data-is-disabled": disabled || origin == null, className: styles$x["time-box"] },
         React.createElement(
           ZStack,
           { height: "35px", width: "auto" },
           React.createElement(
             BodyText,
-            { className: styles$w["time-box-title"] },
+            { className: styles$x["time-box-title"] },
             React.createElement(Icon, { name: "time", size: "1.5em" })
           )
         ),
@@ -9867,7 +9872,7 @@ var require_index_001 = __commonJS({
     }
     const datePicker = `_date-picker_bf392c9`;
     const datePickerBox = `_date-picker-box_126baae`;
-    const styles$v = { "date-picker": datePicker, "date-picker-box": datePickerBox };
+    const styles$w = { "date-picker": datePicker, "date-picker-box": datePickerBox };
     React.forwardRef(function DatePicker({ value: value2, disabled, onChange, onError, showTime = false, min: minDate = null, max: maxDate = null, minVisibleTimeInMilliseconds, maxVisibleTimeInMilliseconds, disabledDates, countryCode = "en-US", renderActions }, ref) {
       const [calendarHeight, setCalendarHeight] = reactExports.useState(0);
       const calendarRef = useResizeObserver((_, height) => {
@@ -9922,10 +9927,10 @@ var require_index_001 = __commonJS({
       }, [presenter2, value2]);
       return React.createElement(
         HStack,
-        { ref, width: "auto", height: "auto", className: styles$v["date-picker"], tabIndex: 0 },
+        { ref, width: "auto", height: "auto", className: styles$w["date-picker"], tabIndex: 0 },
         React.createElement(
           VStack,
-          { ref: calendarRef, inline: true, height: "auto", width: "auto", className: styles$v["date-picker-box"], "data-is-disabled": disabled },
+          { ref: calendarRef, inline: true, height: "auto", width: "auto", className: styles$w["date-picker-box"], "data-is-disabled": disabled },
           React.createElement(
             Pad,
             { start: "8px", end: "8px" },
@@ -9954,12 +9959,12 @@ var require_index_001 = __commonJS({
     });
     const button$2 = `_button_b2f9ca3`;
     const popover$1 = `_popover_ca8345c`;
-    const styles$u = { button: button$2, popover: popover$1 };
+    const styles$v = { button: button$2, popover: popover$1 };
     const dateRangePickerDate = `_date-range-picker-date_d040a64`;
     const dateRangePickerHighlightDate = `_date-range-picker-highlight-date_70dcb3e`;
     const dateRangePickerToday = `_date-range-picker-today_2533041`;
     const datePickerToday = `_date-picker-today_5cef6d5`;
-    const styles$t = { "date-range-picker-date": dateRangePickerDate, "date-range-picker-highlight-date": dateRangePickerHighlightDate, "date-range-picker-today": dateRangePickerToday, "date-picker-today": datePickerToday };
+    const styles$u = { "date-range-picker-date": dateRangePickerDate, "date-range-picker-highlight-date": dateRangePickerHighlightDate, "date-range-picker-today": dateRangePickerToday, "date-picker-today": datePickerToday };
     function DateRangePickerDate({ presenter: presenter2, date: calendarDate }) {
       const { value: selectedDate, potentialEndDate: pEndDate, visibleMonth, disabledDates, min: minDate, max: maxDate } = useSignalValue(presenter2.stateBroadcast);
       const startDate = selectedDate[0];
@@ -9997,33 +10002,33 @@ var require_index_001 = __commonJS({
       const innerStyle = isSelectedStart || isSelectedEnd || isPotentialSelectionEnd;
       return React.createElement(
         "button",
-        { disabled: !isWithinMonth || isDisabled || !isWithinRange, className: styles$t["date-range-picker-date"], onClick: select2, onMouseEnter: selectPotentialDate, "data-is-within-month": String(isWithinMonth), "data-is-selected": String(isSelected), "data-is-selected-end": String(isSelectedEnd || isPotentialSelectionEnd), "data-is-selected-start": String(isSelectedStart), "data-is-disabled": String(isDisabled), "data-is-within-range": String(isWithinRange), "data-is-today": String(isToday), "data-has-no-potential": noPotential },
+        { disabled: !isWithinMonth || isDisabled || !isWithinRange, className: styles$u["date-range-picker-date"], onClick: select2, onMouseEnter: selectPotentialDate, "data-is-within-month": String(isWithinMonth), "data-is-selected": String(isSelected), "data-is-selected-end": String(isSelectedEnd || isPotentialSelectionEnd), "data-is-selected-start": String(isSelectedStart), "data-is-disabled": String(isDisabled), "data-is-within-range": String(isWithinRange), "data-is-today": String(isToday), "data-has-no-potential": noPotential },
         React.createElement(
           Pad,
           { amount: "1px" },
           React.createElement(
             ZStack,
-            { className: classNames(innerStyle ? styles$t["date-range-picker-highlight-date"] : void 0), "data-is-selected-start": String(isSelectedStart), "data-is-selected-end": String(isSelectedEnd || isPotentialSelectionEnd) },
+            { className: classNames(innerStyle ? styles$u["date-range-picker-highlight-date"] : void 0), "data-is-selected-start": String(isSelectedStart), "data-is-selected-end": String(isSelectedEnd || isPotentialSelectionEnd) },
             React.createElement(BodyText, null, String(calendarDate.date)),
-            isToday && React.createElement("div", { className: styles$t["date-range-picker-today"], "data-is-selected": String(isSelected), "data-is-selected-start": String(isSelectedStart), "data-is-selected-end": String(isSelectedEnd || isPotentialSelectionEnd) })
+            isToday && React.createElement("div", { className: styles$u["date-range-picker-today"], "data-is-selected": String(isSelected), "data-is-selected-start": String(isSelectedStart), "data-is-selected-end": String(isSelectedEnd || isPotentialSelectionEnd) })
           )
         )
       );
     }
     const dateRangePickerDayText = `_date-range-picker-day-text_80aca6b`;
     const dateRangePickerDay = `_date-range-picker-day_8b4fc99`;
-    const styles$s = { "date-range-picker-day-text": dateRangePickerDayText, "date-range-picker-day": dateRangePickerDay };
+    const styles$t = { "date-range-picker-day-text": dateRangePickerDayText, "date-range-picker-day": dateRangePickerDay };
     function DateRangePickerDay({ dayOfTheWeek, countryCode }) {
       const date = /* @__PURE__ */ new Date();
       date.setDate(date.getDate() - date.getDay() + dayOfTheWeek);
       const weekdayName = new Intl.DateTimeFormat(countryCode, { weekday: "short" }).format(date).toLocaleUpperCase();
       return React.createElement(
         "div",
-        { className: styles$s["date-range-picker-day"] },
+        { className: styles$t["date-range-picker-day"] },
         React.createElement(
           ZStack,
           null,
-          React.createElement(BodyText, { className: styles$s["date-range-picker-day-text"] }, weekdayName[0])
+          React.createElement(BodyText, { className: styles$t["date-range-picker-day-text"] }, weekdayName[0])
         )
       );
     }
@@ -10390,7 +10395,7 @@ var require_index_001 = __commonJS({
       }
     }
     const dateRangePicker = `_date-range-picker_2d1e5ec`;
-    const styles$r = { "date-range-picker": dateRangePicker };
+    const styles$s = { "date-range-picker": dateRangePicker };
     React.forwardRef(function DateRangePicker({ value: value2, disabled: disable, onChange, onError, showTime = false, min: minDate = null, max: maxDate = null, disabledDates, countryCode = "en-US", renderActions }, ref) {
       const [presenter2] = reactExports.useState(() => {
         const today = /* @__PURE__ */ new Date();
@@ -10432,7 +10437,7 @@ var require_index_001 = __commonJS({
       }, [presenter2, disabledDates]);
       return React.createElement(
         VStack,
-        { ref, className: styles$r["date-range-picker"], "data-is-disabled": disable, inline: true, height: "auto", width: "auto" },
+        { ref, className: styles$s["date-range-picker"], "data-is-disabled": disable, inline: true, height: "auto", width: "auto" },
         React.createElement(
           Pad,
           { start: "8px", end: "8px" },
@@ -10450,14 +10455,14 @@ var require_index_001 = __commonJS({
     });
     const button$1 = `_button_533e7ad`;
     const popover = `_popover_93c369c`;
-    const styles$q = { button: button$1, popover };
+    const styles$r = { button: button$1, popover };
     const selectGroup = `_select-group_b59b8f1`;
     const divider$3 = `_divider_99dc837`;
     const option = `_option_2a62c50`;
-    const styles$p = { "select-group": selectGroup, divider: divider$3, option };
+    const styles$q = { "select-group": selectGroup, divider: divider$3, option };
     const SelectGroup = React.forwardRef(function ButtonGroup({ children, value: value2, className, onChange, enableDeselect, enableMultiselect, disabled = false, ...props }, ref) {
       const options = Array.isArray(children) ? children : [children];
-      return React.createElement(HStack, { ref, inline: true, width: "auto", height: "auto", "data-is-disabled": disabled, className: classNames(styles$p["select-group"], className, "select-group"), ...props }, options.map((option2, i) => {
+      return React.createElement(HStack, { ref, inline: true, width: "auto", height: "auto", "data-is-disabled": disabled, className: classNames(styles$q["select-group"], className, "select-group"), ...props }, options.map((option2, i) => {
         function select2() {
           const newValue = [...value2];
           if (value2.includes(option2.props.value)) {
@@ -10477,26 +10482,26 @@ var require_index_001 = __commonJS({
         return React.createElement(
           React.Fragment,
           { key: i },
-          React.createElement(Button, { disabled, "data-is-disabled": disabled, className: classNames(styles$p["option"], "select-group-option"), variant: value2.includes(option2.props.value) ? "primary" : "secondary", onClick: select2 }, children[i].props.children),
-          !isLast && React.createElement("div", { className: classNames(styles$p.divider, "select-group-divider") })
+          React.createElement(Button, { disabled, "data-is-disabled": disabled, className: classNames(styles$q["option"], "select-group-option"), variant: value2.includes(option2.props.value) ? "primary" : "secondary", onClick: select2 }, children[i].props.children),
+          !isLast && React.createElement("div", { className: classNames(styles$q.divider, "select-group-divider") })
         );
       }));
     });
     const actions$1 = `_actions_6c50f05`;
-    const styles$o = { actions: actions$1 };
+    const styles$p = { actions: actions$1 };
     const buttonGroup = `_button-group_b9756bf`;
     const button = `_button_abd4586`;
     const divider$2 = `_divider_d1b6707`;
-    const styles$n = { "button-group": buttonGroup, button, divider: divider$2 };
+    const styles$o = { "button-group": buttonGroup, button, divider: divider$2 };
     React.forwardRef(function ButtonGroup({ children, className, variant = "secondary", ...props }, ref) {
       const buttons = Array.isArray(children) ? children : [children];
-      return React.createElement(HStack, { ref, inline: true, width: "auto", height: "auto", "data-variant": variant, className: classNames(styles$n["button-group"], className, "button-group"), ...props }, buttons.map((button2, i) => {
+      return React.createElement(HStack, { ref, inline: true, width: "auto", height: "auto", "data-variant": variant, className: classNames(styles$o["button-group"], className, "button-group"), ...props }, buttons.map((button2, i) => {
         const isLast = buttons.length - 1 === i;
         return React.createElement(
           React.Fragment,
           { key: i },
-          React.createElement(Button, { className: styles$n["button"], ...button2.props, variant }),
-          !isLast && React.createElement("div", { className: styles$n.divider })
+          React.createElement(Button, { className: styles$o["button"], ...button2.props, variant }),
+          !isLast && React.createElement("div", { className: styles$o.divider })
         );
       }));
     });
@@ -10504,7 +10509,7 @@ var require_index_001 = __commonJS({
     const unitInputFlexBox = `_unit-input-flex-box_57df10f`;
     const unitInputNumber = `_unit-input-number_7e80a49`;
     const unitInputSelect = `_unit-input-select_6070343`;
-    const styles$m = { "unit-input": unitInput, "unit-input-flex-box": unitInputFlexBox, "unit-input-number": unitInputNumber, "unit-input-select": unitInputSelect };
+    const styles$n = { "unit-input": unitInput, "unit-input-flex-box": unitInputFlexBox, "unit-input-number": unitInputNumber, "unit-input-select": unitInputSelect };
     function getDisplayValue(value2) {
       return value2.replace(/[^.\d-]/g, "").replace(/(?!^)-/g, "").replace(/(\..*?)\.+/g, "$1");
     }
@@ -10543,17 +10548,17 @@ var require_index_001 = __commonJS({
       }
       return React.createElement(
         HStack,
-        { ref, className: classNames(styles$m["unit-input"], "unit-input"), height: "auto", ...props },
+        { ref, className: classNames(styles$n["unit-input"], "unit-input"), height: "auto", ...props },
         React.createElement(
           FlexBox,
-          { className: styles$m["unit-input-flex-box"] },
-          React.createElement(Input$1, { className: classNames(styles$m["unit-input-number"], "unit-input-number"), ref: forkedInputRef, onChange: valueHandler, disabled, style: {
+          { className: styles$n["unit-input-flex-box"] },
+          React.createElement(Input$1, { className: classNames(styles$n["unit-input-number"], "unit-input-number"), ref: forkedInputRef, onChange: valueHandler, disabled, style: {
             borderEndEndRadius: 0,
             borderStartEndRadius: 0,
             textAlign: "end"
           } })
         ),
-        React.createElement(Select, { className: classNames(styles$m["unit-input-select"], "unit-input-select"), selectRef: unitRef, width: "auto", value: unit, onChange: unitHandler, disabled, selectProps: {
+        React.createElement(Select, { className: classNames(styles$n["unit-input-select"], "unit-input-select"), selectRef: unitRef, width: "auto", value: unit, onChange: unitHandler, disabled, selectProps: {
           style: { borderStartStartRadius: 0, borderEndStartRadius: 0 }
         } }, children)
       );
@@ -12606,7 +12611,7 @@ var require_index_001 = __commonJS({
     const phoneNumberInput = `_phone-number-input_e7433ea`;
     const phoneNumberInputSelect = `_phone-number-input-select_340a43e`;
     const phoneNumberInputInput = `_phone-number-input-input_b949ef4`;
-    const styles$l = { "phone-number-input": phoneNumberInput, "phone-number-input-select": phoneNumberInputSelect, "phone-number-input-input": phoneNumberInputInput };
+    const styles$m = { "phone-number-input": phoneNumberInput, "phone-number-input-select": phoneNumberInputSelect, "phone-number-input-input": phoneNumberInputInput };
     const overflowMask = { mask: "9999999999999999999", placeholder: "                   " };
     const countryList = countriesPhoneInformation.map((i) => ({
       label: `${i.prefix} (${i.code}) ${i.unicodeFlag}`,
@@ -12692,13 +12697,13 @@ var require_index_001 = __commonJS({
       }, [value2, defaultCountry]);
       return React.createElement(
         HStack,
-        { ref, className: classNames(styles$l["phone-number-input"], "phone-number-input"), height: "auto", ...props },
-        React.createElement(Select, { className: classNames(styles$l["phone-number-input-select"], "phone-number-input-select"), selectRef: countryRef, width: "auto", value: countryCode, onChange: changeCountry, disabled, "data-is-disabled": disabled, selectProps: {
+        { ref, className: classNames(styles$m["phone-number-input"], "phone-number-input"), height: "auto", ...props },
+        React.createElement(Select, { className: classNames(styles$m["phone-number-input-select"], "phone-number-input-select"), selectRef: countryRef, width: "auto", value: countryCode, onChange: changeCountry, disabled, "data-is-disabled": disabled, selectProps: {
           style: { borderEndEndRadius: 0, borderStartEndRadius: 0 }
         } }, countryOptions),
         React.createElement(
           FlexBox,
-          { className: styles$l["phone-number-input-input"] },
+          { className: styles$m["phone-number-input-input"] },
           React.createElement(MaskInput, { ref: numberRef, value: phoneNumber, mask: currentMasks, onChange: transformValue, disabled, "data-is-disabled": disabled, className: "phone-number-input-input", style: {
             borderStartStartRadius: 0,
             borderEndStartRadius: 0
@@ -12708,7 +12713,7 @@ var require_index_001 = __commonJS({
     });
     const menu = `_menu_987f8d2`;
     const menuItem = `_menu-item_d919b83`;
-    const styles$k = { menu, "menu-item": menuItem };
+    const styles$l = { menu, "menu-item": menuItem };
     const Menu = React.forwardRef(function Menu2({ anchorElement, verticalAnchor, verticalOrigin, verticalOffset, horizontalAnchor, horizontalOrigin, horizontalOffset, direction, open, onClose, restoreFocus, veil, onActivatedMenu, children = [], ...props }, ref) {
       const [focusedIndex, setFocusedIndex] = reactExports.useState(-1);
       const clonedChildren = React.Children.toArray(children).map((child, index) => {
@@ -12750,7 +12755,7 @@ var require_index_001 = __commonJS({
       return React.createElement(
         Popover,
         { anchorElement, verticalAnchor, verticalOrigin, verticalOffset, horizontalAnchor: horizontalAnchor || "end", horizontalOrigin: horizontalOrigin || "end", horizontalOffset, open, onClose, restoreFocus, veil },
-        React.createElement(VStack, { ref, className: styles$k.menu, ...props }, clonedChildren)
+        React.createElement(VStack, { ref, className: styles$l.menu, ...props }, clonedChildren)
       );
     });
     const MenuItem = React.forwardRef(function MenuItem2({ selected, iconName, label, endAdornments, className, children, direction = "down", verticalAnchor = "top", verticalOrigin = "top", verticalOffset, horizontalAnchor = "end", horizontalOrigin = "start", horizontalOffset, open = false, ...props }, ref) {
@@ -12818,7 +12823,7 @@ var require_index_001 = __commonJS({
         null,
         React.createElement(
           HStack,
-          { as: "button", ref: forkedRef, "data-is-selected": Boolean(selected), "data-has-children": Boolean(hasSubmenu), className: classNames(className, styles$k["menu-item"]), "data-is-open": open, ...props },
+          { as: "button", ref: forkedRef, "data-is-selected": Boolean(selected), "data-has-children": Boolean(hasSubmenu), className: classNames(className, styles$l["menu-item"]), "data-is-open": open, ...props },
           iconName && React.createElement(
             React.Fragment,
             null,
@@ -22888,7 +22893,7 @@ var require_index_001 = __commonJS({
     ColorWrap(Google);
     const colorPicker = `_color-picker_d5708d0`;
     const chromePicker = `_chrome-picker_64d34a4`;
-    const styles$j = { "color-picker": colorPicker, "chrome-picker": chromePicker };
+    const styles$k = { "color-picker": colorPicker, "chrome-picker": chromePicker };
     React.forwardRef(function ColorPicker2({ color, onColorChange, className, ...props }, ref) {
       const padRef = reactExports.useRef(null);
       const forkedRef = useForkRef(padRef, ref);
@@ -22897,17 +22902,17 @@ var require_index_001 = __commonJS({
       }, []);
       return React.createElement(
         Pad,
-        { tabIndex: 0, ref: forkedRef, amount: "8px", height: "auto", width: "auto", className: classNames(styles$j["color-picker"], className), ...props },
-        React.createElement(ChromePicker, { className: styles$j["chrome-picker"], color, onChange: onColorChange })
+        { tabIndex: 0, ref: forkedRef, amount: "8px", height: "auto", width: "auto", className: classNames(styles$k["color-picker"], className), ...props },
+        React.createElement(ChromePicker, { className: styles$k["chrome-picker"], color, onChange: onColorChange })
       );
     });
     const checkerBoard = `_checker-board_5f02a4b`;
-    const styles$i = { "checker-board": checkerBoard };
+    const styles$j = { "checker-board": checkerBoard };
     const accordionSummary = `_accordion-summary_f0bd000`;
     const contentSpacer = `_content-spacer_01b02a4`;
     const chevron = `_chevron_5e2cb10`;
     const chevronContainer$1 = `_chevron-container_2411750`;
-    const styles$h = { "accordion-summary": accordionSummary, "content-spacer": contentSpacer, chevron, "chevron-container": chevronContainer$1 };
+    const styles$i = { "accordion-summary": accordionSummary, "content-spacer": contentSpacer, chevron, "chevron-container": chevronContainer$1 };
     React.forwardRef(function Accordion({ label, startAdornments, endAdornments, chevronVariant = "start", selected, as, open, onOpen, onClose, children, className, ...props }, ref) {
       const [isOpen, setIsOpen] = reactExports.useState(open);
       const finalLabel = typeof label === "string" ? React.createElement(BodyText, { className: "accordion-label", "data-is-selected": selected, "data-is-open": isOpen, emphasis: selected ? "strong" : "normal" }, label) : label;
@@ -22925,15 +22930,15 @@ var require_index_001 = __commonJS({
       }
       const chevron2 = React.createElement(
         "span",
-        { "data-variant": chevronVariant, className: classNames(styles$h["chevron-container"], "accordion-chevron-wrapper"), "data-is-open": isOpen },
-        React.createElement(Icon, { flipOnRtl: true, "data-is-selected": selected, "data-variant": chevronVariant, "data-is-open": isOpen, className: classNames(styles$h.chevron, "accordion-chevron"), name: chevronVariant === "start" ? "chevron_right" : "chevron_down", size: "20px" })
+        { "data-variant": chevronVariant, className: classNames(styles$i["chevron-container"], "accordion-chevron-wrapper"), "data-is-open": isOpen },
+        React.createElement(Icon, { flipOnRtl: true, "data-is-selected": selected, "data-variant": chevronVariant, "data-is-open": isOpen, className: classNames(styles$i.chevron, "accordion-chevron"), name: chevronVariant === "start" ? "chevron_right" : "chevron_down", size: "20px" })
       );
       return React.createElement(
         VStack,
         { as, ref, height: "auto", horizontalAlignment: "start", className: classNames(className, "accordion"), "data-is-selected": selected, "data-is-open": isOpen, ...props },
         React.createElement(
           HStack,
-          { className: classNames(styles$h["accordion-summary"], "accordion-summary"), onClick: toggle, "data-is-selected": selected, "data-is-open": isOpen },
+          { className: classNames(styles$i["accordion-summary"], "accordion-summary"), onClick: toggle, "data-is-selected": selected, "data-is-open": isOpen },
           chevronVariant === "start" && chevron2,
           React.createElement(HStack, { width: "auto" }, startAdornments),
           React.createElement(HStack, { width: "auto" }, finalLabel),
@@ -22946,7 +22951,7 @@ var require_index_001 = __commonJS({
     });
     const loadingLine = `_loading-line_e963ea2`;
     const linePulse = `_linePulse_273ff7c`;
-    const styles$g = { "loading-line": loadingLine, linePulse };
+    const styles$h = { "loading-line": loadingLine, linePulse };
     const Loading = React.forwardRef(({ size = "1em", color = "currentColor", lineCount = 12, animationDuration = 1200, className, style }, ref) => {
       const canvasSize = 50;
       const lines = Array.from({ length: lineCount });
@@ -22959,14 +22964,14 @@ var require_index_001 = __commonJS({
         const y1 = canvasSize / 2 + innerRadius * Math.sin(angle * Math.PI / 180);
         const x2 = canvasSize / 2 + outerRadius * Math.cos(angle * Math.PI / 180);
         const y2 = canvasSize / 2 + outerRadius * Math.sin(angle * Math.PI / 180);
-        return React.createElement("line", { className: styles$g["loading-line"], style: {
+        return React.createElement("line", { className: styles$h["loading-line"], style: {
           animationDelay: `${i * animationDuration / lineCount}ms`,
           animationDuration: `${animationDuration}ms`
         }, key: i, x1, y1, x2, y2, stroke: color, strokeWidth: 3, strokeLinecap: "round" });
       }));
     });
     const fieldrow = `_fieldrow_8d72787`;
-    const styles$f = { fieldrow };
+    const styles$g = { fieldrow };
     const Fieldrow = React.forwardRef(function Fieldrow2({ label, value: value2, description, errorMessage, labelWidth = "40%", locked = false, style, className, loading = false, ...props }, ref) {
       if (typeof label === "string") {
         label = React.createElement(BodyText, { breakWords: true }, label);
@@ -22979,7 +22984,7 @@ var require_index_001 = __commonJS({
       }
       return React.createElement(
         HStack,
-        { ref, height: "auto", style, className: classNames(className, styles$f.fieldrow, "fieldrow"), "data-locked": locked, ...props },
+        { ref, height: "auto", style, className: classNames(className, styles$g.fieldrow, "fieldrow"), "data-locked": locked, ...props },
         React.createElement(
           HStack,
           { verticalAlignment: "center", horizontalAlignment: "start", minWidth: labelWidth, width: labelWidth },
@@ -22988,7 +22993,7 @@ var require_index_001 = __commonJS({
             { height: "auto", horizontalAlignment: "start", className: "fieldrow-label", overflowX: "visible" },
             label,
             description,
-            React.createElement(Spacer, { className: styles$f["label-spacer"] })
+            React.createElement(Spacer, { className: styles$g["label-spacer"] })
           ),
           React.createElement(Spacer, null)
         ),
@@ -23025,7 +23030,7 @@ var require_index_001 = __commonJS({
     const fieldset = `_fieldset_17af4ab`;
     const body$1 = `_body_6ba4981`;
     const legend = `_legend_6201385`;
-    const styles$e = { fieldset, body: body$1, legend };
+    const styles$f = { fieldset, body: body$1, legend };
     let fieldsetIdCount = 0;
     const Fieldset = React.forwardRef(function Fieldset2({ legend: legend2, startAdornments, endAdornments, children, className, style, width = "100%", height = "auto", minWidth, minHeight, maxWidth, maxHeight, ...props }, ref) {
       const id = reactExports.useMemo(() => {
@@ -23034,22 +23039,22 @@ var require_index_001 = __commonJS({
       const labelId = `field-set-${id}`;
       return React.createElement(
         VStack,
-        { role: "group", "aria-labelledby": labelId, ref, className: classNames(className, styles$e.fieldset, "fieldset"), minWidth, width, maxWidth, minHeight, height, maxHeight, style, ...props },
+        { role: "group", "aria-labelledby": labelId, ref, className: classNames(className, styles$f.fieldset, "fieldset"), minWidth, width, maxWidth, minHeight, height, maxHeight, style, ...props },
         legend2 && React.createElement(
           HStack,
-          { id: labelId, className: classNames(styles$e.legend, "legend"), horizontalAlignment: "start", height },
+          { id: labelId, className: classNames(styles$f.legend, "legend"), horizontalAlignment: "start", height },
           startAdornments,
           startAdornments && React.createElement(Spacer, { width: "8px" }),
           React.createElement(Header$1, { className: "legend-text" }, legend2),
           endAdornments && React.createElement(Spacer, null),
           endAdornments
         ),
-        React.createElement(VStack, { className: classNames(styles$e.body, "fieldset-body"), height: "auto", width, minWidth }, children)
+        React.createElement(VStack, { className: classNames(styles$f.body, "fieldset-body"), height: "auto", width, minWidth }, children)
       );
     });
     const accordionFieldrow = `_accordion-fieldrow_a92d854`;
     const chevronContainer = `_chevron-container_9cee87b`;
-    const styles$d = { "accordion-fieldrow": accordionFieldrow, "chevron-container": chevronContainer };
+    const styles$e = { "accordion-fieldrow": accordionFieldrow, "chevron-container": chevronContainer };
     React.forwardRef(function({ label, value: value2, labelWidth, children, onClose, onOpen, open = false, ...props }, ref) {
       function toggle() {
         if (open) {
@@ -23061,7 +23066,7 @@ var require_index_001 = __commonJS({
       return React.createElement(
         VStack,
         { ref, height: "auto", className: "accordion-fieldrow" },
-        React.createElement(Fieldrow, { label, labelWidth, className: styles$d["accordion-fieldrow"], onClick: toggle, value: React.createElement(
+        React.createElement(Fieldrow, { label, labelWidth, className: styles$e["accordion-fieldrow"], onClick: toggle, value: React.createElement(
           HStack,
           { horizontalAlignment: "end" },
           React.createElement(
@@ -23075,7 +23080,7 @@ var require_index_001 = __commonJS({
             ),
             React.createElement(
               ZStack,
-              { height: "auto", width: "auto", className: styles$d["chevron-container"], "data-is-open": open },
+              { height: "auto", width: "auto", className: styles$e["chevron-container"], "data-is-open": open },
               React.createElement(Icon, { name: "chevron_right", size: "20px", flipOnRtl: true })
             )
           )
@@ -23086,7 +23091,7 @@ var require_index_001 = __commonJS({
     const tabsHeader = `_tabs-header_6b2c877`;
     const tabsBody = `_tabs-body_6fecb64`;
     const topMargin = `_top-margin_1a231e5`;
-    const styles$c = { "tabs-header": tabsHeader, "tabs-body": tabsBody, "top-margin": topMargin };
+    const styles$d = { "tabs-header": tabsHeader, "tabs-body": tabsBody, "top-margin": topMargin };
     React.forwardRef(function Tabs({ children, onTabChange, className, selected, width = "auto", height = "auto", ...props }, ref) {
       const [selectedTabName, setSelectedTabName] = reactExports.useState(selected);
       reactExports.useLayoutEffect(() => {
@@ -23112,16 +23117,16 @@ var require_index_001 = __commonJS({
       }
       return React.createElement(
         ZStack,
-        { ref, inline: true, width, height, className: classNames(styles$c.tabs, className, "tabs"), ...props, verticalAlignment: "start", horizontalAlignment: "center" },
+        { ref, inline: true, width, height, className: classNames(styles$d.tabs, className, "tabs"), ...props, verticalAlignment: "start", horizontalAlignment: "center" },
         React.createElement(
           Fieldset,
-          { width, height, className: classNames(styles$c["tabs-body"], "tabs-body") },
+          { width, height, className: classNames(styles$d["tabs-body"], "tabs-body") },
           React.createElement(
             Box,
             { height: "20px", className: "tabs-header-wrapper" },
             React.createElement(
               HStack,
-              { height: "auto", className: classNames(styles$c["tabs-header"], "tabs-header"), horizontalAlignment: "center" },
+              { height: "auto", className: classNames(styles$d["tabs-header"], "tabs-header"), horizontalAlignment: "center" },
               React.createElement(SelectGroup, { value: value2, onChange: changeTab, className: "tabs-buttons" }, options)
             )
           ),
@@ -23333,18 +23338,18 @@ var require_index_001 = __commonJS({
       return React.createElement(Fieldrow, { ref, label, description, errorMessage: error, value: React.createElement(PhoneNumberInput, { value: value2, ...props, onChange: update }) });
     });
     const bubble$1 = `_bubble_eab9bca`;
-    const styles$b = { bubble: bubble$1 };
+    const styles$c = { bubble: bubble$1 };
     const Bubble = React.forwardRef(function Badge({ children, className, style: defaultStyle, backgroundColor, textColor: color, variant = "medium", elevate = false, ...props }, ref) {
       const style = {
         "--bubble-color": color,
         "--bubble-background-color": backgroundColor,
         ...defaultStyle
       };
-      return React.createElement(HStack, { inline: true, className: classNames(styles$b.bubble, className, "bubble"), width: "auto", ref, style, horizontalAlignment: "center", verticalAlignment: "center", "data-variant": variant, "data-elevate": elevate, padding: "4px", ...props }, children);
+      return React.createElement(HStack, { inline: true, className: classNames(styles$c.bubble, className, "bubble"), width: "auto", ref, style, horizontalAlignment: "center", verticalAlignment: "center", "data-variant": variant, "data-elevate": elevate, padding: "4px", ...props }, children);
     });
     const bubble = `_bubble_b9fa942`;
     const bublble = `_bublble_21084dc`;
-    const styles$a = { bubble, bublble };
+    const styles$b = { bubble, bublble };
     React.forwardRef(({ value: value2, children, backgroundColor, textColor: color, className, ...props }, ref) => {
       return React.createElement(
         ZStack,
@@ -23353,7 +23358,7 @@ var require_index_001 = __commonJS({
         React.createElement(
           VStack,
           { zIndex: 1, height: "100%", width: "auto" },
-          React.createElement(Bubble, { className: styles$a.bubble, backgroundColor, textColor: color, elevate: true }, value2),
+          React.createElement(Bubble, { className: styles$b.bubble, backgroundColor, textColor: color, elevate: true }, value2),
           React.createElement(Spacer, { height: "100%" })
         )
       );
@@ -23363,13 +23368,13 @@ var require_index_001 = __commonJS({
     const progressBar = `_progress-bar_31f1a49`;
     const progressBarFill = `_progress-bar-fill_8c1d95c`;
     const moveStripes = `_moveStripes_9c9df4c`;
-    const styles$9 = { "progress-bar-container": progressBarContainer, "progress-bar-background": progressBarBackground, "progress-bar": progressBar, "progress-bar-fill": progressBarFill, moveStripes };
+    const styles$a = { "progress-bar-container": progressBarContainer, "progress-bar-background": progressBarBackground, "progress-bar": progressBar, "progress-bar-fill": progressBarFill, moveStripes };
     React.forwardRef(function ProgressBar({ message, value: value2, ...props }, ref) {
       const progressPercent = `${(value2 * 100).toFixed(0)}%`;
       const styleVariables = { "--progress-percentage": progressPercent };
       return React.createElement(
         VStack,
-        { ref, className: styles$9["progress-bar-container"], ...props },
+        { ref, className: styles$a["progress-bar-container"], ...props },
         React.createElement(
           HStack,
           { height: "auto", verticalAlignment: "end" },
@@ -23381,16 +23386,16 @@ var require_index_001 = __commonJS({
         React.createElement(
           ZStack,
           { height: "8px", horizontalAlignment: "start" },
-          React.createElement("div", { className: styles$9["progress-bar-background"] }),
-          React.createElement("div", { "data-finished": progressPercent === "100%", style: styleVariables, className: styles$9["progress-bar-fill"] }),
-          React.createElement("div", { className: styles$9["progress-bar"] })
+          React.createElement("div", { className: styles$a["progress-bar-background"] }),
+          React.createElement("div", { "data-finished": progressPercent === "100%", style: styleVariables, className: styles$a["progress-bar-fill"] }),
+          React.createElement("div", { className: styles$a["progress-bar"] })
         )
       );
     });
     const confirm = `_confirm_de98d62`;
     const shake = `_shake_c12b5df`;
     const actions = `_actions_361a552`;
-    const styles$8 = { confirm, shake, actions };
+    const styles$9 = { confirm, shake, actions };
     const Confirm = React.forwardRef(function Confirm2({ open, graphic, title, description, actions: actions2, veilProps, className, ...props }, ref) {
       const [shake2, setShake] = reactExports.useState(false);
       reactExports.useLayoutEffect(() => {
@@ -23413,7 +23418,7 @@ var require_index_001 = __commonJS({
           React.createElement(Box, { onClick: shakeConfirm, ...veilProps }),
           React.createElement(
             Pad,
-            { ref, className: classNames(styles$8.confirm, className, "confirm"), amount: "16px", width: "250px", height: "auto", "data-shake": shake2, ...props },
+            { ref, className: classNames(styles$9.confirm, className, "confirm"), amount: "16px", width: "250px", height: "auto", "data-shake": shake2, ...props },
             React.createElement(
               VStack,
               { horizontalAlignment: "center" },
@@ -23421,7 +23426,7 @@ var require_index_001 = __commonJS({
               React.createElement(Header$1, { className: "confirm-title", emphasis: "strong", variant: "small" }, title),
               React.createElement(BodyText, { className: "confirm-description", contrast: "light" }, description),
               React.createElement(Spacer, { height: "16px" }),
-              React.createElement(Box, { className: classNames(styles$8.actions, "confirm-actions"), height: "auto" }, actions2)
+              React.createElement(Box, { className: classNames(styles$9.actions, "confirm-actions"), height: "auto" }, actions2)
             )
           )
         )
@@ -23430,7 +23435,7 @@ var require_index_001 = __commonJS({
     React.forwardRef(function Alert({ className, onAccept, ...props }, ref) {
       return React.createElement(Confirm, { ref, className: classNames(className, "alert"), ...props, actions: React.createElement(Button, { onClick: onAccept, variant: "primary" }, "OK") });
     });
-    const styles$7 = {};
+    const styles$8 = {};
     function TextEditor({ presenter: presenter2 }) {
       const ref = reactExports.useRef(null);
       reactExports.useLayoutEffect(() => {
@@ -23441,7 +23446,7 @@ var require_index_001 = __commonJS({
           presenter2.dispose();
         };
       }, [presenter2]);
-      return /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { className: styles$7["text-editor"], ref });
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { className: styles$8["text-editor"], ref });
     }
     function TestEditor({ presenter: presenter2 }) {
       const patterns = useSignalValue(presenter2.patternsBroadcast);
@@ -23475,23 +23480,23 @@ var require_index_001 = __commonJS({
     const iconButton = `_icon-button_04e2425`;
     const icon = `_icon_bf9fe07`;
     const black = `_black_5086a6c`;
-    const styles$6 = { examples, toolbar, grammar: grammar$1, top, left, "icon-button": iconButton, icon, black };
+    const styles$7 = { examples, toolbar, grammar: grammar$1, top, left, "icon-button": iconButton, icon, black };
     const panelHeader$2 = `_panel-header_ea787b9`;
-    const styles$5 = { "panel-header": panelHeader$2 };
+    const styles$6 = { "panel-header": panelHeader$2 };
     function PanelHeader({ children, className, style }) {
-      return /* @__PURE__ */ jsxRuntimeExports.jsx(HStack, { height: "auto", verticalAlignment: "center", className: classNames(styles$5["panel-header"], className), style, children });
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(HStack, { height: "auto", verticalAlignment: "center", className: classNames(styles$6["panel-header"], className), style, children });
     }
     const snippets = `_snippets_73f43d3`;
     const snippetHeader = `_snippet-header_6242ed9`;
     const snippetCode = `_snippet-code_aae714b`;
-    const styles$4 = { snippets, "snippet-header": snippetHeader, "snippet-code": snippetCode };
+    const styles$5 = { snippets, "snippet-header": snippetHeader, "snippet-code": snippetCode };
     function GrammarExampleHeader({ text }) {
-      return /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: styles$4["snippet-header"], children: text });
+      return /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: styles$5["snippet-header"], children: text });
     }
     function Literal$1() {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { height: "auto", horizontalAlignment: "start", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarExampleHeader, { text: "Literal" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4["snippet-code"], children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5["snippet-code"], children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "john" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: " " }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "=" }),
@@ -23503,7 +23508,7 @@ var require_index_001 = __commonJS({
     function Regex$1() {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { height: "auto", horizontalAlignment: "start", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarExampleHeader, { text: "Regular Expression" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4["snippet-code"], children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5["snippet-code"], children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "space" }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: " " }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "=" }),
@@ -23515,7 +23520,7 @@ var require_index_001 = __commonJS({
     function Options$2() {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { height: "auto", horizontalAlignment: "start", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarExampleHeader, { text: "Options" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4["snippet-code"], children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5["snippet-code"], children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "john" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: " " }),
@@ -23545,7 +23550,7 @@ var require_index_001 = __commonJS({
     function Sequence$2() {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { height: "auto", horizontalAlignment: "start", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarExampleHeader, { text: "Sequence" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4["snippet-code"], children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5["snippet-code"], children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "prefix" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: " " }),
@@ -23575,7 +23580,7 @@ var require_index_001 = __commonJS({
     function OptionalPattern() {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { height: "auto", horizontalAlignment: "start", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarExampleHeader, { text: "Optional Pattern" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4["snippet-code"], children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5["snippet-code"], children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "prefix" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: " " }),
@@ -23614,7 +23619,7 @@ var require_index_001 = __commonJS({
     function Repeat$1() {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { height: "auto", horizontalAlignment: "start", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarExampleHeader, { text: "Repeat" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4["snippet-code"], children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5["snippet-code"], children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "name" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: " " }),
@@ -23692,7 +23697,7 @@ var require_index_001 = __commonJS({
     function NegativeLookahead() {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { height: "auto", horizontalAlignment: "start", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarExampleHeader, { text: "Negative Lookahead" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4["snippet-code"], children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5["snippet-code"], children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "bob" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: " " }),
@@ -23720,7 +23725,7 @@ var require_index_001 = __commonJS({
     function Import() {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { height: "auto", horizontalAlignment: "start", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarExampleHeader, { text: "Import" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4["snippet-code"], children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5["snippet-code"], children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-keyword", children: "import" }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
@@ -23752,7 +23757,7 @@ var require_index_001 = __commonJS({
     function UseParams() {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { height: "auto", horizontalAlignment: "start", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarExampleHeader, { text: "Use Parameters" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4["snippet-code"], children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5["snippet-code"], children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-keyword", children: "use params " }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
@@ -23782,7 +23787,7 @@ var require_index_001 = __commonJS({
     function DefineImportParams() {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { height: "auto", horizontalAlignment: "start", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarExampleHeader, { text: "Define Parameters on Import" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4["snippet-code"], children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5["snippet-code"], children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-keyword", children: "import" }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
@@ -23826,13 +23831,13 @@ var require_index_001 = __commonJS({
     function Comment$1() {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { height: "auto", horizontalAlignment: "start", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarExampleHeader, { text: "Comment" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$4["snippet-code"], children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-comment", children: "# Describe your patterns" }) })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$5["snippet-code"], children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-comment", children: "# Describe your patterns" }) })
       ] });
     }
     function GreedyOptions() {
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { height: "auto", horizontalAlignment: "start", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarExampleHeader, { text: "Greedy Options" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$4["snippet-code"], children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: styles$5["snippet-code"], children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-comment", children: "# Will traverse each option and take the longest one" }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "john" }),
@@ -23873,7 +23878,7 @@ var require_index_001 = __commonJS({
           flex: true,
           horizontalAlignment: "start",
           overflowY: "auto",
-          className: classNames(styles$4["snippets"], className),
+          className: classNames(styles$5["snippets"], className),
           style,
           children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Literal$1, {}),
@@ -23895,7 +23900,7 @@ var require_index_001 = __commonJS({
     const snippetsSidePanel = `_snippets-side-panel_21e7c82`;
     const panelHeader$1 = `_panel-header_b1868fe`;
     const panelBody$1 = `_panel-body_efe8a3a`;
-    const styles$3 = { "snippets-side-panel": snippetsSidePanel, "panel-header": panelHeader$1, "panel-body": panelBody$1 };
+    const styles$4 = { "snippets-side-panel": snippetsSidePanel, "panel-header": panelHeader$1, "panel-body": panelBody$1 };
     function SnippetsSidePanel({ onClose }) {
       function close() {
         onClose && onClose();
@@ -23903,16 +23908,16 @@ var require_index_001 = __commonJS({
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(
         VStack,
         {
-          className: styles$3["snippets-side-panel"],
+          className: styles$4["snippets-side-panel"],
           horizontalAlignment: "start",
           overflowY: "hidden",
           children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(PanelHeader, { className: styles$3["panel-header"], children: /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { height: "auto", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(PanelHeader, { className: styles$4["panel-header"], children: /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { height: "auto", children: [
               "SNIPPETS",
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
               /* @__PURE__ */ jsxRuntimeExports.jsx(IconButton, { iconSize: "22px", iconName: "cross", onClick: close })
             ] }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Snippets, { className: styles$3["panel-body"] })
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Snippets, { className: styles$4["panel-body"] })
           ]
         }
       );
@@ -23920,7 +23925,7 @@ var require_index_001 = __commonJS({
     const fileExplorerSidePanel = `_file-explorer-side-panel_329ec4f`;
     const panelHeader = `_panel-header_e42105c`;
     const panelBody = `_panel-body_14c219e`;
-    const styles$2 = { "file-explorer-side-panel": fileExplorerSidePanel, "panel-header": panelHeader, "panel-body": panelBody };
+    const styles$3 = { "file-explorer-side-panel": fileExplorerSidePanel, "panel-header": panelHeader, "panel-body": panelBody };
     function PendingFileCreation({ presenter: presenter2 }) {
       const inputRef = reactExports.useRef(null);
       const name2 = useSignalValue(presenter2.nameBroadcast);
@@ -23969,7 +23974,7 @@ var require_index_001 = __commonJS({
       );
     }
     const fileItem = `_file-item_7c1f760`;
-    const styles$1 = { "file-item": fileItem };
+    const styles$2 = { "file-item": fileItem };
     function PendingFileRenaming({ presenter: presenter2 }) {
       const inputRef = reactExports.useRef(null);
       const name2 = useSignalValue(presenter2.nameBroadcast);
@@ -24053,7 +24058,7 @@ var require_index_001 = __commonJS({
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           HStack,
           {
-            className: styles$1["file-item"],
+            className: styles$2["file-item"],
             "data-is-focused": isFocused,
             height: "auto",
             onContextMenu: placeMenu,
@@ -24120,7 +24125,7 @@ var require_index_001 = __commonJS({
       );
     }
     const directoryItem = `_directory-item_3c48b80`;
-    const styles = { "directory-item": directoryItem };
+    const styles$1 = { "directory-item": directoryItem };
     const SvgChevronDown = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "1em", height: "1em", viewBox: "0 0 24 24", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg", ...props }, /* @__PURE__ */ reactExports.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M5.46967 8.46967C5.76256 8.17678 6.23744 8.17678 6.53033 8.46967L12 13.9393L17.4697 8.46967C17.7626 8.17678 18.2374 8.17678 18.5303 8.46967C18.8232 8.76256 18.8232 9.23744 18.5303 9.53033L12.5303 15.5303C12.2374 15.8232 11.7626 15.8232 11.4697 15.5303L5.46967 9.53033C5.17678 9.23744 5.17678 8.76256 5.46967 8.46967Z" }));
     const SvgChevronRight = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "1em", height: "1em", viewBox: "0 0 24 24", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg", ...props }, /* @__PURE__ */ reactExports.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M9.46967 5.46967C9.76256 5.17678 10.2374 5.17678 10.5303 5.46967L16.5303 11.4697C16.8232 11.7626 16.8232 12.2374 16.5303 12.5303L10.5303 18.5303C10.2374 18.8232 9.76256 18.8232 9.46967 18.5303C9.17678 18.2374 9.17678 17.7626 9.46967 17.4697L14.9393 12L9.46967 6.53033C9.17678 6.23744 9.17678 5.76256 9.46967 5.46967Z" }));
     function DirectoryItem({ directory, presenter: presenter2 }) {
@@ -24182,10 +24187,10 @@ var require_index_001 = __commonJS({
             "data-is-focused": isFocused,
             onContextMenu: placeMenu,
             onClick: selectItem,
-            className: styles["directory-item"],
+            className: styles$1["directory-item"],
             paddingInlineStart: `${padding2}px`,
             children: [
-              isOpen ? /* @__PURE__ */ jsxRuntimeExports.jsx(SvgChevronDown, { className: `${styles$6["icon"]} ${styles$6["black"]}` }) : /* @__PURE__ */ jsxRuntimeExports.jsx(SvgChevronRight, { className: `${styles$6["icon"]} ${styles$6["black"]}` }),
+              isOpen ? /* @__PURE__ */ jsxRuntimeExports.jsx(SvgChevronDown, { className: `${styles$7["icon"]} ${styles$7["black"]}` }) : /* @__PURE__ */ jsxRuntimeExports.jsx(SvgChevronRight, { className: `${styles$7["icon"]} ${styles$7["black"]}` }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(BodyText, { variant: "large", children: directory.name })
             ]
           }
@@ -24233,28 +24238,69 @@ var require_index_001 = __commonJS({
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(
         VStack,
         {
-          className: styles$2["file-explorer-side-panel"],
+          className: styles$3["file-explorer-side-panel"],
           horizontalAlignment: "start",
           overflowY: "hidden",
           children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(PanelHeader, { className: styles$2["panel-header"], children: /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(PanelHeader, { className: styles$3["panel-header"], children: /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { children: [
               "FILE EXPLORER ",
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: styles$6["icon-button"], onClick: startFileCreation, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SvgFilePlus, { className: styles$6["icon"] }) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: styles$7["icon-button"], onClick: startFileCreation, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SvgFilePlus, { className: styles$7["icon"] }) }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: styles$6["icon-button"], onClick: startDirectoryCreation, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SvgFolderPlus, { className: styles$6["icon"] }) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: styles$7["icon-button"], onClick: startDirectoryCreation, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SvgFolderPlus, { className: styles$7["icon"] }) }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: styles$6["icon-button"], onClick: refresh, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SvgRefreshCcw, { className: styles$6["icon"] }) })
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: styles$7["icon-button"], onClick: refresh, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SvgRefreshCcw, { className: styles$7["icon"] }) })
             ] }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { className: styles$2["panel-body"], children: /* @__PURE__ */ jsxRuntimeExports.jsx(RootDirectory, { directory, presenter: presenter2 }) })
+            /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { className: styles$3["panel-body"], children: /* @__PURE__ */ jsxRuntimeExports.jsx(RootDirectory, { directory, presenter: presenter2 }) })
           ]
         }
       );
     }
     const SvgQuestion = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "1em", height: "1em", viewBox: "0 0 24 24", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg", ...props }, /* @__PURE__ */ reactExports.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M12 3.75C7.44365 3.75 3.75 7.44365 3.75 12C3.75 16.5563 7.44365 20.25 12 20.25C16.5563 20.25 20.25 16.5563 20.25 12C20.25 7.44365 16.5563 3.75 12 3.75ZM2.25 12C2.25 6.61522 6.61522 2.25 12 2.25C17.3848 2.25 21.75 6.61522 21.75 12C21.75 17.3848 17.3848 21.75 12 21.75C6.61522 21.75 2.25 17.3848 2.25 12ZM13 16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16C11 15.4477 11.4477 15 12 15C12.5523 15 13 15.4477 13 16ZM10.75 10C10.75 9.30964 11.3096 8.75 12 8.75C12.6904 8.75 13.25 9.30964 13.25 10V10.1213C13.25 10.485 13.1055 10.8338 12.8483 11.091L11.4697 12.4697C11.1768 12.7626 11.1768 13.2374 11.4697 13.5303C11.7626 13.8232 12.2374 13.8232 12.5303 13.5303L13.909 12.1517C14.4475 11.6132 14.75 10.8828 14.75 10.1213V10C14.75 8.48122 13.5188 7.25 12 7.25C10.4812 7.25 9.25 8.48122 9.25 10V10.5C9.25 10.9142 9.58579 11.25 10 11.25C10.4142 11.25 10.75 10.9142 10.75 10.5V10Z" }));
+    const debuggerHeader = `_debugger-header_54fa375`;
+    const styles = { "debugger-header": debuggerHeader };
+    function Debugger({ presenter: presenter2, onComplete }) {
+      reactExports.useLayoutEffect(() => {
+        presenter2.initialize();
+      }, [presenter2]);
+      function next() {
+        presenter2.next();
+      }
+      function prev() {
+        presenter2.previous();
+      }
+      return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { zIndex: 2, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          HStack,
+          {
+            height: "40px",
+            className: styles["debugger-header"],
+            horizontalAlignment: "center",
+            padding: "8px",
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: prev, children: "Previous" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: next, children: "Next" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: onComplete, children: "Close" })
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { flex: true, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(TextEditor, { presenter: presenter2.textEditorPresenter }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Diagram$1, { presenter: presenter2.diagramPresenter, onPatternClick: (patternPath) => {
+            presenter2.diagramPresenter.togglePatternPath(patternPath);
+          } }) })
+        ] })
+      ] });
+    }
     function App({ presenter: presenter2 }) {
       const ast = useSignalValue(presenter2.testEditor.astBroadcast);
-      const isDocumentationOpen = useSignalValue(presenter2.isDocumentationOpenBroadcast);
+      const isDocumentationOpen = useSignalValue(
+        presenter2.isDocumentationOpenBroadcast
+      );
+      const debuggerPresenter = useSignalValue(presenter2.debuggerPresenter);
       function toggleDocumentation() {
         presenter2.toggleDocumentation();
       }
@@ -24264,52 +24310,98 @@ var require_index_001 = __commonJS({
       function closeDocumenation() {
         presenter2.toggleDocumentation();
       }
-      return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { zIndex: 2, className: styles$6.toolbar, children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(HStack, { width: "auto", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Header$1, { children: "CPAT Playground" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { width: "auto", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { className: styles$6["icon-button"], onClick: toggleDocumentation, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SvgQuestion, { className: styles$6["icon"] }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" })
+      function showDebug() {
+        presenter2.showDebugger();
+      }
+      function closeDebug() {
+        presenter2.closeDebugger();
+      }
+      return /* @__PURE__ */ jsxRuntimeExports.jsxs(ZStack, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { zIndex: 1, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { zIndex: 2, className: styles$7.toolbar, children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(HStack, { width: "auto", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Header$1, { children: "CPAT Playground" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { width: "auto", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                Button,
+                {
+                  className: styles$7["icon-button"],
+                  onClick: toggleDocumentation,
+                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(SvgQuestion, { className: styles$7["icon"] })
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { flex: true, zIndex: 1, children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Box,
+              {
+                zIndex: 2,
+                className: styles$7.examples,
+                minWidth: "100px",
+                width: "300px",
+                enableResizeOnEnd: true,
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(FileExplorer, { presenter: presenter2.fileExplorer })
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { zIndex: 1, flex: true, overflowX: "hidden", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { flex: true, className: styles$7.top, children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { minWidth: "200px", className: styles$7.left, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  GrammarEditor,
+                  {
+                    presenter: presenter2.grammarEditor
+                  }
+                ) }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  Diagram$1,
+                  {
+                    presenter: presenter2.diagramPresenter,
+                    onPatternClick: (path) => {
+                      presenter2.diagramPresenter.togglePatternPath(path);
+                    }
+                  }
+                ) })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { height: "50%", enableResizeOnTop: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { minWidth: "200px", className: styles$7.left, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(ZStack, { children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(TestEditor, { presenter: presenter2.testEditor }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    VStack,
+                    {
+                      padding: "8px",
+                      verticalAlignment: "end",
+                      horizontalAlignment: "end",
+                      style: { pointerEvents: "none" },
+                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                        Button,
+                        {
+                          onClick: showDebug,
+                          style: { pointerEvents: "auto" },
+                          children: "Debug"
+                        }
+                      )
+                    }
+                  )
+                ] }) }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Ast, { text: ast }) })
+              ] }) })
+            ] }),
+            isDocumentationOpen && /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Box,
+              {
+                className: styles$7.examples,
+                minWidth: "100px",
+                width: "33%",
+                enableResizeOnStart: true,
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(SnippetsSidePanel, { onClose: closeDocumenation })
+              }
+            )
           ] })
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { flex: true, zIndex: 1, children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Box,
-            {
-              zIndex: 2,
-              className: styles$6.examples,
-              minWidth: "100px",
-              width: "300px",
-              enableResizeOnEnd: true,
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(FileExplorer, { presenter: presenter2.fileExplorer })
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { zIndex: 1, flex: true, overflowX: "hidden", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { flex: true, className: styles$6.top, children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { minWidth: "200px", className: styles$6.left, children: /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarEditor, { presenter: presenter2.grammarEditor }) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Diagram$1, { presenter: presenter2.diagramPresenter, onPatternClick: (path) => {
-                presenter2.diagramPresenter.togglePatternPath(path);
-              } }) })
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { height: "50%", enableResizeOnTop: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { minWidth: "200px", className: styles$6.left, children: /* @__PURE__ */ jsxRuntimeExports.jsx(TestEditor, { presenter: presenter2.testEditor }) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Ast, { text: ast }) })
-            ] }) })
-          ] }),
-          isDocumentationOpen && /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Box,
-            {
-              className: styles$6.examples,
-              minWidth: "100px",
-              width: "33%",
-              enableResizeOnStart: true,
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(SnippetsSidePanel, { onClose: closeDocumenation })
-            }
-          )
-        ] })
+        debuggerPresenter && /* @__PURE__ */ jsxRuntimeExports.jsx(Debugger, { presenter: debuggerPresenter, onComplete: closeDebug })
       ] });
     }
     const Options$1 = {
@@ -25518,6 +25610,52 @@ var require_index_001 = __commonJS({
         count++;
       }
     }
+    function generateSteps(rootPattern, records) {
+      const steps = [];
+      let currentPattern = rootPattern;
+      records.forEach((record) => {
+        const from = currentPattern;
+        const to = record.pattern;
+        const path = getPathFromPatternToPattern(from, to);
+        const isSibling = to.parent === from.parent;
+        currentPattern = to;
+        if (!isSibling) {
+          path.forEach((pattern2) => {
+            var _a2;
+            if (pattern2.type === "repeat" || pattern2.type === "infinite-repeat" || pattern2.type === "finite-repeat" || pattern2.type === "optional" || ((_a2 = pattern2.parent) == null ? void 0 : _a2.type) === "optional" && record.error != null) {
+              return;
+            }
+            steps.push({
+              type: "move",
+              pattern: pattern2,
+              record,
+              path: generatePath(pattern2)
+            });
+            if (pattern2 === to) {
+              steps.push({
+                type: record.ast == null ? "error" : "match",
+                pattern: pattern2,
+                record,
+                path: generatePath(pattern2)
+              });
+            }
+          });
+        } else {
+          steps.push({
+            type: "move",
+            pattern: to,
+            record,
+            path: generatePath(to)
+          }, {
+            type: record.ast == null ? "error" : "match",
+            pattern: to,
+            record,
+            path: generatePath(to)
+          });
+        }
+      });
+      return steps;
+    }
     function generatePath(fromPattern) {
       const pathParts = [];
       let pattern2 = fromPattern;
@@ -25526,6 +25664,31 @@ var require_index_001 = __commonJS({
         pattern2 = pattern2.parent;
       }
       return pathParts.join("/");
+    }
+    function getPathFromPatternToPattern(from, to) {
+      const fromPatternPath = [];
+      const fromAncestorMap = /* @__PURE__ */ new Map();
+      const toPatternPath = [];
+      const toAncestorMap = /* @__PURE__ */ new Map();
+      let onPattern = from.parent;
+      while (onPattern != null) {
+        fromAncestorMap.set(onPattern, true);
+        fromPatternPath.push(onPattern);
+        onPattern = onPattern.parent;
+      }
+      onPattern = to;
+      while (onPattern != null) {
+        toAncestorMap.set(onPattern, true);
+        if (fromAncestorMap.has(onPattern)) {
+          const index = fromPatternPath.indexOf(onPattern);
+          const patternPath = fromPatternPath.slice(0, index);
+          patternPath.push(...toPatternPath);
+          return patternPath;
+        }
+        toPatternPath.unshift(onPattern);
+        onPattern = onPattern.parent;
+      }
+      return [];
     }
     const charMap = {
       "\r": "\\r",
@@ -25623,32 +25786,60 @@ var require_index_001 = __commonJS({
         switch (pattern2.type) {
           case "literal": {
             const text = this.replaceSpecialCharacters(pattern2.token);
-            const terminal = new Terminal(text);
+            const path = generatePath(pattern2);
+            const terminalOptions = {};
+            const classNames2 = this._classNames.get(path);
+            if (classNames2 != null) {
+              terminalOptions.cls = classNames2;
+            }
+            const terminal = new Terminal(text, terminalOptions);
             terminal.attrs.id = generatePath(pattern2);
+            terminal.attrs["data-type"] = "literal";
             return terminal;
           }
           case "regex": {
             const path = generatePath(pattern2);
             if (this._expandedPatternPaths.get(path)) {
               const text = pattern2.regex;
-              const terminal = new Terminal(text);
+              const terminalOptions = {};
+              const classNames2 = this._classNames.get(path);
+              if (classNames2 != null) {
+                terminalOptions.cls = classNames2;
+              }
+              const terminal = new Terminal(text, terminalOptions);
               terminal.attrs.id = generatePath(pattern2);
+              terminal.attrs["data-type"] = "regex";
               return terminal;
             } else {
               const text = pattern2.name;
-              const terminal = new Terminal(text);
+              const termninalOptions = {};
+              const classNames2 = this._classNames.get(path);
+              if (classNames2 != null) {
+                termninalOptions.cls = classNames2;
+              }
+              const terminal = new Terminal(text, termninalOptions);
               terminal.attrs.id = generatePath(pattern2);
+              terminal.attrs["data-type"] = "regex";
               return terminal;
             }
           }
           case "not": {
             const text = pattern2.name;
-            const terminal = new Terminal(text);
+            const path = generatePath(pattern2);
+            const terminalOptions = {};
+            const classNames2 = this._classNames.get(path);
+            if (classNames2 != null) {
+              terminalOptions.cls = classNames2;
+            }
+            const terminal = new Terminal(text, terminalOptions);
             terminal.attrs.id = generatePath(pattern2);
+            terminal.attrs["data-type"] = "not";
             return terminal;
           }
           case "optional": {
-            return new Optional$1(this._buildPattern(pattern2.children[0]));
+            const optional = new Optional$1(this._buildPattern(pattern2.children[0]));
+            optional.attrs["data-type"] = "optional";
+            return optional;
           }
           case "options": {
             const text = pattern2.name;
@@ -25657,23 +25848,50 @@ var require_index_001 = __commonJS({
               const children = pattern2.children.map((p) => this._buildPattern(p));
               const options = new Choice(0, ...children);
               options.attrs.id = pattern2.id;
-              const label = new Terminal(`${text}:`);
+              const terminalOptions = {};
+              const classNames2 = this._classNames.get(path);
+              if (classNames2 != null) {
+                terminalOptions.cls = classNames2;
+              }
+              const label = new Terminal(`${text}:`, terminalOptions);
               label.attrs.id = path;
               label.attrs["data-group"] = "true";
+              label.attrs["data-type"] = "options";
               const group = new Sequence$1(label, options);
               group.attrs.id = path;
               group.attrs["data-group"] = "true";
               return group;
             } else {
-              const terminal = new Terminal(text);
+              const terminalOptions = {};
+              const classNames2 = this._classNames.get(path);
+              if (classNames2 != null) {
+                terminalOptions.cls = classNames2;
+              }
+              const terminal = new Terminal(text, terminalOptions);
               terminal.attrs.id = path;
+              terminal.attrs["data-type"] = "options";
               return terminal;
             }
           }
           case "reference": {
-            const terminal = new Terminal(pattern2.name);
-            terminal.attrs.id = generatePath(pattern2);
-            return terminal;
+            const path = generatePath(pattern2);
+            if (this._expandedPatternPaths.get(path)) {
+              const refPattern = pattern2._getPatternSafely();
+              this._expandedPatternPaths.set(generatePath(refPattern), true);
+              const node = this._buildPattern(refPattern);
+              node.attrs["data-reference-path"] = path;
+              return node;
+            } else {
+              const terminalOptions = {};
+              const classNames2 = this._classNames.get(path);
+              if (classNames2 != null) {
+                terminalOptions.cls = classNames2;
+              }
+              const terminal = new Terminal(pattern2.name, terminalOptions);
+              terminal.attrs.id = generatePath(pattern2);
+              terminal.attrs["data-type"] = "reference";
+              return terminal;
+            }
           }
           case "sequence": {
             const text = pattern2.name;
@@ -25681,15 +25899,27 @@ var require_index_001 = __commonJS({
             if (this._expandedPatternPaths.get(path)) {
               const children = pattern2.children.map((p) => this._buildPattern(p));
               const sequence = new Sequence$1(...children);
-              const label = new Terminal(`${text}:`);
+              const terminalOptions = {};
+              const classNames2 = this._classNames.get(path);
+              if (classNames2 != null) {
+                terminalOptions.cls = classNames2;
+              }
+              const label = new Terminal(`${text}:`, terminalOptions);
               label.attrs.id = path;
               label.attrs["data-group"] = "true";
+              label.attrs["data-type"] = "sequence";
               const group = new Sequence$1(label, sequence);
               group.attrs.id = path;
               return group;
             } else {
-              const terminal = new Terminal(text);
+              const terminalOptions = {};
+              const classNames2 = this._classNames.get(path);
+              if (classNames2 != null) {
+                terminalOptions.cls = classNames2;
+              }
+              const terminal = new Terminal(text, terminalOptions);
               terminal.attrs.id = path;
+              terminal.attrs["data-type"] = "sequence";
               return terminal;
             }
           }
@@ -25697,12 +25927,14 @@ var require_index_001 = __commonJS({
             const children = pattern2.children[0].children.map((p) => this._buildPattern(p));
             const repeat = new OneOrMore(...children);
             repeat.attrs.id = generatePath(pattern2);
+            repeat.attrs["data-type"] = "repeat";
             return repeat;
           }
           case "infinite-repeat": {
             const children = pattern2.children[0].children.map((p) => this._buildPattern(p));
             const repeat = new OneOrMore(...children);
             repeat.attrs.id = generatePath(pattern2);
+            repeat.attrs["data-type"] = "repeat";
             return repeat;
           }
         }
@@ -38440,6 +38672,10 @@ ${escapeText(this.code(index, length))}
       get astBroadcast() {
         return this._ast.broadcast;
       }
+      get selectedPattern() {
+        const name2 = this.selectedPatternBroadcast.get();
+        return this._patterns.get()[String(name2)] || null;
+      }
       initialize() {
         this.textEditor.onChange((_d, _od, source) => {
           if (source === "user") {
@@ -38635,9 +38871,13 @@ ${escapeText(this.code(index, length))}
           const { ast } = grammar.exec(text);
           const index = this._cursorPosition;
           if (ast != null) {
-            const node = ast.find((n) => n.name === "assign-statement" && index > n.startIndex && index < n.endIndex);
-            const name2 = node == null ? void 0 : node.children[0].value;
-            if (name2 != null) {
+            const node = ast.find((n) => (n.name === "assign-statement" || n.name === "export-name") && index > n.startIndex && index < n.endIndex);
+            if (node != null && node.name === "assign-statement") {
+              const name2 = node.children[0].value;
+              const pattern2 = this._allPatterns[name2];
+              this._onPattern(pattern2);
+            } else if (node != null && node.name === "export-name") {
+              const name2 = node.value;
               const pattern2 = this._allPatterns[name2];
               this._onPattern(pattern2);
             }
@@ -39257,6 +39497,62 @@ ${escapeText(this.code(index, length))}
         }
       }
     }
+    class DebuggerPresenter {
+      constructor(text, pattern2) {
+        __publicField(this, "_text");
+        __publicField(this, "_pattern");
+        __publicField(this, "_steps");
+        __publicField(this, "_onStep");
+        __publicField(this, "diagramPresenter");
+        __publicField(this, "textEditorPresenter");
+        this._text = text;
+        this._onStep = new Signal(0);
+        this._steps = [];
+        this.diagramPresenter = new DiagramPresenter();
+        this.textEditorPresenter = new TextEditorPresenter();
+        this._pattern = new Sequence("editor-pattern-wrapper", [
+          new Optional("optional-space", new Regex("space", "\\s+")),
+          pattern2,
+          new Optional("optional-space", new Regex("space", "\\s+"))
+        ]);
+      }
+      initialize() {
+        this.textEditorPresenter.setText(this._text);
+        this.textEditorPresenter.disable();
+        this._onStep.set(0);
+        this.diagramPresenter.selectPattern([this._pattern]);
+        try {
+          const { cursor } = this._pattern.exec(this._text, true);
+          this._steps = generateSteps(this._pattern, cursor.records);
+          this._updateDiagramStyles();
+          console.log(this._steps);
+          window.debuggerPresenter = this;
+        } catch {
+        }
+      }
+      next() {
+        const onStep = this._onStep.get() + 1;
+        if (onStep < this._steps.length) {
+          this._onStep.set(onStep);
+          this._updateDiagramStyles();
+        }
+      }
+      previous() {
+        const onStep = this._onStep.get() - 1;
+        if (onStep > -1) {
+          this._onStep.set(onStep);
+          this._updateDiagramStyles();
+        }
+      }
+      _updateDiagramStyles() {
+        const step = this._steps[this._onStep.get()];
+        this.diagramPresenter.clearClasses();
+        this.diagramPresenter.setClasses([{
+          patternPath: step.path,
+          className: step.type
+        }]);
+      }
+    }
     class AppPresenter {
       constructor() {
         __publicField(this, "_isDocumentationOpen");
@@ -39266,6 +39562,7 @@ ${escapeText(this.code(index, length))}
         __publicField(this, "testEditor");
         __publicField(this, "diagramPresenter");
         __publicField(this, "fileExplorer");
+        __publicField(this, "debuggerPresenter");
         this._fileSystem = new FileSystem();
         this._currentPath = null;
         this._isDocumentationOpen = new Signal(false);
@@ -39313,6 +39610,7 @@ ${escapeText(this.code(index, length))}
             }
           }
         });
+        this.debuggerPresenter = new Signal(null);
       }
       get isDocumentationOpenBroadcast() {
         return this._isDocumentationOpen.broadcast;
@@ -39331,6 +39629,18 @@ ${escapeText(this.code(index, length))}
       toggleDocumentation() {
         this._isDocumentationOpen.transform((v) => !v);
       }
+      showDebugger() {
+        const pattern2 = this.testEditor.selectedPattern;
+        if (pattern2 != null) {
+          const presenter2 = new DebuggerPresenter(this.testEditor.textEditor.getText(), pattern2);
+          this.debuggerPresenter.set(presenter2);
+        } else {
+          alert("Select a pattern to debug.");
+        }
+      }
+      closeDebugger() {
+        this.debuggerPresenter.set(null);
+      }
       dispose() {
       }
     }
@@ -39341,4 +39651,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BAoTwniV.js.map
+//# sourceMappingURL=index-C5Hf6zn3.js.map
