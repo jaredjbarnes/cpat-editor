@@ -65,7 +65,9 @@ export function App({ presenter }: AppProps) {
               <GrammarEditor presenter={presenter.grammarEditor}></GrammarEditor>
             </FlexBox>
             <Box width="50%" enableResizeOnStart>
-              <Diagram presenter={presenter.diagramPresenter}></Diagram>
+              <Diagram presenter={presenter.diagramPresenter} onPatternClick={(path)=>{
+                presenter.diagramPresenter.togglePatternPath(path);
+                }}></Diagram>
             </Box>
           </HStack>
           <Box height="50%" enableResizeOnTop>

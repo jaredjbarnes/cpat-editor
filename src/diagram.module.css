@@ -1,0 +1,21 @@
+.diagram {
+  background-color: var(--surface-tertiary-color);
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+
+:global(.terminal):not([data-type="literal"]) {
+  cursor: pointer;
+  user-select: none;
+}
+
+:global(.terminal):hover:not([data-type="literal"]) > rect {
+    fill: var(--surface-secondary-color);
+}
+
+:global(.terminal[data-group="true"]) > rect {
+}
+
+:global(.terminal) > rect {
+}

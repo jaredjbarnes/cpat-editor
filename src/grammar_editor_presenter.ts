@@ -50,21 +50,29 @@ export interface GrammarEditorOptions {
     fileSystem: FileSystem;
     onGrammarProcess: (patterns: Record<string, Pattern>) => void;
     onSave: (content: string) => void;
+    onPattern: (pattern: Pattern | null) => void;
 }
 
 export class GrammarEditorPresenter {
     private _fileSystem: FileSystem;
+    private _cursorPosition: number | null;
     private _path: string;
     private _onGrammarProcess: (patterns: Record<string, Pattern>) => void;
     private _onSave: (content: string) => void;
+    private _allPatterns: Record<string, Pattern>;
+    private _onPattern: (pattern: Pattern | null) => void;
     readonly textEditor: TextEditorPresenter;
 
-    constructor({ onGrammarProcess, onSave, fileSystem }: GrammarEditorOptions) {
+
+    constructor({ onGrammarProcess, onSave, fileSystem, onPattern }: GrammarEditorOptions) {
         this._fileSystem = fileSystem;
+        this._cursorPosition = null;
         this._path = "";
         this._onGrammarProcess = onGrammarProcess;
         this._onSave = onSave;
+        this._allPatterns = {};
         this.textEditor = new TextEditorPresenter();
+        this._onPattern = onPattern;
     }
 
     initialize() {
@@ -73,6 +81,13 @@ export class GrammarEditorPresenter {
                 this._processGrammar();
                 this._highlight();
             }
+        });
+
+        this.textEditor.onSelectionChange((range) => {
+            if (range != null) {
+                this._cursorPosition = range.index;
+            }
+            this._processCursorToPattern();
         });
 
         this.textEditor.editor.keyboard.addBinding({
@@ -87,7 +102,6 @@ export class GrammarEditorPresenter {
     private async _processGrammar() {
         const text = this.textEditor.getText();
         try {
-            const startTime = performance.now();
             const allPatterns = await Grammar.parse(text, {
                 originResource: this._path,
                 resolveImport: async (resource, originResource) => {
@@ -103,16 +117,49 @@ export class GrammarEditorPresenter {
                     }
                 }
             });
-            console.log("Build Pattern Time: ", performance.now() - startTime);
 
+            this._allPatterns = allPatterns;
+            this._processCursorToPattern();
             this._onGrammarProcess(allPatterns);
         } catch (_) {
             console.log("Bad Grammar");
         }
 
         if (text === "") {
+            this._allPatterns = {};
             this._onGrammarProcess({});
         }
+    }
+
+    private _processCursorToPattern() {
+        if (this._cursorPosition == null) {
+            this._onPattern(null);
+            return;
+        }
+
+        try {
+            const text = this.textEditor.getText();
+            const { ast } = grammar.exec(text);
+            const index = this._cursorPosition;
+
+            if (ast != null) {
+                const node = ast.find(n => (n.name === "assign-statement" || n.name === "export-name") && index > n.startIndex && index < n.endIndex);
+
+                if (node != null && node.name === "assign-statement") {
+                    const name = node.children[0].value;
+                    const pattern = this._allPatterns[name];
+                    this._onPattern(pattern);
+                } else if (node != null && node.name === "export-name") {
+                    const name = node.value;
+                    const pattern = this._allPatterns[name];
+                    this._onPattern(pattern);
+                }
+
+            }
+        } catch {
+
+        }
+
     }
 
     private _highlight() {

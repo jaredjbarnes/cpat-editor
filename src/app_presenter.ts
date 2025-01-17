@@ -4,6 +4,7 @@ import { GrammarEditorPresenter } from "./grammar_editor_presenter.ts";
 import { Signal } from "@tcn/state";
 import { FileExplorerPresenter } from "./file_explorer/file_explorer_presenter.ts";
 import { FileSystem } from "./file_explorer/file_system.ts";
+import { Pattern } from "clarity-pattern-parser";
 
 export class AppPresenter {
     private _isDocumentationOpen: Signal<boolean>;
@@ -24,7 +25,6 @@ export class AppPresenter {
         this._isDocumentationOpen = new Signal(false);
         this.grammarEditor = new GrammarEditorPresenter({
             onGrammarProcess: (patterns) => {
-                this.diagramPresenter.selectPattern(Object.values(patterns));
                 this.testEditor.setPatterns(patterns);
             },
             onSave: (content) => {
@@ -32,7 +32,14 @@ export class AppPresenter {
                     this._fileSystem.writeFile(this._currentPath, content);
                 }
             },
-            fileSystem: this._fileSystem
+            fileSystem: this._fileSystem,
+            onPattern: (pattern: Pattern | null) => {
+                if (pattern != null) {
+                    this.diagramPresenter.selectPattern([pattern]);
+                } else {
+                    this.diagramPresenter.selectPattern([]);
+                }
+            }
         });
         this.testEditor = new TestEditorPresenter();
         this.diagramPresenter = new DiagramPresenter();
@@ -57,7 +64,7 @@ export class AppPresenter {
                 try {
                     const content = await this._fileSystem.readFile(path);
                     this.grammarEditor.setText(content, path);
-                } catch { 
+                } catch {
                     this.grammarEditor.setText("", path);
                     this.grammarEditor.disable();
                 }

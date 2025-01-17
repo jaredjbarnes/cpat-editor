@@ -2,13 +2,14 @@ import { DiagramPresenter } from "./diagram_presenter.ts";
 import { useRef } from "react";
 import { useSignalValueEffect } from "@tcn/state";
 import { Diagram as RailroadDiagram } from "./railroad_diagrams/railroad.js";
-import { StyleBox } from "@tcn/ui-layout";
+import styles from "./diagram.module.css";
 
 export interface DiagramProps {
   presenter: DiagramPresenter;
+  onPatternClick?: (patternId: string) => void;
 }
 
-export function Diagram({ presenter }: DiagramProps) {
+export function Diagram({ presenter, onPatternClick }: DiagramProps) {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useSignalValueEffect((diagrams: RailroadDiagram[]) => {
@@ -17,24 +18,26 @@ export function Diagram({ presenter }: DiagramProps) {
       div.innerHTML = "";
       diagrams.forEach((diagram) => {
         const wrapper = window.document.createElement("div");
-        let id = "";
-        try {
-          id = diagram.items[1].label.text;
-        } catch {}
-
-        wrapper.id = id;
-        console.log(wrapper.id);
         diagram.addTo(wrapper);
         div.appendChild(wrapper);
       });
     }
   }, presenter.diagramsBroadcast);
 
-  return (
-    <StyleBox
-      ref={ref}
-      overflow="auto"
-      backgroundColor="var(--surface-tertiary-color)"
-    ></StyleBox>
-  );
+  function handleClick(event: React.MouseEvent<HTMLElement>) {
+    let target = event.target as any;
+    while (target.parentElement != null) {
+      if (target.id) {
+        if (target.parentElement?.dataset["referencePath"] != null) {
+          onPatternClick && onPatternClick(target.parentElement?.dataset["referencePath"]);
+        } else {
+          onPatternClick && onPatternClick(target.id);
+        }
+        break;
+      }
+      target = target.parentElement;
+    }
+  }
+
+  return <div onClick={handleClick} ref={ref} className={styles.diagram}></div>;
 }

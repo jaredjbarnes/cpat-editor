@@ -7,7 +7,11 @@ export default defineConfig({
     base: "./",
     plugins: [react(), patchCssModules(), svgr()],
     server: {
-        port: 3000, 
+        port: 3000,
         host: 'localhost',
     },
+    build: {
+        sourcemap: true,
+        minify: false,
+    }
 });

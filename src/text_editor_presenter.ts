@@ -34,12 +34,6 @@ export class TextEditorPresenter {
         });
 
         this.editor.setText(this._defaultText);
-
-
-        // Delete below
-        this.editor.on("selection-change", (range, oldRange) => {
-            console.log('Selection changed:', range, oldRange);
-        });
     }
 
     setText(text: string) {
