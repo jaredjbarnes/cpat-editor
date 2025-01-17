@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-0PX6AoYM.js"(exports, module) {
+  "assets/index-BAoTwniV.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -7130,7 +7130,7 @@ var require_index_001 = __commonJS({
     var classnamesExports = requireClassnames();
     const classNames = /* @__PURE__ */ getDefaultExportFromCjs(classnamesExports);
     const padding = `_padding_72bf970`;
-    const styles$10 = { padding };
+    const styles$11 = { padding };
     const Pad = React.forwardRef(function Pad2({ children, inline, start, end, top: top2, bottom, amount, minWidth, width, maxWidth, minHeight, height, maxHeight, style: defaultStyle, className, ...props }, ref) {
       const style = {
         ...defaultStyle,
@@ -7156,7 +7156,7 @@ var require_index_001 = __commonJS({
       if (bottom) {
         style.paddingBottom = bottom;
       }
-      return React.createElement("div", { ref, className: classNames(className, styles$10.padding), style, "data-inline": String(inline), ...props }, children);
+      return React.createElement("div", { ref, className: classNames(className, styles$11.padding), style, "data-inline": String(inline), ...props }, children);
     });
     function useForkRef(...args) {
       return reactExports.useCallback((obj) => {
@@ -7298,7 +7298,7 @@ var require_index_001 = __commonJS({
       return React.createElement("div", { style });
     }
     const icon$1 = `_icon_b200233`;
-    const styles$$ = { icon: icon$1 };
+    const styles$10 = { icon: icon$1 };
     let repository = window.location.origin;
     if (!window.location.origin.includes("tcn.com")) {
       repository = "https://op-dev.tcn.com";
@@ -7311,10 +7311,10 @@ var require_index_001 = __commonJS({
       style.verticalAlign = verticalAlign;
       style.background = color;
       style.maskImage = `url('${repository}/icons/${name2}.svg')`;
-      return React.createElement("div", { "data-flip-on-rtl": flipOnRtl, className: classNames(styles$$.icon, className), style: { ...style }, "data-variant": variant, ...props });
+      return React.createElement("div", { "data-flip-on-rtl": flipOnRtl, className: classNames(styles$10.icon, className), style: { ...style }, "data-variant": variant, ...props });
     }
     const bodyText = `_body-text_13bfe84`;
-    const styles$_ = { "body-text": bodyText };
+    const styles$$ = { "body-text": bodyText };
     function BodyText({ variant = "medium", emphasis = "normal", contrast = "normal", color, children, className, style = {}, padStart, padEnd, padBottom, padTop, pad, selectable = false, breakWords = false }) {
       if (pad) {
         style.padding = pad;
@@ -7334,10 +7334,10 @@ var require_index_001 = __commonJS({
       if (color) {
         style.color = color;
       }
-      return React.createElement("div", { "data-contrast": contrast, "data-emphasis": emphasis, "data-selectable": selectable, className: classNames(styles$_["body-text"], className), style, "data-variant": variant, "data-word-break": breakWords }, children);
+      return React.createElement("div", { "data-contrast": contrast, "data-emphasis": emphasis, "data-selectable": selectable, className: classNames(styles$$["body-text"], className), style, "data-variant": variant, "data-word-break": breakWords }, children);
     }
     const header = `_header_bc358ce`;
-    const styles$Z = { header };
+    const styles$_ = { header };
     function Header$1({ variant = "medium", emphasis = "normal", contrast = "normal", color, children, className, style = {}, padStart, padEnd, padBottom, padTop, pad, selectable = false }) {
       let As;
       if (variant === "large") {
@@ -7365,7 +7365,7 @@ var require_index_001 = __commonJS({
       if (color) {
         style.color = color;
       }
-      return React.createElement(As, { "data-contrast": contrast, "data-emphasis": emphasis, "data-selectable": selectable, className: classNames(styles$Z["header"], className), style, "data-variant": variant }, children);
+      return React.createElement(As, { "data-contrast": contrast, "data-emphasis": emphasis, "data-selectable": selectable, className: classNames(styles$_["header"], className), style, "data-variant": variant }, children);
     }
     const eventMap = {
       onClick: "click",
@@ -7465,7 +7465,7 @@ var require_index_001 = __commonJS({
       return value2 == null ? defaultValue2 : value2;
     }
     const leftResizeHandle = `_left-resize-handle_a23e04e`;
-    const styles$Y = { "left-resize-handle": leftResizeHandle };
+    const styles$Z = { "left-resize-handle": leftResizeHandle };
     function createVeil() {
       const veil = window.document.createElement("div");
       veil.style.position = "absolute";
@@ -7568,10 +7568,10 @@ var require_index_001 = __commonJS({
         "--resize-offset": `${offset}px`,
         width: (handleProps == null ? void 0 : handleProps.size) || "16px"
       };
-      return React.createElement("div", { className: styles$Y["left-resize-handle"], onMouseDown: resizeHandler, style: leftResizeHandleStyle });
+      return React.createElement("div", { className: styles$Z["left-resize-handle"], onMouseDown: resizeHandler, style: leftResizeHandleStyle });
     }
     const rightResizeHandle = `_right-resize-handle_3cef4e2`;
-    const styles$X = { "right-resize-handle": rightResizeHandle };
+    const styles$Y = { "right-resize-handle": rightResizeHandle };
     function RightResizeHandle({ targetRef, handleProps, onWidthResize, onWidthResizeEnd }) {
       const resizeHandler = createHorizontalResizeHandler(targetRef, onWidthResize, onWidthResizeEnd, false, true);
       const offset = (handleProps == null ? void 0 : handleProps.offset) ? handleProps.offset : -8;
@@ -7580,10 +7580,10 @@ var require_index_001 = __commonJS({
         "--resize-offset": `${offset}px`,
         width: (handleProps == null ? void 0 : handleProps.size) || "16px"
       };
-      return React.createElement("div", { className: styles$X["right-resize-handle"], onMouseDown: resizeHandler, style: rightResizeHandleStyle });
+      return React.createElement("div", { className: styles$Y["right-resize-handle"], onMouseDown: resizeHandler, style: rightResizeHandleStyle });
     }
     const bottomResizeHandle = `_bottom-resize-handle_ef7c02c`;
-    const styles$W = { "bottom-resize-handle": bottomResizeHandle };
+    const styles$X = { "bottom-resize-handle": bottomResizeHandle };
     function BottomResizeHandle({ targetRef, handleProps, onHeightResize, onHeightResizeEnd }) {
       const resizeHandler = createVerticalResizeHandler(targetRef, onHeightResize, onHeightResizeEnd);
       const offset = (handleProps == null ? void 0 : handleProps.offset) ? handleProps.offset : -8;
@@ -7592,10 +7592,10 @@ var require_index_001 = __commonJS({
         bottom: `${offset}px`,
         height: (handleProps == null ? void 0 : handleProps.size) || "16px"
       };
-      return React.createElement("div", { className: styles$W["bottom-resize-handle"], onMouseDown: resizeHandler, style: bottomResizeHandleStyle });
+      return React.createElement("div", { className: styles$X["bottom-resize-handle"], onMouseDown: resizeHandler, style: bottomResizeHandleStyle });
     }
     const endResizeHandle = `_end-resize-handle_16fb47e`;
-    const styles$V = { "end-resize-handle": endResizeHandle };
+    const styles$W = { "end-resize-handle": endResizeHandle };
     function EndResizeHandle({ targetRef, handleProps, onWidthResize, onWidthResizeEnd }) {
       const resizeHandler = createHorizontalResizeHandler(targetRef, onWidthResize, onWidthResizeEnd);
       const offset = (handleProps == null ? void 0 : handleProps.offset) ? handleProps.offset : -8;
@@ -7604,10 +7604,10 @@ var require_index_001 = __commonJS({
         "--resize-offset": `${offset}px`,
         width: (handleProps == null ? void 0 : handleProps.size) || "16px"
       };
-      return React.createElement("div", { className: styles$V["end-resize-handle"], onMouseDown: resizeHandler, style: endResizeHandleStyle });
+      return React.createElement("div", { className: styles$W["end-resize-handle"], onMouseDown: resizeHandler, style: endResizeHandleStyle });
     }
     const startResizeHandle = `_start-resize-handle_051d311`;
-    const styles$U = { "start-resize-handle": startResizeHandle };
+    const styles$V = { "start-resize-handle": startResizeHandle };
     function StartResizeHandle({ targetRef, handleProps, onWidthResize, onWidthResizeEnd }) {
       const resizeHandler = createHorizontalResizeHandler(targetRef, onWidthResize, onWidthResizeEnd, true);
       const offset = (handleProps == null ? void 0 : handleProps.offset) ? handleProps.offset : -8;
@@ -7616,10 +7616,10 @@ var require_index_001 = __commonJS({
         "--resize-offset": `${offset}px`,
         width: (handleProps == null ? void 0 : handleProps.size) || "16px"
       };
-      return React.createElement("div", { className: styles$U["start-resize-handle"], onMouseDown: resizeHandler, style: startResizeHandleStyle });
+      return React.createElement("div", { className: styles$V["start-resize-handle"], onMouseDown: resizeHandler, style: startResizeHandleStyle });
     }
     const topResizeHandle = `_top-resize-handle_01731cd`;
-    const styles$T = { "top-resize-handle": topResizeHandle };
+    const styles$U = { "top-resize-handle": topResizeHandle };
     function TopResizeHandle({ targetRef, handleProps, onHeightResize, onHeightResizeEnd }) {
       const resizeHandler = createVerticalResizeHandler(targetRef, onHeightResize, onHeightResizeEnd, true);
       const offset = (handleProps == null ? void 0 : handleProps.offset) ? handleProps.offset : -8;
@@ -7628,7 +7628,7 @@ var require_index_001 = __commonJS({
         top: `${offset}px`,
         height: (handleProps == null ? void 0 : handleProps.size) || "16px"
       };
-      return React.createElement("div", { className: styles$T["top-resize-handle"], onMouseDown: resizeHandler, style: topResizeHandleStyle });
+      return React.createElement("div", { className: styles$U["top-resize-handle"], onMouseDown: resizeHandler, style: topResizeHandleStyle });
     }
     const Box = React.forwardRef(function Box2({ style, className, as = "div", children, width = "100%", minWidth, maxWidth, height = "100%", minHeight, maxHeight, zIndex = 0, padding: padding2, paddingInline, paddingBlock, overflow, enableResizeOnTop = false, enableResizeOnEnd = false, enableResizeOnBottom = false, enableResizeOnStart = false, enableResizeOnLeft = false, enableResizeOnRight = false, onWidthResize, onHeightResize, onWidthResizeEnd, onHeightResizeEnd, handleProps, ...otherProps }, ref) {
       const As = as;
@@ -7672,11 +7672,11 @@ var require_index_001 = __commonJS({
       );
     });
     const flexBox = `_flex-box_2b136c5`;
-    const styles$S = { "flex-box": flexBox };
+    const styles$T = { "flex-box": flexBox };
     const FlexBox = React.forwardRef(function FillBox({ growWeight, shrinkWeight, children, minWidth, width, maxWidth, minHeight, height, maxHeight, style, className, zIndex, ...props }, ref) {
       const fillBoxRef = reactExports.useRef(null);
       const forkedRef = useForkRef(ref, fillBoxRef);
-      return React.createElement("div", { ref: forkedRef, "data-height": height, "data-width": height, className: classNames(className, styles$S["flex-box"], "stack-flex-box"), style: {
+      return React.createElement("div", { ref: forkedRef, "data-height": height, "data-width": height, className: classNames(className, styles$T["flex-box"], "stack-flex-box"), style: {
         flexGrow: growWeight,
         flexShrink: shrinkWeight,
         minHeight,
@@ -7699,7 +7699,7 @@ var require_index_001 = __commonJS({
       return result;
     }
     const hStack = `_h-stack_387ef68`;
-    const styles$R = { "h-stack": hStack };
+    const styles$S = { "h-stack": hStack };
     const HStack = React.forwardRef(function HStack2({ as = "div", children, style, className, horizontalAlignment = "start", verticalAlignment = "center", inline, allowFlow, width, minWidth, maxWidth, height, minHeight, maxHeight, padding: padding2, paddingBlock, paddingInline, paddingInlineStart, paddingInlineEnd, paddingTop, paddingBottom, margin, marginBlock, marginInline, marginInlineStart, marginInlineEnd, marginTop, marginBottom, zIndex, overflowX, overflowY, flex, gap, rowGap, columnGap, ...attr }, ref) {
       const As = as;
       const defaultStyles = {
@@ -7734,7 +7734,7 @@ var require_index_001 = __commonJS({
         ...removeUndefinedProperties(defaultStyles),
         ...style
       };
-      return React.createElement(As, { ref, className: classNames(className, styles$R["h-stack"], flex && "stack-flex-box"), style: finalStyles, "data-inline": Boolean(inline), "data-allow-flow": Boolean(allowFlow), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, children);
+      return React.createElement(As, { ref, className: classNames(className, styles$S["h-stack"], flex && "stack-flex-box"), style: finalStyles, "data-inline": Boolean(inline), "data-allow-flow": Boolean(allowFlow), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, children);
     });
     const Spacer = React.forwardRef(function Spacer2({ width = "auto", height = "auto", fullHeight = false, fullWidth = false, fillSpaceWeight = 1, style, className }, ref) {
       const flex = width === "auto" && height === "auto" ? fillSpaceWeight : void 0;
@@ -7754,7 +7754,7 @@ var require_index_001 = __commonJS({
       }, className });
     });
     const vStack = `_v-stack_97b2e87`;
-    const styles$Q = { "v-stack": vStack };
+    const styles$R = { "v-stack": vStack };
     const VStack = React.forwardRef(function VStack2({ as = "div", children, style, className, horizontalAlignment = "center", verticalAlignment = "start", inline, allowFlow, width, minWidth, maxWidth, height, minHeight, maxHeight, padding: padding2, paddingBlock, paddingInline, paddingInlineStart, paddingInlineEnd, paddingTop, paddingBottom, margin, marginBlock, marginInline, marginInlineStart, marginInlineEnd, marginTop, marginBottom, zIndex, overflowY, overflowX, flex, gap, rowGap, columnGap, ...attr }, ref) {
       const As = as;
       const defaultStyles = {
@@ -7790,10 +7790,10 @@ var require_index_001 = __commonJS({
         ...removeUndefinedProperties(defaultStyles),
         ...style
       };
-      return React.createElement(As, { ref, className: classNames(className, styles$Q["v-stack"], flex && "stack-flex-box"), style: finalStyles, "data-inline": Boolean(inline), "data-allow-flow": Boolean(allowFlow), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, children);
+      return React.createElement(As, { ref, className: classNames(className, styles$R["v-stack"], flex && "stack-flex-box"), style: finalStyles, "data-inline": Boolean(inline), "data-allow-flow": Boolean(allowFlow), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, children);
     });
     const zStack = `_z-stack_f623b5e`;
-    const styles$P = { "z-stack": zStack };
+    const styles$Q = { "z-stack": zStack };
     const ZStack = React.forwardRef(function ZStack2({ as = "div", children, style, horizontalAlignment = "center", verticalAlignment = "center", inline, width, minWidth, maxWidth, height, minHeight, maxHeight, padding: padding2, paddingBlock, paddingInline, paddingInlineStart, paddingInlineEnd, paddingTop, paddingBottom, margin, marginBlock, marginInline, marginInlineStart, marginInlineEnd, marginTop, marginBottom, zIndex, className, overflow, flex, ...attr }, ref) {
       const As = as;
       const defaultStyles = {
@@ -7823,7 +7823,7 @@ var require_index_001 = __commonJS({
       return React.createElement(As, { ref, style: {
         ...removeUndefinedProperties(defaultStyles),
         ...style
-      }, className: classNames(className, styles$P["z-stack"], flex && "stack-flex-box"), "data-inline": Boolean(inline), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, typeof children === "string" ? React.createElement("span", null, children) : children);
+      }, className: classNames(className, styles$Q["z-stack"], flex && "stack-flex-box"), "data-inline": Boolean(inline), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, typeof children === "string" ? React.createElement("span", null, children) : children);
     });
     var Status;
     (function(Status2) {
@@ -7947,7 +7947,7 @@ var require_index_001 = __commonJS({
       }, [broadcast]);
     }
     const gridItem = `_grid-item_6058f1d`;
-    const styles$O = { "grid-item": gridItem };
+    const styles$P = { "grid-item": gridItem };
     function GridElement({ child, item, presenter: masonryLayoutEngine }) {
       const ref = reactExports.useRef(null);
       const resizeRef = useResizeObserver((_, height) => {
@@ -7970,14 +7970,14 @@ var require_index_001 = __commonJS({
           ...originalStyle,
           ...style
         },
-        className: classNames(className, styles$O["grid-item"]),
+        className: classNames(className, styles$P["grid-item"]),
         key: item.index,
         ref: forkedRef
       });
     }
     const virtualizedGrid = `_virtualized-grid_f56373f`;
     const virtualizedGridContent = `_virtualized-grid-content_ccec1b8`;
-    const styles$N = { "virtualized-grid": virtualizedGrid, "virtualized-grid-content": virtualizedGridContent };
+    const styles$O = { "virtualized-grid": virtualizedGrid, "virtualized-grid-content": virtualizedGridContent };
     const defaultRender = () => React.createElement("div", null);
     const VirtualizedGrid = React.forwardRef(function VirtualizedGrid2({ as = "div", alignment = "center", minWidth, width, maxWidth, minHeight, height, maxHeight, renderItem = defaultRender, style, className, onScroll, children, presenter: presenter2, ...props }, ref) {
       useSignalValue(presenter2.isDirtyBroadcast);
@@ -8014,8 +8014,8 @@ var require_index_001 = __commonJS({
         { ref: forkedRef, style: {
           ...style,
           ...gridStyles
-        }, className: classNames(className, styles$N["virtualized-grid"]), onScroll: updateViewport, ...props },
-        React.createElement("div", { className: styles$N["virtualized-grid-content"], "data-alignment": alignment, style: contentStyle }, visibleItems.map((item) => {
+        }, className: classNames(className, styles$O["virtualized-grid"]), onScroll: updateViewport, ...props },
+        React.createElement("div", { className: styles$O["virtualized-grid-content"], "data-alignment": alignment, style: contentStyle }, visibleItems.map((item) => {
           const child = renderItem(item, item.index);
           return React.createElement(GridElement, { key: item.index, child, item, presenter: presenter2 });
         })),
@@ -8623,7 +8623,7 @@ var require_index_001 = __commonJS({
     };
     const popover$2 = `_popover_abf288d`;
     const popoverVeil = `_popover-veil_cf97091`;
-    const styles$M = { popover: popover$2, "popover-veil": popoverVeil };
+    const styles$N = { popover: popover$2, "popover-veil": popoverVeil };
     function Popover({ anchorElement, verticalAnchor = "bottom", verticalOrigin = "top", verticalOffset = 0, horizontalAnchor = "start", horizontalOrigin = "start", horizontalOffset = 0, restoreFocus = false, veil = false, open, onClose, children }) {
       const anchorElementRef = reactExports.useRef(anchorElement);
       const [position, setPosition] = reactExports.useState({ top: 0, left: 0 });
@@ -8728,14 +8728,14 @@ var require_index_001 = __commonJS({
         null,
         veil && React.createElement(
           "div",
-          { className: styles$M["popover-veil"] },
+          { className: styles$N["popover-veil"] },
           React.createElement(
             ScrollAwayListener,
             { onScrollAway: close },
             React.createElement(
               ClickAwayListener,
               { onClickAway: close, refs: [anchorElementRef] },
-              React.createElement("div", { ref: popoverRef, className: styles$M.popover, style: {
+              React.createElement("div", { ref: popoverRef, className: styles$N.popover, style: {
                 top: `${position.top}px`,
                 left: `${position.left}px`
               } }, children)
@@ -8748,7 +8748,7 @@ var require_index_001 = __commonJS({
           React.createElement(
             ScrollAwayListener,
             { onScrollAway: close },
-            React.createElement("div", { ref: popoverRef, className: styles$M.popover, style: {
+            React.createElement("div", { ref: popoverRef, className: styles$N.popover, style: {
               top: `${position.top}px`,
               left: `${position.left}px`
             } }, children)
@@ -8756,34 +8756,32 @@ var require_index_001 = __commonJS({
         )
       );
     }
-    function Diagram$1({ presenter: presenter2 }) {
+    const diagram = `_diagram_a292eaf`;
+    const styles$M = { diagram };
+    function Diagram$1({ presenter: presenter2, onPatternClick }) {
       const ref = reactExports.useRef(null);
       useSignalValueEffect((diagrams) => {
         const div = ref.current;
         if (div != null) {
           div.innerHTML = "";
-          diagrams.forEach((diagram) => {
+          diagrams.forEach((diagram2) => {
             const wrapper = window.document.createElement("div");
-            let id = "";
-            try {
-              id = diagram.items[1].label.text;
-            } catch {
-            }
-            wrapper.id = id;
-            console.log(wrapper.id);
-            diagram.addTo(wrapper);
+            diagram2.addTo(wrapper);
             div.appendChild(wrapper);
           });
         }
       }, presenter2.diagramsBroadcast);
-      return /* @__PURE__ */ jsxRuntimeExports.jsx(
-        StyleBox,
-        {
-          ref,
-          overflow: "auto",
-          backgroundColor: "var(--surface-tertiary-color)"
+      function handleClick(event) {
+        let target = event.target;
+        while (target.parentElement != null) {
+          if (target.id) {
+            onPatternClick && onPatternClick(target.id);
+            break;
+          }
+          target = target.parentElement;
         }
-      );
+      }
+      return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { onClick: handleClick, ref, className: styles$M.diagram });
     }
     function Ast({ text }) {
       return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -24292,7 +24290,9 @@ var require_index_001 = __commonJS({
           /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { zIndex: 1, flex: true, overflowX: "hidden", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { flex: true, className: styles$6.top, children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { minWidth: "200px", className: styles$6.left, children: /* @__PURE__ */ jsxRuntimeExports.jsx(GrammarEditor, { presenter: presenter2.grammarEditor }) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Diagram$1, { presenter: presenter2.diagramPresenter }) })
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Diagram$1, { presenter: presenter2.diagramPresenter, onPatternClick: (path) => {
+                presenter2.diagramPresenter.togglePatternPath(path);
+              } }) })
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { height: "50%", enableResizeOnTop: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { minWidth: "200px", className: styles$6.left, children: /* @__PURE__ */ jsxRuntimeExports.jsx(TestEditor, { presenter: presenter2.testEditor }) }),
@@ -25518,6 +25518,15 @@ var require_index_001 = __commonJS({
         count++;
       }
     }
+    function generatePath(fromPattern) {
+      const pathParts = [];
+      let pattern2 = fromPattern;
+      while (pattern2 != null) {
+        pathParts.unshift(pattern2.id);
+        pattern2 = pattern2.parent;
+      }
+      return pathParts.join("/");
+    }
     const charMap = {
       "\r": "\\r",
       "\n": "\\n",
@@ -25529,9 +25538,13 @@ var require_index_001 = __commonJS({
         __publicField(this, "_patterns");
         __publicField(this, "_viewingPatterns");
         __publicField(this, "_diagrams");
+        __publicField(this, "_classNames");
+        __publicField(this, "_expandedPatternPaths");
         this._patterns = new Signal({});
         this._viewingPatterns = new Signal([]);
         this._diagrams = new Signal(this._buildDiagram([]));
+        this._classNames = /* @__PURE__ */ new Map();
+        this._expandedPatternPaths = /* @__PURE__ */ new Map();
       }
       get patterns() {
         return this._patterns.broadcast;
@@ -25546,34 +25559,61 @@ var require_index_001 = __commonJS({
         return patterns.map((pattern2) => {
           switch (pattern2.type) {
             case "literal": {
-              return new Diagram(new Group(this._buildPattern(pattern2), pattern2.name));
+              const diagram2 = new Diagram(new Group(this._buildPattern(pattern2), pattern2.name));
+              diagram2.attrs.id = pattern2.id;
+              return diagram2;
             }
             case "regex": {
-              return new Diagram(new Group(`/${pattern2.regex}/`, pattern2.name));
+              const diagram2 = new Diagram(new Group(`/${pattern2.regex}/`, pattern2.name));
+              diagram2.attrs.id = pattern2.id;
+              return diagram2;
             }
             case "not": {
-              return new Diagram(new Group(this._buildPattern(pattern2), pattern2.name));
+              const diagram2 = new Diagram(new Group(this._buildPattern(pattern2), pattern2.name));
+              diagram2.attrs.id = pattern2.id;
+              return diagram2;
             }
             case "optional": {
-              return new Diagram(new Group(this._buildPattern(pattern2), pattern2.name));
+              const diagram2 = new Diagram(new Group(this._buildPattern(pattern2), pattern2.name));
+              diagram2.attrs.id = pattern2.id;
+              return diagram2;
             }
             case "options": {
               const children = pattern2.children.map((p) => this._buildPattern(p));
               const options = new Choice(0, ...children);
-              return new Diagram(new Group(options, pattern2.name));
+              options.attrs.id = pattern2.id;
+              const diagram2 = new Diagram(new Group(options, pattern2.name));
+              diagram2.attrs.id = pattern2.id;
+              return diagram2;
             }
             case "reference": {
-              return new Diagram(new Group(this._buildPattern(pattern2), pattern2.name));
+              const diagram2 = new Diagram(new Group(this._buildPattern(pattern2), pattern2.name));
+              diagram2.attrs.id = pattern2.id;
+              return diagram2;
             }
             case "sequence": {
               const children = pattern2.children.map((p) => this._buildPattern(p));
-              return new Diagram(new Group(new Sequence$1(...children), pattern2.name));
+              const sequence = new Sequence$1(...children);
+              sequence.attrs.id = pattern2.id;
+              const diagram2 = new Diagram(new Group(sequence, pattern2.name));
+              diagram2.attrs.id = pattern2.id;
+              return diagram2;
             }
             case "finite-repeat": {
-              return new Diagram(new Group(this._buildPattern(pattern2), pattern2.name));
+              const children = pattern2.children[0].children.map((p) => this._buildPattern(p));
+              const repeat = new OneOrMore(...children);
+              repeat.attrs.id = pattern2.id;
+              const diagram2 = new Diagram(new Group(repeat, pattern2.name));
+              diagram2.attrs.id = pattern2.id;
+              return diagram2;
             }
             case "infinite-repeat": {
-              return new Diagram(new Group(this._buildPattern(pattern2), pattern2.name));
+              const children = pattern2.children[0].children.map((p) => this._buildPattern(p));
+              const repeat = new OneOrMore(...children);
+              repeat.attrs.id = pattern2.id;
+              const diagram2 = new Diagram(new Group(repeat, pattern2.name));
+              diagram2.attrs.id = pattern2.id;
+              return diagram2;
             }
           }
           throw new Error("Unknown pattern.");
@@ -25583,42 +25623,87 @@ var require_index_001 = __commonJS({
         switch (pattern2.type) {
           case "literal": {
             const text = this.replaceSpecialCharacters(pattern2.token);
-            const terminal = new Terminal(text, { href: `#${pattern2.name}` });
+            const terminal = new Terminal(text);
+            terminal.attrs.id = generatePath(pattern2);
             return terminal;
           }
           case "regex": {
-            const text = pattern2.name;
-            const terminal = new Terminal(text, { href: `#${pattern2.name}` });
-            return terminal;
+            const path = generatePath(pattern2);
+            if (this._expandedPatternPaths.get(path)) {
+              const text = pattern2.regex;
+              const terminal = new Terminal(text);
+              terminal.attrs.id = generatePath(pattern2);
+              return terminal;
+            } else {
+              const text = pattern2.name;
+              const terminal = new Terminal(text);
+              terminal.attrs.id = generatePath(pattern2);
+              return terminal;
+            }
           }
           case "not": {
-            const text = `${pattern2.name}`;
-            const terminal = new Terminal(text, { href: `#${pattern2.name}` });
+            const text = pattern2.name;
+            const terminal = new Terminal(text);
+            terminal.attrs.id = generatePath(pattern2);
             return terminal;
           }
           case "optional": {
             return new Optional$1(this._buildPattern(pattern2.children[0]));
           }
           case "options": {
-            const text = `${pattern2.name}`;
-            const terminal = new Terminal(text, { href: `#${pattern2.name}` });
-            return terminal;
+            const text = pattern2.name;
+            const path = generatePath(pattern2);
+            if (this._expandedPatternPaths.get(path)) {
+              const children = pattern2.children.map((p) => this._buildPattern(p));
+              const options = new Choice(0, ...children);
+              options.attrs.id = pattern2.id;
+              const label = new Terminal(`${text}:`);
+              label.attrs.id = path;
+              label.attrs["data-group"] = "true";
+              const group = new Sequence$1(label, options);
+              group.attrs.id = path;
+              group.attrs["data-group"] = "true";
+              return group;
+            } else {
+              const terminal = new Terminal(text);
+              terminal.attrs.id = path;
+              return terminal;
+            }
           }
           case "reference": {
-            return new Terminal(pattern2.name, { href: `#${pattern2.name}` });
+            const terminal = new Terminal(pattern2.name);
+            terminal.attrs.id = generatePath(pattern2);
+            return terminal;
           }
           case "sequence": {
             const text = pattern2.name;
-            const terminal = new Terminal(text, { href: `#${pattern2.name}` });
-            return terminal;
+            const path = generatePath(pattern2);
+            if (this._expandedPatternPaths.get(path)) {
+              const children = pattern2.children.map((p) => this._buildPattern(p));
+              const sequence = new Sequence$1(...children);
+              const label = new Terminal(`${text}:`);
+              label.attrs.id = path;
+              label.attrs["data-group"] = "true";
+              const group = new Sequence$1(label, sequence);
+              group.attrs.id = path;
+              return group;
+            } else {
+              const terminal = new Terminal(text);
+              terminal.attrs.id = path;
+              return terminal;
+            }
           }
           case "finite-repeat": {
             const children = pattern2.children[0].children.map((p) => this._buildPattern(p));
-            return new OneOrMore(...children);
+            const repeat = new OneOrMore(...children);
+            repeat.attrs.id = generatePath(pattern2);
+            return repeat;
           }
           case "infinite-repeat": {
             const children = pattern2.children[0].children.map((p) => this._buildPattern(p));
-            return new OneOrMore(...children);
+            const repeat = new OneOrMore(...children);
+            repeat.attrs.id = generatePath(pattern2);
+            return repeat;
           }
         }
       }
@@ -25630,6 +25715,33 @@ var require_index_001 = __commonJS({
       selectPattern(patterns) {
         this._viewingPatterns.set(patterns);
         this._diagrams.set(this._buildDiagram(patterns));
+      }
+      setClass(customClass) {
+        this._classNames.set(customClass.patternPath, customClass.className);
+        this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+      }
+      setClasses(customClasses) {
+        customClasses.forEach((customClass) => {
+          this._classNames.set(customClass.patternPath, customClass.className);
+        });
+        this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+      }
+      clearClasses() {
+        this._classNames.clear();
+        this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+      }
+      expandPatternPath(patternPath) {
+        this._expandedPatternPaths.set(patternPath, true);
+        this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+      }
+      collapsePatternPath(patternPath) {
+        this._expandedPatternPaths.set(patternPath, false);
+        this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+      }
+      togglePatternPath(patternPath) {
+        const currentValue = Boolean(this._expandedPatternPaths.get(patternPath));
+        this._expandedPatternPaths.set(patternPath, !currentValue);
+        this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
       }
     }
     function defaultVisitor(node) {
@@ -25910,6 +26022,7 @@ var require_index_001 = __commonJS({
         this._patterns = [];
         this._nodes = [];
         this._errors = [];
+        this._records = [];
       }
       get isRecording() {
         return this._isRecording;
@@ -25932,6 +26045,9 @@ var require_index_001 = __commonJS({
       get error() {
         return this._currentError;
       }
+      get records() {
+        return this._records;
+      }
       get nodes() {
         return this._nodes;
       }
@@ -25942,6 +26058,11 @@ var require_index_001 = __commonJS({
         if (this._isRecording) {
           this._patterns.push(pattern2);
           this._nodes.push(node);
+          this._records.push({
+            pattern: pattern2,
+            ast: node,
+            error: null
+          });
         }
         this._rootMatch.pattern = pattern2;
         this._rootMatch.node = node;
@@ -25979,6 +26100,11 @@ var require_index_001 = __commonJS({
         }
         if (this._isRecording) {
           this._errors.push(error);
+          this.records.push({
+            pattern: pattern2,
+            ast: null,
+            error
+          });
         }
       }
       startRecording() {
@@ -26027,6 +26153,9 @@ var require_index_001 = __commonJS({
       }
       get errors() {
         return this._history.errors;
+      }
+      get records() {
+        return this._history.records;
       }
       get index() {
         return this._index;
@@ -38260,9 +38389,6 @@ ${escapeText(this.code(index, length))}
           }
         });
         this.editor.setText(this._defaultText);
-        this.editor.on("selection-change", (range, oldRange) => {
-          console.log("Selection changed:", range, oldRange);
-        });
       }
       setText(text) {
         this.editor.setText(text);
@@ -38432,17 +38558,23 @@ ${escapeText(this.code(index, length))}
       "regex-literal": REGEX_CLASS
     };
     class GrammarEditorPresenter {
-      constructor({ onGrammarProcess, onSave, fileSystem }) {
+      constructor({ onGrammarProcess, onSave, fileSystem, onPattern }) {
         __publicField(this, "_fileSystem");
+        __publicField(this, "_cursorPosition");
         __publicField(this, "_path");
         __publicField(this, "_onGrammarProcess");
         __publicField(this, "_onSave");
+        __publicField(this, "_allPatterns");
+        __publicField(this, "_onPattern");
         __publicField(this, "textEditor");
         this._fileSystem = fileSystem;
+        this._cursorPosition = null;
         this._path = "";
         this._onGrammarProcess = onGrammarProcess;
         this._onSave = onSave;
+        this._allPatterns = {};
         this.textEditor = new TextEditorPresenter();
+        this._onPattern = onPattern;
       }
       initialize() {
         this.textEditor.onChange((_1, _2, source) => {
@@ -38450,6 +38582,12 @@ ${escapeText(this.code(index, length))}
             this._processGrammar();
             this._highlight();
           }
+        });
+        this.textEditor.onSelectionChange((range) => {
+          if (range != null) {
+            this._cursorPosition = range.index;
+          }
+          this._processCursorToPattern();
         });
         this.textEditor.editor.keyboard.addBinding({
           key: "s",
@@ -38462,7 +38600,6 @@ ${escapeText(this.code(index, length))}
       async _processGrammar() {
         const text = this.textEditor.getText();
         try {
-          const startTime = performance.now();
           const allPatterns = await Grammar.parse(text, {
             originResource: this._path,
             resolveImport: async (resource2, originResource) => {
@@ -38477,13 +38614,35 @@ ${escapeText(this.code(index, length))}
               }
             }
           });
-          console.log("Build Pattern Time: ", performance.now() - startTime);
+          this._allPatterns = allPatterns;
+          this._processCursorToPattern();
           this._onGrammarProcess(allPatterns);
         } catch (_) {
           console.log("Bad Grammar");
         }
         if (text === "") {
+          this._allPatterns = {};
           this._onGrammarProcess({});
+        }
+      }
+      _processCursorToPattern() {
+        if (this._cursorPosition == null) {
+          this._onPattern(null);
+          return;
+        }
+        try {
+          const text = this.textEditor.getText();
+          const { ast } = grammar.exec(text);
+          const index = this._cursorPosition;
+          if (ast != null) {
+            const node = ast.find((n) => n.name === "assign-statement" && index > n.startIndex && index < n.endIndex);
+            const name2 = node == null ? void 0 : node.children[0].value;
+            if (name2 != null) {
+              const pattern2 = this._allPatterns[name2];
+              this._onPattern(pattern2);
+            }
+          }
+        } catch {
         }
       }
       _highlight() {
@@ -39112,7 +39271,6 @@ ${escapeText(this.code(index, length))}
         this._isDocumentationOpen = new Signal(false);
         this.grammarEditor = new GrammarEditorPresenter({
           onGrammarProcess: (patterns) => {
-            this.diagramPresenter.selectPattern(Object.values(patterns));
             this.testEditor.setPatterns(patterns);
           },
           onSave: (content) => {
@@ -39120,7 +39278,14 @@ ${escapeText(this.code(index, length))}
               this._fileSystem.writeFile(this._currentPath, content);
             }
           },
-          fileSystem: this._fileSystem
+          fileSystem: this._fileSystem,
+          onPattern: (pattern2) => {
+            if (pattern2 != null) {
+              this.diagramPresenter.selectPattern([pattern2]);
+            } else {
+              this.diagramPresenter.selectPattern([]);
+            }
+          }
         });
         this.testEditor = new TestEditorPresenter();
         this.diagramPresenter = new DiagramPresenter();
@@ -39176,4 +39341,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-0PX6AoYM.js.map
+//# sourceMappingURL=index-BAoTwniV.js.map

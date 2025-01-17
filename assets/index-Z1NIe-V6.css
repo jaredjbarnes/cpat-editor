@@ -998,6 +998,23 @@ body > * {
   position: fixed;
   inset: 0;
 }
+._diagram_a292eaf {
+  background-color: var(--surface-tertiary-color);
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.terminal {
+  cursor: pointer;
+  user-select: none;
+}
+
+.terminal[data-group="true"] > rect {
+}
+
+.terminal > rect {
+}
 ._button_059b768 {
   color: var(--text-primary-color);
   border: none;
