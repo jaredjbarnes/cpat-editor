@@ -9,13 +9,22 @@ export class DebuggerPresenter {
     private _pattern: Pattern;
     private _steps: DebuggerStep[];
     private _onStep: Signal<number>;
+    private _tickId: number;
+    private _isPlaying: Signal<boolean>;
     readonly diagramPresenter: DiagramPresenter;
     readonly textEditorPresenter: TextEditorPresenter;
+
+
+    get isPlayingBroadcast() {
+        return this._isPlaying.broadcast;
+    }
 
     constructor(text: string, pattern: Pattern) {
         this._text = text;
         this._onStep = new Signal(0);
         this._steps = [];
+        this._tickId = 0;
+        this._isPlaying = new Signal(false);
         this.diagramPresenter = new DiagramPresenter();
         this.textEditorPresenter = new TextEditorPresenter();
 
@@ -37,11 +46,31 @@ export class DebuggerPresenter {
             const { cursor } = this._pattern.exec(this._text, true);
             this._steps = generateSteps(this._pattern, cursor.records);
             this._update();
-            console.log(this._steps);
-            (window as any).debuggerPresenter = this;
         } catch {
 
         }
+    }
+
+    play() {
+        this.stop();
+        this._isPlaying.set(true);
+        this._tickId = window.setInterval(() => {
+            if (this.hasNext()) {
+                this.next();
+            } else {
+                this.stop();
+            }
+        }, 500);
+    }
+
+    stop() {
+        window.clearInterval(this._tickId);
+        this._isPlaying.set(false);
+    }
+
+    hasNext() {
+        const onStep = this._onStep.get() + 1;
+        return onStep < this._steps.length;
     }
 
     next() {
@@ -104,7 +133,7 @@ export class DebuggerPresenter {
                     "highlight-match"
                 );
             }
-        } else if (step.type === "error"){
+        } else if (step.type === "error") {
             if (step.record.error != null) {
                 const startIndex = step.record.error.startIndex;
                 const endIndex = step.record.error.endIndex;

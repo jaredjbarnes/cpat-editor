@@ -5,6 +5,7 @@ import { Button } from "@tcn/ui-controls";
 import styles from "./debugger.module.css";
 import { TextEditor } from "../text_editor.tsx";
 import { useLayoutEffect } from "react";
+import { useSignalValue } from "@tcn/state";
 
 export interface DebuggerProps {
   presenter: DebuggerPresenter;
@@ -12,6 +13,8 @@ export interface DebuggerProps {
 }
 
 export function Debugger({ presenter, onComplete }: DebuggerProps) {
+  const isPlaying = useSignalValue(presenter.isPlayingBroadcast);
+
   useLayoutEffect(() => {
     presenter.initialize();
   }, [presenter]);
@@ -24,6 +27,14 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
     presenter.previous();
   }
 
+  function stop() {
+    presenter.stop();
+  }
+
+  function play() {
+    presenter.play();
+  }
+
   return (
     <VStack zIndex={2}>
       <HStack
@@ -32,6 +43,11 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
         horizontalAlignment="center"
         padding="8px"
       >
+        {!isPlaying ? (
+          <Button onClick={play}>Play</Button>
+        ) : (
+          <Button onClick={stop}>Stop</Button>
+        )}
         <Spacer />
         <Button onClick={prev}>Previous</Button>
         <Spacer width="8px" />
@@ -44,9 +60,12 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
           <TextEditor presenter={presenter.textEditorPresenter} />
         </FlexBox>
         <Box width="50%" enableResizeOnStart>
-          <Diagram presenter={presenter.diagramPresenter} onPatternClick={(patternPath)=>{
-            presenter.diagramPresenter.togglePatternPath(patternPath)
-          }} />
+          <Diagram
+            presenter={presenter.diagramPresenter}
+            onPatternClick={(patternPath) => {
+              presenter.diagramPresenter.togglePatternPath(patternPath);
+            }}
+          />
         </Box>
       </HStack>
     </VStack>
