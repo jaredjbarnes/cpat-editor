@@ -5,7 +5,6 @@ import { Button } from "@tcn/ui-controls";
 import styles from "./debugger.module.css";
 import { TextEditor } from "../text_editor.tsx";
 import { useLayoutEffect } from "react";
-import { generatePath } from "./step_generator.ts";
 
 export interface DebuggerProps {
   presenter: DebuggerPresenter;

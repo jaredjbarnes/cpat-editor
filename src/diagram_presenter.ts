@@ -1,5 +1,5 @@
 import { Signal } from "@tcn/state";
-import { Literal, Pattern, Reference, Regex } from "clarity-pattern-parser";
+import { Literal, Pattern, Regex } from "clarity-pattern-parser";
 import "./railroad_diagrams/railroad.css";
 import { Choice, Diagram, OneOrMore, Terminal, Sequence, Optional, Group } from "./railroad_diagrams/railroad.js";
 import { generatePath } from "./debugger/step_generator.js";

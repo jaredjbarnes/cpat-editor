@@ -26,6 +26,9 @@ class SyntaxHighlightBlot extends Inline {
       this.domNode.classList.remove("syntax-name");
       this.domNode.classList.remove("syntax-structure");
       this.domNode.classList.remove("syntax-regex");
+      this.domNode.classList.remove("highlight-match");
+      this.domNode.classList.remove("highlight-move");
+      this.domNode.classList.remove("highlight-error");
     } else {
       super.format(name, value);
     }
