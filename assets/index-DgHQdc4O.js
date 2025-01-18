@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-B2aWsbYF.js"(exports, module) {
+  "assets/index-DgHQdc4O.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -25613,12 +25613,22 @@ var require_index_001 = __commonJS({
     function generateSteps(rootPattern, records) {
       const steps = [];
       let currentPattern = rootPattern;
-      records.forEach((record) => {
+      records.forEach((record, index) => {
         const from = currentPattern;
         const to = record.pattern;
+        const prevRecord = records[index - 1];
+        currentPattern = to;
+        if (prevRecord != null && prevRecord.ast != null && record.ast != null && prevRecord.ast.startIndex === record.ast.startIndex) {
+          steps.push({
+            type: "match",
+            pattern: to,
+            record,
+            path: generatePath(to)
+          });
+          return;
+        }
         const path = getPathFromPatternToPattern(from, to);
         const isSibling = to.parent === from.parent;
-        currentPattern = to;
         if (!isSibling) {
           path.forEach((pattern2) => {
             var _a2;
@@ -39704,4 +39714,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-B2aWsbYF.js.map
+//# sourceMappingURL=index-DgHQdc4O.js.map
