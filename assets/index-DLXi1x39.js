@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-BveOgdHB.js"(exports, module) {
+  "assets/index-DLXi1x39.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -8791,7 +8791,7 @@ var require_index_001 = __commonJS({
         var _a2;
         const div = ref.current;
         if (div != null && focusPath != null) {
-          (_a2 = window.document.getElementById(focusPath)) == null ? void 0 : _a2.scrollIntoView({
+          (_a2 = div.querySelector(`.terminal#${focusPath}`)) == null ? void 0 : _a2.scrollIntoView({
             behavior: "smooth",
             block: "center",
             inline: "center"
@@ -25710,7 +25710,7 @@ var require_index_001 = __commonJS({
         pathParts.unshift(pattern2.id, String(childIndex));
         pattern2 = pattern2.parent;
       }
-      return pathParts.join("/");
+      return pathParts.join("_");
     }
     function getPathFromPatternToPattern(from, to) {
       const fromPatternPath = [];
@@ -26015,9 +26015,9 @@ var require_index_001 = __commonJS({
         this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
       }
       expandPatternPath(patternPath) {
-        const parts = patternPath.split("/");
+        const parts = patternPath.split("_");
         for (let x = 1; x < parts.length; x++) {
-          const path = parts.slice(0, x).join("/");
+          const path = parts.slice(0, x).join("_");
           this._expandedPatternPaths.set(path, true);
         }
         this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
@@ -39805,4 +39805,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BveOgdHB.js.map
+//# sourceMappingURL=index-DLXi1x39.js.map
