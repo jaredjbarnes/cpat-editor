@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DPsXpjsw.js"(exports, module) {
+  "assets/index-DXMCPYS-.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -24260,6 +24260,7 @@ var require_index_001 = __commonJS({
     const debuggerHeader = `_debugger-header_54fa375`;
     const styles = { "debugger-header": debuggerHeader };
     function Debugger({ presenter: presenter2, onComplete }) {
+      const isPlaying = useSignalValue(presenter2.isPlayingBroadcast);
       reactExports.useLayoutEffect(() => {
         presenter2.initialize();
       }, [presenter2]);
@@ -24268,6 +24269,12 @@ var require_index_001 = __commonJS({
       }
       function prev() {
         presenter2.previous();
+      }
+      function stop() {
+        presenter2.stop();
+      }
+      function play() {
+        presenter2.play();
       }
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { zIndex: 2, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -24278,6 +24285,7 @@ var require_index_001 = __commonJS({
             horizontalAlignment: "center",
             padding: "8px",
             children: [
+              !isPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: play, children: "Play" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: stop, children: "Stop" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: prev, children: "Previous" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
@@ -24289,9 +24297,15 @@ var require_index_001 = __commonJS({
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { flex: true, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(TextEditor, { presenter: presenter2.textEditorPresenter }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Diagram$1, { presenter: presenter2.diagramPresenter, onPatternClick: (patternPath) => {
-            presenter2.diagramPresenter.togglePatternPath(patternPath);
-          } }) })
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Diagram$1,
+            {
+              presenter: presenter2.diagramPresenter,
+              onPatternClick: (patternPath) => {
+                presenter2.diagramPresenter.togglePatternPath(patternPath);
+              }
+            }
+          ) })
         ] })
       ] });
     }
@@ -39520,11 +39534,15 @@ ${escapeText(this.code(index, length))}
         __publicField(this, "_pattern");
         __publicField(this, "_steps");
         __publicField(this, "_onStep");
+        __publicField(this, "_tickId");
+        __publicField(this, "_isPlaying");
         __publicField(this, "diagramPresenter");
         __publicField(this, "textEditorPresenter");
         this._text = text;
         this._onStep = new Signal(0);
         this._steps = [];
+        this._tickId = 0;
+        this._isPlaying = new Signal(false);
         this.diagramPresenter = new DiagramPresenter();
         this.textEditorPresenter = new TextEditorPresenter();
         this._pattern = new Sequence("editor-pattern-wrapper", [
@@ -39532,6 +39550,9 @@ ${escapeText(this.code(index, length))}
           pattern2,
           new Optional("optional-space", new Regex("space", "\\s+"))
         ]);
+      }
+      get isPlayingBroadcast() {
+        return this._isPlaying.broadcast;
       }
       initialize() {
         this.textEditorPresenter.setText(this._text);
@@ -39542,10 +39563,27 @@ ${escapeText(this.code(index, length))}
           const { cursor } = this._pattern.exec(this._text, true);
           this._steps = generateSteps(this._pattern, cursor.records);
           this._update();
-          console.log(this._steps);
-          window.debuggerPresenter = this;
         } catch {
         }
+      }
+      play() {
+        this.stop();
+        this._isPlaying.set(true);
+        this._tickId = window.setInterval(() => {
+          if (this.hasNext()) {
+            this.next();
+          } else {
+            this.stop();
+          }
+        }, 500);
+      }
+      stop() {
+        window.clearInterval(this._tickId);
+        this._isPlaying.set(false);
+      }
+      hasNext() {
+        const onStep = this._onStep.get() + 1;
+        return onStep < this._steps.length;
       }
       next() {
         const onStep = this._onStep.get() + 1;
@@ -39714,4 +39752,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DPsXpjsw.js.map
+//# sourceMappingURL=index-DXMCPYS-.js.map
