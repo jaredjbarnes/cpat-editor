@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-B8gdK8ki.js"(exports, module) {
+  "assets/index-YUNx8B48.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -8791,7 +8791,11 @@ var require_index_001 = __commonJS({
         var _a2;
         const div = ref.current;
         if (div != null && focusPath != null) {
-          (_a2 = window.document.getElementById(focusPath)) == null ? void 0 : _a2.scrollIntoView();
+          (_a2 = window.document.getElementById(focusPath)) == null ? void 0 : _a2.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+            inline: "center"
+          });
         }
       }, [focusPath]);
       return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { onClick: handleClick, ref, className: styles$N.diagram });
@@ -39802,4 +39806,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-B8gdK8ki.js.map
+//# sourceMappingURL=index-YUNx8B48.js.map
