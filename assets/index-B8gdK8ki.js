@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DwtVPTkt.js"(exports, module) {
+  "assets/index-B8gdK8ki.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -8760,6 +8760,7 @@ var require_index_001 = __commonJS({
     const styles$N = { diagram };
     function Diagram$1({ presenter: presenter2, onPatternClick }) {
       const ref = reactExports.useRef(null);
+      const focusPath = useSignalValue(presenter2.focusNodePathBroadcast);
       useSignalValueEffect((diagrams) => {
         const div = ref.current;
         if (div != null) {
@@ -8786,6 +8787,13 @@ var require_index_001 = __commonJS({
           target = target.parentElement;
         }
       }
+      reactExports.useEffect(() => {
+        var _a2;
+        const div = ref.current;
+        if (div != null && focusPath != null) {
+          (_a2 = window.document.getElementById(focusPath)) == null ? void 0 : _a2.scrollIntoView();
+        }
+      }, [focusPath]);
       return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { onClick: handleClick, ref, className: styles$N.diagram });
     }
     function Ast({ text }) {
@@ -25739,11 +25747,13 @@ var require_index_001 = __commonJS({
         __publicField(this, "_diagrams");
         __publicField(this, "_classNames");
         __publicField(this, "_expandedPatternPaths");
+        __publicField(this, "_focusNodePath");
         this._patterns = new Signal({});
         this._viewingPatterns = new Signal([]);
         this._diagrams = new Signal(this._buildDiagram([]));
         this._classNames = /* @__PURE__ */ new Map();
         this._expandedPatternPaths = /* @__PURE__ */ new Map();
+        this._focusNodePath = new Signal(null);
       }
       get patterns() {
         return this._patterns.broadcast;
@@ -25753,6 +25763,9 @@ var require_index_001 = __commonJS({
       }
       get diagramsBroadcast() {
         return this._diagrams.broadcast;
+      }
+      get focusNodePathBroadcast() {
+        return this._focusNodePath.broadcast;
       }
       _buildDiagram(patterns) {
         return patterns.map((pattern2) => {
@@ -26014,6 +26027,9 @@ var require_index_001 = __commonJS({
         const currentValue = Boolean(this._expandedPatternPaths.get(patternPath));
         this._expandedPatternPaths.set(patternPath, !currentValue);
         this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+      }
+      focusPath(path) {
+        this._focusNodePath.set(path);
       }
     }
     function defaultVisitor(node) {
@@ -39644,6 +39660,7 @@ ${escapeText(this.code(index, length))}
           patternPath: step.path,
           className: step.type
         }]);
+        this.diagramPresenter.focusPath(step.path);
       }
       _updateTextStyles() {
         const step = this._steps[this._onStep.get()];
@@ -39785,4 +39802,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DwtVPTkt.js.map
+//# sourceMappingURL=index-B8gdK8ki.js.map
