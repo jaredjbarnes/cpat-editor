@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-BptLhUqf.js"(exports, module) {
+  "assets/index-B7d2kdl7.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -25622,7 +25622,7 @@ var require_index_001 = __commonJS({
         if (!isSibling) {
           path.forEach((pattern2) => {
             var _a2;
-            if (pattern2.type === "repeat" || pattern2.type === "infinite-repeat" || pattern2.type === "finite-repeat" || pattern2.type === "optional" || ((_a2 = pattern2.parent) == null ? void 0 : _a2.type) === "optional" && record.error != null) {
+            if (pattern2.type === "repeat" || pattern2.type === "infinite-repeat" || pattern2.type === "finite-repeat" || pattern2.type === "optional" || pattern2.type === "reference" || ((_a2 = pattern2.parent) == null ? void 0 : _a2.type) === "optional" && record.error != null) {
               return;
             }
             steps.push({
@@ -39700,4 +39700,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BptLhUqf.js.map
+//# sourceMappingURL=index-B7d2kdl7.js.map
