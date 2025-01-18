@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-B7d2kdl7.js"(exports, module) {
+  "assets/index-B2aWsbYF.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -25963,7 +25963,11 @@ var require_index_001 = __commonJS({
         this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
       }
       expandPatternPath(patternPath) {
-        this._expandedPatternPaths.set(patternPath, true);
+        const parts = patternPath.split("/");
+        for (let x = 1; x < parts.length; x++) {
+          const path = parts.slice(0, x).join("/");
+          this._expandedPatternPaths.set(path, true);
+        }
         this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
       }
       collapsePatternPath(patternPath) {
@@ -39700,4 +39704,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-B7d2kdl7.js.map
+//# sourceMappingURL=index-B2aWsbYF.js.map
