@@ -45,7 +45,7 @@ export function Diagram({ presenter, onPatternClick }: DiagramProps) {
     const div = ref.current;
 
     if (div != null && focusPath != null) {
-      window.document.getElementById(focusPath)?.scrollIntoView({
+      div.querySelector(`.terminal#${focusPath}`)?.scrollIntoView({
         behavior: "smooth",
         block: "center",
         inline: "center",

@@ -95,7 +95,7 @@ export function generatePath(fromPattern: Pattern) {
     }
 
 
-    return pathParts.join("/");
+    return pathParts.join("_");
 }
 
 export function getPatternDepth(pattern: Pattern | null) {

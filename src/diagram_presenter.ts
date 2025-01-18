@@ -348,9 +348,9 @@ export class DiagramPresenter {
     }
 
     expandPatternPath(patternPath: string) {
-        const parts = patternPath.split("/");
+        const parts = patternPath.split("_");
         for (let x = 1; x < parts.length; x++) {
-            const path = parts.slice(0, x).join("/");
+            const path = parts.slice(0, x).join("_");
             this._expandedPatternPaths.set(path, true);
         }
 
