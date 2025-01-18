@@ -89,9 +89,11 @@ export function generatePath(fromPattern: Pattern) {
     let pattern: Pattern | null = fromPattern;
 
     while (pattern != null) {
-        pathParts.unshift(pattern.id);
+        const childIndex = pattern.parent?.children.indexOf(pattern) || 0;
+        pathParts.unshift(pattern.id, String(childIndex));
         pattern = pattern.parent;
     }
+
 
     return pathParts.join("/");
 }

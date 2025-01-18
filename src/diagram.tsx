@@ -45,7 +45,11 @@ export function Diagram({ presenter, onPatternClick }: DiagramProps) {
     const div = ref.current;
 
     if (div != null && focusPath != null) {
-      window.document.getElementById(focusPath)?.scrollIntoView();
+      window.document.getElementById(focusPath)?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
     }
   }, [focusPath]);
 

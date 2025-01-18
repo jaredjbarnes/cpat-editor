@@ -1,7 +1,7 @@
 import { Box, FlexBox, HStack, Spacer, VStack } from "@tcn/ui-layout";
 import { DebuggerPresenter } from "./debugger_presenter.ts";
 import { Diagram } from "../diagram.tsx";
-import { Button } from "@tcn/ui-controls";
+import { Button, ButtonGroup } from "@tcn/ui-controls";
 import styles from "./debugger.module.css";
 import { TextEditor } from "../text_editor.tsx";
 import { useLayoutEffect } from "react";
@@ -17,6 +17,9 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
 
   useLayoutEffect(() => {
     presenter.initialize();
+    () => {
+      presenter.stop();
+    };
   }, [presenter]);
 
   function next() {
@@ -52,21 +55,18 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
         padding="8px"
       >
         <Spacer />
-        <Button onClick={start}>Start</Button>
-        <Spacer width="8px" />
-        <Button onClick={prev}>Previous</Button>
-        <Spacer width="8px" />
-        {!isPlaying ? (
-          <Button onClick={play}>Play</Button>
-        ) : (
-          <Button onClick={stop}>Stop</Button>
-        )}
-        <Spacer width="8px" />
-        <Button onClick={next}>Next</Button>
-        <Spacer width="8px" />
-        <Button onClick={end}>End</Button>
+        <ButtonGroup>
+          <Button onClick={start}>Start</Button>
+          <Button onClick={prev}>Previous</Button>
+          {!isPlaying ? (
+            <Button onClick={play}>Play</Button>
+          ) : (
+            <Button onClick={stop}>Stop</Button>
+          )}
+          <Button onClick={next}>Next</Button>
+          <Button onClick={end}>End</Button>
+        </ButtonGroup>
         <Spacer />
-        <Spacer width="8px" />
         <Button onClick={onComplete}>Close</Button>
       </HStack>
       <HStack flex>
