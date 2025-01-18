@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DXMCPYS-.js"(exports, module) {
+  "assets/index-DtsSBCZg.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -39575,7 +39575,7 @@ ${escapeText(this.code(index, length))}
           } else {
             this.stop();
           }
-        }, 500);
+        }, 300);
       }
       stop() {
         window.clearInterval(this._tickId);
@@ -39752,4 +39752,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DXMCPYS-.js.map
+//# sourceMappingURL=index-DtsSBCZg.js.map
