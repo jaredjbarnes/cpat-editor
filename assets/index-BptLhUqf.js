@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-C5Hf6zn3.js"(exports, module) {
+  "assets/index-BptLhUqf.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -38749,6 +38749,9 @@ ${escapeText(this.code(index, length))}
           this.domNode.classList.remove("syntax-name");
           this.domNode.classList.remove("syntax-structure");
           this.domNode.classList.remove("syntax-regex");
+          this.domNode.classList.remove("highlight-match");
+          this.domNode.classList.remove("highlight-move");
+          this.domNode.classList.remove("highlight-error");
         } else {
           super.format(name2, value2);
         }
@@ -39524,7 +39527,7 @@ ${escapeText(this.code(index, length))}
         try {
           const { cursor } = this._pattern.exec(this._text, true);
           this._steps = generateSteps(this._pattern, cursor.records);
-          this._updateDiagramStyles();
+          this._update();
           console.log(this._steps);
           window.debuggerPresenter = this;
         } catch {
@@ -39534,23 +39537,69 @@ ${escapeText(this.code(index, length))}
         const onStep = this._onStep.get() + 1;
         if (onStep < this._steps.length) {
           this._onStep.set(onStep);
-          this._updateDiagramStyles();
+          this._update();
         }
       }
       previous() {
         const onStep = this._onStep.get() - 1;
         if (onStep > -1) {
           this._onStep.set(onStep);
-          this._updateDiagramStyles();
+          this._update();
         }
+      }
+      _update() {
+        this._updateDiagramStyles();
+        this._updateTextStyles();
       }
       _updateDiagramStyles() {
         const step = this._steps[this._onStep.get()];
+        this.diagramPresenter.expandPatternPath(step.path);
         this.diagramPresenter.clearClasses();
         this.diagramPresenter.setClasses([{
           patternPath: step.path,
           className: step.type
         }]);
+      }
+      _updateTextStyles() {
+        const step = this._steps[this._onStep.get()];
+        this.textEditorPresenter.clearFormatting();
+        if (step.type === "move") {
+          if (step.record.ast != null) {
+            const startIndex = step.record.ast.firstIndex;
+            this.textEditorPresenter.syntaxHighlight(
+              startIndex,
+              startIndex + 1,
+              "highlight-move"
+            );
+          } else if (step.record.error != null) {
+            const startIndex = step.record.error.startIndex;
+            this.textEditorPresenter.syntaxHighlight(
+              startIndex,
+              startIndex + 1,
+              "highlight-move"
+            );
+          }
+        } else if (step.type === "match") {
+          if (step.record.ast != null) {
+            const startIndex = step.record.ast.firstIndex;
+            const endIndex = step.record.ast.endIndex;
+            this.textEditorPresenter.syntaxHighlight(
+              startIndex,
+              endIndex,
+              "highlight-match"
+            );
+          }
+        } else if (step.type === "error") {
+          if (step.record.error != null) {
+            const startIndex = step.record.error.startIndex;
+            const endIndex = step.record.error.endIndex;
+            this.textEditorPresenter.syntaxHighlight(
+              startIndex,
+              endIndex + 1,
+              "highlight-error"
+            );
+          }
+        }
       }
     }
     class AppPresenter {
@@ -39651,4 +39700,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-C5Hf6zn3.js.map
+//# sourceMappingURL=index-BptLhUqf.js.map

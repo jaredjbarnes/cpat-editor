@@ -3388,8 +3388,6 @@ svg.railroad-diagram path {
   color: #d16969;
 }
 
-
-
 .syntax-keyword {
   color: #0957d0;
 }
@@ -3413,10 +3411,33 @@ svg.railroad-diagram path {
   color: #d16969;
 }
 
-
 .syntax-error {
   text-decoration: underline dashed #ba0000;
-}._examples_d136939 {
+}
+
+.highlight-move {
+  color: white;
+  background-color: var(--default-accent-color);
+}
+
+.highlight-match {
+  color: white;
+  background-color: #67c71e;
+}
+
+.highlight-error {
+  color: white;
+  background-color: var(--default-error-color);
+}
+
+:global(.move) > rect {
+  fill: var(--default-accent-color) !important;
+}
+
+:global(.error) > rect {
+  fill: var(--default-error-color) !important;
+}
+._examples_d136939 {
   background-color: var(--surface-input-color);
   border-radius: 8px;
   box-shadow: var(--inset-box-shadow);
