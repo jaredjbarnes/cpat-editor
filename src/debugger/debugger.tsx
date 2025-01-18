@@ -27,6 +27,14 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
     presenter.previous();
   }
 
+  function start() {
+    presenter.start();
+  }
+
+  function end() {
+    presenter.end();
+  }
+
   function stop() {
     presenter.stop();
   }
@@ -43,16 +51,22 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
         horizontalAlignment="center"
         padding="8px"
       >
+        <Spacer />
+        <Button onClick={start}>Start</Button>
+        <Spacer width="8px" />
+        <Button onClick={prev}>Previous</Button>
+        <Spacer width="8px" />
         {!isPlaying ? (
           <Button onClick={play}>Play</Button>
         ) : (
           <Button onClick={stop}>Stop</Button>
         )}
-        <Spacer />
-        <Button onClick={prev}>Previous</Button>
         <Spacer width="8px" />
         <Button onClick={next}>Next</Button>
+        <Spacer width="8px" />
+        <Button onClick={end}>End</Button>
         <Spacer />
+        <Spacer width="8px" />
         <Button onClick={onComplete}>Close</Button>
       </HStack>
       <HStack flex>

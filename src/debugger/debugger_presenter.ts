@@ -60,7 +60,7 @@ export class DebuggerPresenter {
             } else {
                 this.stop();
             }
-        }, 500);
+        }, 300);
     }
 
     stop() {
@@ -89,6 +89,14 @@ export class DebuggerPresenter {
             this._onStep.set(onStep);
             this._update();
         }
+    }
+
+    start() {
+        this._onStep.set(0);
+    }
+
+    end() {
+        this._onStep.set(this._steps.length - 1);
     }
 
     private _update() {
