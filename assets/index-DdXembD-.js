@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DtsSBCZg.js"(exports, module) {
+  "assets/index-DdXembD-.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -24270,6 +24270,12 @@ var require_index_001 = __commonJS({
       function prev() {
         presenter2.previous();
       }
+      function start() {
+        presenter2.start();
+      }
+      function end() {
+        presenter2.end();
+      }
       function stop() {
         presenter2.stop();
       }
@@ -24285,12 +24291,18 @@ var require_index_001 = __commonJS({
             horizontalAlignment: "center",
             padding: "8px",
             children: [
-              !isPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: play, children: "Play" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: stop, children: "Stop" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: start, children: "Stop" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: prev, children: "Previous" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
+              !isPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: play, children: "Play" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: stop, children: "Stop" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: next, children: "Next" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: end, children: "End" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: onComplete, children: "Close" })
             ]
           }
@@ -39599,6 +39611,12 @@ ${escapeText(this.code(index, length))}
           this._update();
         }
       }
+      start() {
+        this._onStep.set(0);
+      }
+      end() {
+        this._onStep.set(this._steps.length - 1);
+      }
       _update() {
         this._updateDiagramStyles();
         this._updateTextStyles();
@@ -39752,4 +39770,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DtsSBCZg.js.map
+//# sourceMappingURL=index-DdXembD-.js.map
