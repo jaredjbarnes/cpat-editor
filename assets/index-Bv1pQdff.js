@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-YUNx8B48.js"(exports, module) {
+  "assets/index-Bv1pQdff.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -10472,7 +10472,7 @@ var require_index_001 = __commonJS({
     const divider$3 = `_divider_99dc837`;
     const option = `_option_2a62c50`;
     const styles$q = { "select-group": selectGroup, divider: divider$3, option };
-    const SelectGroup = React.forwardRef(function ButtonGroup({ children, value: value2, className, onChange, enableDeselect, enableMultiselect, disabled = false, ...props }, ref) {
+    const SelectGroup = React.forwardRef(function ButtonGroup2({ children, value: value2, className, onChange, enableDeselect, enableMultiselect, disabled = false, ...props }, ref) {
       const options = Array.isArray(children) ? children : [children];
       return React.createElement(HStack, { ref, inline: true, width: "auto", height: "auto", "data-is-disabled": disabled, className: classNames(styles$q["select-group"], className, "select-group"), ...props }, options.map((option2, i) => {
         function select2() {
@@ -10505,7 +10505,7 @@ var require_index_001 = __commonJS({
     const button = `_button_abd4586`;
     const divider$2 = `_divider_d1b6707`;
     const styles$o = { "button-group": buttonGroup, button, divider: divider$2 };
-    React.forwardRef(function ButtonGroup({ children, className, variant = "secondary", ...props }, ref) {
+    const ButtonGroup = React.forwardRef(function ButtonGroup2({ children, className, variant = "secondary", ...props }, ref) {
       const buttons = Array.isArray(children) ? children : [children];
       return React.createElement(HStack, { ref, inline: true, width: "auto", height: "auto", "data-variant": variant, className: classNames(styles$o["button-group"], className, "button-group"), ...props }, buttons.map((button2, i) => {
         const isLast = buttons.length - 1 === i;
@@ -24304,17 +24304,14 @@ var require_index_001 = __commonJS({
             padding: "8px",
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: start, children: "Start" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: prev, children: "Previous" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
-              !isPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: play, children: "Play" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: stop, children: "Stop" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: next, children: "Next" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: end, children: "End" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(ButtonGroup, { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: start, children: "Start" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: prev, children: "Previous" }),
+                !isPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: play, children: "Play" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: stop, children: "Stop" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: next, children: "Next" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: end, children: "End" })
+              ] }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: onComplete, children: "Close" })
             ]
           }
@@ -25705,13 +25702,14 @@ var require_index_001 = __commonJS({
       return steps;
     }
     function generatePath(fromPattern) {
+      var _a2;
       const pathParts = [];
       let pattern2 = fromPattern;
       while (pattern2 != null) {
         pathParts.unshift(pattern2.id);
         pattern2 = pattern2.parent;
       }
-      return pathParts.join("/");
+      return pathParts.join("/") + "/" + (((_a2 = fromPattern.parent) == null ? void 0 : _a2.children.indexOf(fromPattern)) || 0);
     }
     function getPathFromPatternToPattern(from, to) {
       const fromPatternPath = [];
@@ -39806,4 +39804,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-YUNx8B48.js.map
+//# sourceMappingURL=index-Bv1pQdff.js.map
