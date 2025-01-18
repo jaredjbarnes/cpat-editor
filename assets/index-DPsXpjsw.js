@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DgHQdc4O.js"(exports, module) {
+  "assets/index-DPsXpjsw.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -25618,7 +25618,7 @@ var require_index_001 = __commonJS({
         const to = record.pattern;
         const prevRecord = records[index - 1];
         currentPattern = to;
-        if (prevRecord != null && prevRecord.ast != null && record.ast != null && prevRecord.ast.startIndex === record.ast.startIndex) {
+        if (prevRecord != null && prevRecord.ast != null && record.ast != null && prevRecord.ast.endIndex === record.ast.endIndex) {
           steps.push({
             type: "match",
             pattern: to,
@@ -39714,4 +39714,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DgHQdc4O.js.map
+//# sourceMappingURL=index-DPsXpjsw.js.map
