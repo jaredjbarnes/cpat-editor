@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DdXembD-.js"(exports, module) {
+  "assets/index-AJQpz06N.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -24292,7 +24292,7 @@ var require_index_001 = __commonJS({
             padding: "8px",
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: start, children: "Stop" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: start, children: "Start" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: prev, children: "Previous" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }),
@@ -39770,4 +39770,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DdXembD-.js.map
+//# sourceMappingURL=index-AJQpz06N.js.map
