@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-BfD5W7bk.js"(exports, module) {
+  "assets/index-BveOgdHB.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -25706,7 +25706,7 @@ var require_index_001 = __commonJS({
       const pathParts = [];
       let pattern2 = fromPattern;
       while (pattern2 != null) {
-        const childIndex = ((_a2 = fromPattern.parent) == null ? void 0 : _a2.children.indexOf(fromPattern)) || 0;
+        const childIndex = ((_a2 = pattern2.parent) == null ? void 0 : _a2.children.indexOf(pattern2)) || 0;
         pathParts.unshift(pattern2.id, String(childIndex));
         pattern2 = pattern2.parent;
       }
@@ -39805,4 +39805,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BfD5W7bk.js.map
+//# sourceMappingURL=index-BveOgdHB.js.map
