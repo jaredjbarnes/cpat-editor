@@ -22,6 +22,7 @@ export class DiagramPresenter {
     private _diagrams: Signal<Diagram[]>;
     private _classNames: Map<string, string>;
     private _expandedPatternPaths: Map<string, boolean>;
+    private _focusNodePath: Signal<string | null>;
 
     get patterns() {
         return this._patterns.broadcast;
@@ -35,12 +36,17 @@ export class DiagramPresenter {
         return this._diagrams.broadcast;
     }
 
+    get focusNodePathBroadcast() {
+        return this._focusNodePath.broadcast;
+    }
+
     constructor() {
         this._patterns = new Signal({});
         this._viewingPatterns = new Signal<Pattern[]>([]);
         this._diagrams = new Signal<Diagram[]>(this._buildDiagram([]));
         this._classNames = new Map();
         this._expandedPatternPaths = new Map();
+        this._focusNodePath = new Signal<string | null>(null);
     }
 
     private _buildDiagram(patterns: Pattern[]) {
@@ -343,7 +349,7 @@ export class DiagramPresenter {
 
     expandPatternPath(patternPath: string) {
         const parts = patternPath.split("/");
-        for (let x = 1 ; x < parts.length ;x++){
+        for (let x = 1; x < parts.length; x++) {
             const path = parts.slice(0, x).join("/");
             this._expandedPatternPaths.set(path, true);
         }
@@ -361,6 +367,10 @@ export class DiagramPresenter {
         this._expandedPatternPaths.set(patternPath, !currentValue);
 
         this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+    }
+
+    focusPath(path: string) {
+        this._focusNodePath.set(path);
     }
 
 }

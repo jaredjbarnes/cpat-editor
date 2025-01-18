@@ -1,4 +1,4 @@
-import { Optional, Pattern, Regex, Sequence } from "clarity-pattern-parser";
+import { Optional, ParseError, Pattern, Regex, Sequence } from "clarity-pattern-parser";
 import { DiagramPresenter } from "../diagram_presenter.ts";
 import { TextEditorPresenter } from "../text_editor_presenter.ts";
 import { DebuggerStep, generateSteps } from "./step_generator.ts";
@@ -43,13 +43,31 @@ export class DebuggerPresenter {
         this.diagramPresenter.selectPattern([this._pattern]);
 
         try {
-            const { cursor } = this._pattern.exec(this._text, true);
+            const { ast, cursor } = this._pattern.exec(this._text, true);
             this._steps = generateSteps(this._pattern, cursor.records);
+
+            if (ast == null) {
+                const furthestError = cursor.furthestError;
+
+                this._steps.push({
+                    type: "error",
+                    path: "/",
+                    pattern: this._pattern,
+                    record: {
+                        ast: null,
+                        error: new ParseError(furthestError?.startIndex || 0, this._text.length, this._pattern),
+                        pattern: this._pattern
+                    }
+                });
+            }
+
             this._update();
         } catch {
 
         }
     }
+
+
 
     play() {
         this.stop();
@@ -93,10 +111,12 @@ export class DebuggerPresenter {
 
     start() {
         this._onStep.set(0);
+        this._update();
     }
 
     end() {
         this._onStep.set(this._steps.length - 1);
+        this._update();
     }
 
     private _update() {
@@ -112,6 +132,7 @@ export class DebuggerPresenter {
             patternPath: step.path,
             className: step.type
         }]);
+        this.diagramPresenter.focusPath(step.path);
     }
 
     private _updateTextStyles() {
