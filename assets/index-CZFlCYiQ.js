@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DLXi1x39.js"(exports, module) {
+  "assets/index-CZFlCYiQ.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -39597,7 +39597,7 @@ ${escapeText(this.code(index, length))}
             const furthestError = cursor.furthestError;
             this._steps.push({
               type: "error",
-              path: "/",
+              path: "_",
               pattern: this._pattern,
               record: {
                 ast: null,
@@ -39805,4 +39805,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DLXi1x39.js.map
+//# sourceMappingURL=index-CZFlCYiQ.js.map
