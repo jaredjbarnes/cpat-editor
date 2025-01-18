@@ -342,7 +342,12 @@ export class DiagramPresenter {
     }
 
     expandPatternPath(patternPath: string) {
-        this._expandedPatternPaths.set(patternPath, true);
+        const parts = patternPath.split("/");
+        for (let x = 1 ; x < parts.length ;x++){
+            const path = parts.slice(0, x).join("/");
+            this._expandedPatternPaths.set(path, true);
+        }
+
         this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
     }
 
