@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-AJQpz06N.js"(exports, module) {
+  "assets/index-DwtVPTkt.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -39572,8 +39572,21 @@ ${escapeText(this.code(index, length))}
         this._onStep.set(0);
         this.diagramPresenter.selectPattern([this._pattern]);
         try {
-          const { cursor } = this._pattern.exec(this._text, true);
+          const { ast, cursor } = this._pattern.exec(this._text, true);
           this._steps = generateSteps(this._pattern, cursor.records);
+          if (ast == null) {
+            const furthestError = cursor.furthestError;
+            this._steps.push({
+              type: "error",
+              path: "/",
+              pattern: this._pattern,
+              record: {
+                ast: null,
+                error: new ParseError((furthestError == null ? void 0 : furthestError.startIndex) || 0, this._text.length, this._pattern),
+                pattern: this._pattern
+              }
+            });
+          }
           this._update();
         } catch {
         }
@@ -39613,9 +39626,11 @@ ${escapeText(this.code(index, length))}
       }
       start() {
         this._onStep.set(0);
+        this._update();
       }
       end() {
         this._onStep.set(this._steps.length - 1);
+        this._update();
       }
       _update() {
         this._updateDiagramStyles();
@@ -39770,4 +39785,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-AJQpz06N.js.map
+//# sourceMappingURL=index-DwtVPTkt.js.map
