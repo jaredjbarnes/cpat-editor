@@ -53,7 +53,7 @@ export class FileCreation {
 
     async commit() {
         if (this._error.get() == null) {
-            const fileName = this._path + this._name.get()
+            const fileName = this._path + this._name.get();
             await this._fileSystem.writeFile(fileName, "");
             this._onComplete(fileName);
         }

@@ -68,7 +68,7 @@ export class FileRenaming {
     async commit() {
         if (this._error.get() == null) {
             const newFilePath = this._directory + this._name.get();
-            await this._fileSystem.renameFile(this._originalFilePath, newFilePath);
+            await this._fileSystem.renameFile(this._originalFilePath, this._name.get());
             this._onComplete(newFilePath);
         }
     }

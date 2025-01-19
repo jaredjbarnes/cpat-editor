@@ -1,7 +1,7 @@
 import { Signal } from "@tcn/state";
-import { FileSystem } from "./file_system.ts";
+import { FileSystem, ItemMeta } from "./file_system.ts";
 import { FileCreation } from "./file_creation.ts";
-import { DirectoryCreation as DirectoryCreation } from "./directory_creation.ts";
+import { DirectoryCreation } from "./directory_creation.ts";
 import { FileRenaming } from "./file_renaming.ts";
 
 export interface File {
@@ -67,7 +67,7 @@ export class FileExplorerPresenter {
             type: "directory",
             name: "",
             items: [],
-            path: "/",
+            path: "",
             directory: ""
         });
         this._directories = new Map();
@@ -100,7 +100,12 @@ export class FileExplorerPresenter {
             items: []
         });
 
-        await this._fileSystem.walkDirectory((directoryPath, name, path, isFile) => {
+        await this._fileSystem.walk((itemMeta: ItemMeta) => {
+            const path = this._makePathFromMetaData(itemMeta);
+            const name = this._fileSystem.getName(path);
+            const directoryPath = this._fileSystem.getDirectoryPath(path);
+            const isFile = itemMeta.type === "file";
+
             if (path === "/") {
                 return;
             }
@@ -135,11 +140,11 @@ export class FileExplorerPresenter {
         const rootDirectory = directories.get("/");
         Array.from(directories.values()).forEach(d => {
             d.items.sort((a, b) => {
-                if (a.path.endsWith("/") && b.path.endsWith("/")) {
+                if (a.type === "directory" && b.type === "directory") {
                     return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
-                } else if (a.path.endsWith("/") && !b.path.endsWith("/")) {
+                } else if (a.type === "directory" && b.type === "file") {
                     return -1;
-                } else if (!a.path.endsWith("/") && b.path.endsWith("/")) {
+                } else if (a.type === "file" && b.type === "file") {
                     return 1;
                 } else {
                     return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
@@ -155,12 +160,36 @@ export class FileExplorerPresenter {
         this._files = files;
     }
 
+    private _makePathFromMetaData(metaData: ItemMeta) {
+        if (metaData.parent == null) {
+            return "/";
+        }
+
+        const parts: string[] = [];
+        let item: ItemMeta | null = metaData;
+
+        parts.unshift(metaData.name);
+        item = metaData.parent;
+
+        while (item?.parent != null) {
+            parts.unshift(item.name);
+            item = item.parent;
+        }
+
+        const path = "/" + parts.join("/");
+
+        if (metaData.type === "directory") {
+            return path + "/";
+        }
+
+        return path;
+    }
+
     private _makeDirectoryFromPath(path: string): Directory {
-        const pathParts = path.split("/");
         return {
             type: 'directory',
-            directory: pathParts.slice(0, -2).join("/") + "/",
-            name: pathParts.slice(-2, -1).join("/"),
+            directory: this._fileSystem.getDirectoryPath(path),
+            name: this._fileSystem.getName(path),
             path: path,
             items: []
         };

@@ -71,8 +71,8 @@ export function DirectoryItem({ directory, presenter }: DirectoryItemProps) {
     setContextMenuOpen(false);
   }
 
-  function deleteFile() {
-    presenter.deleteFile(directory.path);
+  function deleteDirectory() {
+    presenter.deleteDirectory(directory.path);
   }
 
   useLayoutEffect(() => {
@@ -102,7 +102,7 @@ export function DirectoryItem({ directory, presenter }: DirectoryItemProps) {
       </HStack>
       {isOpen && <VStack height="auto">{children}</VStack>}
       <ContextMenu open={isContextMenuOpen} position={position} onClose={close}>
-        <MenuItem label="Delete" onClick={deleteFile} />
+        <MenuItem label="Delete" onClick={deleteDirectory} />
       </ContextMenu>
     </>
   );

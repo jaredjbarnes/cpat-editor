@@ -51,7 +51,7 @@ export class DebuggerPresenter {
 
                 this._steps.push({
                     type: "error",
-                    path: "/",
+                    path: "_",
                     pattern: this._pattern,
                     record: {
                         ast: null,
