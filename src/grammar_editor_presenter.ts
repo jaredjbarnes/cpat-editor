@@ -121,8 +121,8 @@ export class GrammarEditorPresenter {
             this._allPatterns = allPatterns;
             this._processCursorToPattern();
             this._onGrammarProcess(allPatterns);
-        } catch (_) {
-            console.log("Bad Grammar");
+        } catch (e) {
+            console.log(e);
         }
 
         if (text === "") {

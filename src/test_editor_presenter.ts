@@ -56,27 +56,29 @@ export class TestEditorPresenter {
 
             const text = this.textEditor.getText();
             const startTime = performance.now();
-            const { ast, cursor } = editorPattern.exec(text);
-            const parseDuration = performance.now() - startTime;
+            try {
+                const { ast, cursor } = editorPattern.exec(text);
+                const parseDuration = performance.now() - startTime;
 
-            console.log("Test Parse Time: ", parseDuration);
-            if (ast != null) {
-                const rootAst = ast.children[0];
-                this._ast.set(rootAst.toJson(2));
-            } else {
-                this._ast.set("");
-
-                if (cursor.furthestError != null) {
-                    const { endIndex: startIndex } = cursor.furthestError;
-                    const endIndex = cursor.length;
-                    this.textEditor.syntaxHighlight(startIndex, endIndex, "syntax-error");
-                    console.log(startIndex);
+                console.log("Test Parse Time: ", parseDuration);
+                if (ast != null) {
+                    const rootAst = ast.children[0];
+                    this._ast.set(rootAst.toJson(2));
                 } else {
-                    this.textEditor.syntaxHighlight(0, cursor.length, "syntax-error");
+                    this._ast.set("");
+
+                    if (cursor.furthestError != null) {
+                        const { endIndex: startIndex } = cursor.furthestError;
+                        const endIndex = cursor.length;
+                        this.textEditor.syntaxHighlight(startIndex, endIndex, "syntax-error");
+                        console.log(startIndex);
+                    } else {
+                        this.textEditor.syntaxHighlight(0, cursor.length, "syntax-error");
+                    }
                 }
+            } catch (e) {
+                console.log(e);
             }
-
-
         }
     }
 
