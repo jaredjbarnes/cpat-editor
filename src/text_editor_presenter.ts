@@ -30,8 +30,13 @@ export class TextEditorPresenter {
             theme: 'snow',
             modules: {
                 toolbar: false,
+                clipboard: {
+                    matchers: [],
+                    matchVisual: false,
+                },
             },
         });
+
 
         this.editor.setText(this._defaultText);
     }
