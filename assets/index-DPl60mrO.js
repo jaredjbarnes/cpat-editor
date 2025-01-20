@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-D6Lp5JF-.js"(exports, module) {
+  "assets/index-DPl60mrO.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -23693,6 +23693,18 @@ var require_index_001 = __commonJS({
             `{2,4}`
           ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "no-more-than-four-entries" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: " " }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "=" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: " " }),
+            "(",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "name" }),
+            ", ",
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "comma" }),
+            ")",
+            `{,4}`
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "trim-divider" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: " " }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "=" }),
@@ -23878,8 +23890,7 @@ var require_index_001 = __commonJS({
             ] }),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-name", children: "john" })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-comment", children: "# Potentially computationally expensive, use with care" }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-comment", children: "# Do not use in circular patterns" }) })
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "syntax-comment", children: "# Potentially computationally expensive, use with care" }) })
         ] })
       ] });
     }
@@ -24428,7 +24439,7 @@ var require_index_001 = __commonJS({
       const selectedPattern = useSignalValue(
         presenter2.testEditor.selectedPatternBroadcast
       );
-      const canDebug = selectedPattern != null;
+      const canDebug = selectedPattern != null || selectedPattern === "null";
       console.log(selectedPattern);
       function toggleDocumentation() {
         presenter2.toggleDocumentation();
@@ -40178,4 +40189,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-D6Lp5JF-.js.map
+//# sourceMappingURL=index-DPl60mrO.js.map
