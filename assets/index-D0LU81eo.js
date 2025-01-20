@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DPl60mrO.js"(exports, module) {
+  "assets/index-D0LU81eo.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -24440,7 +24440,6 @@ var require_index_001 = __commonJS({
         presenter2.testEditor.selectedPatternBroadcast
       );
       const canDebug = selectedPattern != null || selectedPattern === "null";
-      console.log(selectedPattern);
       function toggleDocumentation() {
         presenter2.toggleDocumentation();
       }
@@ -39355,7 +39354,6 @@ ${escapeText(this.code(index, length))}
         this._pendingDirectoryCreation = new Signal(null);
         this._pendingFileRenaming = new Signal(null);
         this._pendingDirectoryRenaming = new Signal(null);
-        this._fileSystem.upgradeStorage();
       }
       get directoryBroadcast() {
         return this._directory.broadcast;
@@ -39640,18 +39638,6 @@ ${escapeText(this.code(index, length))}
           this._storage.setItem(META_KEY, JSON.stringify(meta, replacer));
         }
         return this._normalizeMetaData(meta);
-      }
-      upgradeStorage() {
-        const pathRegex = /^\/([a-zA-Z0-9._-]+\/?)*[a-zA-Z0-9._-]*$/;
-        for (let x = 0; x < this._storage.length; x++) {
-          const key = this._storage.key(x);
-          if (key != null && pathRegex.test(key)) {
-            const value2 = this._storage.getItem(key);
-            if (value2 != null) {
-              this.writeFile(key, value2);
-            }
-          }
-        }
       }
       _normalizeMetaData(metaData) {
         this._walkDown(metaData, (item, parent) => {
@@ -40189,4 +40175,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DPl60mrO.js.map
+//# sourceMappingURL=index-D0LU81eo.js.map
