@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-D0LU81eo.js"(exports, module) {
+  "assets/index-BNmicxIq.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -26963,9 +26963,23 @@ var require_index_001 = __commonJS({
         return this._pattern;
       }
       _findPattern() {
+        let pattern2 = this._parent;
+        while (pattern2 != null) {
+          if (pattern2.type !== "context") {
+            pattern2 = pattern2.parent;
+            continue;
+          }
+          const foundPattern = findPattern(pattern2, (pattern3) => {
+            return pattern3.name === this._name && pattern3.type !== "reference" && pattern3.type !== "context";
+          });
+          if (foundPattern != null) {
+            return foundPattern;
+          }
+          pattern2 = pattern2.parent;
+        }
         const root2 = this._getRoot();
-        return findPattern(root2, (pattern2) => {
-          return pattern2.name === this._name && pattern2.type !== "reference";
+        return findPattern(root2, (pattern3) => {
+          return pattern3.name === this._name && pattern3.type !== "reference" && pattern3.type !== "context";
         });
       }
       _getRoot() {
@@ -28550,6 +28564,76 @@ var require_index_001 = __commonJS({
       }
       return furthestOptions;
     }
+    let contextId = 0;
+    class Context {
+      get id() {
+        return this._id;
+      }
+      get type() {
+        return this._type;
+      }
+      get name() {
+        return this._name;
+      }
+      get parent() {
+        return this._parent;
+      }
+      set parent(pattern2) {
+        this._parent = pattern2;
+      }
+      get children() {
+        return this._children;
+      }
+      constructor(name2, pattern2, context = []) {
+        this._id = `context-${contextId++}`;
+        this._type = "context";
+        this._name = name2;
+        this._parent = null;
+        const clonedContext = context.map((p) => p.clone());
+        const clonedPattern = pattern2.clone();
+        clonedContext.forEach((p) => p.parent = this);
+        clonedPattern.parent = this;
+        this._pattern = clonedPattern;
+        this._children = [...clonedContext, clonedPattern];
+      }
+      parse(cursor) {
+        return this._pattern.parse(cursor);
+      }
+      exec(text, record) {
+        return this._pattern.exec(text, record);
+      }
+      test(text, record) {
+        return this._pattern.test(text, record);
+      }
+      clone(name2 = this._name) {
+        const clone = new Context(name2, this._pattern, this._children.slice(0, -1));
+        return clone;
+      }
+      getTokens() {
+        return this._pattern.getTokens();
+      }
+      getTokensAfter(childReference) {
+        return this._pattern.getTokensAfter(childReference);
+      }
+      getNextTokens() {
+        return this._pattern.getNextTokens();
+      }
+      getPatterns() {
+        return this._pattern.getPatterns();
+      }
+      getPatternsAfter(childReference) {
+        return this._pattern.getPatternsAfter(childReference);
+      }
+      getNextPatterns() {
+        return this._pattern.getNextPatterns();
+      }
+      find(predicate) {
+        return this._pattern.find(predicate);
+      }
+      isEqual(pattern2) {
+        return pattern2.type === this.type && this.children.every((c, index) => c.isEqual(pattern2.children[index]));
+      }
+    }
     let anonymousIndexId = 0;
     const patternNodes = {
       "literal": true,
@@ -28604,8 +28688,16 @@ var require_index_001 = __commonJS({
           const ast = this._tryToParse(expression);
           yield this._resolveImports(ast);
           this._buildPatterns(ast);
-          return Object.fromEntries(this._parseContext.patternsByName);
+          return this._buildPatternRecord();
         });
+      }
+      _buildPatternRecord() {
+        const patterns = {};
+        const allPatterns = Array.from(this._parseContext.patternsByName.values());
+        allPatterns.forEach((p) => {
+          patterns[p.name] = new Context(p.name, p, allPatterns.filter((o) => o !== p));
+        });
+        return patterns;
       }
       parseString(expression) {
         this._parseContext = new ParseContext(this._params);
@@ -28614,7 +28706,7 @@ var require_index_001 = __commonJS({
           throw new Error("Cannot use imports on parseString, use parse instead.");
         }
         this._buildPatterns(ast);
-        return Object.fromEntries(this._parseContext.patternsByName);
+        return this._buildPatternRecord();
       }
       _tryToParse(expression) {
         const { ast, cursor, options, isComplete } = this._autoComplete.suggestFor(expression);
@@ -38781,7 +38873,11 @@ ${escapeText(this.code(index, length))}
         this._editor = new Quill(element, {
           theme: "snow",
           modules: {
-            toolbar: false
+            toolbar: false,
+            clipboard: {
+              matchers: [],
+              matchVisual: false
+            }
           }
         });
         this.editor.setText(this._defaultText);
@@ -38860,22 +38956,26 @@ ${escapeText(this.code(index, length))}
           this.textEditor.clearFormatting();
           const text = this.textEditor.getText();
           const startTime = performance.now();
-          const { ast, cursor } = editorPattern.exec(text);
-          const parseDuration = performance.now() - startTime;
-          console.log("Test Parse Time: ", parseDuration);
-          if (ast != null) {
-            const rootAst = ast.children[0];
-            this._ast.set(rootAst.toJson(2));
-          } else {
-            this._ast.set("");
-            if (cursor.furthestError != null) {
-              const { endIndex: startIndex } = cursor.furthestError;
-              const endIndex = cursor.length;
-              this.textEditor.syntaxHighlight(startIndex, endIndex, "syntax-error");
-              console.log(startIndex);
+          try {
+            const { ast, cursor } = editorPattern.exec(text);
+            const parseDuration = performance.now() - startTime;
+            console.log("Test Parse Time: ", parseDuration);
+            if (ast != null) {
+              const rootAst = ast.children[0];
+              this._ast.set(rootAst.toJson(2));
             } else {
-              this.textEditor.syntaxHighlight(0, cursor.length, "syntax-error");
+              this._ast.set("");
+              if (cursor.furthestError != null) {
+                const { endIndex: startIndex } = cursor.furthestError;
+                const endIndex = cursor.length;
+                this.textEditor.syntaxHighlight(startIndex, endIndex, "syntax-error");
+                console.log(startIndex);
+              } else {
+                this.textEditor.syntaxHighlight(0, cursor.length, "syntax-error");
+              }
             }
+          } catch (e) {
+            console.log(e);
           }
         }
       }
@@ -39020,8 +39120,8 @@ ${escapeText(this.code(index, length))}
           this._allPatterns = allPatterns;
           this._processCursorToPattern();
           this._onGrammarProcess(allPatterns);
-        } catch (_) {
-          console.log("Bad Grammar");
+        } catch (e) {
+          console.log(e);
         }
         if (text === "") {
           this._allPatterns = {};
@@ -40175,4 +40275,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-D0LU81eo.js.map
+//# sourceMappingURL=index-BNmicxIq.js.map
