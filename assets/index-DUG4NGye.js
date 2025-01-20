@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-BIt8DA9z.js"(exports, module) {
+  "assets/index-DUG4NGye.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -25906,7 +25906,7 @@ var require_index_001 = __commonJS({
             return diagram2;
           }
           case "context": {
-            return this._buildPattern(pattern2.children[pattern2.children.length - 1]);
+            return this._buildDiagram(pattern2.children[pattern2.children.length - 1]);
           }
           case "reference": {
             const diagram2 = new Diagram(new Group(this._buildPattern(pattern2), pattern2.name));
@@ -40288,4 +40288,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BIt8DA9z.js.map
+//# sourceMappingURL=index-DUG4NGye.js.map
