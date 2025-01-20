@@ -59,6 +59,19 @@ export class FileSystem {
         return this._normalizeMetaData(meta);
     }
 
+    upgradeStorage() {
+        const pathRegex = /^\/([a-zA-Z0-9._-]+\/?)*[a-zA-Z0-9._-]*$/;
+        for (let x = 0; x < this._storage.length; x++) {
+            const key = this._storage.key(x);
+            if (key != null && pathRegex.test(key)) {
+                const value = this._storage.getItem(key);
+                if (value != null) {
+                    this.writeFile(key, value);
+                }
+            }
+        }
+    }
+
     private _normalizeMetaData(metaData: DirectoryMeta) {
         this._walkDown(metaData, (item, parent) => {
             item.parent = parent;

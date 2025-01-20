@@ -27,7 +27,7 @@ export function App({ presenter }: AppProps) {
   const selectedPattern = useSignalValue(
     presenter.testEditor.selectedPatternBroadcast
   );
-  const canDebug = selectedPattern != null;
+  const canDebug = selectedPattern != null || selectedPattern === "null";
 
   console.log(selectedPattern);
   function toggleDocumentation() {

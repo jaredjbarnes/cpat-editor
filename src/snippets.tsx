@@ -192,6 +192,14 @@ function Repeat() {
           {`{2,4}`}
         </div>
         <div>
+          <span className="syntax-name">no-more-than-four-entries</span>
+          <span> </span>
+          <span>=</span>
+          <span> </span>
+          (<span className="syntax-name">name</span>, <span className="syntax-name">comma</span>)
+          {`{,4}`}
+        </div>
+        <div>
           <span className="syntax-name">trim-divider</span>
           <span> </span>
           <span>=</span>
@@ -366,9 +374,6 @@ function GreedyOptions() {
 
         <div>
           <span className="syntax-comment"># Potentially computationally expensive, use with care</span>
-        </div>
-        <div>
-          <span className="syntax-comment"># Do not use in circular patterns</span>
         </div>
       </div>
     </VStack>

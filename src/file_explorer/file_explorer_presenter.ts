@@ -85,6 +85,7 @@ export class FileExplorerPresenter {
         this._pendingDirectoryCreation = new Signal<DirectoryCreation | null>(null);
         this._pendingFileRenaming = new Signal<FileRenaming | null>(null);
         this._pendingDirectoryRenaming = new Signal<DirectoryRenaming | null>(null);
+        this._fileSystem.upgradeStorage();
     }
 
     async initialize() {
