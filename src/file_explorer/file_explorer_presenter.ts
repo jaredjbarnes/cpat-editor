@@ -3,6 +3,7 @@ import { FileSystem, ItemMeta } from "./file_system.ts";
 import { FileCreation } from "./file_creation.ts";
 import { DirectoryCreation } from "./directory_creation.ts";
 import { FileRenaming } from "./file_renaming.ts";
+import { DirectoryRenaming } from "./directory_renaming.ts";
 
 export interface File {
     type: 'file';
@@ -35,6 +36,7 @@ export class FileExplorerPresenter {
     private _pendingFileCreation: Signal<FileCreation | null>;
     private _pendingDirectoryCreation: Signal<DirectoryCreation | null>;
     private _pendingFileRenaming: Signal<FileRenaming | null>;
+    private _pendingDirectoryRenaming: Signal<DirectoryRenaming | null>;
 
     get directoryBroadcast() {
         return this._directory.broadcast;
@@ -60,6 +62,10 @@ export class FileExplorerPresenter {
         return this._pendingFileRenaming.broadcast;
     }
 
+    get pendingDirectoryRenamingBroadcast() {
+        return this._pendingDirectoryRenaming.broadcast;
+    }
+
     constructor(options: FileExplorerOptions) {
         this._fileSystem = options.fileSystem;
         this._onPathFocus = options.onPathFocus;
@@ -78,6 +84,7 @@ export class FileExplorerPresenter {
         this._pendingFileCreation = new Signal<FileCreation | null>(null);
         this._pendingDirectoryCreation = new Signal<DirectoryCreation | null>(null);
         this._pendingFileRenaming = new Signal<FileRenaming | null>(null);
+        this._pendingDirectoryRenaming = new Signal<DirectoryRenaming | null>(null);
     }
 
     async initialize() {
@@ -263,6 +270,17 @@ export class FileExplorerPresenter {
             this._pendingDirectoryCreation.set(null);
             await this.refresh();
             this.focus(path);
+        }));
+    }
+
+    startRenamingDirectory(filePath: string) {
+        this._pendingDirectoryRenaming.set(new DirectoryRenaming(filePath, this._fileSystem, async (filePath: string) => {
+            this._pendingDirectoryRenaming.set(null);
+            await this.refresh();
+            this.focus(filePath);
+        }, async () => {
+            this._pendingDirectoryRenaming.set(null);
+            await this.refresh();
         }));
     }
 

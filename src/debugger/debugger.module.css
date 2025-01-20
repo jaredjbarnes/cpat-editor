@@ -4,8 +4,18 @@
   border-block-end: 1px solid var(--border-primary-color);
 }
 
+.playback-speed {
+  height: 40px;
+  width: 200px;
+  border-radius: 25px;
+  box-shadow: var(--raised-box-shadow);
+  background-color: var(--surface-secondary-color);
+  padding: 8px;
+  pointer-events: auto;
+}
+
 :global(.move),
-:global(.error), 
+:global(.error),
 :global(.match) {
   fill: white;
 }
@@ -19,5 +29,5 @@
 }
 
 :global(.match) > rect {
-  fill: #67c71e  !important;
+  fill: #67c71e !important;
 }

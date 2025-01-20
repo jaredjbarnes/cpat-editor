@@ -11,12 +11,16 @@ export class DebuggerPresenter {
     private _onStep: Signal<number>;
     private _tickId: number;
     private _isPlaying: Signal<boolean>;
+    private _playbackSpeed: Signal<number>;
     readonly diagramPresenter: DiagramPresenter;
     readonly textEditorPresenter: TextEditorPresenter;
 
-
     get isPlayingBroadcast() {
         return this._isPlaying.broadcast;
+    }
+
+    get playbackSpeedBroadcast() {
+        return this._playbackSpeed.broadcast;
     }
 
     constructor(text: string, pattern: Pattern) {
@@ -25,6 +29,7 @@ export class DebuggerPresenter {
         this._steps = [];
         this._tickId = 0;
         this._isPlaying = new Signal(false);
+        this._playbackSpeed = new Signal(500);
         this.diagramPresenter = new DiagramPresenter();
         this.textEditorPresenter = new TextEditorPresenter();
 
@@ -67,9 +72,11 @@ export class DebuggerPresenter {
         }
     }
 
-
-
     play() {
+        if (this._onStep.get() === this._steps.length - 1) {
+            this._onStep.set(0);
+        }
+
         this.stop();
         this._isPlaying.set(true);
         this._tickId = window.setInterval(() => {
@@ -78,7 +85,7 @@ export class DebuggerPresenter {
             } else {
                 this.stop();
             }
-        }, 300);
+        }, this._playbackSpeed.get());
     }
 
     stop() {
@@ -173,5 +180,15 @@ export class DebuggerPresenter {
             }
         }
 
+    }
+
+    setPlaybackSpeed(value: number) {
+        if (this._isPlaying.get()) {
+            this.stop();
+            this._playbackSpeed.set(value);
+            this.play();
+            return;
+        }
+        this._playbackSpeed.set(value);
     }
 }

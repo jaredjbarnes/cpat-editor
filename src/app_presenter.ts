@@ -21,6 +21,8 @@ export class AppPresenter {
         return this._isDocumentationOpen.broadcast;
     }
 
+
+
     constructor() {
         this._fileSystem = new FileSystem();
         this._currentPath = null;
@@ -48,6 +50,7 @@ export class AppPresenter {
         this.fileExplorer = new FileExplorerPresenter({
             fileSystem: this._fileSystem,
             onPathFocus: async (path, oldPath) => {
+                this.testEditor.selectPattern(null);
                 this._currentPath = path;
 
                 if (oldPath != null) {
@@ -97,8 +100,6 @@ export class AppPresenter {
         if (pattern != null) {
             const presenter = new DebuggerPresenter(this.testEditor.textEditor.getText(), pattern);
             this.debuggerPresenter.set(presenter);
-        } else {
-            alert("Select a pattern to debug.");
         }
     }
 

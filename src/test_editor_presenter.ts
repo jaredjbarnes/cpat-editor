@@ -85,7 +85,7 @@ export class TestEditorPresenter {
         this._process();
     }
 
-    selectPattern(name: string) {
+    selectPattern(name: string | null) {
         this._selectedPattern.set(name);
         this._process();
     }
