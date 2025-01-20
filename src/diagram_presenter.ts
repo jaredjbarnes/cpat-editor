@@ -43,90 +43,96 @@ export class DiagramPresenter {
     constructor() {
         this._patterns = new Signal({});
         this._viewingPatterns = new Signal<Pattern[]>([]);
-        this._diagrams = new Signal<Diagram[]>(this._buildDiagram([]));
+        this._diagrams = new Signal<Diagram[]>(this._buildDiagrams([]));
         this._classNames = new Map();
         this._expandedPatternPaths = new Map();
         this._focusNodePath = new Signal<string | null>(null);
     }
 
-    private _buildDiagram(patterns: Pattern[]) {
-        return patterns.map((pattern: Pattern) => {
-            switch (pattern.type) {
-                case "literal": {
-                    const diagram = new Diagram(new Group(this._buildPattern(pattern), pattern.name));
-                    diagram.attrs.id = pattern.id;
+    private _buildDiagram(pattern: Pattern){
+        switch (pattern.type) {
+            case "literal": {
+                const diagram = new Diagram(new Group(this._buildPattern(pattern), pattern.name));
+                diagram.attrs.id = pattern.id;
 
-                    return diagram;
-                }
-                case "regex": {
-                    const diagram = new Diagram(new Group(`/${(pattern as Regex).regex}/`, pattern.name));
-                    diagram.attrs.id = pattern.id;
-
-                    return diagram;
-                }
-                case "not": {
-                    const diagram = new Diagram(new Group(this._buildPattern(pattern), pattern.name));
-                    diagram.attrs.id = pattern.id;
-
-                    return diagram;
-                }
-                case "optional": {
-                    const diagram = new Diagram(new Group(this._buildPattern(pattern), pattern.name));
-                    diagram.attrs.id = pattern.id;
-
-                    return diagram;
-                }
-                case "options": {
-                    const children = pattern.children.map(p => this._buildPattern(p));
-                    const options = new Choice(0, ...children);
-                    options.attrs.id = pattern.id;
-
-                    const diagram = new Diagram(new Group(options, pattern.name));
-                    diagram.attrs.id = pattern.id;
-
-                    return diagram;
-                }
-                case "reference": {
-                    const diagram = new Diagram(new Group(this._buildPattern(pattern), pattern.name));
-                    diagram.attrs.id = pattern.id;
-
-                    return diagram;
-                }
-                case "sequence": {
-                    const children = pattern.children.map(p => this._buildPattern(p));
-                    const sequence = new Sequence(...children);
-                    sequence.attrs.id = pattern.id;
-
-                    const diagram = new Diagram(new Group(sequence, pattern.name));
-                    diagram.attrs.id = pattern.id;
-
-                    return diagram;
-                }
-                case "finite-repeat": {
-                    const children = pattern.children[0].children.map(p => this._buildPattern(p));
-                    const repeat = new OneOrMore(...children);
-                    repeat.attrs.id = pattern.id;
-
-                    const diagram = new Diagram(new Group(repeat, pattern.name));
-                    diagram.attrs.id = pattern.id;
-
-                    return diagram;
-                }
-                case "infinite-repeat": {
-                    const children = pattern.children[0].children.map(p => this._buildPattern(p));
-                    const repeat = new OneOrMore(...children);
-                    repeat.attrs.id = pattern.id;
-
-                    const diagram = new Diagram(new Group(repeat, pattern.name));
-                    diagram.attrs.id = pattern.id;
-
-                    return diagram;
-                }
+                return diagram;
             }
+            case "regex": {
+                const diagram = new Diagram(new Group(`/${(pattern as Regex).regex}/`, pattern.name));
+                diagram.attrs.id = pattern.id;
 
-            throw new Error("Unknown pattern.");
+                return diagram;
+            }
+            case "not": {
+                const diagram = new Diagram(new Group(this._buildPattern(pattern), pattern.name));
+                diagram.attrs.id = pattern.id;
+
+                return diagram;
+            }
+            case "optional": {
+                const diagram = new Diagram(new Group(this._buildPattern(pattern), pattern.name));
+                diagram.attrs.id = pattern.id;
+
+                return diagram;
+            }
+            case "options": {
+                const children = pattern.children.map(p => this._buildPattern(p));
+                const options = new Choice(0, ...children);
+                options.attrs.id = pattern.id;
+
+                const diagram = new Diagram(new Group(options, pattern.name));
+                diagram.attrs.id = pattern.id;
+
+                return diagram;
+            }
+            case "context": {
+                return this._buildPattern(pattern.children[pattern.children.length - 1]);
+            }
+            case "reference": {
+                const diagram = new Diagram(new Group(this._buildPattern(pattern), pattern.name));
+                diagram.attrs.id = pattern.id;
+
+                return diagram;
+            }
+            case "sequence": {
+                const children = pattern.children.map(p => this._buildPattern(p));
+                const sequence = new Sequence(...children);
+                sequence.attrs.id = pattern.id;
+
+                const diagram = new Diagram(new Group(sequence, pattern.name));
+                diagram.attrs.id = pattern.id;
+
+                return diagram;
+            }
+            case "finite-repeat": {
+                const children = pattern.children[0].children.map(p => this._buildPattern(p));
+                const repeat = new OneOrMore(...children);
+                repeat.attrs.id = pattern.id;
+
+                const diagram = new Diagram(new Group(repeat, pattern.name));
+                diagram.attrs.id = pattern.id;
+
+                return diagram;
+            }
+            case "infinite-repeat": {
+                const children = pattern.children[0].children.map(p => this._buildPattern(p));
+                const repeat = new OneOrMore(...children);
+                repeat.attrs.id = pattern.id;
+
+                const diagram = new Diagram(new Group(repeat, pattern.name));
+                diagram.attrs.id = pattern.id;
+
+                return diagram;
+            }
+        }
+
+        throw new Error("Unknown pattern.");
+    }
+
+    private _buildDiagrams(patterns: Pattern[]) {
+        return patterns.map((pattern: Pattern) => {
+            return this._buildDiagram(pattern);
         });
-
     }
 
     private _buildPattern(pattern: Pattern): any {
@@ -236,6 +242,9 @@ export class DiagramPresenter {
                     return terminal;
                 }
             }
+            case "context": {
+                return this._buildPattern(pattern.children[pattern.children.length - 1]);
+            }
             case "reference": {
                 const path = generatePath(pattern);
 
@@ -327,24 +336,24 @@ export class DiagramPresenter {
 
     selectPattern(patterns: Pattern[]) {
         this._viewingPatterns.set(patterns);
-        this._diagrams.set(this._buildDiagram(patterns));
+        this._diagrams.set(this._buildDiagrams(patterns));
     }
 
     setClass(customClass: CustomClass) {
         this._classNames.set(customClass.patternPath, customClass.className);
-        this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+        this._diagrams.set(this._buildDiagrams(this._viewingPatterns.get()));
     }
 
     setClasses(customClasses: CustomClass[]) {
         customClasses.forEach(customClass => {
             this._classNames.set(customClass.patternPath, customClass.className);
         });
-        this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+        this._diagrams.set(this._buildDiagrams(this._viewingPatterns.get()));
     }
 
     clearClasses() {
         this._classNames.clear();
-        this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+        this._diagrams.set(this._buildDiagrams(this._viewingPatterns.get()));
     }
 
     expandPatternPath(patternPath: string) {
@@ -354,19 +363,19 @@ export class DiagramPresenter {
             this._expandedPatternPaths.set(path, true);
         }
 
-        this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+        this._diagrams.set(this._buildDiagrams(this._viewingPatterns.get()));
     }
 
     collapsePatternPath(patternPath: string) {
         this._expandedPatternPaths.set(patternPath, false);
-        this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+        this._diagrams.set(this._buildDiagrams(this._viewingPatterns.get()));
     }
 
     togglePatternPath(patternPath: string) {
         const currentValue = Boolean(this._expandedPatternPaths.get(patternPath));
         this._expandedPatternPaths.set(patternPath, !currentValue);
 
-        this._diagrams.set(this._buildDiagram(this._viewingPatterns.get()));
+        this._diagrams.set(this._buildDiagrams(this._viewingPatterns.get()));
     }
 
     focusPath(path: string) {
