@@ -86,7 +86,7 @@ export class DiagramPresenter {
                 return diagram;
             }
             case "context": {
-                return this._buildPattern(pattern.children[pattern.children.length - 1]);
+                return this._buildDiagram(pattern.children[pattern.children.length - 1]);
             }
             case "reference": {
                 const diagram = new Diagram(new Group(this._buildPattern(pattern), pattern.name));
