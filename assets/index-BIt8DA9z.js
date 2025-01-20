@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DczUf5tX.js"(exports, module) {
+  "assets/index-BIt8DA9z.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -26978,9 +26978,7 @@ var require_index_001 = __commonJS({
             pattern2 = pattern2.parent;
             continue;
           }
-          const foundPattern = findPattern(pattern2, (pattern3) => {
-            return pattern3.name === this._name && pattern3.type !== "reference" && pattern3.type !== "context";
-          });
+          const foundPattern = pattern2.getPatternWithinContext(this.name);
           if (foundPattern != null) {
             return foundPattern;
           }
@@ -28593,17 +28591,23 @@ var require_index_001 = __commonJS({
       get children() {
         return this._children;
       }
+      getPatternWithinContext(name2) {
+        return this._patterns[name2] || null;
+      }
+      getPatternsWithinContext() {
+        return Object.assign({}, this._patterns);
+      }
       constructor(name2, pattern2, context = []) {
         this._id = `context-${contextId++}`;
         this._type = "context";
         this._name = name2;
         this._parent = null;
-        const clonedContext = context.map((p) => p.clone());
+        this._patterns = {};
         const clonedPattern = pattern2.clone();
-        clonedContext.forEach((p) => p.parent = this);
+        context.forEach((p) => this._patterns[p.name] = p);
         clonedPattern.parent = this;
         this._pattern = clonedPattern;
-        this._children = [...clonedContext, clonedPattern];
+        this._children = [clonedPattern];
       }
       parse(cursor) {
         return this._pattern.parse(cursor);
@@ -28615,7 +28619,7 @@ var require_index_001 = __commonJS({
         return this._pattern.test(text, record);
       }
       clone(name2 = this._name) {
-        const clone = new Context(name2, this._pattern, this._children.slice(0, -1));
+        const clone = new Context(name2, this._pattern, Object.values(this._patterns));
         return clone;
       }
       getTokens() {
@@ -40284,4 +40288,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DczUf5tX.js.map
+//# sourceMappingURL=index-BIt8DA9z.js.map
