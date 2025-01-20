@@ -3554,8 +3554,18 @@ svg.railroad-diagram path {
   border-block-end: 1px solid var(--border-primary-color);
 }
 
+._playback-speed_c8aa5c2 {
+  height: 40px;
+  width: 200px;
+  border-radius: 25px;
+  box-shadow: var(--raised-box-shadow);
+  background-color: var(--surface-secondary-color);
+  padding: 8px;
+  pointer-events: auto;
+}
+
 .move,
-.error, 
+.error,
 .match {
   fill: white;
 }
@@ -3569,7 +3579,7 @@ svg.railroad-diagram path {
 }
 
 .match > rect {
-  fill: #67c71e  !important;
+  fill: #67c71e !important;
 }
 svg.railroad-diagram {
     

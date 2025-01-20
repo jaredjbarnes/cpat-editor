@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-CZFlCYiQ.js"(exports, module) {
+  "assets/index-D6Lp5JF-.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -8899,7 +8899,7 @@ var require_index_001 = __commonJS({
     });
     const slider = `_slider_dd8d708`;
     const styles$H = { slider };
-    React.forwardRef(function Slider2({ style, className, width, onChange, ...props }, ref) {
+    const Slider$1 = React.forwardRef(function Slider2({ style, className, width, onChange, ...props }, ref) {
       return React.createElement("input", { type: "range", className: classNames(className, styles$H.slider), "data-is-disabled": props.disabled || false, ref, onChange: (e) => {
         onChange && onChange(e.currentTarget.value, e);
       }, ...props, style: { width, ...style } });
@@ -24140,19 +24140,72 @@ var require_index_001 = __commonJS({
     const styles$1 = { "directory-item": directoryItem };
     const SvgChevronDown = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "1em", height: "1em", viewBox: "0 0 24 24", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg", ...props }, /* @__PURE__ */ reactExports.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M5.46967 8.46967C5.76256 8.17678 6.23744 8.17678 6.53033 8.46967L12 13.9393L17.4697 8.46967C17.7626 8.17678 18.2374 8.17678 18.5303 8.46967C18.8232 8.76256 18.8232 9.23744 18.5303 9.53033L12.5303 15.5303C12.2374 15.8232 11.7626 15.8232 11.4697 15.5303L5.46967 9.53033C5.17678 9.23744 5.17678 8.76256 5.46967 8.46967Z" }));
     const SvgChevronRight = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "1em", height: "1em", viewBox: "0 0 24 24", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg", ...props }, /* @__PURE__ */ reactExports.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M9.46967 5.46967C9.76256 5.17678 10.2374 5.17678 10.5303 5.46967L16.5303 11.4697C16.8232 11.7626 16.8232 12.2374 16.5303 12.5303L10.5303 18.5303C10.2374 18.8232 9.76256 18.8232 9.46967 18.5303C9.17678 18.2374 9.17678 17.7626 9.46967 17.4697L14.9393 12L9.46967 6.53033C9.17678 6.23744 9.17678 5.76256 9.46967 5.46967Z" }));
+    function PendingDirectoryRenaming({ presenter: presenter2 }) {
+      const inputRef = reactExports.useRef(null);
+      const name2 = useSignalValue(presenter2.nameBroadcast);
+      const error = useSignalValue(presenter2.errorBroadcast);
+      function checkForEnter(event) {
+        if (event.key === "Enter") {
+          presenter2.commit();
+        } else if (event.key === "Escape") {
+          presenter2.abort();
+        }
+      }
+      function updateName(value2) {
+        presenter2.updateName(value2);
+      }
+      function abort() {
+        presenter2.abort();
+      }
+      reactExports.useEffect(() => {
+        const input2 = inputRef.current;
+        if (input2 != null) {
+          input2.focus();
+        }
+      }, []);
+      const padding2 = (presenter2.directory.split("/").length + 2) * 5;
+      return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        VStack,
+        {
+          height: "auto",
+          gap: "8px",
+          paddingInlineStart: `${padding2}px`,
+          paddingBlock: "6px 6px",
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Input$1,
+              {
+                ref: inputRef,
+                value: name2,
+                onKeyDown: checkForEnter,
+                onChange: updateName,
+                onBlur: abort
+              }
+            ),
+            error && /* @__PURE__ */ jsxRuntimeExports.jsx(BodyText, { color: "var(--default-error-color)", children: error })
+          ]
+        }
+      );
+    }
     function DirectoryItem({ directory, presenter: presenter2 }) {
       const focusedItem = useSignalValue(presenter2.focusedItemBroadcast);
+      const renamingDirectoryPath = useSignalValue(
+        presenter2.pendingDirectoryRenamingBroadcast
+      );
       const isFocused = directory.path === (focusedItem == null ? void 0 : focusedItem.path);
       const [isContextMenuOpen, setContextMenuOpen] = reactExports.useState(false);
       const [position, setPosition] = reactExports.useState(null);
       const openMap = useSignalValue(presenter2.openDirectoriesBroadcast);
-      const pendingFileCreation = useSignalValue(presenter2.pendingFileCreationBroadcast);
+      const pendingFileCreation = useSignalValue(
+        presenter2.pendingFileCreationBroadcast
+      );
       const pendingDirectoryCreation = useSignalValue(
         presenter2.pendingDirectoryCreationBroadcast
       );
       const isPending = pendingDirectoryCreation != null || pendingFileCreation != null;
       const isOpen = openMap.get(directory.path);
       const path = directory.path;
+      const isRenaming = (renamingDirectoryPath == null ? void 0 : renamingDirectoryPath.directoryPath) === directory.path;
       const children = directory.items.map((i, index) => {
         if (i.type === "directory") {
           return /* @__PURE__ */ jsxRuntimeExports.jsx(DirectoryItem, { directory: i, presenter: presenter2 }, index);
@@ -24161,7 +24214,9 @@ var require_index_001 = __commonJS({
         }
       });
       if (pendingFileCreation != null && pendingFileCreation.directory === directory.path) {
-        children.unshift(/* @__PURE__ */ jsxRuntimeExports.jsx(PendingFileCreation, { presenter: pendingFileCreation }, -1));
+        children.unshift(
+          /* @__PURE__ */ jsxRuntimeExports.jsx(PendingFileCreation, { presenter: pendingFileCreation }, -1)
+        );
       }
       if (pendingDirectoryCreation != null && pendingDirectoryCreation.directory === directory.path) {
         children.unshift(
@@ -24182,8 +24237,11 @@ var require_index_001 = __commonJS({
       function close() {
         setContextMenuOpen(false);
       }
-      function deleteFile() {
-        presenter2.deleteFile(directory.path);
+      function deleteDirectory() {
+        presenter2.deleteDirectory(directory.path);
+      }
+      function renameDirectory() {
+        presenter2.startRenamingDirectory(directory.path);
       }
       reactExports.useLayoutEffect(() => {
         if (isPending) {
@@ -24191,6 +24249,9 @@ var require_index_001 = __commonJS({
         }
       }, [isPending, presenter2, path]);
       const padding2 = path.split("/").length * 5;
+      if (isRenaming) {
+        return /* @__PURE__ */ jsxRuntimeExports.jsx(PendingDirectoryRenaming, { presenter: renamingDirectoryPath });
+      }
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           HStack,
@@ -24202,13 +24263,26 @@ var require_index_001 = __commonJS({
             className: styles$1["directory-item"],
             paddingInlineStart: `${padding2}px`,
             children: [
-              isOpen ? /* @__PURE__ */ jsxRuntimeExports.jsx(SvgChevronDown, { className: `${styles$7["icon"]} ${styles$7["black"]}` }) : /* @__PURE__ */ jsxRuntimeExports.jsx(SvgChevronRight, { className: `${styles$7["icon"]} ${styles$7["black"]}` }),
+              isOpen ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+                SvgChevronDown,
+                {
+                  className: `${styles$7["icon"]} ${styles$7["black"]}`
+                }
+              ) : /* @__PURE__ */ jsxRuntimeExports.jsx(
+                SvgChevronRight,
+                {
+                  className: `${styles$7["icon"]} ${styles$7["black"]}`
+                }
+              ),
               /* @__PURE__ */ jsxRuntimeExports.jsx(BodyText, { variant: "large", children: directory.name })
             ]
           }
         ),
         isOpen && /* @__PURE__ */ jsxRuntimeExports.jsx(VStack, { height: "auto", children }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(ContextMenu, { open: isContextMenuOpen, position, onClose: close, children: /* @__PURE__ */ jsxRuntimeExports.jsx(MenuItem, { label: "Delete", onClick: deleteFile }) })
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(ContextMenu, { open: isContextMenuOpen, position, onClose: close, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(MenuItem, { label: "Delete", onClick: deleteDirectory }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(MenuItem, { label: "Rename", onClick: renameDirectory })
+        ] })
       ] });
     }
     function RootDirectory({ directory, presenter: presenter2 }) {
@@ -24270,9 +24344,11 @@ var require_index_001 = __commonJS({
     }
     const SvgQuestion = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "1em", height: "1em", viewBox: "0 0 24 24", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg", ...props }, /* @__PURE__ */ reactExports.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M12 3.75C7.44365 3.75 3.75 7.44365 3.75 12C3.75 16.5563 7.44365 20.25 12 20.25C16.5563 20.25 20.25 16.5563 20.25 12C20.25 7.44365 16.5563 3.75 12 3.75ZM2.25 12C2.25 6.61522 6.61522 2.25 12 2.25C17.3848 2.25 21.75 6.61522 21.75 12C21.75 17.3848 17.3848 21.75 12 21.75C6.61522 21.75 2.25 17.3848 2.25 12ZM13 16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16C11 15.4477 11.4477 15 12 15C12.5523 15 13 15.4477 13 16ZM10.75 10C10.75 9.30964 11.3096 8.75 12 8.75C12.6904 8.75 13.25 9.30964 13.25 10V10.1213C13.25 10.485 13.1055 10.8338 12.8483 11.091L11.4697 12.4697C11.1768 12.7626 11.1768 13.2374 11.4697 13.5303C11.7626 13.8232 12.2374 13.8232 12.5303 13.5303L13.909 12.1517C14.4475 11.6132 14.75 10.8828 14.75 10.1213V10C14.75 8.48122 13.5188 7.25 12 7.25C10.4812 7.25 9.25 8.48122 9.25 10V10.5C9.25 10.9142 9.58579 11.25 10 11.25C10.4142 11.25 10.75 10.9142 10.75 10.5V10Z" }));
     const debuggerHeader = `_debugger-header_54fa375`;
-    const styles = { "debugger-header": debuggerHeader };
+    const playbackSpeed = `_playback-speed_c8aa5c2`;
+    const styles = { "debugger-header": debuggerHeader, "playback-speed": playbackSpeed };
     function Debugger({ presenter: presenter2, onComplete }) {
       const isPlaying = useSignalValue(presenter2.isPlayingBroadcast);
+      const playbackSpeed2 = 1e3 - useSignalValue(presenter2.playbackSpeedBroadcast) + 300;
       reactExports.useLayoutEffect(() => {
         presenter2.initialize();
       }, [presenter2]);
@@ -24294,6 +24370,10 @@ var require_index_001 = __commonJS({
       function play() {
         presenter2.play();
       }
+      function updatePlaybackSpeed(value2) {
+        const numberValue = Number(value2);
+        presenter2.setPlaybackSpeed(1e3 - numberValue + 300);
+      }
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { zIndex: 2, children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
           HStack,
@@ -24311,7 +24391,16 @@ var require_index_001 = __commonJS({
                 /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: next, children: "Next" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: end, children: "End" })
               ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(HStack, { flex: true, horizontalAlignment: "center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                Slider$1,
+                {
+                  min: "300",
+                  max: "1000",
+                  value: String(playbackSpeed2),
+                  onChange: updatePlaybackSpeed,
+                  style: { pointerEvents: "auto", width: "200px" }
+                }
+              ) }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: onComplete, children: "Close" })
             ]
           }
@@ -24336,6 +24425,11 @@ var require_index_001 = __commonJS({
         presenter2.isDocumentationOpenBroadcast
       );
       const debuggerPresenter = useSignalValue(presenter2.debuggerPresenter);
+      const selectedPattern = useSignalValue(
+        presenter2.testEditor.selectedPatternBroadcast
+      );
+      const canDebug = selectedPattern != null;
+      console.log(selectedPattern);
       function toggleDocumentation() {
         presenter2.toggleDocumentation();
       }
@@ -24351,7 +24445,7 @@ var require_index_001 = __commonJS({
       function closeDebug() {
         presenter2.closeDebugger();
       }
-      return /* @__PURE__ */ jsxRuntimeExports.jsxs(ZStack, { children: [
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(ZStack, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { zIndex: 1, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { zIndex: 2, className: styles$7.toolbar, children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(HStack, { width: "auto", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "8px" }) }),
@@ -24413,6 +24507,7 @@ var require_index_001 = __commonJS({
                       children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                         Button,
                         {
+                          disabled: !canDebug,
                           onClick: showDebug,
                           style: { pointerEvents: "auto" },
                           children: "Debug"
@@ -24437,7 +24532,7 @@ var require_index_001 = __commonJS({
           ] })
         ] }),
         debuggerPresenter && /* @__PURE__ */ jsxRuntimeExports.jsx(Debugger, { presenter: debuggerPresenter, onComplete: closeDebug })
-      ] });
+      ] }) });
     }
     const Options$1 = {
       DEBUG: false,
@@ -39063,15 +39158,15 @@ ${escapeText(this.code(index, length))}
       updateName(value2) {
         this._name.set(value2);
         if (value2.trim().length === 0) {
-          this._error.set("File name cannot be empty.");
+          this._error.set("Directory name cannot be empty.");
           return;
         }
         if (value2.includes(" ")) {
-          this._error.set("Cannot have spaces in file name.");
+          this._error.set("Cannot have spaces in directory name.");
           return;
         }
         if (value2.includes("/")) {
-          this._error.set("Cannot have forward slashes in file name.");
+          this._error.set("Cannot have forward slashes in directory name.");
           return;
         }
         if (value2.includes(".")) {
@@ -39144,7 +39239,73 @@ ${escapeText(this.code(index, length))}
       async commit() {
         if (this._error.get() == null) {
           const newFilePath = this._directory + this._name.get();
-          await this._fileSystem.renameFile(this._originalFilePath, newFilePath);
+          await this._fileSystem.renameFile(this._originalFilePath, this._name.get());
+          this._onComplete(newFilePath);
+        }
+      }
+      async abort() {
+        this._onAbort();
+      }
+    }
+    class DirectoryRenaming {
+      constructor(directoryPath, fileSystem, onComplete, onAbort) {
+        __publicField(this, "_fileSystem");
+        __publicField(this, "_name");
+        __publicField(this, "_error");
+        __publicField(this, "_directory");
+        __publicField(this, "_originalFilePath");
+        __publicField(this, "_onComplete");
+        __publicField(this, "_onAbort");
+        this._fileSystem = fileSystem;
+        this._name = new Signal(this._getDirectoryName(directoryPath));
+        this._originalFilePath = directoryPath;
+        this._directory = this._getParentDirectory(directoryPath);
+        this._error = new Signal(null);
+        this._onComplete = onComplete;
+        this._onAbort = onAbort;
+      }
+      get directory() {
+        return this._directory;
+      }
+      get nameBroadcast() {
+        return this._name.broadcast;
+      }
+      get directoryPath() {
+        return this._originalFilePath;
+      }
+      get errorBroadcast() {
+        return this._error.broadcast;
+      }
+      _getParentDirectory(directoryPath) {
+        return directoryPath.split("/").slice(0, -1).join("/") + "/";
+      }
+      _getDirectoryName(directoryPath) {
+        return directoryPath.split("/").slice(-1)[0];
+      }
+      updateName(value2) {
+        this._name.set(value2);
+        if (value2.trim().length === 0) {
+          this._error.set("Directory name cannot be empty.");
+          return;
+        }
+        if (value2.includes(" ")) {
+          this._error.set("Cannot have spaces in directory name.");
+          return;
+        }
+        if (value2.includes("/")) {
+          this._error.set("Cannot have forward slashes in directory name.");
+          return;
+        }
+        if (value2.includes(".")) {
+          this._error.set("Cannot have periods in there name.");
+          return;
+        }
+        this._error.set(null);
+      }
+      async commit() {
+        if (this._error.get() == null) {
+          const newFilePath = this._directory + this._name.get();
+          await this._fileSystem.renameDirectory(this._originalFilePath, this._name.get());
           this._onComplete(newFilePath);
         }
       }
@@ -39164,13 +39325,14 @@ ${escapeText(this.code(index, length))}
         __publicField(this, "_pendingFileCreation");
         __publicField(this, "_pendingDirectoryCreation");
         __publicField(this, "_pendingFileRenaming");
+        __publicField(this, "_pendingDirectoryRenaming");
         this._fileSystem = options.fileSystem;
         this._onPathFocus = options.onPathFocus;
         this._directory = new Signal({
           type: "directory",
           name: "",
           items: [],
-          path: "/",
+          path: "",
           directory: ""
         });
         this._directories = /* @__PURE__ */ new Map();
@@ -39181,6 +39343,8 @@ ${escapeText(this.code(index, length))}
         this._pendingFileCreation = new Signal(null);
         this._pendingDirectoryCreation = new Signal(null);
         this._pendingFileRenaming = new Signal(null);
+        this._pendingDirectoryRenaming = new Signal(null);
+        this._fileSystem.upgradeStorage();
       }
       get directoryBroadcast() {
         return this._directory.broadcast;
@@ -39200,6 +39364,9 @@ ${escapeText(this.code(index, length))}
       get pendingFileRenamingBroadcast() {
         return this._pendingFileRenaming.broadcast;
       }
+      get pendingDirectoryRenamingBroadcast() {
+        return this._pendingDirectoryRenaming.broadcast;
+      }
       async initialize() {
         await this._updateDirectories();
       }
@@ -39216,7 +39383,11 @@ ${escapeText(this.code(index, length))}
           path: "/",
           items: []
         });
-        await this._fileSystem.walkDirectory((directoryPath, name2, path, isFile) => {
+        await this._fileSystem.walk((itemMeta) => {
+          const path = this._makePathFromMetaData(itemMeta);
+          const name2 = this._fileSystem.getName(path);
+          const directoryPath = this._fileSystem.getDirectoryPath(path);
+          const isFile = itemMeta.type === "file";
           if (path === "/") {
             return;
           }
@@ -39246,11 +39417,11 @@ ${escapeText(this.code(index, length))}
         const rootDirectory = directories.get("/");
         Array.from(directories.values()).forEach((d) => {
           d.items.sort((a, b) => {
-            if (a.path.endsWith("/") && b.path.endsWith("/")) {
+            if (a.type === "directory" && b.type === "directory") {
               return a.name.localeCompare(b.name, void 0, { sensitivity: "base" });
-            } else if (a.path.endsWith("/") && !b.path.endsWith("/")) {
+            } else if (a.type === "directory" && b.type === "file") {
               return -1;
-            } else if (!a.path.endsWith("/") && b.path.endsWith("/")) {
+            } else if (a.type === "file" && b.type === "file") {
               return 1;
             } else {
               return a.name.localeCompare(b.name, void 0, { sensitivity: "base" });
@@ -39263,12 +39434,29 @@ ${escapeText(this.code(index, length))}
         this._directories = directories;
         this._files = files;
       }
+      _makePathFromMetaData(metaData) {
+        if (metaData.parent == null) {
+          return "/";
+        }
+        const parts = [];
+        let item = metaData;
+        parts.unshift(metaData.name);
+        item = metaData.parent;
+        while ((item == null ? void 0 : item.parent) != null) {
+          parts.unshift(item.name);
+          item = item.parent;
+        }
+        const path = "/" + parts.join("/");
+        if (metaData.type === "directory") {
+          return path + "/";
+        }
+        return path;
+      }
       _makeDirectoryFromPath(path) {
-        const pathParts = path.split("/");
         return {
           type: "directory",
-          directory: pathParts.slice(0, -2).join("/") + "/",
-          name: pathParts.slice(-2, -1).join("/"),
+          directory: this._fileSystem.getDirectoryPath(path),
+          name: this._fileSystem.getName(path),
           path,
           items: []
         };
@@ -39333,6 +39521,16 @@ ${escapeText(this.code(index, length))}
           this.focus(path);
         }));
       }
+      startRenamingDirectory(filePath) {
+        this._pendingDirectoryRenaming.set(new DirectoryRenaming(filePath, this._fileSystem, async (filePath2) => {
+          this._pendingDirectoryRenaming.set(null);
+          await this.refresh();
+          this.focus(filePath2);
+        }, async () => {
+          this._pendingDirectoryRenaming.set(null);
+          await this.refresh();
+        }));
+      }
       async createFile(name2, content = "") {
         name2 = name2.endsWith("cpat") ? name2 : `${name2}.cpat`;
         const currentDirectory = this._focusedItem.get();
@@ -39391,172 +39589,331 @@ ${escapeText(this.code(index, length))}
         });
       }
     }
+    function generateGUID() {
+      return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (char) => {
+        const random = Math.random() * 16 | 0;
+        const value2 = char === "x" ? random : random & 3 | 8;
+        return value2.toString(16);
+      });
+    }
+    const META_KEY = "$__File_System__META$";
+    function replacer(key, value2) {
+      if (key === "parent") {
+        return null;
+      }
+      return value2;
+    }
     class FileSystem {
       constructor(storage = window.localStorage) {
         __publicField(this, "_storage");
+        __publicField(this, "_meta");
         this._storage = storage;
+        this._meta = this._getRoot();
+      }
+      _getRoot() {
+        let metaString = this._storage.getItem(META_KEY);
+        let meta = null;
         try {
-          this._getMetadata("/");
-        } catch (_) {
-          this._setMetadata("/", {
-            isFile: false,
-            name: "",
-            path: "/"
-          });
+          if (metaString != null) {
+            meta = JSON.parse(metaString);
+          }
+        } catch {
         }
+        if (meta == null) {
+          meta = {
+            type: "directory",
+            name: "",
+            parent: null,
+            items: []
+          };
+          this._storage.setItem(META_KEY, JSON.stringify(meta, replacer));
+        }
+        return this._normalizeMetaData(meta);
+      }
+      upgradeStorage() {
+        const pathRegex = /^\/([a-zA-Z0-9._-]+\/?)*[a-zA-Z0-9._-]*$/;
+        for (let x = 0; x < this._storage.length; x++) {
+          const key = this._storage.key(x);
+          if (key != null && pathRegex.test(key)) {
+            const value2 = this._storage.getItem(key);
+            if (value2 != null) {
+              this.writeFile(key, value2);
+            }
+          }
+        }
+      }
+      _normalizeMetaData(metaData) {
+        this._walkDown(metaData, (item, parent) => {
+          item.parent = parent;
+        }, this._meta);
+        return metaData;
+      }
+      _walkDown(item, callback, fromDirectory) {
+        callback(item, fromDirectory);
+        if (item.type === "directory") {
+          const directories = [];
+          item.items.forEach((i) => {
+            if (i.type === "file") {
+              this._walkDown(i, callback, item);
+            } else {
+              directories.push(i);
+            }
+          });
+          directories.forEach((d) => this._walkDown(d, callback, item));
+        }
+      }
+      _getMetaDataForPath(path) {
+        if (path.startsWith("/")) {
+          path = path.slice(1);
+        }
+        if (path.endsWith("/")) {
+          path = path.slice(0, -1);
+        }
+        const parts = path.split("/");
+        let directory = this._meta;
+        parts.slice(0, -1).forEach((part) => {
+          const match2 = directory.items.find((i) => i.name === part);
+          if (match2 == null || match2.type === "file") {
+            throw new Error("Not Found");
+          }
+          directory = match2;
+        });
+        const result = directory.items.find((i) => i.name === parts[parts.length - 1]);
+        if (result == null) {
+          throw new Error("Not Found");
+        }
+        return result;
       }
       async isFile(path) {
-        try {
-          return this._getMetadata(path).isFile;
-        } catch (_) {
-          return false;
-        }
+        return this._getMetaDataForPath(path).type === "file";
       }
-      async isDirectory(path) {
+      async hasFile(path) {
         try {
-          return !this._getMetadata(path).isFile;
-        } catch (_) {
+          return await this.isFile(path);
+        } catch {
           return false;
         }
       }
       async readFile(path) {
-        const metadata = this._getMetadata(path);
-        if (!metadata.isFile) {
-          throw new Error(`Path is a Directory.`);
+        const metaData = this._getMetaDataForPath(path);
+        if (metaData.type === "directory") {
+          throw new Error("File Not Found");
         }
-        const content = this._storage.getItem(path);
-        if (content == null) {
-          throw new Error(`File Not Found: ${path}`);
-        }
-        return content;
-      }
-      _getMetadata(path) {
-        const data = this._storage.getItem(this._getMetadataPath(path));
-        if (data == null) {
-          throw new Error(`File Not Found: ${path}`);
-        }
-        try {
-          return JSON.parse(data);
-        } catch (_) {
-          throw new Error(`Corrupt Metadata: ${path}`);
-        }
-      }
-      _getMetadataPath(path) {
-        return `$$Meta$$_${path}`;
+        return this._storage.getItem(metaData.guid) || "";
       }
       async writeFile(path, content) {
-        if (path === "/") {
-          throw new Error("Cannot save a file to the root path.");
+        path = this._normalizeFile(path);
+        const name2 = this.getName(path);
+        const directoryPath = this.getDirectoryPath(path);
+        try {
+          const metaItem = this._getMetaDataForPath(path);
+          if (metaItem.type === "directory") {
+            throw new Error("Cannot Write File");
+          }
+          this._storage.setItem(metaItem.guid, content);
+        } catch {
+          this._actIfPathIsEmpty(path, () => {
+            const directory = this._createDirectoriesForPath(directoryPath);
+            const guid = generateGUID();
+            directory.items.push({
+              type: "file",
+              guid,
+              name: name2,
+              parent: directory
+            });
+            this._persist();
+            this._storage.setItem(guid, content);
+          });
         }
-        this._setMetadata(path, { isFile: true, path, name: this._getFileName(path) });
-        this._storage.setItem(path, content);
       }
-      async renameFile(path, newPath) {
-        const hasFile = await this.hasFile(path);
-        if (hasFile) {
-          const content = await this.readFile(path);
-          await this.writeFile(newPath, content);
-          await this.deleteFile(path);
-        } else {
-          throw new Error("Cannot find file to rename.");
+      async renameFile(path, newName) {
+        const metaData = this._getMetaDataForPath(path);
+        if (metaData.type === "directory") {
+          throw new Error("File Not Found");
         }
-      }
-      _getFileName(path) {
-        return path.split("/").slice(-1)[0];
-      }
-      _setMetadata(path, data) {
-        this._storage.setItem(this._getMetadataPath(path), JSON.stringify(data));
-      }
-      _deleteMetadata(path) {
-        this._storage.removeItem(this._getMetadataPath(path));
-      }
-      async hasFile(path) {
-        const content = this._storage.getItem(path);
-        if (content == null) {
-          return false;
+        if (newName.includes("/")) {
+          throw new Error("Invalid File Name");
         }
-        return true;
+        metaData.name = newName;
+        this._persist();
       }
       async deleteFile(path) {
-        const content = this._storage.getItem(path);
-        if (content == null) {
-          throw new Error(`File Not Found: ${path}`);
+        const metaData = this._getMetaDataForPath(path);
+        if (metaData.type === "directory") {
+          throw new Error("File Not Found");
         }
-        this._deleteMetadata(path);
-        this._storage.removeItem(path);
-      }
-      async createDirectory(path) {
-        path = path.endsWith("/") ? path : path + "/";
-        const name2 = path.split("/").slice(-2)[0];
-        this._setMetadata(path, { isFile: false, path, name: name2 });
-      }
-      async deleteDirectory(path) {
-        const items = await this.readDirectory(path);
-        for (const item of items) {
-          if (item.isFile) {
-            await this.deleteFile(item.path);
-          } else {
-            await this.deleteDirectory(item.path);
+        if (metaData.parent != null) {
+          const index = metaData.parent.items.indexOf(metaData);
+          if (index > -1) {
+            metaData.parent.items.splice(index, 1);
           }
+          this._storage.removeItem(metaData.guid);
+          this._persist();
         }
-        this._deleteMetadata(path);
       }
-      async readDirectory(path) {
-        try {
-          const metadata = this._getMetadata(path);
-          if (metadata.isFile) {
-            throw new Error();
-          }
-        } catch (_) {
-          throw new Error(`Directory Not Found: ${path}`);
-        }
-        path = path.endsWith("/") ? path : path + "/";
-        const depth = path.split("/").length;
-        const allMetadata = [];
-        for (let x = 0; x < this._storage.length; x++) {
-          try {
-            const storagePath = this._storage.key(x);
-            if (storagePath == null) {
-              continue;
+      async move(path, newPath) {
+        const metaData = this._getMetaDataForPath(path);
+        this._actIfPathIsEmpty(newPath, () => {
+          if (metaData.parent != null) {
+            const index = metaData.parent.items.indexOf(metaData);
+            if (index > -1) {
+              metaData.parent.items.splice(index, 1);
             }
-            const isFile = !storagePath.startsWith("$$Meta$$_");
-            const isDirectory = storagePath.endsWith("/");
-            if (isFile) {
-              const metadata = this._getMetadata(storagePath);
-              const isCorrectDepth = metadata.path.split("/").length === depth;
-              if (storagePath.startsWith(path) && isCorrectDepth) {
-                allMetadata.push(metadata);
-              }
-            } else if (isDirectory) {
-              const metadata = this._getMetadata(storagePath.split("$$Meta$$_")[1]);
-              const isCorrectDepth = metadata.path.split("/").length - 1 === depth;
-              if (isCorrectDepth && metadata.path.startsWith(path)) {
-                allMetadata.push(metadata);
-              }
-            }
-          } catch (_) {
-          }
-        }
-        return allMetadata;
-      }
-      async walkDirectory(callback, fromPath = "/") {
-        const items = await this.readDirectory(fromPath);
-        const directories = [];
-        const pathParts = fromPath.split("/");
-        const name2 = pathParts.length > 2 ? pathParts.slice(-2)[0] : pathParts.slice(-1)[0];
-        const directory = pathParts.slice(0, -2).join("/") + "/";
-        callback(directory, name2, fromPath, false);
-        items.forEach((metadata) => {
-          if (metadata.isFile) {
-            const fileName = this._getFileName(metadata.path);
-            callback(fromPath, fileName, metadata.path, true);
-          } else {
-            directories.push(metadata);
+            const directoryPath = this.getDirectoryPath(newPath);
+            const directory = this._createDirectoriesForPath(directoryPath);
+            directory.items.push(metaData);
+            this._persist();
           }
         });
-        for (let directory2 of directories) {
-          await this.walkDirectory(callback, directory2.path);
+      }
+      async isDirectory(path) {
+        return this._getMetaDataForPath(path).type === "directory";
+      }
+      async hasDirectory(path) {
+        try {
+          return await this.isDirectory(path);
+        } catch {
+          return false;
         }
+      }
+      async createDirectory(path) {
+        path = this._normalizeDirectory(path);
+        const name2 = this.getName(path);
+        const directoryPath = this.getDirectoryPath(path);
+        this._actIfPathIsEmpty(path, () => {
+          const directory = this._createDirectoriesForPath(directoryPath);
+          const meta = {
+            type: "directory",
+            name: name2,
+            parent: directory,
+            items: []
+          };
+          directory.items.push(meta);
+          this._persist();
+        });
+      }
+      _createDirectoriesForPath(path) {
+        const parts = this._normalizeDirectory(path).split("/").slice(1, -1);
+        let directory = this._meta;
+        if (path === "/") {
+          return this._meta;
+        }
+        parts.forEach((part) => {
+          let match2 = directory.items.find((i) => i.name === part);
+          if (match2 == null) {
+            match2 = {
+              type: "directory",
+              name: part,
+              parent: directory,
+              items: []
+            };
+            directory.items.push(match2);
+          } else if (match2.type === "file") {
+            throw new Error("Cannot Create Directory");
+          }
+          directory = match2;
+        });
+        this._persist();
+        return directory;
+      }
+      _normalizeDirectory(path) {
+        path = path.trim();
+        if (!path.endsWith("/")) {
+          path = path + "/";
+        }
+        if (!path.startsWith("/")) {
+          return "/" + path;
+        }
+        return path;
+      }
+      _normalizeFile(path) {
+        path = path.trim();
+        if (path.endsWith("/")) {
+          path = path.slice(0, -1);
+        }
+        if (!path.startsWith("/")) {
+          return "/" + path;
+        }
+        return path;
+      }
+      getName(path) {
+        if (path.endsWith("/")) {
+          path = this._normalizeDirectory(path);
+          path = path.slice(0, -1);
+        } else {
+          path = this._normalizeFile(path);
+        }
+        return path.split("/").slice(-1)[0];
+      }
+      getDirectoryPath(path) {
+        if (path.endsWith("/")) {
+          path = path.slice(0, -1);
+        }
+        return path.split("/").slice(0, -1).join("/") + "/";
+      }
+      _actIfPathIsEmpty(path, action) {
+        let metaData = null;
+        try {
+          metaData = this._getMetaDataForPath(path);
+        } catch {
+          action();
+          return;
+        }
+        if (metaData.type === "file") {
+          throw new Error("File Already Exists");
+        } else {
+          throw new Error("Directory Already Exists");
+        }
+      }
+      async renameDirectory(path, newName) {
+        const metaData = this._getMetaDataForPath(path);
+        if (metaData.type === "file") {
+          throw new Error("Directory Not Found");
+        }
+        metaData.name = newName;
+        this._persist();
+      }
+      async deleteDirectory(path) {
+        const metaData = this._getMetaDataForPath(path);
+        if (metaData.type === "file") {
+          throw new Error("Directory Not Found");
+        }
+        if (metaData.parent != null) {
+          const index = metaData.parent.items.indexOf(metaData);
+          if (index > -1) {
+            metaData.parent.items.splice(index, 1);
+            this._recursiveFileDelete(metaData);
+            this._persist();
+          }
+        }
+      }
+      _recursiveFileDelete(meta) {
+        meta.items.forEach((i) => {
+          if (i.type === "file") {
+            this._storage.removeItem(i.guid);
+          } else {
+            this._recursiveFileDelete(i);
+          }
+        });
+      }
+      async readDirectory(path) {
+        const directory = this._getMetaDataForPath(path);
+        if (directory.type === "file") {
+          throw new Error("Directory Not Found");
+        }
+        return JSON.parse(JSON.stringify(directory, replacer));
+      }
+      async walk(callback) {
+        this._walkDown(this._meta, callback, this._meta);
+      }
+      async getMetaData() {
+        return this._normalizeMetaData(JSON.parse(JSON.stringify(this._meta, replacer)));
+      }
+      _persist() {
+        this._storage.setItem(META_KEY, JSON.stringify(this._meta, replacer));
+      }
+      async refresh() {
+        this._meta = this._getRoot();
       }
     }
     class DebuggerPresenter {
@@ -39567,6 +39924,7 @@ ${escapeText(this.code(index, length))}
         __publicField(this, "_onStep");
         __publicField(this, "_tickId");
         __publicField(this, "_isPlaying");
+        __publicField(this, "_playbackSpeed");
         __publicField(this, "diagramPresenter");
         __publicField(this, "textEditorPresenter");
         this._text = text;
@@ -39574,6 +39932,7 @@ ${escapeText(this.code(index, length))}
         this._steps = [];
         this._tickId = 0;
         this._isPlaying = new Signal(false);
+        this._playbackSpeed = new Signal(500);
         this.diagramPresenter = new DiagramPresenter();
         this.textEditorPresenter = new TextEditorPresenter();
         this._pattern = new Sequence("editor-pattern-wrapper", [
@@ -39584,6 +39943,9 @@ ${escapeText(this.code(index, length))}
       }
       get isPlayingBroadcast() {
         return this._isPlaying.broadcast;
+      }
+      get playbackSpeedBroadcast() {
+        return this._playbackSpeed.broadcast;
       }
       initialize() {
         this.textEditorPresenter.setText(this._text);
@@ -39611,6 +39973,9 @@ ${escapeText(this.code(index, length))}
         }
       }
       play() {
+        if (this._onStep.get() === this._steps.length - 1) {
+          this._onStep.set(0);
+        }
         this.stop();
         this._isPlaying.set(true);
         this._tickId = window.setInterval(() => {
@@ -39619,7 +39984,7 @@ ${escapeText(this.code(index, length))}
           } else {
             this.stop();
           }
-        }, 300);
+        }, this._playbackSpeed.get());
       }
       stop() {
         window.clearInterval(this._tickId);
@@ -39706,6 +40071,15 @@ ${escapeText(this.code(index, length))}
           }
         }
       }
+      setPlaybackSpeed(value2) {
+        if (this._isPlaying.get()) {
+          this.stop();
+          this._playbackSpeed.set(value2);
+          this.play();
+          return;
+        }
+        this._playbackSpeed.set(value2);
+      }
     }
     class AppPresenter {
       constructor() {
@@ -39743,6 +40117,7 @@ ${escapeText(this.code(index, length))}
         this.fileExplorer = new FileExplorerPresenter({
           fileSystem: this._fileSystem,
           onPathFocus: async (path, oldPath) => {
+            this.testEditor.selectPattern(null);
             this._currentPath = path;
             if (oldPath != null) {
               try {
@@ -39788,8 +40163,6 @@ ${escapeText(this.code(index, length))}
         if (pattern2 != null) {
           const presenter2 = new DebuggerPresenter(this.testEditor.textEditor.getText(), pattern2);
           this.debuggerPresenter.set(presenter2);
-        } else {
-          alert("Select a pattern to debug.");
         }
       }
       closeDebugger() {
@@ -39805,4 +40178,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-CZFlCYiQ.js.map
+//# sourceMappingURL=index-D6Lp5JF-.js.map
