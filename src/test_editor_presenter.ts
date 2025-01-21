@@ -2,7 +2,12 @@ import { Optional, Pattern, Regex, Sequence } from "clarity-pattern-parser";
 import { TextEditorPresenter } from "./text_editor_presenter.ts";
 import { Signal } from "@tcn/state";
 
+export interface TestEditorPresenterOptions {
+    onPatternChange?: (oldName: string | null, newName: string | null) => void;
+}
+
 export class TestEditorPresenter {
+    private _options: TestEditorPresenterOptions;
     private _ast: Signal<string>;
     private _selectedPattern: Signal<string | null>;
     private _patterns: Signal<Record<string, Pattern>>;
@@ -25,7 +30,8 @@ export class TestEditorPresenter {
         return this._patterns.get()[String(name)] || null;
     }
 
-    constructor() {
+    constructor(options: TestEditorPresenterOptions = {}) {
+        this._options = options;
         this._ast = new Signal("");
         this._selectedPattern = new Signal<string | null>(null);
         this._patterns = new Signal({});
@@ -88,7 +94,9 @@ export class TestEditorPresenter {
     }
 
     selectPattern(name: string | null) {
+        const oldName = this._selectedPattern.get();
         this._selectedPattern.set(name);
+        this._options.onPatternChange && this._options.onPatternChange(oldName, name);
         this._process();
     }
 

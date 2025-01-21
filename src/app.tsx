@@ -1,4 +1,12 @@
-import { Box, FlexBox, HStack, Spacer, VStack, ZStack } from "@tcn/ui-layout";
+import {
+  Box,
+  FlexBox,
+  HStack,
+  Spacer,
+  StyleBox,
+  VStack,
+  ZStack,
+} from "@tcn/ui-layout";
 import { AppPresenter } from "./app_presenter.ts";
 import { Diagram } from "./diagram.tsx";
 import { Ast } from "./ast.tsx";
@@ -19,15 +27,19 @@ export interface AppProps {
 }
 
 export function App({ presenter }: AppProps) {
+  useSignalValue(presenter.testEditor.selectedPatternBroadcast);
+  useSignalValue(presenter.currentPathBroadcast);
+
   const ast = useSignalValue(presenter.testEditor.astBroadcast);
+  const currentPathMetaData = useSignalValue(
+    presenter.currentPathMetaDataBroadcast
+  );
   const isDocumentationOpen = useSignalValue(
     presenter.isDocumentationOpenBroadcast
   );
   const debuggerPresenter = useSignalValue(presenter.debuggerPresenter);
-  useSignalValue(
-    presenter.testEditor.selectedPatternBroadcast
-  );
   const canDebug = presenter.testEditor.selectedPattern != null;
+  const canSave = currentPathMetaData && currentPathMetaData.type === "file";
 
   function toggleDocumentation() {
     presenter.toggleDocumentation();
@@ -47,6 +59,10 @@ export function App({ presenter }: AppProps) {
 
   function closeDebug() {
     presenter.closeDebugger();
+  }
+
+  function save() {
+    presenter.save();
   }
 
   return (
@@ -83,9 +99,40 @@ export function App({ presenter }: AppProps) {
             <VStack zIndex={1} flex overflowX="hidden">
               <HStack flex className={styles.top}>
                 <FlexBox minWidth="200px" className={styles.left}>
-                  <GrammarEditor
-                    presenter={presenter.grammarEditor}
-                  ></GrammarEditor>
+                  <ZStack>
+                    <GrammarEditor
+                      presenter={presenter.grammarEditor}
+                    ></GrammarEditor>
+                    <VStack
+                      padding="8px"
+                      verticalAlignment="end"
+                      horizontalAlignment="end"
+                      style={{ pointerEvents: "none" }}
+                    >
+                      <Button
+                        disabled={!canSave}
+                        onClick={save}
+                        style={{ pointerEvents: "auto" }}
+                      >
+                        Save
+                      </Button>
+                    </VStack>
+                    {!canSave && (
+                      <ZStack className={styles["select-file"]}>
+                        <StyleBox
+                          display="inline"
+                          padding="8px"
+                          width="auto"
+                          height="auto"
+                          boxShadow="var(--inset-box-shadow)"
+                          border-radius="8px"
+                          background-color="var(--surface-primary-color)"
+                        >
+                          <Header>Select a File</Header>
+                        </StyleBox>
+                      </ZStack>
+                    )}
+                  </ZStack>
                 </FlexBox>
                 <Box width="50%" enableResizeOnStart>
                   <Diagram

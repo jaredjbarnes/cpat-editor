@@ -8,12 +8,12 @@ export interface ItemMeta {
     parent: DirectoryMeta | null;
 }
 
-interface FileMeta extends ItemMeta {
+export interface FileMeta extends ItemMeta {
     type: "file";
     guid: string;
 }
 
-interface DirectoryMeta extends ItemMeta {
+export interface DirectoryMeta extends ItemMeta {
     type: "directory";
     items: (DirectoryMeta | FileMeta)[];
 }
@@ -84,7 +84,7 @@ export class FileSystem {
         }
     }
 
-    private _getMetaDataForPath(path: string) {
+    getMetaDataForPath(path: string) {
         if (path.startsWith("/")) {
             path = path.slice(1);
         }
@@ -116,7 +116,7 @@ export class FileSystem {
     }
 
     async isFile(path: string) {
-        return this._getMetaDataForPath(path).type === "file";
+        return this.getMetaDataForPath(path).type === "file";
     }
 
     async hasFile(path: string) {
@@ -128,7 +128,7 @@ export class FileSystem {
     }
 
     async readFile(path: string) {
-        const metaData = this._getMetaDataForPath(path);
+        const metaData = this.getMetaDataForPath(path);
         if (metaData.type === "directory") {
             throw new Error("File Not Found");
         }
@@ -143,7 +143,7 @@ export class FileSystem {
         const directoryPath = this.getDirectoryPath(path);
 
         try {
-            const metaItem = this._getMetaDataForPath(path);
+            const metaItem = this.getMetaDataForPath(path);
 
             if (metaItem.type === "directory") {
                 throw new Error("Cannot Write File");
@@ -170,7 +170,7 @@ export class FileSystem {
     }
 
     async renameFile(path: string, newName: string) {
-        const metaData = this._getMetaDataForPath(path);
+        const metaData = this.getMetaDataForPath(path);
 
         if (metaData.type === "directory") {
             throw new Error("File Not Found");
@@ -185,7 +185,7 @@ export class FileSystem {
     }
 
     async deleteFile(path: string) {
-        const metaData = this._getMetaDataForPath(path);
+        const metaData = this.getMetaDataForPath(path);
 
         if (metaData.type === "directory") {
             throw new Error("File Not Found");
@@ -204,7 +204,7 @@ export class FileSystem {
     }
 
     async move(path: string, newPath: string) {
-        const metaData = this._getMetaDataForPath(path);
+        const metaData = this.getMetaDataForPath(path);
 
         this._actIfPathIsEmpty(newPath, () => {
             if (metaData.parent != null) {
@@ -224,7 +224,7 @@ export class FileSystem {
     }
 
     async isDirectory(path: string) {
-        return this._getMetaDataForPath(path).type === "directory";
+        return this.getMetaDataForPath(path).type === "directory";
     }
 
     async hasDirectory(path: string) {
@@ -334,7 +334,7 @@ export class FileSystem {
     private _actIfPathIsEmpty(path: string, action: () => void) {
         let metaData: ItemMeta | null = null;
         try {
-            metaData = this._getMetaDataForPath(path);
+            metaData = this.getMetaDataForPath(path);
         } catch {
             action();
             return;
@@ -348,7 +348,7 @@ export class FileSystem {
     }
 
     async renameDirectory(path: string, newName: string) {
-        const metaData = this._getMetaDataForPath(path);
+        const metaData = this.getMetaDataForPath(path);
         if (metaData.type === "file") {
             throw new Error("Directory Not Found");
         }
@@ -358,7 +358,7 @@ export class FileSystem {
     }
 
     async deleteDirectory(path: string) {
-        const metaData = this._getMetaDataForPath(path);
+        const metaData = this.getMetaDataForPath(path);
 
         if (metaData.type === "file") {
             throw new Error("Directory Not Found");
@@ -386,7 +386,7 @@ export class FileSystem {
     }
 
     async readDirectory(path: string) {
-        const directory = this._getMetaDataForPath(path);
+        const directory = this.getMetaDataForPath(path);
 
         if (directory.type === "file") {
             throw new Error("Directory Not Found");

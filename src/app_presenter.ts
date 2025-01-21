@@ -3,38 +3,48 @@ import { TestEditorPresenter } from "./test_editor_presenter.ts";
 import { GrammarEditorPresenter } from "./grammar_editor_presenter.ts";
 import { Signal } from "@tcn/state";
 import { FileExplorerPresenter } from "./file_explorer/file_explorer_presenter.ts";
-import { FileSystem } from "./file_explorer/file_system.ts";
+import { DirectoryMeta, FileMeta, FileSystem, ItemMeta } from "./file_explorer/file_system.ts";
 import { Pattern } from "clarity-pattern-parser";
 import { DebuggerPresenter } from "./debugger/debugger_presenter.ts";
 
 export class AppPresenter {
     private _isDocumentationOpen: Signal<boolean>;
     private _fileSystem: FileSystem;
-    private _currentPath: string | null;
+    private _currentPath: Signal<string | null>;
+    private _currentPathMetaData: Signal<DirectoryMeta | FileMeta | null>;
     readonly grammarEditor: GrammarEditorPresenter;
     readonly testEditor: TestEditorPresenter;
     readonly diagramPresenter: DiagramPresenter;
     readonly fileExplorer: FileExplorerPresenter;
     readonly debuggerPresenter: Signal<DebuggerPresenter | null>;
-    readonly fileToSelectedPatternName: Record<string, string>;
+    readonly pathToSelectedPatternName: Record<string, string>;
+    readonly pathToTestPatternContent: Record<string, Record<string, string>>;
 
     get isDocumentationOpenBroadcast() {
         return this._isDocumentationOpen.broadcast;
     }
 
+    get currentPathBroadcast() {
+        return this._currentPath.broadcast;
+    }
+
+    get currentPathMetaDataBroadcast() {
+        return this._currentPathMetaData.broadcast
+    }
+
     constructor() {
-        this.fileToSelectedPatternName = {};
+        this.pathToSelectedPatternName = {};
+        this.pathToTestPatternContent = {};
         this._fileSystem = new FileSystem();
-        this._currentPath = null;
+        this._currentPath = new Signal<string | null>(null);
+        this._currentPathMetaData = new Signal<DirectoryMeta | FileMeta | null>(null);
         this._isDocumentationOpen = new Signal(false);
         this.grammarEditor = new GrammarEditorPresenter({
             onGrammarProcess: (patterns) => {
                 this.testEditor.setPatterns(patterns);
             },
-            onSave: (content) => {
-                if (this._currentPath != null) {
-                    this._fileSystem.writeFile(this._currentPath, content);
-                }
+            onSave: () => {
+                this.save();
             },
             fileSystem: this._fileSystem,
             onPattern: (pattern: Pattern | null) => {
@@ -45,21 +55,58 @@ export class AppPresenter {
                 }
             }
         });
-        this.testEditor = new TestEditorPresenter();
+        this.testEditor = new TestEditorPresenter({
+            onPatternChange: (oldName, newName) => {
+                const currentPath = this._currentPath.get();
+                const currentContent = this.testEditor.textEditor.getText();
+
+                if (currentPath != null && oldName != null) {
+                    let map = this.pathToTestPatternContent[currentPath];
+                    if (map == null) {
+                        map = {};
+                        this.pathToTestPatternContent[currentPath] = map;
+                    }
+                    map[oldName] = currentContent;
+                }
+
+                if (currentPath != null && newName != null) {
+                    let map = this.pathToTestPatternContent[currentPath];
+                    if (map == null) {
+                        map = {};
+                        this.pathToTestPatternContent[currentPath] = map;
+                    }
+                    this.testEditor.textEditor.setText(map[newName] || "");
+                    return;
+                }
+
+                this.testEditor.textEditor.setText("");
+            }
+        });
         this.diagramPresenter = new DiagramPresenter();
         this.fileExplorer = new FileExplorerPresenter({
             fileSystem: this._fileSystem,
             onPathFocus: async (path, oldPath) => {
-                const selectedPatternName = this.testEditor.selectedPatternBroadcast.get();
+                this.cacheTestEditoryContent();
 
-                if (this._currentPath != null && selectedPatternName != null) {
-                    this.fileToSelectedPatternName[this._currentPath] = selectedPatternName;
+                const selectedPatternName = this.testEditor.selectedPatternBroadcast.get();
+                const currentPath = this._currentPath.get();
+
+                if (currentPath != null && selectedPatternName != null) {
+                    this.pathToSelectedPatternName[currentPath] = selectedPatternName;
                 }
 
-                let newSelectedPatternName = this.fileToSelectedPatternName[path] || null;
+                let newSelectedPatternName = this.pathToSelectedPatternName[path] || null;
+                let metaData: FileMeta | DirectoryMeta | null = null;
 
-                this._currentPath = path;
+                try {
+                    metaData = this._fileSystem.getMetaDataForPath(path);
+                } catch { }
+
+                console.log(newSelectedPatternName);
+                this._currentPath.set(path);
+                this._currentPathMetaData.set(metaData);
                 this.testEditor.selectPattern(newSelectedPatternName);
+                this.setTestContent();
 
                 if (oldPath != null) {
                     try {
@@ -98,6 +145,36 @@ export class AppPresenter {
         }
     }
 
+    private cacheTestEditoryContent() {
+        const path = this._currentPath.get();
+        const selectedPattern = this.testEditor.selectedPatternBroadcast.get();
+
+        if (path != null && selectedPattern != null) {
+            let map = this.pathToTestPatternContent[path];
+            if (map == null) {
+                map = {};
+                this.pathToTestPatternContent[path] = map;
+            }
+
+            map[selectedPattern] = this.testEditor.textEditor.getText();
+        }
+    }
+
+    private setTestContent() {
+        const path = this._currentPath.get();
+        const selectedPattern = this.testEditor.selectedPatternBroadcast.get();
+
+        if (path != null && selectedPattern != null) {
+            let map = this.pathToTestPatternContent[path];
+            if (map == null) {
+                map = {};
+                this.pathToTestPatternContent[path] = map;
+            }
+
+            this.testEditor.textEditor.setText(map[selectedPattern]);
+        }
+    }
+
     toggleDocumentation() {
         this._isDocumentationOpen.transform((v) => !v);
     }
@@ -113,6 +190,14 @@ export class AppPresenter {
 
     closeDebugger() {
         this.debuggerPresenter.set(null);
+    }
+
+    save() {
+        const currentPath = this._currentPath.get();
+
+        if (currentPath != null) {
+            this._fileSystem.writeFile(currentPath, this.testEditor.textEditor.getText());
+        }
     }
 
     dispose() {

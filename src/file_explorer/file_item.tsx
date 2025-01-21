@@ -47,7 +47,7 @@ export function FileItem({ file, presenter }: FileItemProps) {
     presenter.startRenamingFile(file.path);
   }
 
-  const padding = (file.path.split("/").length + 1) * 5;
+  const padding = (file.path.slice(1).split("/").length + 1) * 8;
 
   if (isRenaming) {
     return <PendingFileRenaming presenter={renamingFilePath} />;

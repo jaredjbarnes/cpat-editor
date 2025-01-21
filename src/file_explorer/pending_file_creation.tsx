@@ -37,7 +37,7 @@ export function PendingFileCreation({ presenter }: PendingFileCreationProps) {
     }
   }, []);
 
-  const padding = (presenter.directory.split('/').length + 2) * 5;
+  const padding = (presenter.directory.split('/').length + 2) * 8;
 
   return (
     <VStack

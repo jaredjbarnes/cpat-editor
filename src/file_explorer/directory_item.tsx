@@ -98,7 +98,7 @@ export function DirectoryItem({ directory, presenter }: DirectoryItemProps) {
     }
   }, [isPending, presenter, path]);
 
-  const padding = path.split("/").length * 5;
+  const padding = path.slice(1).split("/").length * 8;
 
   if (isRenaming) {
     return <PendingDirectoryRenaming presenter={renamingDirectoryPath} />;

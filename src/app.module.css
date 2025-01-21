@@ -30,9 +30,18 @@
 .icon {
   width: 1.8em;
   height: 1.8em;
-  color: #549AFF
+  color: #549aff;
 }
 
 .black {
-  color: #000000
+  color: #000000;
+}
+
+.select-file {
+  background-color: var(--surface-secondary-color);
+}
+
+.select-file-message {
+  background-color: var(--surface-secondary-color);
+  box-shadow: var(--inset-box-shadow);
 }
