@@ -1,11 +1,4 @@
-import {
-  Box,
-  FlexBox,
-  HStack,
-  Spacer,
-  VStack,
-  ZStack,
-} from "@tcn/ui-layout";
+import { Box, FlexBox, HStack, Spacer, VStack, ZStack } from "@tcn/ui-layout";
 import { AppPresenter } from "./app_presenter.ts";
 import { Diagram } from "./diagram.tsx";
 import { Ast } from "./ast.tsx";
@@ -13,7 +6,7 @@ import { useSignalValue } from "@tcn/state";
 import { TestEditor } from "./test_editor.tsx";
 import { GrammarEditor } from "./grammar_editor.tsx";
 import styles from "./app.module.css";
-import { Button } from "@tcn/ui-controls";
+import { Button, ButtonGroup } from "@tcn/ui-controls";
 import { Header } from "@tcn/ui-core";
 import { SnippetsSidePanel } from "./snippets_side_panel.tsx";
 import { FileExplorer } from "./file_explorer/file_explorer.tsx";
@@ -64,6 +57,18 @@ export function App({ presenter }: AppProps) {
     presenter.save();
   }
 
+  function copyAst() {
+    navigator.clipboard.writeText(ast);
+  }
+
+  function copyGrammar() {
+    navigator.clipboard.writeText(presenter.grammarEditor.textEditor.getText());
+  }
+
+  function copyTest() {
+    navigator.clipboard.writeText(presenter.testEditor.textEditor.getText());
+  }
+
   return (
     <>
       <ZStack>
@@ -108,13 +113,21 @@ export function App({ presenter }: AppProps) {
                       horizontalAlignment="end"
                       style={{ pointerEvents: "none" }}
                     >
-                      <Button
-                        disabled={!canSave}
-                        onClick={save}
-                        style={{ pointerEvents: "auto" }}
-                      >
-                        Save
-                      </Button>
+                      <ButtonGroup>
+                        <Button
+                          onClick={copyGrammar}
+                          style={{ pointerEvents: "auto" }}
+                        >
+                          Copy
+                        </Button>
+                        <Button
+                          disabled={!canSave}
+                          onClick={save}
+                          style={{ pointerEvents: "auto" }}
+                        >
+                          Save
+                        </Button>
+                      </ButtonGroup>
                     </VStack>
                     {!canSave && (
                       <ZStack className={styles["select-file"]}>
@@ -145,18 +158,41 @@ export function App({ presenter }: AppProps) {
                         horizontalAlignment="end"
                         style={{ pointerEvents: "none" }}
                       >
-                        <Button
-                          disabled={!canDebug}
-                          onClick={showDebug}
-                          style={{ pointerEvents: "auto" }}
-                        >
-                          Debug
-                        </Button>
+                        <ButtonGroup>
+                          <Button
+                            onClick={copyTest}
+                            style={{ pointerEvents: "auto" }}
+                          >
+                            Copy
+                          </Button>
+                          <Button
+                            disabled={!canDebug}
+                            onClick={showDebug}
+                            style={{ pointerEvents: "auto" }}
+                          >
+                            Debug
+                          </Button>
+                        </ButtonGroup>
                       </VStack>
                     </ZStack>
                   </FlexBox>
                   <Box width="50%" enableResizeOnStart>
-                    <Ast text={ast}></Ast>
+                    <ZStack>
+                      <Ast text={ast}></Ast>
+                      <VStack
+                        padding="8px"
+                        verticalAlignment="end"
+                        horizontalAlignment="end"
+                        style={{ pointerEvents: "none" }}
+                      >
+                        <Button
+                          onClick={copyAst}
+                          style={{ pointerEvents: "auto" }}
+                        >
+                          Copy
+                        </Button>
+                      </VStack>
+                    </ZStack>
                   </Box>
                 </HStack>
               </Box>
