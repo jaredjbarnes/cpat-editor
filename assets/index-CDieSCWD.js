@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-B4BspqDM.js"(exports, module) {
+  "assets/index-CDieSCWD.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -24383,6 +24383,10 @@ var require_index_001 = __commonJS({
       function play() {
         presenter2.play();
       }
+      function close() {
+        presenter2.stop();
+        onComplete();
+      }
       function updatePlaybackSpeed(value2) {
         const numberValue = Number(value2);
         presenter2.setPlaybackSpeed(1e3 - numberValue + 300);
@@ -24414,7 +24418,7 @@ var require_index_001 = __commonJS({
                   style: { pointerEvents: "auto", width: "200px" }
                 }
               ) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: onComplete, children: "Close" })
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: close, children: "Close" })
             ]
           }
         ),
@@ -40469,4 +40473,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-B4BspqDM.js.map
+//# sourceMappingURL=index-CDieSCWD.js.map
