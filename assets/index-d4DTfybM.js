@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-CtZjzlk7.js"(exports, module) {
+  "assets/index-d4DTfybM.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -39061,7 +39061,7 @@ ${escapeText(this.code(index, length))}
     class SyntaxHighlightBlot extends Inline {
       static create(value2) {
         let node = super.create();
-        if (value2) {
+        if (value2 && node && node.classList) {
           node.classList.add(value2);
         }
         return node;
@@ -39151,6 +39151,11 @@ ${escapeText(this.code(index, length))}
           if (source === "user") {
             this._processGrammar();
             this._highlight();
+            const range = this.textEditor.editor.getSelection();
+            if (range != null) {
+              this._cursorPosition = range.index;
+            }
+            this._processCursorToPattern();
           }
         });
         this.textEditor.onSelectionChange((range) => {
@@ -39205,7 +39210,10 @@ ${escapeText(this.code(index, length))}
           const { ast } = grammar.exec(text);
           const index = this._cursorPosition;
           if (ast != null) {
-            const node = ast.find((n) => (n.name === "assign-statement" || n.name === "export-name") && index > n.startIndex && index < n.endIndex);
+            let node = ast.find((n) => (n.name === "assign-statement" || n.name === "export-name") && index >= n.startIndex && index < n.endIndex);
+            if (node == null) {
+              node = ast.findAll((n) => n.name === "assign-statement" || n.name === "export-name").slice(-1)[0] || null;
+            }
             if (node != null && node.name === "assign-statement") {
               const name2 = node.children[0].value;
               const pattern2 = this._allPatterns[name2];
@@ -40420,4 +40428,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-CtZjzlk7.js.map
+//# sourceMappingURL=index-d4DTfybM.js.map
