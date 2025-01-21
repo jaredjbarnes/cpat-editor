@@ -48,6 +48,11 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
     presenter.play();
   }
 
+  function close() {
+    presenter.stop();
+    onComplete();
+  }
+
   function updatePlaybackSpeed(value: string) {
     const numberValue = Number(value);
     presenter.setPlaybackSpeed(1000 - numberValue + 300);
@@ -82,7 +87,7 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
             style={{ pointerEvents: "auto", width: "200px" }}
           />
         </HStack>
-        <Button onClick={onComplete}>Close</Button>
+        <Button onClick={close}>Close</Button>
       </HStack>
       <HStack flex>
         <FlexBox>

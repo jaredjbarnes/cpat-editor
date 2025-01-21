@@ -196,7 +196,7 @@ export class AppPresenter {
         const currentPath = this._currentPath.get();
 
         if (currentPath != null) {
-            this._fileSystem.writeFile(currentPath, this.testEditor.textEditor.getText());
+            this._fileSystem.writeFile(currentPath, this.grammarEditor.textEditor.getText());
         }
     }
 
