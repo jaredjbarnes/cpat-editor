@@ -3481,8 +3481,13 @@ svg.railroad-diagram path {
 }
 
 ._select-file-message_5434bda {
-  background-color: var(--surface-secondary-color);
+  display: inline;
+  padding: 8px;
+  width:auto;
+  height: auto;
   box-shadow: var(--inset-box-shadow);
+  border-radius: 8px;
+  background-color: var(--surface-primary-color);
 }
 ._panel-header_ea787b9 {
   background-color: var(--surface-secondary-color);

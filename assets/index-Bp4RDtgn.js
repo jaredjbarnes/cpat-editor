@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-d4DTfybM.js"(exports, module) {
+  "assets/index-Bp4RDtgn.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -24521,19 +24521,7 @@ var require_index_001 = __commonJS({
                       )
                     }
                   ),
-                  !canSave && /* @__PURE__ */ jsxRuntimeExports.jsx(ZStack, { className: styles$7["select-file"], children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    StyleBox,
-                    {
-                      display: "inline",
-                      padding: "8px",
-                      width: "auto",
-                      height: "auto",
-                      boxShadow: "var(--inset-box-shadow)",
-                      "border-radius": "8px",
-                      "background-color": "var(--surface-primary-color)",
-                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(Header$1, { children: "Select a File" })
-                    }
-                  ) })
+                  !canSave && /* @__PURE__ */ jsxRuntimeExports.jsx(ZStack, { className: styles$7["select-file"], children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$7["select-file-message"], children: /* @__PURE__ */ jsxRuntimeExports.jsx(Header$1, { children: "Select a File" }) }) })
                 ] }) }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                   Diagram$1,
@@ -27020,7 +27008,7 @@ var require_index_001 = __commonJS({
             continue;
           }
           const foundPattern = pattern2.getPatternWithinContext(this.name);
-          if (foundPattern != null) {
+          if (foundPattern != null && foundPattern.type !== "reference") {
             return foundPattern;
           }
           pattern2 = pattern2.parent;
@@ -38935,10 +38923,12 @@ ${escapeText(this.code(index, length))}
         });
         this._editor.clipboard.addMatcher(Node.ELEMENT_NODE, (node, delta) => {
           node.removeAttribute("style");
+          node.className = "";
           const children = Array.from(node.childNodes);
           children.forEach((child) => {
             if (child.nodeType === Node.ELEMENT_NODE) {
               child.removeAttribute("style");
+              child.className = "";
             }
           });
           return delta;
@@ -40428,4 +40418,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-d4DTfybM.js.map
+//# sourceMappingURL=index-Bp4RDtgn.js.map
