@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-Bp4RDtgn.js"(exports, module) {
+  "assets/index-CPp-RsCL.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -27015,7 +27015,7 @@ var require_index_001 = __commonJS({
         }
         const root2 = this._getRoot();
         return findPattern(root2, (pattern3) => {
-          return pattern3.name === this._name && pattern3.type !== "reference" && pattern3.type !== "context";
+          return pattern3.name === this._name && pattern3.type !== "reference";
         });
       }
       _getRoot() {
@@ -28704,13 +28704,7 @@ var require_index_001 = __commonJS({
         this._resolveImport = options.resolveImport == null ? defaultImportResolver : options.resolveImport;
         this._parseContext = new ParseContext(this._params);
         this._autoComplete = new AutoComplete(grammar, {
-          greedyPatternNames: ["spaces", "optional-spaces", "whitespace", "new-line"],
-          customTokens: {
-            "regex-literal": ["[Regular Expression]"],
-            "literal": ["[String]"],
-            "name": ["[Pattern Name]"],
-            "pattern-name": ["[Pattern Name]"]
-          }
+          greedyPatternNames: ["spaces", "optional-spaces", "whitespace", "new-line"]
         });
       }
       import(path) {
@@ -40418,4 +40412,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-Bp4RDtgn.js.map
+//# sourceMappingURL=index-CPp-RsCL.js.map
