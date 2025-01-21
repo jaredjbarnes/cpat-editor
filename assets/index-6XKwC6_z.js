@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-CDieSCWD.js"(exports, module) {
+  "assets/index-6XKwC6_z.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -40460,7 +40460,7 @@ ${escapeText(this.code(index, length))}
       save() {
         const currentPath = this._currentPath.get();
         if (currentPath != null) {
-          this._fileSystem.writeFile(currentPath, this.testEditor.textEditor.getText());
+          this._fileSystem.writeFile(currentPath, this.grammarEditor.textEditor.getText());
         }
       }
       dispose() {
@@ -40473,4 +40473,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-CDieSCWD.js.map
+//# sourceMappingURL=index-6XKwC6_z.js.map
