@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DUG4NGye.js"(exports, module) {
+  "assets/index-CtZjzlk7.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -23492,7 +23492,9 @@ var require_index_001 = __commonJS({
     const iconButton = `_icon-button_04e2425`;
     const icon = `_icon_bf9fe07`;
     const black = `_black_5086a6c`;
-    const styles$7 = { examples, toolbar, grammar: grammar$1, top, left, "icon-button": iconButton, icon, black };
+    const selectFile = `_select-file_3751b47`;
+    const selectFileMessage = `_select-file-message_5434bda`;
+    const styles$7 = { examples, toolbar, grammar: grammar$1, top, left, "icon-button": iconButton, icon, black, "select-file": selectFile, "select-file-message": selectFileMessage };
     const panelHeader$2 = `_panel-header_ea787b9`;
     const styles$6 = { "panel-header": panelHeader$2 };
     function PanelHeader({ children, className, style }) {
@@ -23972,7 +23974,7 @@ var require_index_001 = __commonJS({
           input2.focus();
         }
       }, []);
-      const padding2 = (presenter2.directory.split("/").length + 2) * 5;
+      const padding2 = (presenter2.directory.split("/").length + 2) * 8;
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(
         VStack,
         {
@@ -24021,7 +24023,7 @@ var require_index_001 = __commonJS({
           input2.focus();
         }
       }, []);
-      const padding2 = (presenter2.directory.split("/").length + 2) * 5;
+      const padding2 = (presenter2.directory.split("/").length + 2) * 8;
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(
         VStack,
         {
@@ -24073,7 +24075,7 @@ var require_index_001 = __commonJS({
       function renameFile() {
         presenter2.startRenamingFile(file.path);
       }
-      const padding2 = (file.path.split("/").length + 1) * 5;
+      const padding2 = (file.path.slice(1).split("/").length + 1) * 8;
       if (isRenaming) {
         return /* @__PURE__ */ jsxRuntimeExports.jsx(PendingFileRenaming, { presenter: renamingFilePath });
       }
@@ -24123,7 +24125,7 @@ var require_index_001 = __commonJS({
           input2.focus();
         }
       }, []);
-      const padding2 = (presenter2.directory.split("/").length + 2) * 5;
+      const padding2 = (presenter2.directory.split("/").length + 2) * 8;
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(
         VStack,
         {
@@ -24174,7 +24176,7 @@ var require_index_001 = __commonJS({
           input2.focus();
         }
       }, []);
-      const padding2 = (presenter2.directory.split("/").length + 2) * 5;
+      const padding2 = (presenter2.directory.split("/").length + 2) * 8;
       return /* @__PURE__ */ jsxRuntimeExports.jsxs(
         VStack,
         {
@@ -24259,7 +24261,7 @@ var require_index_001 = __commonJS({
           presenter2.openDirectory(path);
         }
       }, [isPending, presenter2, path]);
-      const padding2 = path.split("/").length * 5;
+      const padding2 = path.slice(1).split("/").length * 8;
       if (isRenaming) {
         return /* @__PURE__ */ jsxRuntimeExports.jsx(PendingDirectoryRenaming, { presenter: renamingDirectoryPath });
       }
@@ -24431,15 +24433,18 @@ var require_index_001 = __commonJS({
       ] });
     }
     function App({ presenter: presenter2 }) {
+      useSignalValue(presenter2.testEditor.selectedPatternBroadcast);
+      useSignalValue(presenter2.currentPathBroadcast);
       const ast = useSignalValue(presenter2.testEditor.astBroadcast);
+      const currentPathMetaData = useSignalValue(
+        presenter2.currentPathMetaDataBroadcast
+      );
       const isDocumentationOpen = useSignalValue(
         presenter2.isDocumentationOpenBroadcast
       );
       const debuggerPresenter = useSignalValue(presenter2.debuggerPresenter);
-      const selectedPattern = useSignalValue(
-        presenter2.testEditor.selectedPatternBroadcast
-      );
-      const canDebug = selectedPattern != null || selectedPattern === "null";
+      const canDebug = presenter2.testEditor.selectedPattern != null;
+      const canSave = currentPathMetaData && currentPathMetaData.type === "file";
       function toggleDocumentation() {
         presenter2.toggleDocumentation();
       }
@@ -24454,6 +24459,9 @@ var require_index_001 = __commonJS({
       }
       function closeDebug() {
         presenter2.closeDebugger();
+      }
+      function save() {
+        presenter2.save();
       }
       return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(ZStack, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { zIndex: 1, children: [
@@ -24488,12 +24496,45 @@ var require_index_001 = __commonJS({
             ),
             /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { zIndex: 1, flex: true, overflowX: "hidden", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { flex: true, className: styles$7.top, children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { minWidth: "200px", className: styles$7.left, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  GrammarEditor,
-                  {
-                    presenter: presenter2.grammarEditor
-                  }
-                ) }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { minWidth: "200px", className: styles$7.left, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(ZStack, { children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    GrammarEditor,
+                    {
+                      presenter: presenter2.grammarEditor
+                    }
+                  ),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    VStack,
+                    {
+                      padding: "8px",
+                      verticalAlignment: "end",
+                      horizontalAlignment: "end",
+                      style: { pointerEvents: "none" },
+                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                        Button,
+                        {
+                          disabled: !canSave,
+                          onClick: save,
+                          style: { pointerEvents: "auto" },
+                          children: "Save"
+                        }
+                      )
+                    }
+                  ),
+                  !canSave && /* @__PURE__ */ jsxRuntimeExports.jsx(ZStack, { className: styles$7["select-file"], children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    StyleBox,
+                    {
+                      display: "inline",
+                      padding: "8px",
+                      width: "auto",
+                      height: "auto",
+                      boxShadow: "var(--inset-box-shadow)",
+                      "border-radius": "8px",
+                      "background-color": "var(--surface-primary-color)",
+                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(Header$1, { children: "Select a File" })
+                    }
+                  ) })
+                ] }) }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                   Diagram$1,
                   {
@@ -38886,12 +38927,21 @@ ${escapeText(this.code(index, length))}
         this._editor = new Quill(element, {
           theme: "snow",
           modules: {
-            toolbar: false,
-            clipboard: {
-              matchers: [],
-              matchVisual: false
-            }
+            keyboard: {
+              list: null
+            },
+            toolbar: false
           }
+        });
+        this._editor.clipboard.addMatcher(Node.ELEMENT_NODE, (node, delta) => {
+          node.removeAttribute("style");
+          const children = Array.from(node.childNodes);
+          children.forEach((child) => {
+            if (child.nodeType === Node.ELEMENT_NODE) {
+              child.removeAttribute("style");
+            }
+          });
+          return delta;
         });
         this.editor.setText(this._defaultText);
       }
@@ -38926,11 +38976,13 @@ ${escapeText(this.code(index, length))}
       }
     }
     class TestEditorPresenter {
-      constructor() {
+      constructor(options = {}) {
+        __publicField(this, "_options");
         __publicField(this, "_ast");
         __publicField(this, "_selectedPattern");
         __publicField(this, "_patterns");
         __publicField(this, "textEditor");
+        this._options = options;
         this._ast = new Signal("");
         this._selectedPattern = new Signal(null);
         this._patterns = new Signal({});
@@ -38997,7 +39049,9 @@ ${escapeText(this.code(index, length))}
         this._process();
       }
       selectPattern(name2) {
+        const oldName = this._selectedPattern.get();
         this._selectedPattern.set(name2);
+        this._options.onPatternChange && this._options.onPatternChange(oldName, name2);
         this._process();
       }
       dispose() {
@@ -39134,7 +39188,7 @@ ${escapeText(this.code(index, length))}
           this._processCursorToPattern();
           this._onGrammarProcess(allPatterns);
         } catch (e) {
-          console.log(e);
+          console.log("Grammar Error:", e.message.replaceAll("\n", "\\n"));
         }
         if (text === "") {
           this._allPatterns = {};
@@ -39772,7 +39826,7 @@ ${escapeText(this.code(index, length))}
           directories.forEach((d) => this._walkDown(d, callback, item));
         }
       }
-      _getMetaDataForPath(path) {
+      getMetaDataForPath(path) {
         if (path.startsWith("/")) {
           path = path.slice(1);
         }
@@ -39795,7 +39849,7 @@ ${escapeText(this.code(index, length))}
         return result;
       }
       async isFile(path) {
-        return this._getMetaDataForPath(path).type === "file";
+        return this.getMetaDataForPath(path).type === "file";
       }
       async hasFile(path) {
         try {
@@ -39805,7 +39859,7 @@ ${escapeText(this.code(index, length))}
         }
       }
       async readFile(path) {
-        const metaData = this._getMetaDataForPath(path);
+        const metaData = this.getMetaDataForPath(path);
         if (metaData.type === "directory") {
           throw new Error("File Not Found");
         }
@@ -39816,7 +39870,7 @@ ${escapeText(this.code(index, length))}
         const name2 = this.getName(path);
         const directoryPath = this.getDirectoryPath(path);
         try {
-          const metaItem = this._getMetaDataForPath(path);
+          const metaItem = this.getMetaDataForPath(path);
           if (metaItem.type === "directory") {
             throw new Error("Cannot Write File");
           }
@@ -39837,7 +39891,7 @@ ${escapeText(this.code(index, length))}
         }
       }
       async renameFile(path, newName) {
-        const metaData = this._getMetaDataForPath(path);
+        const metaData = this.getMetaDataForPath(path);
         if (metaData.type === "directory") {
           throw new Error("File Not Found");
         }
@@ -39848,7 +39902,7 @@ ${escapeText(this.code(index, length))}
         this._persist();
       }
       async deleteFile(path) {
-        const metaData = this._getMetaDataForPath(path);
+        const metaData = this.getMetaDataForPath(path);
         if (metaData.type === "directory") {
           throw new Error("File Not Found");
         }
@@ -39862,7 +39916,7 @@ ${escapeText(this.code(index, length))}
         }
       }
       async move(path, newPath) {
-        const metaData = this._getMetaDataForPath(path);
+        const metaData = this.getMetaDataForPath(path);
         this._actIfPathIsEmpty(newPath, () => {
           if (metaData.parent != null) {
             const index = metaData.parent.items.indexOf(metaData);
@@ -39877,7 +39931,7 @@ ${escapeText(this.code(index, length))}
         });
       }
       async isDirectory(path) {
-        return this._getMetaDataForPath(path).type === "directory";
+        return this.getMetaDataForPath(path).type === "directory";
       }
       async hasDirectory(path) {
         try {
@@ -39964,7 +40018,7 @@ ${escapeText(this.code(index, length))}
       _actIfPathIsEmpty(path, action) {
         let metaData = null;
         try {
-          metaData = this._getMetaDataForPath(path);
+          metaData = this.getMetaDataForPath(path);
         } catch {
           action();
           return;
@@ -39976,7 +40030,7 @@ ${escapeText(this.code(index, length))}
         }
       }
       async renameDirectory(path, newName) {
-        const metaData = this._getMetaDataForPath(path);
+        const metaData = this.getMetaDataForPath(path);
         if (metaData.type === "file") {
           throw new Error("Directory Not Found");
         }
@@ -39984,7 +40038,7 @@ ${escapeText(this.code(index, length))}
         this._persist();
       }
       async deleteDirectory(path) {
-        const metaData = this._getMetaDataForPath(path);
+        const metaData = this.getMetaDataForPath(path);
         if (metaData.type === "file") {
           throw new Error("Directory Not Found");
         }
@@ -40007,7 +40061,7 @@ ${escapeText(this.code(index, length))}
         });
       }
       async readDirectory(path) {
-        const directory = this._getMetaDataForPath(path);
+        const directory = this.getMetaDataForPath(path);
         if (directory.type === "file") {
           throw new Error("Directory Not Found");
         }
@@ -40196,22 +40250,26 @@ ${escapeText(this.code(index, length))}
         __publicField(this, "_isDocumentationOpen");
         __publicField(this, "_fileSystem");
         __publicField(this, "_currentPath");
+        __publicField(this, "_currentPathMetaData");
         __publicField(this, "grammarEditor");
         __publicField(this, "testEditor");
         __publicField(this, "diagramPresenter");
         __publicField(this, "fileExplorer");
         __publicField(this, "debuggerPresenter");
+        __publicField(this, "pathToSelectedPatternName");
+        __publicField(this, "pathToTestPatternContent");
+        this.pathToSelectedPatternName = {};
+        this.pathToTestPatternContent = {};
         this._fileSystem = new FileSystem();
-        this._currentPath = null;
+        this._currentPath = new Signal(null);
+        this._currentPathMetaData = new Signal(null);
         this._isDocumentationOpen = new Signal(false);
         this.grammarEditor = new GrammarEditorPresenter({
           onGrammarProcess: (patterns) => {
             this.testEditor.setPatterns(patterns);
           },
-          onSave: (content) => {
-            if (this._currentPath != null) {
-              this._fileSystem.writeFile(this._currentPath, content);
-            }
+          onSave: () => {
+            this.save();
           },
           fileSystem: this._fileSystem,
           onPattern: (pattern2) => {
@@ -40222,13 +40280,51 @@ ${escapeText(this.code(index, length))}
             }
           }
         });
-        this.testEditor = new TestEditorPresenter();
+        this.testEditor = new TestEditorPresenter({
+          onPatternChange: (oldName, newName) => {
+            const currentPath = this._currentPath.get();
+            const currentContent = this.testEditor.textEditor.getText();
+            if (currentPath != null && oldName != null) {
+              let map2 = this.pathToTestPatternContent[currentPath];
+              if (map2 == null) {
+                map2 = {};
+                this.pathToTestPatternContent[currentPath] = map2;
+              }
+              map2[oldName] = currentContent;
+            }
+            if (currentPath != null && newName != null) {
+              let map2 = this.pathToTestPatternContent[currentPath];
+              if (map2 == null) {
+                map2 = {};
+                this.pathToTestPatternContent[currentPath] = map2;
+              }
+              this.testEditor.textEditor.setText(map2[newName] || "");
+              return;
+            }
+            this.testEditor.textEditor.setText("");
+          }
+        });
         this.diagramPresenter = new DiagramPresenter();
         this.fileExplorer = new FileExplorerPresenter({
           fileSystem: this._fileSystem,
           onPathFocus: async (path, oldPath) => {
-            this.testEditor.selectPattern(null);
-            this._currentPath = path;
+            this.cacheTestEditoryContent();
+            const selectedPatternName = this.testEditor.selectedPatternBroadcast.get();
+            const currentPath = this._currentPath.get();
+            if (currentPath != null && selectedPatternName != null) {
+              this.pathToSelectedPatternName[currentPath] = selectedPatternName;
+            }
+            let newSelectedPatternName = this.pathToSelectedPatternName[path] || null;
+            let metaData = null;
+            try {
+              metaData = this._fileSystem.getMetaDataForPath(path);
+            } catch {
+            }
+            console.log(newSelectedPatternName);
+            this._currentPath.set(path);
+            this._currentPathMetaData.set(metaData);
+            this.testEditor.selectPattern(newSelectedPatternName);
+            this.setTestContent();
             if (oldPath != null) {
               try {
                 const hasFile = await this._fileSystem.hasFile(oldPath);
@@ -40254,6 +40350,12 @@ ${escapeText(this.code(index, length))}
       get isDocumentationOpenBroadcast() {
         return this._isDocumentationOpen.broadcast;
       }
+      get currentPathBroadcast() {
+        return this._currentPath.broadcast;
+      }
+      get currentPathMetaDataBroadcast() {
+        return this._currentPathMetaData.broadcast;
+      }
       async initialize() {
         var _a2;
         await this.fileExplorer.initialize();
@@ -40263,6 +40365,30 @@ ${escapeText(this.code(index, length))}
           this.fileExplorer.focus("/examples.cpat");
         } else {
           this.fileExplorer.focus((_a2 = directory.items[0]) == null ? void 0 : _a2.path);
+        }
+      }
+      cacheTestEditoryContent() {
+        const path = this._currentPath.get();
+        const selectedPattern = this.testEditor.selectedPatternBroadcast.get();
+        if (path != null && selectedPattern != null) {
+          let map2 = this.pathToTestPatternContent[path];
+          if (map2 == null) {
+            map2 = {};
+            this.pathToTestPatternContent[path] = map2;
+          }
+          map2[selectedPattern] = this.testEditor.textEditor.getText();
+        }
+      }
+      setTestContent() {
+        const path = this._currentPath.get();
+        const selectedPattern = this.testEditor.selectedPatternBroadcast.get();
+        if (path != null && selectedPattern != null) {
+          let map2 = this.pathToTestPatternContent[path];
+          if (map2 == null) {
+            map2 = {};
+            this.pathToTestPatternContent[path] = map2;
+          }
+          this.testEditor.textEditor.setText(map2[selectedPattern]);
         }
       }
       toggleDocumentation() {
@@ -40278,6 +40404,12 @@ ${escapeText(this.code(index, length))}
       closeDebugger() {
         this.debuggerPresenter.set(null);
       }
+      save() {
+        const currentPath = this._currentPath.get();
+        if (currentPath != null) {
+          this._fileSystem.writeFile(currentPath, this.testEditor.textEditor.getText());
+        }
+      }
       dispose() {
       }
     }
@@ -40288,4 +40420,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DUG4NGye.js.map
+//# sourceMappingURL=index-CtZjzlk7.js.map

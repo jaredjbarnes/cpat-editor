@@ -3469,11 +3469,20 @@ svg.railroad-diagram path {
 ._icon_bf9fe07 {
   width: 1.8em;
   height: 1.8em;
-  color: #549AFF
+  color: #549aff;
 }
 
 ._black_5086a6c {
-  color: #000000
+  color: #000000;
+}
+
+._select-file_3751b47 {
+  background-color: var(--surface-secondary-color);
+}
+
+._select-file-message_5434bda {
+  background-color: var(--surface-secondary-color);
+  box-shadow: var(--inset-box-shadow);
 }
 ._panel-header_ea787b9 {
   background-color: var(--surface-secondary-color);
