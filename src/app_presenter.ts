@@ -16,14 +16,14 @@ export class AppPresenter {
     readonly diagramPresenter: DiagramPresenter;
     readonly fileExplorer: FileExplorerPresenter;
     readonly debuggerPresenter: Signal<DebuggerPresenter | null>;
+    readonly fileToSelectedPatternName: Record<string, string>;
 
     get isDocumentationOpenBroadcast() {
         return this._isDocumentationOpen.broadcast;
     }
 
-
-
     constructor() {
+        this.fileToSelectedPatternName = {};
         this._fileSystem = new FileSystem();
         this._currentPath = null;
         this._isDocumentationOpen = new Signal(false);
@@ -50,8 +50,16 @@ export class AppPresenter {
         this.fileExplorer = new FileExplorerPresenter({
             fileSystem: this._fileSystem,
             onPathFocus: async (path, oldPath) => {
-                this.testEditor.selectPattern(null);
+                const selectedPatternName = this.testEditor.selectedPatternBroadcast.get();
+
+                if (this._currentPath != null && selectedPatternName != null) {
+                    this.fileToSelectedPatternName[this._currentPath] = selectedPatternName;
+                }
+
+                let newSelectedPatternName = this.fileToSelectedPatternName[path] || null;
+
                 this._currentPath = path;
+                this.testEditor.selectPattern(newSelectedPatternName);
 
                 if (oldPath != null) {
                     try {

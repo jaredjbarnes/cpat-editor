@@ -24,10 +24,10 @@ export function App({ presenter }: AppProps) {
     presenter.isDocumentationOpenBroadcast
   );
   const debuggerPresenter = useSignalValue(presenter.debuggerPresenter);
-  const selectedPattern = useSignalValue(
+  useSignalValue(
     presenter.testEditor.selectedPatternBroadcast
   );
-  const canDebug = selectedPattern != null || selectedPattern === "null";
+  const canDebug = presenter.testEditor.selectedPattern != null;
 
   function toggleDocumentation() {
     presenter.toggleDocumentation();

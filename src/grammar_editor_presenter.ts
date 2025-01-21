@@ -121,8 +121,8 @@ export class GrammarEditorPresenter {
             this._allPatterns = allPatterns;
             this._processCursorToPattern();
             this._onGrammarProcess(allPatterns);
-        } catch (e) {
-            console.log(e);
+        } catch (e: any) {
+            console.log("Grammar Error:", e.message.replaceAll("\n", "\\n"));
         }
 
         if (text === "") {

@@ -28,13 +28,25 @@ export class TextEditorPresenter {
         this._editorElement = element;
         this._editor = new Quill(element, {
             theme: 'snow',
+
             modules: {
-                toolbar: false,
-                clipboard: {
-                    matchers: [],
-                    matchVisual: false,
+                keyboard: {
+                    list: null,
                 },
+                toolbar: false
             },
+        });
+        this._editor.clipboard.addMatcher(Node.ELEMENT_NODE, (node: any, delta) => {
+            node.removeAttribute('style');
+
+            const children = Array.from(node.childNodes);
+            children.forEach((child: any) => {
+                if (child.nodeType === Node.ELEMENT_NODE) {
+                    child.removeAttribute('style');
+                }
+            });
+
+            return delta;
         });
 
 
