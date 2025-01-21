@@ -80,6 +80,12 @@ export class GrammarEditorPresenter {
             if (source === "user") {
                 this._processGrammar();
                 this._highlight();
+                const range = this.textEditor.editor.getSelection();
+
+                if (range != null) {
+                    this._cursorPosition = range.index;
+                }
+                this._processCursorToPattern();
             }
         });
 
@@ -143,7 +149,12 @@ export class GrammarEditorPresenter {
             const index = this._cursorPosition;
 
             if (ast != null) {
-                const node = ast.find(n => (n.name === "assign-statement" || n.name === "export-name") && index > n.startIndex && index < n.endIndex);
+                let node = ast.find(n => (n.name === "assign-statement" || n.name === "export-name") && index >= n.startIndex && index < n.endIndex);
+
+                if (node == null) {
+                    // This takes the last pattern if there is one.
+                    node = ast.findAll(n => (n.name === "assign-statement" || n.name === "export-name")).slice(-1)[0] || null;
+                }
 
                 if (node != null && node.name === "assign-statement") {
                     const name = node.children[0].value;

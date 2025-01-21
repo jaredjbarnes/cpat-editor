@@ -3,7 +3,7 @@ import { TestEditorPresenter } from "./test_editor_presenter.ts";
 import { GrammarEditorPresenter } from "./grammar_editor_presenter.ts";
 import { Signal } from "@tcn/state";
 import { FileExplorerPresenter } from "./file_explorer/file_explorer_presenter.ts";
-import { DirectoryMeta, FileMeta, FileSystem, ItemMeta } from "./file_explorer/file_system.ts";
+import { DirectoryMeta, FileMeta, FileSystem } from "./file_explorer/file_system.ts";
 import { Pattern } from "clarity-pattern-parser";
 import { DebuggerPresenter } from "./debugger/debugger_presenter.ts";
 

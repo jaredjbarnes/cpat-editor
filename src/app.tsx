@@ -3,7 +3,6 @@ import {
   FlexBox,
   HStack,
   Spacer,
-  StyleBox,
   VStack,
   ZStack,
 } from "@tcn/ui-layout";
@@ -119,17 +118,9 @@ export function App({ presenter }: AppProps) {
                     </VStack>
                     {!canSave && (
                       <ZStack className={styles["select-file"]}>
-                        <StyleBox
-                          display="inline"
-                          padding="8px"
-                          width="auto"
-                          height="auto"
-                          boxShadow="var(--inset-box-shadow)"
-                          border-radius="8px"
-                          background-color="var(--surface-primary-color)"
-                        >
+                        <div className={styles["select-file-message"]}>
                           <Header>Select a File</Header>
-                        </StyleBox>
+                        </div>
                       </ZStack>
                     )}
                   </ZStack>

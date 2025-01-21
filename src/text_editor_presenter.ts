@@ -38,11 +38,13 @@ export class TextEditorPresenter {
         });
         this._editor.clipboard.addMatcher(Node.ELEMENT_NODE, (node: any, delta) => {
             node.removeAttribute('style');
+            node.className = "";
 
             const children = Array.from(node.childNodes);
             children.forEach((child: any) => {
                 if (child.nodeType === Node.ELEMENT_NODE) {
                     child.removeAttribute('style');
+                    child.className = "";
                 }
             });
 

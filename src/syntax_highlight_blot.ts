@@ -5,7 +5,7 @@ const Inline = Quill.import('blots/inline') as any;
 class SyntaxHighlightBlot extends Inline {
   static create(value) {
     let node = super.create();
-    if (value) {
+    if (value && node && node.classList) {
       node.classList.add(value);
     }
     return node;
