@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-CPp-RsCL.js"(exports, module) {
+  "assets/index-DX8O0jbw.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -27008,15 +27008,24 @@ var require_index_001 = __commonJS({
             continue;
           }
           const foundPattern = pattern2.getPatternWithinContext(this.name);
-          if (foundPattern != null && foundPattern.type !== "reference") {
+          if (foundPattern != null && this._isValidPattern(foundPattern)) {
             return foundPattern;
           }
           pattern2 = pattern2.parent;
         }
         const root2 = this._getRoot();
         return findPattern(root2, (pattern3) => {
-          return pattern3.name === this._name && pattern3.type !== "reference";
+          return pattern3.name === this._name && this._isValidPattern(pattern3);
         });
+      }
+      _isValidPattern(pattern2) {
+        if (pattern2.type === "reference") {
+          return false;
+        }
+        if (pattern2.type === "context" && pattern2.children[0].type === "reference") {
+          return false;
+        }
+        return true;
       }
       _getRoot() {
         let node = this;
@@ -40412,4 +40421,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-CPp-RsCL.js.map
+//# sourceMappingURL=index-DX8O0jbw.js.map
