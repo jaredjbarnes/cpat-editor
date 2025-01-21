@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DX8O0jbw.js"(exports, module) {
+  "assets/index-B4BspqDM.js"(exports, module) {
     var _a;
     (function polyfill() {
       const relList = document.createElement("link").relList;
@@ -24463,6 +24463,15 @@ var require_index_001 = __commonJS({
       function save() {
         presenter2.save();
       }
+      function copyAst() {
+        navigator.clipboard.writeText(ast);
+      }
+      function copyGrammar() {
+        navigator.clipboard.writeText(presenter2.grammarEditor.textEditor.getText());
+      }
+      function copyTest() {
+        navigator.clipboard.writeText(presenter2.testEditor.textEditor.getText());
+      }
       return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(ZStack, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { zIndex: 1, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { zIndex: 2, className: styles$7.toolbar, children: [
@@ -24510,15 +24519,25 @@ var require_index_001 = __commonJS({
                       verticalAlignment: "end",
                       horizontalAlignment: "end",
                       style: { pointerEvents: "none" },
-                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Button,
-                        {
-                          disabled: !canSave,
-                          onClick: save,
-                          style: { pointerEvents: "auto" },
-                          children: "Save"
-                        }
-                      )
+                      children: /* @__PURE__ */ jsxRuntimeExports.jsxs(ButtonGroup, { children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          Button,
+                          {
+                            onClick: copyGrammar,
+                            style: { pointerEvents: "auto" },
+                            children: "Copy"
+                          }
+                        ),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          Button,
+                          {
+                            disabled: !canSave,
+                            onClick: save,
+                            style: { pointerEvents: "auto" },
+                            children: "Save"
+                          }
+                        )
+                      ] })
                     }
                   ),
                   !canSave && /* @__PURE__ */ jsxRuntimeExports.jsx(ZStack, { className: styles$7["select-file"], children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: styles$7["select-file-message"], children: /* @__PURE__ */ jsxRuntimeExports.jsx(Header$1, { children: "Select a File" }) }) })
@@ -24543,19 +24562,48 @@ var require_index_001 = __commonJS({
                       verticalAlignment: "end",
                       horizontalAlignment: "end",
                       style: { pointerEvents: "none" },
+                      children: /* @__PURE__ */ jsxRuntimeExports.jsxs(ButtonGroup, { children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          Button,
+                          {
+                            onClick: copyTest,
+                            style: { pointerEvents: "auto" },
+                            children: "Copy"
+                          }
+                        ),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          Button,
+                          {
+                            disabled: !canDebug,
+                            onClick: showDebug,
+                            style: { pointerEvents: "auto" },
+                            children: "Debug"
+                          }
+                        )
+                      ] })
+                    }
+                  )
+                ] }) }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(ZStack, { children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(Ast, { text: ast }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    VStack,
+                    {
+                      padding: "8px",
+                      verticalAlignment: "end",
+                      horizontalAlignment: "end",
+                      style: { pointerEvents: "none" },
                       children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                         Button,
                         {
-                          disabled: !canDebug,
-                          onClick: showDebug,
+                          onClick: copyAst,
                           style: { pointerEvents: "auto" },
-                          children: "Debug"
+                          children: "Copy"
                         }
                       )
                     }
                   )
-                ] }) }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Ast, { text: ast }) })
+                ] }) })
               ] }) })
             ] }),
             isDocumentationOpen && /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -40421,4 +40469,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DX8O0jbw.js.map
+//# sourceMappingURL=index-B4BspqDM.js.map
