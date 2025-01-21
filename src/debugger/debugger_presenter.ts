@@ -52,15 +52,17 @@ export class DebuggerPresenter {
             this._steps = generateSteps(this._pattern, cursor.records);
 
             if (ast == null) {
-                const furthestError = cursor.furthestError;
-
+                const nodes = cursor.allMatchedNodes.slice();
+                nodes.sort((a, b) => a.endIndex - b.endIndex );
+                const furthestMatch = nodes[nodes.length -1];
+    
                 this._steps.push({
                     type: "error",
                     path: "_",
                     pattern: this._pattern,
                     record: {
                         ast: null,
-                        error: new ParseError(furthestError?.startIndex || 0, this._text.length, this._pattern),
+                        error: new ParseError(furthestMatch?.endIndex || 0, this._text.length, this._pattern),
                         pattern: this._pattern
                     }
                 });

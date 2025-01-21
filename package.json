@@ -19,7 +19,7 @@
     "@tcn/ui-core": "^0.3.16",
     "@tcn/ui-layout": "^0.3.37",
     "@vitejs/plugin-react": "^4.3.4",
-    "clarity-pattern-parser": "^10.1.8",
+    "clarity-pattern-parser": "^10.1.13",
     "classnames": "^2.5.1",
     "quill": "^2.0.3",
     "react": "^18.2.0",

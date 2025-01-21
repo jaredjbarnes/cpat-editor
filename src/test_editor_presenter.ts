@@ -63,7 +63,7 @@ export class TestEditorPresenter {
             const text = this.textEditor.getText();
             const startTime = performance.now();
             try {
-                const { ast, cursor } = editorPattern.exec(text);
+                const { ast, cursor } = editorPattern.exec(text, true);
                 const parseDuration = performance.now() - startTime;
 
                 console.log("Test Parse Time: ", parseDuration);
@@ -72,12 +72,14 @@ export class TestEditorPresenter {
                     this._ast.set(rootAst.toJson(2));
                 } else {
                     this._ast.set("");
+                    const nodes = cursor.allMatchedNodes.slice();
+                    nodes.sort((a, b) => a.endIndex - b.endIndex );
+                    const furthestMatch = nodes[nodes.length -1];
 
-                    if (cursor.furthestError != null) {
-                        const { endIndex: startIndex } = cursor.furthestError;
+                    if (furthestMatch != null) {
+                        const { endIndex: startIndex } = furthestMatch;
                         const endIndex = cursor.length;
                         this.textEditor.syntaxHighlight(startIndex, endIndex, "syntax-error");
-                        console.log(startIndex);
                     } else {
                         this.textEditor.syntaxHighlight(0, cursor.length, "syntax-error");
                     }
