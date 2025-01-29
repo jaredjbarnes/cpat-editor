@@ -6,15 +6,15 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-6XKwC6_z.js"(exports, module) {
+  "assets/index-rbaPcnmV.js"(exports, module) {
     var _a;
-    (function polyfill() {
+    (function polyfill2() {
       const relList = document.createElement("link").relList;
       if (relList && relList.supports && relList.supports("modulepreload")) {
         return;
       }
-      for (const link of document.querySelectorAll('link[rel="modulepreload"]')) {
-        processPreload(link);
+      for (const link2 of document.querySelectorAll('link[rel="modulepreload"]')) {
+        processPreload(link2);
       }
       new MutationObserver((mutations) => {
         for (const mutation of mutations) {
@@ -27,27 +27,51 @@ var require_index_001 = __commonJS({
           }
         }
       }).observe(document, { childList: true, subtree: true });
-      function getFetchOpts(link) {
+      function getFetchOpts(link2) {
         const fetchOpts = {};
-        if (link.integrity) fetchOpts.integrity = link.integrity;
-        if (link.referrerPolicy) fetchOpts.referrerPolicy = link.referrerPolicy;
-        if (link.crossOrigin === "use-credentials")
+        if (link2.integrity) fetchOpts.integrity = link2.integrity;
+        if (link2.referrerPolicy) fetchOpts.referrerPolicy = link2.referrerPolicy;
+        if (link2.crossOrigin === "use-credentials")
           fetchOpts.credentials = "include";
-        else if (link.crossOrigin === "anonymous") fetchOpts.credentials = "omit";
+        else if (link2.crossOrigin === "anonymous") fetchOpts.credentials = "omit";
         else fetchOpts.credentials = "same-origin";
         return fetchOpts;
       }
-      function processPreload(link) {
-        if (link.ep)
+      function processPreload(link2) {
+        if (link2.ep)
           return;
-        link.ep = true;
-        const fetchOpts = getFetchOpts(link);
-        fetch(link.href, fetchOpts);
+        link2.ep = true;
+        const fetchOpts = getFetchOpts(link2);
+        fetch(link2.href, fetchOpts);
       }
     })();
     var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
-    function getDefaultExportFromCjs(x) {
-      return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
+    function getDefaultExportFromCjs(x2) {
+      return x2 && x2.__esModule && Object.prototype.hasOwnProperty.call(x2, "default") ? x2["default"] : x2;
+    }
+    function getAugmentedNamespace(n) {
+      if (n.__esModule) return n;
+      var f = n.default;
+      if (typeof f == "function") {
+        var a = function a2() {
+          if (this instanceof a2) {
+            return Reflect.construct(f, arguments, this.constructor);
+          }
+          return f.apply(this, arguments);
+        };
+        a.prototype = f.prototype;
+      } else a = {};
+      Object.defineProperty(a, "__esModule", { value: true });
+      Object.keys(n).forEach(function(k) {
+        var d = Object.getOwnPropertyDescriptor(n, k);
+        Object.defineProperty(a, k, d.get ? d : {
+          enumerable: true,
+          get: function() {
+            return n[k];
+          }
+        });
+      });
+      return a;
     }
     var jsxRuntime = { exports: {} };
     var reactJsxRuntime_production_min = {};
@@ -66,7 +90,7 @@ var require_index_001 = __commonJS({
     function requireReact_production_min() {
       if (hasRequiredReact_production_min) return react_production_min;
       hasRequiredReact_production_min = 1;
-      var l = Symbol.for("react.element"), n = Symbol.for("react.portal"), p = Symbol.for("react.fragment"), q = Symbol.for("react.strict_mode"), r = Symbol.for("react.profiler"), t = Symbol.for("react.provider"), u = Symbol.for("react.context"), v = Symbol.for("react.forward_ref"), w = Symbol.for("react.suspense"), x = Symbol.for("react.memo"), y = Symbol.for("react.lazy"), z = Symbol.iterator;
+      var l = Symbol.for("react.element"), n = Symbol.for("react.portal"), p = Symbol.for("react.fragment"), q = Symbol.for("react.strict_mode"), r = Symbol.for("react.profiler"), t = Symbol.for("react.provider"), u = Symbol.for("react.context"), v = Symbol.for("react.forward_ref"), w = Symbol.for("react.suspense"), x2 = Symbol.for("react.memo"), y2 = Symbol.for("react.lazy"), z = Symbol.iterator;
       function A(a) {
         if (null === a || "object" !== typeof a) return null;
         a = z && a[z] || a["@@iterator"];
@@ -254,10 +278,10 @@ var require_index_001 = __commonJS({
       };
       react_production_min.isValidElement = O;
       react_production_min.lazy = function(a) {
-        return { $$typeof: y, _payload: { _status: -1, _result: a }, _init: T };
+        return { $$typeof: y2, _payload: { _status: -1, _result: a }, _init: T };
       };
       react_production_min.memo = function(a, b) {
-        return { $$typeof: x, type: a, compare: void 0 === b ? null : b };
+        return { $$typeof: x2, type: a, compare: void 0 === b ? null : b };
       };
       react_production_min.startTransition = function(a) {
         var b = V.transition;
@@ -402,9 +426,9 @@ var require_index_001 = __commonJS({
           if (c !== b) {
             a[0] = c;
             a: for (var d = 0, e = a.length, w = e >>> 1; d < w; ) {
-              var m = 2 * (d + 1) - 1, C = a[m], n = m + 1, x = a[n];
-              if (0 > g(C, c)) n < e && 0 > g(x, C) ? (a[d] = x, a[n] = c, d = n) : (a[d] = C, a[m] = c, d = m);
-              else if (n < e && 0 > g(x, c)) a[d] = x, a[n] = c, d = n;
+              var m = 2 * (d + 1) - 1, C = a[m], n = m + 1, x2 = a[n];
+              if (0 > g(C, c)) n < e && 0 > g(x2, C) ? (a[d] = x2, a[n] = c, d = n) : (a[d] = C, a[m] = c, d = m);
+              else if (n < e && 0 > g(x2, c)) a[d] = x2, a[n] = c, d = n;
               else break a;
             }
           }
@@ -425,7 +449,7 @@ var require_index_001 = __commonJS({
             return p.now() - q;
           };
         }
-        var r = [], t = [], u = 1, v = null, y = 3, z = false, A = false, B = false, D = "function" === typeof setTimeout ? setTimeout : null, E = "function" === typeof clearTimeout ? clearTimeout : null, F = "undefined" !== typeof setImmediate ? setImmediate : null;
+        var r = [], t = [], u = 1, v = null, y2 = 3, z = false, A = false, B = false, D = "function" === typeof setTimeout ? setTimeout : null, E = "function" === typeof clearTimeout ? clearTimeout : null, F = "undefined" !== typeof setImmediate ? setImmediate : null;
         "undefined" !== typeof navigator && void 0 !== navigator.scheduling && void 0 !== navigator.scheduling.isInputPending && navigator.scheduling.isInputPending.bind(navigator.scheduling);
         function G(a) {
           for (var b = h(t); null !== b; ) {
@@ -448,14 +472,14 @@ var require_index_001 = __commonJS({
           A = false;
           B && (B = false, E(L), L = -1);
           z = true;
-          var c = y;
+          var c = y2;
           try {
             G(b);
             for (v = h(r); null !== v && (!(v.expirationTime > b) || a && !M()); ) {
               var d = v.callback;
               if ("function" === typeof d) {
                 v.callback = null;
-                y = v.priorityLevel;
+                y2 = v.priorityLevel;
                 var e = d(v.expirationTime <= b);
                 b = exports2.unstable_now();
                 "function" === typeof e ? v.callback = e : v === h(r) && k(r);
@@ -471,7 +495,7 @@ var require_index_001 = __commonJS({
             }
             return w;
           } finally {
-            v = null, y = c, z = false;
+            v = null, y2 = c, z = false;
           }
         }
         var N = false, O = null, L = -1, P = 5, Q = -1;
@@ -528,27 +552,27 @@ var require_index_001 = __commonJS({
           0 > a || 125 < a ? console.error("forceFrameRate takes a positive int between 0 and 125, forcing frame rates higher than 125 fps is not supported") : P = 0 < a ? Math.floor(1e3 / a) : 5;
         };
         exports2.unstable_getCurrentPriorityLevel = function() {
-          return y;
+          return y2;
         };
         exports2.unstable_getFirstCallbackNode = function() {
           return h(r);
         };
         exports2.unstable_next = function(a) {
-          switch (y) {
+          switch (y2) {
             case 1:
             case 2:
             case 3:
               var b = 3;
               break;
             default:
-              b = y;
+              b = y2;
           }
-          var c = y;
-          y = b;
+          var c = y2;
+          y2 = b;
           try {
             return a();
           } finally {
-            y = c;
+            y2 = c;
           }
         };
         exports2.unstable_pauseExecution = function() {
@@ -566,12 +590,12 @@ var require_index_001 = __commonJS({
             default:
               a = 3;
           }
-          var c = y;
-          y = a;
+          var c = y2;
+          y2 = a;
           try {
             return b();
           } finally {
-            y = c;
+            y2 = c;
           }
         };
         exports2.unstable_scheduleCallback = function(a, b, c) {
@@ -600,14 +624,14 @@ var require_index_001 = __commonJS({
         };
         exports2.unstable_shouldYield = M;
         exports2.unstable_wrapCallback = function(a) {
-          var b = y;
+          var b = y2;
           return function() {
-            var c = y;
-            y = b;
+            var c = y2;
+            y2 = b;
             try {
               return a.apply(this, arguments);
             } finally {
-              y = c;
+              y2 = c;
             }
           };
         };
@@ -1751,14 +1775,14 @@ var require_index_001 = __commonJS({
       function fd(a, b, c, d) {
         if (dd) {
           var e = Yc(a, b, c, d);
-          if (null === e) hd(a, b, d, id, c), Sc(a, d);
+          if (null === e) hd(a, b, d, id2, c), Sc(a, d);
           else if (Uc(e, a, b, c, d)) d.stopPropagation();
           else if (Sc(a, d), b & 4 && -1 < Rc.indexOf(a)) {
             for (; null !== e; ) {
               var f = Cb(e);
               null !== f && Ec(f);
               f = Yc(a, b, c, d);
-              null === f && hd(a, b, d, id, c);
+              null === f && hd(a, b, d, id2, c);
               if (f === e) break;
               e = f;
             }
@@ -1766,9 +1790,9 @@ var require_index_001 = __commonJS({
           } else hd(a, b, d, null, c);
         }
       }
-      var id = null;
+      var id2 = null;
       function Yc(a, b, c, d) {
-        id = null;
+        id2 = null;
         a = xb(d);
         a = Wc(a);
         if (null !== a) if (b = Vb(a), null === b) a = null;
@@ -1780,7 +1804,7 @@ var require_index_001 = __commonJS({
           if (b.stateNode.current.memoizedState.isDehydrated) return 3 === b.tag ? b.stateNode.containerInfo : null;
           a = null;
         } else b !== a && (a = null);
-        id = a;
+        id2 = a;
         return null;
       }
       function jd(a) {
@@ -2435,12 +2459,12 @@ var require_index_001 = __commonJS({
                 case "pointerup":
                   k2 = Td;
               }
-              var t = 0 !== (b & 4), J = !t && "scroll" === a, x = t ? null !== h2 ? h2 + "Capture" : null : h2;
+              var t = 0 !== (b & 4), J = !t && "scroll" === a, x2 = t ? null !== h2 ? h2 + "Capture" : null : h2;
               t = [];
               for (var w = d2, u; null !== w; ) {
                 u = w;
                 var F = u.stateNode;
-                5 === u.tag && null !== F && (u = F, null !== x && (F = Kb(w, x), null != F && t.push(tf(w, F, u))));
+                5 === u.tag && null !== F && (u = F, null !== x2 && (F = Kb(w, x2), null != F && t.push(tf(w, F, u))));
                 if (J) break;
                 w = w.return;
               }
@@ -2460,30 +2484,30 @@ var require_index_001 = __commonJS({
                 if (k2 !== n) {
                   t = Bd;
                   F = "onMouseLeave";
-                  x = "onMouseEnter";
+                  x2 = "onMouseEnter";
                   w = "mouse";
-                  if ("pointerout" === a || "pointerover" === a) t = Td, F = "onPointerLeave", x = "onPointerEnter", w = "pointer";
+                  if ("pointerout" === a || "pointerover" === a) t = Td, F = "onPointerLeave", x2 = "onPointerEnter", w = "pointer";
                   J = null == k2 ? h2 : ue(k2);
                   u = null == n ? h2 : ue(n);
                   h2 = new t(F, w + "leave", k2, c, e2);
                   h2.target = J;
                   h2.relatedTarget = u;
                   F = null;
-                  Wc(e2) === d2 && (t = new t(x, w + "enter", n, c, e2), t.target = u, t.relatedTarget = J, F = t);
+                  Wc(e2) === d2 && (t = new t(x2, w + "enter", n, c, e2), t.target = u, t.relatedTarget = J, F = t);
                   J = F;
                   if (k2 && n) b: {
                     t = k2;
-                    x = n;
+                    x2 = n;
                     w = 0;
                     for (u = t; u; u = vf(u)) w++;
                     u = 0;
-                    for (F = x; F; F = vf(F)) u++;
+                    for (F = x2; F; F = vf(F)) u++;
                     for (; 0 < w - u; ) t = vf(t), w--;
-                    for (; 0 < u - w; ) x = vf(x), u--;
+                    for (; 0 < u - w; ) x2 = vf(x2), u--;
                     for (; w--; ) {
-                      if (t === x || null !== x && t === x.alternate) break b;
+                      if (t === x2 || null !== x2 && t === x2.alternate) break b;
                       t = vf(t);
-                      x = vf(x);
+                      x2 = vf(x2);
                     }
                     t = null;
                   }
@@ -3023,7 +3047,7 @@ var require_index_001 = __commonJS({
           }
           return null;
         }
-        function y(a2, b2, c2, d2, e2) {
+        function y2(a2, b2, c2, d2, e2) {
           if ("string" === typeof d2 && "" !== d2 || "number" === typeof d2) return a2 = a2.get(c2) || null, h(b2, a2, "" + d2, e2);
           if ("object" === typeof d2 && null !== d2) {
             switch (d2.$$typeof) {
@@ -3033,7 +3057,7 @@ var require_index_001 = __commonJS({
                 return a2 = a2.get(null === d2.key ? c2 : d2.key) || null, l(b2, a2, d2, e2);
               case Ha:
                 var f2 = d2._init;
-                return y(a2, b2, c2, f2(d2._payload), e2);
+                return y2(a2, b2, c2, f2(d2._payload), e2);
             }
             if (eb(d2) || Ka(d2)) return a2 = a2.get(c2) || null, m(b2, a2, d2, e2, null);
             Mg(b2, d2);
@@ -3041,18 +3065,18 @@ var require_index_001 = __commonJS({
           return null;
         }
         function n(e2, g2, h2, k2) {
-          for (var l2 = null, m2 = null, u = g2, w = g2 = 0, x = null; null !== u && w < h2.length; w++) {
-            u.index > w ? (x = u, u = null) : x = u.sibling;
+          for (var l2 = null, m2 = null, u = g2, w = g2 = 0, x2 = null; null !== u && w < h2.length; w++) {
+            u.index > w ? (x2 = u, u = null) : x2 = u.sibling;
             var n2 = r(e2, u, h2[w], k2);
             if (null === n2) {
-              null === u && (u = x);
+              null === u && (u = x2);
               break;
             }
             a && u && null === n2.alternate && b(e2, u);
             g2 = f(n2, g2, w);
             null === m2 ? l2 = n2 : m2.sibling = n2;
             m2 = n2;
-            u = x;
+            u = x2;
           }
           if (w === h2.length) return c(e2, u), I && tg(e2, w), l2;
           if (null === u) {
@@ -3060,7 +3084,7 @@ var require_index_001 = __commonJS({
             I && tg(e2, w);
             return l2;
           }
-          for (u = d(e2, u); w < h2.length; w++) x = y(u, e2, w, h2[w], k2), null !== x && (a && null !== x.alternate && u.delete(null === x.key ? w : x.key), g2 = f(x, g2, w), null === m2 ? l2 = x : m2.sibling = x, m2 = x);
+          for (u = d(e2, u); w < h2.length; w++) x2 = y2(u, e2, w, h2[w], k2), null !== x2 && (a && null !== x2.alternate && u.delete(null === x2.key ? w : x2.key), g2 = f(x2, g2, w), null === m2 ? l2 = x2 : m2.sibling = x2, m2 = x2);
           a && u.forEach(function(a2) {
             return b(e2, a2);
           });
@@ -3072,18 +3096,18 @@ var require_index_001 = __commonJS({
           if ("function" !== typeof l2) throw Error(p(150));
           h2 = l2.call(h2);
           if (null == h2) throw Error(p(151));
-          for (var u = l2 = null, m2 = g2, w = g2 = 0, x = null, n2 = h2.next(); null !== m2 && !n2.done; w++, n2 = h2.next()) {
-            m2.index > w ? (x = m2, m2 = null) : x = m2.sibling;
+          for (var u = l2 = null, m2 = g2, w = g2 = 0, x2 = null, n2 = h2.next(); null !== m2 && !n2.done; w++, n2 = h2.next()) {
+            m2.index > w ? (x2 = m2, m2 = null) : x2 = m2.sibling;
             var t2 = r(e2, m2, n2.value, k2);
             if (null === t2) {
-              null === m2 && (m2 = x);
+              null === m2 && (m2 = x2);
               break;
             }
             a && m2 && null === t2.alternate && b(e2, m2);
             g2 = f(t2, g2, w);
             null === u ? l2 = t2 : u.sibling = t2;
             u = t2;
-            m2 = x;
+            m2 = x2;
           }
           if (n2.done) return c(
             e2,
@@ -3094,7 +3118,7 @@ var require_index_001 = __commonJS({
             I && tg(e2, w);
             return l2;
           }
-          for (m2 = d(e2, m2); !n2.done; w++, n2 = h2.next()) n2 = y(m2, e2, w, n2.value, k2), null !== n2 && (a && null !== n2.alternate && m2.delete(null === n2.key ? w : n2.key), g2 = f(n2, g2, w), null === u ? l2 = n2 : u.sibling = n2, u = n2);
+          for (m2 = d(e2, m2); !n2.done; w++, n2 = h2.next()) n2 = y2(m2, e2, w, n2.value, k2), null !== n2 && (a && null !== n2.alternate && m2.delete(null === n2.key ? w : n2.key), g2 = f(n2, g2, w), null === u ? l2 = n2 : u.sibling = n2, u = n2);
           a && m2.forEach(function(a2) {
             return b(e2, a2);
           });
@@ -3292,10 +3316,10 @@ var require_index_001 = __commonJS({
           m = l = k = null;
           h = f;
           do {
-            var r = h.lane, y = h.eventTime;
+            var r = h.lane, y2 = h.eventTime;
             if ((d & r) === r) {
               null !== m && (m = m.next = {
-                eventTime: y,
+                eventTime: y2,
                 lane: 0,
                 tag: h.tag,
                 payload: h.payload,
@@ -3305,12 +3329,12 @@ var require_index_001 = __commonJS({
               a: {
                 var n = a, t = h;
                 r = b;
-                y = c;
+                y2 = c;
                 switch (t.tag) {
                   case 1:
                     n = t.payload;
                     if ("function" === typeof n) {
-                      q = n.call(y, q, r);
+                      q = n.call(y2, q, r);
                       break a;
                     }
                     q = n;
@@ -3319,7 +3343,7 @@ var require_index_001 = __commonJS({
                     n.flags = n.flags & -65537 | 128;
                   case 0:
                     n = t.payload;
-                    r = "function" === typeof n ? n.call(y, q, r) : n;
+                    r = "function" === typeof n ? n.call(y2, q, r) : n;
                     if (null === r || void 0 === r) break a;
                     q = A({}, q, r);
                     break a;
@@ -3328,7 +3352,7 @@ var require_index_001 = __commonJS({
                 }
               }
               null !== h.callback && 0 !== h.lane && (a.flags |= 64, r = e.effects, null === r ? e.effects = [h] : r.push(h));
-            } else y = { eventTime: y, lane: r, tag: h.tag, payload: h.payload, callback: h.callback, next: null }, null === m ? (l = m = y, k = q) : m = m.next = y, g |= r;
+            } else y2 = { eventTime: y2, lane: r, tag: h.tag, payload: h.payload, callback: h.callback, next: null }, null === m ? (l = m = y2, k = q) : m = m.next = y2, g |= r;
             h = h.next;
             if (null === h) if (h = e.shared.pending, null === h) break;
             else r = h, h = r.next, r.next = null, e.lastBaseUpdate = r, e.shared.pending = null;
@@ -3655,7 +3679,7 @@ var require_index_001 = __commonJS({
       function oi(a, b) {
         return li(4, 4, a, b);
       }
-      function pi(a, b) {
+      function pi2(a, b) {
         if ("function" === typeof b) return a = a(), b(a), function() {
           b(null);
         };
@@ -3665,7 +3689,7 @@ var require_index_001 = __commonJS({
       }
       function qi(a, b, c) {
         c = null !== c && void 0 !== c ? c.concat([a]) : null;
-        return li(4, 4, pi.bind(null, b, a), c);
+        return li(4, 4, pi2.bind(null, b, a), c);
       }
       function ri() {
       }
@@ -3765,7 +3789,7 @@ var require_index_001 = __commonJS({
         return ki(
           4194308,
           4,
-          pi.bind(null, b, a),
+          pi2.bind(null, b, a),
           c
         );
       }, useLayoutEffect: function(a, b) {
@@ -4133,14 +4157,14 @@ var require_index_001 = __commonJS({
           r = g.context;
           k = c.contextType;
           "object" === typeof k && null !== k ? k = eh(k) : (k = Zf(c) ? Xf : H.current, k = Yf(b, k));
-          var y = c.getDerivedStateFromProps;
-          (m = "function" === typeof y || "function" === typeof g.getSnapshotBeforeUpdate) || "function" !== typeof g.UNSAFE_componentWillReceiveProps && "function" !== typeof g.componentWillReceiveProps || (h !== q || r !== k) && Hi(b, g, d, k);
+          var y2 = c.getDerivedStateFromProps;
+          (m = "function" === typeof y2 || "function" === typeof g.getSnapshotBeforeUpdate) || "function" !== typeof g.UNSAFE_componentWillReceiveProps && "function" !== typeof g.componentWillReceiveProps || (h !== q || r !== k) && Hi(b, g, d, k);
           jh = false;
           r = b.memoizedState;
           g.state = r;
           qh(b, d, g, e);
           var n = b.memoizedState;
-          h !== q || r !== n || Wf.current || jh ? ("function" === typeof y && (Di(b, c, y, d), n = b.memoizedState), (l = jh || Fi(b, c, l, d, r, n, k) || false) ? (m || "function" !== typeof g.UNSAFE_componentWillUpdate && "function" !== typeof g.componentWillUpdate || ("function" === typeof g.componentWillUpdate && g.componentWillUpdate(d, n, k), "function" === typeof g.UNSAFE_componentWillUpdate && g.UNSAFE_componentWillUpdate(d, n, k)), "function" === typeof g.componentDidUpdate && (b.flags |= 4), "function" === typeof g.getSnapshotBeforeUpdate && (b.flags |= 1024)) : ("function" !== typeof g.componentDidUpdate || h === a.memoizedProps && r === a.memoizedState || (b.flags |= 4), "function" !== typeof g.getSnapshotBeforeUpdate || h === a.memoizedProps && r === a.memoizedState || (b.flags |= 1024), b.memoizedProps = d, b.memoizedState = n), g.props = d, g.state = n, g.context = k, d = l) : ("function" !== typeof g.componentDidUpdate || h === a.memoizedProps && r === a.memoizedState || (b.flags |= 4), "function" !== typeof g.getSnapshotBeforeUpdate || h === a.memoizedProps && r === a.memoizedState || (b.flags |= 1024), d = false);
+          h !== q || r !== n || Wf.current || jh ? ("function" === typeof y2 && (Di(b, c, y2, d), n = b.memoizedState), (l = jh || Fi(b, c, l, d, r, n, k) || false) ? (m || "function" !== typeof g.UNSAFE_componentWillUpdate && "function" !== typeof g.componentWillUpdate || ("function" === typeof g.componentWillUpdate && g.componentWillUpdate(d, n, k), "function" === typeof g.UNSAFE_componentWillUpdate && g.UNSAFE_componentWillUpdate(d, n, k)), "function" === typeof g.componentDidUpdate && (b.flags |= 4), "function" === typeof g.getSnapshotBeforeUpdate && (b.flags |= 1024)) : ("function" !== typeof g.componentDidUpdate || h === a.memoizedProps && r === a.memoizedState || (b.flags |= 4), "function" !== typeof g.getSnapshotBeforeUpdate || h === a.memoizedProps && r === a.memoizedState || (b.flags |= 1024), b.memoizedProps = d, b.memoizedState = n), g.props = d, g.state = n, g.context = k, d = l) : ("function" !== typeof g.componentDidUpdate || h === a.memoizedProps && r === a.memoizedState || (b.flags |= 4), "function" !== typeof g.getSnapshotBeforeUpdate || h === a.memoizedProps && r === a.memoizedState || (b.flags |= 1024), d = false);
         }
         return jj(a, b, c, d, f, e);
       }
@@ -4946,23 +4970,23 @@ var require_index_001 = __commonJS({
               }
               var g = 0, h = -1, k = -1, l = 0, m = 0, q = a, r = null;
               b: for (; ; ) {
-                for (var y; ; ) {
+                for (var y2; ; ) {
                   q !== c || 0 !== e && 3 !== q.nodeType || (h = g + e);
                   q !== f || 0 !== d && 3 !== q.nodeType || (k = g + d);
                   3 === q.nodeType && (g += q.nodeValue.length);
-                  if (null === (y = q.firstChild)) break;
+                  if (null === (y2 = q.firstChild)) break;
                   r = q;
-                  q = y;
+                  q = y2;
                 }
                 for (; ; ) {
                   if (q === a) break b;
                   r === c && ++l === e && (h = g);
                   r === f && ++m === d && (k = g);
-                  if (null !== (y = q.nextSibling)) break;
+                  if (null !== (y2 = q.nextSibling)) break;
                   q = r;
                   r = q.parentNode;
                 }
-                q = y;
+                q = y2;
               }
               c = -1 === h || -1 === k ? null : { start: h, end: k };
             } else c = null;
@@ -4983,8 +5007,8 @@ var require_index_001 = __commonJS({
                 break;
               case 1:
                 if (null !== n) {
-                  var t = n.memoizedProps, J = n.memoizedState, x = b.stateNode, w = x.getSnapshotBeforeUpdate(b.elementType === b.type ? t : Ci(b.type, t), J);
-                  x.__reactInternalSnapshotBeforeUpdate = w;
+                  var t = n.memoizedProps, J = n.memoizedState, x2 = b.stateNode, w = x2.getSnapshotBeforeUpdate(b.elementType === b.type ? t : Ci(b.type, t), J);
+                  x2.__reactInternalSnapshotBeforeUpdate = w;
                 }
                 break;
               case 3:
@@ -5274,8 +5298,8 @@ var require_index_001 = __commonJS({
                   case "select":
                     var r = e._wrapperState.wasMultiple;
                     e._wrapperState.wasMultiple = !!f.multiple;
-                    var y = f.value;
-                    null != y ? fb(e, !!f.multiple, y, false) : r !== !!f.multiple && (null != f.defaultValue ? fb(
+                    var y2 = f.value;
+                    null != y2 ? fb(e, !!f.multiple, y2, false) : r !== !!f.multiple && (null != f.defaultValue ? fb(
                       e,
                       !!f.multiple,
                       f.defaultValue,
@@ -5331,7 +5355,7 @@ var require_index_001 = __commonJS({
               if ((a.stateNode.isHidden = l) && !m && 0 !== (a.mode & 1)) for (V = a, m = a.child; null !== m; ) {
                 for (q = V = m; null !== V; ) {
                   r = V;
-                  y = r.child;
+                  y2 = r.child;
                   switch (r.tag) {
                     case 0:
                     case 11:
@@ -5361,7 +5385,7 @@ var require_index_001 = __commonJS({
                         continue;
                       }
                   }
-                  null !== y ? (y.return = r, V = y) : gk(q);
+                  null !== y2 ? (y2.return = r, V = y2) : gk(q);
                 }
                 m = m.sibling;
               }
@@ -5973,12 +5997,12 @@ var require_index_001 = __commonJS({
                   var r = m.alternate;
                   r ? (m.updateQueue = r.updateQueue, m.memoizedState = r.memoizedState, m.lanes = r.lanes) : (m.updateQueue = null, m.memoizedState = null);
                 }
-                var y = Ui(g);
-                if (null !== y) {
-                  y.flags &= -257;
-                  Vi(y, g, h, f, b);
-                  y.mode & 1 && Si(f, l, b);
-                  b = y;
+                var y2 = Ui(g);
+                if (null !== y2) {
+                  y2.flags &= -257;
+                  Vi(y2, g, h, f, b);
+                  y2.mode & 1 && Si(f, l, b);
+                  b = y2;
                   k = l;
                   var n = b.updateQueue;
                   if (null === n) {
@@ -6014,8 +6038,8 @@ var require_index_001 = __commonJS({
                     f.flags |= 65536;
                     b &= -b;
                     f.lanes |= b;
-                    var x = Ni(f, k, b);
-                    ph(f, x);
+                    var x2 = Ni(f, k, b);
+                    ph(f, x2);
                     break a;
                   case 1:
                     h = k;
@@ -6212,18 +6236,18 @@ var require_index_001 = __commonJS({
                         if (null !== q) q.return = m, V = q;
                         else for (; null !== V; ) {
                           m = V;
-                          var r = m.sibling, y = m.return;
+                          var r = m.sibling, y2 = m.return;
                           Sj(m);
                           if (m === l) {
                             V = null;
                             break;
                           }
                           if (null !== r) {
-                            r.return = y;
+                            r.return = y2;
                             V = r;
                             break;
                           }
-                          V = y;
+                          V = y2;
                         }
                       }
                     }
@@ -6251,10 +6275,10 @@ var require_index_001 = __commonJS({
                     case 15:
                       Pj(9, f, f.return);
                   }
-                  var x = f.sibling;
-                  if (null !== x) {
-                    x.return = f.return;
-                    V = x;
+                  var x2 = f.sibling;
+                  if (null !== x2) {
+                    x2.return = f.return;
+                    V = x2;
                     break b;
                   }
                   V = f.return;
@@ -7079,8 +7103,8 @@ var require_index_001 = __commonJS({
           var hasOwn = {}.hasOwnProperty;
           function classNames2() {
             var classes = "";
-            for (var i = 0; i < arguments.length; i++) {
-              var arg = arguments[i];
+            for (var i2 = 0; i2 < arguments.length; i2++) {
+              var arg = arguments[i2];
               if (arg) {
                 classes = appendClass(classes, parseValue(arg));
               }
@@ -7131,7 +7155,7 @@ var require_index_001 = __commonJS({
     const classNames = /* @__PURE__ */ getDefaultExportFromCjs(classnamesExports);
     const padding = `_padding_72bf970`;
     const styles$12 = { padding };
-    const Pad = React.forwardRef(function Pad2({ children, inline, start, end, top: top2, bottom, amount, minWidth, width, maxWidth, minHeight, height, maxHeight, style: defaultStyle, className, ...props }, ref) {
+    const Pad = React.forwardRef(function Pad2({ children: children2, inline, start: start2, end, top: top2, bottom, amount, minWidth, width, maxWidth, minHeight, height, maxHeight, style: defaultStyle, className, ...props }, ref) {
       const style = {
         ...defaultStyle,
         minWidth,
@@ -7144,8 +7168,8 @@ var require_index_001 = __commonJS({
       if (amount) {
         style.padding = amount;
       }
-      if (start) {
-        style.paddingInlineStart = start;
+      if (start2) {
+        style.paddingInlineStart = start2;
       }
       if (end) {
         style.paddingInlineEnd = end;
@@ -7156,7 +7180,7 @@ var require_index_001 = __commonJS({
       if (bottom) {
         style.paddingBottom = bottom;
       }
-      return React.createElement("div", { ref, className: classNames(className, styles$12.padding), style, "data-inline": String(inline), ...props }, children);
+      return React.createElement("div", { ref, className: classNames(className, styles$12.padding), style, "data-inline": String(inline), ...props }, children2);
     });
     function useForkRef(...args) {
       return reactExports.useCallback((obj) => {
@@ -7303,19 +7327,19 @@ var require_index_001 = __commonJS({
     if (!window.location.origin.includes("tcn.com")) {
       repository = "https://op-dev.tcn.com";
     }
-    function Icon({ size, variant = "default", name: name2, style = {}, color = "currentColor", verticalAlign = "text-top", flipOnRtl = false, className, ...props }) {
+    function Icon({ size, variant = "default", name: name2, style = {}, color: color2 = "currentColor", verticalAlign = "text-top", flipOnRtl = false, className, ...props }) {
       style.width = size;
       style.height = size;
       style.minWidth = size;
       style.minHeight = size;
       style.verticalAlign = verticalAlign;
-      style.background = color;
+      style.background = color2;
       style.maskImage = `url('${repository}/icons/${name2}.svg')`;
       return React.createElement("div", { "data-flip-on-rtl": flipOnRtl, className: classNames(styles$11.icon, className), style: { ...style }, "data-variant": variant, ...props });
     }
     const bodyText = `_body-text_13bfe84`;
     const styles$10 = { "body-text": bodyText };
-    function BodyText({ variant = "medium", emphasis = "normal", contrast = "normal", color, children, className, style = {}, padStart, padEnd, padBottom, padTop, pad, selectable = false, breakWords = false }) {
+    function BodyText({ variant = "medium", emphasis = "normal", contrast = "normal", color: color2, children: children2, className, style = {}, padStart, padEnd, padBottom, padTop, pad, selectable = false, breakWords = false }) {
       if (pad) {
         style.padding = pad;
       }
@@ -7331,14 +7355,14 @@ var require_index_001 = __commonJS({
       if (padBottom) {
         style.paddingBottom = padBottom;
       }
-      if (color) {
-        style.color = color;
+      if (color2) {
+        style.color = color2;
       }
-      return React.createElement("div", { "data-contrast": contrast, "data-emphasis": emphasis, "data-selectable": selectable, className: classNames(styles$10["body-text"], className), style, "data-variant": variant, "data-word-break": breakWords }, children);
+      return React.createElement("div", { "data-contrast": contrast, "data-emphasis": emphasis, "data-selectable": selectable, className: classNames(styles$10["body-text"], className), style, "data-variant": variant, "data-word-break": breakWords }, children2);
     }
     const header = `_header_bc358ce`;
     const styles$$ = { header };
-    function Header$1({ variant = "medium", emphasis = "normal", contrast = "normal", color, children, className, style = {}, padStart, padEnd, padBottom, padTop, pad, selectable = false }) {
+    function Header$1({ variant = "medium", emphasis = "normal", contrast = "normal", color: color2, children: children2, className, style = {}, padStart, padEnd, padBottom, padTop, pad, selectable = false }) {
       let As;
       if (variant === "large") {
         As = "h1";
@@ -7362,10 +7386,10 @@ var require_index_001 = __commonJS({
       if (padBottom) {
         style.paddingBottom = padBottom;
       }
-      if (color) {
-        style.color = color;
+      if (color2) {
+        style.color = color2;
       }
-      return React.createElement(As, { "data-contrast": contrast, "data-emphasis": emphasis, "data-selectable": selectable, className: classNames(styles$$["header"], className), style, "data-variant": variant }, children);
+      return React.createElement(As, { "data-contrast": contrast, "data-emphasis": emphasis, "data-selectable": selectable, className: classNames(styles$$["header"], className), style, "data-variant": variant }, children2);
     }
     const eventMap = {
       onClick: "click",
@@ -7392,12 +7416,12 @@ var require_index_001 = __commonJS({
       }
       return isWithinElement;
     }
-    const ClickAwayListener = React.forwardRef(function ClickAwayListener2({ children, mouseEvent, touchEvent, onClickAway, refs = [] }, ref) {
+    const ClickAwayListener = React.forwardRef(function ClickAwayListener2({ children: children2, mouseEvent, touchEvent, onClickAway, refs = [] }, ref) {
       const nodeRef = reactExports.useRef(null);
       const startedActionWithinElementRef = reactExports.useRef(true);
       const DOMMouseEvent = eventMap[mouseEvent || "onClick"];
       const DOMTouchEvent = touchMap[touchEvent || "onTouchEnd"];
-      const newRef = useForkRef(ref, nodeRef, children.ref);
+      const newRef = useForkRef(ref, nodeRef, children2.ref);
       const activatedRef = React.useRef(false);
       React.useEffect(() => {
         window.setTimeout(() => {
@@ -7429,14 +7453,14 @@ var require_index_001 = __commonJS({
           document.removeEventListener(DOMTouchEvent, eventHandler);
         };
       }, [DOMTouchEvent, DOMMouseEvent, eventHandler, trackAction]);
-      return React.cloneElement(children, {
-        ...children.props,
+      return React.cloneElement(children2, {
+        ...children2.props,
         ref: newRef
       });
     });
-    const ScrollAwayListener = React.forwardRef(function ScrollAwayListener2({ children, onScrollAway }, ref) {
+    const ScrollAwayListener = React.forwardRef(function ScrollAwayListener2({ children: children2, onScrollAway }, ref) {
       const nodeRef = reactExports.useRef(null);
-      const newRef = useForkRef(ref, nodeRef, children.ref);
+      const newRef = useForkRef(ref, nodeRef, children2.ref);
       reactExports.useEffect(() => {
         const onScroll = (event) => {
           let insideDOM;
@@ -7456,8 +7480,8 @@ var require_index_001 = __commonJS({
           document.removeEventListener("scroll", onScroll, true);
         };
       }, [onScrollAway]);
-      return React.cloneElement(children, {
-        ...children.props,
+      return React.cloneElement(children2, {
+        ...children2.props,
         ref: newRef
       });
     });
@@ -7630,7 +7654,7 @@ var require_index_001 = __commonJS({
       };
       return React.createElement("div", { className: styles$V["top-resize-handle"], onMouseDown: resizeHandler, style: topResizeHandleStyle });
     }
-    const Box = React.forwardRef(function Box2({ style, className, as = "div", children, width = "100%", minWidth, maxWidth, height = "100%", minHeight, maxHeight, zIndex = 0, padding: padding2, paddingInline, paddingBlock, overflow, enableResizeOnTop = false, enableResizeOnEnd = false, enableResizeOnBottom = false, enableResizeOnStart = false, enableResizeOnLeft = false, enableResizeOnRight = false, onWidthResize, onHeightResize, onWidthResizeEnd, onHeightResizeEnd, handleProps, ...otherProps }, ref) {
+    const Box = React.forwardRef(function Box2({ style, className, as = "div", children: children2, width = "100%", minWidth, maxWidth, height = "100%", minHeight, maxHeight, zIndex = 0, padding: padding2, paddingInline, paddingBlock, overflow, enableResizeOnTop = false, enableResizeOnEnd = false, enableResizeOnBottom = false, enableResizeOnStart = false, enableResizeOnLeft = false, enableResizeOnRight = false, onWidthResize, onHeightResize, onWidthResizeEnd, onHeightResizeEnd, handleProps, ...otherProps }, ref) {
       const As = as;
       const boxRef = reactExports.useRef(null);
       const forkedRef = useForkRef(ref, boxRef);
@@ -7662,7 +7686,7 @@ var require_index_001 = __commonJS({
           ...propStyles,
           ...style
         }, className, ...otherProps },
-        children,
+        children2,
         enableResizeOnTop && React.createElement(TopResizeHandle, { onHeightResize, onHeightResizeEnd, targetRef: boxRef, handleProps }),
         enableResizeOnBottom && React.createElement(BottomResizeHandle, { onHeightResize, onHeightResizeEnd, targetRef: boxRef, handleProps }),
         enableResizeOnStart && React.createElement(StartResizeHandle, { onWidthResize, onWidthResizeEnd, targetRef: boxRef, handleProps }),
@@ -7673,7 +7697,7 @@ var require_index_001 = __commonJS({
     });
     const flexBox = `_flex-box_2b136c5`;
     const styles$U = { "flex-box": flexBox };
-    const FlexBox = React.forwardRef(function FillBox({ growWeight, shrinkWeight, children, minWidth, width, maxWidth, minHeight, height, maxHeight, style, className, zIndex, ...props }, ref) {
+    const FlexBox = React.forwardRef(function FillBox({ growWeight, shrinkWeight, children: children2, minWidth, width, maxWidth, minHeight, height, maxHeight, style, className, zIndex, ...props }, ref) {
       const fillBoxRef = reactExports.useRef(null);
       const forkedRef = useForkRef(ref, fillBoxRef);
       return React.createElement("div", { ref: forkedRef, "data-height": height, "data-width": height, className: classNames(className, styles$U["flex-box"], "stack-flex-box"), style: {
@@ -7687,7 +7711,7 @@ var require_index_001 = __commonJS({
         maxWidth,
         zIndex,
         ...style
-      }, ...props }, children);
+      }, ...props }, children2);
     });
     function removeUndefinedProperties(obj) {
       const result = {};
@@ -7700,7 +7724,7 @@ var require_index_001 = __commonJS({
     }
     const hStack = `_h-stack_387ef68`;
     const styles$T = { "h-stack": hStack };
-    const HStack = React.forwardRef(function HStack2({ as = "div", children, style, className, horizontalAlignment = "start", verticalAlignment = "center", inline, allowFlow, width, minWidth, maxWidth, height, minHeight, maxHeight, padding: padding2, paddingBlock, paddingInline, paddingInlineStart, paddingInlineEnd, paddingTop, paddingBottom, margin, marginBlock, marginInline, marginInlineStart, marginInlineEnd, marginTop, marginBottom, zIndex, overflowX, overflowY, flex, gap, rowGap, columnGap, ...attr }, ref) {
+    const HStack = React.forwardRef(function HStack2({ as = "div", children: children2, style, className, horizontalAlignment = "start", verticalAlignment = "center", inline, allowFlow, width, minWidth, maxWidth, height, minHeight, maxHeight, padding: padding2, paddingBlock, paddingInline, paddingInlineStart, paddingInlineEnd, paddingTop, paddingBottom, margin, marginBlock, marginInline, marginInlineStart, marginInlineEnd, marginTop, marginBottom, zIndex, overflowX, overflowY, flex, gap, rowGap, columnGap, ...attr }, ref) {
       const As = as;
       const defaultStyles = {
         minWidth,
@@ -7734,7 +7758,7 @@ var require_index_001 = __commonJS({
         ...removeUndefinedProperties(defaultStyles),
         ...style
       };
-      return React.createElement(As, { ref, className: classNames(className, styles$T["h-stack"], flex && "stack-flex-box"), style: finalStyles, "data-inline": Boolean(inline), "data-allow-flow": Boolean(allowFlow), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, children);
+      return React.createElement(As, { ref, className: classNames(className, styles$T["h-stack"], flex && "stack-flex-box"), style: finalStyles, "data-inline": Boolean(inline), "data-allow-flow": Boolean(allowFlow), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, children2);
     });
     const Spacer = React.forwardRef(function Spacer2({ width = "auto", height = "auto", fullHeight = false, fullWidth = false, fillSpaceWeight = 1, style, className }, ref) {
       const flex = width === "auto" && height === "auto" ? fillSpaceWeight : void 0;
@@ -7755,7 +7779,7 @@ var require_index_001 = __commonJS({
     });
     const vStack = `_v-stack_97b2e87`;
     const styles$S = { "v-stack": vStack };
-    const VStack = React.forwardRef(function VStack2({ as = "div", children, style, className, horizontalAlignment = "center", verticalAlignment = "start", inline, allowFlow, width, minWidth, maxWidth, height, minHeight, maxHeight, padding: padding2, paddingBlock, paddingInline, paddingInlineStart, paddingInlineEnd, paddingTop, paddingBottom, margin, marginBlock, marginInline, marginInlineStart, marginInlineEnd, marginTop, marginBottom, zIndex, overflowY, overflowX, flex, gap, rowGap, columnGap, ...attr }, ref) {
+    const VStack = React.forwardRef(function VStack2({ as = "div", children: children2, style, className, horizontalAlignment = "center", verticalAlignment = "start", inline, allowFlow, width, minWidth, maxWidth, height, minHeight, maxHeight, padding: padding2, paddingBlock, paddingInline, paddingInlineStart, paddingInlineEnd, paddingTop, paddingBottom, margin, marginBlock, marginInline, marginInlineStart, marginInlineEnd, marginTop, marginBottom, zIndex, overflowY, overflowX, flex, gap, rowGap, columnGap, ...attr }, ref) {
       const As = as;
       const defaultStyles = {
         display: inline == null ? void 0 : inline ? "inline-flex" : "flex",
@@ -7790,11 +7814,11 @@ var require_index_001 = __commonJS({
         ...removeUndefinedProperties(defaultStyles),
         ...style
       };
-      return React.createElement(As, { ref, className: classNames(className, styles$S["v-stack"], flex && "stack-flex-box"), style: finalStyles, "data-inline": Boolean(inline), "data-allow-flow": Boolean(allowFlow), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, children);
+      return React.createElement(As, { ref, className: classNames(className, styles$S["v-stack"], flex && "stack-flex-box"), style: finalStyles, "data-inline": Boolean(inline), "data-allow-flow": Boolean(allowFlow), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, children2);
     });
     const zStack = `_z-stack_f623b5e`;
     const styles$R = { "z-stack": zStack };
-    const ZStack = React.forwardRef(function ZStack2({ as = "div", children, style, horizontalAlignment = "center", verticalAlignment = "center", inline, width, minWidth, maxWidth, height, minHeight, maxHeight, padding: padding2, paddingBlock, paddingInline, paddingInlineStart, paddingInlineEnd, paddingTop, paddingBottom, margin, marginBlock, marginInline, marginInlineStart, marginInlineEnd, marginTop, marginBottom, zIndex, className, overflow, flex, ...attr }, ref) {
+    const ZStack = React.forwardRef(function ZStack2({ as = "div", children: children2, style, horizontalAlignment = "center", verticalAlignment = "center", inline, width, minWidth, maxWidth, height, minHeight, maxHeight, padding: padding2, paddingBlock, paddingInline, paddingInlineStart, paddingInlineEnd, paddingTop, paddingBottom, margin, marginBlock, marginInline, marginInlineStart, marginInlineEnd, marginTop, marginBottom, zIndex, className, overflow, flex, ...attr }, ref) {
       const As = as;
       const defaultStyles = {
         minWidth,
@@ -7823,7 +7847,7 @@ var require_index_001 = __commonJS({
       return React.createElement(As, { ref, style: {
         ...removeUndefinedProperties(defaultStyles),
         ...style
-      }, className: classNames(className, styles$R["z-stack"], flex && "stack-flex-box"), "data-inline": Boolean(inline), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, typeof children === "string" ? React.createElement("span", null, children) : children);
+      }, className: classNames(className, styles$R["z-stack"], flex && "stack-flex-box"), "data-inline": Boolean(inline), "data-v-alignment": verticalAlignment, "data-h-alignment": horizontalAlignment, ...attr }, typeof children2 === "string" ? React.createElement("span", null, children2) : children2);
     });
     var Status;
     (function(Status2) {
@@ -7979,7 +8003,7 @@ var require_index_001 = __commonJS({
     const virtualizedGridContent = `_virtualized-grid-content_ccec1b8`;
     const styles$P = { "virtualized-grid": virtualizedGrid, "virtualized-grid-content": virtualizedGridContent };
     const defaultRender = () => React.createElement("div", null);
-    const VirtualizedGrid = React.forwardRef(function VirtualizedGrid2({ as = "div", alignment = "center", minWidth, width, maxWidth, minHeight, height, maxHeight, renderItem = defaultRender, style, className, onScroll, children, presenter: presenter2, ...props }, ref) {
+    const VirtualizedGrid = React.forwardRef(function VirtualizedGrid2({ as = "div", alignment = "center", minWidth, width, maxWidth, minHeight, height, maxHeight, renderItem = defaultRender, style, className, onScroll, children: children2, presenter: presenter2, ...props }, ref) {
       useSignalValue(presenter2.isDirtyBroadcast);
       const visibleItems = presenter2.visibleItems;
       const As = as;
@@ -8019,15 +8043,15 @@ var require_index_001 = __commonJS({
           const child = renderItem(item, item.index);
           return React.createElement(GridElement, { key: item.index, child, item, presenter: presenter2 });
         })),
-        children
+        children2
       );
     });
-    function binarySearch(array, lookFor, compareFunc) {
+    function binarySearch(array2, lookFor, compareFunc) {
       let lowerBound = 0;
-      let upperBound = array.length - 1;
+      let upperBound = array2.length - 1;
       while (lowerBound <= upperBound) {
         const checkIndex = Math.floor((upperBound + lowerBound) / 2);
-        const result = compareFunc(array[checkIndex], lookFor);
+        const result = compareFunc(array2[checkIndex], lookFor);
         if (result > 0) {
           lowerBound = checkIndex + 1;
           if (lowerBound > upperBound) {
@@ -8105,8 +8129,8 @@ var require_index_001 = __commonJS({
         }
         const firstIndex = binarySearch(this._items, top2, this._compare);
         const lastIndex = binarySearch(this._items, bottom, this._compare);
-        for (let i = firstIndex; i <= lastIndex; i++) {
-          this._itemsWithinRange.push(this._items[i]);
+        for (let i2 = firstIndex; i2 <= lastIndex; i2++) {
+          this._itemsWithinRange.push(this._items[i2]);
         }
         return this._itemsWithinRange;
       }
@@ -8164,8 +8188,8 @@ var require_index_001 = __commonJS({
       releaseAll() {
         const usedInstances = this.usedInstances;
         const length = usedInstances.length;
-        for (let x = 0; x < length; x++) {
-          this.availableInstances.push(this.usedInstances[x]);
+        for (let x2 = 0; x2 < length; x2++) {
+          this.availableInstances.push(this.usedInstances[x2]);
         }
         this.usedInstances.length = 0;
       }
@@ -8260,7 +8284,7 @@ var require_index_001 = __commonJS({
         const items = this._gridItems;
         if (length > items.length) {
           const amount = length - items.length;
-          for (let i = 0; i < amount; i++) {
+          for (let i2 = 0; i2 < amount; i2++) {
             const item = this._itemFactory.useInstance();
             item.height = 100;
             items.push(item);
@@ -8308,10 +8332,10 @@ var require_index_001 = __commonJS({
       }
       _updateVisibleItems() {
         this._visibleItems.length = 0;
-        for (let i = 0; i < this._columns.length; i++) {
-          const items = this._columns[i].getItemsWithinRange(this._viewport.top - this._viewport.height / 2, this._viewport.bottom + this._viewport.height / 2);
-          for (let x = 0; x < items.length; x++) {
-            this._visibleItems.push(items[x]);
+        for (let i2 = 0; i2 < this._columns.length; i2++) {
+          const items = this._columns[i2].getItemsWithinRange(this._viewport.top - this._viewport.height / 2, this._viewport.bottom + this._viewport.height / 2);
+          for (let x2 = 0; x2 < items.length; x2++) {
+            this._visibleItems.push(items[x2]);
           }
         }
       }
@@ -8328,8 +8352,8 @@ var require_index_001 = __commonJS({
         this._columnsWidth = Math.min(lowerBoundedWidth, this._maxColumnWidth);
         let offset = this._gap;
         this._columns.length = 0;
-        for (let i = 0; i < this._columnAmount; i++) {
-          const column = new GridColumn(i, offset);
+        for (let i2 = 0; i2 < this._columnAmount; i2++) {
+          const column = new GridColumn(i2, offset);
           this._columns.push(column);
           offset += this._columnsWidth + this._gap;
         }
@@ -8342,18 +8366,18 @@ var require_index_001 = __commonJS({
         }
         const items = this._gridItems;
         this._clearColumnsFromIndex(fromIndex);
-        for (let i = fromIndex; i < items.length; i++) {
-          const item = items[i];
+        for (let i2 = fromIndex; i2 < items.length; i2++) {
+          const item = items[i2];
           const shortestColumn = this._getShortestColumn();
           const top2 = shortestColumn.bottom + this._gap;
-          item.index = i;
+          item.index = i2;
           item.top = top2;
           item.left = shortestColumn.offset;
           item.right = item.left + this._columnsWidth;
           item.bottom = item.top + item.height;
           item.column = shortestColumn.index;
           item.width = this._columnsWidth;
-          item.value = this._values[i];
+          item.value = this._values[i2];
           this._columns[item.column].add(item);
         }
         this._height = Math.max(0, ...this._columns.map((c) => c.bottom + this._gap));
@@ -8361,15 +8385,15 @@ var require_index_001 = __commonJS({
         this._isDirty.set(true);
       }
       _clearColumnsFromIndex(index) {
-        for (let i = 0; i < this._columns.length; i++) {
-          this._columns[i].clearFromIndex(index);
+        for (let i2 = 0; i2 < this._columns.length; i2++) {
+          this._columns[i2].clearFromIndex(index);
         }
       }
       _getShortestColumn() {
         const length = this._columns.length;
         let selectedColumn = this._columns[0];
-        for (let x = 1; x < length; x++) {
-          const column = this._columns[x];
+        for (let x2 = 1; x2 < length; x2++) {
+          const column = this._columns[x2];
           if (selectedColumn.bottom > column.bottom) {
             selectedColumn = column;
           }
@@ -8392,9 +8416,9 @@ var require_index_001 = __commonJS({
         return this._columns[this._columns.length - 1].right + this._gap;
       }
     }
-    React.forwardRef(function Grid({ children, alignment, gap, minColumnWidth, maxColumnWidth, minColumnAmount, maxColumnAmount, ...props }, ref) {
+    React.forwardRef(function Grid({ children: children2, alignment, gap, minColumnWidth, maxColumnWidth, minColumnAmount, maxColumnAmount, ...props }, ref) {
       const [presenter2] = reactExports.useState(() => new VirtualizedGridPresenter());
-      const childrenArray = React.Children.toArray(children);
+      const childrenArray = React.Children.toArray(children2);
       reactExports.useLayoutEffect(() => {
         if (gap == null) {
           presenter2.setGap(0);
@@ -8451,9 +8475,9 @@ var require_index_001 = __commonJS({
         });
       }
     }
-    React.forwardRef(function List({ children, alignment, gap, minWidth, maxWidth, ...props }, ref) {
+    React.forwardRef(function List({ children: children2, alignment, gap, minWidth, maxWidth, ...props }, ref) {
       const [presenter2] = reactExports.useState(() => new VirtualizedListPresenter());
-      const childrenArray = React.Children.toArray(children);
+      const childrenArray = React.Children.toArray(children2);
       reactExports.useLayoutEffect(() => {
         if (gap == null) {
           presenter2.setGap(0);
@@ -8483,7 +8507,7 @@ var require_index_001 = __commonJS({
         return child;
       }, ...props });
     });
-    const StyleBox = React.forwardRef(function StyleBox2({ minWidth, width = "100%", maxWidth, minHeight, height = "100%", maxHeight, children, className, style, tabIndex, ...props }, ref) {
+    const StyleBox = React.forwardRef(function StyleBox2({ minWidth, width = "100%", maxWidth, minHeight, height = "100%", maxHeight, children: children2, className, style, tabIndex, ...props }, ref) {
       return React.createElement("div", { tabIndex, ref, style: {
         minWidth,
         width,
@@ -8493,7 +8517,7 @@ var require_index_001 = __commonJS({
         maxHeight,
         ...props,
         ...style
-      }, className }, children);
+      }, className }, children2);
     });
     React.forwardRef(function Circle2(props, ref) {
       return React.createElement(StyleBox, { ref, borderRadius: "50%", ...props });
@@ -8517,11 +8541,11 @@ var require_index_001 = __commonJS({
           this.div.style.zIndex = zIndex.toString();
         }
       }
-      render(children) {
+      render(children2) {
         if (this.div == null) {
           return null;
         }
-        return reactDomExports.createPortal(children, this.div);
+        return reactDomExports.createPortal(children2, this.div);
       }
     }
     class PortalPlatform {
@@ -8607,7 +8631,7 @@ var require_index_001 = __commonJS({
     function usePortalPlatform() {
       return reactExports.useContext(PortalPlatformContext);
     }
-    const Portal = ({ children, zIndex }) => {
+    const Portal = ({ children: children2, zIndex }) => {
       const portalPlatform = usePortalPlatform();
       const [portal] = reactExports.useState(() => {
         return portalPlatform.createPortal();
@@ -8619,12 +8643,12 @@ var require_index_001 = __commonJS({
         portalPlatform.mountPortal(portal);
         return () => portalPlatform.unmountPortal(portal);
       }, [portal, portalPlatform]);
-      return portal.render(children);
+      return portal.render(children2);
     };
     const popover$2 = `_popover_abf288d`;
     const popoverVeil = `_popover-veil_cf97091`;
     const styles$O = { popover: popover$2, "popover-veil": popoverVeil };
-    function Popover({ anchorElement, verticalAnchor = "bottom", verticalOrigin = "top", verticalOffset = 0, horizontalAnchor = "start", horizontalOrigin = "start", horizontalOffset = 0, restoreFocus = false, veil = false, open, onClose, children }) {
+    function Popover({ anchorElement, verticalAnchor = "bottom", verticalOrigin = "top", verticalOffset = 0, horizontalAnchor = "start", horizontalOrigin = "start", horizontalOffset = 0, restoreFocus = false, veil = false, open, onClose, children: children2 }) {
       const anchorElementRef = reactExports.useRef(anchorElement);
       const [position, setPosition] = reactExports.useState({ top: 0, left: 0 });
       const activeElementRef = reactExports.useRef(null);
@@ -8738,7 +8762,7 @@ var require_index_001 = __commonJS({
               React.createElement("div", { ref: popoverRef, className: styles$O.popover, style: {
                 top: `${position.top}px`,
                 left: `${position.left}px`
-              } }, children)
+              } }, children2)
             )
           )
         ),
@@ -8751,7 +8775,7 @@ var require_index_001 = __commonJS({
             React.createElement("div", { ref: popoverRef, className: styles$O.popover, style: {
               top: `${position.top}px`,
               left: `${position.left}px`
-            } }, children)
+            } }, children2)
           )
         )
       );
@@ -8816,8 +8840,8 @@ var require_index_001 = __commonJS({
     const button$3 = `_button_059b768`;
     const buttonStringLabel = `_button-string-label_3a049f3`;
     const styles$M = { button: button$3, "button-string-label": buttonStringLabel };
-    const Button = React.forwardRef(function Button2({ children, className, style, textColor: color, color: backgroundColor, variant = "secondary", onTouchStart, onContextMenu, ...props }, ref) {
-      return React.createElement(HStack, { ref, as: "button", inline: true, verticalAlignment: "center", horizontalAlignment: "center", "data-variant": variant, "data-is-disabled": props.disabled || false, className: classNames(styles$M.button, className, "button"), style: { ...style, backgroundColor, color }, onTouchStart: (e) => {
+    const Button = React.forwardRef(function Button2({ children: children2, className, style, textColor: color2, color: backgroundColor, variant = "secondary", onTouchStart, onContextMenu, ...props }, ref) {
+      return React.createElement(HStack, { ref, as: "button", inline: true, verticalAlignment: "center", horizontalAlignment: "center", "data-variant": variant, "data-is-disabled": props.disabled || false, className: classNames(styles$M.button, className, "button"), style: { ...style, backgroundColor, color: color2 }, onTouchStart: (e) => {
         if (onTouchStart == null) {
           e.preventDefault();
           return;
@@ -8829,7 +8853,7 @@ var require_index_001 = __commonJS({
           return;
         }
         onContextMenu(e);
-      }, ...props }, typeof children === "string" ? React.createElement("span", { className: styles$M["button-string-label"] }, children) : children);
+      }, ...props }, typeof children2 === "string" ? React.createElement("span", { className: styles$M["button-string-label"] }, children2) : children2);
     });
     const iconButton$1 = `_icon-button_11360be`;
     const styles$L = { "icon-button": iconButton$1 };
@@ -8860,14 +8884,14 @@ var require_index_001 = __commonJS({
     });
     const radio = `_radio_e801425`;
     const styles$J = { radio };
-    React.forwardRef(function Radio({ name: name2, id, label, className, checked, backgroundColor: color, value: value2, onChange, ...props }, ref) {
+    React.forwardRef(function Radio({ name: name2, id: id2, label, className, checked, backgroundColor: color2, value: value2, onChange, ...props }, ref) {
       return React.createElement(
         React.Fragment,
         null,
-        React.createElement("input", { ref, className: classNames(className, styles$J.radio, "radio"), type: "radio", id, name: name2, value: value2, style: { backgroundColor: color }, checked, "data-checked": checked, "data-is-disabled": props.disabled, onChange: (e) => {
+        React.createElement("input", { ref, className: classNames(className, styles$J.radio, "radio"), type: "radio", id: id2, name: name2, value: value2, style: { backgroundColor: color2 }, checked, "data-checked": checked, "data-is-disabled": props.disabled, onChange: (e) => {
           onChange && onChange(e.currentTarget.value, e);
         }, ...props }),
-        label && React.createElement("label", { className: "radio-label", style: { pointerEvents: props.disabled ? "none" : "auto" }, htmlFor: id }, label)
+        label && React.createElement("label", { className: "radio-label", style: { pointerEvents: props.disabled ? "none" : "auto" }, htmlFor: id2 }, label)
       );
     });
     const switchWrapper = `_switch-wrapper_2017a44`;
@@ -8919,17 +8943,17 @@ var require_index_001 = __commonJS({
       }, ...props });
     });
     const selectWrapper = `_select-wrapper_85c0db7`;
-    const select = `_select_26c5629`;
+    const select$1 = `_select_26c5629`;
     const chevron$1 = `_chevron_3b2c9f3`;
-    const styles$E = { "select-wrapper": selectWrapper, select, chevron: chevron$1 };
-    const Select = React.forwardRef(function Select2({ children, width = "100%", maxWidth, minWidth, className, onChange, selectRef, selectClassName, selectProps, style, value: value2, defaultValue: defaultValue2, variant = "secondary", ...props }, ref) {
+    const styles$E = { "select-wrapper": selectWrapper, select: select$1, chevron: chevron$1 };
+    const Select = React.forwardRef(function Select2({ children: children2, width = "100%", maxWidth, minWidth, className, onChange, selectRef, selectClassName, selectProps, style, value: value2, defaultValue: defaultValue2, variant = "secondary", ...props }, ref) {
       const { style: selectStyle, ...finalSelectProps } = { ...selectProps };
       return React.createElement(
         "div",
         { "data-variant": variant, className: classNames(className, styles$E["select-wrapper"], "select-container"), ref, "data-disabled": props.disabled, style: { display: "inline-block", width, ...style }, ...props },
         React.createElement("select", { "data-variant": variant, "data-is-disabled": props.disabled || false, disabled: props.disabled, className: classNames(selectClassName, styles$E.select, "select"), defaultValue: defaultValue2, value: value2, ref: selectRef, onChange: (e) => {
           onChange && onChange(e.currentTarget.value, e);
-        }, style: { width, maxWidth, minWidth, ...selectStyle }, ...finalSelectProps }, children),
+        }, style: { width, maxWidth, minWidth, ...selectStyle }, ...finalSelectProps }, children2),
         React.createElement(
           HStack,
           { className: styles$E.chevron },
@@ -8941,14 +8965,14 @@ var require_index_001 = __commonJS({
     });
     const chip$1 = `_chip_e5816f3`;
     const styles$D = { chip: chip$1 };
-    const Chip = React.forwardRef(function Button2({ children, style, className, variant = "secondary", variantSize = "medium", ...props }, ref) {
-      return React.createElement(HStack, { ref, inline: true, verticalAlignment: "center", className: classNames(styles$D.chip, className, "chip"), "data-size": variantSize, "data-variant": variant, padding: "6px 8px", ...props }, children);
+    const Chip = React.forwardRef(function Button2({ children: children2, style, className, variant = "secondary", variantSize = "medium", ...props }, ref) {
+      return React.createElement(HStack, { ref, inline: true, verticalAlignment: "center", className: classNames(styles$D.chip, className, "chip"), "data-size": variantSize, "data-variant": variant, padding: "6px 8px", ...props }, children2);
     });
     const chip = `_chip_2b9efdd`;
-    const remove = `_remove_fd78511`;
+    const remove$1 = `_remove_fd78511`;
     const itemContainer = `_item-container_a23a131`;
-    const styles$C = { chip, remove, "item-container": itemContainer };
-    function MultiselectInlineValue({ values, disabled, onRemove }) {
+    const styles$C = { chip, remove: remove$1, "item-container": itemContainer };
+    function MultiselectInlineValue({ values, disabled, onRemove: onRemove2 }) {
       const items = values.map((v, index) => {
         return React.createElement(
           Chip,
@@ -8956,7 +8980,7 @@ var require_index_001 = __commonJS({
           React.createElement("span", null, v.label),
           React.createElement(Spacer, { width: "4px" }),
           !disabled && React.createElement(IconButton, { iconName: "cross", iconSize: "15px", onClick: () => {
-            onRemove(v);
+            onRemove2(v);
           }, style: { outline: "none" } })
         );
       });
@@ -8965,7 +8989,7 @@ var require_index_001 = __commonJS({
       }
       return React.createElement(React.Fragment, null, items);
     }
-    function MultiselectValue({ values, disabled, onRemove }) {
+    function MultiselectValue({ values, disabled, onRemove: onRemove2 }) {
       const items = values.map((v, index) => {
         return React.createElement(
           Chip,
@@ -8973,7 +8997,7 @@ var require_index_001 = __commonJS({
           React.createElement("span", null, v.label),
           React.createElement(Spacer, { width: "4px" }),
           !disabled && React.createElement(IconButton, { className: styles$C.remove, iconName: "cross", iconSize: "15px", onClick: () => {
-            onRemove(v);
+            onRemove2(v);
           } })
         );
       });
@@ -9014,11 +9038,11 @@ var require_index_001 = __commonJS({
       });
       return values.map((v) => optionsValueMap[v] == null ? { label: v, value: v } : optionsValueMap[v]);
     }
-    const Multiselect = React.forwardRef(function Multiselect2({ value: values = [], disabled = false, children, className, onChange, inline = false, ...props }, ref) {
+    const Multiselect = React.forwardRef(function Multiselect2({ value: values = [], disabled = false, children: children2, className, onChange, inline = false, ...props }, ref) {
       const selectRef = reactExports.useRef(null);
       const lastValue = values[values.length - 1] || null;
       const valuesContainerRef = reactExports.useRef(null);
-      const childrenArray = React.Children.toArray(children);
+      const childrenArray = React.Children.toArray(children2);
       const labelToValueMap = {};
       const valueToLabelMap = {};
       childrenArray.forEach((c) => {
@@ -9028,8 +9052,8 @@ var require_index_001 = __commonJS({
         labelToValueMap[c.props.children] = c.props.value;
         valueToLabelMap[c.props.value] = c.props.children;
       });
-      const valuesAsOptions = makeValuesAsOptions(children, values);
-      const availableOptions = makeAvailableOptions(children, values);
+      const valuesAsOptions = makeValuesAsOptions(children2, values);
+      const availableOptions = makeAvailableOptions(children2, values);
       availableOptions.unshift(React.createElement("option", { key: "-- Select to Add --", value: "-- Select to Add --" }, availableOptions.length >= 1 ? "-- Select to Add --" : "No More Options"));
       reactExports.useLayoutEffect(() => {
         var _a2;
@@ -9232,10 +9256,10 @@ var require_index_001 = __commonJS({
         )
       );
     }
-    const AutoCompleteInput = React.forwardRef(function AutoCompleteInput2({ onOptionSelect: onSuggestionSelect, children = [], onKeyDown, onKeyUp, value: value2, noOptionMatchedMessage, trimCustomInput = false, className, onMouseDown, onMouseUp, ...props }, ref) {
+    const AutoCompleteInput = React.forwardRef(function AutoCompleteInput2({ onOptionSelect: onSuggestionSelect, children: children2 = [], onKeyDown, onKeyUp, value: value2, noOptionMatchedMessage, trimCustomInput = false, className, onMouseDown, onMouseUp, ...props }, ref) {
       const isAlreadyFocusedRef = reactExports.useRef(false);
       const valueRef = reactExports.useRef(value2);
-      const internalOptions = htmlOptionsToInternalOptions(children);
+      const internalOptions = htmlOptionsToInternalOptions(children2);
       const isClosingRef = reactExports.useRef(false);
       const [anchorElement, setAnchorElement] = reactExports.useState(null);
       const internalInputRef = reactExports.useRef(null);
@@ -9316,10 +9340,10 @@ var require_index_001 = __commonJS({
         isSuggestionsOpen && React.createElement(Suggestions, { anchorElement, options: internalOptions, onClose: handleClose, value: value2, trimCustomInput, onOptionSelect: handleSelection, noSuggestionMessage: noOptionMatchedMessage })
       );
     });
-    React.forwardRef(function FreeformMultiselect({ value: values = [], children, disabled = false, className, onChange, inline = false, inputRef, trimCustomInput = false, inputProps, ...props }, ref) {
+    React.forwardRef(function FreeformMultiselect({ value: values = [], children: children2, disabled = false, className, onChange, inline = false, inputRef, trimCustomInput = false, inputProps, ...props }, ref) {
       const [intervalValue, setInternalValue] = reactExports.useState("");
-      const availableOptions = makeAvailableOptions(children, values);
-      const valuesAsOptions = makeValuesAsOptions(children, values);
+      const availableOptions = makeAvailableOptions(children2, values);
+      const valuesAsOptions = makeValuesAsOptions(children2, values);
       function removeValue(option2) {
         const index = values.indexOf(option2.value);
         if (index > -1) {
@@ -9413,8 +9437,8 @@ var require_index_001 = __commonJS({
     function DatePickerBody({ presenter: presenter2, countryCode }) {
       const { visibleDates } = useSignalValue(presenter2.stateBroadcast);
       const rows = [];
-      for (let i = 0; i < visibleDates.length; i += 7) {
-        rows.push(visibleDates.slice(i, i + 7));
+      for (let i2 = 0; i2 < visibleDates.length; i2 += 7) {
+        rows.push(visibleDates.slice(i2, i2 + 7));
       }
       return React.createElement(
         VStack,
@@ -9449,9 +9473,9 @@ var require_index_001 = __commonJS({
       const formatter = new Intl.DateTimeFormat(countryCode, { month: "long" });
       const months = [];
       const referenceDate = /* @__PURE__ */ new Date("01/01/2024");
-      for (let i = 0; i < 12; i++) {
+      for (let i2 = 0; i2 < 12; i2++) {
         const date = new Date(referenceDate);
-        date.setUTCMonth(i);
+        date.setUTCMonth(i2);
         let month = formatter.format(date);
         month = capitalizeFirstCharacter(month, countryCode);
         months.push(month);
@@ -9479,8 +9503,8 @@ var require_index_001 = __commonJS({
       const maxYear = maxDate.getFullYear();
       const years = reactExports.useMemo(() => {
         const years2 = [];
-        for (let i = minYear; i <= maxYear; i++) {
-          years2.push(i);
+        for (let i2 = minYear; i2 <= maxYear; i2++) {
+          years2.push(i2);
         }
         return years2;
       }, [minYear, maxYear]);
@@ -9550,8 +9574,8 @@ var require_index_001 = __commonJS({
         while (startDate.getDay() !== 0) {
           startDate.setDate(startDate.getDate() - 1);
         }
-        for (let i = 0; i < 42; i++) {
-          const date = dates[i];
+        for (let i2 = 0; i2 < 42; i2++) {
+          const date = dates[i2];
           date.year = startDate.getFullYear();
           date.month = startDate.getMonth();
           date.date = startDate.getDate();
@@ -9756,9 +9780,9 @@ var require_index_001 = __commonJS({
         const endTime = this._dateUtility.getTime();
         const minDateTime = minDate.getTime();
         const maxDateTime = maxDate.getTime();
-        const start = Math.max(minDateTime, startTime);
+        const start2 = Math.max(minDateTime, startTime);
         const end = Math.min(maxDateTime, endTime);
-        return start < end;
+        return start2 < end;
       }
       setMinDate(value2) {
         this._state.transform((s) => {
@@ -9848,7 +9872,7 @@ var require_index_001 = __commonJS({
       normalizedDate.setHours(0, 0, 0, 0);
       let offset = normalizedDate.getTime();
       let offsetFromZero = 0;
-      for (let x = 0; x < amountOfSteps; x++) {
+      for (let x2 = 0; x2 < amountOfSteps; x2++) {
         const date = new Date(offset);
         let hour = date.getHours() % 12;
         const minute = date.getMinutes();
@@ -9857,7 +9881,7 @@ var require_index_001 = __commonJS({
         const isSelected = origin != null && date.getHours() === origin.getHours() && date.getMinutes() === origin.getMinutes() && date.getSeconds() === origin.getSeconds();
         const time = date.getTime();
         const isOutOfRange = time < minTime || time > maxTime;
-        const button2 = React.createElement(Button, { key: x, variant: "tertiary", className: isSelected && styles$x["selected-time"], disabled: origin == null || disabled || isOutOfRange, onClick: () => {
+        const button2 = React.createElement(Button, { key: x2, variant: "tertiary", className: isSelected && styles$x["selected-time"], disabled: origin == null || disabled || isOutOfRange, onClick: () => {
           onSelect(date.getHours(), date.getMinutes(), date.getSeconds());
         } }, `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")} ${meridiem}`);
         if (offsetFromZero >= minVisibleTimeInMilliseconds && offsetFromZero <= maxVisibleTimeInMilliseconds) {
@@ -10047,8 +10071,8 @@ var require_index_001 = __commonJS({
     function DateRangePickerBody({ presenter: presenter2, countryCode }) {
       const { visibleDates } = useSignalValue(presenter2.stateBroadcast);
       const rows = [];
-      for (let i = 0; i < visibleDates.length; i += 7) {
-        rows.push(visibleDates.slice(i, i + 7));
+      for (let i2 = 0; i2 < visibleDates.length; i2 += 7) {
+        rows.push(visibleDates.slice(i2, i2 + 7));
       }
       function clearPotentialEnd() {
         presenter2.clearPotential();
@@ -10092,8 +10116,8 @@ var require_index_001 = __commonJS({
       const maxYear = maxDate.getFullYear();
       const years = reactExports.useMemo(() => {
         const years2 = [];
-        for (let i = minYear; i <= maxYear; i++) {
-          years2.push(i);
+        for (let i2 = minYear; i2 <= maxYear; i2++) {
+          years2.push(i2);
         }
         return years2;
       }, [minYear, maxYear]);
@@ -10208,9 +10232,9 @@ var require_index_001 = __commonJS({
           return;
         }
         if (shouldSelectEndDate) {
-          const clone = new Date(date);
-          clone.setDate(clone.getDate() + 1);
-          this._selectEndDate(clone);
+          const clone2 = new Date(date);
+          clone2.setDate(clone2.getDate() + 1);
+          this._selectEndDate(clone2);
           return;
         }
       }
@@ -10219,9 +10243,9 @@ var require_index_001 = __commonJS({
           return;
         }
         this._state.transform((s) => {
-          const clone = new Date(date);
-          clone.setDate(clone.getDate() + 1);
-          s.potentialEndDate = clone;
+          const clone2 = new Date(date);
+          clone2.setDate(clone2.getDate() + 1);
+          s.potentialEndDate = clone2;
           return s;
         });
       }
@@ -10359,9 +10383,9 @@ var require_index_001 = __commonJS({
         const endTime = this._dateUtility.getTime();
         const minDateTime = minDate.getTime();
         const maxDateTime = maxDate.getTime();
-        const start = Math.max(minDateTime, startTime);
+        const start2 = Math.max(minDateTime, startTime);
         const end = Math.min(maxDateTime, endTime);
-        return start < end;
+        return start2 < end;
       }
       setMinDate(value2) {
         this._state.transform((s) => {
@@ -10472,9 +10496,9 @@ var require_index_001 = __commonJS({
     const divider$3 = `_divider_99dc837`;
     const option = `_option_2a62c50`;
     const styles$q = { "select-group": selectGroup, divider: divider$3, option };
-    const SelectGroup = React.forwardRef(function ButtonGroup2({ children, value: value2, className, onChange, enableDeselect, enableMultiselect, disabled = false, ...props }, ref) {
-      const options = Array.isArray(children) ? children : [children];
-      return React.createElement(HStack, { ref, inline: true, width: "auto", height: "auto", "data-is-disabled": disabled, className: classNames(styles$q["select-group"], className, "select-group"), ...props }, options.map((option2, i) => {
+    const SelectGroup = React.forwardRef(function ButtonGroup2({ children: children2, value: value2, className, onChange, enableDeselect, enableMultiselect, disabled = false, ...props }, ref) {
+      const options = Array.isArray(children2) ? children2 : [children2];
+      return React.createElement(HStack, { ref, inline: true, width: "auto", height: "auto", "data-is-disabled": disabled, className: classNames(styles$q["select-group"], className, "select-group"), ...props }, options.map((option2, i2) => {
         function select2() {
           const newValue = [...value2];
           if (value2.includes(option2.props.value)) {
@@ -10490,11 +10514,11 @@ var require_index_001 = __commonJS({
           }
           onChange && onChange(newValue);
         }
-        const isLast = options.length - 1 === i;
+        const isLast = options.length - 1 === i2;
         return React.createElement(
           React.Fragment,
-          { key: i },
-          React.createElement(Button, { disabled, "data-is-disabled": disabled, className: classNames(styles$q["option"], "select-group-option"), variant: value2.includes(option2.props.value) ? "primary" : "secondary", onClick: select2 }, children[i].props.children),
+          { key: i2 },
+          React.createElement(Button, { disabled, "data-is-disabled": disabled, className: classNames(styles$q["option"], "select-group-option"), variant: value2.includes(option2.props.value) ? "primary" : "secondary", onClick: select2 }, children2[i2].props.children),
           !isLast && React.createElement("div", { className: classNames(styles$q.divider, "select-group-divider") })
         );
       }));
@@ -10505,13 +10529,13 @@ var require_index_001 = __commonJS({
     const button = `_button_abd4586`;
     const divider$2 = `_divider_d1b6707`;
     const styles$o = { "button-group": buttonGroup, button, divider: divider$2 };
-    const ButtonGroup = React.forwardRef(function ButtonGroup2({ children, className, variant = "secondary", ...props }, ref) {
-      const buttons = Array.isArray(children) ? children : [children];
-      return React.createElement(HStack, { ref, inline: true, width: "auto", height: "auto", "data-variant": variant, className: classNames(styles$o["button-group"], className, "button-group"), ...props }, buttons.map((button2, i) => {
-        const isLast = buttons.length - 1 === i;
+    const ButtonGroup = React.forwardRef(function ButtonGroup2({ children: children2, className, variant = "secondary", ...props }, ref) {
+      const buttons = Array.isArray(children2) ? children2 : [children2];
+      return React.createElement(HStack, { ref, inline: true, width: "auto", height: "auto", "data-variant": variant, className: classNames(styles$o["button-group"], className, "button-group"), ...props }, buttons.map((button2, i2) => {
+        const isLast = buttons.length - 1 === i2;
         return React.createElement(
           React.Fragment,
-          { key: i },
+          { key: i2 },
           React.createElement(Button, { className: styles$o["button"], ...button2.props, variant }),
           !isLast && React.createElement("div", { className: styles$o.divider })
         );
@@ -10525,7 +10549,7 @@ var require_index_001 = __commonJS({
     function getDisplayValue(value2) {
       return value2.replace(/[^.\d-]/g, "").replace(/(?!^)-/g, "").replace(/(\..*?)\.+/g, "$1");
     }
-    const UnitInput = React.forwardRef(function UnitInput2({ value: value2, unit, children, onChange, inputRef, unitRef, disabled, ...props }, ref) {
+    const UnitInput = React.forwardRef(function UnitInput2({ value: value2, unit, children: children2, onChange, inputRef, unitRef, disabled, ...props }, ref) {
       const internalInputRef = reactExports.useRef(null);
       const forkedInputRef = useForkRef(inputRef, internalInputRef);
       function valueHandler(value3, event) {
@@ -10572,7 +10596,7 @@ var require_index_001 = __commonJS({
         ),
         React.createElement(Select, { className: classNames(styles$n["unit-input-select"], "unit-input-select"), selectRef: unitRef, width: "auto", value: unit, onChange: unitHandler, disabled, selectProps: {
           style: { borderStartStartRadius: 0, borderEndStartRadius: 0 }
-        } }, children)
+        } }, children2)
       );
     });
     const KeyCaptureInput = React.forwardRef(function InputCapture({ onKeyCapture, onKeyDown, onInput, ...props }, ref) {
@@ -10611,11 +10635,11 @@ var require_index_001 = __commonJS({
         const cursorPosition = inputSelectionEnd;
         if (hadSelection) {
           const input2 = inputElement.value.slice(minCursorPositionRef.current, maxCursorPosition);
-          const selection = {
+          const selection2 = {
             start: selectionStartRef.current,
             end: selectionEndRef.current
           };
-          onKeyCapture && onKeyCapture(input2, "", selection, cursorPositionRef.current, cursorPosition, inputElement);
+          onKeyCapture && onKeyCapture(input2, "", selection2, cursorPositionRef.current, cursorPosition, inputElement);
         } else {
           const collapsed = valueLengthRef.current > valueLength;
           if (collapsed) {
@@ -10861,31 +10885,31 @@ var require_index_001 = __commonJS({
         this._characters.forEach((c) => c.delete());
         this._cursorPosition = 0;
       }
-      clearRange(start, end) {
+      clearRange(start2, end) {
         end = end == null ? this._characters.length - 1 : end;
-        for (let i = start; i < end; i++) {
-          this._characters[i] && this._characters[i].delete();
+        for (let i2 = start2; i2 < end; i2++) {
+          this._characters[i2] && this._characters[i2].delete();
         }
       }
       getFilledValue() {
         const cursorPosition = this._cursorPosition;
         const characters = [];
-        for (let x = 0; x < this._characters.length; x++) {
-          const c = this._characters[x];
+        for (let x2 = 0; x2 < this._characters.length; x2++) {
+          const c = this._characters[x2];
           if (!c.isFilled() && c.type !== "constant") {
             let hasMoreFilled = false;
-            for (let i = x; i < this._characters.length; i++) {
-              const character = this._characters[i];
+            for (let i2 = x2; i2 < this._characters.length; i2++) {
+              const character = this._characters[i2];
               if (character.isFilled() && character.type !== "constant") {
                 hasMoreFilled = true;
                 break;
               }
             }
             if (!hasMoreFilled) {
-              while (cursorPosition > x) {
-                const constantCharacter = this._characters[x];
+              while (cursorPosition > x2) {
+                const constantCharacter = this._characters[x2];
                 characters.push(constantCharacter.value);
-                x++;
+                x2++;
               }
               break;
             }
@@ -10895,16 +10919,16 @@ var require_index_001 = __commonJS({
         return characters.join("");
       }
       isFilledBeyondIndex(index) {
-        for (let x = index + 1; x < this._characters.length; x++) {
-          if (this._characters[x].isFilled() && this._characters[x].type !== "constant") {
+        for (let x2 = index + 1; x2 < this._characters.length; x2++) {
+          if (this._characters[x2].isFilled() && this._characters[x2].type !== "constant") {
             return true;
           }
         }
         return false;
       }
       isEmptyBeforeIndex(index) {
-        for (let x = index - 1; x > 0; x--) {
-          if (!this._characters[x].isFilled()) {
+        for (let x2 = index - 1; x2 > 0; x2--) {
+          if (!this._characters[x2].isFilled()) {
             return true;
           }
         }
@@ -10945,8 +10969,8 @@ var require_index_001 = __commonJS({
       getInsertableSlotIndexForCharacter(characterIndex) {
         let insertableSlotCount = 0;
         const length = Math.min(characterIndex, this._characters.length - 1);
-        for (let x = 0; x < length; x++) {
-          const character = this._characters[x];
+        for (let x2 = 0; x2 < length; x2++) {
+          const character = this._characters[x2];
           if (character.type !== "constant") {
             insertableSlotCount++;
           }
@@ -10955,13 +10979,13 @@ var require_index_001 = __commonJS({
       }
       getCharacterIndexforInsertableSlotIndex(slotIndex) {
         let insertableSlotCount = 0;
-        for (let x = 0; x < this._characters.length; x++) {
-          const character = this._characters[x];
+        for (let x2 = 0; x2 < this._characters.length; x2++) {
+          const character = this._characters[x2];
           if (character.type !== "constant") {
             insertableSlotCount++;
           }
           if (insertableSlotCount > slotIndex) {
-            return x;
+            return x2;
           }
         }
         return this._characters.length;
@@ -10970,10 +10994,10 @@ var require_index_001 = __commonJS({
         const values = this._characters.filter((c) => c.type !== "constant" && c.isFilled()).map((c) => c.value).join("");
         return values;
       }
-      getValueWithinRange(start, end) {
+      getValueWithinRange(start2, end) {
         const characters = [];
-        for (let x = start; x < end; x++) {
-          characters.push(this._characters[x].value);
+        for (let x2 = start2; x2 < end; x2++) {
+          characters.push(this._characters[x2].value);
         }
         return characters.join("");
       }
@@ -10981,15 +11005,15 @@ var require_index_001 = __commonJS({
         const { mask, placeholder } = config2;
         const characters = [];
         const { maskParts, placeholderParts } = this._getParts(mask, placeholder);
-        for (let x = 0; x < maskParts.length; x++) {
-          let character = maskParts[x];
-          let placeholderCharacter = placeholderParts[x];
+        for (let x2 = 0; x2 < maskParts.length; x2++) {
+          let character = maskParts[x2];
+          let placeholderCharacter = placeholderParts[x2];
           const isEscaping = character === "\\";
           const CharacterType = characterMap[character];
           if (isEscaping || CharacterType == null) {
             if (isEscaping) {
-              x++;
-              character = maskParts[x];
+              x2++;
+              character = maskParts[x2];
             }
             characters.push(new ConstantCharacter(character, placeholderCharacter));
           } else {
@@ -11021,9 +11045,9 @@ var require_index_001 = __commonJS({
       }
     }
     function areMasksUniqueLengths(masks) {
-      const set = /* @__PURE__ */ new Set();
-      masks.forEach((m) => set.add(m.getCharacterLength()));
-      return set.size === masks.length;
+      const set2 = /* @__PURE__ */ new Set();
+      masks.forEach((m) => set2.add(m.getCharacterLength()));
+      return set2.size === masks.length;
     }
     function maskSort(a, b) {
       if (a.getInsertableSlotLength() > b.getInsertableSlotLength()) {
@@ -11105,9 +11129,9 @@ var require_index_001 = __commonJS({
       }
       insertText(text) {
         const characters = [...text];
-        const selection = this._selection.get();
-        if (selection != null) {
-          this._removeCharactersWithinSelection(selection);
+        const selection2 = this._selection.get();
+        if (selection2 != null) {
+          this._removeCharactersWithinSelection(selection2);
         }
         if (characters.length < 1) {
           const newValue2 = this.currentMask.getValue();
@@ -11144,9 +11168,9 @@ var require_index_001 = __commonJS({
         this._cursorPosition.set(this.currentMask.getCursorPosition());
       }
       delete() {
-        const selection = this._selection.get();
-        if (selection != null) {
-          this._removeCharactersWithinSelection(selection);
+        const selection2 = this._selection.get();
+        if (selection2 != null) {
+          this._removeCharactersWithinSelection(selection2);
         } else {
           this.currentMask.deleteCharacter();
         }
@@ -11169,15 +11193,15 @@ var require_index_001 = __commonJS({
           this.currentMask.moveTo(cursorPosition);
         }
       }
-      _removeCharactersWithinSelection(selection) {
-        this.currentMask.clearRange(selection.start, selection.end);
-        this.currentMask.moveTo(selection.start);
+      _removeCharactersWithinSelection(selection2) {
+        this.currentMask.clearRange(selection2.start, selection2.end);
+        this.currentMask.moveTo(selection2.start);
         this.removeSelection();
       }
       backspace() {
-        const selection = this._selection.get();
-        if (selection != null) {
-          this._removeCharactersWithinSelection(selection);
+        const selection2 = this._selection.get();
+        if (selection2 != null) {
+          this._removeCharactersWithinSelection(selection2);
         } else {
           this.currentMask.moveTo(this.currentMask.getCursorPosition() - 1);
           this.currentMask.deleteCharacter();
@@ -11210,9 +11234,9 @@ var require_index_001 = __commonJS({
       forceMoveCursorTo(position) {
         this.currentMask.forceMoveTo(position);
       }
-      clearRange(start, end) {
-        this.currentMask.clearRange(start, end);
-        this.currentMask.moveTo(start);
+      clearRange(start2, end) {
+        this.currentMask.clearRange(start2, end);
+        this.currentMask.moveTo(start2);
         this._value.set(this.currentMask.getValue());
         this._filledValue.set(this.currentMask.getFilledValue());
         this._cursorPosition.set(this.currentMask.getCursorPosition());
@@ -11227,9 +11251,9 @@ var require_index_001 = __commonJS({
       selectAll() {
         this.setSelection(0, this.currentMask.getValueLength());
       }
-      setSelection(start, end) {
-        this._selection.set({ start: Math.min(start, end), end: Math.max(start, end) });
-        this._cursorPosition.set(start);
+      setSelection(start2, end) {
+        this._selection.set({ start: Math.min(start2, end), end: Math.max(start2, end) });
+        this._cursorPosition.set(start2);
       }
       removeSelection() {
         this._selection.transform((_) => {
@@ -11237,9 +11261,9 @@ var require_index_001 = __commonJS({
         });
       }
       getSelectedValue() {
-        const selection = this._selection.get();
-        if (selection != null) {
-          return this.currentMask.getValueWithinRange(selection.start, selection.end);
+        const selection2 = this._selection.get();
+        if (selection2 != null) {
+          return this.currentMask.getValueWithinRange(selection2.start, selection2.end);
         }
         return "";
       }
@@ -11254,9 +11278,9 @@ var require_index_001 = __commonJS({
       });
       const internalValue = useSignalValue(presenter2.valueBroadcast);
       useSignalValue(presenter2.maskConfigsBroadcast);
-      function handleInput(input2, key, selection, cursorPosition, _, inputElement) {
-        if (selection != null) {
-          presenter2.setSelection(selection.start, selection.end);
+      function handleInput(input2, key, selection2, cursorPosition, _, inputElement) {
+        if (selection2 != null) {
+          presenter2.setSelection(selection2.start, selection2.end);
         } else {
           presenter2.forceMoveCursorTo(cursorPosition);
         }
@@ -11285,13 +11309,13 @@ var require_index_001 = __commonJS({
       }, [presenter2, mask]);
       reactExports.useLayoutEffect(() => {
         presenter2.setValue(value2);
-        const selection = presenter2.selectionBroadcast.get();
+        const selection2 = presenter2.selectionBroadcast.get();
         const cursorPosition = presenter2.cursorPositionBroadcast.get();
         const input2 = inputRef.current;
         if (input2 != null) {
-          const hasSelection = selection != null;
+          const hasSelection = selection2 != null;
           if (hasSelection) {
-            input2.setSelectionRange(selection.start, selection.end);
+            input2.setSelectionRange(selection2.start, selection2.end);
           } else {
             input2.setSelectionRange(cursorPosition, cursorPosition);
           }
@@ -11299,13 +11323,13 @@ var require_index_001 = __commonJS({
       }, [presenter2, value2]);
       function handlePaste(event) {
         const inputElement = event.currentTarget;
-        const start = inputElement.selectionStart;
+        const start2 = inputElement.selectionStart;
         const end = inputElement.selectionEnd;
-        const hasSelection = start != null && end != null && start !== end;
+        const hasSelection = start2 != null && end != null && start2 !== end;
         if (hasSelection) {
-          presenter2.setSelection(start, end);
+          presenter2.setSelection(start2, end);
         } else {
-          presenter2.moveCursorTo(start || 0);
+          presenter2.moveCursorTo(start2 || 0);
         }
         presenter2.insertText(event.clipboardData.getData("text/plain"));
         const resolvedCursorPosition = presenter2.cursorPositionBroadcast.get();
@@ -11316,13 +11340,13 @@ var require_index_001 = __commonJS({
       }
       function handleCut(event) {
         const inputElement = event.currentTarget;
-        const start = inputElement.selectionStart;
+        const start2 = inputElement.selectionStart;
         const end = inputElement.selectionEnd;
-        const hasSelection = start != null && end != null && start !== end;
+        const hasSelection = start2 != null && end != null && start2 !== end;
         if (hasSelection) {
-          presenter2.setSelection(start, end);
+          presenter2.setSelection(start2, end);
           const value3 = presenter2.getSelectedValue();
-          presenter2.clearRange(start, end);
+          presenter2.clearRange(start2, end);
           const resolvedCursorPosition = presenter2.cursorPositionBroadcast.get();
           event.clipboardData.setData("text/plain", value3);
           inputElement.value = presenter2.valueBroadcast.get();
@@ -11333,11 +11357,11 @@ var require_index_001 = __commonJS({
       }
       function handleCopy(event) {
         const input2 = event.currentTarget;
-        const start = input2.selectionStart;
+        const start2 = input2.selectionStart;
         const end = input2.selectionEnd;
-        const hasSelection = start != null && end != null && start !== end;
+        const hasSelection = start2 != null && end != null && start2 !== end;
         if (hasSelection) {
-          presenter2.setSelection(start, end);
+          presenter2.setSelection(start2, end);
           const value3 = presenter2.getSelectedValue();
           event.clipboardData.setData("text/plain", value3);
         }
@@ -11361,9 +11385,9 @@ var require_index_001 = __commonJS({
           if (input3 == null) {
             return;
           }
-          const start = input3.selectionStart;
+          const start2 = input3.selectionStart;
           const end = input3.selectionEnd;
-          const hasSelection = start != null && end != null && start !== end;
+          const hasSelection = start2 != null && end != null && start2 !== end;
           if (input3 !== document.activeElement || mode === "keyboard") {
             mode = "unknown";
             return;
@@ -12625,33 +12649,33 @@ var require_index_001 = __commonJS({
     const phoneNumberInputInput = `_phone-number-input-input_b949ef4`;
     const styles$m = { "phone-number-input": phoneNumberInput, "phone-number-input-select": phoneNumberInputSelect, "phone-number-input-input": phoneNumberInputInput };
     const overflowMask = { mask: "9999999999999999999", placeholder: "                   " };
-    const countryList = countriesPhoneInformation.map((i) => ({
-      label: `${i.prefix} (${i.code}) ${i.unicodeFlag}`,
-      value: i.code
+    const countryList = countriesPhoneInformation.map((i2) => ({
+      label: `${i2.prefix} (${i2.code}) ${i2.unicodeFlag}`,
+      value: i2.code
     }));
     countryList.sort((a, b) => parseInt(a.value) - parseInt(b.value));
     const countryPrefixMap = /* @__PURE__ */ new Map();
     const countryCodeMap = /* @__PURE__ */ new Map();
-    countriesPhoneInformation.forEach((i) => {
-      countryCodeMap.set(i.code, i);
-      countryPrefixMap.set(i.prefix, i);
+    countriesPhoneInformation.forEach((i2) => {
+      countryCodeMap.set(i2.code, i2);
+      countryPrefixMap.set(i2.prefix, i2);
     });
     function createCountryOptions(allowedCountryCodes) {
       if (allowedCountryCodes != null) {
         const allowedMap = {};
         allowedCountryCodes.forEach((c) => allowedMap[c] = true);
-        return countryList.filter((c) => Boolean(allowedMap[c.value])).map((i, index) => {
-          return React.createElement("option", { key: index, value: i.value }, i.label);
+        return countryList.filter((c) => Boolean(allowedMap[c.value])).map((i2, index) => {
+          return React.createElement("option", { key: index, value: i2.value }, i2.label);
         });
       } else {
-        return countryList.map((i, index) => {
-          return React.createElement("option", { key: index, value: i.value }, i.label);
+        return countryList.map((i2, index) => {
+          return React.createElement("option", { key: index, value: i2.value }, i2.label);
         });
       }
     }
     function getCountryCodeFromValue(value2, defaultCountry) {
-      for (let x = 5; x > 1; x--) {
-        const prefix = value2.slice(0, x);
+      for (let x2 = 5; x2 > 1; x2--) {
+        const prefix = value2.slice(0, x2);
         const countryInformation = countryPrefixMap.get(prefix);
         if (countryInformation != null) {
           return countryInformation;
@@ -12726,9 +12750,9 @@ var require_index_001 = __commonJS({
     const menu = `_menu_987f8d2`;
     const menuItem = `_menu-item_d919b83`;
     const styles$l = { menu, "menu-item": menuItem };
-    const Menu = React.forwardRef(function Menu2({ anchorElement, verticalAnchor, verticalOrigin, verticalOffset, horizontalAnchor, horizontalOrigin, horizontalOffset, direction, open, onClose, restoreFocus, veil, onActivatedMenu, children = [], ...props }, ref) {
+    const Menu = React.forwardRef(function Menu2({ anchorElement, verticalAnchor, verticalOrigin, verticalOffset, horizontalAnchor, horizontalOrigin, horizontalOffset, direction, open, onClose, restoreFocus, veil, onActivatedMenu, children: children2 = [], ...props }, ref) {
       const [focusedIndex, setFocusedIndex] = reactExports.useState(-1);
-      const clonedChildren = React.Children.toArray(children).map((child, index) => {
+      const clonedChildren = React.Children.toArray(children2).map((child, index) => {
         if (!React.isValidElement(child)) {
           return child;
         }
@@ -12770,14 +12794,14 @@ var require_index_001 = __commonJS({
         React.createElement(VStack, { ref, className: styles$l.menu, ...props }, clonedChildren)
       );
     });
-    const MenuItem = React.forwardRef(function MenuItem2({ selected, iconName, label, endAdornments, className, children, direction = "down", verticalAnchor = "top", verticalOrigin = "top", verticalOffset, horizontalAnchor = "end", horizontalOrigin = "start", horizontalOffset, open = false, ...props }, ref) {
+    const MenuItem = React.forwardRef(function MenuItem2({ selected, iconName, label, endAdornments, className, children: children2, direction = "down", verticalAnchor = "top", verticalOrigin = "top", verticalOffset, horizontalAnchor = "end", horizontalOrigin = "start", horizontalOffset, open = false, ...props }, ref) {
       const hasEnteredMenuRef = reactExports.useRef(false);
       const cursorPositionRef = reactExports.useRef({ x: -1, y: -1 });
       const cursorDeltaRef = reactExports.useRef({ x: -1, y: -1 });
       const [showVeil, setShowVeil] = reactExports.useState(false);
       const itemRef = reactExports.useRef(null);
       const forkedRef = useForkRef(ref, itemRef);
-      const hasSubmenu = children != null && children.length > 0;
+      const hasSubmenu = children2 != null && children2.length > 0;
       function close() {
         setShowVeil(false);
       }
@@ -12852,12 +12876,12 @@ var require_index_001 = __commonJS({
             React.createElement(Icon, { name: "chevron_right", size: "20px", flipOnRtl: true })
           )
         ),
-        children && React.createElement(Menu, { anchorElement: itemRef.current, veil: showVeil, onClose: close, open, direction, verticalAnchor, verticalOrigin, verticalOffset, horizontalAnchor, horizontalOrigin, horizontalOffset, horizontalAlignment: "start", onActivatedMenu: (hasActiveMenu) => {
+        children2 && React.createElement(Menu, { anchorElement: itemRef.current, veil: showVeil, onClose: close, open, direction, verticalAnchor, verticalOrigin, verticalOffset, horizontalAnchor, horizontalOrigin, horizontalOffset, horizontalAlignment: "start", onActivatedMenu: (hasActiveMenu) => {
           hasEnteredMenuRef.current = hasActiveMenu;
-        } }, children)
+        } }, children2)
       );
     });
-    function ContextMenu({ open, position, children, onClose }) {
+    function ContextMenu({ open, position, children: children2, onClose }) {
       const [anchorElement, setAnchorElement] = reactExports.useState(null);
       if (!open || position == null) {
         return null;
@@ -12883,7 +12907,7 @@ var require_index_001 = __commonJS({
             } })
           )
         ),
-        React.createElement(Menu, { veil: true, horizontalAnchor: "start", verticalAnchor: "top", horizontalOrigin: "start", verticalOrigin: "top", anchorElement, open, onClose, minWidth: "150px" }, children)
+        React.createElement(Menu, { veil: true, horizontalAnchor: "start", verticalAnchor: "top", horizontalOrigin: "start", verticalOrigin: "top", anchorElement, open, onClose, minWidth: "150px" }, children2)
       );
     }
     var lib = {};
@@ -13108,8 +13132,8 @@ var require_index_001 = __commonJS({
         var freeExports2 = exports2 && !exports2.nodeType && exports2;
         var freeModule2 = freeExports2 && true && module2 && !module2.nodeType && module2;
         var moduleExports2 = freeModule2 && freeModule2.exports === freeExports2;
-        var Buffer3 = moduleExports2 ? root2.Buffer : void 0;
-        var nativeIsBuffer2 = Buffer3 ? Buffer3.isBuffer : void 0;
+        var Buffer2 = moduleExports2 ? root2.Buffer : void 0;
+        var nativeIsBuffer2 = Buffer2 ? Buffer2.isBuffer : void 0;
         var isBuffer2 = nativeIsBuffer2 || stubFalse2;
         module2.exports = isBuffer2;
       })(isBuffer$1, isBuffer$1.exports);
@@ -13432,10 +13456,10 @@ var require_index_001 = __commonJS({
     function require_arrayMap() {
       if (hasRequired_arrayMap) return _arrayMap;
       hasRequired_arrayMap = 1;
-      function arrayMap2(array, iteratee) {
-        var index = -1, length = array == null ? 0 : array.length, result = Array(length);
+      function arrayMap2(array2, iteratee) {
+        var index = -1, length = array2 == null ? 0 : array2.length, result = Array(length);
         while (++index < length) {
-          result[index] = iteratee(array[index], index, array);
+          result[index] = iteratee(array2[index], index, array2);
         }
         return result;
       }
@@ -13471,10 +13495,10 @@ var require_index_001 = __commonJS({
       if (hasRequired_assocIndexOf) return _assocIndexOf;
       hasRequired_assocIndexOf = 1;
       var eq2 = requireEq();
-      function assocIndexOf2(array, key) {
-        var length = array.length;
+      function assocIndexOf2(array2, key) {
+        var length = array2.length;
         while (length--) {
-          if (eq2(array[length][0], key)) {
+          if (eq2(array2[length][0], key)) {
             return length;
           }
         }
@@ -14045,10 +14069,10 @@ var require_index_001 = __commonJS({
     function require_arraySome() {
       if (hasRequired_arraySome) return _arraySome;
       hasRequired_arraySome = 1;
-      function arraySome2(array, predicate) {
-        var index = -1, length = array == null ? 0 : array.length;
+      function arraySome2(array2, predicate) {
+        var index = -1, length = array2 == null ? 0 : array2.length;
         while (++index < length) {
-          if (predicate(array[index], index, array)) {
+          if (predicate(array2[index], index, array2)) {
             return true;
           }
         }
@@ -14075,23 +14099,23 @@ var require_index_001 = __commonJS({
       hasRequired_equalArrays = 1;
       var SetCache2 = require_SetCache(), arraySome2 = require_arraySome(), cacheHas2 = require_cacheHas();
       var COMPARE_PARTIAL_FLAG2 = 1, COMPARE_UNORDERED_FLAG2 = 2;
-      function equalArrays2(array, other, bitmask, customizer, equalFunc, stack) {
-        var isPartial = bitmask & COMPARE_PARTIAL_FLAG2, arrLength = array.length, othLength = other.length;
+      function equalArrays2(array2, other, bitmask, customizer, equalFunc, stack) {
+        var isPartial = bitmask & COMPARE_PARTIAL_FLAG2, arrLength = array2.length, othLength = other.length;
         if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
           return false;
         }
-        var arrStacked = stack.get(array);
+        var arrStacked = stack.get(array2);
         var othStacked = stack.get(other);
         if (arrStacked && othStacked) {
-          return arrStacked == other && othStacked == array;
+          return arrStacked == other && othStacked == array2;
         }
         var index = -1, result = true, seen = bitmask & COMPARE_UNORDERED_FLAG2 ? new SetCache2() : void 0;
-        stack.set(array, other);
-        stack.set(other, array);
+        stack.set(array2, other);
+        stack.set(other, array2);
         while (++index < arrLength) {
-          var arrValue = array[index], othValue = other[index];
+          var arrValue = array2[index], othValue = other[index];
           if (customizer) {
-            var compared = isPartial ? customizer(othValue, arrValue, index, other, array, stack) : customizer(arrValue, othValue, index, array, other, stack);
+            var compared = isPartial ? customizer(othValue, arrValue, index, other, array2, stack) : customizer(arrValue, othValue, index, array2, other, stack);
           }
           if (compared !== void 0) {
             if (compared) {
@@ -14114,7 +14138,7 @@ var require_index_001 = __commonJS({
             break;
           }
         }
-        stack["delete"](array);
+        stack["delete"](array2);
         stack["delete"](other);
         return result;
       }
@@ -14127,8 +14151,8 @@ var require_index_001 = __commonJS({
       if (hasRequired_Uint8Array) return _Uint8Array;
       hasRequired_Uint8Array = 1;
       var root2 = require_root();
-      var Uint8Array3 = root2.Uint8Array;
-      _Uint8Array = Uint8Array3;
+      var Uint8Array2 = root2.Uint8Array;
+      _Uint8Array = Uint8Array2;
       return _Uint8Array;
     }
     var _mapToArray;
@@ -14151,9 +14175,9 @@ var require_index_001 = __commonJS({
     function require_setToArray() {
       if (hasRequired_setToArray) return _setToArray;
       hasRequired_setToArray = 1;
-      function setToArray2(set) {
-        var index = -1, result = Array(set.size);
-        set.forEach(function(value2) {
+      function setToArray2(set2) {
+        var index = -1, result = Array(set2.size);
+        set2.forEach(function(value2) {
           result[++index] = value2;
         });
         return result;
@@ -14166,7 +14190,7 @@ var require_index_001 = __commonJS({
     function require_equalByTag() {
       if (hasRequired_equalByTag) return _equalByTag;
       hasRequired_equalByTag = 1;
-      var Symbol2 = require_Symbol(), Uint8Array3 = require_Uint8Array(), eq2 = requireEq(), equalArrays2 = require_equalArrays(), mapToArray2 = require_mapToArray(), setToArray2 = require_setToArray();
+      var Symbol2 = require_Symbol(), Uint8Array2 = require_Uint8Array(), eq2 = requireEq(), equalArrays2 = require_equalArrays(), mapToArray2 = require_mapToArray(), setToArray2 = require_setToArray();
       var COMPARE_PARTIAL_FLAG2 = 1, COMPARE_UNORDERED_FLAG2 = 2;
       var boolTag2 = "[object Boolean]", dateTag2 = "[object Date]", errorTag2 = "[object Error]", mapTag2 = "[object Map]", numberTag2 = "[object Number]", regexpTag2 = "[object RegExp]", setTag2 = "[object Set]", stringTag2 = "[object String]", symbolTag2 = "[object Symbol]";
       var arrayBufferTag2 = "[object ArrayBuffer]", dataViewTag2 = "[object DataView]";
@@ -14180,7 +14204,7 @@ var require_index_001 = __commonJS({
             object = object.buffer;
             other = other.buffer;
           case arrayBufferTag2:
-            if (object.byteLength != other.byteLength || !equalFunc(new Uint8Array3(object), new Uint8Array3(other))) {
+            if (object.byteLength != other.byteLength || !equalFunc(new Uint8Array2(object), new Uint8Array2(other))) {
               return false;
             }
             return true;
@@ -14225,12 +14249,12 @@ var require_index_001 = __commonJS({
     function require_arrayPush() {
       if (hasRequired_arrayPush) return _arrayPush;
       hasRequired_arrayPush = 1;
-      function arrayPush2(array, values) {
-        var index = -1, length = values.length, offset = array.length;
+      function arrayPush2(array2, values) {
+        var index = -1, length = values.length, offset = array2.length;
         while (++index < length) {
-          array[offset + index] = values[index];
+          array2[offset + index] = values[index];
         }
-        return array;
+        return array2;
       }
       _arrayPush = arrayPush2;
       return _arrayPush;
@@ -14253,11 +14277,11 @@ var require_index_001 = __commonJS({
     function require_arrayFilter() {
       if (hasRequired_arrayFilter) return _arrayFilter;
       hasRequired_arrayFilter = 1;
-      function arrayFilter2(array, predicate) {
-        var index = -1, length = array == null ? 0 : array.length, resIndex = 0, result = [];
+      function arrayFilter2(array2, predicate) {
+        var index = -1, length = array2 == null ? 0 : array2.length, resIndex = 0, result = [];
         while (++index < length) {
-          var value2 = array[index];
-          if (predicate(value2, index, array)) {
+          var value2 = array2[index];
+          if (predicate(value2, index, array2)) {
             result[resIndex++] = value2;
           }
         }
@@ -14778,11 +14802,11 @@ var require_index_001 = __commonJS({
       if (hasRequired_baseGet) return _baseGet;
       hasRequired_baseGet = 1;
       var castPath2 = require_castPath(), toKey2 = require_toKey();
-      function baseGet2(object, path) {
-        path = castPath2(path, object);
-        var index = 0, length = path.length;
+      function baseGet2(object, path2) {
+        path2 = castPath2(path2, object);
+        var index = 0, length = path2.length;
         while (object != null && index < length) {
-          object = object[toKey2(path[index++])];
+          object = object[toKey2(path2[index++])];
         }
         return index && index == length ? object : void 0;
       }
@@ -14795,8 +14819,8 @@ var require_index_001 = __commonJS({
       if (hasRequiredGet) return get_1;
       hasRequiredGet = 1;
       var baseGet2 = require_baseGet();
-      function get2(object, path, defaultValue2) {
-        var result = object == null ? void 0 : baseGet2(object, path);
+      function get2(object, path2, defaultValue2) {
+        var result = object == null ? void 0 : baseGet2(object, path2);
         return result === void 0 ? defaultValue2 : result;
       }
       get_1 = get2;
@@ -14819,11 +14843,11 @@ var require_index_001 = __commonJS({
       if (hasRequired_hasPath) return _hasPath;
       hasRequired_hasPath = 1;
       var castPath2 = require_castPath(), isArguments2 = requireIsArguments(), isArray2 = requireIsArray(), isIndex2 = require_isIndex(), isLength2 = requireIsLength(), toKey2 = require_toKey();
-      function hasPath2(object, path, hasFunc) {
-        path = castPath2(path, object);
-        var index = -1, length = path.length, result = false;
+      function hasPath2(object, path2, hasFunc) {
+        path2 = castPath2(path2, object);
+        var index = -1, length = path2.length, result = false;
         while (++index < length) {
-          var key = toKey2(path[index]);
+          var key = toKey2(path2[index]);
           if (!(result = object != null && hasFunc(object, key))) {
             break;
           }
@@ -14844,8 +14868,8 @@ var require_index_001 = __commonJS({
       if (hasRequiredHasIn) return hasIn_1;
       hasRequiredHasIn = 1;
       var baseHasIn2 = require_baseHasIn(), hasPath2 = require_hasPath();
-      function hasIn2(object, path) {
-        return object != null && hasPath2(object, path, baseHasIn2);
+      function hasIn2(object, path2) {
+        return object != null && hasPath2(object, path2, baseHasIn2);
       }
       hasIn_1 = hasIn2;
       return hasIn_1;
@@ -14857,13 +14881,13 @@ var require_index_001 = __commonJS({
       hasRequired_baseMatchesProperty = 1;
       var baseIsEqual2 = require_baseIsEqual(), get2 = requireGet(), hasIn2 = requireHasIn(), isKey2 = require_isKey(), isStrictComparable2 = require_isStrictComparable(), matchesStrictComparable2 = require_matchesStrictComparable(), toKey2 = require_toKey();
       var COMPARE_PARTIAL_FLAG2 = 1, COMPARE_UNORDERED_FLAG2 = 2;
-      function baseMatchesProperty2(path, srcValue) {
-        if (isKey2(path) && isStrictComparable2(srcValue)) {
-          return matchesStrictComparable2(toKey2(path), srcValue);
+      function baseMatchesProperty2(path2, srcValue) {
+        if (isKey2(path2) && isStrictComparable2(srcValue)) {
+          return matchesStrictComparable2(toKey2(path2), srcValue);
         }
         return function(object) {
-          var objValue = get2(object, path);
-          return objValue === void 0 && objValue === srcValue ? hasIn2(object, path) : baseIsEqual2(srcValue, objValue, COMPARE_PARTIAL_FLAG2 | COMPARE_UNORDERED_FLAG2);
+          var objValue = get2(object, path2);
+          return objValue === void 0 && objValue === srcValue ? hasIn2(object, path2) : baseIsEqual2(srcValue, objValue, COMPARE_PARTIAL_FLAG2 | COMPARE_UNORDERED_FLAG2);
         };
       }
       _baseMatchesProperty = baseMatchesProperty2;
@@ -14888,9 +14912,9 @@ var require_index_001 = __commonJS({
       if (hasRequired_basePropertyDeep) return _basePropertyDeep;
       hasRequired_basePropertyDeep = 1;
       var baseGet2 = require_baseGet();
-      function basePropertyDeep2(path) {
+      function basePropertyDeep2(path2) {
         return function(object) {
-          return baseGet2(object, path);
+          return baseGet2(object, path2);
         };
       }
       _basePropertyDeep = basePropertyDeep2;
@@ -14902,8 +14926,8 @@ var require_index_001 = __commonJS({
       if (hasRequiredProperty) return property_1;
       hasRequiredProperty = 1;
       var baseProperty2 = require_baseProperty(), basePropertyDeep2 = require_basePropertyDeep(), isKey2 = require_isKey(), toKey2 = require_toKey();
-      function property2(path) {
-        return isKey2(path) ? baseProperty2(toKey2(path)) : basePropertyDeep2(path);
+      function property2(path2) {
+        return isKey2(path2) ? baseProperty2(toKey2(path2)) : basePropertyDeep2(path2);
       }
       property_1 = property2;
       return property_1;
@@ -15041,14 +15065,14 @@ var require_index_001 = __commonJS({
     function require_arrayEach() {
       if (hasRequired_arrayEach) return _arrayEach;
       hasRequired_arrayEach = 1;
-      function arrayEach2(array, iteratee) {
-        var index = -1, length = array == null ? 0 : array.length;
+      function arrayEach2(array2, iteratee) {
+        var index = -1, length = array2 == null ? 0 : array2.length;
         while (++index < length) {
-          if (iteratee(array[index], index, array) === false) {
+          if (iteratee(array2[index], index, array2) === false) {
             break;
           }
         }
-        return array;
+        return array2;
       }
       _arrayEach = arrayEach2;
       return _arrayEach;
@@ -15222,7 +15246,7 @@ var require_index_001 = __commonJS({
         var freeExports2 = exports2 && !exports2.nodeType && exports2;
         var freeModule2 = freeExports2 && true && module2 && !module2.nodeType && module2;
         var moduleExports2 = freeModule2 && freeModule2.exports === freeExports2;
-        var Buffer3 = moduleExports2 ? root2.Buffer : void 0, allocUnsafe2 = Buffer3 ? Buffer3.allocUnsafe : void 0;
+        var Buffer2 = moduleExports2 ? root2.Buffer : void 0, allocUnsafe2 = Buffer2 ? Buffer2.allocUnsafe : void 0;
         function cloneBuffer2(buffer, isDeep) {
           if (isDeep) {
             return buffer.slice();
@@ -15240,13 +15264,13 @@ var require_index_001 = __commonJS({
     function require_copyArray() {
       if (hasRequired_copyArray) return _copyArray;
       hasRequired_copyArray = 1;
-      function copyArray2(source, array) {
+      function copyArray2(source, array2) {
         var index = -1, length = source.length;
-        array || (array = Array(length));
+        array2 || (array2 = Array(length));
         while (++index < length) {
-          array[index] = source[index];
+          array2[index] = source[index];
         }
-        return array;
+        return array2;
       }
       _copyArray = copyArray2;
       return _copyArray;
@@ -15312,11 +15336,11 @@ var require_index_001 = __commonJS({
       hasRequired_initCloneArray = 1;
       var objectProto2 = Object.prototype;
       var hasOwnProperty2 = objectProto2.hasOwnProperty;
-      function initCloneArray2(array) {
-        var length = array.length, result = new array.constructor(length);
-        if (length && typeof array[0] == "string" && hasOwnProperty2.call(array, "index")) {
-          result.index = array.index;
-          result.input = array.input;
+      function initCloneArray2(array2) {
+        var length = array2.length, result = new array2.constructor(length);
+        if (length && typeof array2[0] == "string" && hasOwnProperty2.call(array2, "index")) {
+          result.index = array2.index;
+          result.input = array2.input;
         }
         return result;
       }
@@ -15328,10 +15352,10 @@ var require_index_001 = __commonJS({
     function require_cloneArrayBuffer() {
       if (hasRequired_cloneArrayBuffer) return _cloneArrayBuffer;
       hasRequired_cloneArrayBuffer = 1;
-      var Uint8Array3 = require_Uint8Array();
+      var Uint8Array2 = require_Uint8Array();
       function cloneArrayBuffer2(arrayBuffer) {
         var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
-        new Uint8Array3(result).set(new Uint8Array3(arrayBuffer));
+        new Uint8Array2(result).set(new Uint8Array2(arrayBuffer));
         return result;
       }
       _cloneArrayBuffer = cloneArrayBuffer2;
@@ -15621,8 +15645,8 @@ var require_index_001 = __commonJS({
       var _cloneDeep2 = requireCloneDeep();
       var _cloneDeep3 = _interopRequireDefault(_cloneDeep2);
       var _extends2 = Object.assign || function(target) {
-        for (var i = 1; i < arguments.length; i++) {
-          var source = arguments[i];
+        for (var i2 = 1; i2 < arguments.length; i2++) {
+          var source = arguments[i2];
           for (var key in source) {
             if (Object.prototype.hasOwnProperty.call(source, key)) {
               target[key] = source[key];
@@ -15666,8 +15690,8 @@ var require_index_001 = __commonJS({
       var _forOwn2 = requireForOwn();
       var _forOwn3 = _interopRequireDefault(_forOwn2);
       var _extends2 = Object.assign || function(target) {
-        for (var i = 1; i < arguments.length; i++) {
-          var source = arguments[i];
+        for (var i2 = 1; i2 < arguments.length; i2++) {
+          var source = arguments[i2];
           for (var key in source) {
             if (Object.prototype.hasOwnProperty.call(source, key)) {
               target[key] = source[key];
@@ -15757,7 +15781,7 @@ var require_index_001 = __commonJS({
             left: direction && direction[3]
           };
         },
-        extend: function extend(name2, otherElementStyles) {
+        extend: function extend2(name2, otherElementStyles) {
           var otherStyle = otherElementStyles[name2];
           if (otherStyle) {
             return otherStyle;
@@ -15796,8 +15820,8 @@ var require_index_001 = __commonJS({
       });
       hover.hover = void 0;
       var _extends2 = Object.assign || function(target) {
-        for (var i = 1; i < arguments.length; i++) {
-          var source = arguments[i];
+        for (var i2 = 1; i2 < arguments.length; i2++) {
+          var source = arguments[i2];
           for (var key in source) {
             if (Object.prototype.hasOwnProperty.call(source, key)) {
               target[key] = source[key];
@@ -15868,8 +15892,8 @@ var require_index_001 = __commonJS({
       });
       active.active = void 0;
       var _extends2 = Object.assign || function(target) {
-        for (var i = 1; i < arguments.length; i++) {
-          var source = arguments[i];
+        for (var i2 = 1; i2 < arguments.length; i2++) {
+          var source = arguments[i2];
           for (var key in source) {
             if (Object.prototype.hasOwnProperty.call(source, key)) {
               target[key] = source[key];
@@ -15938,17 +15962,17 @@ var require_index_001 = __commonJS({
       Object.defineProperty(loop, "__esModule", {
         value: true
       });
-      var loopable = function loopable2(i, length) {
+      var loopable = function loopable2(i2, length) {
         var props = {};
         var setProp = function setProp2(name2) {
           var value2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
           props[name2] = value2;
         };
-        i === 0 && setProp("first-child");
-        i === length - 1 && setProp("last-child");
-        (i === 0 || i % 2 === 0) && setProp("even");
-        Math.abs(i % 2) === 1 && setProp("odd");
-        setProp("nth-child", i);
+        i2 === 0 && setProp("first-child");
+        i2 === length - 1 && setProp("last-child");
+        (i2 === 0 || i2 % 2 === 0) && setProp("even");
+        Math.abs(i2 % 2) === 1 && setProp("odd");
+        setProp("nth-child", i2);
         return props;
       };
       loop.default = loopable;
@@ -15994,13 +16018,13 @@ var require_index_001 = __commonJS({
     }
     var libExports = requireLib();
     const reactCSS = /* @__PURE__ */ getDefaultExportFromCjs(libExports);
-    var calculateChange$2 = function calculateChange2(e, hsl, direction, initialA, container) {
+    var calculateChange$2 = function calculateChange2(e, hsl2, direction, initialA, container) {
       var containerWidth = container.clientWidth;
       var containerHeight = container.clientHeight;
-      var x = typeof e.pageX === "number" ? e.pageX : e.touches[0].pageX;
-      var y = typeof e.pageY === "number" ? e.pageY : e.touches[0].pageY;
-      var left2 = x - (container.getBoundingClientRect().left + window.pageXOffset);
-      var top2 = y - (container.getBoundingClientRect().top + window.pageYOffset);
+      var x2 = typeof e.pageX === "number" ? e.pageX : e.touches[0].pageX;
+      var y2 = typeof e.pageY === "number" ? e.pageY : e.touches[0].pageY;
+      var left2 = x2 - (container.getBoundingClientRect().left + window.pageXOffset);
+      var top2 = y2 - (container.getBoundingClientRect().top + window.pageYOffset);
       if (direction === "vertical") {
         var a = void 0;
         if (top2 < 0) {
@@ -16010,11 +16034,11 @@ var require_index_001 = __commonJS({
         } else {
           a = Math.round(top2 * 100 / containerHeight) / 100;
         }
-        if (hsl.a !== a) {
+        if (hsl2.a !== a) {
           return {
-            h: hsl.h,
-            s: hsl.s,
-            l: hsl.l,
+            h: hsl2.h,
+            s: hsl2.s,
+            l: hsl2.l,
             a,
             source: "rgb"
           };
@@ -16030,9 +16054,9 @@ var require_index_001 = __commonJS({
         }
         if (initialA !== _a2) {
           return {
-            h: hsl.h,
-            s: hsl.s,
-            l: hsl.l,
+            h: hsl2.h,
+            s: hsl2.s,
+            l: hsl2.l,
             a: _a2,
             source: "rgb"
           };
@@ -16060,7 +16084,7 @@ var require_index_001 = __commonJS({
       ctx.fillRect(0, 0, size, size);
       return canvas.toDataURL();
     };
-    var get$1 = function get2(c1, c2, size, serverCanvas) {
+    var get$3 = function get2(c1, c2, size, serverCanvas) {
       var key = c1 + "-" + c2 + "-" + size + (serverCanvas ? "-server" : "");
       if (checkboardCache[key]) {
         return checkboardCache[key];
@@ -16070,8 +16094,8 @@ var require_index_001 = __commonJS({
       return checkboard;
     };
     var _extends$8 = Object.assign || function(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        var source = arguments[i2];
         for (var key in source) {
           if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = source[key];
@@ -16081,18 +16105,18 @@ var require_index_001 = __commonJS({
       return target;
     };
     var Checkboard = function Checkboard2(_ref) {
-      var white = _ref.white, grey = _ref.grey, size = _ref.size, renderers = _ref.renderers, borderRadius = _ref.borderRadius, boxShadow = _ref.boxShadow, children = _ref.children;
+      var white = _ref.white, grey = _ref.grey, size = _ref.size, renderers = _ref.renderers, borderRadius = _ref.borderRadius, boxShadow = _ref.boxShadow, children2 = _ref.children;
       var styles2 = reactCSS({
         "default": {
           grid: {
             borderRadius,
             boxShadow,
             absolute: "0px 0px 0px 0px",
-            background: "url(" + get$1(white, grey, size, renderers.canvas) + ") center left"
+            background: "url(" + get$3(white, grey, size, renderers.canvas) + ") center left"
           }
         }
       });
-      return reactExports.isValidElement(children) ? React.cloneElement(children, _extends$8({}, children.props, { style: _extends$8({}, children.props.style, styles2.grid) })) : React.createElement("div", { style: styles2.grid });
+      return reactExports.isValidElement(children2) ? React.cloneElement(children2, _extends$8({}, children2.props, { style: _extends$8({}, children2.props.style, styles2.grid) })) : React.createElement("div", { style: styles2.grid });
     };
     Checkboard.defaultProps = {
       size: 8,
@@ -16101,8 +16125,8 @@ var require_index_001 = __commonJS({
       renderers: {}
     };
     var _extends$7 = Object.assign || function(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        var source = arguments[i2];
         for (var key in source) {
           if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = source[key];
@@ -16113,8 +16137,8 @@ var require_index_001 = __commonJS({
     };
     var _createClass$7 = /* @__PURE__ */ function() {
       function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-          var descriptor = props[i];
+        for (var i2 = 0; i2 < props.length; i2++) {
+          var descriptor = props[i2];
           descriptor.enumerable = descriptor.enumerable || false;
           descriptor.configurable = true;
           if ("value" in descriptor) descriptor.writable = true;
@@ -16177,7 +16201,7 @@ var require_index_001 = __commonJS({
         key: "render",
         value: function render2() {
           var _this2 = this;
-          var rgb = this.props.rgb;
+          var rgb2 = this.props.rgb;
           var styles2 = reactCSS({
             "default": {
               alpha: {
@@ -16191,7 +16215,7 @@ var require_index_001 = __commonJS({
               },
               gradient: {
                 absolute: "0px 0px 0px 0px",
-                background: "linear-gradient(to right, rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ", 0) 0%,\n           rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ", 1) 100%)",
+                background: "linear-gradient(to right, rgba(" + rgb2.r + "," + rgb2.g + "," + rgb2.b + ", 0) 0%,\n           rgba(" + rgb2.r + "," + rgb2.g + "," + rgb2.b + ", 1) 100%)",
                 boxShadow: this.props.shadow,
                 borderRadius: this.props.radius
               },
@@ -16202,7 +16226,7 @@ var require_index_001 = __commonJS({
               },
               pointer: {
                 position: "absolute",
-                left: rgb.a * 100 + "%"
+                left: rgb2.a * 100 + "%"
               },
               slider: {
                 width: "4px",
@@ -16216,11 +16240,11 @@ var require_index_001 = __commonJS({
             },
             "vertical": {
               gradient: {
-                background: "linear-gradient(to bottom, rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ", 0) 0%,\n           rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ", 1) 100%)"
+                background: "linear-gradient(to bottom, rgba(" + rgb2.r + "," + rgb2.g + "," + rgb2.b + ", 0) 0%,\n           rgba(" + rgb2.r + "," + rgb2.g + "," + rgb2.b + ", 1) 100%)"
               },
               pointer: {
                 left: 0,
-                top: rgb.a * 100 + "%"
+                top: rgb2.a * 100 + "%"
               }
             },
             "overwrite": _extends$7({}, this.props.style)
@@ -16261,8 +16285,8 @@ var require_index_001 = __commonJS({
     }(reactExports.PureComponent || reactExports.Component);
     var _createClass$6 = /* @__PURE__ */ function() {
       function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-          var descriptor = props[i];
+        for (var i2 = 0; i2 < props.length; i2++) {
+          var descriptor = props[i2];
           descriptor.enumerable = descriptor.enumerable || false;
           descriptor.configurable = true;
           if ("value" in descriptor) descriptor.writable = true;
@@ -16449,13 +16473,13 @@ var require_index_001 = __commonJS({
       }]);
       return EditableInput2;
     }(reactExports.PureComponent || reactExports.Component);
-    var calculateChange$1 = function calculateChange2(e, direction, hsl, container) {
+    var calculateChange$1 = function calculateChange2(e, direction, hsl2, container) {
       var containerWidth = container.clientWidth;
       var containerHeight = container.clientHeight;
-      var x = typeof e.pageX === "number" ? e.pageX : e.touches[0].pageX;
-      var y = typeof e.pageY === "number" ? e.pageY : e.touches[0].pageY;
-      var left2 = x - (container.getBoundingClientRect().left + window.pageXOffset);
-      var top2 = y - (container.getBoundingClientRect().top + window.pageYOffset);
+      var x2 = typeof e.pageX === "number" ? e.pageX : e.touches[0].pageX;
+      var y2 = typeof e.pageY === "number" ? e.pageY : e.touches[0].pageY;
+      var left2 = x2 - (container.getBoundingClientRect().left + window.pageXOffset);
+      var top2 = y2 - (container.getBoundingClientRect().top + window.pageYOffset);
       if (direction === "vertical") {
         var h = void 0;
         if (top2 < 0) {
@@ -16466,12 +16490,12 @@ var require_index_001 = __commonJS({
           var percent = -(top2 * 100 / containerHeight) + 100;
           h = 360 * percent / 100;
         }
-        if (hsl.h !== h) {
+        if (hsl2.h !== h) {
           return {
             h,
-            s: hsl.s,
-            l: hsl.l,
-            a: hsl.a,
+            s: hsl2.s,
+            l: hsl2.l,
+            a: hsl2.a,
             source: "hsl"
           };
         }
@@ -16485,12 +16509,12 @@ var require_index_001 = __commonJS({
           var _percent = left2 * 100 / containerWidth;
           _h = 360 * _percent / 100;
         }
-        if (hsl.h !== _h) {
+        if (hsl2.h !== _h) {
           return {
             h: _h,
-            s: hsl.s,
-            l: hsl.l,
-            a: hsl.a,
+            s: hsl2.s,
+            l: hsl2.l,
+            a: hsl2.a,
             source: "hsl"
           };
         }
@@ -16499,8 +16523,8 @@ var require_index_001 = __commonJS({
     };
     var _createClass$5 = /* @__PURE__ */ function() {
       function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-          var descriptor = props[i];
+        for (var i2 = 0; i2 < props.length; i2++) {
+          var descriptor = props[i2];
           descriptor.enumerable = descriptor.enumerable || false;
           descriptor.configurable = true;
           if ("value" in descriptor) descriptor.writable = true;
@@ -16696,17 +16720,17 @@ var require_index_001 = __commonJS({
       };
       return factoryWithThrowingShims;
     }
-    var hasRequiredPropTypes;
-    function requirePropTypes() {
-      if (hasRequiredPropTypes) return propTypes.exports;
-      hasRequiredPropTypes = 1;
+    var hasRequiredPropTypes$1;
+    function requirePropTypes$1() {
+      if (hasRequiredPropTypes$1) return propTypes.exports;
+      hasRequiredPropTypes$1 = 1;
       {
         propTypes.exports = /* @__PURE__ */ requireFactoryWithThrowingShims()();
       }
       return propTypes.exports;
     }
-    var propTypesExports = /* @__PURE__ */ requirePropTypes();
-    const PropTypes = /* @__PURE__ */ getDefaultExportFromCjs(propTypesExports);
+    var propTypesExports = /* @__PURE__ */ requirePropTypes$1();
+    const PropTypes$1 = /* @__PURE__ */ getDefaultExportFromCjs(propTypesExports);
     function listCacheClear() {
       this.__data__ = [];
       this.size = 0;
@@ -16714,10 +16738,10 @@ var require_index_001 = __commonJS({
     function eq(value2, other) {
       return value2 === other || value2 !== value2 && other !== other;
     }
-    function assocIndexOf(array, key) {
-      var length = array.length;
+    function assocIndexOf(array2, key) {
+      var length = array2.length;
       while (length--) {
-        if (eq(array[length][0], key)) {
+        if (eq(array2[length][0], key)) {
           return length;
         }
       }
@@ -16786,8 +16810,8 @@ var require_index_001 = __commonJS({
     }
     var freeGlobal = typeof global == "object" && global && global.Object === Object && global;
     var freeSelf = typeof self == "object" && self && self.Object === Object && self;
-    var root = freeGlobal || freeSelf || Function("return this")();
-    var Symbol$1 = root.Symbol;
+    var root$1 = freeGlobal || freeSelf || Function("return this")();
+    var Symbol$1 = root$1.Symbol;
     var objectProto$f = Object.prototype;
     var hasOwnProperty$c = objectProto$f.hasOwnProperty;
     var nativeObjectToString$1 = objectProto$f.toString;
@@ -16834,7 +16858,7 @@ var require_index_001 = __commonJS({
       var tag = baseGetTag(value2);
       return tag == funcTag$2 || tag == genTag$1 || tag == asyncTag || tag == proxyTag;
     }
-    var coreJsData = root["__core-js_shared__"];
+    var coreJsData = root$1["__core-js_shared__"];
     var maskSrcKey = function() {
       var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || "");
       return uid ? "Symbol(src)_1." + uid : "";
@@ -16879,7 +16903,7 @@ var require_index_001 = __commonJS({
       var value2 = getValue(object, key);
       return baseIsNative(value2) ? value2 : void 0;
     }
-    var Map$1 = getNative(root, "Map");
+    var Map$1 = getNative(root$1, "Map");
     var nativeCreate = getNative(Object, "create");
     function hashClear() {
       this.__data__ = nativeCreate ? nativeCreate(null) : {};
@@ -17039,7 +17063,7 @@ var require_index_001 = __commonJS({
     var freeExports$2 = typeof exports == "object" && exports && !exports.nodeType && exports;
     var freeModule$2 = freeExports$2 && typeof module == "object" && module && !module.nodeType && module;
     var moduleExports$2 = freeModule$2 && freeModule$2.exports === freeExports$2;
-    var Buffer$1 = moduleExports$2 ? root.Buffer : void 0, allocUnsafe = Buffer$1 ? Buffer$1.allocUnsafe : void 0;
+    var Buffer$2 = moduleExports$2 ? root$1.Buffer : void 0, allocUnsafe = Buffer$2 ? Buffer$2.allocUnsafe : void 0;
     function cloneBuffer(buffer, isDeep) {
       if (isDeep) {
         return buffer.slice();
@@ -17048,23 +17072,23 @@ var require_index_001 = __commonJS({
       buffer.copy(result);
       return result;
     }
-    var Uint8Array2 = root.Uint8Array;
+    var Uint8Array$1 = root$1.Uint8Array;
     function cloneArrayBuffer(arrayBuffer) {
       var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
-      new Uint8Array2(result).set(new Uint8Array2(arrayBuffer));
+      new Uint8Array$1(result).set(new Uint8Array$1(arrayBuffer));
       return result;
     }
     function cloneTypedArray(typedArray, isDeep) {
       var buffer = isDeep ? cloneArrayBuffer(typedArray.buffer) : typedArray.buffer;
       return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
     }
-    function copyArray(source, array) {
+    function copyArray(source, array2) {
       var index = -1, length = source.length;
-      array || (array = Array(length));
+      array2 || (array2 = Array(length));
       while (++index < length) {
-        array[index] = source[index];
+        array2[index] = source[index];
       }
-      return array;
+      return array2;
     }
     var objectCreate = Object.create;
     var baseCreate = /* @__PURE__ */ function() {
@@ -17129,8 +17153,8 @@ var require_index_001 = __commonJS({
     var freeExports$1 = typeof exports == "object" && exports && !exports.nodeType && exports;
     var freeModule$1 = freeExports$1 && typeof module == "object" && module && !module.nodeType && module;
     var moduleExports$1 = freeModule$1 && freeModule$1.exports === freeExports$1;
-    var Buffer2 = moduleExports$1 ? root.Buffer : void 0;
-    var nativeIsBuffer = Buffer2 ? Buffer2.isBuffer : void 0;
+    var Buffer$1 = moduleExports$1 ? root$1.Buffer : void 0;
+    var nativeIsBuffer = Buffer$1 ? Buffer$1.isBuffer : void 0;
     var isBuffer = nativeIsBuffer || stubFalse;
     var objectTag$4 = "[object Object]";
     var funcProto = Function.prototype, objectProto$8 = Object.prototype;
@@ -17330,7 +17354,7 @@ var require_index_001 = __commonJS({
         }
       }, keysIn);
     }
-    function identity(value2) {
+    function identity$2(value2) {
       return value2;
     }
     function apply(func, thisArg, args) {
@@ -17347,55 +17371,55 @@ var require_index_001 = __commonJS({
       return func.apply(thisArg, args);
     }
     var nativeMax$1 = Math.max;
-    function overRest(func, start, transform) {
-      start = nativeMax$1(start === void 0 ? func.length - 1 : start, 0);
+    function overRest(func, start2, transform) {
+      start2 = nativeMax$1(start2 === void 0 ? func.length - 1 : start2, 0);
       return function() {
-        var args = arguments, index = -1, length = nativeMax$1(args.length - start, 0), array = Array(length);
+        var args = arguments, index = -1, length = nativeMax$1(args.length - start2, 0), array2 = Array(length);
         while (++index < length) {
-          array[index] = args[start + index];
+          array2[index] = args[start2 + index];
         }
         index = -1;
-        var otherArgs = Array(start + 1);
-        while (++index < start) {
+        var otherArgs = Array(start2 + 1);
+        while (++index < start2) {
           otherArgs[index] = args[index];
         }
-        otherArgs[start] = transform(array);
+        otherArgs[start2] = transform(array2);
         return apply(func, this, otherArgs);
       };
     }
-    function constant(value2) {
+    function constant$4(value2) {
       return function() {
         return value2;
       };
     }
-    var baseSetToString = !defineProperty ? identity : function(func, string) {
+    var baseSetToString = !defineProperty ? identity$2 : function(func, string) {
       return defineProperty(func, "toString", {
         "configurable": true,
         "enumerable": false,
-        "value": constant(string),
+        "value": constant$4(string),
         "writable": true
       });
     };
     var HOT_COUNT = 800, HOT_SPAN = 16;
     var nativeNow = Date.now;
     function shortOut(func) {
-      var count = 0, lastCalled = 0;
+      var count2 = 0, lastCalled = 0;
       return function() {
         var stamp = nativeNow(), remaining = HOT_SPAN - (stamp - lastCalled);
         lastCalled = stamp;
         if (remaining > 0) {
-          if (++count >= HOT_COUNT) {
+          if (++count2 >= HOT_COUNT) {
             return arguments[0];
           }
         } else {
-          count = 0;
+          count2 = 0;
         }
         return func.apply(void 0, arguments);
       };
     }
     var setToString = shortOut(baseSetToString);
-    function baseRest(func, start) {
-      return setToString(overRest(func, start, identity), func + "");
+    function baseRest(func, start2) {
+      return setToString(overRest(func, start2, identity$2), func + "");
     }
     function isIterateeCall(value2, index, object) {
       if (!isObject(object)) {
@@ -17429,7 +17453,7 @@ var require_index_001 = __commonJS({
       baseMerge(object, source, srcIndex);
     });
     var Raised = function Raised2(_ref) {
-      var zDepth = _ref.zDepth, radius = _ref.radius, background = _ref.background, children = _ref.children, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles;
+      var zDepth = _ref.zDepth, radius = _ref.radius, background = _ref.background, children2 = _ref.children, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles;
       var styles2 = reactCSS(merge({
         "default": {
           wrap: {
@@ -17494,15 +17518,15 @@ var require_index_001 = __commonJS({
         React.createElement(
           "div",
           { style: styles2.content },
-          children
+          children2
         )
       );
     };
     Raised.propTypes = {
-      background: PropTypes.string,
-      zDepth: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
-      radius: PropTypes.number,
-      styles: PropTypes.object
+      background: PropTypes$1.string,
+      zDepth: PropTypes$1.oneOf([0, 1, 2, 3, 4, 5]),
+      radius: PropTypes$1.number,
+      styles: PropTypes$1.object
     };
     Raised.defaultProps = {
       background: "#fff",
@@ -17510,8 +17534,8 @@ var require_index_001 = __commonJS({
       radius: 2,
       styles: {}
     };
-    var now = function() {
-      return root.Date.now();
+    var now$1 = function() {
+      return root$1.Date.now();
     };
     var reWhitespace = /\s/;
     function trimmedEndIndex(string) {
@@ -17586,7 +17610,7 @@ var require_index_001 = __commonJS({
         return lastCallTime === void 0 || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
       }
       function timerExpired() {
-        var time = now();
+        var time = now$1();
         if (shouldInvoke(time)) {
           return trailingEdge(time);
         }
@@ -17608,10 +17632,10 @@ var require_index_001 = __commonJS({
         lastArgs = lastCallTime = lastThis = timerId = void 0;
       }
       function flush() {
-        return timerId === void 0 ? result : trailingEdge(now());
+        return timerId === void 0 ? result : trailingEdge(now$1());
       }
       function debounced() {
-        var time = now(), isInvoking = shouldInvoke(time);
+        var time = now$1(), isInvoking = shouldInvoke(time);
         lastArgs = arguments;
         lastThis = this;
         lastCallTime = time;
@@ -17650,12 +17674,12 @@ var require_index_001 = __commonJS({
         "trailing": trailing
       });
     }
-    var calculateChange = function calculateChange2(e, hsl, container) {
+    var calculateChange = function calculateChange2(e, hsl2, container) {
       var _container$getBoundin = container.getBoundingClientRect(), containerWidth = _container$getBoundin.width, containerHeight = _container$getBoundin.height;
-      var x = typeof e.pageX === "number" ? e.pageX : e.touches[0].pageX;
-      var y = typeof e.pageY === "number" ? e.pageY : e.touches[0].pageY;
-      var left2 = x - (container.getBoundingClientRect().left + window.pageXOffset);
-      var top2 = y - (container.getBoundingClientRect().top + window.pageYOffset);
+      var x2 = typeof e.pageX === "number" ? e.pageX : e.touches[0].pageX;
+      var y2 = typeof e.pageY === "number" ? e.pageY : e.touches[0].pageY;
+      var left2 = x2 - (container.getBoundingClientRect().left + window.pageXOffset);
+      var top2 = y2 - (container.getBoundingClientRect().top + window.pageYOffset);
       if (left2 < 0) {
         left2 = 0;
       } else if (left2 > containerWidth) {
@@ -17669,17 +17693,17 @@ var require_index_001 = __commonJS({
       var saturation = left2 / containerWidth;
       var bright = 1 - top2 / containerHeight;
       return {
-        h: hsl.h,
+        h: hsl2.h,
         s: saturation,
         v: bright,
-        a: hsl.a,
+        a: hsl2.a,
         source: "hsv"
       };
     };
     var _createClass$4 = /* @__PURE__ */ function() {
       function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-          var descriptor = props[i];
+        for (var i2 = 0; i2 < props.length; i2++) {
+          var descriptor = props[i2];
           descriptor.enumerable = descriptor.enumerable || false;
           descriptor.configurable = true;
           if ("value" in descriptor) descriptor.writable = true;
@@ -17759,7 +17783,7 @@ var require_index_001 = __commonJS({
         key: "render",
         value: function render2() {
           var _this2 = this;
-          var _ref2 = this.props.style || {}, color = _ref2.color, white = _ref2.white, black2 = _ref2.black, pointer = _ref2.pointer, circle = _ref2.circle;
+          var _ref2 = this.props.style || {}, color2 = _ref2.color, white = _ref2.white, black2 = _ref2.black, pointer2 = _ref2.pointer, circle = _ref2.circle;
           var styles2 = reactCSS({
             "default": {
               color: {
@@ -17792,10 +17816,10 @@ var require_index_001 = __commonJS({
               }
             },
             "custom": {
-              color,
+              color: color2,
               white,
               black: black2,
-              pointer,
+              pointer: pointer2,
               circle
             }
           }, { "custom": !!this.props.style });
@@ -17830,14 +17854,14 @@ var require_index_001 = __commonJS({
       }]);
       return Saturation2;
     }(reactExports.PureComponent || reactExports.Component);
-    function arrayEach(array, iteratee) {
-      var index = -1, length = array == null ? 0 : array.length;
+    function arrayEach(array2, iteratee) {
+      var index = -1, length = array2 == null ? 0 : array2.length;
       while (++index < length) {
-        if (iteratee(array[index], index, array) === false) {
+        if (iteratee(array2[index], index, array2) === false) {
           break;
         }
       }
-      return array;
+      return array2;
     }
     var nativeKeys = overArg(Object.keys, Object);
     var objectProto$4 = Object.prototype;
@@ -17879,7 +17903,7 @@ var require_index_001 = __commonJS({
     }
     var baseEach = createBaseEach(baseForOwn);
     function castFunction(value2) {
-      return typeof value2 == "function" ? value2 : identity;
+      return typeof value2 == "function" ? value2 : identity$2;
     }
     function forEach(collection, iteratee) {
       var func = isArray(collection) ? arrayEach : baseEach;
@@ -17895,22 +17919,22 @@ var require_index_001 = __commonJS({
     }
     var trimLeft = /^\s+/;
     var trimRight = /\s+$/;
-    function tinycolor(color, opts) {
-      color = color ? color : "";
+    function tinycolor(color2, opts) {
+      color2 = color2 ? color2 : "";
       opts = opts || {};
-      if (color instanceof tinycolor) {
-        return color;
+      if (color2 instanceof tinycolor) {
+        return color2;
       }
       if (!(this instanceof tinycolor)) {
-        return new tinycolor(color, opts);
+        return new tinycolor(color2, opts);
       }
-      var rgb = inputToRGB(color);
-      this._originalInput = color, this._r = rgb.r, this._g = rgb.g, this._b = rgb.b, this._a = rgb.a, this._roundA = Math.round(100 * this._a) / 100, this._format = opts.format || rgb.format;
+      var rgb2 = inputToRGB(color2);
+      this._originalInput = color2, this._r = rgb2.r, this._g = rgb2.g, this._b = rgb2.b, this._a = rgb2.a, this._roundA = Math.round(100 * this._a) / 100, this._format = opts.format || rgb2.format;
       this._gradientType = opts.gradientType;
       if (this._r < 1) this._r = Math.round(this._r);
       if (this._g < 1) this._g = Math.round(this._g);
       if (this._b < 1) this._b = Math.round(this._b);
-      this._ok = rgb.ok;
+      this._ok = rgb2.ok;
     }
     tinycolor.prototype = {
       isDark: function isDark() {
@@ -17932,15 +17956,15 @@ var require_index_001 = __commonJS({
         return this._a;
       },
       getBrightness: function getBrightness() {
-        var rgb = this.toRgb();
-        return (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1e3;
+        var rgb2 = this.toRgb();
+        return (rgb2.r * 299 + rgb2.g * 587 + rgb2.b * 114) / 1e3;
       },
       getLuminance: function getLuminance() {
-        var rgb = this.toRgb();
+        var rgb2 = this.toRgb();
         var RsRGB, GsRGB, BsRGB, R, G, B;
-        RsRGB = rgb.r / 255;
-        GsRGB = rgb.g / 255;
-        BsRGB = rgb.b / 255;
+        RsRGB = rgb2.r / 255;
+        GsRGB = rgb2.g / 255;
+        BsRGB = rgb2.b / 255;
         if (RsRGB <= 0.03928) R = RsRGB / 12.92;
         else R = Math.pow((RsRGB + 0.055) / 1.055, 2.4);
         if (GsRGB <= 0.03928) G = GsRGB / 12.92;
@@ -17969,17 +17993,17 @@ var require_index_001 = __commonJS({
         return this._a == 1 ? "hsv(" + h + ", " + s + "%, " + v + "%)" : "hsva(" + h + ", " + s + "%, " + v + "%, " + this._roundA + ")";
       },
       toHsl: function toHsl() {
-        var hsl = rgbToHsl(this._r, this._g, this._b);
+        var hsl2 = rgbToHsl(this._r, this._g, this._b);
         return {
-          h: hsl.h * 360,
-          s: hsl.s,
-          l: hsl.l,
+          h: hsl2.h * 360,
+          s: hsl2.s,
+          l: hsl2.l,
           a: this._a
         };
       },
       toHslString: function toHslString() {
-        var hsl = rgbToHsl(this._r, this._g, this._b);
-        var h = Math.round(hsl.h * 360), s = Math.round(hsl.s * 100), l = Math.round(hsl.l * 100);
+        var hsl2 = rgbToHsl(this._r, this._g, this._b);
+        var h = Math.round(hsl2.h * 360), s = Math.round(hsl2.s * 100), l = Math.round(hsl2.l * 100);
         return this._a == 1 ? "hsl(" + h + ", " + s + "%, " + l + "%)" : "hsla(" + h + ", " + s + "%, " + l + "%, " + this._roundA + ")";
       },
       toHex: function toHex(allow3Char) {
@@ -18076,15 +18100,15 @@ var require_index_001 = __commonJS({
         }
         return formattedString || this.toHexString();
       },
-      clone: function clone() {
+      clone: function clone2() {
         return tinycolor(this.toString());
       },
       _applyModification: function _applyModification(fn, args) {
-        var color = fn.apply(null, [this].concat([].slice.call(args)));
-        this._r = color._r;
-        this._g = color._g;
-        this._b = color._b;
-        this.setAlpha(color._a);
+        var color2 = fn.apply(null, [this].concat([].slice.call(args)));
+        this._r = color2._r;
+        this._g = color2._g;
+        this._b = color2._b;
+        this.setAlpha(color2._a);
         return this;
       },
       lighten: function lighten() {
@@ -18134,24 +18158,24 @@ var require_index_001 = __commonJS({
         return this._applyCombination(polyad, [4]);
       }
     };
-    tinycolor.fromRatio = function(color, opts) {
-      if (_typeof(color) == "object") {
+    tinycolor.fromRatio = function(color2, opts) {
+      if (_typeof(color2) == "object") {
         var newColor = {};
-        for (var i in color) {
-          if (color.hasOwnProperty(i)) {
-            if (i === "a") {
-              newColor[i] = color[i];
+        for (var i2 in color2) {
+          if (color2.hasOwnProperty(i2)) {
+            if (i2 === "a") {
+              newColor[i2] = color2[i2];
             } else {
-              newColor[i] = convertToPercentage(color[i]);
+              newColor[i2] = convertToPercentage(color2[i2]);
             }
           }
         }
-        color = newColor;
+        color2 = newColor;
       }
-      return tinycolor(color, opts);
+      return tinycolor(color2, opts);
     };
-    function inputToRGB(color) {
-      var rgb = {
+    function inputToRGB(color2) {
+      var rgb2 = {
         r: 0,
         g: 0,
         b: 0
@@ -18162,38 +18186,38 @@ var require_index_001 = __commonJS({
       var l = null;
       var ok = false;
       var format = false;
-      if (typeof color == "string") {
-        color = stringInputToObject(color);
+      if (typeof color2 == "string") {
+        color2 = stringInputToObject(color2);
       }
-      if (_typeof(color) == "object") {
-        if (isValidCSSUnit(color.r) && isValidCSSUnit(color.g) && isValidCSSUnit(color.b)) {
-          rgb = rgbToRgb(color.r, color.g, color.b);
+      if (_typeof(color2) == "object") {
+        if (isValidCSSUnit(color2.r) && isValidCSSUnit(color2.g) && isValidCSSUnit(color2.b)) {
+          rgb2 = rgbToRgb(color2.r, color2.g, color2.b);
           ok = true;
-          format = String(color.r).substr(-1) === "%" ? "prgb" : "rgb";
-        } else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.v)) {
-          s = convertToPercentage(color.s);
-          v = convertToPercentage(color.v);
-          rgb = hsvToRgb(color.h, s, v);
+          format = String(color2.r).substr(-1) === "%" ? "prgb" : "rgb";
+        } else if (isValidCSSUnit(color2.h) && isValidCSSUnit(color2.s) && isValidCSSUnit(color2.v)) {
+          s = convertToPercentage(color2.s);
+          v = convertToPercentage(color2.v);
+          rgb2 = hsvToRgb(color2.h, s, v);
           ok = true;
           format = "hsv";
-        } else if (isValidCSSUnit(color.h) && isValidCSSUnit(color.s) && isValidCSSUnit(color.l)) {
-          s = convertToPercentage(color.s);
-          l = convertToPercentage(color.l);
-          rgb = hslToRgb(color.h, s, l);
+        } else if (isValidCSSUnit(color2.h) && isValidCSSUnit(color2.s) && isValidCSSUnit(color2.l)) {
+          s = convertToPercentage(color2.s);
+          l = convertToPercentage(color2.l);
+          rgb2 = hslToRgb(color2.h, s, l);
           ok = true;
           format = "hsl";
         }
-        if (color.hasOwnProperty("a")) {
-          a = color.a;
+        if (color2.hasOwnProperty("a")) {
+          a = color2.a;
         }
       }
       a = boundAlpha(a);
       return {
         ok,
-        format: color.format || format,
-        r: Math.min(255, Math.max(rgb.r, 0)),
-        g: Math.min(255, Math.max(rgb.g, 0)),
-        b: Math.min(255, Math.max(rgb.b, 0)),
+        format: color2.format || format,
+        r: Math.min(255, Math.max(rgb2.r, 0)),
+        g: Math.min(255, Math.max(rgb2.g, 0)),
+        b: Math.min(255, Math.max(rgb2.b, 0)),
         a
       };
     }
@@ -18296,7 +18320,7 @@ var require_index_001 = __commonJS({
       h = bound01(h, 360) * 6;
       s = bound01(s, 100);
       v = bound01(v, 100);
-      var i = Math.floor(h), f = h - i, p = v * (1 - s), q = v * (1 - f * s), t = v * (1 - (1 - f) * s), mod = i % 6, r = [v, q, p, p, t, v][mod], g = [t, v, v, q, p, p][mod], b = [p, p, t, v, v, q][mod];
+      var i2 = Math.floor(h), f = h - i2, p = v * (1 - s), q = v * (1 - f * s), t = v * (1 - (1 - f) * s), mod = i2 % 6, r = [v, q, p, p, t, v][mod], g = [t, v, v, q, p, p][mod], b = [p, p, t, v, v, q][mod];
       return {
         r: r * 255,
         g: g * 255,
@@ -18304,22 +18328,22 @@ var require_index_001 = __commonJS({
       };
     }
     function rgbToHex(r, g, b, allow3Char) {
-      var hex = [pad2(Math.round(r).toString(16)), pad2(Math.round(g).toString(16)), pad2(Math.round(b).toString(16))];
-      if (allow3Char && hex[0].charAt(0) == hex[0].charAt(1) && hex[1].charAt(0) == hex[1].charAt(1) && hex[2].charAt(0) == hex[2].charAt(1)) {
-        return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0);
+      var hex2 = [pad2(Math.round(r).toString(16)), pad2(Math.round(g).toString(16)), pad2(Math.round(b).toString(16))];
+      if (allow3Char && hex2[0].charAt(0) == hex2[0].charAt(1) && hex2[1].charAt(0) == hex2[1].charAt(1) && hex2[2].charAt(0) == hex2[2].charAt(1)) {
+        return hex2[0].charAt(0) + hex2[1].charAt(0) + hex2[2].charAt(0);
       }
-      return hex.join("");
+      return hex2.join("");
     }
     function rgbaToHex(r, g, b, a, allow4Char) {
-      var hex = [pad2(Math.round(r).toString(16)), pad2(Math.round(g).toString(16)), pad2(Math.round(b).toString(16)), pad2(convertDecimalToHex(a))];
-      if (allow4Char && hex[0].charAt(0) == hex[0].charAt(1) && hex[1].charAt(0) == hex[1].charAt(1) && hex[2].charAt(0) == hex[2].charAt(1) && hex[3].charAt(0) == hex[3].charAt(1)) {
-        return hex[0].charAt(0) + hex[1].charAt(0) + hex[2].charAt(0) + hex[3].charAt(0);
+      var hex2 = [pad2(Math.round(r).toString(16)), pad2(Math.round(g).toString(16)), pad2(Math.round(b).toString(16)), pad2(convertDecimalToHex(a))];
+      if (allow4Char && hex2[0].charAt(0) == hex2[0].charAt(1) && hex2[1].charAt(0) == hex2[1].charAt(1) && hex2[2].charAt(0) == hex2[2].charAt(1) && hex2[3].charAt(0) == hex2[3].charAt(1)) {
+        return hex2[0].charAt(0) + hex2[1].charAt(0) + hex2[2].charAt(0) + hex2[3].charAt(0);
       }
-      return hex.join("");
+      return hex2.join("");
     }
     function rgbaToArgbHex(r, g, b, a) {
-      var hex = [pad2(convertDecimalToHex(a)), pad2(Math.round(r).toString(16)), pad2(Math.round(g).toString(16)), pad2(Math.round(b).toString(16))];
-      return hex.join("");
+      var hex2 = [pad2(convertDecimalToHex(a)), pad2(Math.round(r).toString(16)), pad2(Math.round(g).toString(16)), pad2(Math.round(b).toString(16))];
+      return hex2.join("");
     }
     tinycolor.equals = function(color1, color2) {
       if (!color1 || !color2) return false;
@@ -18332,100 +18356,100 @@ var require_index_001 = __commonJS({
         b: Math.random()
       });
     };
-    function _desaturate(color, amount) {
+    function _desaturate(color2, amount) {
       amount = amount === 0 ? 0 : amount || 10;
-      var hsl = tinycolor(color).toHsl();
-      hsl.s -= amount / 100;
-      hsl.s = clamp01(hsl.s);
-      return tinycolor(hsl);
+      var hsl2 = tinycolor(color2).toHsl();
+      hsl2.s -= amount / 100;
+      hsl2.s = clamp01(hsl2.s);
+      return tinycolor(hsl2);
     }
-    function _saturate(color, amount) {
+    function _saturate(color2, amount) {
       amount = amount === 0 ? 0 : amount || 10;
-      var hsl = tinycolor(color).toHsl();
-      hsl.s += amount / 100;
-      hsl.s = clamp01(hsl.s);
-      return tinycolor(hsl);
+      var hsl2 = tinycolor(color2).toHsl();
+      hsl2.s += amount / 100;
+      hsl2.s = clamp01(hsl2.s);
+      return tinycolor(hsl2);
     }
-    function _greyscale(color) {
-      return tinycolor(color).desaturate(100);
+    function _greyscale(color2) {
+      return tinycolor(color2).desaturate(100);
     }
-    function _lighten(color, amount) {
+    function _lighten(color2, amount) {
       amount = amount === 0 ? 0 : amount || 10;
-      var hsl = tinycolor(color).toHsl();
-      hsl.l += amount / 100;
-      hsl.l = clamp01(hsl.l);
-      return tinycolor(hsl);
+      var hsl2 = tinycolor(color2).toHsl();
+      hsl2.l += amount / 100;
+      hsl2.l = clamp01(hsl2.l);
+      return tinycolor(hsl2);
     }
-    function _brighten(color, amount) {
+    function _brighten(color2, amount) {
       amount = amount === 0 ? 0 : amount || 10;
-      var rgb = tinycolor(color).toRgb();
-      rgb.r = Math.max(0, Math.min(255, rgb.r - Math.round(255 * -(amount / 100))));
-      rgb.g = Math.max(0, Math.min(255, rgb.g - Math.round(255 * -(amount / 100))));
-      rgb.b = Math.max(0, Math.min(255, rgb.b - Math.round(255 * -(amount / 100))));
-      return tinycolor(rgb);
+      var rgb2 = tinycolor(color2).toRgb();
+      rgb2.r = Math.max(0, Math.min(255, rgb2.r - Math.round(255 * -(amount / 100))));
+      rgb2.g = Math.max(0, Math.min(255, rgb2.g - Math.round(255 * -(amount / 100))));
+      rgb2.b = Math.max(0, Math.min(255, rgb2.b - Math.round(255 * -(amount / 100))));
+      return tinycolor(rgb2);
     }
-    function _darken(color, amount) {
+    function _darken(color2, amount) {
       amount = amount === 0 ? 0 : amount || 10;
-      var hsl = tinycolor(color).toHsl();
-      hsl.l -= amount / 100;
-      hsl.l = clamp01(hsl.l);
-      return tinycolor(hsl);
+      var hsl2 = tinycolor(color2).toHsl();
+      hsl2.l -= amount / 100;
+      hsl2.l = clamp01(hsl2.l);
+      return tinycolor(hsl2);
     }
-    function _spin(color, amount) {
-      var hsl = tinycolor(color).toHsl();
-      var hue = (hsl.h + amount) % 360;
-      hsl.h = hue < 0 ? 360 + hue : hue;
-      return tinycolor(hsl);
+    function _spin(color2, amount) {
+      var hsl2 = tinycolor(color2).toHsl();
+      var hue = (hsl2.h + amount) % 360;
+      hsl2.h = hue < 0 ? 360 + hue : hue;
+      return tinycolor(hsl2);
     }
-    function _complement(color) {
-      var hsl = tinycolor(color).toHsl();
-      hsl.h = (hsl.h + 180) % 360;
-      return tinycolor(hsl);
+    function _complement(color2) {
+      var hsl2 = tinycolor(color2).toHsl();
+      hsl2.h = (hsl2.h + 180) % 360;
+      return tinycolor(hsl2);
     }
-    function polyad(color, number) {
+    function polyad(color2, number) {
       if (isNaN(number) || number <= 0) {
         throw new Error("Argument to polyad must be a positive number");
       }
-      var hsl = tinycolor(color).toHsl();
-      var result = [tinycolor(color)];
+      var hsl2 = tinycolor(color2).toHsl();
+      var result = [tinycolor(color2)];
       var step = 360 / number;
-      for (var i = 1; i < number; i++) {
+      for (var i2 = 1; i2 < number; i2++) {
         result.push(tinycolor({
-          h: (hsl.h + i * step) % 360,
-          s: hsl.s,
-          l: hsl.l
+          h: (hsl2.h + i2 * step) % 360,
+          s: hsl2.s,
+          l: hsl2.l
         }));
       }
       return result;
     }
-    function _splitcomplement(color) {
-      var hsl = tinycolor(color).toHsl();
-      var h = hsl.h;
-      return [tinycolor(color), tinycolor({
+    function _splitcomplement(color2) {
+      var hsl2 = tinycolor(color2).toHsl();
+      var h = hsl2.h;
+      return [tinycolor(color2), tinycolor({
         h: (h + 72) % 360,
-        s: hsl.s,
-        l: hsl.l
+        s: hsl2.s,
+        l: hsl2.l
       }), tinycolor({
         h: (h + 216) % 360,
-        s: hsl.s,
-        l: hsl.l
+        s: hsl2.s,
+        l: hsl2.l
       })];
     }
-    function _analogous(color, results, slices) {
+    function _analogous(color2, results, slices) {
       results = results || 6;
       slices = slices || 30;
-      var hsl = tinycolor(color).toHsl();
+      var hsl2 = tinycolor(color2).toHsl();
       var part = 360 / slices;
-      var ret = [tinycolor(color)];
-      for (hsl.h = (hsl.h - (part * results >> 1) + 720) % 360; --results; ) {
-        hsl.h = (hsl.h + part) % 360;
-        ret.push(tinycolor(hsl));
+      var ret = [tinycolor(color2)];
+      for (hsl2.h = (hsl2.h - (part * results >> 1) + 720) % 360; --results; ) {
+        hsl2.h = (hsl2.h + part) % 360;
+        ret.push(tinycolor(hsl2));
       }
       return ret;
     }
-    function _monochromatic(color, results) {
+    function _monochromatic(color2, results) {
       results = results || 6;
-      var hsv = tinycolor(color).toHsv();
+      var hsv = tinycolor(color2).toHsv();
       var h = hsv.h, s = hsv.s, v = hsv.v;
       var ret = [];
       var modification = 1 / results;
@@ -18444,13 +18468,13 @@ var require_index_001 = __commonJS({
       var rgb1 = tinycolor(color1).toRgb();
       var rgb2 = tinycolor(color2).toRgb();
       var p = amount / 100;
-      var rgba = {
+      var rgba2 = {
         r: (rgb2.r - rgb1.r) * p + rgb1.r,
         g: (rgb2.g - rgb1.g) * p + rgb1.g,
         b: (rgb2.b - rgb1.b) * p + rgb1.b,
         a: (rgb2.a - rgb1.a) * p + rgb1.a
       };
-      return tinycolor(rgba);
+      return tinycolor(rgba2);
     };
     tinycolor.readability = function(color1, color2) {
       var c1 = tinycolor(color1);
@@ -18485,11 +18509,11 @@ var require_index_001 = __commonJS({
       includeFallbackColors = args.includeFallbackColors;
       level2 = args.level;
       size = args.size;
-      for (var i = 0; i < colorList.length; i++) {
-        readability = tinycolor.readability(baseColor, colorList[i]);
+      for (var i2 = 0; i2 < colorList.length; i2++) {
+        readability = tinycolor.readability(baseColor, colorList[i2]);
         if (readability > bestScore) {
           bestScore = readability;
-          bestColor = tinycolor(colorList[i]);
+          bestColor = tinycolor(colorList[i2]);
         }
       }
       if (tinycolor.isReadable(baseColor, bestColor, {
@@ -18656,9 +18680,9 @@ var require_index_001 = __commonJS({
     var hexNames = tinycolor.hexNames = flip(names);
     function flip(o) {
       var flipped = {};
-      for (var i in o) {
-        if (o.hasOwnProperty(i)) {
-          flipped[o[i]] = i;
+      for (var i2 in o) {
+        if (o.hasOwnProperty(i2)) {
+          flipped[o[i2]] = i2;
         }
       }
       return flipped;
@@ -18729,16 +18753,16 @@ var require_index_001 = __commonJS({
         hex8: /^#?([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})$/
       };
     }();
-    function isValidCSSUnit(color) {
-      return !!matchers.CSS_UNIT.exec(color);
+    function isValidCSSUnit(color2) {
+      return !!matchers.CSS_UNIT.exec(color2);
     }
-    function stringInputToObject(color) {
-      color = color.replace(trimLeft, "").replace(trimRight, "").toLowerCase();
-      var named = false;
-      if (names[color]) {
-        color = names[color];
-        named = true;
-      } else if (color == "transparent") {
+    function stringInputToObject(color2) {
+      color2 = color2.replace(trimLeft, "").replace(trimRight, "").toLowerCase();
+      var named2 = false;
+      if (names[color2]) {
+        color2 = names[color2];
+        named2 = true;
+      } else if (color2 == "transparent") {
         return {
           r: 0,
           g: 0,
@@ -18748,14 +18772,14 @@ var require_index_001 = __commonJS({
         };
       }
       var match2;
-      if (match2 = matchers.rgb.exec(color)) {
+      if (match2 = matchers.rgb.exec(color2)) {
         return {
           r: match2[1],
           g: match2[2],
           b: match2[3]
         };
       }
-      if (match2 = matchers.rgba.exec(color)) {
+      if (match2 = matchers.rgba.exec(color2)) {
         return {
           r: match2[1],
           g: match2[2],
@@ -18763,14 +18787,14 @@ var require_index_001 = __commonJS({
           a: match2[4]
         };
       }
-      if (match2 = matchers.hsl.exec(color)) {
+      if (match2 = matchers.hsl.exec(color2)) {
         return {
           h: match2[1],
           s: match2[2],
           l: match2[3]
         };
       }
-      if (match2 = matchers.hsla.exec(color)) {
+      if (match2 = matchers.hsla.exec(color2)) {
         return {
           h: match2[1],
           s: match2[2],
@@ -18778,14 +18802,14 @@ var require_index_001 = __commonJS({
           a: match2[4]
         };
       }
-      if (match2 = matchers.hsv.exec(color)) {
+      if (match2 = matchers.hsv.exec(color2)) {
         return {
           h: match2[1],
           s: match2[2],
           v: match2[3]
         };
       }
-      if (match2 = matchers.hsva.exec(color)) {
+      if (match2 = matchers.hsva.exec(color2)) {
         return {
           h: match2[1],
           s: match2[2],
@@ -18793,38 +18817,38 @@ var require_index_001 = __commonJS({
           a: match2[4]
         };
       }
-      if (match2 = matchers.hex8.exec(color)) {
+      if (match2 = matchers.hex8.exec(color2)) {
         return {
           r: parseIntFromHex(match2[1]),
           g: parseIntFromHex(match2[2]),
           b: parseIntFromHex(match2[3]),
           a: convertHexToDecimal(match2[4]),
-          format: named ? "name" : "hex8"
+          format: named2 ? "name" : "hex8"
         };
       }
-      if (match2 = matchers.hex6.exec(color)) {
+      if (match2 = matchers.hex6.exec(color2)) {
         return {
           r: parseIntFromHex(match2[1]),
           g: parseIntFromHex(match2[2]),
           b: parseIntFromHex(match2[3]),
-          format: named ? "name" : "hex"
+          format: named2 ? "name" : "hex"
         };
       }
-      if (match2 = matchers.hex4.exec(color)) {
+      if (match2 = matchers.hex4.exec(color2)) {
         return {
           r: parseIntFromHex(match2[1] + "" + match2[1]),
           g: parseIntFromHex(match2[2] + "" + match2[2]),
           b: parseIntFromHex(match2[3] + "" + match2[3]),
           a: convertHexToDecimal(match2[4] + "" + match2[4]),
-          format: named ? "name" : "hex8"
+          format: named2 ? "name" : "hex8"
         };
       }
-      if (match2 = matchers.hex3.exec(color)) {
+      if (match2 = matchers.hex3.exec(color2)) {
         return {
           r: parseIntFromHex(match2[1] + "" + match2[1]),
           g: parseIntFromHex(match2[2] + "" + match2[2]),
           b: parseIntFromHex(match2[3] + "" + match2[3]),
-          format: named ? "name" : "hex"
+          format: named2 ? "name" : "hex"
         };
       }
       return false;
@@ -18869,31 +18893,31 @@ var require_index_001 = __commonJS({
       return checked === passed ? data : false;
     };
     var toState = function toState2(data, oldHue) {
-      var color = data.hex ? tinycolor(data.hex) : tinycolor(data);
-      var hsl = color.toHsl();
-      var hsv = color.toHsv();
-      var rgb = color.toRgb();
-      var hex = color.toHex();
-      if (hsl.s === 0) {
-        hsl.h = oldHue || 0;
+      var color2 = data.hex ? tinycolor(data.hex) : tinycolor(data);
+      var hsl2 = color2.toHsl();
+      var hsv = color2.toHsv();
+      var rgb2 = color2.toRgb();
+      var hex2 = color2.toHex();
+      if (hsl2.s === 0) {
+        hsl2.h = oldHue || 0;
         hsv.h = oldHue || 0;
       }
-      var transparent = hex === "000000" && rgb.a === 0;
+      var transparent = hex2 === "000000" && rgb2.a === 0;
       return {
-        hsl,
-        hex: transparent ? "transparent" : "#" + hex,
-        rgb,
+        hsl: hsl2,
+        hex: transparent ? "transparent" : "#" + hex2,
+        rgb: rgb2,
         hsv,
-        oldHue: data.h || oldHue || hsl.h,
+        oldHue: data.h || oldHue || hsl2.h,
         source: data.source
       };
     };
-    var isValidHex = function isValidHex2(hex) {
-      if (hex === "transparent") {
+    var isValidHex = function isValidHex2(hex2) {
+      if (hex2 === "transparent") {
         return true;
       }
-      var lh = String(hex).charAt(0) === "#" ? 1 : 0;
-      return hex.length !== 4 + lh && hex.length < 7 + lh && tinycolor(hex).isValid();
+      var lh = String(hex2).charAt(0) === "#" ? 1 : 0;
+      return hex2.length !== 4 + lh && hex2.length < 7 + lh && tinycolor(hex2).isValid();
     };
     var getContrastingColor = function getContrastingColor2(data) {
       if (!data) {
@@ -18911,8 +18935,8 @@ var require_index_001 = __commonJS({
       return tinycolor(type + " (" + stringWithoutDegree + ")")._ok;
     };
     var _extends$6 = Object.assign || function(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        var source = arguments[i2];
         for (var key in source) {
           if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = source[key];
@@ -18923,8 +18947,8 @@ var require_index_001 = __commonJS({
     };
     var _createClass$3 = /* @__PURE__ */ function() {
       function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-          var descriptor = props[i];
+        for (var i2 = 0; i2 < props.length; i2++) {
+          var descriptor = props[i2];
           descriptor.enumerable = descriptor.enumerable || false;
           descriptor.configurable = true;
           if ("value" in descriptor) descriptor.writable = true;
@@ -19014,8 +19038,8 @@ var require_index_001 = __commonJS({
       return ColorPicker2;
     };
     var _extends$5 = Object.assign || function(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        var source = arguments[i2];
         for (var key in source) {
           if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = source[key];
@@ -19026,8 +19050,8 @@ var require_index_001 = __commonJS({
     };
     var _createClass$2 = /* @__PURE__ */ function() {
       function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-          var descriptor = props[i];
+        for (var i2 = 0; i2 < props.length; i2++) {
+          var descriptor = props[i2];
           descriptor.enumerable = descriptor.enumerable || false;
           descriptor.configurable = true;
           if ("value" in descriptor) descriptor.writable = true;
@@ -19089,8 +19113,8 @@ var require_index_001 = __commonJS({
       }(React.Component);
     };
     var _extends$4 = Object.assign || function(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        var source = arguments[i2];
         for (var key in source) {
           if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = source[key];
@@ -19101,13 +19125,13 @@ var require_index_001 = __commonJS({
     };
     var ENTER = 13;
     var Swatch = function Swatch2(_ref) {
-      var color = _ref.color, style = _ref.style, _ref$onClick = _ref.onClick, onClick = _ref$onClick === void 0 ? function() {
-      } : _ref$onClick, onHover = _ref.onHover, _ref$title = _ref.title, title = _ref$title === void 0 ? color : _ref$title, children = _ref.children, focus = _ref.focus, _ref$focusStyle = _ref.focusStyle, focusStyle = _ref$focusStyle === void 0 ? {} : _ref$focusStyle;
-      var transparent = color === "transparent";
+      var color2 = _ref.color, style = _ref.style, _ref$onClick = _ref.onClick, onClick = _ref$onClick === void 0 ? function() {
+      } : _ref$onClick, onHover = _ref.onHover, _ref$title = _ref.title, title = _ref$title === void 0 ? color2 : _ref$title, children2 = _ref.children, focus = _ref.focus, _ref$focusStyle = _ref.focusStyle, focusStyle = _ref$focusStyle === void 0 ? {} : _ref$focusStyle;
+      var transparent = color2 === "transparent";
       var styles2 = reactCSS({
         default: {
           swatch: _extends$4({
-            background: color,
+            background: color2,
             height: "100%",
             width: "100%",
             cursor: "pointer",
@@ -19117,13 +19141,13 @@ var require_index_001 = __commonJS({
         }
       });
       var handleClick = function handleClick2(e) {
-        return onClick(color, e);
+        return onClick(color2, e);
       };
       var handleKeyDown = function handleKeyDown2(e) {
-        return e.keyCode === ENTER && onClick(color, e);
+        return e.keyCode === ENTER && onClick(color2, e);
       };
       var handleHover = function handleHover2(e) {
-        return onHover(color, e);
+        return onHover(color2, e);
       };
       var optionalEvents = {};
       if (onHover) {
@@ -19138,7 +19162,7 @@ var require_index_001 = __commonJS({
           tabIndex: 0,
           onKeyDown: handleKeyDown
         }, optionalEvents),
-        children,
+        children2,
         transparent && React.createElement(Checkboard, {
           borderRadius: styles2.swatch.borderRadius,
           boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.1)"
@@ -19168,8 +19192,8 @@ var require_index_001 = __commonJS({
       return React.createElement("div", { style: styles2.picker });
     };
     var _extends$3 = Object.assign || function(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        var source = arguments[i2];
         for (var key in source) {
           if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = source[key];
@@ -19179,7 +19203,7 @@ var require_index_001 = __commonJS({
       return target;
     };
     var AlphaPicker = function AlphaPicker2(_ref) {
-      var rgb = _ref.rgb, hsl = _ref.hsl, width = _ref.width, height = _ref.height, onChange = _ref.onChange, direction = _ref.direction, style = _ref.style, renderers = _ref.renderers, pointer = _ref.pointer, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
+      var rgb2 = _ref.rgb, hsl2 = _ref.hsl, width = _ref.width, height = _ref.height, onChange = _ref.onChange, direction = _ref.direction, style = _ref.style, renderers = _ref.renderers, pointer2 = _ref.pointer, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
       var styles2 = reactCSS({
         "default": {
           picker: {
@@ -19197,9 +19221,9 @@ var require_index_001 = __commonJS({
         "div",
         { style: styles2.picker, className: "alpha-picker " + className },
         React.createElement(Alpha, _extends$3({}, styles2.alpha, {
-          rgb,
-          hsl,
-          pointer,
+          rgb: rgb2,
+          hsl: hsl2,
+          pointer: pointer2,
           renderers,
           onChange,
           direction
@@ -19213,10 +19237,10 @@ var require_index_001 = __commonJS({
       pointer: AlphaPointer
     };
     ColorWrap(AlphaPicker);
-    function arrayMap(array, iteratee) {
-      var index = -1, length = array == null ? 0 : array.length, result = Array(length);
+    function arrayMap(array2, iteratee) {
+      var index = -1, length = array2 == null ? 0 : array2.length, result = Array(length);
       while (++index < length) {
-        result[index] = iteratee(array[index], index, array);
+        result[index] = iteratee(array2[index], index, array2);
       }
       return result;
     }
@@ -19237,10 +19261,10 @@ var require_index_001 = __commonJS({
     }
     SetCache.prototype.add = SetCache.prototype.push = setCacheAdd;
     SetCache.prototype.has = setCacheHas;
-    function arraySome(array, predicate) {
-      var index = -1, length = array == null ? 0 : array.length;
+    function arraySome(array2, predicate) {
+      var index = -1, length = array2 == null ? 0 : array2.length;
       while (++index < length) {
-        if (predicate(array[index], index, array)) {
+        if (predicate(array2[index], index, array2)) {
           return true;
         }
       }
@@ -19250,23 +19274,23 @@ var require_index_001 = __commonJS({
       return cache.has(key);
     }
     var COMPARE_PARTIAL_FLAG$5 = 1, COMPARE_UNORDERED_FLAG$3 = 2;
-    function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
-      var isPartial = bitmask & COMPARE_PARTIAL_FLAG$5, arrLength = array.length, othLength = other.length;
+    function equalArrays(array2, other, bitmask, customizer, equalFunc, stack) {
+      var isPartial = bitmask & COMPARE_PARTIAL_FLAG$5, arrLength = array2.length, othLength = other.length;
       if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
         return false;
       }
-      var arrStacked = stack.get(array);
+      var arrStacked = stack.get(array2);
       var othStacked = stack.get(other);
       if (arrStacked && othStacked) {
-        return arrStacked == other && othStacked == array;
+        return arrStacked == other && othStacked == array2;
       }
       var index = -1, result = true, seen = bitmask & COMPARE_UNORDERED_FLAG$3 ? new SetCache() : void 0;
-      stack.set(array, other);
-      stack.set(other, array);
+      stack.set(array2, other);
+      stack.set(other, array2);
       while (++index < arrLength) {
-        var arrValue = array[index], othValue = other[index];
+        var arrValue = array2[index], othValue = other[index];
         if (customizer) {
-          var compared = isPartial ? customizer(othValue, arrValue, index, other, array, stack) : customizer(arrValue, othValue, index, array, other, stack);
+          var compared = isPartial ? customizer(othValue, arrValue, index, other, array2, stack) : customizer(arrValue, othValue, index, array2, other, stack);
         }
         if (compared !== void 0) {
           if (compared) {
@@ -19289,7 +19313,7 @@ var require_index_001 = __commonJS({
           break;
         }
       }
-      stack["delete"](array);
+      stack["delete"](array2);
       stack["delete"](other);
       return result;
     }
@@ -19300,9 +19324,9 @@ var require_index_001 = __commonJS({
       });
       return result;
     }
-    function setToArray(set) {
-      var index = -1, result = Array(set.size);
-      set.forEach(function(value2) {
+    function setToArray(set2) {
+      var index = -1, result = Array(set2.size);
+      set2.forEach(function(value2) {
         result[++index] = value2;
       });
       return result;
@@ -19320,7 +19344,7 @@ var require_index_001 = __commonJS({
           object = object.buffer;
           other = other.buffer;
         case arrayBufferTag$2:
-          if (object.byteLength != other.byteLength || !equalFunc(new Uint8Array2(object), new Uint8Array2(other))) {
+          if (object.byteLength != other.byteLength || !equalFunc(new Uint8Array$1(object), new Uint8Array$1(other))) {
             return false;
           }
           return true;
@@ -19357,22 +19381,22 @@ var require_index_001 = __commonJS({
       }
       return false;
     }
-    function arrayPush(array, values) {
-      var index = -1, length = values.length, offset = array.length;
+    function arrayPush(array2, values) {
+      var index = -1, length = values.length, offset = array2.length;
       while (++index < length) {
-        array[offset + index] = values[index];
+        array2[offset + index] = values[index];
       }
-      return array;
+      return array2;
     }
     function baseGetAllKeys(object, keysFunc, symbolsFunc) {
       var result = keysFunc(object);
       return isArray(object) ? result : arrayPush(result, symbolsFunc(object));
     }
-    function arrayFilter(array, predicate) {
-      var index = -1, length = array == null ? 0 : array.length, resIndex = 0, result = [];
+    function arrayFilter(array2, predicate) {
+      var index = -1, length = array2 == null ? 0 : array2.length, resIndex = 0, result = [];
       while (++index < length) {
-        var value2 = array[index];
-        if (predicate(value2, index, array)) {
+        var value2 = array2[index];
+        if (predicate(value2, index, array2)) {
           result[resIndex++] = value2;
         }
       }
@@ -19442,10 +19466,10 @@ var require_index_001 = __commonJS({
       stack["delete"](other);
       return result;
     }
-    var DataView = getNative(root, "DataView");
-    var Promise$1 = getNative(root, "Promise");
-    var Set$1 = getNative(root, "Set");
-    var WeakMap$1 = getNative(root, "WeakMap");
+    var DataView = getNative(root$1, "DataView");
+    var Promise$1 = getNative(root$1, "Promise");
+    var Set$1 = getNative(root$1, "Set");
+    var WeakMap$1 = getNative(root$1, "WeakMap");
     var mapTag$3 = "[object Map]", objectTag$2 = "[object Object]", promiseTag = "[object Promise]", setTag$3 = "[object Set]", weakMapTag$1 = "[object WeakMap]";
     var dataViewTag$2 = "[object DataView]";
     var dataViewCtorString = toSource(DataView), mapCtorString = toSource(Map$1), promiseCtorString = toSource(Promise$1), setCtorString = toSource(Set$1), weakMapCtorString = toSource(WeakMap$1);
@@ -19655,26 +19679,26 @@ var require_index_001 = __commonJS({
       var result = value2 + "";
       return result == "0" && 1 / value2 == -INFINITY ? "-0" : result;
     }
-    function baseGet(object, path) {
-      path = castPath(path, object);
-      var index = 0, length = path.length;
+    function baseGet(object, path2) {
+      path2 = castPath(path2, object);
+      var index = 0, length = path2.length;
       while (object != null && index < length) {
-        object = object[toKey(path[index++])];
+        object = object[toKey(path2[index++])];
       }
       return index && index == length ? object : void 0;
     }
-    function get(object, path, defaultValue2) {
-      var result = object == null ? void 0 : baseGet(object, path);
+    function get$2(object, path2, defaultValue2) {
+      var result = object == null ? void 0 : baseGet(object, path2);
       return result === void 0 ? defaultValue2 : result;
     }
     function baseHasIn(object, key) {
       return object != null && key in Object(object);
     }
-    function hasPath(object, path, hasFunc) {
-      path = castPath(path, object);
-      var index = -1, length = path.length, result = false;
+    function hasPath(object, path2, hasFunc) {
+      path2 = castPath(path2, object);
+      var index = -1, length = path2.length, result = false;
       while (++index < length) {
-        var key = toKey(path[index]);
+        var key = toKey(path2[index]);
         if (!(result = object != null && hasFunc(object, key))) {
           break;
         }
@@ -19686,17 +19710,17 @@ var require_index_001 = __commonJS({
       length = object == null ? 0 : object.length;
       return !!length && isLength(length) && isIndex(key, length) && (isArray(object) || isArguments(object));
     }
-    function hasIn(object, path) {
-      return object != null && hasPath(object, path, baseHasIn);
+    function hasIn(object, path2) {
+      return object != null && hasPath(object, path2, baseHasIn);
     }
     var COMPARE_PARTIAL_FLAG = 1, COMPARE_UNORDERED_FLAG = 2;
-    function baseMatchesProperty(path, srcValue) {
-      if (isKey(path) && isStrictComparable(srcValue)) {
-        return matchesStrictComparable(toKey(path), srcValue);
+    function baseMatchesProperty(path2, srcValue) {
+      if (isKey(path2) && isStrictComparable(srcValue)) {
+        return matchesStrictComparable(toKey(path2), srcValue);
       }
       return function(object) {
-        var objValue = get(object, path);
-        return objValue === void 0 && objValue === srcValue ? hasIn(object, path) : baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG);
+        var objValue = get$2(object, path2);
+        return objValue === void 0 && objValue === srcValue ? hasIn(object, path2) : baseIsEqual(srcValue, objValue, COMPARE_PARTIAL_FLAG | COMPARE_UNORDERED_FLAG);
       };
     }
     function baseProperty(key) {
@@ -19704,20 +19728,20 @@ var require_index_001 = __commonJS({
         return object == null ? void 0 : object[key];
       };
     }
-    function basePropertyDeep(path) {
+    function basePropertyDeep(path2) {
       return function(object) {
-        return baseGet(object, path);
+        return baseGet(object, path2);
       };
     }
-    function property(path) {
-      return isKey(path) ? baseProperty(toKey(path)) : basePropertyDeep(path);
+    function property(path2) {
+      return isKey(path2) ? baseProperty(toKey(path2)) : basePropertyDeep(path2);
     }
     function baseIteratee(value2) {
       if (typeof value2 == "function") {
         return value2;
       }
       if (value2 == null) {
-        return identity;
+        return identity$2;
       }
       if (typeof value2 == "object") {
         return isArray(value2) ? baseMatchesProperty(value2[0], value2[1]) : baseMatches(value2);
@@ -19774,8 +19798,8 @@ var require_index_001 = __commonJS({
       );
     };
     var Block$1 = function Block2(_ref) {
-      var onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, hex = _ref.hex, colors = _ref.colors, width = _ref.width, triangle = _ref.triangle, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
-      var transparent = hex === "transparent";
+      var onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, hex2 = _ref.hex, colors = _ref.colors, width = _ref.width, triangle = _ref.triangle, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
+      var transparent = hex2 === "transparent";
       var handleChange = function handleChange2(hexCode, e) {
         isValidHex(hexCode) && onChange({
           hex: hexCode,
@@ -19793,7 +19817,7 @@ var require_index_001 = __commonJS({
           },
           head: {
             height: "110px",
-            background: hex,
+            background: hex2,
             borderRadius: "6px 6px 0 0",
             display: "flex",
             alignItems: "center",
@@ -19805,7 +19829,7 @@ var require_index_001 = __commonJS({
           },
           label: {
             fontSize: "18px",
-            color: getContrastingColor(hex),
+            color: getContrastingColor(hex2),
             position: "relative"
           },
           triangle: {
@@ -19813,7 +19837,7 @@ var require_index_001 = __commonJS({
             height: "0px",
             borderStyle: "solid",
             borderWidth: "0 10px 10px 10px",
-            borderColor: "transparent transparent " + hex + " transparent",
+            borderColor: "transparent transparent " + hex2 + " transparent",
             position: "absolute",
             top: "-10px",
             left: "50%",
@@ -19849,7 +19873,7 @@ var require_index_001 = __commonJS({
           React.createElement(
             "div",
             { style: styles2.label },
-            hex
+            hex2
           )
         ),
         React.createElement(
@@ -19858,17 +19882,17 @@ var require_index_001 = __commonJS({
           React.createElement(BlockSwatches, { colors, onClick: handleChange, onSwatchHover }),
           React.createElement(EditableInput, {
             style: { input: styles2.input },
-            value: hex,
+            value: hex2,
             onChange: handleChange
           })
         )
       );
     };
     Block$1.propTypes = {
-      width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      colors: PropTypes.arrayOf(PropTypes.string),
-      triangle: PropTypes.oneOf(["top", "hide"]),
-      styles: PropTypes.object
+      width: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
+      colors: PropTypes$1.arrayOf(PropTypes$1.string),
+      triangle: PropTypes$1.oneOf(["top", "hide"]),
+      styles: PropTypes$1.object
     };
     Block$1.defaultProps = {
       width: 170,
@@ -19896,7 +19920,7 @@ var require_index_001 = __commonJS({
     var brown = { "50": "#efebe9", "100": "#d7ccc8", "200": "#bcaaa4", "300": "#a1887f", "400": "#8d6e63", "500": "#795548", "600": "#6d4c41", "700": "#5d4037", "800": "#4e342e", "900": "#3e2723" };
     var blueGrey = { "50": "#eceff1", "100": "#cfd8dc", "200": "#b0bec5", "300": "#90a4ae", "400": "#78909c", "500": "#607d8b", "600": "#546e7a", "700": "#455a64", "800": "#37474f", "900": "#263238" };
     var CircleSwatch = function CircleSwatch2(_ref) {
-      var color = _ref.color, onClick = _ref.onClick, onSwatchHover = _ref.onSwatchHover, hover2 = _ref.hover, active2 = _ref.active, circleSize = _ref.circleSize, circleSpacing = _ref.circleSpacing;
+      var color2 = _ref.color, onClick = _ref.onClick, onSwatchHover = _ref.onSwatchHover, hover2 = _ref.hover, active2 = _ref.active, circleSize = _ref.circleSize, circleSpacing = _ref.circleSpacing;
       var styles2 = reactCSS({
         "default": {
           swatch: {
@@ -19910,7 +19934,7 @@ var require_index_001 = __commonJS({
           Swatch: {
             borderRadius: "50%",
             background: "transparent",
-            boxShadow: "inset 0 0 0 " + (circleSize / 2 + 1) + "px " + color,
+            boxShadow: "inset 0 0 0 " + (circleSize / 2 + 1) + "px " + color2,
             transition: "100ms box-shadow ease"
           }
         },
@@ -19921,7 +19945,7 @@ var require_index_001 = __commonJS({
         },
         "active": {
           Swatch: {
-            boxShadow: "inset 0 0 0 3px " + color
+            boxShadow: "inset 0 0 0 3px " + color2
           }
         }
       }, { hover: hover2, active: active2 });
@@ -19930,10 +19954,10 @@ var require_index_001 = __commonJS({
         { style: styles2.swatch },
         React.createElement(Swatch$1, {
           style: styles2.Swatch,
-          color,
+          color: color2,
           onClick,
           onHover: onSwatchHover,
-          focusStyle: { boxShadow: styles2.Swatch.boxShadow + ", 0 0 5px " + color }
+          focusStyle: { boxShadow: styles2.Swatch.boxShadow + ", 0 0 5px " + color2 }
         })
       );
     };
@@ -19943,7 +19967,7 @@ var require_index_001 = __commonJS({
     };
     const CircleSwatch$1 = libExports.handleHover(CircleSwatch);
     var Circle = function Circle2(_ref) {
-      var width = _ref.width, onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, colors = _ref.colors, hex = _ref.hex, circleSize = _ref.circleSize, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, circleSpacing = _ref.circleSpacing, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
+      var width = _ref.width, onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, colors = _ref.colors, hex2 = _ref.hex, circleSize = _ref.circleSize, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, circleSpacing = _ref.circleSpacing, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
       var styles2 = reactCSS(merge({
         "default": {
           card: {
@@ -19967,7 +19991,7 @@ var require_index_001 = __commonJS({
             color: c,
             onClick: handleChange,
             onSwatchHover,
-            active: hex === c.toLowerCase(),
+            active: hex2 === c.toLowerCase(),
             circleSize,
             circleSpacing
           });
@@ -19975,10 +19999,10 @@ var require_index_001 = __commonJS({
       );
     };
     Circle.propTypes = {
-      width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      circleSize: PropTypes.number,
-      circleSpacing: PropTypes.number,
-      styles: PropTypes.object
+      width: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
+      circleSize: PropTypes$1.number,
+      circleSpacing: PropTypes$1.number,
+      styles: PropTypes$1.object
     };
     Circle.defaultProps = {
       width: 252,
@@ -20000,8 +20024,8 @@ var require_index_001 = __commonJS({
         value: true
       });
       var _extends2 = Object.assign || function(target) {
-        for (var i = 1; i < arguments.length; i++) {
-          var source = arguments[i];
+        for (var i2 = 1; i2 < arguments.length; i2++) {
+          var source = arguments[i2];
           for (var key in source) {
             if (Object.prototype.hasOwnProperty.call(source, key)) {
               target[key] = source[key];
@@ -20017,10 +20041,10 @@ var require_index_001 = __commonJS({
       }
       function _objectWithoutProperties(obj, keys2) {
         var target = {};
-        for (var i in obj) {
-          if (keys2.indexOf(i) >= 0) continue;
-          if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-          target[i] = obj[i];
+        for (var i2 in obj) {
+          if (keys2.indexOf(i2) >= 0) continue;
+          if (!Object.prototype.hasOwnProperty.call(obj, i2)) continue;
+          target[i2] = obj[i2];
         }
         return target;
       }
@@ -20042,8 +20066,8 @@ var require_index_001 = __commonJS({
     const UnfoldMoreHorizontalIcon = /* @__PURE__ */ getDefaultExportFromCjs(UnfoldMoreHorizontalIconExports);
     var _createClass$1 = /* @__PURE__ */ function() {
       function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-          var descriptor = props[i];
+        for (var i2 = 0; i2 < props.length; i2++) {
+          var descriptor = props[i2];
           descriptor.enumerable = descriptor.enumerable || false;
           descriptor.configurable = true;
           if ("value" in descriptor) descriptor.writable = true;
@@ -20407,7 +20431,7 @@ var require_index_001 = __commonJS({
       return React.createElement("div", { style: styles2.picker });
     };
     var Chrome = function Chrome2(_ref) {
-      var width = _ref.width, onChange = _ref.onChange, disableAlpha = _ref.disableAlpha, rgb = _ref.rgb, hsl = _ref.hsl, hsv = _ref.hsv, hex = _ref.hex, renderers = _ref.renderers, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className, defaultView = _ref.defaultView;
+      var width = _ref.width, onChange = _ref.onChange, disableAlpha = _ref.disableAlpha, rgb2 = _ref.rgb, hsl2 = _ref.hsl, hsv = _ref.hsv, hex2 = _ref.hex, renderers = _ref.renderers, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className, defaultView2 = _ref.defaultView;
       var styles2 = reactCSS(merge({
         "default": {
           picker: {
@@ -20449,7 +20473,7 @@ var require_index_001 = __commonJS({
             absolute: "0px 0px 0px 0px",
             borderRadius: "8px",
             boxShadow: "inset 0 0 0 1px rgba(0,0,0,.1)",
-            background: "rgba(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ", " + rgb.a + ")",
+            background: "rgba(" + rgb2.r + ", " + rgb2.g + ", " + rgb2.b + ", " + rgb2.a + ")",
             zIndex: "2"
           },
           toggles: {
@@ -20496,7 +20520,7 @@ var require_index_001 = __commonJS({
           { style: styles2.saturation },
           React.createElement(Saturation, {
             style: styles2.Saturation,
-            hsl,
+            hsl: hsl2,
             hsv,
             pointer: ChromePointerCircle,
             onChange
@@ -20526,7 +20550,7 @@ var require_index_001 = __commonJS({
                 { style: styles2.hue },
                 React.createElement(Hue, {
                   style: styles2.Hue,
-                  hsl,
+                  hsl: hsl2,
                   pointer: ChromePointer,
                   onChange
                 })
@@ -20536,8 +20560,8 @@ var require_index_001 = __commonJS({
                 { style: styles2.alpha },
                 React.createElement(Alpha, {
                   style: styles2.Alpha,
-                  rgb,
-                  hsl,
+                  rgb: rgb2,
+                  hsl: hsl2,
                   pointer: ChromePointer,
                   renderers,
                   onChange
@@ -20546,10 +20570,10 @@ var require_index_001 = __commonJS({
             )
           ),
           React.createElement(ChromeFields, {
-            rgb,
-            hsl,
-            hex,
-            view: defaultView,
+            rgb: rgb2,
+            hsl: hsl2,
+            hex: hex2,
+            view: defaultView2,
             onChange,
             disableAlpha
           })
@@ -20557,10 +20581,10 @@ var require_index_001 = __commonJS({
       );
     };
     Chrome.propTypes = {
-      width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      disableAlpha: PropTypes.bool,
-      styles: PropTypes.object,
-      defaultView: PropTypes.oneOf(["hex", "rgb", "hsl"])
+      width: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
+      disableAlpha: PropTypes$1.bool,
+      styles: PropTypes$1.object,
+      defaultView: PropTypes$1.oneOf(["hex", "rgb", "hsl"])
     };
     Chrome.defaultProps = {
       width: 225,
@@ -20569,12 +20593,12 @@ var require_index_001 = __commonJS({
     };
     const ChromePicker = ColorWrap(Chrome);
     var CompactColor = function CompactColor2(_ref) {
-      var color = _ref.color, _ref$onClick = _ref.onClick, onClick = _ref$onClick === void 0 ? function() {
+      var color2 = _ref.color, _ref$onClick = _ref.onClick, onClick = _ref$onClick === void 0 ? function() {
       } : _ref$onClick, onSwatchHover = _ref.onSwatchHover, active2 = _ref.active;
       var styles2 = reactCSS({
         "default": {
           color: {
-            background: color,
+            background: color2,
             width: "15px",
             height: "15px",
             float: "left",
@@ -20585,7 +20609,7 @@ var require_index_001 = __commonJS({
           },
           dot: {
             absolute: "5px 5px 5px 5px",
-            background: getContrastingColor(color),
+            background: getContrastingColor(color2),
             borderRadius: "50%",
             opacity: "0"
           }
@@ -20608,21 +20632,21 @@ var require_index_001 = __commonJS({
             background: "#000"
           }
         }
-      }, { active: active2, "color-#FFFFFF": color === "#FFFFFF", "transparent": color === "transparent" });
+      }, { active: active2, "color-#FFFFFF": color2 === "#FFFFFF", "transparent": color2 === "transparent" });
       return React.createElement(
         Swatch$1,
         {
           style: styles2.color,
-          color,
+          color: color2,
           onClick,
           onHover: onSwatchHover,
-          focusStyle: { boxShadow: "0 0 4px " + color }
+          focusStyle: { boxShadow: "0 0 4px " + color2 }
         },
         React.createElement("div", { style: styles2.dot })
       );
     };
     var CompactFields = function CompactFields2(_ref) {
-      var hex = _ref.hex, rgb = _ref.rgb, onChange = _ref.onChange;
+      var hex2 = _ref.hex, rgb2 = _ref.rgb, onChange = _ref.onChange;
       var styles2 = reactCSS({
         "default": {
           fields: {
@@ -20637,7 +20661,7 @@ var require_index_001 = __commonJS({
             left: "5px",
             height: "9px",
             width: "9px",
-            background: hex
+            background: hex2
           },
           HEXwrap: {
             flex: "6",
@@ -20686,9 +20710,9 @@ var require_index_001 = __commonJS({
       var handleChange = function handleChange2(data, e) {
         if (data.r || data.g || data.b) {
           onChange({
-            r: data.r || rgb.r,
-            g: data.g || rgb.g,
-            b: data.b || rgb.b,
+            r: data.r || rgb2.r,
+            g: data.g || rgb2.g,
+            b: data.b || rgb2.b,
             source: "rgb"
           }, e);
         } else {
@@ -20705,31 +20729,31 @@ var require_index_001 = __commonJS({
         React.createElement(EditableInput, {
           style: { wrap: styles2.HEXwrap, input: styles2.HEXinput, label: styles2.HEXlabel },
           label: "hex",
-          value: hex,
+          value: hex2,
           onChange: handleChange
         }),
         React.createElement(EditableInput, {
           style: { wrap: styles2.RGBwrap, input: styles2.RGBinput, label: styles2.RGBlabel },
           label: "r",
-          value: rgb.r,
+          value: rgb2.r,
           onChange: handleChange
         }),
         React.createElement(EditableInput, {
           style: { wrap: styles2.RGBwrap, input: styles2.RGBinput, label: styles2.RGBlabel },
           label: "g",
-          value: rgb.g,
+          value: rgb2.g,
           onChange: handleChange
         }),
         React.createElement(EditableInput, {
           style: { wrap: styles2.RGBwrap, input: styles2.RGBinput, label: styles2.RGBlabel },
           label: "b",
-          value: rgb.b,
+          value: rgb2.b,
           onChange: handleChange
         })
       );
     };
     var Compact = function Compact2(_ref) {
-      var onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, colors = _ref.colors, hex = _ref.hex, rgb = _ref.rgb, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
+      var onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, colors = _ref.colors, hex2 = _ref.hex, rgb2 = _ref.rgb, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
       var styles2 = reactCSS(merge({
         "default": {
           Compact: {
@@ -20770,20 +20794,20 @@ var require_index_001 = __commonJS({
               return React.createElement(CompactColor, {
                 key: c,
                 color: c,
-                active: c.toLowerCase() === hex,
+                active: c.toLowerCase() === hex2,
                 onClick: handleChange,
                 onSwatchHover
               });
             }),
             React.createElement("div", { style: styles2.clear })
           ),
-          React.createElement(CompactFields, { hex, rgb, onChange: handleChange })
+          React.createElement(CompactFields, { hex: hex2, rgb: rgb2, onChange: handleChange })
         )
       );
     };
     Compact.propTypes = {
-      colors: PropTypes.arrayOf(PropTypes.string),
-      styles: PropTypes.object
+      colors: PropTypes$1.arrayOf(PropTypes$1.string),
+      styles: PropTypes$1.object
     };
     Compact.defaultProps = {
       colors: ["#4D4D4D", "#999999", "#FFFFFF", "#F44E3B", "#FE9200", "#FCDC00", "#DBDF00", "#A4DD00", "#68CCCA", "#73D8FF", "#AEA1FF", "#FDA1FF", "#333333", "#808080", "#cccccc", "#D33115", "#E27300", "#FCC400", "#B0BC00", "#68BC00", "#16A5A5", "#009CE0", "#7B64FF", "#FA28FF", "#000000", "#666666", "#B3B3B3", "#9F0500", "#C45100", "#FB9E00", "#808900", "#194D33", "#0C797D", "#0062B1", "#653294", "#AB149E"],
@@ -20791,7 +20815,7 @@ var require_index_001 = __commonJS({
     };
     ColorWrap(Compact);
     var GithubSwatch = function GithubSwatch2(_ref) {
-      var hover2 = _ref.hover, color = _ref.color, onClick = _ref.onClick, onSwatchHover = _ref.onSwatchHover;
+      var hover2 = _ref.hover, color2 = _ref.color, onClick = _ref.onClick, onSwatchHover = _ref.onSwatchHover;
       var hoverSwatch = {
         position: "relative",
         zIndex: "2",
@@ -20814,7 +20838,7 @@ var require_index_001 = __commonJS({
         "div",
         { style: styles2.swatch },
         React.createElement(Swatch$1, {
-          color,
+          color: color2,
           onClick,
           onHover: onSwatchHover,
           focusStyle: hoverSwatch
@@ -20907,8 +20931,8 @@ var require_index_001 = __commonJS({
         "bottom-left-triangle": triangle === "bottom-left",
         "bottom-right-triangle": triangle === "bottom-right"
       });
-      var handleChange = function handleChange2(hex, e) {
-        return onChange({ hex, source: "hex" }, e);
+      var handleChange = function handleChange2(hex2, e) {
+        return onChange({ hex: hex2, source: "hex" }, e);
       };
       return React.createElement(
         "div",
@@ -20926,10 +20950,10 @@ var require_index_001 = __commonJS({
       );
     };
     Github.propTypes = {
-      width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      colors: PropTypes.arrayOf(PropTypes.string),
-      triangle: PropTypes.oneOf(["hide", "top-left", "top-right", "bottom-left", "bottom-right"]),
-      styles: PropTypes.object
+      width: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
+      colors: PropTypes$1.arrayOf(PropTypes$1.string),
+      triangle: PropTypes$1.oneOf(["hide", "top-left", "top-right", "bottom-left", "bottom-right"]),
+      styles: PropTypes$1.object
     };
     Github.defaultProps = {
       width: 200,
@@ -20960,8 +20984,8 @@ var require_index_001 = __commonJS({
       return React.createElement("div", { style: styles2.picker });
     };
     var _extends$2 = Object.assign || function(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        var source = arguments[i2];
         for (var key in source) {
           if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = source[key];
@@ -20971,7 +20995,7 @@ var require_index_001 = __commonJS({
       return target;
     };
     var HuePicker = function HuePicker2(_ref) {
-      var width = _ref.width, height = _ref.height, onChange = _ref.onChange, hsl = _ref.hsl, direction = _ref.direction, pointer = _ref.pointer, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
+      var width = _ref.width, height = _ref.height, onChange = _ref.onChange, hsl2 = _ref.hsl, direction = _ref.direction, pointer2 = _ref.pointer, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
       var styles2 = reactCSS(merge({
         "default": {
           picker: {
@@ -20991,15 +21015,15 @@ var require_index_001 = __commonJS({
         "div",
         { style: styles2.picker, className: "hue-picker " + className },
         React.createElement(Hue, _extends$2({}, styles2.hue, {
-          hsl,
-          pointer,
+          hsl: hsl2,
+          pointer: pointer2,
           onChange: handleChange,
           direction
         }))
       );
     };
     HuePicker.propTypes = {
-      styles: PropTypes.object
+      styles: PropTypes$1.object
     };
     HuePicker.defaultProps = {
       width: "316px",
@@ -21010,7 +21034,7 @@ var require_index_001 = __commonJS({
     };
     ColorWrap(HuePicker);
     var Material = function Material2(_ref) {
-      var onChange = _ref.onChange, hex = _ref.hex, rgb = _ref.rgb, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
+      var onChange = _ref.onChange, hex2 = _ref.hex, rgb2 = _ref.rgb, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
       var styles2 = reactCSS(merge({
         "default": {
           material: {
@@ -21029,7 +21053,7 @@ var require_index_001 = __commonJS({
             color: "#333",
             padding: "0px",
             border: "0px",
-            borderBottom: "2px solid " + hex,
+            borderBottom: "2px solid " + hex2,
             outline: "none",
             height: "30px"
           },
@@ -21085,9 +21109,9 @@ var require_index_001 = __commonJS({
           }, e);
         } else if (data.r || data.g || data.b) {
           onChange({
-            r: data.r || rgb.r,
-            g: data.g || rgb.g,
-            b: data.b || rgb.b,
+            r: data.r || rgb2.r,
+            g: data.g || rgb2.g,
+            b: data.b || rgb2.b,
             source: "rgb"
           }, e);
         }
@@ -21101,7 +21125,7 @@ var require_index_001 = __commonJS({
           React.createElement(EditableInput, {
             style: { wrap: styles2.HEXwrap, input: styles2.HEXinput, label: styles2.HEXlabel },
             label: "hex",
-            value: hex,
+            value: hex2,
             onChange: handleChange
           }),
           React.createElement(
@@ -21113,7 +21137,7 @@ var require_index_001 = __commonJS({
               React.createElement(EditableInput, {
                 style: { wrap: styles2.RGBwrap, input: styles2.RGBinput, label: styles2.RGBlabel },
                 label: "r",
-                value: rgb.r,
+                value: rgb2.r,
                 onChange: handleChange
               })
             ),
@@ -21123,7 +21147,7 @@ var require_index_001 = __commonJS({
               React.createElement(EditableInput, {
                 style: { wrap: styles2.RGBwrap, input: styles2.RGBinput, label: styles2.RGBlabel },
                 label: "g",
-                value: rgb.g,
+                value: rgb2.g,
                 onChange: handleChange
               })
             ),
@@ -21133,7 +21157,7 @@ var require_index_001 = __commonJS({
               React.createElement(EditableInput, {
                 style: { wrap: styles2.RGBwrap, input: styles2.RGBinput, label: styles2.RGBlabel },
                 label: "b",
-                value: rgb.b,
+                value: rgb2.b,
                 onChange: handleChange
               })
             )
@@ -21143,7 +21167,7 @@ var require_index_001 = __commonJS({
     };
     ColorWrap(Material);
     var PhotoshopPicker = function PhotoshopPicker2(_ref) {
-      var onChange = _ref.onChange, rgb = _ref.rgb, hsv = _ref.hsv, hex = _ref.hex;
+      var onChange = _ref.onChange, rgb2 = _ref.rgb, hsv = _ref.hsv, hex2 = _ref.hex;
       var styles2 = reactCSS({
         "default": {
           fields: {
@@ -21223,9 +21247,9 @@ var require_index_001 = __commonJS({
           }, e);
         } else if (data.r || data.g || data.b) {
           onChange({
-            r: data.r || rgb.r,
-            g: data.g || rgb.g,
-            b: data.b || rgb.b,
+            r: data.r || rgb2.r,
+            g: data.g || rgb2.g,
+            b: data.b || rgb2.b,
             source: "rgb"
           }, e);
         } else if (data.h || data.s || data.v) {
@@ -21262,26 +21286,26 @@ var require_index_001 = __commonJS({
         React.createElement(EditableInput, {
           style: { wrap: styles2.RGBwrap, input: styles2.RGBinput, label: styles2.RGBlabel },
           label: "r",
-          value: rgb.r,
+          value: rgb2.r,
           onChange: handleChange
         }),
         React.createElement(EditableInput, {
           style: { wrap: styles2.RGBwrap, input: styles2.RGBinput, label: styles2.RGBlabel },
           label: "g",
-          value: rgb.g,
+          value: rgb2.g,
           onChange: handleChange
         }),
         React.createElement(EditableInput, {
           style: { wrap: styles2.RGBwrap, input: styles2.RGBinput, label: styles2.RGBlabel },
           label: "b",
-          value: rgb.b,
+          value: rgb2.b,
           onChange: handleChange
         }),
         React.createElement("div", { style: styles2.divider }),
         React.createElement(EditableInput, {
           style: { wrap: styles2.HEXwrap, input: styles2.HEXinput, label: styles2.HEXlabel },
           label: "#",
-          value: hex.replace("#", ""),
+          value: hex2.replace("#", ""),
           onChange: handleChange
         }),
         React.createElement(
@@ -21306,7 +21330,7 @@ var require_index_001 = __commonJS({
       );
     };
     var PhotoshopPointerCircle$1 = function PhotoshopPointerCircle2(_ref) {
-      var hsl = _ref.hsl;
+      var hsl2 = _ref.hsl;
       var styles2 = reactCSS({
         "default": {
           picker: {
@@ -21322,7 +21346,7 @@ var require_index_001 = __commonJS({
             boxShadow: "inset 0 0 0 1px #000"
           }
         }
-      }, { "black-outline": hsl.l > 0.5 });
+      }, { "black-outline": hsl2.l > 0.5 });
       return React.createElement("div", { style: styles2.picker });
     };
     var PhotoshopPointerCircle = function PhotoshopPointerCircle2() {
@@ -21379,7 +21403,7 @@ var require_index_001 = __commonJS({
       );
     };
     var PhotoshopButton = function PhotoshopButton2(_ref) {
-      var onClick = _ref.onClick, label = _ref.label, children = _ref.children, active2 = _ref.active;
+      var onClick = _ref.onClick, label = _ref.label, children2 = _ref.children, active2 = _ref.active;
       var styles2 = reactCSS({
         "default": {
           button: {
@@ -21405,11 +21429,11 @@ var require_index_001 = __commonJS({
       return React.createElement(
         "div",
         { style: styles2.button, onClick },
-        label || children
+        label || children2
       );
     };
     var PhotoshopPreviews = function PhotoshopPreviews2(_ref) {
-      var rgb = _ref.rgb, currentColor = _ref.currentColor;
+      var rgb2 = _ref.rgb, currentColor = _ref.currentColor;
       var styles2 = reactCSS({
         "default": {
           swatches: {
@@ -21420,7 +21444,7 @@ var require_index_001 = __commonJS({
           },
           new: {
             height: "34px",
-            background: "rgb(" + rgb.r + "," + rgb.g + ", " + rgb.b + ")",
+            background: "rgb(" + rgb2.r + "," + rgb2.g + ", " + rgb2.b + ")",
             boxShadow: "inset 1px 0 0 #000, inset -1px 0 0 #000, inset 0 1px 0 #000"
           },
           current: {
@@ -21458,8 +21482,8 @@ var require_index_001 = __commonJS({
     };
     var _createClass = /* @__PURE__ */ function() {
       function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-          var descriptor = props[i];
+        for (var i2 = 0; i2 < props.length; i2++) {
+          var descriptor = props[i2];
           descriptor.enumerable = descriptor.enumerable || false;
           descriptor.configurable = true;
           if ("value" in descriptor) descriptor.writable = true;
@@ -21626,8 +21650,8 @@ var require_index_001 = __commonJS({
       return Photoshop2;
     }(React.Component);
     Photoshop.propTypes = {
-      header: PropTypes.string,
-      styles: PropTypes.object
+      header: PropTypes$1.string,
+      styles: PropTypes$1.object
     };
     Photoshop.defaultProps = {
       header: "Color Picker",
@@ -21635,7 +21659,7 @@ var require_index_001 = __commonJS({
     };
     ColorWrap(Photoshop);
     var SketchFields = function SketchFields2(_ref) {
-      var onChange = _ref.onChange, rgb = _ref.rgb, hsl = _ref.hsl, hex = _ref.hex, disableAlpha = _ref.disableAlpha;
+      var onChange = _ref.onChange, rgb2 = _ref.rgb, hsl2 = _ref.hsl, hex2 = _ref.hex, disableAlpha = _ref.disableAlpha;
       var styles2 = reactCSS({
         "default": {
           fields: {
@@ -21684,10 +21708,10 @@ var require_index_001 = __commonJS({
           }, e);
         } else if (data.r || data.g || data.b) {
           onChange({
-            r: data.r || rgb.r,
-            g: data.g || rgb.g,
-            b: data.b || rgb.b,
-            a: rgb.a,
+            r: data.r || rgb2.r,
+            g: data.g || rgb2.g,
+            b: data.b || rgb2.b,
+            a: rgb2.a,
             source: "rgb"
           }, e);
         } else if (data.a) {
@@ -21698,9 +21722,9 @@ var require_index_001 = __commonJS({
           }
           data.a /= 100;
           onChange({
-            h: hsl.h,
-            s: hsl.s,
-            l: hsl.l,
+            h: hsl2.h,
+            s: hsl2.s,
+            l: hsl2.l,
             a: data.a,
             source: "rgb"
           }, e);
@@ -21715,7 +21739,7 @@ var require_index_001 = __commonJS({
           React.createElement(EditableInput, {
             style: { input: styles2.input, label: styles2.label },
             label: "hex",
-            value: hex.replace("#", ""),
+            value: hex2.replace("#", ""),
             onChange: handleChange
           })
         ),
@@ -21725,7 +21749,7 @@ var require_index_001 = __commonJS({
           React.createElement(EditableInput, {
             style: { input: styles2.input, label: styles2.label },
             label: "r",
-            value: rgb.r,
+            value: rgb2.r,
             onChange: handleChange,
             dragLabel: "true",
             dragMax: "255"
@@ -21737,7 +21761,7 @@ var require_index_001 = __commonJS({
           React.createElement(EditableInput, {
             style: { input: styles2.input, label: styles2.label },
             label: "g",
-            value: rgb.g,
+            value: rgb2.g,
             onChange: handleChange,
             dragLabel: "true",
             dragMax: "255"
@@ -21749,7 +21773,7 @@ var require_index_001 = __commonJS({
           React.createElement(EditableInput, {
             style: { input: styles2.input, label: styles2.label },
             label: "b",
-            value: rgb.b,
+            value: rgb2.b,
             onChange: handleChange,
             dragLabel: "true",
             dragMax: "255"
@@ -21761,7 +21785,7 @@ var require_index_001 = __commonJS({
           React.createElement(EditableInput, {
             style: { input: styles2.input, label: styles2.label },
             label: "a",
-            value: Math.round(rgb.a * 100),
+            value: Math.round(rgb2.a * 100),
             onChange: handleChange,
             dragLabel: "true",
             dragMax: "100"
@@ -21770,8 +21794,8 @@ var require_index_001 = __commonJS({
       );
     };
     var _extends$1 = Object.assign || function(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        var source = arguments[i2];
         for (var key in source) {
           if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = source[key];
@@ -21811,9 +21835,9 @@ var require_index_001 = __commonJS({
       }, {
         "no-presets": !colors || !colors.length
       });
-      var handleClick = function handleClick2(hex, e) {
+      var handleClick = function handleClick2(hex2, e) {
         onClick({
-          hex,
+          hex: hex2,
           source: "hex"
         }, e);
       };
@@ -21839,14 +21863,14 @@ var require_index_001 = __commonJS({
       );
     };
     SketchPresetColors.propTypes = {
-      colors: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.shape({
-        color: PropTypes.string,
-        title: PropTypes.string
+      colors: PropTypes$1.arrayOf(PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.shape({
+        color: PropTypes$1.string,
+        title: PropTypes$1.string
       })])).isRequired
     };
     var _extends = Object.assign || function(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        var source = arguments[i2];
         for (var key in source) {
           if (Object.prototype.hasOwnProperty.call(source, key)) {
             target[key] = source[key];
@@ -21856,7 +21880,7 @@ var require_index_001 = __commonJS({
       return target;
     };
     var Sketch = function Sketch2(_ref) {
-      var width = _ref.width, rgb = _ref.rgb, hex = _ref.hex, hsv = _ref.hsv, hsl = _ref.hsl, onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, disableAlpha = _ref.disableAlpha, presetColors = _ref.presetColors, renderers = _ref.renderers, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
+      var width = _ref.width, rgb2 = _ref.rgb, hex2 = _ref.hex, hsv = _ref.hsv, hsl2 = _ref.hsl, onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, disableAlpha = _ref.disableAlpha, presetColors = _ref.presetColors, renderers = _ref.renderers, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
       var styles2 = reactCSS(merge({
         "default": _extends({
           picker: {
@@ -21895,7 +21919,7 @@ var require_index_001 = __commonJS({
           activeColor: {
             absolute: "0px 0px 0px 0px",
             borderRadius: "2px",
-            background: "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + "," + rgb.a + ")",
+            background: "rgba(" + rgb2.r + "," + rgb2.g + "," + rgb2.b + "," + rgb2.a + ")",
             boxShadow: "inset 0 0 0 1px rgba(0,0,0,.15), inset 0 0 4px rgba(0,0,0,.25)"
           },
           hue: {
@@ -21938,7 +21962,7 @@ var require_index_001 = __commonJS({
           { style: styles2.saturation },
           React.createElement(Saturation, {
             style: styles2.Saturation,
-            hsl,
+            hsl: hsl2,
             hsv,
             onChange
           })
@@ -21954,7 +21978,7 @@ var require_index_001 = __commonJS({
               { style: styles2.hue },
               React.createElement(Hue, {
                 style: styles2.Hue,
-                hsl,
+                hsl: hsl2,
                 onChange
               })
             ),
@@ -21963,8 +21987,8 @@ var require_index_001 = __commonJS({
               { style: styles2.alpha },
               React.createElement(Alpha, {
                 style: styles2.Alpha,
-                rgb,
-                hsl,
+                rgb: rgb2,
+                hsl: hsl2,
                 renderers,
                 onChange
               })
@@ -21978,9 +22002,9 @@ var require_index_001 = __commonJS({
           )
         ),
         React.createElement(SketchFields, {
-          rgb,
-          hsl,
-          hex,
+          rgb: rgb2,
+          hsl: hsl2,
+          hex: hex2,
           onChange,
           disableAlpha
         }),
@@ -21992,9 +22016,9 @@ var require_index_001 = __commonJS({
       );
     };
     Sketch.propTypes = {
-      disableAlpha: PropTypes.bool,
-      width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      styles: PropTypes.object
+      disableAlpha: PropTypes$1.bool,
+      width: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
+      styles: PropTypes$1.object
     };
     Sketch.defaultProps = {
       disableAlpha: false,
@@ -22004,13 +22028,13 @@ var require_index_001 = __commonJS({
     };
     ColorWrap(Sketch);
     var SliderSwatch = function SliderSwatch2(_ref) {
-      var hsl = _ref.hsl, offset = _ref.offset, _ref$onClick = _ref.onClick, onClick = _ref$onClick === void 0 ? function() {
+      var hsl2 = _ref.hsl, offset = _ref.offset, _ref$onClick = _ref.onClick, onClick = _ref$onClick === void 0 ? function() {
       } : _ref$onClick, active2 = _ref.active, first = _ref.first, last = _ref.last;
       var styles2 = reactCSS({
         "default": {
           swatch: {
             height: "12px",
-            background: "hsl(" + hsl.h + ", 50%, " + offset * 100 + "%)",
+            background: "hsl(" + hsl2.h + ", 50%, " + offset * 100 + "%)",
             cursor: "pointer"
           }
         },
@@ -22033,7 +22057,7 @@ var require_index_001 = __commonJS({
       }, { active: active2, first, last });
       var handleClick = function handleClick2(e) {
         return onClick({
-          h: hsl.h,
+          h: hsl2.h,
           s: 0.5,
           l: offset,
           source: "hsl"
@@ -22042,7 +22066,7 @@ var require_index_001 = __commonJS({
       return React.createElement("div", { style: styles2.swatch, onClick: handleClick });
     };
     var SliderSwatches = function SliderSwatches2(_ref) {
-      var onClick = _ref.onClick, hsl = _ref.hsl;
+      var onClick = _ref.onClick, hsl2 = _ref.hsl;
       var styles2 = reactCSS({
         "default": {
           swatches: {
@@ -22059,7 +22083,7 @@ var require_index_001 = __commonJS({
           }
         }
       });
-      var epsilon = 0.1;
+      var epsilon3 = 0.1;
       return React.createElement(
         "div",
         { style: styles2.swatches },
@@ -22067,9 +22091,9 @@ var require_index_001 = __commonJS({
           "div",
           { style: styles2.swatch },
           React.createElement(SliderSwatch, {
-            hsl,
+            hsl: hsl2,
             offset: ".80",
-            active: Math.abs(hsl.l - 0.8) < epsilon && Math.abs(hsl.s - 0.5) < epsilon,
+            active: Math.abs(hsl2.l - 0.8) < epsilon3 && Math.abs(hsl2.s - 0.5) < epsilon3,
             onClick,
             first: true
           })
@@ -22078,9 +22102,9 @@ var require_index_001 = __commonJS({
           "div",
           { style: styles2.swatch },
           React.createElement(SliderSwatch, {
-            hsl,
+            hsl: hsl2,
             offset: ".65",
-            active: Math.abs(hsl.l - 0.65) < epsilon && Math.abs(hsl.s - 0.5) < epsilon,
+            active: Math.abs(hsl2.l - 0.65) < epsilon3 && Math.abs(hsl2.s - 0.5) < epsilon3,
             onClick
           })
         ),
@@ -22088,9 +22112,9 @@ var require_index_001 = __commonJS({
           "div",
           { style: styles2.swatch },
           React.createElement(SliderSwatch, {
-            hsl,
+            hsl: hsl2,
             offset: ".50",
-            active: Math.abs(hsl.l - 0.5) < epsilon && Math.abs(hsl.s - 0.5) < epsilon,
+            active: Math.abs(hsl2.l - 0.5) < epsilon3 && Math.abs(hsl2.s - 0.5) < epsilon3,
             onClick
           })
         ),
@@ -22098,9 +22122,9 @@ var require_index_001 = __commonJS({
           "div",
           { style: styles2.swatch },
           React.createElement(SliderSwatch, {
-            hsl,
+            hsl: hsl2,
             offset: ".35",
-            active: Math.abs(hsl.l - 0.35) < epsilon && Math.abs(hsl.s - 0.5) < epsilon,
+            active: Math.abs(hsl2.l - 0.35) < epsilon3 && Math.abs(hsl2.s - 0.5) < epsilon3,
             onClick
           })
         ),
@@ -22108,9 +22132,9 @@ var require_index_001 = __commonJS({
           "div",
           { style: styles2.swatch },
           React.createElement(SliderSwatch, {
-            hsl,
+            hsl: hsl2,
             offset: ".20",
-            active: Math.abs(hsl.l - 0.2) < epsilon && Math.abs(hsl.s - 0.5) < epsilon,
+            active: Math.abs(hsl2.l - 0.2) < epsilon3 && Math.abs(hsl2.s - 0.5) < epsilon3,
             onClick,
             last: true
           })
@@ -22134,7 +22158,7 @@ var require_index_001 = __commonJS({
       return React.createElement("div", { style: styles2.picker });
     };
     var Slider = function Slider2(_ref) {
-      var hsl = _ref.hsl, onChange = _ref.onChange, pointer = _ref.pointer, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
+      var hsl2 = _ref.hsl, onChange = _ref.onChange, pointer2 = _ref.pointer, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
       var styles2 = reactCSS(merge({
         "default": {
           hue: {
@@ -22154,20 +22178,20 @@ var require_index_001 = __commonJS({
           { style: styles2.hue },
           React.createElement(Hue, {
             style: styles2.Hue,
-            hsl,
-            pointer,
+            hsl: hsl2,
+            pointer: pointer2,
             onChange
           })
         ),
         React.createElement(
           "div",
           { style: styles2.swatches },
-          React.createElement(SliderSwatches, { hsl, onClick: onChange })
+          React.createElement(SliderSwatches, { hsl: hsl2, onClick: onChange })
         )
       );
     };
     Slider.propTypes = {
-      styles: PropTypes.object
+      styles: PropTypes$1.object
     };
     Slider.defaultProps = {
       pointer: SliderPointer,
@@ -22183,8 +22207,8 @@ var require_index_001 = __commonJS({
         value: true
       });
       var _extends2 = Object.assign || function(target) {
-        for (var i = 1; i < arguments.length; i++) {
-          var source = arguments[i];
+        for (var i2 = 1; i2 < arguments.length; i2++) {
+          var source = arguments[i2];
           for (var key in source) {
             if (Object.prototype.hasOwnProperty.call(source, key)) {
               target[key] = source[key];
@@ -22200,10 +22224,10 @@ var require_index_001 = __commonJS({
       }
       function _objectWithoutProperties(obj, keys2) {
         var target = {};
-        for (var i in obj) {
-          if (keys2.indexOf(i) >= 0) continue;
-          if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-          target[i] = obj[i];
+        for (var i2 in obj) {
+          if (keys2.indexOf(i2) >= 0) continue;
+          if (!Object.prototype.hasOwnProperty.call(obj, i2)) continue;
+          target[i2] = obj[i2];
         }
         return target;
       }
@@ -22224,7 +22248,7 @@ var require_index_001 = __commonJS({
     var CheckIconExports = requireCheckIcon();
     const CheckIcon = /* @__PURE__ */ getDefaultExportFromCjs(CheckIconExports);
     var SwatchesColor = function SwatchesColor2(_ref) {
-      var color = _ref.color, _ref$onClick = _ref.onClick, onClick = _ref$onClick === void 0 ? function() {
+      var color2 = _ref.color, _ref$onClick = _ref.onClick, onClick = _ref$onClick === void 0 ? function() {
       } : _ref$onClick, onSwatchHover = _ref.onSwatchHover, first = _ref.first, last = _ref.last, active2 = _ref.active;
       var styles2 = reactCSS({
         "default": {
@@ -22232,11 +22256,11 @@ var require_index_001 = __commonJS({
             width: "40px",
             height: "24px",
             cursor: "pointer",
-            background: color,
+            background: color2,
             marginBottom: "1px"
           },
           check: {
-            color: getContrastingColor(color),
+            color: getContrastingColor(color2),
             marginLeft: "8px",
             display: "none"
           }
@@ -22275,17 +22299,17 @@ var require_index_001 = __commonJS({
         first,
         last,
         active: active2,
-        "color-#FFFFFF": color === "#FFFFFF",
-        "transparent": color === "transparent"
+        "color-#FFFFFF": color2 === "#FFFFFF",
+        "transparent": color2 === "transparent"
       });
       return React.createElement(
         Swatch$1,
         {
-          color,
+          color: color2,
           style: styles2.color,
           onClick,
           onHover: onSwatchHover,
-          focusStyle: { boxShadow: "0 0 4px " + color }
+          focusStyle: { boxShadow: "0 0 4px " + color2 }
         },
         React.createElement(
           "div",
@@ -22309,13 +22333,13 @@ var require_index_001 = __commonJS({
       return React.createElement(
         "div",
         { style: styles2.group },
-        map(group, function(color, i) {
+        map(group, function(color2, i2) {
           return React.createElement(SwatchesColor, {
-            key: color,
-            color,
-            active: color.toLowerCase() === active2,
-            first: i === 0,
-            last: i === group.length - 1,
+            key: color2,
+            color: color2,
+            active: color2.toLowerCase() === active2,
+            first: i2 === 0,
+            last: i2 === group.length - 1,
             onClick,
             onSwatchHover
           });
@@ -22323,7 +22347,7 @@ var require_index_001 = __commonJS({
       );
     };
     var Swatches = function Swatches2(_ref) {
-      var width = _ref.width, height = _ref.height, onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, colors = _ref.colors, hex = _ref.hex, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
+      var width = _ref.width, height = _ref.height, onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, colors = _ref.colors, hex2 = _ref.hex, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
       var styles2 = reactCSS(merge({
         "default": {
           picker: {
@@ -22361,7 +22385,7 @@ var require_index_001 = __commonJS({
                 return React.createElement(SwatchesGroup, {
                   key: group.toString(),
                   group,
-                  active: hex,
+                  active: hex2,
                   onClick: handleChange,
                   onSwatchHover
                 });
@@ -22373,10 +22397,10 @@ var require_index_001 = __commonJS({
       );
     };
     Swatches.propTypes = {
-      width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      colors: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
-      styles: PropTypes.object
+      width: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
+      height: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
+      colors: PropTypes$1.arrayOf(PropTypes$1.arrayOf(PropTypes$1.string)),
+      styles: PropTypes$1.object
       /* eslint-disable max-len */
     };
     Swatches.defaultProps = {
@@ -22387,7 +22411,7 @@ var require_index_001 = __commonJS({
     };
     ColorWrap(Swatches);
     var Twitter = function Twitter2(_ref) {
-      var onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, hex = _ref.hex, colors = _ref.colors, width = _ref.width, triangle = _ref.triangle, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
+      var onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, hex2 = _ref.hex, colors = _ref.colors, width = _ref.width, triangle = _ref.triangle, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
       var styles2 = reactCSS(merge({
         "default": {
           card: {
@@ -22503,9 +22527,9 @@ var require_index_001 = __commonJS({
         React.createElement(
           "div",
           { style: styles2.body },
-          map(colors, function(c, i) {
+          map(colors, function(c, i2) {
             return React.createElement(Swatch$1, {
-              key: i,
+              key: i2,
               color: c,
               hex: c,
               style: styles2.swatch,
@@ -22524,7 +22548,7 @@ var require_index_001 = __commonJS({
           React.createElement(EditableInput, {
             label: null,
             style: { input: styles2.input },
-            value: hex.replace("#", ""),
+            value: hex2.replace("#", ""),
             onChange: handleChange
           }),
           React.createElement("div", { style: styles2.clear })
@@ -22532,10 +22556,10 @@ var require_index_001 = __commonJS({
       );
     };
     Twitter.propTypes = {
-      width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      triangle: PropTypes.oneOf(["hide", "top-left", "top-right"]),
-      colors: PropTypes.arrayOf(PropTypes.string),
-      styles: PropTypes.object
+      width: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
+      triangle: PropTypes$1.oneOf(["hide", "top-left", "top-right"]),
+      colors: PropTypes$1.arrayOf(PropTypes$1.string),
+      styles: PropTypes$1.object
     };
     Twitter.defaultProps = {
       width: 276,
@@ -22560,11 +22584,11 @@ var require_index_001 = __commonJS({
       return React.createElement("div", { style: styles2.picker });
     };
     GooglePointerCircle.propTypes = {
-      hsl: PropTypes.shape({
-        h: PropTypes.number,
-        s: PropTypes.number,
-        l: PropTypes.number,
-        a: PropTypes.number
+      hsl: PropTypes$1.shape({
+        h: PropTypes$1.number,
+        s: PropTypes$1.number,
+        l: PropTypes$1.number,
+        a: PropTypes$1.number
       })
     };
     GooglePointerCircle.defaultProps = {
@@ -22586,18 +22610,18 @@ var require_index_001 = __commonJS({
       return React.createElement("div", { style: styles2.picker });
     };
     GooglePointer.propTypes = {
-      hsl: PropTypes.shape({
-        h: PropTypes.number,
-        s: PropTypes.number,
-        l: PropTypes.number,
-        a: PropTypes.number
+      hsl: PropTypes$1.shape({
+        h: PropTypes$1.number,
+        s: PropTypes$1.number,
+        l: PropTypes$1.number,
+        a: PropTypes$1.number
       })
     };
     GooglePointer.defaultProps = {
       hsl: { a: 1, h: 249.94, l: 0.2, s: 0.5 }
     };
     var GoogleFields = function GoogleFields2(_ref) {
-      var onChange = _ref.onChange, rgb = _ref.rgb, hsl = _ref.hsl, hex = _ref.hex, hsv = _ref.hsv;
+      var onChange = _ref.onChange, rgb2 = _ref.rgb, hsl2 = _ref.hsl, hex2 = _ref.hex, hsv = _ref.hsv;
       var handleChange = function handleChange2(data, e) {
         if (data.hex) {
           isValidHex(data.hex) && onChange({
@@ -22728,8 +22752,8 @@ var require_index_001 = __commonJS({
           }
         }
       });
-      var rgbValue = rgb.r + ", " + rgb.g + ", " + rgb.b;
-      var hslValue = Math.round(hsl.h) + "°, " + Math.round(hsl.s * 100) + "%, " + Math.round(hsl.l * 100) + "%";
+      var rgbValue = rgb2.r + ", " + rgb2.g + ", " + rgb2.b;
+      var hslValue = Math.round(hsl2.h) + "°, " + Math.round(hsl2.s * 100) + "%, " + Math.round(hsl2.l * 100) + "%";
       var hsvValue = Math.round(hsv.h) + "°, " + Math.round(hsv.s * 100) + "%, " + Math.round(hsv.v * 100) + "%";
       return React.createElement(
         "div",
@@ -22743,7 +22767,7 @@ var require_index_001 = __commonJS({
             React.createElement(EditableInput, {
               style: { input: styles2.input, label: styles2.label },
               label: "hex",
-              value: hex,
+              value: hex2,
               onChange: handleChange
             })
           ),
@@ -22785,7 +22809,7 @@ var require_index_001 = __commonJS({
       );
     };
     var Google = function Google2(_ref) {
-      var width = _ref.width, onChange = _ref.onChange, rgb = _ref.rgb, hsl = _ref.hsl, hsv = _ref.hsv, hex = _ref.hex, header2 = _ref.header, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
+      var width = _ref.width, onChange = _ref.onChange, rgb2 = _ref.rgb, hsl2 = _ref.hsl, hsv = _ref.hsv, hex2 = _ref.hex, header2 = _ref.header, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
       var styles2 = reactCSS(merge({
         "default": {
           picker: {
@@ -22817,7 +22841,7 @@ var require_index_001 = __commonJS({
             width: "30%",
             height: "228px",
             padding: "0px",
-            background: "rgba(" + rgb.r + ", " + rgb.g + ", " + rgb.b + ", 1)",
+            background: "rgba(" + rgb2.r + ", " + rgb2.g + ", " + rgb2.b + ", 1)",
             position: "relative",
             overflow: "hidden"
           },
@@ -22858,7 +22882,7 @@ var require_index_001 = __commonJS({
           "div",
           { style: styles2.saturation },
           React.createElement(Saturation, {
-            hsl,
+            hsl: hsl2,
             hsv,
             pointer: GooglePointerCircle,
             onChange
@@ -22875,7 +22899,7 @@ var require_index_001 = __commonJS({
               { style: styles2.hue },
               React.createElement(Hue, {
                 style: styles2.Hue,
-                hsl,
+                hsl: hsl2,
                 radius: "4px",
                 pointer: GooglePointer,
                 onChange
@@ -22883,9 +22907,9 @@ var require_index_001 = __commonJS({
             )
           ),
           React.createElement(GoogleFields, {
-            rgb,
-            hsl,
-            hex,
+            rgb: rgb2,
+            hsl: hsl2,
+            hex: hex2,
             hsv,
             onChange
           })
@@ -22893,9 +22917,9 @@ var require_index_001 = __commonJS({
       );
     };
     Google.propTypes = {
-      width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      styles: PropTypes.object,
-      header: PropTypes.string
+      width: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
+      styles: PropTypes$1.object,
+      header: PropTypes$1.string
     };
     Google.defaultProps = {
       width: 652,
@@ -22906,7 +22930,7 @@ var require_index_001 = __commonJS({
     const colorPicker = `_color-picker_d5708d0`;
     const chromePicker = `_chrome-picker_64d34a4`;
     const styles$k = { "color-picker": colorPicker, "chrome-picker": chromePicker };
-    React.forwardRef(function ColorPicker2({ color, onColorChange, className, ...props }, ref) {
+    React.forwardRef(function ColorPicker2({ color: color2, onColorChange, className, ...props }, ref) {
       const padRef = reactExports.useRef(null);
       const forkedRef = useForkRef(padRef, ref);
       reactExports.useLayoutEffect(() => {
@@ -22915,7 +22939,7 @@ var require_index_001 = __commonJS({
       return React.createElement(
         Pad,
         { tabIndex: 0, ref: forkedRef, amount: "8px", height: "auto", width: "auto", className: classNames(styles$k["color-picker"], className), ...props },
-        React.createElement(ChromePicker, { className: styles$k["chrome-picker"], color, onChange: onColorChange })
+        React.createElement(ChromePicker, { className: styles$k["chrome-picker"], color: color2, onChange: onColorChange })
       );
     });
     const checkerBoard = `_checker-board_5f02a4b`;
@@ -22925,7 +22949,7 @@ var require_index_001 = __commonJS({
     const chevron = `_chevron_5e2cb10`;
     const chevronContainer$1 = `_chevron-container_2411750`;
     const styles$i = { "accordion-summary": accordionSummary, "content-spacer": contentSpacer, chevron, "chevron-container": chevronContainer$1 };
-    React.forwardRef(function Accordion({ label, startAdornments, endAdornments, chevronVariant = "start", selected, as, open, onOpen, onClose, children, className, ...props }, ref) {
+    React.forwardRef(function Accordion({ label, startAdornments, endAdornments, chevronVariant = "start", selected, as, open, onOpen, onClose, children: children2, className, ...props }, ref) {
       const [isOpen, setIsOpen] = reactExports.useState(open);
       const finalLabel = typeof label === "string" ? React.createElement(BodyText, { className: "accordion-label", "data-is-selected": selected, "data-is-open": isOpen, emphasis: selected ? "strong" : "normal" }, label) : label;
       reactExports.useEffect(() => {
@@ -22958,18 +22982,18 @@ var require_index_001 = __commonJS({
           React.createElement(HStack, { width: "auto" }, endAdornments),
           chevronVariant === "end" && chevron2
         ),
-        isOpen && React.createElement(VStack, { height: "auto", "data-is-selected": selected, "data-is-open": isOpen, paddingInlineStart: "14px", className: "accordion-body" }, children)
+        isOpen && React.createElement(VStack, { height: "auto", "data-is-selected": selected, "data-is-open": isOpen, paddingInlineStart: "14px", className: "accordion-body" }, children2)
       );
     });
     const loadingLine = `_loading-line_e963ea2`;
     const linePulse = `_linePulse_273ff7c`;
     const styles$h = { "loading-line": loadingLine, linePulse };
-    const Loading = React.forwardRef(({ size = "1em", color = "currentColor", lineCount = 12, animationDuration = 1200, className, style }, ref) => {
+    const Loading = React.forwardRef(({ size = "1em", color: color2 = "currentColor", lineCount = 12, animationDuration = 1200, className, style }, ref) => {
       const canvasSize = 50;
       const lines = Array.from({ length: lineCount });
       const angleStep = 360 / lineCount;
-      return React.createElement("svg", { ref, width: canvasSize, height: canvasSize, viewBox: `0 0 ${canvasSize} ${canvasSize}`, className, xmlns: "http://www.w3.org/2000/svg", style: { height: size, width: size, ...style }, fill: "none" }, lines.map((_, i) => {
-        const angle = angleStep * i;
+      return React.createElement("svg", { ref, width: canvasSize, height: canvasSize, viewBox: `0 0 ${canvasSize} ${canvasSize}`, className, xmlns: "http://www.w3.org/2000/svg", style: { height: size, width: size, ...style }, fill: "none" }, lines.map((_, i2) => {
+        const angle = angleStep * i2;
         const innerRadius = canvasSize / 4.5;
         const outerRadius = canvasSize / 2.25;
         const x1 = canvasSize / 2 + innerRadius * Math.cos(angle * Math.PI / 180);
@@ -22977,9 +23001,9 @@ var require_index_001 = __commonJS({
         const x2 = canvasSize / 2 + outerRadius * Math.cos(angle * Math.PI / 180);
         const y2 = canvasSize / 2 + outerRadius * Math.sin(angle * Math.PI / 180);
         return React.createElement("line", { className: styles$h["loading-line"], style: {
-          animationDelay: `${i * animationDuration / lineCount}ms`,
+          animationDelay: `${i2 * animationDuration / lineCount}ms`,
           animationDuration: `${animationDuration}ms`
-        }, key: i, x1, y1, x2, y2, stroke: color, strokeWidth: 3, strokeLinecap: "round" });
+        }, key: i2, x1, y1, x2, y2, stroke: color2, strokeWidth: 3, strokeLinecap: "round" });
       }));
     });
     const fieldrow = `_fieldrow_8d72787`;
@@ -23044,11 +23068,11 @@ var require_index_001 = __commonJS({
     const legend = `_legend_6201385`;
     const styles$f = { fieldset, body: body$1, legend };
     let fieldsetIdCount = 0;
-    const Fieldset = React.forwardRef(function Fieldset2({ legend: legend2, startAdornments, endAdornments, children, className, style, width = "100%", height = "auto", minWidth, minHeight, maxWidth, maxHeight, ...props }, ref) {
-      const id = reactExports.useMemo(() => {
+    const Fieldset = React.forwardRef(function Fieldset2({ legend: legend2, startAdornments, endAdornments, children: children2, className, style, width = "100%", height = "auto", minWidth, minHeight, maxWidth, maxHeight, ...props }, ref) {
+      const id2 = reactExports.useMemo(() => {
         return fieldsetIdCount++;
       }, []);
-      const labelId = `field-set-${id}`;
+      const labelId = `field-set-${id2}`;
       return React.createElement(
         VStack,
         { role: "group", "aria-labelledby": labelId, ref, className: classNames(className, styles$f.fieldset, "fieldset"), minWidth, width, maxWidth, minHeight, height, maxHeight, style, ...props },
@@ -23061,13 +23085,13 @@ var require_index_001 = __commonJS({
           endAdornments && React.createElement(Spacer, null),
           endAdornments
         ),
-        React.createElement(VStack, { className: classNames(styles$f.body, "fieldset-body"), height: "auto", width, minWidth }, children)
+        React.createElement(VStack, { className: classNames(styles$f.body, "fieldset-body"), height: "auto", width, minWidth }, children2)
       );
     });
     const accordionFieldrow = `_accordion-fieldrow_a92d854`;
     const chevronContainer = `_chevron-container_9cee87b`;
     const styles$e = { "accordion-fieldrow": accordionFieldrow, "chevron-container": chevronContainer };
-    React.forwardRef(function({ label, value: value2, labelWidth, children, onClose, onOpen, open = false, ...props }, ref) {
+    React.forwardRef(function({ label, value: value2, labelWidth, children: children2, onClose, onOpen, open = false, ...props }, ref) {
       function toggle() {
         if (open) {
           onClose && onClose();
@@ -23097,19 +23121,19 @@ var require_index_001 = __commonJS({
             )
           )
         ), ...props }),
-        open && children
+        open && children2
       );
     });
     const tabsHeader = `_tabs-header_6b2c877`;
     const tabsBody = `_tabs-body_6fecb64`;
     const topMargin = `_top-margin_1a231e5`;
     const styles$d = { "tabs-header": tabsHeader, "tabs-body": tabsBody, "top-margin": topMargin };
-    React.forwardRef(function Tabs({ children, onTabChange, className, selected, width = "auto", height = "auto", ...props }, ref) {
+    React.forwardRef(function Tabs({ children: children2, onTabChange, className, selected, width = "auto", height = "auto", ...props }, ref) {
       const [selectedTabName, setSelectedTabName] = reactExports.useState(selected);
       reactExports.useLayoutEffect(() => {
         setSelectedTabName(selected);
       }, [selected]);
-      const childrenArray = React.Children.toArray(children);
+      const childrenArray = React.Children.toArray(children2);
       let content = childrenArray.filter((c) => Boolean(c.props.name === selectedTabName));
       let value2 = content.map((c) => c.props.name);
       const options = childrenArray.map((child, index) => {
@@ -23351,26 +23375,26 @@ var require_index_001 = __commonJS({
     });
     const bubble$1 = `_bubble_eab9bca`;
     const styles$c = { bubble: bubble$1 };
-    const Bubble = React.forwardRef(function Badge({ children, className, style: defaultStyle, backgroundColor, textColor: color, variant = "medium", elevate = false, ...props }, ref) {
+    const Bubble = React.forwardRef(function Badge({ children: children2, className, style: defaultStyle, backgroundColor, textColor: color2, variant = "medium", elevate = false, ...props }, ref) {
       const style = {
-        "--bubble-color": color,
+        "--bubble-color": color2,
         "--bubble-background-color": backgroundColor,
         ...defaultStyle
       };
-      return React.createElement(HStack, { inline: true, className: classNames(styles$c.bubble, className, "bubble"), width: "auto", ref, style, horizontalAlignment: "center", verticalAlignment: "center", "data-variant": variant, "data-elevate": elevate, padding: "4px", ...props }, children);
+      return React.createElement(HStack, { inline: true, className: classNames(styles$c.bubble, className, "bubble"), width: "auto", ref, style, horizontalAlignment: "center", verticalAlignment: "center", "data-variant": variant, "data-elevate": elevate, padding: "4px", ...props }, children2);
     });
     const bubble = `_bubble_b9fa942`;
     const bublble = `_bublble_21084dc`;
     const styles$b = { bubble, bublble };
-    React.forwardRef(({ value: value2, children, backgroundColor, textColor: color, className, ...props }, ref) => {
+    React.forwardRef(({ value: value2, children: children2, backgroundColor, textColor: color2, className, ...props }, ref) => {
       return React.createElement(
         ZStack,
         { inline: true, width: "auto", height: "auto", ref, verticalAlignment: "end", horizontalAlignment: "end", zIndex: 0, className: classNames(className, "badge"), ...props },
-        React.createElement(ZStack, { zIndex: 0, inline: true, width: "auto", height: "auto" }, children),
+        React.createElement(ZStack, { zIndex: 0, inline: true, width: "auto", height: "auto" }, children2),
         React.createElement(
           VStack,
           { zIndex: 1, height: "100%", width: "auto" },
-          React.createElement(Bubble, { className: styles$b.bubble, backgroundColor, textColor: color, elevate: true }, value2),
+          React.createElement(Bubble, { className: styles$b.bubble, backgroundColor, textColor: color2, elevate: true }, value2),
           React.createElement(Spacer, { height: "100%" })
         )
       );
@@ -23412,10 +23436,10 @@ var require_index_001 = __commonJS({
       const [shake2, setShake] = reactExports.useState(false);
       reactExports.useLayoutEffect(() => {
         if (shake2) {
-          const id = window.setTimeout(() => {
+          const id2 = window.setTimeout(() => {
             setShake(false);
           }, 600);
-          return () => window.clearTimeout(id);
+          return () => window.clearTimeout(id2);
         }
       }, [shake2]);
       function shakeConfirm() {
@@ -23497,8 +23521,8 @@ var require_index_001 = __commonJS({
     const styles$7 = { examples, toolbar, grammar: grammar$1, top, left, "icon-button": iconButton, icon, black, "select-file": selectFile, "select-file-message": selectFileMessage };
     const panelHeader$2 = `_panel-header_ea787b9`;
     const styles$6 = { "panel-header": panelHeader$2 };
-    function PanelHeader({ children, className, style }) {
-      return /* @__PURE__ */ jsxRuntimeExports.jsx(HStack, { height: "auto", verticalAlignment: "center", className: classNames(styles$6["panel-header"], className), style, children });
+    function PanelHeader({ children: children2, className, style }) {
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(HStack, { height: "auto", verticalAlignment: "center", className: classNames(styles$6["panel-header"], className), style, children: children2 });
     }
     const snippets = `_snippets_73f43d3`;
     const snippetHeader = `_snippet-header_6242ed9`;
@@ -24217,22 +24241,22 @@ var require_index_001 = __commonJS({
       );
       const isPending = pendingDirectoryCreation != null || pendingFileCreation != null;
       const isOpen = openMap.get(directory.path);
-      const path = directory.path;
+      const path2 = directory.path;
       const isRenaming = (renamingDirectoryPath == null ? void 0 : renamingDirectoryPath.directoryPath) === directory.path;
-      const children = directory.items.map((i, index) => {
-        if (i.type === "directory") {
-          return /* @__PURE__ */ jsxRuntimeExports.jsx(DirectoryItem, { directory: i, presenter: presenter2 }, index);
+      const children2 = directory.items.map((i2, index) => {
+        if (i2.type === "directory") {
+          return /* @__PURE__ */ jsxRuntimeExports.jsx(DirectoryItem, { directory: i2, presenter: presenter2 }, index);
         } else {
-          return /* @__PURE__ */ jsxRuntimeExports.jsx(FileItem, { file: i, presenter: presenter2 }, index);
+          return /* @__PURE__ */ jsxRuntimeExports.jsx(FileItem, { file: i2, presenter: presenter2 }, index);
         }
       });
       if (pendingFileCreation != null && pendingFileCreation.directory === directory.path) {
-        children.unshift(
+        children2.unshift(
           /* @__PURE__ */ jsxRuntimeExports.jsx(PendingFileCreation, { presenter: pendingFileCreation }, -1)
         );
       }
       if (pendingDirectoryCreation != null && pendingDirectoryCreation.directory === directory.path) {
-        children.unshift(
+        children2.unshift(
           /* @__PURE__ */ jsxRuntimeExports.jsx(PendingDirectoryCreation, { presenter: pendingDirectoryCreation }, -1)
         );
       }
@@ -24258,10 +24282,10 @@ var require_index_001 = __commonJS({
       }
       reactExports.useLayoutEffect(() => {
         if (isPending) {
-          presenter2.openDirectory(path);
+          presenter2.openDirectory(path2);
         }
-      }, [isPending, presenter2, path]);
-      const padding2 = path.slice(1).split("/").length * 8;
+      }, [isPending, presenter2, path2]);
+      const padding2 = path2.slice(1).split("/").length * 8;
       if (isRenaming) {
         return /* @__PURE__ */ jsxRuntimeExports.jsx(PendingDirectoryRenaming, { presenter: renamingDirectoryPath });
       }
@@ -24291,7 +24315,7 @@ var require_index_001 = __commonJS({
             ]
           }
         ),
-        isOpen && /* @__PURE__ */ jsxRuntimeExports.jsx(VStack, { height: "auto", children }),
+        isOpen && /* @__PURE__ */ jsxRuntimeExports.jsx(VStack, { height: "auto", children: children2 }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(ContextMenu, { open: isContextMenuOpen, position, onClose: close, children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(MenuItem, { label: "Delete", onClick: deleteDirectory }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(MenuItem, { label: "Rename", onClick: renameDirectory })
@@ -24303,22 +24327,22 @@ var require_index_001 = __commonJS({
       const pendingDirectoryCreation = useSignalValue(
         presenter2.pendingDirectoryCreationBroadcast
       );
-      const children = directory.items.map((i, index) => {
-        if (i.type === "directory") {
-          return /* @__PURE__ */ jsxRuntimeExports.jsx(DirectoryItem, { directory: i, presenter: presenter2 }, index);
+      const children2 = directory.items.map((i2, index) => {
+        if (i2.type === "directory") {
+          return /* @__PURE__ */ jsxRuntimeExports.jsx(DirectoryItem, { directory: i2, presenter: presenter2 }, index);
         } else {
-          return /* @__PURE__ */ jsxRuntimeExports.jsx(FileItem, { file: i, presenter: presenter2 }, index);
+          return /* @__PURE__ */ jsxRuntimeExports.jsx(FileItem, { file: i2, presenter: presenter2 }, index);
         }
       });
       if (pendingFileCreation != null && pendingFileCreation.directory === "/") {
-        children.unshift(/* @__PURE__ */ jsxRuntimeExports.jsx(PendingFileCreation, { presenter: pendingFileCreation }, -1));
+        children2.unshift(/* @__PURE__ */ jsxRuntimeExports.jsx(PendingFileCreation, { presenter: pendingFileCreation }, -1));
       }
       if (pendingDirectoryCreation != null && pendingDirectoryCreation.directory === "/") {
-        children.unshift(
+        children2.unshift(
           /* @__PURE__ */ jsxRuntimeExports.jsx(PendingDirectoryCreation, { presenter: pendingDirectoryCreation }, -1)
         );
       }
-      return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children });
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: children2 });
     }
     const SvgFilePlus = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "1em", height: "1em", viewBox: "0 0 24 24", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg", ...props }, /* @__PURE__ */ reactExports.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M12.5147 3.74997C12.7983 3.74997 13.0406 3.75062 13.25 3.75331V4.00006V4.05205C13.25 4.95053 13.2499 5.69975 13.3299 6.29453C13.4143 6.92233 13.6 7.48913 14.0555 7.9446C14.5109 8.40007 15.0777 8.58574 15.7055 8.67014C16.3003 8.75011 17.0495 8.75008 17.948 8.75006L18 8.75005H18.2467C18.2494 8.95944 18.25 9.20166 18.25 9.48525V15C18.25 16.4354 18.2484 17.4365 18.1469 18.1919C18.0482 18.9256 17.8678 19.3142 17.591 19.591C17.3142 19.8677 16.9257 20.0482 16.1919 20.1468C15.4365 20.2484 14.4354 20.25 13 20.25H11C9.56458 20.25 8.56347 20.2484 7.80812 20.1468C7.07435 20.0482 6.68577 19.8677 6.40901 19.591C6.13225 19.3142 5.9518 18.9256 5.85315 18.1919C5.75159 17.4365 5.75 16.4354 5.75 15V8.99997C5.75 7.56455 5.75159 6.56344 5.85315 5.80809C5.9518 5.07432 6.13225 4.68574 6.40901 4.40898C6.68577 4.13222 7.07435 3.95177 7.80812 3.85312C8.56347 3.75156 9.56458 3.74997 11 3.74997H12.5147ZM16.7123 5.77294C17.5168 6.57741 17.8431 6.9184 18.0172 7.25005H18C17.036 7.25005 16.3884 7.24846 15.9054 7.18352C15.4439 7.12148 15.2464 7.01425 15.1161 6.88394C14.9858 6.75362 14.8786 6.55612 14.8165 6.09466C14.7516 5.61163 14.75 4.96407 14.75 4.00006V3.98285C15.0816 4.15692 15.4226 4.48326 16.227 5.28766L16.7123 5.77294ZM12.6573 2.24993C13.7451 2.24941 14.501 2.24905 15.1924 2.53542C15.8838 2.8218 16.4181 3.35659 17.1869 4.12613L17.2877 4.227L17.773 4.71228L17.8738 4.81308C18.6434 5.58189 19.1782 6.11617 19.4645 6.80755C19.7509 7.49892 19.7506 8.25487 19.75 9.34264V9.34265V9.48525V15V15.0548V15.0549C19.75 16.4224 19.75 17.5248 19.6335 18.3917C19.5125 19.2918 19.2536 20.0497 18.6517 20.6516C18.0497 21.2535 17.2919 21.5124 16.3918 21.6334C15.5248 21.75 14.4225 21.75 13.0549 21.75H13H11H10.9451C9.57754 21.75 8.47522 21.75 7.60825 21.6334C6.70814 21.5124 5.95027 21.2535 5.34835 20.6516C4.74643 20.0497 4.48754 19.2918 4.36652 18.3917C4.24996 17.5248 4.24998 16.4224 4.25 15.0548V15V8.99997V8.9451C4.24998 7.57751 4.24996 6.47519 4.36652 5.60822C4.48754 4.70811 4.74643 3.95024 5.34835 3.34832C5.95027 2.7464 6.70814 2.48751 7.60825 2.36649C8.47522 2.24993 9.57754 2.24995 10.9451 2.24997H11H12.5147L12.6573 2.24993ZM12.75 11.5001C12.75 11.0858 12.4142 10.7501 12 10.7501C11.5858 10.7501 11.25 11.0858 11.25 11.5001V13.2501H9.5C9.08579 13.2501 8.75 13.5858 8.75 14.0001C8.75 14.4143 9.08579 14.7501 9.5 14.7501H11.25V16.5001C11.25 16.9143 11.5858 17.2501 12 17.2501C12.4142 17.2501 12.75 16.9143 12.75 16.5001V14.7501H14.5C14.9142 14.7501 15.25 14.4143 15.25 14.0001C15.25 13.5858 14.9142 13.2501 14.5 13.2501H12.75V11.5001Z" }));
     const SvgFolderPlus = (props) => /* @__PURE__ */ reactExports.createElement("svg", { width: "1em", height: "1em", viewBox: "0 0 24 24", fill: "currentColor", xmlns: "http://www.w3.org/2000/svg", ...props }, /* @__PURE__ */ reactExports.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M5.99999 2.24994L5.88419 2.24991C5.06623 2.24964 4.50808 2.24946 4.02942 2.37772C2.73532 2.72447 1.72452 3.73527 1.37777 5.02937C1.24951 5.50803 1.2497 6.06618 1.24996 6.88414L1.24999 6.99994V13.9999V14.0548C1.24997 15.4224 1.24995 16.5247 1.36651 17.3917C1.48753 18.2918 1.74642 19.0497 2.34834 19.6516C2.95026 20.2535 3.70813 20.5124 4.60824 20.6334C5.47521 20.75 6.57753 20.75 7.94512 20.7499H7.99999H16H16.0549C17.4225 20.75 18.5248 20.75 19.3918 20.6334C20.2919 20.5124 21.0497 20.2535 21.6517 19.6516C22.2536 19.0497 22.5125 18.2918 22.6335 17.3917C22.75 16.5247 22.75 15.4224 22.75 14.0548V13.9999V11.9999V11.9451C22.75 10.5775 22.75 9.47516 22.6335 8.60819C22.5125 7.70808 22.2536 6.9502 21.6517 6.34829C21.0497 5.74637 20.2919 5.48748 19.3918 5.36646C18.5248 5.2499 17.4225 5.24992 16.0549 5.24994H16H15.1213C14.2137 5.24994 13.9048 5.24326 13.6259 5.16375C13.4598 5.1164 13.2997 5.05009 13.1487 4.96612C12.8953 4.8251 12.6721 4.61138 12.0303 3.96961L11.9591 3.89836C11.4161 3.35501 11.04 2.97857 10.5806 2.72298C10.329 2.58302 10.0622 2.4725 9.78532 2.39359C9.27974 2.24947 8.74757 2.24965 7.97941 2.24992L7.87867 2.24994H5.99999ZM4.41765 3.82661C4.67973 3.75638 5.02173 3.74994 5.99999 3.74994H7.87867C8.78627 3.74994 9.0952 3.75662 9.37413 3.83613C9.54023 3.88347 9.70033 3.94979 9.85126 4.03376C10.1047 4.17477 10.3279 4.3885 10.9697 5.03027L11.0409 5.10151V5.10153C11.5839 5.64487 11.96 6.0213 12.4194 6.2769C12.671 6.41685 12.9378 6.52738 13.2147 6.60629C13.7203 6.7504 14.2524 6.75022 15.0206 6.74996L15.1213 6.74994H16C17.4354 6.74994 18.4365 6.75153 19.1919 6.85309C19.9257 6.95174 20.3142 7.13219 20.591 7.40895C20.8678 7.68571 21.0482 8.07428 21.1469 8.80806C21.2484 9.56341 21.25 10.5645 21.25 11.9999V13.9999C21.25 15.4354 21.2484 16.4365 21.1469 17.1918C21.0482 17.9256 20.8678 18.3142 20.591 18.5909C20.3142 18.8677 19.9257 19.0481 19.1919 19.1468C18.4365 19.2483 17.4354 19.2499 16 19.2499H7.99999C6.56457 19.2499 5.56346 19.2483 4.80811 19.1468C4.07433 19.0481 3.68576 18.8677 3.409 18.5909C3.13224 18.3142 2.95179 17.9256 2.85314 17.1918C2.75158 16.4365 2.74999 15.4354 2.74999 13.9999V6.99994C2.74999 6.02168 2.75643 5.67968 2.82666 5.4176C3.03471 4.64114 3.64119 4.03466 4.41765 3.82661ZM12.75 10.0001C12.75 9.58585 12.4142 9.25006 12 9.25006C11.5858 9.25006 11.25 9.58585 11.25 10.0001V12.2501H8.99999C8.58578 12.2501 8.24999 12.5858 8.24999 13.0001C8.24999 13.4143 8.58578 13.7501 8.99999 13.7501H11.25V16.0001C11.25 16.4143 11.5858 16.7501 12 16.7501C12.4142 16.7501 12.75 16.4143 12.75 16.0001V13.7501H15C15.4142 13.7501 15.75 13.4143 15.75 13.0001C15.75 12.5858 15.4142 12.2501 15 12.2501H12.75V10.0001Z" }));
@@ -24371,7 +24395,7 @@ var require_index_001 = __commonJS({
       function prev() {
         presenter2.previous();
       }
-      function start() {
+      function start2() {
         presenter2.start();
       }
       function end() {
@@ -24402,7 +24426,7 @@ var require_index_001 = __commonJS({
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
               /* @__PURE__ */ jsxRuntimeExports.jsxs(ButtonGroup, { children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: start, children: "Start" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: start2, children: "Start" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: prev, children: "Previous" }),
                 !isPlaying ? /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: play, children: "Play" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: stop, children: "Stop" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: next, children: "Next" }),
@@ -24436,9 +24460,4832 @@ var require_index_001 = __commonJS({
         ] })
       ] });
     }
+    function count(node) {
+      var sum = 0, children2 = node.children, i2 = children2 && children2.length;
+      if (!i2) sum = 1;
+      else while (--i2 >= 0) sum += children2[i2].value;
+      node.value = sum;
+    }
+    function node_count() {
+      return this.eachAfter(count);
+    }
+    function node_each(callback) {
+      var node = this, current, next = [node], children2, i2, n;
+      do {
+        current = next.reverse(), next = [];
+        while (node = current.pop()) {
+          callback(node), children2 = node.children;
+          if (children2) for (i2 = 0, n = children2.length; i2 < n; ++i2) {
+            next.push(children2[i2]);
+          }
+        }
+      } while (next.length);
+      return this;
+    }
+    function node_eachBefore(callback) {
+      var node = this, nodes = [node], children2, i2;
+      while (node = nodes.pop()) {
+        callback(node), children2 = node.children;
+        if (children2) for (i2 = children2.length - 1; i2 >= 0; --i2) {
+          nodes.push(children2[i2]);
+        }
+      }
+      return this;
+    }
+    function node_eachAfter(callback) {
+      var node = this, nodes = [node], next = [], children2, i2, n;
+      while (node = nodes.pop()) {
+        next.push(node), children2 = node.children;
+        if (children2) for (i2 = 0, n = children2.length; i2 < n; ++i2) {
+          nodes.push(children2[i2]);
+        }
+      }
+      while (node = next.pop()) {
+        callback(node);
+      }
+      return this;
+    }
+    function node_sum(value2) {
+      return this.eachAfter(function(node) {
+        var sum = +value2(node.data) || 0, children2 = node.children, i2 = children2 && children2.length;
+        while (--i2 >= 0) sum += children2[i2].value;
+        node.value = sum;
+      });
+    }
+    function node_sort(compare) {
+      return this.eachBefore(function(node) {
+        if (node.children) {
+          node.children.sort(compare);
+        }
+      });
+    }
+    function node_path(end) {
+      var start2 = this, ancestor = leastCommonAncestor(start2, end), nodes = [start2];
+      while (start2 !== ancestor) {
+        start2 = start2.parent;
+        nodes.push(start2);
+      }
+      var k = nodes.length;
+      while (end !== ancestor) {
+        nodes.splice(k, 0, end);
+        end = end.parent;
+      }
+      return nodes;
+    }
+    function leastCommonAncestor(a, b) {
+      if (a === b) return a;
+      var aNodes = a.ancestors(), bNodes = b.ancestors(), c = null;
+      a = aNodes.pop();
+      b = bNodes.pop();
+      while (a === b) {
+        c = a;
+        a = aNodes.pop();
+        b = bNodes.pop();
+      }
+      return c;
+    }
+    function node_ancestors() {
+      var node = this, nodes = [node];
+      while (node = node.parent) {
+        nodes.push(node);
+      }
+      return nodes;
+    }
+    function node_descendants() {
+      var nodes = [];
+      this.each(function(node) {
+        nodes.push(node);
+      });
+      return nodes;
+    }
+    function node_leaves() {
+      var leaves = [];
+      this.eachBefore(function(node) {
+        if (!node.children) {
+          leaves.push(node);
+        }
+      });
+      return leaves;
+    }
+    function node_links() {
+      var root2 = this, links = [];
+      root2.each(function(node) {
+        if (node !== root2) {
+          links.push({ source: node.parent, target: node });
+        }
+      });
+      return links;
+    }
+    function hierarchy(data, children2) {
+      var root2 = new Node$3(data), valued = +data.value && (root2.value = data.value), node, nodes = [root2], child, childs, i2, n;
+      if (children2 == null) children2 = defaultChildren;
+      while (node = nodes.pop()) {
+        if (valued) node.value = +node.data.value;
+        if ((childs = children2(node.data)) && (n = childs.length)) {
+          node.children = new Array(n);
+          for (i2 = n - 1; i2 >= 0; --i2) {
+            nodes.push(child = node.children[i2] = new Node$3(childs[i2]));
+            child.parent = node;
+            child.depth = node.depth + 1;
+          }
+        }
+      }
+      return root2.eachBefore(computeHeight);
+    }
+    function node_copy() {
+      return hierarchy(this).eachBefore(copyData);
+    }
+    function defaultChildren(d) {
+      return d.children;
+    }
+    function copyData(node) {
+      node.data = node.data.data;
+    }
+    function computeHeight(node) {
+      var height = 0;
+      do
+        node.height = height;
+      while ((node = node.parent) && node.height < ++height);
+    }
+    function Node$3(data) {
+      this.data = data;
+      this.depth = this.height = 0;
+      this.parent = null;
+    }
+    Node$3.prototype = hierarchy.prototype = {
+      constructor: Node$3,
+      count: node_count,
+      each: node_each,
+      eachAfter: node_eachAfter,
+      eachBefore: node_eachBefore,
+      sum: node_sum,
+      sort: node_sort,
+      path: node_path,
+      ancestors: node_ancestors,
+      descendants: node_descendants,
+      leaves: node_leaves,
+      links: node_links,
+      copy: node_copy
+    };
+    function defaultSeparation(a, b) {
+      return a.parent === b.parent ? 1 : 2;
+    }
+    function nextLeft(v) {
+      var children2 = v.children;
+      return children2 ? children2[0] : v.t;
+    }
+    function nextRight(v) {
+      var children2 = v.children;
+      return children2 ? children2[children2.length - 1] : v.t;
+    }
+    function moveSubtree(wm, wp, shift) {
+      var change = shift / (wp.i - wm.i);
+      wp.c -= change;
+      wp.s += shift;
+      wm.c += change;
+      wp.z += shift;
+      wp.m += shift;
+    }
+    function executeShifts(v) {
+      var shift = 0, change = 0, children2 = v.children, i2 = children2.length, w;
+      while (--i2 >= 0) {
+        w = children2[i2];
+        w.z += shift;
+        w.m += shift;
+        shift += w.s + (change += w.c);
+      }
+    }
+    function nextAncestor(vim, v, ancestor) {
+      return vim.a.parent === v.parent ? vim.a : ancestor;
+    }
+    function TreeNode(node, i2) {
+      this._ = node;
+      this.parent = null;
+      this.children = null;
+      this.A = null;
+      this.a = this;
+      this.z = 0;
+      this.m = 0;
+      this.c = 0;
+      this.s = 0;
+      this.t = null;
+      this.i = i2;
+    }
+    TreeNode.prototype = Object.create(Node$3.prototype);
+    function treeRoot(root2) {
+      var tree = new TreeNode(root2, 0), node, nodes = [tree], child, children2, i2, n;
+      while (node = nodes.pop()) {
+        if (children2 = node._.children) {
+          node.children = new Array(n = children2.length);
+          for (i2 = n - 1; i2 >= 0; --i2) {
+            nodes.push(child = node.children[i2] = new TreeNode(children2[i2], i2));
+            child.parent = node;
+          }
+        }
+      }
+      (tree.parent = new TreeNode(null, 0)).children = [tree];
+      return tree;
+    }
+    function d3tree() {
+      var separation = defaultSeparation, dx = 1, dy = 1, nodeSize = null;
+      function tree(root2) {
+        var t = treeRoot(root2);
+        t.eachAfter(firstWalk), t.parent.m = -t.z;
+        t.eachBefore(secondWalk);
+        if (nodeSize) root2.eachBefore(sizeNode);
+        else {
+          var left2 = root2, right = root2, bottom = root2;
+          root2.eachBefore(function(node) {
+            if (node.x < left2.x) left2 = node;
+            if (node.x > right.x) right = node;
+            if (node.depth > bottom.depth) bottom = node;
+          });
+          var s = left2 === right ? 1 : separation(left2, right) / 2, tx = s - left2.x, kx = dx / (right.x + s + tx), ky = dy / (bottom.depth || 1);
+          root2.eachBefore(function(node) {
+            node.x = (node.x + tx) * kx;
+            node.y = node.depth * ky;
+          });
+        }
+        return root2;
+      }
+      function firstWalk(v) {
+        var children2 = v.children, siblings = v.parent.children, w = v.i ? siblings[v.i - 1] : null;
+        if (children2) {
+          executeShifts(v);
+          var midpoint = (children2[0].z + children2[children2.length - 1].z) / 2;
+          if (w) {
+            v.z = w.z + separation(v._, w._);
+            v.m = v.z - midpoint;
+          } else {
+            v.z = midpoint;
+          }
+        } else if (w) {
+          v.z = w.z + separation(v._, w._);
+        }
+        v.parent.A = apportion(v, w, v.parent.A || siblings[0]);
+      }
+      function secondWalk(v) {
+        v._.x = v.z + v.parent.m;
+        v.m += v.parent.m;
+      }
+      function apportion(v, w, ancestor) {
+        if (w) {
+          var vip = v, vop = v, vim = w, vom = vip.parent.children[0], sip = vip.m, sop = vop.m, sim = vim.m, som = vom.m, shift;
+          while (vim = nextRight(vim), vip = nextLeft(vip), vim && vip) {
+            vom = nextLeft(vom);
+            vop = nextRight(vop);
+            vop.a = v;
+            shift = vim.z + sim - vip.z - sip + separation(vim._, vip._);
+            if (shift > 0) {
+              moveSubtree(nextAncestor(vim, v, ancestor), v, shift);
+              sip += shift;
+              sop += shift;
+            }
+            sim += vim.m;
+            sip += vip.m;
+            som += vom.m;
+            sop += vop.m;
+          }
+          if (vim && !nextRight(vop)) {
+            vop.t = vim;
+            vop.m += sim - sop;
+          }
+          if (vip && !nextLeft(vom)) {
+            vom.t = vip;
+            vom.m += sip - som;
+            ancestor = v;
+          }
+        }
+        return ancestor;
+      }
+      function sizeNode(node) {
+        node.x *= dx;
+        node.y = node.depth * dy;
+      }
+      tree.separation = function(x2) {
+        return arguments.length ? (separation = x2, tree) : separation;
+      };
+      tree.size = function(x2) {
+        return arguments.length ? (nodeSize = false, dx = +x2[0], dy = +x2[1], tree) : nodeSize ? null : [dx, dy];
+      };
+      tree.nodeSize = function(x2) {
+        return arguments.length ? (nodeSize = true, dx = +x2[0], dy = +x2[1], tree) : nodeSize ? [dx, dy] : null;
+      };
+      return tree;
+    }
+    var xhtml = "http://www.w3.org/1999/xhtml";
+    const namespaces = {
+      svg: "http://www.w3.org/2000/svg",
+      xhtml,
+      xlink: "http://www.w3.org/1999/xlink",
+      xml: "http://www.w3.org/XML/1998/namespace",
+      xmlns: "http://www.w3.org/2000/xmlns/"
+    };
+    function namespace$1(name2) {
+      var prefix = name2 += "", i2 = prefix.indexOf(":");
+      if (i2 >= 0 && (prefix = name2.slice(0, i2)) !== "xmlns") name2 = name2.slice(i2 + 1);
+      return namespaces.hasOwnProperty(prefix) ? { space: namespaces[prefix], local: name2 } : name2;
+    }
+    function creatorInherit(name2) {
+      return function() {
+        var document2 = this.ownerDocument, uri = this.namespaceURI;
+        return uri === xhtml && document2.documentElement.namespaceURI === xhtml ? document2.createElement(name2) : document2.createElementNS(uri, name2);
+      };
+    }
+    function creatorFixed(fullname) {
+      return function() {
+        return this.ownerDocument.createElementNS(fullname.space, fullname.local);
+      };
+    }
+    function creator(name2) {
+      var fullname = namespace$1(name2);
+      return (fullname.local ? creatorFixed : creatorInherit)(fullname);
+    }
+    function none() {
+    }
+    function selector(selector2) {
+      return selector2 == null ? none : function() {
+        return this.querySelector(selector2);
+      };
+    }
+    function selection_select(select2) {
+      if (typeof select2 !== "function") select2 = selector(select2);
+      for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, subgroup = subgroups[j] = new Array(n), node, subnode, i2 = 0; i2 < n; ++i2) {
+          if ((node = group[i2]) && (subnode = select2.call(node, node.__data__, i2, group))) {
+            if ("__data__" in node) subnode.__data__ = node.__data__;
+            subgroup[i2] = subnode;
+          }
+        }
+      }
+      return new Selection$2(subgroups, this._parents);
+    }
+    function array(x2) {
+      return x2 == null ? [] : Array.isArray(x2) ? x2 : Array.from(x2);
+    }
+    function empty() {
+      return [];
+    }
+    function selectorAll(selector2) {
+      return selector2 == null ? empty : function() {
+        return this.querySelectorAll(selector2);
+      };
+    }
+    function arrayAll(select2) {
+      return function() {
+        return array(select2.apply(this, arguments));
+      };
+    }
+    function selection_selectAll(select2) {
+      if (typeof select2 === "function") select2 = arrayAll(select2);
+      else select2 = selectorAll(select2);
+      for (var groups = this._groups, m = groups.length, subgroups = [], parents = [], j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, node, i2 = 0; i2 < n; ++i2) {
+          if (node = group[i2]) {
+            subgroups.push(select2.call(node, node.__data__, i2, group));
+            parents.push(node);
+          }
+        }
+      }
+      return new Selection$2(subgroups, parents);
+    }
+    function matcher(selector2) {
+      return function() {
+        return this.matches(selector2);
+      };
+    }
+    function childMatcher(selector2) {
+      return function(node) {
+        return node.matches(selector2);
+      };
+    }
+    var find = Array.prototype.find;
+    function childFind(match2) {
+      return function() {
+        return find.call(this.children, match2);
+      };
+    }
+    function childFirst() {
+      return this.firstElementChild;
+    }
+    function selection_selectChild(match2) {
+      return this.select(match2 == null ? childFirst : childFind(typeof match2 === "function" ? match2 : childMatcher(match2)));
+    }
+    var filter = Array.prototype.filter;
+    function children() {
+      return Array.from(this.children);
+    }
+    function childrenFilter(match2) {
+      return function() {
+        return filter.call(this.children, match2);
+      };
+    }
+    function selection_selectChildren(match2) {
+      return this.selectAll(match2 == null ? children : childrenFilter(typeof match2 === "function" ? match2 : childMatcher(match2)));
+    }
+    function selection_filter(match2) {
+      if (typeof match2 !== "function") match2 = matcher(match2);
+      for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i2 = 0; i2 < n; ++i2) {
+          if ((node = group[i2]) && match2.call(node, node.__data__, i2, group)) {
+            subgroup.push(node);
+          }
+        }
+      }
+      return new Selection$2(subgroups, this._parents);
+    }
+    function sparse(update) {
+      return new Array(update.length);
+    }
+    function selection_enter() {
+      return new Selection$2(this._enter || this._groups.map(sparse), this._parents);
+    }
+    function EnterNode(parent, datum2) {
+      this.ownerDocument = parent.ownerDocument;
+      this.namespaceURI = parent.namespaceURI;
+      this._next = null;
+      this._parent = parent;
+      this.__data__ = datum2;
+    }
+    EnterNode.prototype = {
+      constructor: EnterNode,
+      appendChild: function(child) {
+        return this._parent.insertBefore(child, this._next);
+      },
+      insertBefore: function(child, next) {
+        return this._parent.insertBefore(child, next);
+      },
+      querySelector: function(selector2) {
+        return this._parent.querySelector(selector2);
+      },
+      querySelectorAll: function(selector2) {
+        return this._parent.querySelectorAll(selector2);
+      }
+    };
+    function constant$3(x2) {
+      return function() {
+        return x2;
+      };
+    }
+    function bindIndex(parent, group, enter, update, exit, data) {
+      var i2 = 0, node, groupLength = group.length, dataLength = data.length;
+      for (; i2 < dataLength; ++i2) {
+        if (node = group[i2]) {
+          node.__data__ = data[i2];
+          update[i2] = node;
+        } else {
+          enter[i2] = new EnterNode(parent, data[i2]);
+        }
+      }
+      for (; i2 < groupLength; ++i2) {
+        if (node = group[i2]) {
+          exit[i2] = node;
+        }
+      }
+    }
+    function bindKey(parent, group, enter, update, exit, data, key) {
+      var i2, node, nodeByKeyValue = /* @__PURE__ */ new Map(), groupLength = group.length, dataLength = data.length, keyValues = new Array(groupLength), keyValue;
+      for (i2 = 0; i2 < groupLength; ++i2) {
+        if (node = group[i2]) {
+          keyValues[i2] = keyValue = key.call(node, node.__data__, i2, group) + "";
+          if (nodeByKeyValue.has(keyValue)) {
+            exit[i2] = node;
+          } else {
+            nodeByKeyValue.set(keyValue, node);
+          }
+        }
+      }
+      for (i2 = 0; i2 < dataLength; ++i2) {
+        keyValue = key.call(parent, data[i2], i2, data) + "";
+        if (node = nodeByKeyValue.get(keyValue)) {
+          update[i2] = node;
+          node.__data__ = data[i2];
+          nodeByKeyValue.delete(keyValue);
+        } else {
+          enter[i2] = new EnterNode(parent, data[i2]);
+        }
+      }
+      for (i2 = 0; i2 < groupLength; ++i2) {
+        if ((node = group[i2]) && nodeByKeyValue.get(keyValues[i2]) === node) {
+          exit[i2] = node;
+        }
+      }
+    }
+    function datum(node) {
+      return node.__data__;
+    }
+    function selection_data(value2, key) {
+      if (!arguments.length) return Array.from(this, datum);
+      var bind = key ? bindKey : bindIndex, parents = this._parents, groups = this._groups;
+      if (typeof value2 !== "function") value2 = constant$3(value2);
+      for (var m = groups.length, update = new Array(m), enter = new Array(m), exit = new Array(m), j = 0; j < m; ++j) {
+        var parent = parents[j], group = groups[j], groupLength = group.length, data = arraylike(value2.call(parent, parent && parent.__data__, j, parents)), dataLength = data.length, enterGroup = enter[j] = new Array(dataLength), updateGroup = update[j] = new Array(dataLength), exitGroup = exit[j] = new Array(groupLength);
+        bind(parent, group, enterGroup, updateGroup, exitGroup, data, key);
+        for (var i0 = 0, i1 = 0, previous, next; i0 < dataLength; ++i0) {
+          if (previous = enterGroup[i0]) {
+            if (i0 >= i1) i1 = i0 + 1;
+            while (!(next = updateGroup[i1]) && ++i1 < dataLength) ;
+            previous._next = next || null;
+          }
+        }
+      }
+      update = new Selection$2(update, parents);
+      update._enter = enter;
+      update._exit = exit;
+      return update;
+    }
+    function arraylike(data) {
+      return typeof data === "object" && "length" in data ? data : Array.from(data);
+    }
+    function selection_exit() {
+      return new Selection$2(this._exit || this._groups.map(sparse), this._parents);
+    }
+    function selection_join(onenter, onupdate, onexit) {
+      var enter = this.enter(), update = this, exit = this.exit();
+      if (typeof onenter === "function") {
+        enter = onenter(enter);
+        if (enter) enter = enter.selection();
+      } else {
+        enter = enter.append(onenter + "");
+      }
+      if (onupdate != null) {
+        update = onupdate(update);
+        if (update) update = update.selection();
+      }
+      if (onexit == null) exit.remove();
+      else onexit(exit);
+      return enter && update ? enter.merge(update).order() : update;
+    }
+    function selection_merge(context) {
+      var selection2 = context.selection ? context.selection() : context;
+      for (var groups0 = this._groups, groups1 = selection2._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) {
+        for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge2 = merges[j] = new Array(n), node, i2 = 0; i2 < n; ++i2) {
+          if (node = group0[i2] || group1[i2]) {
+            merge2[i2] = node;
+          }
+        }
+      }
+      for (; j < m0; ++j) {
+        merges[j] = groups0[j];
+      }
+      return new Selection$2(merges, this._parents);
+    }
+    function selection_order() {
+      for (var groups = this._groups, j = -1, m = groups.length; ++j < m; ) {
+        for (var group = groups[j], i2 = group.length - 1, next = group[i2], node; --i2 >= 0; ) {
+          if (node = group[i2]) {
+            if (next && node.compareDocumentPosition(next) ^ 4) next.parentNode.insertBefore(node, next);
+            next = node;
+          }
+        }
+      }
+      return this;
+    }
+    function selection_sort(compare) {
+      if (!compare) compare = ascending;
+      function compareNode(a, b) {
+        return a && b ? compare(a.__data__, b.__data__) : !a - !b;
+      }
+      for (var groups = this._groups, m = groups.length, sortgroups = new Array(m), j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, sortgroup = sortgroups[j] = new Array(n), node, i2 = 0; i2 < n; ++i2) {
+          if (node = group[i2]) {
+            sortgroup[i2] = node;
+          }
+        }
+        sortgroup.sort(compareNode);
+      }
+      return new Selection$2(sortgroups, this._parents).order();
+    }
+    function ascending(a, b) {
+      return a < b ? -1 : a > b ? 1 : a >= b ? 0 : NaN;
+    }
+    function selection_call() {
+      var callback = arguments[0];
+      arguments[0] = this;
+      callback.apply(null, arguments);
+      return this;
+    }
+    function selection_nodes() {
+      return Array.from(this);
+    }
+    function selection_node() {
+      for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
+        for (var group = groups[j], i2 = 0, n = group.length; i2 < n; ++i2) {
+          var node = group[i2];
+          if (node) return node;
+        }
+      }
+      return null;
+    }
+    function selection_size() {
+      let size = 0;
+      for (const node of this) ++size;
+      return size;
+    }
+    function selection_empty() {
+      return !this.node();
+    }
+    function selection_each(callback) {
+      for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
+        for (var group = groups[j], i2 = 0, n = group.length, node; i2 < n; ++i2) {
+          if (node = group[i2]) callback.call(node, node.__data__, i2, group);
+        }
+      }
+      return this;
+    }
+    function attrRemove$1(name2) {
+      return function() {
+        this.removeAttribute(name2);
+      };
+    }
+    function attrRemoveNS$1(fullname) {
+      return function() {
+        this.removeAttributeNS(fullname.space, fullname.local);
+      };
+    }
+    function attrConstant$1(name2, value2) {
+      return function() {
+        this.setAttribute(name2, value2);
+      };
+    }
+    function attrConstantNS$1(fullname, value2) {
+      return function() {
+        this.setAttributeNS(fullname.space, fullname.local, value2);
+      };
+    }
+    function attrFunction$1(name2, value2) {
+      return function() {
+        var v = value2.apply(this, arguments);
+        if (v == null) this.removeAttribute(name2);
+        else this.setAttribute(name2, v);
+      };
+    }
+    function attrFunctionNS$1(fullname, value2) {
+      return function() {
+        var v = value2.apply(this, arguments);
+        if (v == null) this.removeAttributeNS(fullname.space, fullname.local);
+        else this.setAttributeNS(fullname.space, fullname.local, v);
+      };
+    }
+    function selection_attr(name2, value2) {
+      var fullname = namespace$1(name2);
+      if (arguments.length < 2) {
+        var node = this.node();
+        return fullname.local ? node.getAttributeNS(fullname.space, fullname.local) : node.getAttribute(fullname);
+      }
+      return this.each((value2 == null ? fullname.local ? attrRemoveNS$1 : attrRemove$1 : typeof value2 === "function" ? fullname.local ? attrFunctionNS$1 : attrFunction$1 : fullname.local ? attrConstantNS$1 : attrConstant$1)(fullname, value2));
+    }
+    function defaultView(node) {
+      return node.ownerDocument && node.ownerDocument.defaultView || node.document && node || node.defaultView;
+    }
+    function styleRemove$1(name2) {
+      return function() {
+        this.style.removeProperty(name2);
+      };
+    }
+    function styleConstant$1(name2, value2, priority) {
+      return function() {
+        this.style.setProperty(name2, value2, priority);
+      };
+    }
+    function styleFunction$1(name2, value2, priority) {
+      return function() {
+        var v = value2.apply(this, arguments);
+        if (v == null) this.style.removeProperty(name2);
+        else this.style.setProperty(name2, v, priority);
+      };
+    }
+    function selection_style(name2, value2, priority) {
+      return arguments.length > 1 ? this.each((value2 == null ? styleRemove$1 : typeof value2 === "function" ? styleFunction$1 : styleConstant$1)(name2, value2, priority == null ? "" : priority)) : styleValue(this.node(), name2);
+    }
+    function styleValue(node, name2) {
+      return node.style.getPropertyValue(name2) || defaultView(node).getComputedStyle(node, null).getPropertyValue(name2);
+    }
+    function propertyRemove(name2) {
+      return function() {
+        delete this[name2];
+      };
+    }
+    function propertyConstant(name2, value2) {
+      return function() {
+        this[name2] = value2;
+      };
+    }
+    function propertyFunction(name2, value2) {
+      return function() {
+        var v = value2.apply(this, arguments);
+        if (v == null) delete this[name2];
+        else this[name2] = v;
+      };
+    }
+    function selection_property(name2, value2) {
+      return arguments.length > 1 ? this.each((value2 == null ? propertyRemove : typeof value2 === "function" ? propertyFunction : propertyConstant)(name2, value2)) : this.node()[name2];
+    }
+    function classArray(string) {
+      return string.trim().split(/^|\s+/);
+    }
+    function classList(node) {
+      return node.classList || new ClassList(node);
+    }
+    function ClassList(node) {
+      this._node = node;
+      this._names = classArray(node.getAttribute("class") || "");
+    }
+    ClassList.prototype = {
+      add: function(name2) {
+        var i2 = this._names.indexOf(name2);
+        if (i2 < 0) {
+          this._names.push(name2);
+          this._node.setAttribute("class", this._names.join(" "));
+        }
+      },
+      remove: function(name2) {
+        var i2 = this._names.indexOf(name2);
+        if (i2 >= 0) {
+          this._names.splice(i2, 1);
+          this._node.setAttribute("class", this._names.join(" "));
+        }
+      },
+      contains: function(name2) {
+        return this._names.indexOf(name2) >= 0;
+      }
+    };
+    function classedAdd(node, names2) {
+      var list = classList(node), i2 = -1, n = names2.length;
+      while (++i2 < n) list.add(names2[i2]);
+    }
+    function classedRemove(node, names2) {
+      var list = classList(node), i2 = -1, n = names2.length;
+      while (++i2 < n) list.remove(names2[i2]);
+    }
+    function classedTrue(names2) {
+      return function() {
+        classedAdd(this, names2);
+      };
+    }
+    function classedFalse(names2) {
+      return function() {
+        classedRemove(this, names2);
+      };
+    }
+    function classedFunction(names2, value2) {
+      return function() {
+        (value2.apply(this, arguments) ? classedAdd : classedRemove)(this, names2);
+      };
+    }
+    function selection_classed(name2, value2) {
+      var names2 = classArray(name2 + "");
+      if (arguments.length < 2) {
+        var list = classList(this.node()), i2 = -1, n = names2.length;
+        while (++i2 < n) if (!list.contains(names2[i2])) return false;
+        return true;
+      }
+      return this.each((typeof value2 === "function" ? classedFunction : value2 ? classedTrue : classedFalse)(names2, value2));
+    }
+    function textRemove() {
+      this.textContent = "";
+    }
+    function textConstant$1(value2) {
+      return function() {
+        this.textContent = value2;
+      };
+    }
+    function textFunction$1(value2) {
+      return function() {
+        var v = value2.apply(this, arguments);
+        this.textContent = v == null ? "" : v;
+      };
+    }
+    function selection_text(value2) {
+      return arguments.length ? this.each(value2 == null ? textRemove : (typeof value2 === "function" ? textFunction$1 : textConstant$1)(value2)) : this.node().textContent;
+    }
+    function htmlRemove() {
+      this.innerHTML = "";
+    }
+    function htmlConstant(value2) {
+      return function() {
+        this.innerHTML = value2;
+      };
+    }
+    function htmlFunction(value2) {
+      return function() {
+        var v = value2.apply(this, arguments);
+        this.innerHTML = v == null ? "" : v;
+      };
+    }
+    function selection_html(value2) {
+      return arguments.length ? this.each(value2 == null ? htmlRemove : (typeof value2 === "function" ? htmlFunction : htmlConstant)(value2)) : this.node().innerHTML;
+    }
+    function raise() {
+      if (this.nextSibling) this.parentNode.appendChild(this);
+    }
+    function selection_raise() {
+      return this.each(raise);
+    }
+    function lower() {
+      if (this.previousSibling) this.parentNode.insertBefore(this, this.parentNode.firstChild);
+    }
+    function selection_lower() {
+      return this.each(lower);
+    }
+    function selection_append(name2) {
+      var create2 = typeof name2 === "function" ? name2 : creator(name2);
+      return this.select(function() {
+        return this.appendChild(create2.apply(this, arguments));
+      });
+    }
+    function constantNull() {
+      return null;
+    }
+    function selection_insert(name2, before) {
+      var create2 = typeof name2 === "function" ? name2 : creator(name2), select2 = before == null ? constantNull : typeof before === "function" ? before : selector(before);
+      return this.select(function() {
+        return this.insertBefore(create2.apply(this, arguments), select2.apply(this, arguments) || null);
+      });
+    }
+    function remove() {
+      var parent = this.parentNode;
+      if (parent) parent.removeChild(this);
+    }
+    function selection_remove() {
+      return this.each(remove);
+    }
+    function selection_cloneShallow() {
+      var clone2 = this.cloneNode(false), parent = this.parentNode;
+      return parent ? parent.insertBefore(clone2, this.nextSibling) : clone2;
+    }
+    function selection_cloneDeep() {
+      var clone2 = this.cloneNode(true), parent = this.parentNode;
+      return parent ? parent.insertBefore(clone2, this.nextSibling) : clone2;
+    }
+    function selection_clone(deep) {
+      return this.select(deep ? selection_cloneDeep : selection_cloneShallow);
+    }
+    function selection_datum(value2) {
+      return arguments.length ? this.property("__data__", value2) : this.node().__data__;
+    }
+    function contextListener(listener) {
+      return function(event) {
+        listener.call(this, event, this.__data__);
+      };
+    }
+    function parseTypenames$1(typenames) {
+      return typenames.trim().split(/^|\s+/).map(function(t) {
+        var name2 = "", i2 = t.indexOf(".");
+        if (i2 >= 0) name2 = t.slice(i2 + 1), t = t.slice(0, i2);
+        return { type: t, name: name2 };
+      });
+    }
+    function onRemove(typename) {
+      return function() {
+        var on = this.__on;
+        if (!on) return;
+        for (var j = 0, i2 = -1, m = on.length, o; j < m; ++j) {
+          if (o = on[j], (!typename.type || o.type === typename.type) && o.name === typename.name) {
+            this.removeEventListener(o.type, o.listener, o.options);
+          } else {
+            on[++i2] = o;
+          }
+        }
+        if (++i2) on.length = i2;
+        else delete this.__on;
+      };
+    }
+    function onAdd(typename, value2, options) {
+      return function() {
+        var on = this.__on, o, listener = contextListener(value2);
+        if (on) for (var j = 0, m = on.length; j < m; ++j) {
+          if ((o = on[j]).type === typename.type && o.name === typename.name) {
+            this.removeEventListener(o.type, o.listener, o.options);
+            this.addEventListener(o.type, o.listener = listener, o.options = options);
+            o.value = value2;
+            return;
+          }
+        }
+        this.addEventListener(typename.type, listener, options);
+        o = { type: typename.type, name: typename.name, value: value2, listener, options };
+        if (!on) this.__on = [o];
+        else on.push(o);
+      };
+    }
+    function selection_on(typename, value2, options) {
+      var typenames = parseTypenames$1(typename + ""), i2, n = typenames.length, t;
+      if (arguments.length < 2) {
+        var on = this.node().__on;
+        if (on) for (var j = 0, m = on.length, o; j < m; ++j) {
+          for (i2 = 0, o = on[j]; i2 < n; ++i2) {
+            if ((t = typenames[i2]).type === o.type && t.name === o.name) {
+              return o.value;
+            }
+          }
+        }
+        return;
+      }
+      on = value2 ? onAdd : onRemove;
+      for (i2 = 0; i2 < n; ++i2) this.each(on(typenames[i2], value2, options));
+      return this;
+    }
+    function dispatchEvent(node, type, params) {
+      var window2 = defaultView(node), event = window2.CustomEvent;
+      if (typeof event === "function") {
+        event = new event(type, params);
+      } else {
+        event = window2.document.createEvent("Event");
+        if (params) event.initEvent(type, params.bubbles, params.cancelable), event.detail = params.detail;
+        else event.initEvent(type, false, false);
+      }
+      node.dispatchEvent(event);
+    }
+    function dispatchConstant(type, params) {
+      return function() {
+        return dispatchEvent(this, type, params);
+      };
+    }
+    function dispatchFunction(type, params) {
+      return function() {
+        return dispatchEvent(this, type, params.apply(this, arguments));
+      };
+    }
+    function selection_dispatch(type, params) {
+      return this.each((typeof params === "function" ? dispatchFunction : dispatchConstant)(type, params));
+    }
+    function* selection_iterator() {
+      for (var groups = this._groups, j = 0, m = groups.length; j < m; ++j) {
+        for (var group = groups[j], i2 = 0, n = group.length, node; i2 < n; ++i2) {
+          if (node = group[i2]) yield node;
+        }
+      }
+    }
+    var root = [null];
+    function Selection$2(groups, parents) {
+      this._groups = groups;
+      this._parents = parents;
+    }
+    function selection() {
+      return new Selection$2([[document.documentElement]], root);
+    }
+    function selection_selection() {
+      return this;
+    }
+    Selection$2.prototype = selection.prototype = {
+      constructor: Selection$2,
+      select: selection_select,
+      selectAll: selection_selectAll,
+      selectChild: selection_selectChild,
+      selectChildren: selection_selectChildren,
+      filter: selection_filter,
+      data: selection_data,
+      enter: selection_enter,
+      exit: selection_exit,
+      join: selection_join,
+      merge: selection_merge,
+      selection: selection_selection,
+      order: selection_order,
+      sort: selection_sort,
+      call: selection_call,
+      nodes: selection_nodes,
+      node: selection_node,
+      size: selection_size,
+      empty: selection_empty,
+      each: selection_each,
+      attr: selection_attr,
+      style: selection_style,
+      property: selection_property,
+      classed: selection_classed,
+      text: selection_text,
+      html: selection_html,
+      raise: selection_raise,
+      lower: selection_lower,
+      append: selection_append,
+      insert: selection_insert,
+      remove: selection_remove,
+      clone: selection_clone,
+      datum: selection_datum,
+      on: selection_on,
+      dispatch: selection_dispatch,
+      [Symbol.iterator]: selection_iterator
+    };
+    function select(selector2) {
+      return typeof selector2 === "string" ? new Selection$2([[document.querySelector(selector2)]], [document.documentElement]) : new Selection$2([[selector2]], root);
+    }
+    function sourceEvent(event) {
+      let sourceEvent2;
+      while (sourceEvent2 = event.sourceEvent) event = sourceEvent2;
+      return event;
+    }
+    function pointer(event, node) {
+      event = sourceEvent(event);
+      if (node === void 0) node = event.currentTarget;
+      if (node) {
+        var svg = node.ownerSVGElement || node;
+        if (svg.createSVGPoint) {
+          var point = svg.createSVGPoint();
+          point.x = event.clientX, point.y = event.clientY;
+          point = point.matrixTransform(node.getScreenCTM().inverse());
+          return [point.x, point.y];
+        }
+        if (node.getBoundingClientRect) {
+          var rect = node.getBoundingClientRect();
+          return [event.clientX - rect.left - node.clientLeft, event.clientY - rect.top - node.clientTop];
+        }
+      }
+      return [event.pageX, event.pageY];
+    }
+    var noop = { value: () => {
+    } };
+    function dispatch() {
+      for (var i2 = 0, n = arguments.length, _ = {}, t; i2 < n; ++i2) {
+        if (!(t = arguments[i2] + "") || t in _ || /[\s.]/.test(t)) throw new Error("illegal type: " + t);
+        _[t] = [];
+      }
+      return new Dispatch(_);
+    }
+    function Dispatch(_) {
+      this._ = _;
+    }
+    function parseTypenames(typenames, types) {
+      return typenames.trim().split(/^|\s+/).map(function(t) {
+        var name2 = "", i2 = t.indexOf(".");
+        if (i2 >= 0) name2 = t.slice(i2 + 1), t = t.slice(0, i2);
+        if (t && !types.hasOwnProperty(t)) throw new Error("unknown type: " + t);
+        return { type: t, name: name2 };
+      });
+    }
+    Dispatch.prototype = dispatch.prototype = {
+      constructor: Dispatch,
+      on: function(typename, callback) {
+        var _ = this._, T = parseTypenames(typename + "", _), t, i2 = -1, n = T.length;
+        if (arguments.length < 2) {
+          while (++i2 < n) if ((t = (typename = T[i2]).type) && (t = get$1(_[t], typename.name))) return t;
+          return;
+        }
+        if (callback != null && typeof callback !== "function") throw new Error("invalid callback: " + callback);
+        while (++i2 < n) {
+          if (t = (typename = T[i2]).type) _[t] = set$1(_[t], typename.name, callback);
+          else if (callback == null) for (t in _) _[t] = set$1(_[t], typename.name, null);
+        }
+        return this;
+      },
+      copy: function() {
+        var copy = {}, _ = this._;
+        for (var t in _) copy[t] = _[t].slice();
+        return new Dispatch(copy);
+      },
+      call: function(type, that) {
+        if ((n = arguments.length - 2) > 0) for (var args = new Array(n), i2 = 0, n, t; i2 < n; ++i2) args[i2] = arguments[i2 + 2];
+        if (!this._.hasOwnProperty(type)) throw new Error("unknown type: " + type);
+        for (t = this._[type], i2 = 0, n = t.length; i2 < n; ++i2) t[i2].value.apply(that, args);
+      },
+      apply: function(type, that, args) {
+        if (!this._.hasOwnProperty(type)) throw new Error("unknown type: " + type);
+        for (var t = this._[type], i2 = 0, n = t.length; i2 < n; ++i2) t[i2].value.apply(that, args);
+      }
+    };
+    function get$1(type, name2) {
+      for (var i2 = 0, n = type.length, c; i2 < n; ++i2) {
+        if ((c = type[i2]).name === name2) {
+          return c.value;
+        }
+      }
+    }
+    function set$1(type, name2, callback) {
+      for (var i2 = 0, n = type.length; i2 < n; ++i2) {
+        if (type[i2].name === name2) {
+          type[i2] = noop, type = type.slice(0, i2).concat(type.slice(i2 + 1));
+          break;
+        }
+      }
+      if (callback != null) type.push({ name: name2, value: callback });
+      return type;
+    }
+    const nonpassivecapture = { capture: true, passive: false };
+    function noevent$1(event) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+    function dragDisable(view) {
+      var root2 = view.document.documentElement, selection2 = select(view).on("dragstart.drag", noevent$1, nonpassivecapture);
+      if ("onselectstart" in root2) {
+        selection2.on("selectstart.drag", noevent$1, nonpassivecapture);
+      } else {
+        root2.__noselect = root2.style.MozUserSelect;
+        root2.style.MozUserSelect = "none";
+      }
+    }
+    function yesdrag(view, noclick) {
+      var root2 = view.document.documentElement, selection2 = select(view).on("dragstart.drag", null);
+      if (noclick) {
+        selection2.on("click.drag", noevent$1, nonpassivecapture);
+        setTimeout(function() {
+          selection2.on("click.drag", null);
+        }, 0);
+      }
+      if ("onselectstart" in root2) {
+        selection2.on("selectstart.drag", null);
+      } else {
+        root2.style.MozUserSelect = root2.__noselect;
+        delete root2.__noselect;
+      }
+    }
+    function define(constructor, factory, prototype) {
+      constructor.prototype = factory.prototype = prototype;
+      prototype.constructor = constructor;
+    }
+    function extend(parent, definition) {
+      var prototype = Object.create(parent.prototype);
+      for (var key in definition) prototype[key] = definition[key];
+      return prototype;
+    }
+    function Color() {
+    }
+    var darker = 0.7;
+    var brighter = 1 / darker;
+    var reI = "\\s*([+-]?\\d+)\\s*", reN = "\\s*([+-]?(?:\\d*\\.)?\\d+(?:[eE][+-]?\\d+)?)\\s*", reP = "\\s*([+-]?(?:\\d*\\.)?\\d+(?:[eE][+-]?\\d+)?)%\\s*", reHex = /^#([0-9a-f]{3,8})$/, reRgbInteger = new RegExp(`^rgb\\(${reI},${reI},${reI}\\)$`), reRgbPercent = new RegExp(`^rgb\\(${reP},${reP},${reP}\\)$`), reRgbaInteger = new RegExp(`^rgba\\(${reI},${reI},${reI},${reN}\\)$`), reRgbaPercent = new RegExp(`^rgba\\(${reP},${reP},${reP},${reN}\\)$`), reHslPercent = new RegExp(`^hsl\\(${reN},${reP},${reP}\\)$`), reHslaPercent = new RegExp(`^hsla\\(${reN},${reP},${reP},${reN}\\)$`);
+    var named = {
+      aliceblue: 15792383,
+      antiquewhite: 16444375,
+      aqua: 65535,
+      aquamarine: 8388564,
+      azure: 15794175,
+      beige: 16119260,
+      bisque: 16770244,
+      black: 0,
+      blanchedalmond: 16772045,
+      blue: 255,
+      blueviolet: 9055202,
+      brown: 10824234,
+      burlywood: 14596231,
+      cadetblue: 6266528,
+      chartreuse: 8388352,
+      chocolate: 13789470,
+      coral: 16744272,
+      cornflowerblue: 6591981,
+      cornsilk: 16775388,
+      crimson: 14423100,
+      cyan: 65535,
+      darkblue: 139,
+      darkcyan: 35723,
+      darkgoldenrod: 12092939,
+      darkgray: 11119017,
+      darkgreen: 25600,
+      darkgrey: 11119017,
+      darkkhaki: 12433259,
+      darkmagenta: 9109643,
+      darkolivegreen: 5597999,
+      darkorange: 16747520,
+      darkorchid: 10040012,
+      darkred: 9109504,
+      darksalmon: 15308410,
+      darkseagreen: 9419919,
+      darkslateblue: 4734347,
+      darkslategray: 3100495,
+      darkslategrey: 3100495,
+      darkturquoise: 52945,
+      darkviolet: 9699539,
+      deeppink: 16716947,
+      deepskyblue: 49151,
+      dimgray: 6908265,
+      dimgrey: 6908265,
+      dodgerblue: 2003199,
+      firebrick: 11674146,
+      floralwhite: 16775920,
+      forestgreen: 2263842,
+      fuchsia: 16711935,
+      gainsboro: 14474460,
+      ghostwhite: 16316671,
+      gold: 16766720,
+      goldenrod: 14329120,
+      gray: 8421504,
+      green: 32768,
+      greenyellow: 11403055,
+      grey: 8421504,
+      honeydew: 15794160,
+      hotpink: 16738740,
+      indianred: 13458524,
+      indigo: 4915330,
+      ivory: 16777200,
+      khaki: 15787660,
+      lavender: 15132410,
+      lavenderblush: 16773365,
+      lawngreen: 8190976,
+      lemonchiffon: 16775885,
+      lightblue: 11393254,
+      lightcoral: 15761536,
+      lightcyan: 14745599,
+      lightgoldenrodyellow: 16448210,
+      lightgray: 13882323,
+      lightgreen: 9498256,
+      lightgrey: 13882323,
+      lightpink: 16758465,
+      lightsalmon: 16752762,
+      lightseagreen: 2142890,
+      lightskyblue: 8900346,
+      lightslategray: 7833753,
+      lightslategrey: 7833753,
+      lightsteelblue: 11584734,
+      lightyellow: 16777184,
+      lime: 65280,
+      limegreen: 3329330,
+      linen: 16445670,
+      magenta: 16711935,
+      maroon: 8388608,
+      mediumaquamarine: 6737322,
+      mediumblue: 205,
+      mediumorchid: 12211667,
+      mediumpurple: 9662683,
+      mediumseagreen: 3978097,
+      mediumslateblue: 8087790,
+      mediumspringgreen: 64154,
+      mediumturquoise: 4772300,
+      mediumvioletred: 13047173,
+      midnightblue: 1644912,
+      mintcream: 16121850,
+      mistyrose: 16770273,
+      moccasin: 16770229,
+      navajowhite: 16768685,
+      navy: 128,
+      oldlace: 16643558,
+      olive: 8421376,
+      olivedrab: 7048739,
+      orange: 16753920,
+      orangered: 16729344,
+      orchid: 14315734,
+      palegoldenrod: 15657130,
+      palegreen: 10025880,
+      paleturquoise: 11529966,
+      palevioletred: 14381203,
+      papayawhip: 16773077,
+      peachpuff: 16767673,
+      peru: 13468991,
+      pink: 16761035,
+      plum: 14524637,
+      powderblue: 11591910,
+      purple: 8388736,
+      rebeccapurple: 6697881,
+      red: 16711680,
+      rosybrown: 12357519,
+      royalblue: 4286945,
+      saddlebrown: 9127187,
+      salmon: 16416882,
+      sandybrown: 16032864,
+      seagreen: 3050327,
+      seashell: 16774638,
+      sienna: 10506797,
+      silver: 12632256,
+      skyblue: 8900331,
+      slateblue: 6970061,
+      slategray: 7372944,
+      slategrey: 7372944,
+      snow: 16775930,
+      springgreen: 65407,
+      steelblue: 4620980,
+      tan: 13808780,
+      teal: 32896,
+      thistle: 14204888,
+      tomato: 16737095,
+      turquoise: 4251856,
+      violet: 15631086,
+      wheat: 16113331,
+      white: 16777215,
+      whitesmoke: 16119285,
+      yellow: 16776960,
+      yellowgreen: 10145074
+    };
+    define(Color, color, {
+      copy(channels) {
+        return Object.assign(new this.constructor(), this, channels);
+      },
+      displayable() {
+        return this.rgb().displayable();
+      },
+      hex: color_formatHex,
+      // Deprecated! Use color.formatHex.
+      formatHex: color_formatHex,
+      formatHex8: color_formatHex8,
+      formatHsl: color_formatHsl,
+      formatRgb: color_formatRgb,
+      toString: color_formatRgb
+    });
+    function color_formatHex() {
+      return this.rgb().formatHex();
+    }
+    function color_formatHex8() {
+      return this.rgb().formatHex8();
+    }
+    function color_formatHsl() {
+      return hslConvert(this).formatHsl();
+    }
+    function color_formatRgb() {
+      return this.rgb().formatRgb();
+    }
+    function color(format) {
+      var m, l;
+      format = (format + "").trim().toLowerCase();
+      return (m = reHex.exec(format)) ? (l = m[1].length, m = parseInt(m[1], 16), l === 6 ? rgbn(m) : l === 3 ? new Rgb(m >> 8 & 15 | m >> 4 & 240, m >> 4 & 15 | m & 240, (m & 15) << 4 | m & 15, 1) : l === 8 ? rgba(m >> 24 & 255, m >> 16 & 255, m >> 8 & 255, (m & 255) / 255) : l === 4 ? rgba(m >> 12 & 15 | m >> 8 & 240, m >> 8 & 15 | m >> 4 & 240, m >> 4 & 15 | m & 240, ((m & 15) << 4 | m & 15) / 255) : null) : (m = reRgbInteger.exec(format)) ? new Rgb(m[1], m[2], m[3], 1) : (m = reRgbPercent.exec(format)) ? new Rgb(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, 1) : (m = reRgbaInteger.exec(format)) ? rgba(m[1], m[2], m[3], m[4]) : (m = reRgbaPercent.exec(format)) ? rgba(m[1] * 255 / 100, m[2] * 255 / 100, m[3] * 255 / 100, m[4]) : (m = reHslPercent.exec(format)) ? hsla(m[1], m[2] / 100, m[3] / 100, 1) : (m = reHslaPercent.exec(format)) ? hsla(m[1], m[2] / 100, m[3] / 100, m[4]) : named.hasOwnProperty(format) ? rgbn(named[format]) : format === "transparent" ? new Rgb(NaN, NaN, NaN, 0) : null;
+    }
+    function rgbn(n) {
+      return new Rgb(n >> 16 & 255, n >> 8 & 255, n & 255, 1);
+    }
+    function rgba(r, g, b, a) {
+      if (a <= 0) r = g = b = NaN;
+      return new Rgb(r, g, b, a);
+    }
+    function rgbConvert(o) {
+      if (!(o instanceof Color)) o = color(o);
+      if (!o) return new Rgb();
+      o = o.rgb();
+      return new Rgb(o.r, o.g, o.b, o.opacity);
+    }
+    function rgb(r, g, b, opacity) {
+      return arguments.length === 1 ? rgbConvert(r) : new Rgb(r, g, b, opacity == null ? 1 : opacity);
+    }
+    function Rgb(r, g, b, opacity) {
+      this.r = +r;
+      this.g = +g;
+      this.b = +b;
+      this.opacity = +opacity;
+    }
+    define(Rgb, rgb, extend(Color, {
+      brighter(k) {
+        k = k == null ? brighter : Math.pow(brighter, k);
+        return new Rgb(this.r * k, this.g * k, this.b * k, this.opacity);
+      },
+      darker(k) {
+        k = k == null ? darker : Math.pow(darker, k);
+        return new Rgb(this.r * k, this.g * k, this.b * k, this.opacity);
+      },
+      rgb() {
+        return this;
+      },
+      clamp() {
+        return new Rgb(clampi(this.r), clampi(this.g), clampi(this.b), clampa(this.opacity));
+      },
+      displayable() {
+        return -0.5 <= this.r && this.r < 255.5 && (-0.5 <= this.g && this.g < 255.5) && (-0.5 <= this.b && this.b < 255.5) && (0 <= this.opacity && this.opacity <= 1);
+      },
+      hex: rgb_formatHex,
+      // Deprecated! Use color.formatHex.
+      formatHex: rgb_formatHex,
+      formatHex8: rgb_formatHex8,
+      formatRgb: rgb_formatRgb,
+      toString: rgb_formatRgb
+    }));
+    function rgb_formatHex() {
+      return `#${hex(this.r)}${hex(this.g)}${hex(this.b)}`;
+    }
+    function rgb_formatHex8() {
+      return `#${hex(this.r)}${hex(this.g)}${hex(this.b)}${hex((isNaN(this.opacity) ? 1 : this.opacity) * 255)}`;
+    }
+    function rgb_formatRgb() {
+      const a = clampa(this.opacity);
+      return `${a === 1 ? "rgb(" : "rgba("}${clampi(this.r)}, ${clampi(this.g)}, ${clampi(this.b)}${a === 1 ? ")" : `, ${a})`}`;
+    }
+    function clampa(opacity) {
+      return isNaN(opacity) ? 1 : Math.max(0, Math.min(1, opacity));
+    }
+    function clampi(value2) {
+      return Math.max(0, Math.min(255, Math.round(value2) || 0));
+    }
+    function hex(value2) {
+      value2 = clampi(value2);
+      return (value2 < 16 ? "0" : "") + value2.toString(16);
+    }
+    function hsla(h, s, l, a) {
+      if (a <= 0) h = s = l = NaN;
+      else if (l <= 0 || l >= 1) h = s = NaN;
+      else if (s <= 0) h = NaN;
+      return new Hsl(h, s, l, a);
+    }
+    function hslConvert(o) {
+      if (o instanceof Hsl) return new Hsl(o.h, o.s, o.l, o.opacity);
+      if (!(o instanceof Color)) o = color(o);
+      if (!o) return new Hsl();
+      if (o instanceof Hsl) return o;
+      o = o.rgb();
+      var r = o.r / 255, g = o.g / 255, b = o.b / 255, min2 = Math.min(r, g, b), max2 = Math.max(r, g, b), h = NaN, s = max2 - min2, l = (max2 + min2) / 2;
+      if (s) {
+        if (r === max2) h = (g - b) / s + (g < b) * 6;
+        else if (g === max2) h = (b - r) / s + 2;
+        else h = (r - g) / s + 4;
+        s /= l < 0.5 ? max2 + min2 : 2 - max2 - min2;
+        h *= 60;
+      } else {
+        s = l > 0 && l < 1 ? 0 : h;
+      }
+      return new Hsl(h, s, l, o.opacity);
+    }
+    function hsl(h, s, l, opacity) {
+      return arguments.length === 1 ? hslConvert(h) : new Hsl(h, s, l, opacity == null ? 1 : opacity);
+    }
+    function Hsl(h, s, l, opacity) {
+      this.h = +h;
+      this.s = +s;
+      this.l = +l;
+      this.opacity = +opacity;
+    }
+    define(Hsl, hsl, extend(Color, {
+      brighter(k) {
+        k = k == null ? brighter : Math.pow(brighter, k);
+        return new Hsl(this.h, this.s, this.l * k, this.opacity);
+      },
+      darker(k) {
+        k = k == null ? darker : Math.pow(darker, k);
+        return new Hsl(this.h, this.s, this.l * k, this.opacity);
+      },
+      rgb() {
+        var h = this.h % 360 + (this.h < 0) * 360, s = isNaN(h) || isNaN(this.s) ? 0 : this.s, l = this.l, m2 = l + (l < 0.5 ? l : 1 - l) * s, m1 = 2 * l - m2;
+        return new Rgb(
+          hsl2rgb(h >= 240 ? h - 240 : h + 120, m1, m2),
+          hsl2rgb(h, m1, m2),
+          hsl2rgb(h < 120 ? h + 240 : h - 120, m1, m2),
+          this.opacity
+        );
+      },
+      clamp() {
+        return new Hsl(clamph(this.h), clampt(this.s), clampt(this.l), clampa(this.opacity));
+      },
+      displayable() {
+        return (0 <= this.s && this.s <= 1 || isNaN(this.s)) && (0 <= this.l && this.l <= 1) && (0 <= this.opacity && this.opacity <= 1);
+      },
+      formatHsl() {
+        const a = clampa(this.opacity);
+        return `${a === 1 ? "hsl(" : "hsla("}${clamph(this.h)}, ${clampt(this.s) * 100}%, ${clampt(this.l) * 100}%${a === 1 ? ")" : `, ${a})`}`;
+      }
+    }));
+    function clamph(value2) {
+      value2 = (value2 || 0) % 360;
+      return value2 < 0 ? value2 + 360 : value2;
+    }
+    function clampt(value2) {
+      return Math.max(0, Math.min(1, value2 || 0));
+    }
+    function hsl2rgb(h, m1, m2) {
+      return (h < 60 ? m1 + (m2 - m1) * h / 60 : h < 180 ? m2 : h < 240 ? m1 + (m2 - m1) * (240 - h) / 60 : m1) * 255;
+    }
+    const constant$2 = (x2) => () => x2;
+    function linear(a, d) {
+      return function(t) {
+        return a + t * d;
+      };
+    }
+    function exponential(a, b, y2) {
+      return a = Math.pow(a, y2), b = Math.pow(b, y2) - a, y2 = 1 / y2, function(t) {
+        return Math.pow(a + t * b, y2);
+      };
+    }
+    function gamma(y2) {
+      return (y2 = +y2) === 1 ? nogamma : function(a, b) {
+        return b - a ? exponential(a, b, y2) : constant$2(isNaN(a) ? b : a);
+      };
+    }
+    function nogamma(a, b) {
+      var d = b - a;
+      return d ? linear(a, d) : constant$2(isNaN(a) ? b : a);
+    }
+    const interpolateRgb = function rgbGamma(y2) {
+      var color2 = gamma(y2);
+      function rgb$1(start2, end) {
+        var r = color2((start2 = rgb(start2)).r, (end = rgb(end)).r), g = color2(start2.g, end.g), b = color2(start2.b, end.b), opacity = nogamma(start2.opacity, end.opacity);
+        return function(t) {
+          start2.r = r(t);
+          start2.g = g(t);
+          start2.b = b(t);
+          start2.opacity = opacity(t);
+          return start2 + "";
+        };
+      }
+      rgb$1.gamma = rgbGamma;
+      return rgb$1;
+    }(1);
+    function interpolateNumber(a, b) {
+      return a = +a, b = +b, function(t) {
+        return a * (1 - t) + b * t;
+      };
+    }
+    var reA = /[-+]?(?:\d+\.?\d*|\.?\d+)(?:[eE][-+]?\d+)?/g, reB = new RegExp(reA.source, "g");
+    function zero(b) {
+      return function() {
+        return b;
+      };
+    }
+    function one(b) {
+      return function(t) {
+        return b(t) + "";
+      };
+    }
+    function interpolateString(a, b) {
+      var bi = reA.lastIndex = reB.lastIndex = 0, am, bm, bs, i2 = -1, s = [], q = [];
+      a = a + "", b = b + "";
+      while ((am = reA.exec(a)) && (bm = reB.exec(b))) {
+        if ((bs = bm.index) > bi) {
+          bs = b.slice(bi, bs);
+          if (s[i2]) s[i2] += bs;
+          else s[++i2] = bs;
+        }
+        if ((am = am[0]) === (bm = bm[0])) {
+          if (s[i2]) s[i2] += bm;
+          else s[++i2] = bm;
+        } else {
+          s[++i2] = null;
+          q.push({ i: i2, x: interpolateNumber(am, bm) });
+        }
+        bi = reB.lastIndex;
+      }
+      if (bi < b.length) {
+        bs = b.slice(bi);
+        if (s[i2]) s[i2] += bs;
+        else s[++i2] = bs;
+      }
+      return s.length < 2 ? q[0] ? one(q[0].x) : zero(b) : (b = q.length, function(t) {
+        for (var i3 = 0, o; i3 < b; ++i3) s[(o = q[i3]).i] = o.x(t);
+        return s.join("");
+      });
+    }
+    var degrees = 180 / Math.PI;
+    var identity$1 = {
+      translateX: 0,
+      translateY: 0,
+      rotate: 0,
+      skewX: 0,
+      scaleX: 1,
+      scaleY: 1
+    };
+    function decompose(a, b, c, d, e, f) {
+      var scaleX, scaleY, skewX;
+      if (scaleX = Math.sqrt(a * a + b * b)) a /= scaleX, b /= scaleX;
+      if (skewX = a * c + b * d) c -= a * skewX, d -= b * skewX;
+      if (scaleY = Math.sqrt(c * c + d * d)) c /= scaleY, d /= scaleY, skewX /= scaleY;
+      if (a * d < b * c) a = -a, b = -b, skewX = -skewX, scaleX = -scaleX;
+      return {
+        translateX: e,
+        translateY: f,
+        rotate: Math.atan2(b, a) * degrees,
+        skewX: Math.atan(skewX) * degrees,
+        scaleX,
+        scaleY
+      };
+    }
+    var svgNode;
+    function parseCss(value2) {
+      const m = new (typeof DOMMatrix === "function" ? DOMMatrix : WebKitCSSMatrix)(value2 + "");
+      return m.isIdentity ? identity$1 : decompose(m.a, m.b, m.c, m.d, m.e, m.f);
+    }
+    function parseSvg(value2) {
+      if (value2 == null) return identity$1;
+      if (!svgNode) svgNode = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      svgNode.setAttribute("transform", value2);
+      if (!(value2 = svgNode.transform.baseVal.consolidate())) return identity$1;
+      value2 = value2.matrix;
+      return decompose(value2.a, value2.b, value2.c, value2.d, value2.e, value2.f);
+    }
+    function interpolateTransform(parse, pxComma, pxParen, degParen) {
+      function pop(s) {
+        return s.length ? s.pop() + " " : "";
+      }
+      function translate(xa, ya, xb, yb, s, q) {
+        if (xa !== xb || ya !== yb) {
+          var i2 = s.push("translate(", null, pxComma, null, pxParen);
+          q.push({ i: i2 - 4, x: interpolateNumber(xa, xb) }, { i: i2 - 2, x: interpolateNumber(ya, yb) });
+        } else if (xb || yb) {
+          s.push("translate(" + xb + pxComma + yb + pxParen);
+        }
+      }
+      function rotate(a, b, s, q) {
+        if (a !== b) {
+          if (a - b > 180) b += 360;
+          else if (b - a > 180) a += 360;
+          q.push({ i: s.push(pop(s) + "rotate(", null, degParen) - 2, x: interpolateNumber(a, b) });
+        } else if (b) {
+          s.push(pop(s) + "rotate(" + b + degParen);
+        }
+      }
+      function skewX(a, b, s, q) {
+        if (a !== b) {
+          q.push({ i: s.push(pop(s) + "skewX(", null, degParen) - 2, x: interpolateNumber(a, b) });
+        } else if (b) {
+          s.push(pop(s) + "skewX(" + b + degParen);
+        }
+      }
+      function scale(xa, ya, xb, yb, s, q) {
+        if (xa !== xb || ya !== yb) {
+          var i2 = s.push(pop(s) + "scale(", null, ",", null, ")");
+          q.push({ i: i2 - 4, x: interpolateNumber(xa, xb) }, { i: i2 - 2, x: interpolateNumber(ya, yb) });
+        } else if (xb !== 1 || yb !== 1) {
+          s.push(pop(s) + "scale(" + xb + "," + yb + ")");
+        }
+      }
+      return function(a, b) {
+        var s = [], q = [];
+        a = parse(a), b = parse(b);
+        translate(a.translateX, a.translateY, b.translateX, b.translateY, s, q);
+        rotate(a.rotate, b.rotate, s, q);
+        skewX(a.skewX, b.skewX, s, q);
+        scale(a.scaleX, a.scaleY, b.scaleX, b.scaleY, s, q);
+        a = b = null;
+        return function(t) {
+          var i2 = -1, n = q.length, o;
+          while (++i2 < n) s[(o = q[i2]).i] = o.x(t);
+          return s.join("");
+        };
+      };
+    }
+    var interpolateTransformCss = interpolateTransform(parseCss, "px, ", "px)", "deg)");
+    var interpolateTransformSvg = interpolateTransform(parseSvg, ", ", ")", ")");
+    var epsilon2 = 1e-12;
+    function cosh(x2) {
+      return ((x2 = Math.exp(x2)) + 1 / x2) / 2;
+    }
+    function sinh(x2) {
+      return ((x2 = Math.exp(x2)) - 1 / x2) / 2;
+    }
+    function tanh(x2) {
+      return ((x2 = Math.exp(2 * x2)) - 1) / (x2 + 1);
+    }
+    const interpolateZoom = function zoomRho(rho, rho2, rho4) {
+      function zoom(p0, p1) {
+        var ux0 = p0[0], uy0 = p0[1], w0 = p0[2], ux1 = p1[0], uy1 = p1[1], w1 = p1[2], dx = ux1 - ux0, dy = uy1 - uy0, d2 = dx * dx + dy * dy, i2, S;
+        if (d2 < epsilon2) {
+          S = Math.log(w1 / w0) / rho;
+          i2 = function(t) {
+            return [
+              ux0 + t * dx,
+              uy0 + t * dy,
+              w0 * Math.exp(rho * t * S)
+            ];
+          };
+        } else {
+          var d1 = Math.sqrt(d2), b0 = (w1 * w1 - w0 * w0 + rho4 * d2) / (2 * w0 * rho2 * d1), b1 = (w1 * w1 - w0 * w0 - rho4 * d2) / (2 * w1 * rho2 * d1), r0 = Math.log(Math.sqrt(b0 * b0 + 1) - b0), r1 = Math.log(Math.sqrt(b1 * b1 + 1) - b1);
+          S = (r1 - r0) / rho;
+          i2 = function(t) {
+            var s = t * S, coshr0 = cosh(r0), u = w0 / (rho2 * d1) * (coshr0 * tanh(rho * s + r0) - sinh(r0));
+            return [
+              ux0 + u * dx,
+              uy0 + u * dy,
+              w0 * coshr0 / cosh(rho * s + r0)
+            ];
+          };
+        }
+        i2.duration = S * 1e3 * rho / Math.SQRT2;
+        return i2;
+      }
+      zoom.rho = function(_) {
+        var _1 = Math.max(1e-3, +_), _2 = _1 * _1, _4 = _2 * _2;
+        return zoomRho(_1, _2, _4);
+      };
+      return zoom;
+    }(Math.SQRT2, 2, 4);
+    var frame = 0, timeout$1 = 0, interval = 0, pokeDelay = 1e3, taskHead, taskTail, clockLast = 0, clockNow = 0, clockSkew = 0, clock = typeof performance === "object" && performance.now ? performance : Date, setFrame = typeof window === "object" && window.requestAnimationFrame ? window.requestAnimationFrame.bind(window) : function(f) {
+      setTimeout(f, 17);
+    };
+    function now() {
+      return clockNow || (setFrame(clearNow), clockNow = clock.now() + clockSkew);
+    }
+    function clearNow() {
+      clockNow = 0;
+    }
+    function Timer() {
+      this._call = this._time = this._next = null;
+    }
+    Timer.prototype = timer.prototype = {
+      constructor: Timer,
+      restart: function(callback, delay, time) {
+        if (typeof callback !== "function") throw new TypeError("callback is not a function");
+        time = (time == null ? now() : +time) + (delay == null ? 0 : +delay);
+        if (!this._next && taskTail !== this) {
+          if (taskTail) taskTail._next = this;
+          else taskHead = this;
+          taskTail = this;
+        }
+        this._call = callback;
+        this._time = time;
+        sleep();
+      },
+      stop: function() {
+        if (this._call) {
+          this._call = null;
+          this._time = Infinity;
+          sleep();
+        }
+      }
+    };
+    function timer(callback, delay, time) {
+      var t = new Timer();
+      t.restart(callback, delay, time);
+      return t;
+    }
+    function timerFlush() {
+      now();
+      ++frame;
+      var t = taskHead, e;
+      while (t) {
+        if ((e = clockNow - t._time) >= 0) t._call.call(void 0, e);
+        t = t._next;
+      }
+      --frame;
+    }
+    function wake() {
+      clockNow = (clockLast = clock.now()) + clockSkew;
+      frame = timeout$1 = 0;
+      try {
+        timerFlush();
+      } finally {
+        frame = 0;
+        nap();
+        clockNow = 0;
+      }
+    }
+    function poke() {
+      var now2 = clock.now(), delay = now2 - clockLast;
+      if (delay > pokeDelay) clockSkew -= delay, clockLast = now2;
+    }
+    function nap() {
+      var t0, t1 = taskHead, t2, time = Infinity;
+      while (t1) {
+        if (t1._call) {
+          if (time > t1._time) time = t1._time;
+          t0 = t1, t1 = t1._next;
+        } else {
+          t2 = t1._next, t1._next = null;
+          t1 = t0 ? t0._next = t2 : taskHead = t2;
+        }
+      }
+      taskTail = t0;
+      sleep(time);
+    }
+    function sleep(time) {
+      if (frame) return;
+      if (timeout$1) timeout$1 = clearTimeout(timeout$1);
+      var delay = time - clockNow;
+      if (delay > 24) {
+        if (time < Infinity) timeout$1 = setTimeout(wake, time - clock.now() - clockSkew);
+        if (interval) interval = clearInterval(interval);
+      } else {
+        if (!interval) clockLast = clock.now(), interval = setInterval(poke, pokeDelay);
+        frame = 1, setFrame(wake);
+      }
+    }
+    function timeout(callback, delay, time) {
+      var t = new Timer();
+      delay = delay == null ? 0 : +delay;
+      t.restart((elapsed) => {
+        t.stop();
+        callback(elapsed + delay);
+      }, delay, time);
+      return t;
+    }
+    var emptyOn = dispatch("start", "end", "cancel", "interrupt");
+    var emptyTween = [];
+    var CREATED = 0;
+    var SCHEDULED = 1;
+    var STARTING = 2;
+    var STARTED = 3;
+    var RUNNING = 4;
+    var ENDING = 5;
+    var ENDED = 6;
+    function schedule(node, name2, id2, index, group, timing) {
+      var schedules = node.__transition;
+      if (!schedules) node.__transition = {};
+      else if (id2 in schedules) return;
+      create(node, id2, {
+        name: name2,
+        index,
+        // For context during callback.
+        group,
+        // For context during callback.
+        on: emptyOn,
+        tween: emptyTween,
+        time: timing.time,
+        delay: timing.delay,
+        duration: timing.duration,
+        ease: timing.ease,
+        timer: null,
+        state: CREATED
+      });
+    }
+    function init(node, id2) {
+      var schedule2 = get(node, id2);
+      if (schedule2.state > CREATED) throw new Error("too late; already scheduled");
+      return schedule2;
+    }
+    function set(node, id2) {
+      var schedule2 = get(node, id2);
+      if (schedule2.state > STARTED) throw new Error("too late; already running");
+      return schedule2;
+    }
+    function get(node, id2) {
+      var schedule2 = node.__transition;
+      if (!schedule2 || !(schedule2 = schedule2[id2])) throw new Error("transition not found");
+      return schedule2;
+    }
+    function create(node, id2, self2) {
+      var schedules = node.__transition, tween;
+      schedules[id2] = self2;
+      self2.timer = timer(schedule2, 0, self2.time);
+      function schedule2(elapsed) {
+        self2.state = SCHEDULED;
+        self2.timer.restart(start2, self2.delay, self2.time);
+        if (self2.delay <= elapsed) start2(elapsed - self2.delay);
+      }
+      function start2(elapsed) {
+        var i2, j, n, o;
+        if (self2.state !== SCHEDULED) return stop();
+        for (i2 in schedules) {
+          o = schedules[i2];
+          if (o.name !== self2.name) continue;
+          if (o.state === STARTED) return timeout(start2);
+          if (o.state === RUNNING) {
+            o.state = ENDED;
+            o.timer.stop();
+            o.on.call("interrupt", node, node.__data__, o.index, o.group);
+            delete schedules[i2];
+          } else if (+i2 < id2) {
+            o.state = ENDED;
+            o.timer.stop();
+            o.on.call("cancel", node, node.__data__, o.index, o.group);
+            delete schedules[i2];
+          }
+        }
+        timeout(function() {
+          if (self2.state === STARTED) {
+            self2.state = RUNNING;
+            self2.timer.restart(tick, self2.delay, self2.time);
+            tick(elapsed);
+          }
+        });
+        self2.state = STARTING;
+        self2.on.call("start", node, node.__data__, self2.index, self2.group);
+        if (self2.state !== STARTING) return;
+        self2.state = STARTED;
+        tween = new Array(n = self2.tween.length);
+        for (i2 = 0, j = -1; i2 < n; ++i2) {
+          if (o = self2.tween[i2].value.call(node, node.__data__, self2.index, self2.group)) {
+            tween[++j] = o;
+          }
+        }
+        tween.length = j + 1;
+      }
+      function tick(elapsed) {
+        var t = elapsed < self2.duration ? self2.ease.call(null, elapsed / self2.duration) : (self2.timer.restart(stop), self2.state = ENDING, 1), i2 = -1, n = tween.length;
+        while (++i2 < n) {
+          tween[i2].call(node, t);
+        }
+        if (self2.state === ENDING) {
+          self2.on.call("end", node, node.__data__, self2.index, self2.group);
+          stop();
+        }
+      }
+      function stop() {
+        self2.state = ENDED;
+        self2.timer.stop();
+        delete schedules[id2];
+        for (var i2 in schedules) return;
+        delete node.__transition;
+      }
+    }
+    function interrupt(node, name2) {
+      var schedules = node.__transition, schedule2, active2, empty2 = true, i2;
+      if (!schedules) return;
+      name2 = name2 == null ? null : name2 + "";
+      for (i2 in schedules) {
+        if ((schedule2 = schedules[i2]).name !== name2) {
+          empty2 = false;
+          continue;
+        }
+        active2 = schedule2.state > STARTING && schedule2.state < ENDING;
+        schedule2.state = ENDED;
+        schedule2.timer.stop();
+        schedule2.on.call(active2 ? "interrupt" : "cancel", node, node.__data__, schedule2.index, schedule2.group);
+        delete schedules[i2];
+      }
+      if (empty2) delete node.__transition;
+    }
+    function selection_interrupt(name2) {
+      return this.each(function() {
+        interrupt(this, name2);
+      });
+    }
+    function tweenRemove(id2, name2) {
+      var tween0, tween1;
+      return function() {
+        var schedule2 = set(this, id2), tween = schedule2.tween;
+        if (tween !== tween0) {
+          tween1 = tween0 = tween;
+          for (var i2 = 0, n = tween1.length; i2 < n; ++i2) {
+            if (tween1[i2].name === name2) {
+              tween1 = tween1.slice();
+              tween1.splice(i2, 1);
+              break;
+            }
+          }
+        }
+        schedule2.tween = tween1;
+      };
+    }
+    function tweenFunction(id2, name2, value2) {
+      var tween0, tween1;
+      if (typeof value2 !== "function") throw new Error();
+      return function() {
+        var schedule2 = set(this, id2), tween = schedule2.tween;
+        if (tween !== tween0) {
+          tween1 = (tween0 = tween).slice();
+          for (var t = { name: name2, value: value2 }, i2 = 0, n = tween1.length; i2 < n; ++i2) {
+            if (tween1[i2].name === name2) {
+              tween1[i2] = t;
+              break;
+            }
+          }
+          if (i2 === n) tween1.push(t);
+        }
+        schedule2.tween = tween1;
+      };
+    }
+    function transition_tween(name2, value2) {
+      var id2 = this._id;
+      name2 += "";
+      if (arguments.length < 2) {
+        var tween = get(this.node(), id2).tween;
+        for (var i2 = 0, n = tween.length, t; i2 < n; ++i2) {
+          if ((t = tween[i2]).name === name2) {
+            return t.value;
+          }
+        }
+        return null;
+      }
+      return this.each((value2 == null ? tweenRemove : tweenFunction)(id2, name2, value2));
+    }
+    function tweenValue(transition, name2, value2) {
+      var id2 = transition._id;
+      transition.each(function() {
+        var schedule2 = set(this, id2);
+        (schedule2.value || (schedule2.value = {}))[name2] = value2.apply(this, arguments);
+      });
+      return function(node) {
+        return get(node, id2).value[name2];
+      };
+    }
+    function interpolate(a, b) {
+      var c;
+      return (typeof b === "number" ? interpolateNumber : b instanceof color ? interpolateRgb : (c = color(b)) ? (b = c, interpolateRgb) : interpolateString)(a, b);
+    }
+    function attrRemove(name2) {
+      return function() {
+        this.removeAttribute(name2);
+      };
+    }
+    function attrRemoveNS(fullname) {
+      return function() {
+        this.removeAttributeNS(fullname.space, fullname.local);
+      };
+    }
+    function attrConstant(name2, interpolate2, value1) {
+      var string00, string1 = value1 + "", interpolate0;
+      return function() {
+        var string0 = this.getAttribute(name2);
+        return string0 === string1 ? null : string0 === string00 ? interpolate0 : interpolate0 = interpolate2(string00 = string0, value1);
+      };
+    }
+    function attrConstantNS(fullname, interpolate2, value1) {
+      var string00, string1 = value1 + "", interpolate0;
+      return function() {
+        var string0 = this.getAttributeNS(fullname.space, fullname.local);
+        return string0 === string1 ? null : string0 === string00 ? interpolate0 : interpolate0 = interpolate2(string00 = string0, value1);
+      };
+    }
+    function attrFunction(name2, interpolate2, value2) {
+      var string00, string10, interpolate0;
+      return function() {
+        var string0, value1 = value2(this), string1;
+        if (value1 == null) return void this.removeAttribute(name2);
+        string0 = this.getAttribute(name2);
+        string1 = value1 + "";
+        return string0 === string1 ? null : string0 === string00 && string1 === string10 ? interpolate0 : (string10 = string1, interpolate0 = interpolate2(string00 = string0, value1));
+      };
+    }
+    function attrFunctionNS(fullname, interpolate2, value2) {
+      var string00, string10, interpolate0;
+      return function() {
+        var string0, value1 = value2(this), string1;
+        if (value1 == null) return void this.removeAttributeNS(fullname.space, fullname.local);
+        string0 = this.getAttributeNS(fullname.space, fullname.local);
+        string1 = value1 + "";
+        return string0 === string1 ? null : string0 === string00 && string1 === string10 ? interpolate0 : (string10 = string1, interpolate0 = interpolate2(string00 = string0, value1));
+      };
+    }
+    function transition_attr(name2, value2) {
+      var fullname = namespace$1(name2), i2 = fullname === "transform" ? interpolateTransformSvg : interpolate;
+      return this.attrTween(name2, typeof value2 === "function" ? (fullname.local ? attrFunctionNS : attrFunction)(fullname, i2, tweenValue(this, "attr." + name2, value2)) : value2 == null ? (fullname.local ? attrRemoveNS : attrRemove)(fullname) : (fullname.local ? attrConstantNS : attrConstant)(fullname, i2, value2));
+    }
+    function attrInterpolate(name2, i2) {
+      return function(t) {
+        this.setAttribute(name2, i2.call(this, t));
+      };
+    }
+    function attrInterpolateNS(fullname, i2) {
+      return function(t) {
+        this.setAttributeNS(fullname.space, fullname.local, i2.call(this, t));
+      };
+    }
+    function attrTweenNS(fullname, value2) {
+      var t0, i0;
+      function tween() {
+        var i2 = value2.apply(this, arguments);
+        if (i2 !== i0) t0 = (i0 = i2) && attrInterpolateNS(fullname, i2);
+        return t0;
+      }
+      tween._value = value2;
+      return tween;
+    }
+    function attrTween(name2, value2) {
+      var t0, i0;
+      function tween() {
+        var i2 = value2.apply(this, arguments);
+        if (i2 !== i0) t0 = (i0 = i2) && attrInterpolate(name2, i2);
+        return t0;
+      }
+      tween._value = value2;
+      return tween;
+    }
+    function transition_attrTween(name2, value2) {
+      var key = "attr." + name2;
+      if (arguments.length < 2) return (key = this.tween(key)) && key._value;
+      if (value2 == null) return this.tween(key, null);
+      if (typeof value2 !== "function") throw new Error();
+      var fullname = namespace$1(name2);
+      return this.tween(key, (fullname.local ? attrTweenNS : attrTween)(fullname, value2));
+    }
+    function delayFunction(id2, value2) {
+      return function() {
+        init(this, id2).delay = +value2.apply(this, arguments);
+      };
+    }
+    function delayConstant(id2, value2) {
+      return value2 = +value2, function() {
+        init(this, id2).delay = value2;
+      };
+    }
+    function transition_delay(value2) {
+      var id2 = this._id;
+      return arguments.length ? this.each((typeof value2 === "function" ? delayFunction : delayConstant)(id2, value2)) : get(this.node(), id2).delay;
+    }
+    function durationFunction(id2, value2) {
+      return function() {
+        set(this, id2).duration = +value2.apply(this, arguments);
+      };
+    }
+    function durationConstant(id2, value2) {
+      return value2 = +value2, function() {
+        set(this, id2).duration = value2;
+      };
+    }
+    function transition_duration(value2) {
+      var id2 = this._id;
+      return arguments.length ? this.each((typeof value2 === "function" ? durationFunction : durationConstant)(id2, value2)) : get(this.node(), id2).duration;
+    }
+    function easeConstant(id2, value2) {
+      if (typeof value2 !== "function") throw new Error();
+      return function() {
+        set(this, id2).ease = value2;
+      };
+    }
+    function transition_ease(value2) {
+      var id2 = this._id;
+      return arguments.length ? this.each(easeConstant(id2, value2)) : get(this.node(), id2).ease;
+    }
+    function easeVarying(id2, value2) {
+      return function() {
+        var v = value2.apply(this, arguments);
+        if (typeof v !== "function") throw new Error();
+        set(this, id2).ease = v;
+      };
+    }
+    function transition_easeVarying(value2) {
+      if (typeof value2 !== "function") throw new Error();
+      return this.each(easeVarying(this._id, value2));
+    }
+    function transition_filter(match2) {
+      if (typeof match2 !== "function") match2 = matcher(match2);
+      for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, subgroup = subgroups[j] = [], node, i2 = 0; i2 < n; ++i2) {
+          if ((node = group[i2]) && match2.call(node, node.__data__, i2, group)) {
+            subgroup.push(node);
+          }
+        }
+      }
+      return new Transition(subgroups, this._parents, this._name, this._id);
+    }
+    function transition_merge(transition) {
+      if (transition._id !== this._id) throw new Error();
+      for (var groups0 = this._groups, groups1 = transition._groups, m0 = groups0.length, m1 = groups1.length, m = Math.min(m0, m1), merges = new Array(m0), j = 0; j < m; ++j) {
+        for (var group0 = groups0[j], group1 = groups1[j], n = group0.length, merge2 = merges[j] = new Array(n), node, i2 = 0; i2 < n; ++i2) {
+          if (node = group0[i2] || group1[i2]) {
+            merge2[i2] = node;
+          }
+        }
+      }
+      for (; j < m0; ++j) {
+        merges[j] = groups0[j];
+      }
+      return new Transition(merges, this._parents, this._name, this._id);
+    }
+    function start(name2) {
+      return (name2 + "").trim().split(/^|\s+/).every(function(t) {
+        var i2 = t.indexOf(".");
+        if (i2 >= 0) t = t.slice(0, i2);
+        return !t || t === "start";
+      });
+    }
+    function onFunction(id2, name2, listener) {
+      var on0, on1, sit = start(name2) ? init : set;
+      return function() {
+        var schedule2 = sit(this, id2), on = schedule2.on;
+        if (on !== on0) (on1 = (on0 = on).copy()).on(name2, listener);
+        schedule2.on = on1;
+      };
+    }
+    function transition_on(name2, listener) {
+      var id2 = this._id;
+      return arguments.length < 2 ? get(this.node(), id2).on.on(name2) : this.each(onFunction(id2, name2, listener));
+    }
+    function removeFunction(id2) {
+      return function() {
+        var parent = this.parentNode;
+        for (var i2 in this.__transition) if (+i2 !== id2) return;
+        if (parent) parent.removeChild(this);
+      };
+    }
+    function transition_remove() {
+      return this.on("end.remove", removeFunction(this._id));
+    }
+    function transition_select(select2) {
+      var name2 = this._name, id2 = this._id;
+      if (typeof select2 !== "function") select2 = selector(select2);
+      for (var groups = this._groups, m = groups.length, subgroups = new Array(m), j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, subgroup = subgroups[j] = new Array(n), node, subnode, i2 = 0; i2 < n; ++i2) {
+          if ((node = group[i2]) && (subnode = select2.call(node, node.__data__, i2, group))) {
+            if ("__data__" in node) subnode.__data__ = node.__data__;
+            subgroup[i2] = subnode;
+            schedule(subgroup[i2], name2, id2, i2, subgroup, get(node, id2));
+          }
+        }
+      }
+      return new Transition(subgroups, this._parents, name2, id2);
+    }
+    function transition_selectAll(select2) {
+      var name2 = this._name, id2 = this._id;
+      if (typeof select2 !== "function") select2 = selectorAll(select2);
+      for (var groups = this._groups, m = groups.length, subgroups = [], parents = [], j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, node, i2 = 0; i2 < n; ++i2) {
+          if (node = group[i2]) {
+            for (var children2 = select2.call(node, node.__data__, i2, group), child, inherit2 = get(node, id2), k = 0, l = children2.length; k < l; ++k) {
+              if (child = children2[k]) {
+                schedule(child, name2, id2, k, children2, inherit2);
+              }
+            }
+            subgroups.push(children2);
+            parents.push(node);
+          }
+        }
+      }
+      return new Transition(subgroups, parents, name2, id2);
+    }
+    var Selection$1 = selection.prototype.constructor;
+    function transition_selection() {
+      return new Selection$1(this._groups, this._parents);
+    }
+    function styleNull(name2, interpolate2) {
+      var string00, string10, interpolate0;
+      return function() {
+        var string0 = styleValue(this, name2), string1 = (this.style.removeProperty(name2), styleValue(this, name2));
+        return string0 === string1 ? null : string0 === string00 && string1 === string10 ? interpolate0 : interpolate0 = interpolate2(string00 = string0, string10 = string1);
+      };
+    }
+    function styleRemove(name2) {
+      return function() {
+        this.style.removeProperty(name2);
+      };
+    }
+    function styleConstant(name2, interpolate2, value1) {
+      var string00, string1 = value1 + "", interpolate0;
+      return function() {
+        var string0 = styleValue(this, name2);
+        return string0 === string1 ? null : string0 === string00 ? interpolate0 : interpolate0 = interpolate2(string00 = string0, value1);
+      };
+    }
+    function styleFunction(name2, interpolate2, value2) {
+      var string00, string10, interpolate0;
+      return function() {
+        var string0 = styleValue(this, name2), value1 = value2(this), string1 = value1 + "";
+        if (value1 == null) string1 = value1 = (this.style.removeProperty(name2), styleValue(this, name2));
+        return string0 === string1 ? null : string0 === string00 && string1 === string10 ? interpolate0 : (string10 = string1, interpolate0 = interpolate2(string00 = string0, value1));
+      };
+    }
+    function styleMaybeRemove(id2, name2) {
+      var on0, on1, listener0, key = "style." + name2, event = "end." + key, remove2;
+      return function() {
+        var schedule2 = set(this, id2), on = schedule2.on, listener = schedule2.value[key] == null ? remove2 || (remove2 = styleRemove(name2)) : void 0;
+        if (on !== on0 || listener0 !== listener) (on1 = (on0 = on).copy()).on(event, listener0 = listener);
+        schedule2.on = on1;
+      };
+    }
+    function transition_style(name2, value2, priority) {
+      var i2 = (name2 += "") === "transform" ? interpolateTransformCss : interpolate;
+      return value2 == null ? this.styleTween(name2, styleNull(name2, i2)).on("end.style." + name2, styleRemove(name2)) : typeof value2 === "function" ? this.styleTween(name2, styleFunction(name2, i2, tweenValue(this, "style." + name2, value2))).each(styleMaybeRemove(this._id, name2)) : this.styleTween(name2, styleConstant(name2, i2, value2), priority).on("end.style." + name2, null);
+    }
+    function styleInterpolate(name2, i2, priority) {
+      return function(t) {
+        this.style.setProperty(name2, i2.call(this, t), priority);
+      };
+    }
+    function styleTween(name2, value2, priority) {
+      var t, i0;
+      function tween() {
+        var i2 = value2.apply(this, arguments);
+        if (i2 !== i0) t = (i0 = i2) && styleInterpolate(name2, i2, priority);
+        return t;
+      }
+      tween._value = value2;
+      return tween;
+    }
+    function transition_styleTween(name2, value2, priority) {
+      var key = "style." + (name2 += "");
+      if (arguments.length < 2) return (key = this.tween(key)) && key._value;
+      if (value2 == null) return this.tween(key, null);
+      if (typeof value2 !== "function") throw new Error();
+      return this.tween(key, styleTween(name2, value2, priority == null ? "" : priority));
+    }
+    function textConstant(value2) {
+      return function() {
+        this.textContent = value2;
+      };
+    }
+    function textFunction(value2) {
+      return function() {
+        var value1 = value2(this);
+        this.textContent = value1 == null ? "" : value1;
+      };
+    }
+    function transition_text(value2) {
+      return this.tween("text", typeof value2 === "function" ? textFunction(tweenValue(this, "text", value2)) : textConstant(value2 == null ? "" : value2 + ""));
+    }
+    function textInterpolate(i2) {
+      return function(t) {
+        this.textContent = i2.call(this, t);
+      };
+    }
+    function textTween(value2) {
+      var t0, i0;
+      function tween() {
+        var i2 = value2.apply(this, arguments);
+        if (i2 !== i0) t0 = (i0 = i2) && textInterpolate(i2);
+        return t0;
+      }
+      tween._value = value2;
+      return tween;
+    }
+    function transition_textTween(value2) {
+      var key = "text";
+      if (arguments.length < 1) return (key = this.tween(key)) && key._value;
+      if (value2 == null) return this.tween(key, null);
+      if (typeof value2 !== "function") throw new Error();
+      return this.tween(key, textTween(value2));
+    }
+    function transition_transition() {
+      var name2 = this._name, id0 = this._id, id1 = newId();
+      for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, node, i2 = 0; i2 < n; ++i2) {
+          if (node = group[i2]) {
+            var inherit2 = get(node, id0);
+            schedule(node, name2, id1, i2, group, {
+              time: inherit2.time + inherit2.delay + inherit2.duration,
+              delay: 0,
+              duration: inherit2.duration,
+              ease: inherit2.ease
+            });
+          }
+        }
+      }
+      return new Transition(groups, this._parents, name2, id1);
+    }
+    function transition_end() {
+      var on0, on1, that = this, id2 = that._id, size = that.size();
+      return new Promise(function(resolve, reject) {
+        var cancel = { value: reject }, end = { value: function() {
+          if (--size === 0) resolve();
+        } };
+        that.each(function() {
+          var schedule2 = set(this, id2), on = schedule2.on;
+          if (on !== on0) {
+            on1 = (on0 = on).copy();
+            on1._.cancel.push(cancel);
+            on1._.interrupt.push(cancel);
+            on1._.end.push(end);
+          }
+          schedule2.on = on1;
+        });
+        if (size === 0) resolve();
+      });
+    }
+    var id = 0;
+    function Transition(groups, parents, name2, id2) {
+      this._groups = groups;
+      this._parents = parents;
+      this._name = name2;
+      this._id = id2;
+    }
+    function newId() {
+      return ++id;
+    }
+    var selection_prototype = selection.prototype;
+    Transition.prototype = {
+      constructor: Transition,
+      select: transition_select,
+      selectAll: transition_selectAll,
+      selectChild: selection_prototype.selectChild,
+      selectChildren: selection_prototype.selectChildren,
+      filter: transition_filter,
+      merge: transition_merge,
+      selection: transition_selection,
+      transition: transition_transition,
+      call: selection_prototype.call,
+      nodes: selection_prototype.nodes,
+      node: selection_prototype.node,
+      size: selection_prototype.size,
+      empty: selection_prototype.empty,
+      each: selection_prototype.each,
+      on: transition_on,
+      attr: transition_attr,
+      attrTween: transition_attrTween,
+      style: transition_style,
+      styleTween: transition_styleTween,
+      text: transition_text,
+      textTween: transition_textTween,
+      remove: transition_remove,
+      tween: transition_tween,
+      delay: transition_delay,
+      duration: transition_duration,
+      ease: transition_ease,
+      easeVarying: transition_easeVarying,
+      end: transition_end,
+      [Symbol.iterator]: selection_prototype[Symbol.iterator]
+    };
+    function cubicInOut(t) {
+      return ((t *= 2) <= 1 ? t * t * t : (t -= 2) * t * t + 2) / 2;
+    }
+    var defaultTiming = {
+      time: null,
+      // Set on use.
+      delay: 0,
+      duration: 250,
+      ease: cubicInOut
+    };
+    function inherit(node, id2) {
+      var timing;
+      while (!(timing = node.__transition) || !(timing = timing[id2])) {
+        if (!(node = node.parentNode)) {
+          throw new Error(`transition ${id2} not found`);
+        }
+      }
+      return timing;
+    }
+    function selection_transition(name2) {
+      var id2, timing;
+      if (name2 instanceof Transition) {
+        id2 = name2._id, name2 = name2._name;
+      } else {
+        id2 = newId(), (timing = defaultTiming).time = now(), name2 = name2 == null ? null : name2 + "";
+      }
+      for (var groups = this._groups, m = groups.length, j = 0; j < m; ++j) {
+        for (var group = groups[j], n = group.length, node, i2 = 0; i2 < n; ++i2) {
+          if (node = group[i2]) {
+            schedule(node, name2, id2, i2, group, timing || inherit(node, id2));
+          }
+        }
+      }
+      return new Transition(groups, this._parents, name2, id2);
+    }
+    selection.prototype.interrupt = selection_interrupt;
+    selection.prototype.transition = selection_transition;
+    const constant$1 = (x2) => () => x2;
+    function ZoomEvent(type, {
+      sourceEvent: sourceEvent2,
+      target,
+      transform,
+      dispatch: dispatch2
+    }) {
+      Object.defineProperties(this, {
+        type: { value: type, enumerable: true, configurable: true },
+        sourceEvent: { value: sourceEvent2, enumerable: true, configurable: true },
+        target: { value: target, enumerable: true, configurable: true },
+        transform: { value: transform, enumerable: true, configurable: true },
+        _: { value: dispatch2 }
+      });
+    }
+    function Transform(k, x2, y2) {
+      this.k = k;
+      this.x = x2;
+      this.y = y2;
+    }
+    Transform.prototype = {
+      constructor: Transform,
+      scale: function(k) {
+        return k === 1 ? this : new Transform(this.k * k, this.x, this.y);
+      },
+      translate: function(x2, y2) {
+        return x2 === 0 & y2 === 0 ? this : new Transform(this.k, this.x + this.k * x2, this.y + this.k * y2);
+      },
+      apply: function(point) {
+        return [point[0] * this.k + this.x, point[1] * this.k + this.y];
+      },
+      applyX: function(x2) {
+        return x2 * this.k + this.x;
+      },
+      applyY: function(y2) {
+        return y2 * this.k + this.y;
+      },
+      invert: function(location) {
+        return [(location[0] - this.x) / this.k, (location[1] - this.y) / this.k];
+      },
+      invertX: function(x2) {
+        return (x2 - this.x) / this.k;
+      },
+      invertY: function(y2) {
+        return (y2 - this.y) / this.k;
+      },
+      rescaleX: function(x2) {
+        return x2.copy().domain(x2.range().map(this.invertX, this).map(x2.invert, x2));
+      },
+      rescaleY: function(y2) {
+        return y2.copy().domain(y2.range().map(this.invertY, this).map(y2.invert, y2));
+      },
+      toString: function() {
+        return "translate(" + this.x + "," + this.y + ") scale(" + this.k + ")";
+      }
+    };
+    var identity = new Transform(1, 0, 0);
+    Transform.prototype;
+    function nopropagation(event) {
+      event.stopImmediatePropagation();
+    }
+    function noevent(event) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+    function defaultFilter(event) {
+      return (!event.ctrlKey || event.type === "wheel") && !event.button;
+    }
+    function defaultExtent() {
+      var e = this;
+      if (e instanceof SVGElement) {
+        e = e.ownerSVGElement || e;
+        if (e.hasAttribute("viewBox")) {
+          e = e.viewBox.baseVal;
+          return [[e.x, e.y], [e.x + e.width, e.y + e.height]];
+        }
+        return [[0, 0], [e.width.baseVal.value, e.height.baseVal.value]];
+      }
+      return [[0, 0], [e.clientWidth, e.clientHeight]];
+    }
+    function defaultTransform() {
+      return this.__zoom || identity;
+    }
+    function defaultWheelDelta(event) {
+      return -event.deltaY * (event.deltaMode === 1 ? 0.05 : event.deltaMode ? 1 : 2e-3) * (event.ctrlKey ? 10 : 1);
+    }
+    function defaultTouchable() {
+      return navigator.maxTouchPoints || "ontouchstart" in this;
+    }
+    function defaultConstrain(transform, extent, translateExtent) {
+      var dx0 = transform.invertX(extent[0][0]) - translateExtent[0][0], dx1 = transform.invertX(extent[1][0]) - translateExtent[1][0], dy0 = transform.invertY(extent[0][1]) - translateExtent[0][1], dy1 = transform.invertY(extent[1][1]) - translateExtent[1][1];
+      return transform.translate(
+        dx1 > dx0 ? (dx0 + dx1) / 2 : Math.min(0, dx0) || Math.max(0, dx1),
+        dy1 > dy0 ? (dy0 + dy1) / 2 : Math.min(0, dy0) || Math.max(0, dy1)
+      );
+    }
+    function d3zoom() {
+      var filter2 = defaultFilter, extent = defaultExtent, constrain = defaultConstrain, wheelDelta = defaultWheelDelta, touchable = defaultTouchable, scaleExtent = [0, Infinity], translateExtent = [[-Infinity, -Infinity], [Infinity, Infinity]], duration = 250, interpolate2 = interpolateZoom, listeners = dispatch("start", "zoom", "end"), touchstarting, touchfirst, touchending, touchDelay = 500, wheelDelay = 150, clickDistance2 = 0, tapDistance = 10;
+      function zoom(selection2) {
+        selection2.property("__zoom", defaultTransform).on("wheel.zoom", wheeled, { passive: false }).on("mousedown.zoom", mousedowned).on("dblclick.zoom", dblclicked).filter(touchable).on("touchstart.zoom", touchstarted).on("touchmove.zoom", touchmoved).on("touchend.zoom touchcancel.zoom", touchended).style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
+      }
+      zoom.transform = function(collection, transform, point, event) {
+        var selection2 = collection.selection ? collection.selection() : collection;
+        selection2.property("__zoom", defaultTransform);
+        if (collection !== selection2) {
+          schedule2(collection, transform, point, event);
+        } else {
+          selection2.interrupt().each(function() {
+            gesture(this, arguments).event(event).start().zoom(null, typeof transform === "function" ? transform.apply(this, arguments) : transform).end();
+          });
+        }
+      };
+      zoom.scaleBy = function(selection2, k, p, event) {
+        zoom.scaleTo(selection2, function() {
+          var k0 = this.__zoom.k, k1 = typeof k === "function" ? k.apply(this, arguments) : k;
+          return k0 * k1;
+        }, p, event);
+      };
+      zoom.scaleTo = function(selection2, k, p, event) {
+        zoom.transform(selection2, function() {
+          var e = extent.apply(this, arguments), t0 = this.__zoom, p0 = p == null ? centroid(e) : typeof p === "function" ? p.apply(this, arguments) : p, p1 = t0.invert(p0), k1 = typeof k === "function" ? k.apply(this, arguments) : k;
+          return constrain(translate(scale(t0, k1), p0, p1), e, translateExtent);
+        }, p, event);
+      };
+      zoom.translateBy = function(selection2, x2, y2, event) {
+        zoom.transform(selection2, function() {
+          return constrain(this.__zoom.translate(
+            typeof x2 === "function" ? x2.apply(this, arguments) : x2,
+            typeof y2 === "function" ? y2.apply(this, arguments) : y2
+          ), extent.apply(this, arguments), translateExtent);
+        }, null, event);
+      };
+      zoom.translateTo = function(selection2, x2, y2, p, event) {
+        zoom.transform(selection2, function() {
+          var e = extent.apply(this, arguments), t = this.__zoom, p0 = p == null ? centroid(e) : typeof p === "function" ? p.apply(this, arguments) : p;
+          return constrain(identity.translate(p0[0], p0[1]).scale(t.k).translate(
+            typeof x2 === "function" ? -x2.apply(this, arguments) : -x2,
+            typeof y2 === "function" ? -y2.apply(this, arguments) : -y2
+          ), e, translateExtent);
+        }, p, event);
+      };
+      function scale(transform, k) {
+        k = Math.max(scaleExtent[0], Math.min(scaleExtent[1], k));
+        return k === transform.k ? transform : new Transform(k, transform.x, transform.y);
+      }
+      function translate(transform, p0, p1) {
+        var x2 = p0[0] - p1[0] * transform.k, y2 = p0[1] - p1[1] * transform.k;
+        return x2 === transform.x && y2 === transform.y ? transform : new Transform(transform.k, x2, y2);
+      }
+      function centroid(extent2) {
+        return [(+extent2[0][0] + +extent2[1][0]) / 2, (+extent2[0][1] + +extent2[1][1]) / 2];
+      }
+      function schedule2(transition, transform, point, event) {
+        transition.on("start.zoom", function() {
+          gesture(this, arguments).event(event).start();
+        }).on("interrupt.zoom end.zoom", function() {
+          gesture(this, arguments).event(event).end();
+        }).tween("zoom", function() {
+          var that = this, args = arguments, g = gesture(that, args).event(event), e = extent.apply(that, args), p = point == null ? centroid(e) : typeof point === "function" ? point.apply(that, args) : point, w = Math.max(e[1][0] - e[0][0], e[1][1] - e[0][1]), a = that.__zoom, b = typeof transform === "function" ? transform.apply(that, args) : transform, i2 = interpolate2(a.invert(p).concat(w / a.k), b.invert(p).concat(w / b.k));
+          return function(t) {
+            if (t === 1) t = b;
+            else {
+              var l = i2(t), k = w / l[2];
+              t = new Transform(k, p[0] - l[0] * k, p[1] - l[1] * k);
+            }
+            g.zoom(null, t);
+          };
+        });
+      }
+      function gesture(that, args, clean) {
+        return !clean && that.__zooming || new Gesture(that, args);
+      }
+      function Gesture(that, args) {
+        this.that = that;
+        this.args = args;
+        this.active = 0;
+        this.sourceEvent = null;
+        this.extent = extent.apply(that, args);
+        this.taps = 0;
+      }
+      Gesture.prototype = {
+        event: function(event) {
+          if (event) this.sourceEvent = event;
+          return this;
+        },
+        start: function() {
+          if (++this.active === 1) {
+            this.that.__zooming = this;
+            this.emit("start");
+          }
+          return this;
+        },
+        zoom: function(key, transform) {
+          if (this.mouse && key !== "mouse") this.mouse[1] = transform.invert(this.mouse[0]);
+          if (this.touch0 && key !== "touch") this.touch0[1] = transform.invert(this.touch0[0]);
+          if (this.touch1 && key !== "touch") this.touch1[1] = transform.invert(this.touch1[0]);
+          this.that.__zoom = transform;
+          this.emit("zoom");
+          return this;
+        },
+        end: function() {
+          if (--this.active === 0) {
+            delete this.that.__zooming;
+            this.emit("end");
+          }
+          return this;
+        },
+        emit: function(type) {
+          var d = select(this.that).datum();
+          listeners.call(
+            type,
+            this.that,
+            new ZoomEvent(type, {
+              sourceEvent: this.sourceEvent,
+              target: zoom,
+              type,
+              transform: this.that.__zoom,
+              dispatch: listeners
+            }),
+            d
+          );
+        }
+      };
+      function wheeled(event, ...args) {
+        if (!filter2.apply(this, arguments)) return;
+        var g = gesture(this, args).event(event), t = this.__zoom, k = Math.max(scaleExtent[0], Math.min(scaleExtent[1], t.k * Math.pow(2, wheelDelta.apply(this, arguments)))), p = pointer(event);
+        if (g.wheel) {
+          if (g.mouse[0][0] !== p[0] || g.mouse[0][1] !== p[1]) {
+            g.mouse[1] = t.invert(g.mouse[0] = p);
+          }
+          clearTimeout(g.wheel);
+        } else if (t.k === k) return;
+        else {
+          g.mouse = [p, t.invert(p)];
+          interrupt(this);
+          g.start();
+        }
+        noevent(event);
+        g.wheel = setTimeout(wheelidled, wheelDelay);
+        g.zoom("mouse", constrain(translate(scale(t, k), g.mouse[0], g.mouse[1]), g.extent, translateExtent));
+        function wheelidled() {
+          g.wheel = null;
+          g.end();
+        }
+      }
+      function mousedowned(event, ...args) {
+        if (touchending || !filter2.apply(this, arguments)) return;
+        var currentTarget = event.currentTarget, g = gesture(this, args, true).event(event), v = select(event.view).on("mousemove.zoom", mousemoved, true).on("mouseup.zoom", mouseupped, true), p = pointer(event, currentTarget), x0 = event.clientX, y0 = event.clientY;
+        dragDisable(event.view);
+        nopropagation(event);
+        g.mouse = [p, this.__zoom.invert(p)];
+        interrupt(this);
+        g.start();
+        function mousemoved(event2) {
+          noevent(event2);
+          if (!g.moved) {
+            var dx = event2.clientX - x0, dy = event2.clientY - y0;
+            g.moved = dx * dx + dy * dy > clickDistance2;
+          }
+          g.event(event2).zoom("mouse", constrain(translate(g.that.__zoom, g.mouse[0] = pointer(event2, currentTarget), g.mouse[1]), g.extent, translateExtent));
+        }
+        function mouseupped(event2) {
+          v.on("mousemove.zoom mouseup.zoom", null);
+          yesdrag(event2.view, g.moved);
+          noevent(event2);
+          g.event(event2).end();
+        }
+      }
+      function dblclicked(event, ...args) {
+        if (!filter2.apply(this, arguments)) return;
+        var t0 = this.__zoom, p0 = pointer(event.changedTouches ? event.changedTouches[0] : event, this), p1 = t0.invert(p0), k1 = t0.k * (event.shiftKey ? 0.5 : 2), t1 = constrain(translate(scale(t0, k1), p0, p1), extent.apply(this, args), translateExtent);
+        noevent(event);
+        if (duration > 0) select(this).transition().duration(duration).call(schedule2, t1, p0, event);
+        else select(this).call(zoom.transform, t1, p0, event);
+      }
+      function touchstarted(event, ...args) {
+        if (!filter2.apply(this, arguments)) return;
+        var touches = event.touches, n = touches.length, g = gesture(this, args, event.changedTouches.length === n).event(event), started, i2, t, p;
+        nopropagation(event);
+        for (i2 = 0; i2 < n; ++i2) {
+          t = touches[i2], p = pointer(t, this);
+          p = [p, this.__zoom.invert(p), t.identifier];
+          if (!g.touch0) g.touch0 = p, started = true, g.taps = 1 + !!touchstarting;
+          else if (!g.touch1 && g.touch0[2] !== p[2]) g.touch1 = p, g.taps = 0;
+        }
+        if (touchstarting) touchstarting = clearTimeout(touchstarting);
+        if (started) {
+          if (g.taps < 2) touchfirst = p[0], touchstarting = setTimeout(function() {
+            touchstarting = null;
+          }, touchDelay);
+          interrupt(this);
+          g.start();
+        }
+      }
+      function touchmoved(event, ...args) {
+        if (!this.__zooming) return;
+        var g = gesture(this, args).event(event), touches = event.changedTouches, n = touches.length, i2, t, p, l;
+        noevent(event);
+        for (i2 = 0; i2 < n; ++i2) {
+          t = touches[i2], p = pointer(t, this);
+          if (g.touch0 && g.touch0[2] === t.identifier) g.touch0[0] = p;
+          else if (g.touch1 && g.touch1[2] === t.identifier) g.touch1[0] = p;
+        }
+        t = g.that.__zoom;
+        if (g.touch1) {
+          var p0 = g.touch0[0], l0 = g.touch0[1], p1 = g.touch1[0], l1 = g.touch1[1], dp = (dp = p1[0] - p0[0]) * dp + (dp = p1[1] - p0[1]) * dp, dl = (dl = l1[0] - l0[0]) * dl + (dl = l1[1] - l0[1]) * dl;
+          t = scale(t, Math.sqrt(dp / dl));
+          p = [(p0[0] + p1[0]) / 2, (p0[1] + p1[1]) / 2];
+          l = [(l0[0] + l1[0]) / 2, (l0[1] + l1[1]) / 2];
+        } else if (g.touch0) p = g.touch0[0], l = g.touch0[1];
+        else return;
+        g.zoom("touch", constrain(translate(t, p, l), g.extent, translateExtent));
+      }
+      function touchended(event, ...args) {
+        if (!this.__zooming) return;
+        var g = gesture(this, args).event(event), touches = event.changedTouches, n = touches.length, i2, t;
+        nopropagation(event);
+        if (touchending) clearTimeout(touchending);
+        touchending = setTimeout(function() {
+          touchending = null;
+        }, touchDelay);
+        for (i2 = 0; i2 < n; ++i2) {
+          t = touches[i2];
+          if (g.touch0 && g.touch0[2] === t.identifier) delete g.touch0;
+          else if (g.touch1 && g.touch1[2] === t.identifier) delete g.touch1;
+        }
+        if (g.touch1 && !g.touch0) g.touch0 = g.touch1, delete g.touch1;
+        if (g.touch0) g.touch0[1] = this.__zoom.invert(g.touch0[0]);
+        else {
+          g.end();
+          if (g.taps === 2) {
+            t = pointer(t, this);
+            if (Math.hypot(touchfirst[0] - t[0], touchfirst[1] - t[1]) < tapDistance) {
+              var p = select(this).on("dblclick.zoom");
+              if (p) p.apply(this, arguments);
+            }
+          }
+        }
+      }
+      zoom.wheelDelta = function(_) {
+        return arguments.length ? (wheelDelta = typeof _ === "function" ? _ : constant$1(+_), zoom) : wheelDelta;
+      };
+      zoom.filter = function(_) {
+        return arguments.length ? (filter2 = typeof _ === "function" ? _ : constant$1(!!_), zoom) : filter2;
+      };
+      zoom.touchable = function(_) {
+        return arguments.length ? (touchable = typeof _ === "function" ? _ : constant$1(!!_), zoom) : touchable;
+      };
+      zoom.extent = function(_) {
+        return arguments.length ? (extent = typeof _ === "function" ? _ : constant$1([[+_[0][0], +_[0][1]], [+_[1][0], +_[1][1]]]), zoom) : extent;
+      };
+      zoom.scaleExtent = function(_) {
+        return arguments.length ? (scaleExtent[0] = +_[0], scaleExtent[1] = +_[1], zoom) : [scaleExtent[0], scaleExtent[1]];
+      };
+      zoom.translateExtent = function(_) {
+        return arguments.length ? (translateExtent[0][0] = +_[0][0], translateExtent[1][0] = +_[1][0], translateExtent[0][1] = +_[0][1], translateExtent[1][1] = +_[1][1], zoom) : [[translateExtent[0][0], translateExtent[0][1]], [translateExtent[1][0], translateExtent[1][1]]];
+      };
+      zoom.constrain = function(_) {
+        return arguments.length ? (constrain = _, zoom) : constrain;
+      };
+      zoom.duration = function(_) {
+        return arguments.length ? (duration = +_, zoom) : duration;
+      };
+      zoom.interpolate = function(_) {
+        return arguments.length ? (interpolate2 = _, zoom) : interpolate2;
+      };
+      zoom.on = function() {
+        var value2 = listeners.on.apply(listeners, arguments);
+        return value2 === listeners ? zoom : value2;
+      };
+      zoom.clickDistance = function(_) {
+        return arguments.length ? (clickDistance2 = (_ = +_) * _, zoom) : Math.sqrt(clickDistance2);
+      };
+      zoom.tapDistance = function(_) {
+        return arguments.length ? (tapDistance = +_, zoom) : tapDistance;
+      };
+      return zoom;
+    }
+    var has = Object.prototype.hasOwnProperty;
+    function dequal(foo, bar) {
+      var ctor, len;
+      if (foo === bar) return true;
+      if (foo && bar && (ctor = foo.constructor) === bar.constructor) {
+        if (ctor === Date) return foo.getTime() === bar.getTime();
+        if (ctor === RegExp) return foo.toString() === bar.toString();
+        if (ctor === Array) {
+          if ((len = foo.length) === bar.length) {
+            while (len-- && dequal(foo[len], bar[len])) ;
+          }
+          return len === -1;
+        }
+        if (!ctor || typeof foo === "object") {
+          len = 0;
+          for (ctor in foo) {
+            if (has.call(foo, ctor) && ++len && !has.call(bar, ctor)) return false;
+            if (!(ctor in bar) || !dequal(foo[ctor], bar[ctor])) return false;
+          }
+          return Object.keys(bar).length === len;
+        }
+      }
+      return foo !== foo && bar !== bar;
+    }
+    var clone$1 = { exports: {} };
+    var hasRequiredClone;
+    function requireClone() {
+      if (hasRequiredClone) return clone$1.exports;
+      hasRequiredClone = 1;
+      (function(module2) {
+        var clone2 = function() {
+          function _instanceof(obj, type) {
+            return type != null && obj instanceof type;
+          }
+          var nativeMap;
+          try {
+            nativeMap = Map;
+          } catch (_) {
+            nativeMap = function() {
+            };
+          }
+          var nativeSet;
+          try {
+            nativeSet = Set;
+          } catch (_) {
+            nativeSet = function() {
+            };
+          }
+          var nativePromise;
+          try {
+            nativePromise = Promise;
+          } catch (_) {
+            nativePromise = function() {
+            };
+          }
+          function clone3(parent, circular, depth, prototype, includeNonEnumerable) {
+            if (typeof circular === "object") {
+              depth = circular.depth;
+              prototype = circular.prototype;
+              includeNonEnumerable = circular.includeNonEnumerable;
+              circular = circular.circular;
+            }
+            var allParents = [];
+            var allChildren = [];
+            var useBuffer = typeof Buffer != "undefined";
+            if (typeof circular == "undefined")
+              circular = true;
+            if (typeof depth == "undefined")
+              depth = Infinity;
+            function _clone(parent2, depth2) {
+              if (parent2 === null)
+                return null;
+              if (depth2 === 0)
+                return parent2;
+              var child;
+              var proto;
+              if (typeof parent2 != "object") {
+                return parent2;
+              }
+              if (_instanceof(parent2, nativeMap)) {
+                child = new nativeMap();
+              } else if (_instanceof(parent2, nativeSet)) {
+                child = new nativeSet();
+              } else if (_instanceof(parent2, nativePromise)) {
+                child = new nativePromise(function(resolve, reject) {
+                  parent2.then(function(value2) {
+                    resolve(_clone(value2, depth2 - 1));
+                  }, function(err) {
+                    reject(_clone(err, depth2 - 1));
+                  });
+                });
+              } else if (clone3.__isArray(parent2)) {
+                child = [];
+              } else if (clone3.__isRegExp(parent2)) {
+                child = new RegExp(parent2.source, __getRegExpFlags(parent2));
+                if (parent2.lastIndex) child.lastIndex = parent2.lastIndex;
+              } else if (clone3.__isDate(parent2)) {
+                child = new Date(parent2.getTime());
+              } else if (useBuffer && Buffer.isBuffer(parent2)) {
+                if (Buffer.allocUnsafe) {
+                  child = Buffer.allocUnsafe(parent2.length);
+                } else {
+                  child = new Buffer(parent2.length);
+                }
+                parent2.copy(child);
+                return child;
+              } else if (_instanceof(parent2, Error)) {
+                child = Object.create(parent2);
+              } else {
+                if (typeof prototype == "undefined") {
+                  proto = Object.getPrototypeOf(parent2);
+                  child = Object.create(proto);
+                } else {
+                  child = Object.create(prototype);
+                  proto = prototype;
+                }
+              }
+              if (circular) {
+                var index = allParents.indexOf(parent2);
+                if (index != -1) {
+                  return allChildren[index];
+                }
+                allParents.push(parent2);
+                allChildren.push(child);
+              }
+              if (_instanceof(parent2, nativeMap)) {
+                parent2.forEach(function(value2, key) {
+                  var keyChild = _clone(key, depth2 - 1);
+                  var valueChild = _clone(value2, depth2 - 1);
+                  child.set(keyChild, valueChild);
+                });
+              }
+              if (_instanceof(parent2, nativeSet)) {
+                parent2.forEach(function(value2) {
+                  var entryChild = _clone(value2, depth2 - 1);
+                  child.add(entryChild);
+                });
+              }
+              for (var i2 in parent2) {
+                var attrs;
+                if (proto) {
+                  attrs = Object.getOwnPropertyDescriptor(proto, i2);
+                }
+                if (attrs && attrs.set == null) {
+                  continue;
+                }
+                child[i2] = _clone(parent2[i2], depth2 - 1);
+              }
+              if (Object.getOwnPropertySymbols) {
+                var symbols = Object.getOwnPropertySymbols(parent2);
+                for (var i2 = 0; i2 < symbols.length; i2++) {
+                  var symbol = symbols[i2];
+                  var descriptor = Object.getOwnPropertyDescriptor(parent2, symbol);
+                  if (descriptor && !descriptor.enumerable && !includeNonEnumerable) {
+                    continue;
+                  }
+                  child[symbol] = _clone(parent2[symbol], depth2 - 1);
+                  if (!descriptor.enumerable) {
+                    Object.defineProperty(child, symbol, {
+                      enumerable: false
+                    });
+                  }
+                }
+              }
+              if (includeNonEnumerable) {
+                var allPropertyNames = Object.getOwnPropertyNames(parent2);
+                for (var i2 = 0; i2 < allPropertyNames.length; i2++) {
+                  var propertyName = allPropertyNames[i2];
+                  var descriptor = Object.getOwnPropertyDescriptor(parent2, propertyName);
+                  if (descriptor && descriptor.enumerable) {
+                    continue;
+                  }
+                  child[propertyName] = _clone(parent2[propertyName], depth2 - 1);
+                  Object.defineProperty(child, propertyName, {
+                    enumerable: false
+                  });
+                }
+              }
+              return child;
+            }
+            return _clone(parent, depth);
+          }
+          clone3.clonePrototype = function clonePrototype(parent) {
+            if (parent === null)
+              return null;
+            var c = function() {
+            };
+            c.prototype = parent;
+            return new c();
+          };
+          function __objToStr(o) {
+            return Object.prototype.toString.call(o);
+          }
+          clone3.__objToStr = __objToStr;
+          function __isDate(o) {
+            return typeof o === "object" && __objToStr(o) === "[object Date]";
+          }
+          clone3.__isDate = __isDate;
+          function __isArray(o) {
+            return typeof o === "object" && __objToStr(o) === "[object Array]";
+          }
+          clone3.__isArray = __isArray;
+          function __isRegExp(o) {
+            return typeof o === "object" && __objToStr(o) === "[object RegExp]";
+          }
+          clone3.__isRegExp = __isRegExp;
+          function __getRegExpFlags(re) {
+            var flags = "";
+            if (re.global) flags += "g";
+            if (re.ignoreCase) flags += "i";
+            if (re.multiline) flags += "m";
+            return flags;
+          }
+          clone3.__getRegExpFlags = __getRegExpFlags;
+          return clone3;
+        }();
+        if (module2.exports) {
+          module2.exports = clone2;
+        }
+      })(clone$1);
+      return clone$1.exports;
+    }
+    var cloneExports = requireClone();
+    const clone = /* @__PURE__ */ getDefaultExportFromCjs(cloneExports);
+    var getRandomValues;
+    var rnds8 = new Uint8Array(16);
+    function rng() {
+      if (!getRandomValues) {
+        getRandomValues = typeof crypto !== "undefined" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto) || typeof msCrypto !== "undefined" && typeof msCrypto.getRandomValues === "function" && msCrypto.getRandomValues.bind(msCrypto);
+        if (!getRandomValues) {
+          throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
+        }
+      }
+      return getRandomValues(rnds8);
+    }
+    const REGEX = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+    function validate(uuid) {
+      return typeof uuid === "string" && REGEX.test(uuid);
+    }
+    var byteToHex = [];
+    for (var i = 0; i < 256; ++i) {
+      byteToHex.push((i + 256).toString(16).substr(1));
+    }
+    function stringify(arr) {
+      var offset = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
+      var uuid = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + "-" + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + "-" + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + "-" + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + "-" + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase();
+      if (!validate(uuid)) {
+        throw TypeError("Stringified UUID is invalid");
+      }
+      return uuid;
+    }
+    function v4(options, buf, offset) {
+      options = options || {};
+      var rnds = options.random || (options.rng || rng)();
+      rnds[6] = rnds[6] & 15 | 64;
+      rnds[8] = rnds[8] & 63 | 128;
+      return stringify(rnds);
+    }
+    var CSSTransitionGroup = { exports: {} };
+    var TransitionGroup = { exports: {} };
+    var chainFunction;
+    var hasRequiredChainFunction;
+    function requireChainFunction() {
+      if (hasRequiredChainFunction) return chainFunction;
+      hasRequiredChainFunction = 1;
+      chainFunction = function chain() {
+        var len = arguments.length;
+        var args = [];
+        for (var i2 = 0; i2 < len; i2++)
+          args[i2] = arguments[i2];
+        args = args.filter(function(fn) {
+          return fn != null;
+        });
+        if (args.length === 0) return void 0;
+        if (args.length === 1) return args[0];
+        return args.reduce(function(current, next) {
+          return function chainedFunction() {
+            current.apply(this, arguments);
+            next.apply(this, arguments);
+          };
+        });
+      };
+      return chainFunction;
+    }
+    var browser;
+    var hasRequiredBrowser;
+    function requireBrowser() {
+      if (hasRequiredBrowser) return browser;
+      hasRequiredBrowser = 1;
+      var warning = function() {
+      };
+      browser = warning;
+      return browser;
+    }
+    function componentWillMount() {
+      var state = this.constructor.getDerivedStateFromProps(this.props, this.state);
+      if (state !== null && state !== void 0) {
+        this.setState(state);
+      }
+    }
+    function componentWillReceiveProps(nextProps) {
+      function updater(prevState) {
+        var state = this.constructor.getDerivedStateFromProps(nextProps, prevState);
+        return state !== null && state !== void 0 ? state : null;
+      }
+      this.setState(updater.bind(this));
+    }
+    function componentWillUpdate(nextProps, nextState) {
+      try {
+        var prevProps = this.props;
+        var prevState = this.state;
+        this.props = nextProps;
+        this.state = nextState;
+        this.__reactInternalSnapshotFlag = true;
+        this.__reactInternalSnapshot = this.getSnapshotBeforeUpdate(
+          prevProps,
+          prevState
+        );
+      } finally {
+        this.props = prevProps;
+        this.state = prevState;
+      }
+    }
+    componentWillMount.__suppressDeprecationWarning = true;
+    componentWillReceiveProps.__suppressDeprecationWarning = true;
+    componentWillUpdate.__suppressDeprecationWarning = true;
+    function polyfill(Component) {
+      var prototype = Component.prototype;
+      if (!prototype || !prototype.isReactComponent) {
+        throw new Error("Can only polyfill class components");
+      }
+      if (typeof Component.getDerivedStateFromProps !== "function" && typeof prototype.getSnapshotBeforeUpdate !== "function") {
+        return Component;
+      }
+      var foundWillMountName = null;
+      var foundWillReceivePropsName = null;
+      var foundWillUpdateName = null;
+      if (typeof prototype.componentWillMount === "function") {
+        foundWillMountName = "componentWillMount";
+      } else if (typeof prototype.UNSAFE_componentWillMount === "function") {
+        foundWillMountName = "UNSAFE_componentWillMount";
+      }
+      if (typeof prototype.componentWillReceiveProps === "function") {
+        foundWillReceivePropsName = "componentWillReceiveProps";
+      } else if (typeof prototype.UNSAFE_componentWillReceiveProps === "function") {
+        foundWillReceivePropsName = "UNSAFE_componentWillReceiveProps";
+      }
+      if (typeof prototype.componentWillUpdate === "function") {
+        foundWillUpdateName = "componentWillUpdate";
+      } else if (typeof prototype.UNSAFE_componentWillUpdate === "function") {
+        foundWillUpdateName = "UNSAFE_componentWillUpdate";
+      }
+      if (foundWillMountName !== null || foundWillReceivePropsName !== null || foundWillUpdateName !== null) {
+        var componentName = Component.displayName || Component.name;
+        var newApiName = typeof Component.getDerivedStateFromProps === "function" ? "getDerivedStateFromProps()" : "getSnapshotBeforeUpdate()";
+        throw Error(
+          "Unsafe legacy lifecycles will not be called for components using new component APIs.\n\n" + componentName + " uses " + newApiName + " but also contains the following legacy lifecycles:" + (foundWillMountName !== null ? "\n  " + foundWillMountName : "") + (foundWillReceivePropsName !== null ? "\n  " + foundWillReceivePropsName : "") + (foundWillUpdateName !== null ? "\n  " + foundWillUpdateName : "") + "\n\nThe above lifecycles should be removed. Learn more about this warning here:\nhttps://fb.me/react-async-component-lifecycle-hooks"
+        );
+      }
+      if (typeof Component.getDerivedStateFromProps === "function") {
+        prototype.componentWillMount = componentWillMount;
+        prototype.componentWillReceiveProps = componentWillReceiveProps;
+      }
+      if (typeof prototype.getSnapshotBeforeUpdate === "function") {
+        if (typeof prototype.componentDidUpdate !== "function") {
+          throw new Error(
+            "Cannot polyfill getSnapshotBeforeUpdate() for components that do not define componentDidUpdate() on the prototype"
+          );
+        }
+        prototype.componentWillUpdate = componentWillUpdate;
+        var componentDidUpdate = prototype.componentDidUpdate;
+        prototype.componentDidUpdate = function componentDidUpdatePolyfill(prevProps, prevState, maybeSnapshot) {
+          var snapshot = this.__reactInternalSnapshotFlag ? this.__reactInternalSnapshot : maybeSnapshot;
+          componentDidUpdate.call(this, prevProps, prevState, snapshot);
+        };
+      }
+      return Component;
+    }
+    const reactLifecyclesCompat_es = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+      __proto__: null,
+      polyfill
+    }, Symbol.toStringTag, { value: "Module" }));
+    const require$$4 = /* @__PURE__ */ getAugmentedNamespace(reactLifecyclesCompat_es);
+    var ChildMapping = {};
+    var hasRequiredChildMapping;
+    function requireChildMapping() {
+      if (hasRequiredChildMapping) return ChildMapping;
+      hasRequiredChildMapping = 1;
+      ChildMapping.__esModule = true;
+      ChildMapping.getChildMapping = getChildMapping;
+      ChildMapping.mergeChildMappings = mergeChildMappings;
+      var _react = requireReact();
+      function getChildMapping(children2) {
+        if (!children2) {
+          return children2;
+        }
+        var result = {};
+        _react.Children.map(children2, function(child) {
+          return child;
+        }).forEach(function(child) {
+          result[child.key] = child;
+        });
+        return result;
+      }
+      function mergeChildMappings(prev, next) {
+        prev = prev || {};
+        next = next || {};
+        function getValueForKey(key) {
+          if (next.hasOwnProperty(key)) {
+            return next[key];
+          }
+          return prev[key];
+        }
+        var nextKeysPending = {};
+        var pendingKeys = [];
+        for (var prevKey in prev) {
+          if (next.hasOwnProperty(prevKey)) {
+            if (pendingKeys.length) {
+              nextKeysPending[prevKey] = pendingKeys;
+              pendingKeys = [];
+            }
+          } else {
+            pendingKeys.push(prevKey);
+          }
+        }
+        var i2 = void 0;
+        var childMapping = {};
+        for (var nextKey in next) {
+          if (nextKeysPending.hasOwnProperty(nextKey)) {
+            for (i2 = 0; i2 < nextKeysPending[nextKey].length; i2++) {
+              var pendingNextKey = nextKeysPending[nextKey][i2];
+              childMapping[nextKeysPending[nextKey][i2]] = getValueForKey(pendingNextKey);
+            }
+          }
+          childMapping[nextKey] = getValueForKey(nextKey);
+        }
+        for (i2 = 0; i2 < pendingKeys.length; i2++) {
+          childMapping[pendingKeys[i2]] = getValueForKey(pendingKeys[i2]);
+        }
+        return childMapping;
+      }
+      return ChildMapping;
+    }
+    var hasRequiredTransitionGroup;
+    function requireTransitionGroup() {
+      if (hasRequiredTransitionGroup) return TransitionGroup.exports;
+      hasRequiredTransitionGroup = 1;
+      (function(module2, exports2) {
+        exports2.__esModule = true;
+        var _extends2 = Object.assign || function(target) {
+          for (var i2 = 1; i2 < arguments.length; i2++) {
+            var source = arguments[i2];
+            for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }
+          return target;
+        };
+        var _chainFunction = requireChainFunction();
+        var _chainFunction2 = _interopRequireDefault(_chainFunction);
+        var _react = requireReact();
+        var _react2 = _interopRequireDefault(_react);
+        var _propTypes = /* @__PURE__ */ requirePropTypes$1();
+        var _propTypes2 = _interopRequireDefault(_propTypes);
+        var _warning = requireBrowser();
+        _interopRequireDefault(_warning);
+        var _reactLifecyclesCompat = require$$4;
+        var _ChildMapping = requireChildMapping();
+        function _interopRequireDefault(obj) {
+          return obj && obj.__esModule ? obj : { default: obj };
+        }
+        function _classCallCheck2(instance, Constructor) {
+          if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+          }
+        }
+        function _possibleConstructorReturn2(self2, call) {
+          if (!self2) {
+            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+          }
+          return call && (typeof call === "object" || typeof call === "function") ? call : self2;
+        }
+        function _inherits2(subClass, superClass) {
+          if (typeof superClass !== "function" && superClass !== null) {
+            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+          }
+          subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });
+          if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+        }
+        ({
+          component: _propTypes2.default.any,
+          childFactory: _propTypes2.default.func,
+          children: _propTypes2.default.node
+        });
+        var defaultProps = {
+          component: "span",
+          childFactory: function childFactory(child) {
+            return child;
+          }
+        };
+        var TransitionGroup2 = function(_React$Component) {
+          _inherits2(TransitionGroup22, _React$Component);
+          function TransitionGroup22(props, context) {
+            _classCallCheck2(this, TransitionGroup22);
+            var _this = _possibleConstructorReturn2(this, _React$Component.call(this, props, context));
+            _this.performAppear = function(key, component) {
+              _this.currentlyTransitioningKeys[key] = true;
+              if (component.componentWillAppear) {
+                component.componentWillAppear(_this._handleDoneAppearing.bind(_this, key, component));
+              } else {
+                _this._handleDoneAppearing(key, component);
+              }
+            };
+            _this._handleDoneAppearing = function(key, component) {
+              if (component && component.componentDidAppear) {
+                component.componentDidAppear();
+              }
+              delete _this.currentlyTransitioningKeys[key];
+              var currentChildMapping = (0, _ChildMapping.getChildMapping)(_this.props.children);
+              if (!currentChildMapping || !currentChildMapping.hasOwnProperty(key)) {
+                _this.performLeave(key, component);
+              }
+            };
+            _this.performEnter = function(key, component) {
+              _this.currentlyTransitioningKeys[key] = true;
+              if (component.componentWillEnter) {
+                component.componentWillEnter(_this._handleDoneEntering.bind(_this, key, component));
+              } else {
+                _this._handleDoneEntering(key, component);
+              }
+            };
+            _this._handleDoneEntering = function(key, component) {
+              if (component && component.componentDidEnter) {
+                component.componentDidEnter();
+              }
+              delete _this.currentlyTransitioningKeys[key];
+              var currentChildMapping = (0, _ChildMapping.getChildMapping)(_this.props.children);
+              if (!currentChildMapping || !currentChildMapping.hasOwnProperty(key)) {
+                _this.performLeave(key, component);
+              }
+            };
+            _this.performLeave = function(key, component) {
+              _this.currentlyTransitioningKeys[key] = true;
+              if (component && component.componentWillLeave) {
+                component.componentWillLeave(_this._handleDoneLeaving.bind(_this, key, component));
+              } else {
+                _this._handleDoneLeaving(key, component);
+              }
+            };
+            _this._handleDoneLeaving = function(key, component) {
+              if (component && component.componentDidLeave) {
+                component.componentDidLeave();
+              }
+              delete _this.currentlyTransitioningKeys[key];
+              var currentChildMapping = (0, _ChildMapping.getChildMapping)(_this.props.children);
+              if (currentChildMapping && currentChildMapping.hasOwnProperty(key)) {
+                _this.keysToEnter.push(key);
+              } else {
+                _this.setState(function(state) {
+                  var newChildren = _extends2({}, state.children);
+                  delete newChildren[key];
+                  return { children: newChildren };
+                });
+              }
+            };
+            _this.childRefs = /* @__PURE__ */ Object.create(null);
+            _this.currentlyTransitioningKeys = {};
+            _this.keysToEnter = [];
+            _this.keysToLeave = [];
+            _this.state = {
+              children: (0, _ChildMapping.getChildMapping)(props.children)
+            };
+            return _this;
+          }
+          TransitionGroup22.prototype.componentDidMount = function componentDidMount() {
+            var initialChildMapping = this.state.children;
+            for (var key in initialChildMapping) {
+              if (initialChildMapping[key]) {
+                this.performAppear(key, this.childRefs[key]);
+              }
+            }
+          };
+          TransitionGroup22.getDerivedStateFromProps = function getDerivedStateFromProps(props, state) {
+            var nextChildMapping = (0, _ChildMapping.getChildMapping)(props.children);
+            var prevChildMapping = state.children;
+            return {
+              children: (0, _ChildMapping.mergeChildMappings)(prevChildMapping, nextChildMapping)
+            };
+          };
+          TransitionGroup22.prototype.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+            var _this2 = this;
+            var nextChildMapping = (0, _ChildMapping.getChildMapping)(this.props.children);
+            var prevChildMapping = prevState.children;
+            for (var key in nextChildMapping) {
+              var hasPrev = prevChildMapping && prevChildMapping.hasOwnProperty(key);
+              if (nextChildMapping[key] && !hasPrev && !this.currentlyTransitioningKeys[key]) {
+                this.keysToEnter.push(key);
+              }
+            }
+            for (var _key in prevChildMapping) {
+              var hasNext = nextChildMapping && nextChildMapping.hasOwnProperty(_key);
+              if (prevChildMapping[_key] && !hasNext && !this.currentlyTransitioningKeys[_key]) {
+                this.keysToLeave.push(_key);
+              }
+            }
+            var keysToEnter = this.keysToEnter;
+            this.keysToEnter = [];
+            keysToEnter.forEach(function(key2) {
+              return _this2.performEnter(key2, _this2.childRefs[key2]);
+            });
+            var keysToLeave = this.keysToLeave;
+            this.keysToLeave = [];
+            keysToLeave.forEach(function(key2) {
+              return _this2.performLeave(key2, _this2.childRefs[key2]);
+            });
+          };
+          TransitionGroup22.prototype.render = function render2() {
+            var _this3 = this;
+            var childrenToRender = [];
+            var _loop = function _loop2(key2) {
+              var child = _this3.state.children[key2];
+              if (child) {
+                var isCallbackRef = typeof child.ref !== "string";
+                var factoryChild = _this3.props.childFactory(child);
+                var ref = function ref2(r) {
+                  _this3.childRefs[key2] = r;
+                };
+                if (factoryChild === child && isCallbackRef) {
+                  ref = (0, _chainFunction2.default)(child.ref, ref);
+                }
+                childrenToRender.push(_react2.default.cloneElement(factoryChild, {
+                  key: key2,
+                  ref
+                }));
+              }
+            };
+            for (var key in this.state.children) {
+              _loop(key);
+            }
+            var props = _extends2({}, this.props);
+            delete props.transitionLeave;
+            delete props.transitionName;
+            delete props.transitionAppear;
+            delete props.transitionEnter;
+            delete props.childFactory;
+            delete props.transitionLeaveTimeout;
+            delete props.transitionEnterTimeout;
+            delete props.transitionAppearTimeout;
+            delete props.component;
+            return _react2.default.createElement(this.props.component, props, childrenToRender);
+          };
+          return TransitionGroup22;
+        }(_react2.default.Component);
+        TransitionGroup2.displayName = "TransitionGroup";
+        TransitionGroup2.propTypes = {};
+        TransitionGroup2.defaultProps = defaultProps;
+        exports2.default = (0, _reactLifecyclesCompat.polyfill)(TransitionGroup2);
+        module2.exports = exports2["default"];
+      })(TransitionGroup, TransitionGroup.exports);
+      return TransitionGroup.exports;
+    }
+    var CSSTransitionGroupChild = { exports: {} };
+    var addClass = { exports: {} };
+    var interopRequireDefault = { exports: {} };
+    var hasRequiredInteropRequireDefault;
+    function requireInteropRequireDefault() {
+      if (hasRequiredInteropRequireDefault) return interopRequireDefault.exports;
+      hasRequiredInteropRequireDefault = 1;
+      (function(module2) {
+        function _interopRequireDefault(e) {
+          return e && e.__esModule ? e : {
+            "default": e
+          };
+        }
+        module2.exports = _interopRequireDefault, module2.exports.__esModule = true, module2.exports["default"] = module2.exports;
+      })(interopRequireDefault);
+      return interopRequireDefault.exports;
+    }
+    var hasClass = { exports: {} };
+    var hasRequiredHasClass;
+    function requireHasClass() {
+      if (hasRequiredHasClass) return hasClass.exports;
+      hasRequiredHasClass = 1;
+      (function(module2, exports2) {
+        exports2.__esModule = true;
+        exports2.default = hasClass2;
+        function hasClass2(element, className) {
+          if (element.classList) return !!className && element.classList.contains(className);
+          else return (" " + (element.className.baseVal || element.className) + " ").indexOf(" " + className + " ") !== -1;
+        }
+        module2.exports = exports2["default"];
+      })(hasClass, hasClass.exports);
+      return hasClass.exports;
+    }
+    var hasRequiredAddClass;
+    function requireAddClass() {
+      if (hasRequiredAddClass) return addClass.exports;
+      hasRequiredAddClass = 1;
+      (function(module2, exports2) {
+        var _interopRequireDefault = requireInteropRequireDefault();
+        exports2.__esModule = true;
+        exports2.default = addClass2;
+        var _hasClass = _interopRequireDefault(requireHasClass());
+        function addClass2(element, className) {
+          if (element.classList) element.classList.add(className);
+          else if (!(0, _hasClass.default)(element, className)) if (typeof element.className === "string") element.className = element.className + " " + className;
+          else element.setAttribute("class", (element.className && element.className.baseVal || "") + " " + className);
+        }
+        module2.exports = exports2["default"];
+      })(addClass, addClass.exports);
+      return addClass.exports;
+    }
+    var removeClass;
+    var hasRequiredRemoveClass;
+    function requireRemoveClass() {
+      if (hasRequiredRemoveClass) return removeClass;
+      hasRequiredRemoveClass = 1;
+      function replaceClassName(origClass, classToRemove) {
+        return origClass.replace(new RegExp("(^|\\s)" + classToRemove + "(?:\\s|$)", "g"), "$1").replace(/\s+/g, " ").replace(/^\s*|\s*$/g, "");
+      }
+      removeClass = function removeClass2(element, className) {
+        if (element.classList) element.classList.remove(className);
+        else if (typeof element.className === "string") element.className = replaceClassName(element.className, className);
+        else element.setAttribute("class", replaceClassName(element.className && element.className.baseVal || "", className));
+      };
+      return removeClass;
+    }
+    var requestAnimationFrame$1 = { exports: {} };
+    var inDOM = { exports: {} };
+    var hasRequiredInDOM;
+    function requireInDOM() {
+      if (hasRequiredInDOM) return inDOM.exports;
+      hasRequiredInDOM = 1;
+      (function(module2, exports2) {
+        exports2.__esModule = true;
+        exports2.default = void 0;
+        var _default = !!(typeof window !== "undefined" && window.document && window.document.createElement);
+        exports2.default = _default;
+        module2.exports = exports2["default"];
+      })(inDOM, inDOM.exports);
+      return inDOM.exports;
+    }
+    var hasRequiredRequestAnimationFrame;
+    function requireRequestAnimationFrame() {
+      if (hasRequiredRequestAnimationFrame) return requestAnimationFrame$1.exports;
+      hasRequiredRequestAnimationFrame = 1;
+      (function(module2, exports2) {
+        var _interopRequireDefault = requireInteropRequireDefault();
+        exports2.__esModule = true;
+        exports2.default = void 0;
+        var _inDOM = _interopRequireDefault(requireInDOM());
+        var vendors = ["", "webkit", "moz", "o", "ms"];
+        var cancel = "clearTimeout";
+        var raf = fallback;
+        var compatRaf;
+        var getKey = function getKey2(vendor, k) {
+          return vendor + (!vendor ? k : k[0].toUpperCase() + k.substr(1)) + "AnimationFrame";
+        };
+        if (_inDOM.default) {
+          vendors.some(function(vendor) {
+            var rafKey = getKey(vendor, "request");
+            if (rafKey in window) {
+              cancel = getKey(vendor, "cancel");
+              return raf = function raf2(cb) {
+                return window[rafKey](cb);
+              };
+            }
+          });
+        }
+        var prev = (/* @__PURE__ */ new Date()).getTime();
+        function fallback(fn) {
+          var curr = (/* @__PURE__ */ new Date()).getTime(), ms = Math.max(0, 16 - (curr - prev)), req = setTimeout(fn, ms);
+          prev = curr;
+          return req;
+        }
+        compatRaf = function compatRaf2(cb) {
+          return raf(cb);
+        };
+        compatRaf.cancel = function(id2) {
+          window[cancel] && typeof window[cancel] === "function" && window[cancel](id2);
+        };
+        var _default = compatRaf;
+        exports2.default = _default;
+        module2.exports = exports2["default"];
+      })(requestAnimationFrame$1, requestAnimationFrame$1.exports);
+      return requestAnimationFrame$1.exports;
+    }
+    var properties = {};
+    var hasRequiredProperties;
+    function requireProperties() {
+      if (hasRequiredProperties) return properties;
+      hasRequiredProperties = 1;
+      var _interopRequireDefault = requireInteropRequireDefault();
+      properties.__esModule = true;
+      properties.default = properties.animationEnd = properties.animationDelay = properties.animationTiming = properties.animationDuration = properties.animationName = properties.transitionEnd = properties.transitionDuration = properties.transitionDelay = properties.transitionTiming = properties.transitionProperty = properties.transform = void 0;
+      var _inDOM = _interopRequireDefault(requireInDOM());
+      var transform = "transform";
+      properties.transform = transform;
+      var prefix, transitionEnd, animationEnd;
+      properties.animationEnd = animationEnd;
+      properties.transitionEnd = transitionEnd;
+      var transitionProperty, transitionDuration, transitionTiming, transitionDelay;
+      properties.transitionDelay = transitionDelay;
+      properties.transitionTiming = transitionTiming;
+      properties.transitionDuration = transitionDuration;
+      properties.transitionProperty = transitionProperty;
+      var animationName, animationDuration, animationTiming, animationDelay;
+      properties.animationDelay = animationDelay;
+      properties.animationTiming = animationTiming;
+      properties.animationDuration = animationDuration;
+      properties.animationName = animationName;
+      if (_inDOM.default) {
+        var _getTransitionPropert = getTransitionProperties();
+        prefix = _getTransitionPropert.prefix;
+        properties.transitionEnd = transitionEnd = _getTransitionPropert.transitionEnd;
+        properties.animationEnd = animationEnd = _getTransitionPropert.animationEnd;
+        properties.transform = transform = prefix + "-" + transform;
+        properties.transitionProperty = transitionProperty = prefix + "-transition-property";
+        properties.transitionDuration = transitionDuration = prefix + "-transition-duration";
+        properties.transitionDelay = transitionDelay = prefix + "-transition-delay";
+        properties.transitionTiming = transitionTiming = prefix + "-transition-timing-function";
+        properties.animationName = animationName = prefix + "-animation-name";
+        properties.animationDuration = animationDuration = prefix + "-animation-duration";
+        properties.animationTiming = animationTiming = prefix + "-animation-delay";
+        properties.animationDelay = animationDelay = prefix + "-animation-timing-function";
+      }
+      var _default = {
+        transform,
+        end: transitionEnd,
+        property: transitionProperty,
+        timing: transitionTiming,
+        delay: transitionDelay,
+        duration: transitionDuration
+      };
+      properties.default = _default;
+      function getTransitionProperties() {
+        var style = document.createElement("div").style;
+        var vendorMap = {
+          O: function O(e) {
+            return "o" + e.toLowerCase();
+          },
+          Moz: function Moz(e) {
+            return e.toLowerCase();
+          },
+          Webkit: function Webkit(e) {
+            return "webkit" + e;
+          },
+          ms: function ms(e) {
+            return "MS" + e;
+          }
+        };
+        var vendors = Object.keys(vendorMap);
+        var transitionEnd2, animationEnd2;
+        var prefix2 = "";
+        for (var i2 = 0; i2 < vendors.length; i2++) {
+          var vendor = vendors[i2];
+          if (vendor + "TransitionProperty" in style) {
+            prefix2 = "-" + vendor.toLowerCase();
+            transitionEnd2 = vendorMap[vendor]("TransitionEnd");
+            animationEnd2 = vendorMap[vendor]("AnimationEnd");
+            break;
+          }
+        }
+        if (!transitionEnd2 && "transitionProperty" in style) transitionEnd2 = "transitionend";
+        if (!animationEnd2 && "animationName" in style) animationEnd2 = "animationend";
+        style = null;
+        return {
+          animationEnd: animationEnd2,
+          transitionEnd: transitionEnd2,
+          prefix: prefix2
+        };
+      }
+      return properties;
+    }
+    var PropTypes = {};
+    var hasRequiredPropTypes;
+    function requirePropTypes() {
+      if (hasRequiredPropTypes) return PropTypes;
+      hasRequiredPropTypes = 1;
+      PropTypes.__esModule = true;
+      PropTypes.nameShape = void 0;
+      PropTypes.transitionTimeout = transitionTimeout;
+      var _react = requireReact();
+      _interopRequireDefault(_react);
+      var _propTypes = /* @__PURE__ */ requirePropTypes$1();
+      var _propTypes2 = _interopRequireDefault(_propTypes);
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : { default: obj };
+      }
+      function transitionTimeout(transitionType) {
+        var timeoutPropName = "transition" + transitionType + "Timeout";
+        var enabledPropName = "transition" + transitionType;
+        return function(props) {
+          if (props[enabledPropName]) {
+            if (props[timeoutPropName] == null) {
+              return new Error(timeoutPropName + " wasn't supplied to CSSTransitionGroup: this can cause unreliable animations and won't be supported in a future version of React. See https://fb.me/react-animation-transition-group-timeout for more information.");
+            } else if (typeof props[timeoutPropName] !== "number") {
+              return new Error(timeoutPropName + " must be a number (in milliseconds)");
+            }
+          }
+          return null;
+        };
+      }
+      PropTypes.nameShape = _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.shape({
+        enter: _propTypes2.default.string,
+        leave: _propTypes2.default.string,
+        active: _propTypes2.default.string
+      }), _propTypes2.default.shape({
+        enter: _propTypes2.default.string,
+        enterActive: _propTypes2.default.string,
+        leave: _propTypes2.default.string,
+        leaveActive: _propTypes2.default.string,
+        appear: _propTypes2.default.string,
+        appearActive: _propTypes2.default.string
+      })]);
+      return PropTypes;
+    }
+    var hasRequiredCSSTransitionGroupChild;
+    function requireCSSTransitionGroupChild() {
+      if (hasRequiredCSSTransitionGroupChild) return CSSTransitionGroupChild.exports;
+      hasRequiredCSSTransitionGroupChild = 1;
+      (function(module2, exports2) {
+        exports2.__esModule = true;
+        var _extends2 = Object.assign || function(target) {
+          for (var i2 = 1; i2 < arguments.length; i2++) {
+            var source = arguments[i2];
+            for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }
+          return target;
+        };
+        var _addClass = requireAddClass();
+        var _addClass2 = _interopRequireDefault(_addClass);
+        var _removeClass = requireRemoveClass();
+        var _removeClass2 = _interopRequireDefault(_removeClass);
+        var _requestAnimationFrame = requireRequestAnimationFrame();
+        var _requestAnimationFrame2 = _interopRequireDefault(_requestAnimationFrame);
+        var _properties = requireProperties();
+        var _react = requireReact();
+        var _react2 = _interopRequireDefault(_react);
+        var _propTypes = /* @__PURE__ */ requirePropTypes$1();
+        var _propTypes2 = _interopRequireDefault(_propTypes);
+        var _reactDom = requireReactDom();
+        var _PropTypes = requirePropTypes();
+        function _interopRequireDefault(obj) {
+          return obj && obj.__esModule ? obj : { default: obj };
+        }
+        function _classCallCheck2(instance, Constructor) {
+          if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+          }
+        }
+        function _possibleConstructorReturn2(self2, call) {
+          if (!self2) {
+            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+          }
+          return call && (typeof call === "object" || typeof call === "function") ? call : self2;
+        }
+        function _inherits2(subClass, superClass) {
+          if (typeof superClass !== "function" && superClass !== null) {
+            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+          }
+          subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });
+          if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+        }
+        var events = [];
+        if (_properties.transitionEnd) events.push(_properties.transitionEnd);
+        if (_properties.animationEnd) events.push(_properties.animationEnd);
+        function addEndListener(node, listener) {
+          if (events.length) {
+            events.forEach(function(e) {
+              return node.addEventListener(e, listener, false);
+            });
+          } else {
+            setTimeout(listener, 0);
+          }
+          return function() {
+            if (!events.length) return;
+            events.forEach(function(e) {
+              return node.removeEventListener(e, listener, false);
+            });
+          };
+        }
+        ({
+          children: _propTypes2.default.node,
+          name: _PropTypes.nameShape.isRequired,
+          // Once we require timeouts to be specified, we can remove the
+          // boolean flags (appear etc.) and just accept a number
+          // or a bool for the timeout flags (appearTimeout etc.)
+          appear: _propTypes2.default.bool,
+          enter: _propTypes2.default.bool,
+          leave: _propTypes2.default.bool,
+          appearTimeout: _propTypes2.default.number,
+          enterTimeout: _propTypes2.default.number,
+          leaveTimeout: _propTypes2.default.number
+        });
+        var CSSTransitionGroupChild2 = function(_React$Component) {
+          _inherits2(CSSTransitionGroupChild22, _React$Component);
+          function CSSTransitionGroupChild22(props, context) {
+            _classCallCheck2(this, CSSTransitionGroupChild22);
+            var _this = _possibleConstructorReturn2(this, _React$Component.call(this, props, context));
+            _this.componentWillAppear = function(done) {
+              if (_this.props.appear) {
+                _this.transition("appear", done, _this.props.appearTimeout);
+              } else {
+                done();
+              }
+            };
+            _this.componentWillEnter = function(done) {
+              if (_this.props.enter) {
+                _this.transition("enter", done, _this.props.enterTimeout);
+              } else {
+                done();
+              }
+            };
+            _this.componentWillLeave = function(done) {
+              if (_this.props.leave) {
+                _this.transition("leave", done, _this.props.leaveTimeout);
+              } else {
+                done();
+              }
+            };
+            _this.classNameAndNodeQueue = [];
+            _this.transitionTimeouts = [];
+            return _this;
+          }
+          CSSTransitionGroupChild22.prototype.componentWillUnmount = function componentWillUnmount() {
+            this.unmounted = true;
+            if (this.timeout) {
+              clearTimeout(this.timeout);
+            }
+            this.transitionTimeouts.forEach(function(timeout2) {
+              clearTimeout(timeout2);
+            });
+            this.classNameAndNodeQueue.length = 0;
+          };
+          CSSTransitionGroupChild22.prototype.transition = function transition(animationType, finishCallback, timeout2) {
+            var node = (0, _reactDom.findDOMNode)(this);
+            if (!node) {
+              if (finishCallback) {
+                finishCallback();
+              }
+              return;
+            }
+            var className = this.props.name[animationType] || this.props.name + "-" + animationType;
+            var activeClassName = this.props.name[animationType + "Active"] || className + "-active";
+            var timer2 = null;
+            var removeListeners = void 0;
+            (0, _addClass2.default)(node, className);
+            this.queueClassAndNode(activeClassName, node);
+            var finish = function finish2(e) {
+              if (e && e.target !== node) {
+                return;
+              }
+              clearTimeout(timer2);
+              if (removeListeners) removeListeners();
+              (0, _removeClass2.default)(node, className);
+              (0, _removeClass2.default)(node, activeClassName);
+              if (removeListeners) removeListeners();
+              if (finishCallback) {
+                finishCallback();
+              }
+            };
+            if (timeout2) {
+              timer2 = setTimeout(finish, timeout2);
+              this.transitionTimeouts.push(timer2);
+            } else if (_properties.transitionEnd) {
+              removeListeners = addEndListener(node, finish);
+            }
+          };
+          CSSTransitionGroupChild22.prototype.queueClassAndNode = function queueClassAndNode(className, node) {
+            var _this2 = this;
+            this.classNameAndNodeQueue.push({
+              className,
+              node
+            });
+            if (!this.rafHandle) {
+              this.rafHandle = (0, _requestAnimationFrame2.default)(function() {
+                return _this2.flushClassNameAndNodeQueue();
+              });
+            }
+          };
+          CSSTransitionGroupChild22.prototype.flushClassNameAndNodeQueue = function flushClassNameAndNodeQueue() {
+            if (!this.unmounted) {
+              this.classNameAndNodeQueue.forEach(function(obj) {
+                obj.node.scrollTop;
+                (0, _addClass2.default)(obj.node, obj.className);
+              });
+            }
+            this.classNameAndNodeQueue.length = 0;
+            this.rafHandle = null;
+          };
+          CSSTransitionGroupChild22.prototype.render = function render2() {
+            var props = _extends2({}, this.props);
+            delete props.name;
+            delete props.appear;
+            delete props.enter;
+            delete props.leave;
+            delete props.appearTimeout;
+            delete props.enterTimeout;
+            delete props.leaveTimeout;
+            delete props.children;
+            return _react2.default.cloneElement(_react2.default.Children.only(this.props.children), props);
+          };
+          return CSSTransitionGroupChild22;
+        }(_react2.default.Component);
+        CSSTransitionGroupChild2.displayName = "CSSTransitionGroupChild";
+        CSSTransitionGroupChild2.propTypes = {};
+        exports2.default = CSSTransitionGroupChild2;
+        module2.exports = exports2["default"];
+      })(CSSTransitionGroupChild, CSSTransitionGroupChild.exports);
+      return CSSTransitionGroupChild.exports;
+    }
+    var hasRequiredCSSTransitionGroup;
+    function requireCSSTransitionGroup() {
+      if (hasRequiredCSSTransitionGroup) return CSSTransitionGroup.exports;
+      hasRequiredCSSTransitionGroup = 1;
+      (function(module2, exports2) {
+        exports2.__esModule = true;
+        var _extends2 = Object.assign || function(target) {
+          for (var i2 = 1; i2 < arguments.length; i2++) {
+            var source = arguments[i2];
+            for (var key in source) {
+              if (Object.prototype.hasOwnProperty.call(source, key)) {
+                target[key] = source[key];
+              }
+            }
+          }
+          return target;
+        };
+        var _react = requireReact();
+        var _react2 = _interopRequireDefault(_react);
+        var _propTypes = /* @__PURE__ */ requirePropTypes$1();
+        var _propTypes2 = _interopRequireDefault(_propTypes);
+        var _TransitionGroup = requireTransitionGroup();
+        var _TransitionGroup2 = _interopRequireDefault(_TransitionGroup);
+        var _CSSTransitionGroupChild = requireCSSTransitionGroupChild();
+        var _CSSTransitionGroupChild2 = _interopRequireDefault(_CSSTransitionGroupChild);
+        var _PropTypes = requirePropTypes();
+        function _interopRequireDefault(obj) {
+          return obj && obj.__esModule ? obj : { default: obj };
+        }
+        function _classCallCheck2(instance, Constructor) {
+          if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+          }
+        }
+        function _possibleConstructorReturn2(self2, call) {
+          if (!self2) {
+            throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+          }
+          return call && (typeof call === "object" || typeof call === "function") ? call : self2;
+        }
+        function _inherits2(subClass, superClass) {
+          if (typeof superClass !== "function" && superClass !== null) {
+            throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+          }
+          subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });
+          if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+        }
+        ({
+          transitionName: _PropTypes.nameShape.isRequired,
+          transitionAppear: _propTypes2.default.bool,
+          transitionEnter: _propTypes2.default.bool,
+          transitionLeave: _propTypes2.default.bool,
+          transitionAppearTimeout: (0, _PropTypes.transitionTimeout)("Appear"),
+          transitionEnterTimeout: (0, _PropTypes.transitionTimeout)("Enter"),
+          transitionLeaveTimeout: (0, _PropTypes.transitionTimeout)("Leave")
+        });
+        var defaultProps = {
+          transitionAppear: false,
+          transitionEnter: true,
+          transitionLeave: true
+        };
+        var CSSTransitionGroup2 = function(_React$Component) {
+          _inherits2(CSSTransitionGroup22, _React$Component);
+          function CSSTransitionGroup22() {
+            var _temp, _this, _ret;
+            _classCallCheck2(this, CSSTransitionGroup22);
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+              args[_key] = arguments[_key];
+            }
+            return _ret = (_temp = (_this = _possibleConstructorReturn2(this, _React$Component.call.apply(_React$Component, [this].concat(args))), _this), _this._wrapChild = function(child) {
+              return _react2.default.createElement(_CSSTransitionGroupChild2.default, {
+                name: _this.props.transitionName,
+                appear: _this.props.transitionAppear,
+                enter: _this.props.transitionEnter,
+                leave: _this.props.transitionLeave,
+                appearTimeout: _this.props.transitionAppearTimeout,
+                enterTimeout: _this.props.transitionEnterTimeout,
+                leaveTimeout: _this.props.transitionLeaveTimeout
+              }, child);
+            }, _temp), _possibleConstructorReturn2(_this, _ret);
+          }
+          CSSTransitionGroup22.prototype.render = function render2() {
+            return _react2.default.createElement(_TransitionGroup2.default, _extends2({}, this.props, { childFactory: this._wrapChild }));
+          };
+          return CSSTransitionGroup22;
+        }(_react2.default.Component);
+        CSSTransitionGroup2.displayName = "CSSTransitionGroup";
+        CSSTransitionGroup2.propTypes = {};
+        CSSTransitionGroup2.defaultProps = defaultProps;
+        exports2.default = CSSTransitionGroup2;
+        module2.exports = exports2["default"];
+      })(CSSTransitionGroup, CSSTransitionGroup.exports);
+      return CSSTransitionGroup.exports;
+    }
+    var reactTransitionGroup;
+    var hasRequiredReactTransitionGroup;
+    function requireReactTransitionGroup() {
+      if (hasRequiredReactTransitionGroup) return reactTransitionGroup;
+      hasRequiredReactTransitionGroup = 1;
+      var _CSSTransitionGroup = requireCSSTransitionGroup();
+      var _CSSTransitionGroup2 = _interopRequireDefault(_CSSTransitionGroup);
+      var _TransitionGroup = requireTransitionGroup();
+      var _TransitionGroup2 = _interopRequireDefault(_TransitionGroup);
+      function _interopRequireDefault(obj) {
+        return obj && obj.__esModule ? obj : { default: obj };
+      }
+      reactTransitionGroup = {
+        TransitionGroup: _TransitionGroup2.default,
+        CSSTransitionGroup: _CSSTransitionGroup2.default
+      };
+      return reactTransitionGroup;
+    }
+    var reactTransitionGroupExports = requireReactTransitionGroup();
+    const TransitionGroupWrapper = (props) => props.enableLegacyTransitions ? React.createElement(reactTransitionGroupExports.TransitionGroup, { component: props.component, className: props.className, transform: props.transform }, props.children) : React.createElement("g", { className: props.className, transform: props.transform }, props.children);
+    const DEFAULT_NODE_CIRCLE_RADIUS = 15;
+    const textLayout = {
+      title: {
+        textAnchor: "start",
+        x: 40
+      },
+      attribute: {
+        x: 40,
+        dy: "1.2em"
+      }
+    };
+    const DefaultNodeElement = ({ nodeDatum, toggleNode, onNodeClick, onNodeMouseOver, onNodeMouseOut }) => React.createElement(
+      React.Fragment,
+      null,
+      React.createElement("circle", { r: DEFAULT_NODE_CIRCLE_RADIUS, onClick: (evt) => {
+        toggleNode();
+        onNodeClick(evt);
+      }, onMouseOver: onNodeMouseOver, onMouseOut: onNodeMouseOut }),
+      React.createElement(
+        "g",
+        { className: "rd3t-label" },
+        React.createElement("text", Object.assign({ className: "rd3t-label__title" }, textLayout.title), nodeDatum.name),
+        React.createElement("text", { className: "rd3t-label__attributes" }, nodeDatum.attributes && Object.entries(nodeDatum.attributes).map(([labelKey, labelValue], i2) => React.createElement(
+          "tspan",
+          Object.assign({ key: `${labelKey}-${i2}` }, textLayout.attribute),
+          labelKey,
+          ": ",
+          typeof labelValue === "boolean" ? labelValue.toString() : labelValue
+        )))
+      )
+    );
+    let Node$2 = class Node extends React.Component {
+      constructor() {
+        super(...arguments);
+        this.nodeRef = null;
+        this.state = {
+          transform: this.setTransform(this.props.position, this.props.parent, this.props.orientation, true),
+          initialStyle: {
+            opacity: 0
+          },
+          wasClicked: false
+        };
+        this.shouldNodeTransform = (ownProps, nextProps, ownState, nextState) => nextProps.subscriptions !== ownProps.subscriptions || nextProps.position.x !== ownProps.position.x || nextProps.position.y !== ownProps.position.y || nextProps.orientation !== ownProps.orientation || nextState.wasClicked !== ownState.wasClicked;
+        this.renderNodeElement = () => {
+          const { data, hierarchyPointNode, renderCustomNodeElement } = this.props;
+          const renderNode = typeof renderCustomNodeElement === "function" ? renderCustomNodeElement : DefaultNodeElement;
+          const nodeProps = {
+            hierarchyPointNode,
+            nodeDatum: data,
+            toggleNode: this.handleNodeToggle,
+            onNodeClick: this.handleOnClick,
+            onNodeMouseOver: this.handleOnMouseOver,
+            onNodeMouseOut: this.handleOnMouseOut,
+            addChildren: this.handleAddChildren
+          };
+          return renderNode(nodeProps);
+        };
+        this.handleNodeToggle = () => {
+          this.setState({ wasClicked: true });
+          this.props.onNodeToggle(this.props.data.__rd3t.id);
+        };
+        this.handleOnClick = (evt) => {
+          this.setState({ wasClicked: true });
+          this.props.onNodeClick(this.props.hierarchyPointNode, evt);
+        };
+        this.handleOnMouseOver = (evt) => {
+          this.props.onNodeMouseOver(this.props.hierarchyPointNode, evt);
+        };
+        this.handleOnMouseOut = (evt) => {
+          this.props.onNodeMouseOut(this.props.hierarchyPointNode, evt);
+        };
+        this.handleAddChildren = (childrenData) => {
+          this.props.handleAddChildrenToNode(this.props.data.__rd3t.id, childrenData);
+        };
+      }
+      componentDidMount() {
+        this.commitTransform();
+      }
+      componentDidUpdate() {
+        if (this.state.wasClicked) {
+          this.props.centerNode(this.props.hierarchyPointNode);
+          this.setState({ wasClicked: false });
+        }
+        this.commitTransform();
+      }
+      shouldComponentUpdate(nextProps, nextState) {
+        return this.shouldNodeTransform(this.props, nextProps, this.state, nextState);
+      }
+      setTransform(position, parent, orientation, shouldTranslateToOrigin = false) {
+        if (shouldTranslateToOrigin) {
+          const hasParent = parent !== null && parent !== void 0;
+          const originX = hasParent ? parent.x : 0;
+          const originY = hasParent ? parent.y : 0;
+          return orientation === "horizontal" ? `translate(${originY},${originX})` : `translate(${originX},${originY})`;
+        }
+        return orientation === "horizontal" ? `translate(${position.y},${position.x})` : `translate(${position.x},${position.y})`;
+      }
+      applyTransform(transform, transitionDuration, opacity = 1, done = () => {
+      }) {
+        if (this.props.enableLegacyTransitions) {
+          select(this.nodeRef).transition().duration(transitionDuration).attr("transform", transform).style("opacity", opacity).on("end", done);
+        } else {
+          select(this.nodeRef).attr("transform", transform).style("opacity", opacity);
+          done();
+        }
+      }
+      commitTransform() {
+        const { orientation, transitionDuration, position, parent } = this.props;
+        const transform = this.setTransform(position, parent, orientation);
+        this.applyTransform(transform, transitionDuration);
+      }
+      componentWillLeave(done) {
+        const { orientation, transitionDuration, position, parent } = this.props;
+        const transform = this.setTransform(position, parent, orientation, true);
+        this.applyTransform(transform, transitionDuration, 0, done);
+      }
+      render() {
+        const { data, nodeClassName } = this.props;
+        return React.createElement("g", { id: data.__rd3t.id, ref: (n) => {
+          this.nodeRef = n;
+        }, style: this.state.initialStyle, className: [
+          data.children && data.children.length > 0 ? "rd3t-node" : "rd3t-leaf-node",
+          nodeClassName
+        ].join(" ").trim(), transform: this.state.transform }, this.renderNodeElement());
+      }
+    };
+    var pi = Math.PI, tau = 2 * pi, epsilon = 1e-6, tauEpsilon = tau - epsilon;
+    function Path$1() {
+      this._x0 = this._y0 = // start of current subpath
+      this._x1 = this._y1 = null;
+      this._ = "";
+    }
+    function path() {
+      return new Path$1();
+    }
+    Path$1.prototype = path.prototype = {
+      constructor: Path$1,
+      moveTo: function(x2, y2) {
+        this._ += "M" + (this._x0 = this._x1 = +x2) + "," + (this._y0 = this._y1 = +y2);
+      },
+      closePath: function() {
+        if (this._x1 !== null) {
+          this._x1 = this._x0, this._y1 = this._y0;
+          this._ += "Z";
+        }
+      },
+      lineTo: function(x2, y2) {
+        this._ += "L" + (this._x1 = +x2) + "," + (this._y1 = +y2);
+      },
+      quadraticCurveTo: function(x1, y1, x2, y2) {
+        this._ += "Q" + +x1 + "," + +y1 + "," + (this._x1 = +x2) + "," + (this._y1 = +y2);
+      },
+      bezierCurveTo: function(x1, y1, x2, y2, x3, y3) {
+        this._ += "C" + +x1 + "," + +y1 + "," + +x2 + "," + +y2 + "," + (this._x1 = +x3) + "," + (this._y1 = +y3);
+      },
+      arcTo: function(x1, y1, x2, y2, r) {
+        x1 = +x1, y1 = +y1, x2 = +x2, y2 = +y2, r = +r;
+        var x0 = this._x1, y0 = this._y1, x21 = x2 - x1, y21 = y2 - y1, x01 = x0 - x1, y01 = y0 - y1, l01_2 = x01 * x01 + y01 * y01;
+        if (r < 0) throw new Error("negative radius: " + r);
+        if (this._x1 === null) {
+          this._ += "M" + (this._x1 = x1) + "," + (this._y1 = y1);
+        } else if (!(l01_2 > epsilon)) ;
+        else if (!(Math.abs(y01 * x21 - y21 * x01) > epsilon) || !r) {
+          this._ += "L" + (this._x1 = x1) + "," + (this._y1 = y1);
+        } else {
+          var x20 = x2 - x0, y20 = y2 - y0, l21_2 = x21 * x21 + y21 * y21, l20_2 = x20 * x20 + y20 * y20, l21 = Math.sqrt(l21_2), l01 = Math.sqrt(l01_2), l = r * Math.tan((pi - Math.acos((l21_2 + l01_2 - l20_2) / (2 * l21 * l01))) / 2), t01 = l / l01, t21 = l / l21;
+          if (Math.abs(t01 - 1) > epsilon) {
+            this._ += "L" + (x1 + t01 * x01) + "," + (y1 + t01 * y01);
+          }
+          this._ += "A" + r + "," + r + ",0,0," + +(y01 * x20 > x01 * y20) + "," + (this._x1 = x1 + t21 * x21) + "," + (this._y1 = y1 + t21 * y21);
+        }
+      },
+      arc: function(x2, y2, r, a0, a1, ccw) {
+        x2 = +x2, y2 = +y2, r = +r, ccw = !!ccw;
+        var dx = r * Math.cos(a0), dy = r * Math.sin(a0), x0 = x2 + dx, y0 = y2 + dy, cw = 1 ^ ccw, da = ccw ? a0 - a1 : a1 - a0;
+        if (r < 0) throw new Error("negative radius: " + r);
+        if (this._x1 === null) {
+          this._ += "M" + x0 + "," + y0;
+        } else if (Math.abs(this._x1 - x0) > epsilon || Math.abs(this._y1 - y0) > epsilon) {
+          this._ += "L" + x0 + "," + y0;
+        }
+        if (!r) return;
+        if (da < 0) da = da % tau + tau;
+        if (da > tauEpsilon) {
+          this._ += "A" + r + "," + r + ",0,1," + cw + "," + (x2 - dx) + "," + (y2 - dy) + "A" + r + "," + r + ",0,1," + cw + "," + (this._x1 = x0) + "," + (this._y1 = y0);
+        } else if (da > epsilon) {
+          this._ += "A" + r + "," + r + ",0," + +(da >= pi) + "," + cw + "," + (this._x1 = x2 + r * Math.cos(a1)) + "," + (this._y1 = y2 + r * Math.sin(a1));
+        }
+      },
+      rect: function(x2, y2, w, h) {
+        this._ += "M" + (this._x0 = this._x1 = +x2) + "," + (this._y0 = this._y1 = +y2) + "h" + +w + "v" + +h + "h" + -w + "Z";
+      },
+      toString: function() {
+        return this._;
+      }
+    };
+    function constant(x2) {
+      return function constant2() {
+        return x2;
+      };
+    }
+    function x(p) {
+      return p[0];
+    }
+    function y(p) {
+      return p[1];
+    }
+    var slice = Array.prototype.slice;
+    function linkSource(d) {
+      return d.source;
+    }
+    function linkTarget(d) {
+      return d.target;
+    }
+    function link(curve) {
+      var source = linkSource, target = linkTarget, x$1 = x, y$1 = y, context = null;
+      function link2() {
+        var buffer, argv = slice.call(arguments), s = source.apply(this, argv), t = target.apply(this, argv);
+        if (!context) context = buffer = path();
+        curve(context, +x$1.apply(this, (argv[0] = s, argv)), +y$1.apply(this, argv), +x$1.apply(this, (argv[0] = t, argv)), +y$1.apply(this, argv));
+        if (buffer) return context = null, buffer + "" || null;
+      }
+      link2.source = function(_) {
+        return arguments.length ? (source = _, link2) : source;
+      };
+      link2.target = function(_) {
+        return arguments.length ? (target = _, link2) : target;
+      };
+      link2.x = function(_) {
+        return arguments.length ? (x$1 = typeof _ === "function" ? _ : constant(+_), link2) : x$1;
+      };
+      link2.y = function(_) {
+        return arguments.length ? (y$1 = typeof _ === "function" ? _ : constant(+_), link2) : y$1;
+      };
+      link2.context = function(_) {
+        return arguments.length ? (context = _ == null ? null : _, link2) : context;
+      };
+      return link2;
+    }
+    function curveHorizontal(context, x0, y0, x1, y1) {
+      context.moveTo(x0, y0);
+      context.bezierCurveTo(x0 = (x0 + x1) / 2, y0, x0, y1, x1, y1);
+    }
+    function curveVertical(context, x0, y0, x1, y1) {
+      context.moveTo(x0, y0);
+      context.bezierCurveTo(x0, y0 = (y0 + y1) / 2, x1, y0, x1, y1);
+    }
+    function linkHorizontal() {
+      return link(curveHorizontal);
+    }
+    function linkVertical() {
+      return link(curveVertical);
+    }
+    let Link$1 = class Link extends React.PureComponent {
+      constructor() {
+        super(...arguments);
+        this.linkRef = null;
+        this.state = {
+          initialStyle: {
+            opacity: 0
+          }
+        };
+        this.handleOnClick = (evt) => {
+          this.props.onClick(this.props.linkData.source, this.props.linkData.target, evt);
+        };
+        this.handleOnMouseOver = (evt) => {
+          this.props.onMouseOver(this.props.linkData.source, this.props.linkData.target, evt);
+        };
+        this.handleOnMouseOut = (evt) => {
+          this.props.onMouseOut(this.props.linkData.source, this.props.linkData.target, evt);
+        };
+      }
+      componentDidMount() {
+        this.applyOpacity(1, this.props.transitionDuration);
+      }
+      componentWillLeave(done) {
+        this.applyOpacity(0, this.props.transitionDuration, done);
+      }
+      applyOpacity(opacity, transitionDuration, done = () => {
+      }) {
+        if (this.props.enableLegacyTransitions) {
+          select(this.linkRef).transition().duration(transitionDuration).style("opacity", opacity).on("end", done);
+        } else {
+          select(this.linkRef).style("opacity", opacity);
+          done();
+        }
+      }
+      drawStepPath(linkData, orientation) {
+        const { source, target } = linkData;
+        const deltaY = target.y - source.y;
+        return orientation === "horizontal" ? `M${source.y},${source.x} H${source.y + deltaY / 2} V${target.x} H${target.y}` : `M${source.x},${source.y} V${source.y + deltaY / 2} H${target.x} V${target.y}`;
+      }
+      drawDiagonalPath(linkData, orientation) {
+        const { source, target } = linkData;
+        return orientation === "horizontal" ? linkHorizontal()({
+          source: [source.y, source.x],
+          target: [target.y, target.x]
+        }) : linkVertical()({
+          source: [source.x, source.y],
+          target: [target.x, target.y]
+        });
+      }
+      drawStraightPath(linkData, orientation) {
+        const { source, target } = linkData;
+        return orientation === "horizontal" ? `M${source.y},${source.x}L${target.y},${target.x}` : `M${source.x},${source.y}L${target.x},${target.y}`;
+      }
+      drawElbowPath(linkData, orientation) {
+        return orientation === "horizontal" ? `M${linkData.source.y},${linkData.source.x}V${linkData.target.x}H${linkData.target.y}` : `M${linkData.source.x},${linkData.source.y}V${linkData.target.y}H${linkData.target.x}`;
+      }
+      drawPath() {
+        const { linkData, orientation, pathFunc } = this.props;
+        if (typeof pathFunc === "function") {
+          return pathFunc(linkData, orientation);
+        }
+        if (pathFunc === "elbow") {
+          return this.drawElbowPath(linkData, orientation);
+        }
+        if (pathFunc === "straight") {
+          return this.drawStraightPath(linkData, orientation);
+        }
+        if (pathFunc === "step") {
+          return this.drawStepPath(linkData, orientation);
+        }
+        return this.drawDiagonalPath(linkData, orientation);
+      }
+      getClassNames() {
+        const { linkData, orientation, pathClassFunc } = this.props;
+        const classNames2 = ["rd3t-link"];
+        if (typeof pathClassFunc === "function") {
+          classNames2.push(pathClassFunc(linkData, orientation));
+        }
+        return classNames2.join(" ").trim();
+      }
+      render() {
+        const { linkData } = this.props;
+        return React.createElement("path", { ref: (l) => {
+          this.linkRef = l;
+        }, style: Object.assign({}, this.state.initialStyle), className: this.getClassNames(), d: this.drawPath(), onClick: this.handleOnClick, onMouseOver: this.handleOnMouseOver, onMouseOut: this.handleOnMouseOut, "data-source-id": linkData.source.id, "data-target-id": linkData.target.id });
+      }
+    };
+    const globalCss = `
+/* Tree */
+.rd3t-tree-container {
+  width: 100%;
+  height: 100%;
+}
+
+.rd3t-grabbable {
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+.rd3t-grabbable:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+/* Node */
+.rd3t-node {
+  cursor: pointer;
+  fill: #777;
+  stroke: #000;
+  stroke-width: 2;
+}
+
+.rd3t-leaf-node {
+  cursor: pointer;
+  fill: transparent;
+  stroke: #000;
+  stroke-width: 1;
+}
+
+.rd3t-label__title {
+  fill: #000;
+  stroke: none;
+  font-weight: bolder;
+}
+
+.rd3t-label__attributes {
+  fill: #777;
+  stroke: none;
+  font-weight: bolder;
+  font-size: smaller;
+}
+
+/* Link */
+.rd3t-link {
+  fill: none;
+  stroke: #000;
+}
+`;
+    class Tree extends React.Component {
+      constructor() {
+        super(...arguments);
+        this.state = {
+          dataRef: this.props.data,
+          data: Tree.assignInternalProperties(clone(this.props.data)),
+          d3: Tree.calculateD3Geometry(this.props),
+          isTransitioning: false,
+          isInitialRenderForDataset: true,
+          dataKey: this.props.dataKey
+        };
+        this.internalState = {
+          targetNode: null,
+          isTransitioning: false
+        };
+        this.svgInstanceRef = `rd3t-svg-${v4()}`;
+        this.gInstanceRef = `rd3t-g-${v4()}`;
+        this.handleNodeToggle = (nodeId) => {
+          const data = clone(this.state.data);
+          const matches = this.findNodesById(nodeId, data, []);
+          const targetNodeDatum = matches[0];
+          if (this.props.collapsible && !this.state.isTransitioning) {
+            if (targetNodeDatum.__rd3t.collapsed) {
+              Tree.expandNode(targetNodeDatum);
+              this.props.shouldCollapseNeighborNodes && this.collapseNeighborNodes(targetNodeDatum, data);
+            } else {
+              Tree.collapseNode(targetNodeDatum);
+            }
+            if (this.props.enableLegacyTransitions) {
+              this.setState({ data, isTransitioning: true });
+              setTimeout(() => this.setState({ isTransitioning: false }), this.props.transitionDuration + 10);
+            } else {
+              this.setState({ data });
+            }
+            this.internalState.targetNode = targetNodeDatum;
+          }
+        };
+        this.handleAddChildrenToNode = (nodeId, childrenData) => {
+          const data = clone(this.state.data);
+          const matches = this.findNodesById(nodeId, data, []);
+          if (matches.length > 0) {
+            const targetNodeDatum = matches[0];
+            const depth = targetNodeDatum.__rd3t.depth;
+            const formattedChildren = clone(childrenData).map((node) => Tree.assignInternalProperties([node], depth + 1));
+            targetNodeDatum.children.push(...formattedChildren.flat());
+            this.setState({ data });
+          }
+        };
+        this.handleOnNodeClickCb = (hierarchyPointNode, evt) => {
+          const { onNodeClick } = this.props;
+          if (onNodeClick && typeof onNodeClick === "function") {
+            evt.persist();
+            onNodeClick(clone(hierarchyPointNode), evt);
+          }
+        };
+        this.handleOnLinkClickCb = (linkSource2, linkTarget2, evt) => {
+          const { onLinkClick } = this.props;
+          if (onLinkClick && typeof onLinkClick === "function") {
+            evt.persist();
+            onLinkClick(clone(linkSource2), clone(linkTarget2), evt);
+          }
+        };
+        this.handleOnNodeMouseOverCb = (hierarchyPointNode, evt) => {
+          const { onNodeMouseOver } = this.props;
+          if (onNodeMouseOver && typeof onNodeMouseOver === "function") {
+            evt.persist();
+            onNodeMouseOver(clone(hierarchyPointNode), evt);
+          }
+        };
+        this.handleOnLinkMouseOverCb = (linkSource2, linkTarget2, evt) => {
+          const { onLinkMouseOver } = this.props;
+          if (onLinkMouseOver && typeof onLinkMouseOver === "function") {
+            evt.persist();
+            onLinkMouseOver(clone(linkSource2), clone(linkTarget2), evt);
+          }
+        };
+        this.handleOnNodeMouseOutCb = (hierarchyPointNode, evt) => {
+          const { onNodeMouseOut } = this.props;
+          if (onNodeMouseOut && typeof onNodeMouseOut === "function") {
+            evt.persist();
+            onNodeMouseOut(clone(hierarchyPointNode), evt);
+          }
+        };
+        this.handleOnLinkMouseOutCb = (linkSource2, linkTarget2, evt) => {
+          const { onLinkMouseOut } = this.props;
+          if (onLinkMouseOut && typeof onLinkMouseOut === "function") {
+            evt.persist();
+            onLinkMouseOut(clone(linkSource2), clone(linkTarget2), evt);
+          }
+        };
+        this.centerNode = (hierarchyPointNode) => {
+          const { dimensions, orientation, zoom, centeringTransitionDuration } = this.props;
+          if (dimensions) {
+            const g = select(`.${this.gInstanceRef}`);
+            const svg = select(`.${this.svgInstanceRef}`);
+            const scale = this.state.d3.scale;
+            let x2;
+            let y2;
+            if (orientation === "horizontal") {
+              y2 = -hierarchyPointNode.x * scale + dimensions.height / 2;
+              x2 = -hierarchyPointNode.y * scale + dimensions.width / 2;
+            } else {
+              x2 = -hierarchyPointNode.x * scale + dimensions.width / 2;
+              y2 = -hierarchyPointNode.y * scale + dimensions.height / 2;
+            }
+            g.transition().duration(centeringTransitionDuration).attr("transform", "translate(" + x2 + "," + y2 + ")scale(" + scale + ")");
+            svg.call(d3zoom().transform, identity.translate(x2, y2).scale(zoom));
+          }
+        };
+        this.getNodeClassName = (parent, nodeDatum) => {
+          const { rootNodeClassName, branchNodeClassName, leafNodeClassName } = this.props;
+          const hasParent = parent !== null && parent !== void 0;
+          if (hasParent) {
+            return nodeDatum.children ? branchNodeClassName : leafNodeClassName;
+          } else {
+            return rootNodeClassName;
+          }
+        };
+      }
+      static getDerivedStateFromProps(nextProps, prevState) {
+        let derivedState = null;
+        const dataKeyChanged = !nextProps.dataKey || prevState.dataKey !== nextProps.dataKey;
+        if (nextProps.data !== prevState.dataRef && dataKeyChanged) {
+          derivedState = {
+            dataRef: nextProps.data,
+            data: Tree.assignInternalProperties(clone(nextProps.data)),
+            isInitialRenderForDataset: true,
+            dataKey: nextProps.dataKey
+          };
+        }
+        const d3 = Tree.calculateD3Geometry(nextProps);
+        if (!dequal(d3, prevState.d3)) {
+          derivedState = derivedState || {};
+          derivedState.d3 = d3;
+        }
+        return derivedState;
+      }
+      componentDidMount() {
+        this.bindZoomListener(this.props);
+        this.setState({ isInitialRenderForDataset: false });
+      }
+      componentDidUpdate(prevProps) {
+        if (this.props.data !== prevProps.data) {
+          this.setState({ isInitialRenderForDataset: false });
+        }
+        if (!dequal(this.props.translate, prevProps.translate) || !dequal(this.props.scaleExtent, prevProps.scaleExtent) || this.props.zoomable !== prevProps.zoomable || this.props.draggable !== prevProps.draggable || this.props.zoom !== prevProps.zoom || this.props.enableLegacyTransitions !== prevProps.enableLegacyTransitions) {
+          this.bindZoomListener(this.props);
+        }
+        if (typeof this.props.onUpdate === "function") {
+          this.props.onUpdate({
+            node: this.internalState.targetNode ? clone(this.internalState.targetNode) : null,
+            zoom: this.state.d3.scale,
+            translate: this.state.d3.translate
+          });
+        }
+        this.internalState.targetNode = null;
+      }
+      /**
+       * Collapses all tree nodes with a `depth` larger than `initialDepth`.
+       *
+       * @param {array} nodeSet Array of nodes generated by `generateTree`
+       * @param {number} initialDepth Maximum initial depth the tree should render
+       */
+      setInitialTreeDepth(nodeSet, initialDepth) {
+        nodeSet.forEach((n) => {
+          n.data.__rd3t.collapsed = n.depth >= initialDepth;
+        });
+      }
+      /**
+       * bindZoomListener - If `props.zoomable`, binds a listener for
+       * "zoom" events to the SVG and sets scaleExtent to min/max
+       * specified in `props.scaleExtent`.
+       */
+      bindZoomListener(props) {
+        const { zoomable, scaleExtent, translate, zoom, onUpdate, hasInteractiveNodes } = props;
+        const svg = select(`.${this.svgInstanceRef}`);
+        const g = select(`.${this.gInstanceRef}`);
+        svg.call(d3zoom().transform, identity.translate(translate.x, translate.y).scale(zoom));
+        svg.call(d3zoom().scaleExtent(zoomable ? [scaleExtent.min, scaleExtent.max] : [zoom, zoom]).filter((event) => {
+          if (hasInteractiveNodes) {
+            return event.target.classList.contains(this.svgInstanceRef) || event.target.classList.contains(this.gInstanceRef) || event.shiftKey;
+          }
+          return true;
+        }).on("zoom", (event) => {
+          if (!this.props.draggable && ["mousemove", "touchmove", "dblclick"].includes(event.sourceEvent.type)) {
+            return;
+          }
+          g.attr("transform", event.transform);
+          if (typeof onUpdate === "function") {
+            onUpdate({
+              node: null,
+              zoom: event.transform.k,
+              translate: { x: event.transform.x, y: event.transform.y }
+            });
+            this.state.d3.scale = event.transform.k;
+            this.state.d3.translate = {
+              x: event.transform.x,
+              y: event.transform.y
+            };
+          }
+        }));
+      }
+      /**
+       * Assigns internal properties that are required for tree
+       * manipulation to each node in the `data` set and returns a new `data` array.
+       *
+       * @static
+       */
+      static assignInternalProperties(data, currentDepth = 0) {
+        const d = Array.isArray(data) ? data : [data];
+        return d.map((n) => {
+          const nodeDatum = n;
+          nodeDatum.__rd3t = { id: null, depth: null, collapsed: false };
+          nodeDatum.__rd3t.id = v4();
+          nodeDatum.__rd3t.depth = currentDepth;
+          if (nodeDatum.children && nodeDatum.children.length > 0) {
+            nodeDatum.children = Tree.assignInternalProperties(nodeDatum.children, currentDepth + 1);
+          }
+          return nodeDatum;
+        });
+      }
+      /**
+       * Recursively walks the nested `nodeSet` until a node matching `nodeId` is found.
+       */
+      findNodesById(nodeId, nodeSet, hits) {
+        if (hits.length > 0) {
+          return hits;
+        }
+        hits = hits.concat(nodeSet.filter((node) => node.__rd3t.id === nodeId));
+        nodeSet.forEach((node) => {
+          if (node.children && node.children.length > 0) {
+            hits = this.findNodesById(nodeId, node.children, hits);
+          }
+        });
+        return hits;
+      }
+      /**
+       * Recursively walks the nested `nodeSet` until all nodes at `depth` have been found.
+       *
+       * @param {number} depth Target depth for which nodes should be returned
+       * @param {array} nodeSet Array of nested `node` objects
+       * @param {array} accumulator Accumulator for matches, passed between recursive calls
+       */
+      findNodesAtDepth(depth, nodeSet, accumulator) {
+        accumulator = accumulator.concat(nodeSet.filter((node) => node.__rd3t.depth === depth));
+        nodeSet.forEach((node) => {
+          if (node.children && node.children.length > 0) {
+            accumulator = this.findNodesAtDepth(depth, node.children, accumulator);
+          }
+        });
+        return accumulator;
+      }
+      /**
+       * Recursively sets the internal `collapsed` property of
+       * the passed `TreeNodeDatum` and its children to `true`.
+       *
+       * @static
+       */
+      static collapseNode(nodeDatum) {
+        nodeDatum.__rd3t.collapsed = true;
+        if (nodeDatum.children && nodeDatum.children.length > 0) {
+          nodeDatum.children.forEach((child) => {
+            Tree.collapseNode(child);
+          });
+        }
+      }
+      /**
+       * Sets the internal `collapsed` property of
+       * the passed `TreeNodeDatum` object to `false`.
+       *
+       * @static
+       */
+      static expandNode(nodeDatum) {
+        nodeDatum.__rd3t.collapsed = false;
+      }
+      /**
+       * Collapses all nodes in `nodeSet` that are neighbors (same depth) of `targetNode`.
+       */
+      collapseNeighborNodes(targetNode, nodeSet) {
+        const neighbors = this.findNodesAtDepth(targetNode.__rd3t.depth, nodeSet, []).filter((node) => node.__rd3t.id !== targetNode.__rd3t.id);
+        neighbors.forEach((neighbor) => Tree.collapseNode(neighbor));
+      }
+      /**
+       * Generates tree elements (`nodes` and `links`) by
+       * grabbing the rootNode from `this.state.data[0]`.
+       * Restricts tree depth to `props.initialDepth` if defined and if this is
+       * the initial render of the tree.
+       */
+      generateTree() {
+        const { initialDepth, depthFactor, separation, nodeSize, orientation } = this.props;
+        const { isInitialRenderForDataset } = this.state;
+        const tree = d3tree().nodeSize(orientation === "horizontal" ? [nodeSize.y, nodeSize.x] : [nodeSize.x, nodeSize.y]).separation((a, b) => a.parent.data.__rd3t.id === b.parent.data.__rd3t.id ? separation.siblings : separation.nonSiblings);
+        const rootNode = tree(hierarchy(this.state.data[0], (d) => d.__rd3t.collapsed ? null : d.children));
+        let nodes = rootNode.descendants();
+        const links = rootNode.links();
+        if (initialDepth !== void 0 && isInitialRenderForDataset) {
+          this.setInitialTreeDepth(nodes, initialDepth);
+        }
+        if (depthFactor) {
+          nodes.forEach((node) => {
+            node.y = node.depth * depthFactor;
+          });
+        }
+        return { nodes, links };
+      }
+      /**
+       * Set initial zoom and position.
+       * Also limit zoom level according to `scaleExtent` on initial display. This is necessary,
+       * because the first time we are setting it as an SVG property, instead of going
+       * through D3's scaling mechanism, which would have picked up both properties.
+       *
+       * @static
+       */
+      static calculateD3Geometry(nextProps) {
+        let scale;
+        if (nextProps.zoom > nextProps.scaleExtent.max) {
+          scale = nextProps.scaleExtent.max;
+        } else if (nextProps.zoom < nextProps.scaleExtent.min) {
+          scale = nextProps.scaleExtent.min;
+        } else {
+          scale = nextProps.zoom;
+        }
+        return {
+          translate: nextProps.translate,
+          scale
+        };
+      }
+      render() {
+        const { nodes, links } = this.generateTree();
+        const { renderCustomNodeElement, orientation, pathFunc, transitionDuration, nodeSize, depthFactor, initialDepth, separation, enableLegacyTransitions, svgClassName, pathClassFunc } = this.props;
+        const { translate, scale } = this.state.d3;
+        const subscriptions = Object.assign(Object.assign(Object.assign({}, nodeSize), separation), {
+          depthFactor,
+          initialDepth
+        });
+        return React.createElement(
+          "div",
+          { className: "rd3t-tree-container rd3t-grabbable" },
+          React.createElement("style", null, globalCss),
+          React.createElement(
+            "svg",
+            { className: `rd3t-svg ${this.svgInstanceRef} ${svgClassName}`, width: "100%", height: "100%" },
+            React.createElement(
+              TransitionGroupWrapper,
+              { enableLegacyTransitions, component: "g", className: `rd3t-g ${this.gInstanceRef}`, transform: `translate(${translate.x},${translate.y}) scale(${scale})` },
+              links.map((linkData, i2) => {
+                return React.createElement(Link$1, { key: "link-" + i2, orientation, pathFunc, pathClassFunc, linkData, onClick: this.handleOnLinkClickCb, onMouseOver: this.handleOnLinkMouseOverCb, onMouseOut: this.handleOnLinkMouseOutCb, enableLegacyTransitions, transitionDuration });
+              }),
+              nodes.map((hierarchyPointNode, i2) => {
+                const { data, x: x2, y: y2, parent } = hierarchyPointNode;
+                return React.createElement(Node$2, { key: "node-" + i2, data, position: { x: x2, y: y2 }, hierarchyPointNode, parent, nodeClassName: this.getNodeClassName(parent, data), renderCustomNodeElement, nodeSize, orientation, enableLegacyTransitions, transitionDuration, onNodeToggle: this.handleNodeToggle, onNodeClick: this.handleOnNodeClickCb, onNodeMouseOver: this.handleOnNodeMouseOverCb, onNodeMouseOut: this.handleOnNodeMouseOutCb, handleAddChildrenToNode: this.handleAddChildrenToNode, subscriptions, centerNode: this.centerNode });
+              })
+            )
+          )
+        );
+      }
+    }
+    Tree.defaultProps = {
+      onNodeClick: void 0,
+      onNodeMouseOver: void 0,
+      onNodeMouseOut: void 0,
+      onLinkClick: void 0,
+      onLinkMouseOver: void 0,
+      onLinkMouseOut: void 0,
+      onUpdate: void 0,
+      orientation: "horizontal",
+      translate: { x: 0, y: 0 },
+      pathFunc: "diagonal",
+      pathClassFunc: void 0,
+      transitionDuration: 500,
+      depthFactor: void 0,
+      collapsible: true,
+      initialDepth: void 0,
+      zoomable: true,
+      draggable: true,
+      zoom: 1,
+      scaleExtent: { min: 0.1, max: 1 },
+      nodeSize: { x: 140, y: 140 },
+      separation: { siblings: 1, nonSiblings: 2 },
+      shouldCollapseNeighborNodes: false,
+      svgClassName: "",
+      rootNodeClassName: "",
+      branchNodeClassName: "",
+      leafNodeClassName: "",
+      renderCustomNodeElement: void 0,
+      enableLegacyTransitions: false,
+      hasInteractiveNodes: false,
+      dimensions: void 0,
+      centeringTransitionDuration: 800,
+      dataKey: void 0
+    };
+    function AstTree({ ast }) {
+      const clone2 = (ast == null ? void 0 : ast.toCycleFreeObject()) || null;
+      const finalAst = clone2 == null ? [] : clone2;
+      const treeContainer = reactExports.useRef(null);
+      const [dimensions, setDimensions] = reactExports.useState({ width: 800, height: 600 });
+      reactExports.useEffect(() => {
+        if (treeContainer.current) {
+          const { width, height } = treeContainer.current.getBoundingClientRect();
+          setDimensions({ width, height });
+        }
+      }, []);
+      if (finalAst.length === 0) {
+        return null;
+      }
+      return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { ref: treeContainer, style: { width: "100%", height: "100%" }, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Tree,
+        {
+          data: [finalAst],
+          orientation: "vertical",
+          translate: { x: dimensions.width / 2, y: 100 }
+        }
+      ) });
+    }
     function App({ presenter: presenter2 }) {
       useSignalValue(presenter2.testEditor.selectedPatternBroadcast);
       useSignalValue(presenter2.currentPathBroadcast);
+      const astJson = useSignalValue(presenter2.testEditor.astJsonBroadcast);
       const ast = useSignalValue(presenter2.testEditor.astBroadcast);
       const currentPathMetaData = useSignalValue(
         presenter2.currentPathMetaDataBroadcast
@@ -24449,6 +29296,7 @@ var require_index_001 = __commonJS({
       const debuggerPresenter = useSignalValue(presenter2.debuggerPresenter);
       const canDebug = presenter2.testEditor.selectedPattern != null;
       const canSave = currentPathMetaData && currentPathMetaData.type === "file";
+      const astView = useSignalValue(presenter2.astViewBroadcast);
       function toggleDocumentation() {
         presenter2.toggleDocumentation();
       }
@@ -24468,13 +29316,19 @@ var require_index_001 = __commonJS({
         presenter2.save();
       }
       function copyAst() {
-        navigator.clipboard.writeText(ast);
+        navigator.clipboard.writeText(astJson);
       }
       function copyGrammar() {
         navigator.clipboard.writeText(presenter2.grammarEditor.textEditor.getText());
       }
       function copyTest() {
         navigator.clipboard.writeText(presenter2.testEditor.textEditor.getText());
+      }
+      function showTreeView() {
+        presenter2.setAstView("tree");
+      }
+      function showJsonView() {
+        presenter2.setAstView("json");
       }
       return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(ZStack, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { zIndex: 1, children: [
@@ -24550,8 +29404,8 @@ var require_index_001 = __commonJS({
                   Diagram$1,
                   {
                     presenter: presenter2.diagramPresenter,
-                    onPatternClick: (path) => {
-                      presenter2.diagramPresenter.togglePatternPath(path);
+                    onPatternClick: (path2) => {
+                      presenter2.diagramPresenter.togglePatternPath(path2);
                     }
                   }
                 ) })
@@ -24589,22 +29443,52 @@ var require_index_001 = __commonJS({
                   )
                 ] }) }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(Box, { width: "50%", enableResizeOnStart: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(ZStack, { children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Ast, { text: ast }),
+                  astView === "tree" && /* @__PURE__ */ jsxRuntimeExports.jsx(AstTree, { ast }),
+                  astView === "json" && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(Ast, { text: astJson }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      VStack,
+                      {
+                        padding: "8px",
+                        verticalAlignment: "end",
+                        horizontalAlignment: "end",
+                        style: { pointerEvents: "none" },
+                        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          Button,
+                          {
+                            onClick: copyAst,
+                            style: { pointerEvents: "auto" },
+                            children: "Copy"
+                          }
+                        )
+                      }
+                    )
+                  ] }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx(
                     VStack,
                     {
                       padding: "8px",
-                      verticalAlignment: "end",
-                      horizontalAlignment: "end",
+                      verticalAlignment: "start",
+                      horizontalAlignment: "center",
                       style: { pointerEvents: "none" },
-                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        Button,
-                        {
-                          onClick: copyAst,
-                          style: { pointerEvents: "auto" },
-                          children: "Copy"
-                        }
-                      )
+                      children: /* @__PURE__ */ jsxRuntimeExports.jsxs(ButtonGroup, { children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          Button,
+                          {
+                            onClick: showJsonView,
+                            style: { pointerEvents: "auto" },
+                            children: "JSON"
+                          }
+                        ),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          Button,
+                          {
+                            onClick: showTreeView,
+                            style: { pointerEvents: "auto" },
+                            children: "Tree"
+                          }
+                        )
+                      ] })
                     }
                   )
                 ] }) })
@@ -24700,7 +29584,7 @@ var require_index_001 = __commonJS({
         this.tagName = tagName;
         this.attrs = unnull(attrs, {});
       }
-      format(x, y, width) {
+      format(x2, y2, width) {
       }
       addTo(parent) {
         if (parent instanceof FakeSVG) {
@@ -24757,12 +29641,12 @@ var require_index_001 = __commonJS({
       }
     }
     class Path extends FakeSVG {
-      constructor(x, y) {
+      constructor(x2, y2) {
         super("path");
-        this.attrs.d = "M" + x + " " + y;
+        this.attrs.d = "M" + x2 + " " + y2;
       }
-      m(x, y) {
-        this.attrs.d += "m" + x + " " + y;
+      m(x2, y2) {
+        this.attrs.d += "m" + x2 + " " + y2;
         return this;
       }
       h(val) {
@@ -24786,13 +29670,13 @@ var require_index_001 = __commonJS({
         return this.v(-Math.max(0, val));
       }
       arc(sweep) {
-        var x = Options$1.AR;
-        var y = Options$1.AR;
+        var x2 = Options$1.AR;
+        var y2 = Options$1.AR;
         if (sweep[0] == "e" || sweep[1] == "w") {
-          x *= -1;
+          x2 *= -1;
         }
         if (sweep[0] == "s" || sweep[1] == "n") {
-          y *= -1;
+          y2 *= -1;
         }
         var cw;
         if (sweep == "ne" || sweep == "es" || sweep == "sw" || sweep == "wn") {
@@ -24800,22 +29684,22 @@ var require_index_001 = __commonJS({
         } else {
           cw = 0;
         }
-        this.attrs.d += "a" + Options$1.AR + " " + Options$1.AR + " 0 0 " + cw + " " + x + " " + y;
+        this.attrs.d += "a" + Options$1.AR + " " + Options$1.AR + " 0 0 " + cw + " " + x2 + " " + y2;
         return this;
       }
-      arc_8(start, dir) {
+      arc_8(start2, dir) {
         const arc = Options$1.AR;
         const s2 = 1 / Math.sqrt(2) * arc;
         const s2inv = arc - s2;
-        let path = "a " + arc + " " + arc + " 0 0 " + (dir == "cw" ? "1" : "0") + " ";
-        const sd = start + dir;
+        let path2 = "a " + arc + " " + arc + " 0 0 " + (dir == "cw" ? "1" : "0") + " ";
+        const sd = start2 + dir;
         const offset = sd == "ncw" ? [s2, s2inv] : sd == "necw" ? [s2inv, s2] : sd == "ecw" ? [-s2inv, s2] : sd == "secw" ? [-s2, s2inv] : sd == "scw" ? [-s2, -s2inv] : sd == "swcw" ? [-s2inv, -s2] : sd == "wcw" ? [s2inv, -s2] : sd == "nwcw" ? [s2, -s2inv] : sd == "nccw" ? [-s2, s2inv] : sd == "nwccw" ? [-s2inv, s2] : sd == "wccw" ? [s2inv, s2] : sd == "swccw" ? [s2, s2inv] : sd == "sccw" ? [s2, -s2inv] : sd == "seccw" ? [s2inv, -s2] : sd == "eccw" ? [-s2inv, -s2] : sd == "neccw" ? [-s2, -s2inv] : null;
-        path += offset.join(" ");
-        this.attrs.d += path;
+        path2 += offset.join(" ");
+        this.attrs.d += path2;
         return this;
       }
-      l(x, y) {
-        this.attrs.d += "l" + x + " " + y;
+      l(x2, y2) {
+        this.attrs.d += "l" + x2 + " " + y2;
         return this;
       }
       format() {
@@ -24833,7 +29717,7 @@ var require_index_001 = __commonJS({
       }
       walk(cb) {
         cb(this);
-        this.items.forEach((x) => x.walk(cb));
+        this.items.forEach((x2) => x2.walk(cb));
       }
     }
     class Diagram extends DiagramMultiContainer {
@@ -24859,22 +29743,22 @@ var require_index_001 = __commonJS({
         paddingr = unnull(paddingr, paddingt, 20);
         paddingb = unnull(paddingb, paddingt, 20);
         paddingl = unnull(paddingl, paddingr, 20);
-        var x = paddingl;
-        var y = paddingt;
-        y += this.up;
+        var x2 = paddingl;
+        var y2 = paddingt;
+        y2 += this.up;
         var g = new FakeSVG("g", { transform: "translate(.5 .5)" });
-        for (var i = 0; i < this.items.length; i++) {
-          var item = this.items[i];
+        for (var i2 = 0; i2 < this.items.length; i2++) {
+          var item = this.items[i2];
           if (item.needsSpace) {
-            new Path(x, y).h(10).addTo(g);
-            x += 10;
+            new Path(x2, y2).h(10).addTo(g);
+            x2 += 10;
           }
-          item.format(x, y, item.width).addTo(g);
-          x += item.width;
-          y += item.height;
+          item.format(x2, y2, item.width).addTo(g);
+          x2 += item.width;
+          y2 += item.height;
           if (item.needsSpace) {
-            new Path(x, y).h(10).addTo(g);
-            x += 10;
+            new Path(x2, y2).h(10).addTo(g);
+            x2 += 10;
           }
         }
         this.attrs.width = this.width + paddingl + paddingr;
@@ -24936,8 +29820,8 @@ var require_index_001 = __commonJS({
         this.items.length;
         this.needsSpace = true;
         this.up = this.down = this.height = this.width = 0;
-        for (var i = 0; i < this.items.length; i++) {
-          var item = this.items[i];
+        for (var i2 = 0; i2 < this.items.length; i2++) {
+          var item = this.items[i2];
           this.width += item.width + (item.needsSpace ? 20 : 0);
           this.up = Math.max(this.up, item.up - this.height);
           this.height += item.height;
@@ -24946,23 +29830,23 @@ var require_index_001 = __commonJS({
         if (this.items[0].needsSpace) this.width -= 10;
         if (this.items[this.items.length - 1].needsSpace) this.width -= 10;
       }
-      format(x, y, width) {
+      format(x2, y2, width) {
         var gaps = determineGaps(width, this.width);
-        new Path(x, y).h(gaps[0]).addTo(this);
-        new Path(x + gaps[0] + this.width, y + this.height).h(gaps[1]).addTo(this);
-        x += gaps[0];
-        for (var i = 0; i < this.items.length; i++) {
-          var item = this.items[i];
-          if (item.needsSpace && i > 0) {
-            new Path(x, y).h(10).addTo(this);
-            x += 10;
+        new Path(x2, y2).h(gaps[0]).addTo(this);
+        new Path(x2 + gaps[0] + this.width, y2 + this.height).h(gaps[1]).addTo(this);
+        x2 += gaps[0];
+        for (var i2 = 0; i2 < this.items.length; i2++) {
+          var item = this.items[i2];
+          if (item.needsSpace && i2 > 0) {
+            new Path(x2, y2).h(10).addTo(this);
+            x2 += 10;
           }
-          item.format(x, y, item.width).addTo(this);
-          x += item.width;
-          y += item.height;
-          if (item.needsSpace && i < this.items.length - 1) {
-            new Path(x, y).h(10).addTo(this);
-            x += 10;
+          item.format(x2, y2, item.width).addTo(this);
+          x2 += item.width;
+          y2 += item.height;
+          if (item.needsSpace && i2 < this.items.length - 1) {
+            new Path(x2, y2).h(10).addTo(this);
+            x2 += 10;
           }
         }
         return this;
@@ -24994,70 +29878,70 @@ var require_index_001 = __commonJS({
         var firstItem = this.items[0];
         var lastItem = this.items[items.length - 1];
         var normalItem = this.items[normal];
-        this.separators = Array.from({ length: items.length - 1 }, (x) => 0);
+        this.separators = Array.from({ length: items.length - 1 }, (x2) => 0);
         this.up = 0;
         var arcs;
-        for (var i = normal - 1; i >= 0; i--) {
-          if (i == normal - 1) arcs = Options$1.AR * 2;
+        for (var i2 = normal - 1; i2 >= 0; i2--) {
+          if (i2 == normal - 1) arcs = Options$1.AR * 2;
           else arcs = Options$1.AR;
-          let item = this.items[i];
-          let lowerItem = this.items[i + 1];
+          let item = this.items[i2];
+          let lowerItem = this.items[i2 + 1];
           let entryDelta = lowerItem.up + Options$1.VS + item.down + item.height;
           let exitDelta = lowerItem.height + lowerItem.up + Options$1.VS + item.down;
           let separator = Options$1.VS;
           if (exitDelta < arcs || entryDelta < arcs) {
             separator += Math.max(arcs - entryDelta, arcs - exitDelta);
           }
-          this.separators[i] = separator;
+          this.separators[i2] = separator;
           this.up += lowerItem.up + separator + item.down + item.height;
         }
         this.up += firstItem.up;
         this.height = normalItem.height;
         this.down = 0;
-        for (var i = normal + 1; i < this.items.length; i++) {
-          if (i == normal + 1) arcs = Options$1.AR * 2;
+        for (var i2 = normal + 1; i2 < this.items.length; i2++) {
+          if (i2 == normal + 1) arcs = Options$1.AR * 2;
           else arcs = Options$1.AR;
-          let item = this.items[i];
-          let upperItem = this.items[i - 1];
+          let item = this.items[i2];
+          let upperItem = this.items[i2 - 1];
           let entryDelta = upperItem.height + upperItem.down + Options$1.VS + item.up;
           let exitDelta = upperItem.down + Options$1.VS + item.up + item.height;
           let separator = Options$1.VS;
           if (entryDelta < arcs || exitDelta < arcs) {
             separator += Math.max(arcs - entryDelta, arcs - exitDelta);
           }
-          this.separators[i - 1] = separator;
+          this.separators[i2 - 1] = separator;
           this.down += upperItem.down + separator + item.up + item.height;
         }
         this.down += lastItem.down;
       }
-      format(x, y, width) {
+      format(x2, y2, width) {
         var gaps = determineGaps(width, this.width);
-        new Path(x, y).h(gaps[0]).addTo(this);
-        new Path(x + gaps[0] + this.width, y + this.height).h(gaps[1]).addTo(this);
-        x += gaps[0];
+        new Path(x2, y2).h(gaps[0]).addTo(this);
+        new Path(x2 + gaps[0] + this.width, y2 + this.height).h(gaps[1]).addTo(this);
+        x2 += gaps[0];
         var last = this.items.length - 1;
         var innerWidth = this.width - Options$1.AR * 4;
         var distanceFromY = 0;
-        for (var i = this.normal - 1; i >= 0; i--) {
-          let item = this.items[i];
-          let lowerItem = this.items[i + 1];
-          distanceFromY += lowerItem.up + this.separators[i] + item.down + item.height;
-          new Path(x, y).arc("se").up(distanceFromY - Options$1.AR * 2).arc("wn").addTo(this);
-          item.format(x + Options$1.AR * 2, y - distanceFromY, innerWidth).addTo(this);
-          new Path(x + Options$1.AR * 2 + innerWidth, y - distanceFromY + item.height).arc("ne").down(distanceFromY - item.height + this.height - Options$1.AR * 2).arc("ws").addTo(this);
+        for (var i2 = this.normal - 1; i2 >= 0; i2--) {
+          let item = this.items[i2];
+          let lowerItem = this.items[i2 + 1];
+          distanceFromY += lowerItem.up + this.separators[i2] + item.down + item.height;
+          new Path(x2, y2).arc("se").up(distanceFromY - Options$1.AR * 2).arc("wn").addTo(this);
+          item.format(x2 + Options$1.AR * 2, y2 - distanceFromY, innerWidth).addTo(this);
+          new Path(x2 + Options$1.AR * 2 + innerWidth, y2 - distanceFromY + item.height).arc("ne").down(distanceFromY - item.height + this.height - Options$1.AR * 2).arc("ws").addTo(this);
         }
-        new Path(x, y).right(Options$1.AR * 2).addTo(this);
-        this.items[this.normal].format(x + Options$1.AR * 2, y, innerWidth).addTo(this);
-        new Path(x + Options$1.AR * 2 + innerWidth, y + this.height).right(Options$1.AR * 2).addTo(this);
+        new Path(x2, y2).right(Options$1.AR * 2).addTo(this);
+        this.items[this.normal].format(x2 + Options$1.AR * 2, y2, innerWidth).addTo(this);
+        new Path(x2 + Options$1.AR * 2 + innerWidth, y2 + this.height).right(Options$1.AR * 2).addTo(this);
         var distanceFromY = 0;
-        for (var i = this.normal + 1; i <= last; i++) {
-          let item = this.items[i];
-          let upperItem = this.items[i - 1];
-          distanceFromY += upperItem.height + upperItem.down + this.separators[i - 1] + item.up;
-          new Path(x, y).arc("ne").down(distanceFromY - Options$1.AR * 2).arc("ws").addTo(this);
+        for (var i2 = this.normal + 1; i2 <= last; i2++) {
+          let item = this.items[i2];
+          let upperItem = this.items[i2 - 1];
+          distanceFromY += upperItem.height + upperItem.down + this.separators[i2 - 1] + item.up;
+          new Path(x2, y2).arc("ne").down(distanceFromY - Options$1.AR * 2).arc("ws").addTo(this);
           if (!item.format) console.log(item);
-          item.format(x + Options$1.AR * 2, y + distanceFromY, innerWidth).addTo(this);
-          new Path(x + Options$1.AR * 2 + innerWidth, y + distanceFromY + item.height).arc("se").up(distanceFromY - Options$1.AR * 2 + item.height - this.height).arc("wn").addTo(this);
+          item.format(x2 + Options$1.AR * 2, y2 + distanceFromY, innerWidth).addTo(this);
+          new Path(x2 + Options$1.AR * 2 + innerWidth, y2 + distanceFromY + item.height).arc("se").up(distanceFromY - Options$1.AR * 2 + item.height - this.height).arc("wn").addTo(this);
         }
         return this;
       }
@@ -25077,7 +29961,7 @@ var require_index_001 = __commonJS({
           var hasSeparator = true;
           var leftLines = [];
           var rightLines = [];
-          for (var i = 0; i < itemTD.height; i++) {
+          for (var i2 = 0; i2 < itemTD.height; i2++) {
             leftLines.push(line_vertical);
             rightLines.push(line_vertical);
           }
@@ -25088,11 +29972,11 @@ var require_index_001 = __commonJS({
             rightLines[itemTD.exit] = roundcorner_top_right;
             if (itemNum == 0) {
               hasSeparator = false;
-              for (i = 0; i < itemTD.entry; i++) {
-                leftLines[i] = " ";
+              for (i2 = 0; i2 < itemTD.entry; i2++) {
+                leftLines[i2] = " ";
               }
-              for (i = 0; i < itemTD.exit; i++) {
-                rightLines[i] = " ";
+              for (i2 = 0; i2 < itemTD.exit; i2++) {
+                rightLines[i2] = " ";
               }
             }
           }
@@ -25103,11 +29987,11 @@ var require_index_001 = __commonJS({
               hasSeparator = false;
             }
             if (itemNum == this.items.length - 1) {
-              for (i = itemTD.entry + 1; i < itemTD.height; i++) {
-                leftLines[i] = " ";
+              for (i2 = itemTD.entry + 1; i2 < itemTD.height; i2++) {
+                leftLines[i2] = " ";
               }
-              for (i = itemTD.exit + 1; i < itemTD.height; i++) {
-                rightLines[i] = " ";
+              for (i2 = itemTD.exit + 1; i2 < itemTD.height; i2++) {
+                rightLines[i2] = " ";
               }
             }
           }
@@ -25158,18 +30042,18 @@ var require_index_001 = __commonJS({
         this.down = Math.max(Options$1.AR * 2, this.item.down + Options$1.VS + this.rep.up + this.rep.height + this.rep.down);
         this.needsSpace = true;
       }
-      format(x, y, width) {
+      format(x2, y2, width) {
         var gaps = determineGaps(width, this.width);
-        new Path(x, y).h(gaps[0]).addTo(this);
-        new Path(x + gaps[0] + this.width, y + this.height).h(gaps[1]).addTo(this);
-        x += gaps[0];
-        new Path(x, y).right(Options$1.AR).addTo(this);
-        this.item.format(x + Options$1.AR, y, this.width - Options$1.AR * 2).addTo(this);
-        new Path(x + this.width - Options$1.AR, y + this.height).right(Options$1.AR).addTo(this);
+        new Path(x2, y2).h(gaps[0]).addTo(this);
+        new Path(x2 + gaps[0] + this.width, y2 + this.height).h(gaps[1]).addTo(this);
+        x2 += gaps[0];
+        new Path(x2, y2).right(Options$1.AR).addTo(this);
+        this.item.format(x2 + Options$1.AR, y2, this.width - Options$1.AR * 2).addTo(this);
+        new Path(x2 + this.width - Options$1.AR, y2 + this.height).right(Options$1.AR).addTo(this);
         var distanceFromY = Math.max(Options$1.AR * 2, this.item.height + this.item.down + Options$1.VS + this.rep.up);
-        new Path(x + Options$1.AR, y).arc("nw").down(distanceFromY - Options$1.AR * 2).arc("ws").addTo(this);
-        this.rep.format(x + Options$1.AR, y + distanceFromY, this.width - Options$1.AR * 2).addTo(this);
-        new Path(x + this.width - Options$1.AR, y + distanceFromY + this.rep.height).arc("se").up(distanceFromY - Options$1.AR * 2 + this.rep.height - this.item.height).arc("en").addTo(this);
+        new Path(x2 + Options$1.AR, y2).arc("nw").down(distanceFromY - Options$1.AR * 2).arc("ws").addTo(this);
+        this.rep.format(x2 + Options$1.AR, y2 + distanceFromY, this.width - Options$1.AR * 2).addTo(this);
+        new Path(x2 + this.width - Options$1.AR, y2 + distanceFromY + this.rep.height).arc("se").up(distanceFromY - Options$1.AR * 2 + this.rep.height - this.item.height).arc("en").addTo(this);
         return this;
       }
       toTextDiagram() {
@@ -25182,7 +30066,7 @@ var require_index_001 = __commonJS({
         var itemAndRepeatTD = itemTD.appendBelow(repeatTD, []);
         var leftLines = [];
         leftLines.push(repeat_top_left + line);
-        for (var i = 0; i < itemTD.height - itemTD.entry + repeatTD.entry - 1; i++) {
+        for (var i2 = 0; i2 < itemTD.height - itemTD.entry + repeatTD.entry - 1; i2++) {
           leftLines.push(repeat_left + " ");
         }
         leftLines.push(repeat_bot_left + line);
@@ -25190,7 +30074,7 @@ var require_index_001 = __commonJS({
         leftTD = leftTD.appendRight(itemAndRepeatTD, "");
         var rightLines = [];
         rightLines.push(line + repeat_top_right);
-        for (i = 0; i < itemTD.height - itemTD.exit + repeatTD.exit - 1; i++) {
+        for (i2 = 0; i2 < itemTD.height - itemTD.exit + repeatTD.exit - 1; i2++) {
           rightLines.push(" " + repeat_right);
         }
         rightLines.push(line + repeat_bot_right);
@@ -25222,25 +30106,25 @@ var require_index_001 = __commonJS({
         this.down = Math.max(this.item.down + Options$1.VS, Options$1.AR);
         this.needsSpace = true;
       }
-      format(x, y, width) {
+      format(x2, y2, width) {
         var gaps = determineGaps(width, this.width);
-        new Path(x, y).h(gaps[0]).addTo(this);
-        new Path(x + gaps[0] + this.width, y + this.height).h(gaps[1]).addTo(this);
-        x += gaps[0];
+        new Path(x2, y2).h(gaps[0]).addTo(this);
+        new Path(x2 + gaps[0] + this.width, y2 + this.height).h(gaps[1]).addTo(this);
+        x2 += gaps[0];
         new FakeSVG("rect", {
-          x,
-          y: y - this.boxUp,
+          x: x2,
+          y: y2 - this.boxUp,
           width: this.width,
           height: this.boxUp + this.height + this.down,
           rx: Options$1.AR,
           ry: Options$1.AR,
           "class": "group-box"
         }).addTo(this);
-        this.item.format(x, y, this.width).addTo(this);
+        this.item.format(x2, y2, this.width).addTo(this);
         if (this.label) {
           this.label.format(
-            x,
-            y - (this.boxUp + this.label.down + this.label.height),
+            x2,
+            y2 - (this.boxUp + this.label.down + this.label.height),
             this.label.width
           ).addTo(this);
         }
@@ -25273,31 +30157,31 @@ var require_index_001 = __commonJS({
           this.width = Math.max(20, this.label.length * Options$1.CHAR_WIDTH + 10);
         }
       }
-      format(x, y) {
-        let path = new Path(x, y - 10);
+      format(x2, y2) {
+        let path2 = new Path(x2, y2 - 10);
         if (this.type === "complex") {
-          path.down(20).m(0, -10).right(this.width).addTo(this);
+          path2.down(20).m(0, -10).right(this.width).addTo(this);
         } else {
-          path.down(20).m(10, -20).down(20).m(-10, -10).right(this.width).addTo(this);
+          path2.down(20).m(10, -20).down(20).m(-10, -10).right(this.width).addTo(this);
         }
         if (this.label) {
-          new FakeSVG("text", { x, y: y - 15, style: "text-anchor:start" }, this.label).addTo(this);
+          new FakeSVG("text", { x: x2, y: y2 - 15, style: "text-anchor:start" }, this.label).addTo(this);
         }
         return this;
       }
       toTextDiagram() {
         var [cross, line, tee_right] = TextDiagram._getParts(["cross", "line", "tee_right"]);
         if (this.type === "simple") {
-          var start = tee_right + cross + line;
+          var start2 = tee_right + cross + line;
         } else {
-          start = tee_right + line;
+          start2 = tee_right + line;
         }
         var labelTD = new TextDiagram(0, 0, []);
         if (this.label != void 0) {
           labelTD = new TextDiagram(0, 0, [this.label]);
-          start = TextDiagram._padR(start, labelTD.width, line);
+          start2 = TextDiagram._padR(start2, labelTD.width, line);
         }
-        var startTD = new TextDiagram(0, 0, [start]);
+        var startTD = new TextDiagram(0, 0, [start2]);
         return labelTD.appendBelow(startTD, [], true, true);
       }
     }
@@ -25310,11 +30194,11 @@ var require_index_001 = __commonJS({
         this.down = 10;
         this.type = type;
       }
-      format(x, y) {
+      format(x2, y2) {
         if (this.type === "complex") {
-          this.attrs.d = "M " + x + " " + y + " h 20 m 0 -10 v 20";
+          this.attrs.d = "M " + x2 + " " + y2 + " h 20 m 0 -10 v 20";
         } else {
-          this.attrs.d = "M " + x + " " + y + " h 20 m -10 -10 v 20 m 10 -20 v 20";
+          this.attrs.d = "M " + x2 + " " + y2 + " h 20 m -10 -10 v 20 m 10 -20 v 20";
         }
         return this;
       }
@@ -25341,13 +30225,13 @@ var require_index_001 = __commonJS({
         this.down = 11;
         this.needsSpace = true;
       }
-      format(x, y, width) {
+      format(x2, y2, width) {
         var gaps = determineGaps(width, this.width);
-        new Path(x, y).h(gaps[0]).addTo(this);
-        new Path(x + gaps[0] + this.width, y).h(gaps[1]).addTo(this);
-        x += gaps[0];
-        new FakeSVG("rect", { x, y: y - 11, width: this.width, height: this.up + this.down, rx: 10, ry: 10 }).addTo(this);
-        var text = new FakeSVG("text", { x: x + this.width / 2, y: y + 4 }, this.text);
+        new Path(x2, y2).h(gaps[0]).addTo(this);
+        new Path(x2 + gaps[0] + this.width, y2).h(gaps[1]).addTo(this);
+        x2 += gaps[0];
+        new FakeSVG("rect", { x: x2, y: y2 - 11, width: this.width, height: this.up + this.down, rx: 10, ry: 10 }).addTo(this);
+        var text = new FakeSVG("text", { x: x2 + this.width / 2, y: y2 + 4 }, this.text);
         if (this.href)
           new FakeSVG("a", { "xlink:href": this.href }, [text]).addTo(this);
         else
@@ -25373,12 +30257,12 @@ var require_index_001 = __commonJS({
         this.down = 8;
         this.needsSpace = true;
       }
-      format(x, y, width) {
+      format(x2, y2, width) {
         var gaps = determineGaps(width, this.width);
-        new Path(x, y).h(gaps[0]).addTo(this);
-        new Path(x + gaps[0] + this.width, y + this.height).h(gaps[1]).addTo(this);
-        x += gaps[0];
-        var text = new FakeSVG("text", { x: x + this.width / 2, y: y + 5, class: "comment" }, this.text);
+        new Path(x2, y2).h(gaps[0]).addTo(this);
+        new Path(x2 + gaps[0] + this.width, y2 + this.height).h(gaps[1]).addTo(this);
+        x2 += gaps[0];
+        var text = new FakeSVG("text", { x: x2 + this.width / 2, y: y2 + 5, class: "comment" }, this.text);
         if (this.href)
           new FakeSVG("a", { "xlink:href": this.href }, [text]).addTo(this);
         else
@@ -25400,8 +30284,8 @@ var require_index_001 = __commonJS({
         this.down = 0;
         this.needsSpace = false;
       }
-      format(x, y, width) {
-        new Path(x, y).right(width).addTo(this);
+      format(x2, y2, width) {
+        new Path(x2, y2).right(width).addTo(this);
         return this;
       }
       toTextDiagram() {
@@ -25422,8 +30306,8 @@ var require_index_001 = __commonJS({
         if (exit > lines.length) {
           throw new Error("Exit is not within diagram vertically:\n" + this._dump(false));
         }
-        for (var i = 0; i < lines.length; i++) {
-          if (lines[0].length != lines[i].length) {
+        for (var i2 = 0; i2 < lines.length; i2++) {
+          if (lines[0].length != lines[i2].length) {
             throw new Error("Diagram data is not rectangular:\n" + this._dump(false));
           }
         }
@@ -25462,9 +30346,9 @@ var require_index_001 = __commonJS({
         var left2 = this.expand(0, 0, leftTopAdd, leftBotAdd);
         var right = item.expand(0, 0, rightTopAdd, rightBotAdd);
         var newLines = [];
-        for (var i = 0; i < newHeight; i++) {
-          var sep = i != joinLine ? " ".repeat(charsBetween.length) : charsBetween;
-          newLines.push(left2.lines[i] + sep + right.lines[i]);
+        for (var i2 = 0; i2 < newHeight; i2++) {
+          var sep = i2 != joinLine ? " ".repeat(charsBetween.length) : charsBetween;
+          newLines.push(left2.lines[i2] + sep + right.lines[i2]);
         }
         var newEntry = this.entry + leftTopAdd;
         var newExit = item.exit + rightTopAdd;
@@ -25480,11 +30364,11 @@ var require_index_001 = __commonJS({
           var totalPadding = width - this.width;
           var leftWidth = Math.trunc(totalPadding / 2);
           var left2 = [];
-          for (var i = 0; i < this.height; i++) {
+          for (var i2 = 0; i2 < this.height; i2++) {
             left2.push(pad.repeat(leftWidth));
           }
           var right = [];
-          for (i = 0; i < this.height; i++) {
+          for (i2 = 0; i2 < this.height; i2++) {
             right.push(pad.repeat(totalPadding - leftWidth));
           }
           return new _TextDiagram(this.entry, this.exit, _TextDiagram._encloseLines(this.lines, left2, right));
@@ -25502,15 +30386,15 @@ var require_index_001 = __commonJS({
         } else {
           var line = _TextDiagram.parts["line"];
           var newLines = [];
-          for (var i = 0; i < top2; i++) {
+          for (var i2 = 0; i2 < top2; i2++) {
             newLines.push(" ".repeat(this.width + left2 + right));
           }
-          for (i = 0; i < this.height; i++) {
-            var leftExpansion = i === this.entry ? line : " ";
-            var rightExpansion = i === this.exit ? line : " ";
-            newLines.push(leftExpansion.repeat(left2) + this.lines[i] + rightExpansion.repeat(right));
+          for (i2 = 0; i2 < this.height; i2++) {
+            var leftExpansion = i2 === this.entry ? line : " ";
+            var rightExpansion = i2 === this.exit ? line : " ";
+            newLines.push(leftExpansion.repeat(left2) + this.lines[i2] + rightExpansion.repeat(right));
           }
-          for (i = 0; i < bottom; i++) {
+          for (i2 = 0; i2 < bottom; i2++) {
             newLines.push(" ".repeat(this.width + left2 + right));
           }
           return new _TextDiagram(this.entry + top2, this.exit + top2, newLines);
@@ -25543,16 +30427,16 @@ var require_index_001 = __commonJS({
         if (this.exit > this.lines.length) {
           result += "; exit outside diagram: exit=" + this.exit;
         }
-        for (var y = 0; y < Math.max(this.lines.length, this.entry + 1, this.exit + 1); y++) {
-          result = result + nl + "[" + ("00" + y).slice(-3) + "]";
-          if (y < this.lines.length) {
-            result += " '" + this.lines[y] + "' len=" + this.lines[y].length;
+        for (var y2 = 0; y2 < Math.max(this.lines.length, this.entry + 1, this.exit + 1); y2++) {
+          result = result + nl + "[" + ("00" + y2).slice(-3) + "]";
+          if (y2 < this.lines.length) {
+            result += " '" + this.lines[y2] + "' len=" + this.lines[y2].length;
           }
-          if (y === this.entry && y === this.exit) {
+          if (y2 === this.entry && y2 === this.exit) {
             result += " <- entry, exit";
-          } else if (y === this.entry) {
+          } else if (y2 === this.entry) {
             result += " <- entry";
-          } else if (y === this.exit) {
+          } else if (y2 === this.exit) {
             result += " <- exit";
           }
         }
@@ -25569,8 +30453,8 @@ var require_index_001 = __commonJS({
           throw new Error("All arguments must be the same length");
         }
         var newLines = [];
-        for (var i = 0; i < lines.length; i++) {
-          newLines.push(lefts[i] + lines[i] + rights[i]);
+        for (var i2 = 0; i2 < lines.length; i2++) {
+          newLines.push(lefts[i2] + lines[i2] + rights[i2]);
         }
         return newLines;
       }
@@ -25636,8 +30520,8 @@ var require_index_001 = __commonJS({
         if (itemWasFormatted) {
           lines += itemTD.expand(1, 1, 0, 0).lines;
         } else {
-          for (var i = 0; i < itemTD.lines.length; i++) {
-            lines.push(" " + itemTD.lines[i] + " ");
+          for (var i2 = 0; i2 < itemTD.lines.length; i2++) {
+            lines.push(" " + itemTD.lines[i2] + " ");
           }
         }
         lines.push(botHoriz.repeat(itemTD.width + 2));
@@ -25646,7 +30530,7 @@ var require_index_001 = __commonJS({
         var leftMaxWidth = _TextDiagram._maxWidth(topLeft, ctrLeft, botLeft);
         var lefts = [];
         lefts.push(_TextDiagram._padR(topLeft, leftMaxWidth, topHoriz));
-        for (i = 1; i < lines.length - 1; i++) {
+        for (i2 = 1; i2 < lines.length - 1; i2++) {
           lefts.push(_TextDiagram._padR(ctrLeft, leftMaxWidth, " "));
         }
         lefts.push(_TextDiagram._padR(botLeft, leftMaxWidth, botHoriz));
@@ -25656,7 +30540,7 @@ var require_index_001 = __commonJS({
         var rightMaxWidth = _TextDiagram._maxWidth(topRight, ctrRight, botRight);
         var rights = [];
         rights.push(_TextDiagram._padL(topRight, rightMaxWidth, topHoriz));
-        for (i = 1; i < lines.length - 1; i++) {
+        for (i2 = 1; i2 < lines.length - 1; i2++) {
           rights.push(_TextDiagram._padL(ctrRight, rightMaxWidth, " "));
         }
         rights.push(_TextDiagram._padL(botRight, rightMaxWidth, botHoriz));
@@ -25665,12 +30549,12 @@ var require_index_001 = __commonJS({
         }
         lines = _TextDiagram._encloseLines(lines, lefts, rights);
         lefts = [];
-        for (i = 0; i < lines.length; i++) {
+        for (i2 = 0; i2 < lines.length; i2++) {
           lefts.push(" ");
         }
         lefts[entry] = line;
         rights = [];
-        for (i = 0; i < lines.length; i++) {
+        for (i2 = 0; i2 < lines.length; i2++) {
           rights.push(" ");
         }
         rights[exit] = line;
@@ -25785,8 +30669,8 @@ var require_index_001 = __commonJS({
     __publicField(_TextDiagram, "parts", _TextDiagram.PARTS_UNICODE);
     let TextDiagram = _TextDiagram;
     function unnull(...args) {
-      return args.reduce(function(sofar, x) {
-        return sofar !== void 0 ? sofar : x;
+      return args.reduce(function(sofar, x2) {
+        return sofar !== void 0 ? sofar : x2;
       });
     }
     function determineGaps(outer, inner) {
@@ -25803,7 +30687,7 @@ var require_index_001 = __commonJS({
     function wrapString(value2) {
       return value2 instanceof FakeSVG ? value2 : new Terminal("" + value2);
     }
-    function max$1(iter, func = (x) => x) {
+    function max$1(iter, func = (x2) => x2) {
       return Math.max.apply(null, iter.map(func));
     }
     function SVG(name2, attrs, text) {
@@ -25825,10 +30709,10 @@ var require_index_001 = __commonJS({
       });
     }
     function* enumerate(iter) {
-      var count = 0;
-      for (const x of iter) {
-        yield [count, x];
-        count++;
+      var count2 = 0;
+      for (const x2 of iter) {
+        yield [count2, x2];
+        count2++;
       }
     }
     function generateSteps(rootPattern, records) {
@@ -25848,10 +30732,10 @@ var require_index_001 = __commonJS({
           });
           return;
         }
-        const path = getPathFromPatternToPattern(from, to);
+        const path2 = getPathFromPatternToPattern(from, to);
         const isSibling = to.parent === from.parent;
         if (!isSibling) {
-          path.forEach((pattern2) => {
+          path2.forEach((pattern2) => {
             var _a2;
             if (pattern2.type === "repeat" || pattern2.type === "infinite-repeat" || pattern2.type === "finite-repeat" || pattern2.type === "optional" || pattern2.type === "reference" || ((_a2 = pattern2.parent) == null ? void 0 : _a2.type) === "optional" && record.error != null) {
               return;
@@ -25979,10 +30863,30 @@ var require_index_001 = __commonJS({
             return diagram2;
           }
           case "options": {
-            const children = pattern2.children.map((p) => this._buildPattern(p));
-            const options = new Choice(0, ...children);
+            const children2 = pattern2.children.map((p) => this._buildPattern(p));
+            const options = new Choice(0, ...children2);
             options.attrs.id = pattern2.id;
             const diagram2 = new Diagram(new Group(options, pattern2.name));
+            diagram2.attrs.id = pattern2.id;
+            return diagram2;
+          }
+          case "expression": {
+            const expressionPattern = pattern2;
+            const unaryPatterns = expressionPattern.unaryPatterns;
+            const binaryPatterns = expressionPattern.binaryPatterns;
+            const recursivePatterns = expressionPattern.recursivePatterns;
+            const unaryChildren = unaryPatterns.map((p) => this._buildPattern(p));
+            const binaryChildren = binaryPatterns.map((p) => this._buildPattern(p));
+            const recursiveChildren = recursivePatterns.map((p) => this._buildPattern(p));
+            const unaryOptions = new Choice(0, ...unaryChildren);
+            const expressionOptions = new Optional$1(new Choice(0, ...recursiveChildren, ...binaryChildren));
+            const children2 = [unaryOptions];
+            if (binaryChildren.length + recursiveChildren.length > 0) {
+              children2.push(expressionOptions);
+            }
+            const expression = new OneOrMore(new Sequence$1(...children2));
+            expression.attrs.id = pattern2.id;
+            const diagram2 = new Diagram(new Group(expression, pattern2.name));
             diagram2.attrs.id = pattern2.id;
             return diagram2;
           }
@@ -25995,24 +30899,24 @@ var require_index_001 = __commonJS({
             return diagram2;
           }
           case "sequence": {
-            const children = pattern2.children.map((p) => this._buildPattern(p));
-            const sequence = new Sequence$1(...children);
+            const children2 = pattern2.children.map((p) => this._buildPattern(p));
+            const sequence = new Sequence$1(...children2);
             sequence.attrs.id = pattern2.id;
             const diagram2 = new Diagram(new Group(sequence, pattern2.name));
             diagram2.attrs.id = pattern2.id;
             return diagram2;
           }
           case "finite-repeat": {
-            const children = pattern2.children[0].children.map((p) => this._buildPattern(p));
-            const repeat = new OneOrMore(...children);
+            const children2 = pattern2.children[0].children.map((p) => this._buildPattern(p));
+            const repeat = new OneOrMore(...children2);
             repeat.attrs.id = pattern2.id;
             const diagram2 = new Diagram(new Group(repeat, pattern2.name));
             diagram2.attrs.id = pattern2.id;
             return diagram2;
           }
           case "infinite-repeat": {
-            const children = pattern2.children[0].children.map((p) => this._buildPattern(p));
-            const repeat = new OneOrMore(...children);
+            const children2 = pattern2.children[0].children.map((p) => this._buildPattern(p));
+            const repeat = new OneOrMore(...children2);
             repeat.attrs.id = pattern2.id;
             const diagram2 = new Diagram(new Group(repeat, pattern2.name));
             diagram2.attrs.id = pattern2.id;
@@ -26030,9 +30934,9 @@ var require_index_001 = __commonJS({
         switch (pattern2.type) {
           case "literal": {
             const text = this.replaceSpecialCharacters(pattern2.token);
-            const path = generatePath(pattern2);
+            const path2 = generatePath(pattern2);
             const terminalOptions = {};
-            const classNames2 = this._classNames.get(path);
+            const classNames2 = this._classNames.get(path2);
             if (classNames2 != null) {
               terminalOptions.cls = classNames2;
             }
@@ -26042,11 +30946,11 @@ var require_index_001 = __commonJS({
             return terminal;
           }
           case "regex": {
-            const path = generatePath(pattern2);
-            if (this._expandedPatternPaths.get(path)) {
+            const path2 = generatePath(pattern2);
+            if (this._expandedPatternPaths.get(path2)) {
               const text = pattern2.regex;
               const terminalOptions = {};
-              const classNames2 = this._classNames.get(path);
+              const classNames2 = this._classNames.get(path2);
               if (classNames2 != null) {
                 terminalOptions.cls = classNames2;
               }
@@ -26057,7 +30961,7 @@ var require_index_001 = __commonJS({
             } else {
               const text = pattern2.name;
               const termninalOptions = {};
-              const classNames2 = this._classNames.get(path);
+              const classNames2 = this._classNames.get(path2);
               if (classNames2 != null) {
                 termninalOptions.cls = classNames2;
               }
@@ -26069,9 +30973,9 @@ var require_index_001 = __commonJS({
           }
           case "not": {
             const text = pattern2.name;
-            const path = generatePath(pattern2);
+            const path2 = generatePath(pattern2);
             const terminalOptions = {};
-            const classNames2 = this._classNames.get(path);
+            const classNames2 = this._classNames.get(path2);
             if (classNames2 != null) {
               terminalOptions.cls = classNames2;
             }
@@ -26087,33 +30991,77 @@ var require_index_001 = __commonJS({
           }
           case "options": {
             const text = pattern2.name;
-            const path = generatePath(pattern2);
-            if (this._expandedPatternPaths.get(path)) {
-              const children = pattern2.children.map((p) => this._buildPattern(p));
-              const options = new Choice(0, ...children);
+            const path2 = generatePath(pattern2);
+            if (this._expandedPatternPaths.get(path2)) {
+              const children2 = pattern2.children.map((p) => this._buildPattern(p));
+              const options = new Choice(0, ...children2);
               options.attrs.id = pattern2.id;
               const terminalOptions = {};
-              const classNames2 = this._classNames.get(path);
+              const classNames2 = this._classNames.get(path2);
               if (classNames2 != null) {
                 terminalOptions.cls = classNames2;
               }
               const label = new Terminal(`${text}:`, terminalOptions);
-              label.attrs.id = path;
+              label.attrs.id = path2;
               label.attrs["data-group"] = "true";
               label.attrs["data-type"] = "options";
               const group = new Sequence$1(label, options);
-              group.attrs.id = path;
+              group.attrs.id = path2;
               group.attrs["data-group"] = "true";
               return group;
             } else {
               const terminalOptions = {};
-              const classNames2 = this._classNames.get(path);
+              const classNames2 = this._classNames.get(path2);
               if (classNames2 != null) {
                 terminalOptions.cls = classNames2;
               }
               const terminal = new Terminal(text, terminalOptions);
-              terminal.attrs.id = path;
+              terminal.attrs.id = path2;
               terminal.attrs["data-type"] = "options";
+              return terminal;
+            }
+          }
+          case "expression": {
+            const text = pattern2.name;
+            const path2 = generatePath(pattern2);
+            if (this._expandedPatternPaths.get(path2)) {
+              const expressionPattern = pattern2;
+              const unaryPatterns = expressionPattern.unaryPatterns;
+              const binaryPatterns = expressionPattern.binaryPatterns;
+              const recursivePatterns = expressionPattern.recursivePatterns;
+              const unaryChildren = unaryPatterns.map((p) => this._buildPattern(p));
+              const binaryChildren = binaryPatterns.map((p) => this._buildPattern(p));
+              const recursiveChildren = recursivePatterns.map((p) => this._buildPattern(p));
+              const unaryOptions = new Choice(0, ...unaryChildren);
+              const expressionOptions = new Optional$1(new Choice(0, ...recursiveChildren, ...binaryChildren));
+              const children2 = [unaryOptions];
+              if (binaryChildren.length + recursiveChildren.length > 0) {
+                children2.push(expressionOptions);
+              }
+              const expression = new OneOrMore(new Sequence$1(...children2));
+              expression.attrs.id = pattern2.id;
+              const terminalOptions = {};
+              const classNames2 = this._classNames.get(path2);
+              if (classNames2 != null) {
+                terminalOptions.cls = classNames2;
+              }
+              const label = new Terminal(`${text}:`, terminalOptions);
+              label.attrs.id = path2;
+              label.attrs["data-group"] = "true";
+              label.attrs["data-type"] = "expression";
+              const group = new Sequence$1(label, expression);
+              group.attrs.id = path2;
+              group.attrs["data-group"] = "true";
+              return group;
+            } else {
+              const terminalOptions = {};
+              const classNames2 = this._classNames.get(path2);
+              if (classNames2 != null) {
+                terminalOptions.cls = classNames2;
+              }
+              const terminal = new Terminal(text, terminalOptions);
+              terminal.attrs.id = path2;
+              terminal.attrs["data-type"] = "expression";
               return terminal;
             }
           }
@@ -26121,16 +31069,16 @@ var require_index_001 = __commonJS({
             return this._buildPattern(pattern2.children[pattern2.children.length - 1]);
           }
           case "reference": {
-            const path = generatePath(pattern2);
-            if (this._expandedPatternPaths.get(path)) {
-              const refPattern = pattern2._getPatternSafely();
+            const path2 = generatePath(pattern2);
+            if (this._expandedPatternPaths.get(path2)) {
+              const refPattern = pattern2.getReferencePatternSafely();
               this._expandedPatternPaths.set(generatePath(refPattern), true);
               const node = this._buildPattern(refPattern);
-              node.attrs["data-reference-path"] = path;
+              node.attrs["data-reference-path"] = path2;
               return node;
             } else {
               const terminalOptions = {};
-              const classNames2 = this._classNames.get(path);
+              const classNames2 = this._classNames.get(path2);
               if (classNames2 != null) {
                 terminalOptions.cls = classNames2;
               }
@@ -26142,44 +31090,44 @@ var require_index_001 = __commonJS({
           }
           case "sequence": {
             const text = pattern2.name;
-            const path = generatePath(pattern2);
-            if (this._expandedPatternPaths.get(path)) {
-              const children = pattern2.children.map((p) => this._buildPattern(p));
-              const sequence = new Sequence$1(...children);
+            const path2 = generatePath(pattern2);
+            if (this._expandedPatternPaths.get(path2)) {
+              const children2 = pattern2.children.map((p) => this._buildPattern(p));
+              const sequence = new Sequence$1(...children2);
               const terminalOptions = {};
-              const classNames2 = this._classNames.get(path);
+              const classNames2 = this._classNames.get(path2);
               if (classNames2 != null) {
                 terminalOptions.cls = classNames2;
               }
               const label = new Terminal(`${text}:`, terminalOptions);
-              label.attrs.id = path;
+              label.attrs.id = path2;
               label.attrs["data-group"] = "true";
               label.attrs["data-type"] = "sequence";
               const group = new Sequence$1(label, sequence);
-              group.attrs.id = path;
+              group.attrs.id = path2;
               return group;
             } else {
               const terminalOptions = {};
-              const classNames2 = this._classNames.get(path);
+              const classNames2 = this._classNames.get(path2);
               if (classNames2 != null) {
                 terminalOptions.cls = classNames2;
               }
               const terminal = new Terminal(text, terminalOptions);
-              terminal.attrs.id = path;
+              terminal.attrs.id = path2;
               terminal.attrs["data-type"] = "sequence";
               return terminal;
             }
           }
           case "finite-repeat": {
-            const children = pattern2.children[0].children.map((p) => this._buildPattern(p));
-            const repeat = new OneOrMore(...children);
+            const children2 = pattern2.children[0].children.map((p) => this._buildPattern(p));
+            const repeat = new OneOrMore(...children2);
             repeat.attrs.id = generatePath(pattern2);
             repeat.attrs["data-type"] = "repeat";
             return repeat;
           }
           case "infinite-repeat": {
-            const children = pattern2.children[0].children.map((p) => this._buildPattern(p));
-            const repeat = new OneOrMore(...children);
+            const children2 = pattern2.children[0].children.map((p) => this._buildPattern(p));
+            const repeat = new OneOrMore(...children2);
             repeat.attrs.id = generatePath(pattern2);
             repeat.attrs["data-type"] = "repeat";
             return repeat;
@@ -26211,9 +31159,9 @@ var require_index_001 = __commonJS({
       }
       expandPatternPath(patternPath) {
         const parts = patternPath.split("_");
-        for (let x = 1; x < parts.length; x++) {
-          const path = parts.slice(0, x).join("_");
-          this._expandedPatternPaths.set(path, true);
+        for (let x2 = 1; x2 < parts.length; x2++) {
+          const path2 = parts.slice(0, x2).join("_");
+          this._expandedPatternPaths.set(path2, true);
         }
         this._diagrams.set(this._buildDiagrams(this._viewingPatterns.get()));
       }
@@ -26226,8 +31174,8 @@ var require_index_001 = __commonJS({
         this._expandedPatternPaths.set(patternPath, !currentValue);
         this._diagrams.set(this._buildDiagrams(this._viewingPatterns.get()));
       }
-      focusPath(path) {
-        this._focusNodePath.set(path);
+      focusPath(path2) {
+        this._focusNodePath.set(path2);
       }
     }
     function defaultVisitor(node) {
@@ -26267,13 +31215,13 @@ var require_index_001 = __commonJS({
       get value() {
         return this.toString();
       }
-      constructor(type, name2, firstIndex, lastIndex, children = [], value2 = "") {
+      constructor(type, name2, firstIndex, lastIndex, children2 = [], value2 = "") {
         this._type = type;
         this._name = name2;
         this._firstIndex = firstIndex;
         this._lastIndex = lastIndex;
         this._parent = null;
-        this._children = children;
+        this._children = children2;
         this._value = value2;
         this._children.forEach((c) => c._parent = this);
       }
@@ -26289,8 +31237,8 @@ var require_index_001 = __commonJS({
       }
       spliceChildren(index, deleteCount, ...items) {
         const removedItems = this._children.splice(index, deleteCount, ...items);
-        removedItems.forEach((i) => i._parent = null);
-        items.forEach((i) => i._parent = this);
+        removedItems.forEach((i2) => i2._parent = null);
+        items.forEach((i2) => i2._parent = this);
         return removedItems;
       }
       removeAllChildren() {
@@ -26331,10 +31279,10 @@ var require_index_001 = __commonJS({
         if (this._parent == null) {
           return null;
         }
-        const children = this._parent._children;
-        const index = children.indexOf(this);
-        if (index > -1 && index < children.length - 1) {
-          return children[index + 1];
+        const children2 = this._parent._children;
+        const index = children2.indexOf(this);
+        if (index > -1 && index < children2.length - 1) {
+          return children2[index + 1];
         }
         return null;
       }
@@ -26342,15 +31290,24 @@ var require_index_001 = __commonJS({
         if (this._parent == null) {
           return null;
         }
-        const children = this._parent._children;
-        const index = children.indexOf(this);
+        const children2 = this._parent._children;
+        const index = children2.indexOf(this);
         if (index > -1 && index > 0) {
-          return children[index - 1];
+          return children2[index - 1];
         }
         return null;
       }
       find(predicate) {
         return this.findAll(predicate)[0] || null;
+      }
+      findRoot() {
+        let pattern2 = this;
+        while (true) {
+          if (pattern2.parent == null) {
+            return pattern2;
+          }
+          pattern2 = pattern2.parent;
+        }
       }
       findAll(predicate) {
         const matches = [];
@@ -26392,9 +31349,9 @@ var require_index_001 = __commonJS({
       transform(visitors) {
         const childrenCopy = this._children.slice();
         const visitor = visitors[this.name] == null ? defaultVisitor : visitors[this.name];
-        const children = childrenCopy.map((c) => c.transform(visitors));
+        const children2 = childrenCopy.map((c) => c.transform(visitors));
         this.removeAllChildren();
-        this.append(...children);
+        this.append(...children2);
         return visitor(this);
       }
       flatten() {
@@ -26424,7 +31381,7 @@ var require_index_001 = __commonJS({
         if (this.children.length === 0) {
           length = this._value.length;
         } else {
-          length = this.children.reduce((acc, c) => acc + c.normalize(acc + startIndex), startIndex);
+          length = this.children.reduce((acc, c) => acc + c.normalize(acc + startIndex), startIndex) - startIndex;
         }
         this._firstIndex = startIndex;
         this._lastIndex = Math.max(startIndex + length - 1, 0);
@@ -26455,9 +31412,9 @@ var require_index_001 = __commonJS({
       static createValueNode(name2, value2) {
         return new Node2("custom-value-node", name2, 0, 0, [], value2);
       }
-      static createNode(name2, children) {
-        const value2 = children.map((c) => c.toString()).join("");
-        return new Node2("custom-node", name2, 0, 0, children, value2);
+      static createNode(name2, children2) {
+        const value2 = children2.map((c) => c.toString()).join("");
+        return new Node2("custom-node", name2, 0, 0, children2, value2);
       }
     };
     function __awaiter(thisArg, _arguments, P, generator) {
@@ -26492,9 +31449,11 @@ var require_index_001 = __commonJS({
       return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
     };
     class ParseError {
-      constructor(startIndex, endIndex, pattern2) {
+      constructor(startIndex, lastIndex, pattern2) {
+        this.firstIndex = startIndex;
         this.startIndex = startIndex;
-        this.endIndex = endIndex;
+        this.lastIndex = lastIndex;
+        this.endIndex = lastIndex + 1;
         this.pattern = pattern2;
       }
     }
@@ -26581,7 +31540,7 @@ var require_index_001 = __commonJS({
       recordErrorAt(startIndex, endIndex, pattern2) {
         const error = new ParseError(startIndex, endIndex, pattern2);
         this._currentError = error;
-        if (this._furthestError === null || endIndex > this._furthestError.endIndex) {
+        if (this._furthestError === null || endIndex > this._furthestError.lastIndex) {
           this._furthestError = error;
         }
         if (this._isRecording) {
@@ -26777,14 +31736,14 @@ var require_index_001 = __commonJS({
       _tryToParse(cursor) {
         let passed = false;
         const literalRuneLength = this._runes.length;
-        for (let i = 0; i < literalRuneLength; i++) {
-          const literalRune = this._runes[i];
+        for (let i2 = 0; i2 < literalRuneLength; i2++) {
+          const literalRune = this._runes[i2];
           const cursorRune = cursor.currentChar;
           if (literalRune !== cursorRune) {
             this._endIndex = cursor.index;
             break;
           }
-          if (i + 1 === literalRuneLength) {
+          if (i2 + 1 === literalRuneLength) {
             this._lastIndex = this._firstIndex + this._token.length - 1;
             passed = true;
             break;
@@ -26801,9 +31760,9 @@ var require_index_001 = __commonJS({
         return new Node$1("literal", this._name, this._firstIndex, this._lastIndex, void 0, this._token);
       }
       clone(name2 = this._name) {
-        const clone = new Literal(name2, this._token);
-        clone._id = this._id;
-        return clone;
+        const clone2 = new Literal(name2, this._token);
+        clone2._id = this._id;
+        return clone2;
       }
       getTokens() {
         return [this._token];
@@ -26930,10 +31889,10 @@ var require_index_001 = __commonJS({
         this._node = null;
       }
       clone(name2 = this._name) {
-        const clone = new Regex(name2, this._originalRegexString);
-        clone._tokens = this._tokens.slice();
-        clone._id = this._id;
-        return clone;
+        const clone2 = new Regex(name2, this._originalRegexString);
+        clone2._tokens = this._tokens.slice();
+        clone2._id = this._id;
+        return clone2;
       }
       getTokens() {
         return this._tokens;
@@ -26970,13 +31929,13 @@ var require_index_001 = __commonJS({
       }
     }
     function findPattern(pattern2, predicate) {
-      let children = [];
+      let children2 = [];
       if (pattern2.type === "reference") {
-        children = [];
+        children2 = [];
       } else {
-        children = pattern2.children;
+        children2 = pattern2.children;
       }
-      for (const child of children) {
+      for (const child of children2) {
         const result = findPattern(child, predicate);
         if (result !== null) {
           return result;
@@ -27032,9 +31991,9 @@ var require_index_001 = __commonJS({
         };
       }
       parse(cursor) {
-        return this._getPatternSafely().parse(cursor);
+        return this.getReferencePatternSafely().parse(cursor);
       }
-      _getPatternSafely() {
+      getReferencePatternSafely() {
         if (this._pattern === null) {
           let pattern2 = null;
           if (this._cachedPattern == null) {
@@ -27092,7 +32051,7 @@ var require_index_001 = __commonJS({
         return node;
       }
       getTokens() {
-        return this._getPatternSafely().getTokens();
+        return this.getReferencePatternSafely().getTokens();
       }
       getTokensAfter(_lastMatched) {
         if (this._parent == null) {
@@ -27107,7 +32066,7 @@ var require_index_001 = __commonJS({
         return this.parent.getTokensAfter(this);
       }
       getPatterns() {
-        return this._getPatternSafely().getPatterns();
+        return this.getReferencePatternSafely().getPatterns();
       }
       getPatternsAfter(_childReference) {
         if (this._parent == null) {
@@ -27125,12 +32084,12 @@ var require_index_001 = __commonJS({
         return null;
       }
       clone(name2 = this._name) {
-        const clone = new Reference(name2);
-        clone._id = this._id;
+        const clone2 = new Reference(name2);
+        clone2._id = this._id;
         if (this._pattern != null) {
-          clone._cachedPattern = this._pattern;
+          clone2._cachedPattern = this._pattern;
         }
-        return clone;
+        return clone2;
       }
       isEqual(pattern2) {
         return pattern2.type === this.type && pattern2.name === this.name;
@@ -27161,7 +32120,21 @@ var require_index_001 = __commonJS({
         this._depthMap[name2][cursorIndex] = depth - 1;
       }
     }
-    const depthCache$1 = new DepthCache();
+    function isRecursivePattern(pattern2) {
+      let onPattern = pattern2.parent;
+      let depth = 0;
+      while (onPattern != null) {
+        if (onPattern.id === pattern2.id) {
+          depth++;
+        }
+        onPattern = onPattern.parent;
+        if (depth > 1) {
+          return true;
+        }
+      }
+      return false;
+    }
+    const depthCache$2 = new DepthCache();
     let idIndex$6 = 0;
     class Options {
       get id() {
@@ -27184,20 +32157,20 @@ var require_index_001 = __commonJS({
       }
       constructor(name2, options, isGreedy = false) {
         if (options.length === 0) {
-          throw new Error("Need at least one pattern with an 'or' pattern.");
+          throw new Error("Need at least one pattern with an 'options' pattern.");
         }
-        const children = clonePatterns(options);
-        this._assignChildrenToParent(children);
+        const children2 = clonePatterns(options);
+        this._assignChildrenToParent(children2);
         this._id = `options-${idIndex$6++}`;
         this._type = "options";
         this._name = name2;
         this._parent = null;
-        this._children = children;
+        this._children = children2;
         this._firstIndex = 0;
         this._isGreedy = isGreedy;
       }
-      _assignChildrenToParent(children) {
-        for (const child of children) {
+      _assignChildrenToParent(children2) {
+        for (const child of children2) {
           child.parent = this;
         }
       }
@@ -27217,10 +32190,10 @@ var require_index_001 = __commonJS({
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
-        depthCache$1.incrementDepth(this._id, this._firstIndex);
+        depthCache$2.incrementDepth(this._id, this._firstIndex);
         this._firstIndex = cursor.index;
         const node = this._tryToParse(cursor);
-        depthCache$1.decrementDepth(this._id, this._firstIndex);
+        depthCache$2.decrementDepth(this._id, this._firstIndex);
         if (node != null) {
           cursor.moveTo(node.lastIndex);
           cursor.resolveError();
@@ -27230,8 +32203,7 @@ var require_index_001 = __commonJS({
         return null;
       }
       _tryToParse(cursor) {
-        if (depthCache$1.getDepth(this._id, this._firstIndex) > 2) {
-          cursor.recordErrorAt(this._firstIndex, this._firstIndex, this);
+        if (depthCache$2.getDepth(this._id, this._firstIndex) > 2) {
           return null;
         }
         const results = [];
@@ -27253,8 +32225,11 @@ var require_index_001 = __commonJS({
       }
       getTokens() {
         const tokens = [];
-        for (const child of this._children) {
-          tokens.push(...child.getTokens());
+        for (const pattern2 of this._children) {
+          if (isRecursivePattern(pattern2)) {
+            continue;
+          }
+          tokens.push(...pattern2.getTokens());
         }
         return tokens;
       }
@@ -27273,6 +32248,9 @@ var require_index_001 = __commonJS({
       getPatterns() {
         const patterns = [];
         for (const pattern2 of this._children) {
+          if (isRecursivePattern(pattern2)) {
+            continue;
+          }
           patterns.push(...pattern2.getPatterns());
         }
         return patterns;
@@ -27337,11 +32315,11 @@ var require_index_001 = __commonJS({
         this._min = options.min != null ? Math.max(options.min, 1) : 1;
         this._max = Math.max(this.min, options.max || this.min);
         this._trimDivider = options.trimDivider == null ? false : options.trimDivider;
-        for (let i = 0; i < this._max; i++) {
+        for (let i2 = 0; i2 < this._max; i2++) {
           const child = pattern2.clone();
           child.parent = this;
           this._children.push(child);
-          if (options.divider != null && (i < this._max - 1 || !this._trimDivider)) {
+          if (options.divider != null && (i2 < this._max - 1 || !this._trimDivider)) {
             const divider2 = options.divider.clone();
             divider2.parent = this;
             this._children.push(divider2);
@@ -27353,14 +32331,14 @@ var require_index_001 = __commonJS({
         const nodes = [];
         const modulo = this._hasDivider ? 2 : 1;
         let matchCount = 0;
-        for (let i = 0; i < this._children.length; i++) {
-          const childPattern = this._children[i];
+        for (let i2 = 0; i2 < this._children.length; i2++) {
+          const childPattern = this._children[i2];
           const runningIndex = cursor.index;
           const node = childPattern.parse(cursor);
           if (cursor.hasError) {
             break;
           }
-          if (i % modulo === 0 && !cursor.hasError) {
+          if (i2 % modulo === 0 && !cursor.hasError) {
             matchCount++;
           }
           if (node == null) {
@@ -27375,7 +32353,7 @@ var require_index_001 = __commonJS({
           }
         }
         if (this._trimDivider && this._hasDivider) {
-          const isDividerLastMatch = this.children.length > 1 && nodes[nodes.length - 1].name === this.children[1].name;
+          const isDividerLastMatch = this.children.length > 1 && nodes.length > 1 && nodes[nodes.length - 1].name === this.children[1].name;
           if (isDividerLastMatch) {
             const node = nodes.pop();
             cursor.moveTo(node.firstIndex);
@@ -27414,14 +32392,14 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         let min2 = this._min;
         let max2 = this._max;
-        const clone = new FiniteRepeat(name2, this._children[0], {
+        const clone2 = new FiniteRepeat(name2, this._children[0], {
           divider: this._hasDivider ? this._children[1] : void 0,
           min: min2,
           max: max2,
           trimDivider: this._trimDivider
         });
-        clone._id = this._id;
-        return clone;
+        clone2._id = this._id;
+        return clone2;
       }
       getTokens() {
         return this._children[0].getTokens();
@@ -27495,27 +32473,27 @@ var require_index_001 = __commonJS({
       constructor(name2, pattern2, options = {}) {
         const min2 = options.min != null ? Math.max(options.min, 1) : 1;
         const divider2 = options.divider;
-        let children;
+        let children2;
         if (divider2 != null) {
-          children = [pattern2.clone(), divider2.clone()];
+          children2 = [pattern2.clone(), divider2.clone()];
         } else {
-          children = [pattern2.clone()];
+          children2 = [pattern2.clone()];
         }
-        this._assignChildrenToParent(children);
+        this._assignChildrenToParent(children2);
         this._id = `infinite-repeat-${idIndex$4++}`;
         this._type = "infinite-repeat";
         this._name = name2;
         this._min = min2;
         this._parent = null;
-        this._children = children;
-        this._pattern = children[0];
-        this._divider = children[1];
+        this._children = children2;
+        this._pattern = children2[0];
+        this._divider = children2[1];
         this._firstIndex = -1;
         this._nodes = [];
         this._trimDivider = options.trimDivider == null ? false : options.trimDivider;
       }
-      _assignChildrenToParent(children) {
-        for (const child of children) {
+      _assignChildrenToParent(children2) {
+        for (const child of children2) {
           child.parent = this;
         }
       }
@@ -27668,9 +32646,9 @@ var require_index_001 = __commonJS({
       getPatternsAfter(childReference) {
         let index = -1;
         const patterns = [];
-        for (let i = 0; i < this._children.length; i++) {
-          if (this._children[i] === childReference) {
-            index = i;
+        for (let i2 = 0; i2 < this._children.length; i2++) {
+          if (this._children[i2] === childReference) {
+            index = i2;
           }
         }
         if (index === -1) {
@@ -27702,13 +32680,13 @@ var require_index_001 = __commonJS({
       }
       clone(name2 = this._name) {
         let min2 = this._min;
-        const clone = new InfiniteRepeat(name2, this._pattern, {
+        const clone2 = new InfiniteRepeat(name2, this._pattern, {
           divider: this._divider == null ? void 0 : this._divider,
           min: min2,
           trimDivider: this._trimDivider
         });
-        clone._id = this._id;
-        return clone;
+        clone2._id = this._id;
+        return clone2;
       }
       isEqual(pattern2) {
         return pattern2.type === this.type && this.children.every((c, index) => c.isEqual(pattern2.children[index]));
@@ -27764,9 +32742,9 @@ var require_index_001 = __commonJS({
       }
       clone(name2 = this.name) {
         let min2 = this._options.min;
-        const clone = new Repeat(name2, this._pattern, Object.assign(Object.assign({}, this._options), { min: min2 }));
-        clone._id = this._id;
-        return clone;
+        const clone2 = new Repeat(name2, this._pattern, Object.assign(Object.assign({}, this._options), { min: min2 }));
+        clone2._id = this._id;
+        return clone2;
       }
       getTokens() {
         return this._repeatPattern.getTokens();
@@ -27816,7 +32794,7 @@ var require_index_001 = __commonJS({
       }
       return filteredNodes;
     }
-    const depthCache = new DepthCache();
+    const depthCache$1 = new DepthCache();
     let idIndex$2 = 0;
     class Sequence {
       get id() {
@@ -27841,18 +32819,18 @@ var require_index_001 = __commonJS({
         if (sequence.length === 0) {
           throw new Error("Need at least one pattern with a 'sequence' pattern.");
         }
-        const children = clonePatterns(sequence);
-        this._assignChildrenToParent(children);
+        const children2 = clonePatterns(sequence);
+        this._assignChildrenToParent(children2);
         this._id = `sequence-${idIndex$2++}`;
         this._type = "sequence";
         this._name = name2;
         this._parent = null;
-        this._children = children;
+        this._children = children2;
         this._firstIndex = -1;
         this._nodes = [];
       }
-      _assignChildrenToParent(children) {
-        for (const child of children) {
+      _assignChildrenToParent(children2) {
+        for (const child of children2) {
           child.parent = this;
         }
       }
@@ -27872,10 +32850,10 @@ var require_index_001 = __commonJS({
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
-        depthCache.incrementDepth(this._id, this._firstIndex);
+        depthCache$1.incrementDepth(this._id, this._firstIndex);
         this._nodes = [];
         const passed = this.tryToParse(cursor);
-        depthCache.decrementDepth(this._id, this._firstIndex);
+        depthCache$1.decrementDepth(this._id, this._firstIndex);
         if (passed) {
           const node = this.createNode(cursor);
           if (node !== null) {
@@ -27886,16 +32864,16 @@ var require_index_001 = __commonJS({
         return null;
       }
       tryToParse(cursor) {
-        if (depthCache.getDepth(this._id, this._firstIndex) > 1) {
+        if (depthCache$1.getDepth(this._id, this._firstIndex) > 1) {
           cursor.recordErrorAt(this._firstIndex, this._firstIndex, this);
           return false;
         }
         let passed = false;
-        for (let i = 0; i < this._children.length; i++) {
+        for (let i2 = 0; i2 < this._children.length; i2++) {
           const runningCursorIndex = cursor.index;
-          const nextPatternIndex = i + 1;
+          const nextPatternIndex = i2 + 1;
           const hasMorePatterns = nextPatternIndex < this._children.length;
-          const node = this._children[i].parse(cursor);
+          const node = this._children[i2].parse(cursor);
           const hasNoError = !cursor.hasError;
           const hadMatch = node !== null;
           if (hasNoError) {
@@ -27906,7 +32884,7 @@ var require_index_001 = __commonJS({
                   cursor.next();
                   continue;
                 } else {
-                  if (this.areRemainingPatternsOptional(i)) {
+                  if (this.areRemainingPatternsOptional(i2)) {
                     passed = true;
                     break;
                   }
@@ -27943,8 +32921,8 @@ var require_index_001 = __commonJS({
       areRemainingPatternsOptional(fromIndex) {
         const startOnIndex = fromIndex + 1;
         const length = this._children.length;
-        for (let i = startOnIndex; i < length; i++) {
-          const pattern2 = this._children[i];
+        for (let i2 = startOnIndex; i2 < length; i2++) {
+          const pattern2 = this._children[i2];
           if (pattern2.type !== "optional") {
             return false;
           }
@@ -27952,16 +32930,19 @@ var require_index_001 = __commonJS({
         return true;
       }
       createNode(cursor) {
-        const children = filterOutNull(this._nodes);
-        const lastIndex = children[children.length - 1].lastIndex;
+        const children2 = filterOutNull(this._nodes);
+        const lastIndex = children2[children2.length - 1].lastIndex;
         cursor.moveTo(lastIndex);
-        return new Node$1("sequence", this._name, this._firstIndex, lastIndex, children);
+        return new Node$1("sequence", this._name, this._firstIndex, lastIndex, children2);
       }
       getTokens() {
         const tokens = [];
-        for (const child of this._children) {
-          tokens.push(...child.getTokens());
-          if (child.type !== "optional" && child.type !== "not") {
+        for (const pattern2 of this._children) {
+          if (isRecursivePattern(pattern2) && pattern2 === this._children[0]) {
+            return tokens;
+          }
+          tokens.push(...pattern2.getTokens());
+          if (pattern2.type !== "optional" && pattern2.type !== "not") {
             break;
           }
         }
@@ -27981,9 +32962,12 @@ var require_index_001 = __commonJS({
       }
       getPatterns() {
         const patterns = [];
-        for (const child of this._children) {
-          patterns.push(...child.getPatterns());
-          if (child.type !== "optional" && child.type !== "not") {
+        for (const pattern2 of this._children) {
+          if (isRecursivePattern(pattern2) && pattern2 === this._children[0]) {
+            return patterns;
+          }
+          patterns.push(...pattern2.getPatterns());
+          if (pattern2.type !== "optional" && pattern2.type !== "not") {
             break;
           }
         }
@@ -27993,10 +32977,10 @@ var require_index_001 = __commonJS({
         const patterns = [];
         let nextSiblingIndex = -1;
         let index = -1;
-        for (let i = 0; i < this._children.length; i++) {
-          if (this._children[i] === childReference) {
-            nextSiblingIndex = i + 1;
-            index = i;
+        for (let i2 = 0; i2 < this._children.length; i2++) {
+          if (this._children[i2] === childReference) {
+            nextSiblingIndex = i2 + 1;
+            index = i2;
             break;
           }
         }
@@ -28006,13 +32990,13 @@ var require_index_001 = __commonJS({
         if (nextSiblingIndex === this._children.length && this._parent !== null) {
           return this._parent.getPatternsAfter(this);
         }
-        for (let i = nextSiblingIndex; i < this._children.length; i++) {
-          const child = this._children[i];
+        for (let i2 = nextSiblingIndex; i2 < this._children.length; i2++) {
+          const child = this._children[i2];
           patterns.push(child);
           if (child.type !== "optional") {
             break;
           }
-          if (i === this._children.length - 1 && this._parent !== null) {
+          if (i2 === this._children.length - 1 && this._parent !== null) {
             patterns.push(...this._parent.getPatternsAfter(this));
           }
         }
@@ -28028,9 +33012,9 @@ var require_index_001 = __commonJS({
         return findPattern(this, predicate);
       }
       clone(name2 = this._name) {
-        const clone = new Sequence(name2, this._children);
-        clone._id = this._id;
-        return clone;
+        const clone2 = new Sequence(name2, this._children);
+        clone2._id = this._id;
+        return clone2;
       }
       isEqual(pattern2) {
         return pattern2.type === this.type && this.children.every((c, index) => c.isEqual(pattern2.children[index]));
@@ -28497,18 +33481,17 @@ var require_index_001 = __commonJS({
           const startIndex = options.reduce((lowestIndex, o) => {
             return Math.min(lowestIndex, o.startIndex);
           }, Infinity);
-          const endIndex = cursor.getLastIndex() + 1;
-          error = new ParseError(startIndex, endIndex, this._pattern);
+          const lastIndex = cursor.getLastIndex() + 1;
+          error = new ParseError(startIndex, lastIndex, this._pattern);
           errorAtIndex = startIndex;
         } else if (!isComplete && options.length === 0 && ast != null) {
           const startIndex = ast.endIndex;
-          const endIndex = cursor.getLastIndex() + 1;
-          error = new ParseError(startIndex, endIndex, this._pattern);
+          const lastIndex = cursor.getLastIndex() + 1;
+          error = new ParseError(startIndex, lastIndex, this._pattern);
           errorAtIndex = startIndex;
         } else if (!isComplete && this._cursor.hasError && this._cursor.furthestError != null) {
-          errorAtIndex = this._cursor.furthestError.endIndex;
-          error = this._cursor.furthestError;
-          errorAtIndex = options.reduce((errorAtIndex2, option2) => Math.max(errorAtIndex2, option2.startIndex), errorAtIndex);
+          errorAtIndex = this.getFurthestPosition(cursor);
+          error = new ParseError(errorAtIndex, errorAtIndex, this._pattern);
         }
         return {
           isComplete,
@@ -28518,6 +33501,24 @@ var require_index_001 = __commonJS({
           cursor,
           ast
         };
+      }
+      getFurthestPosition(cursor) {
+        const furthestError = cursor.furthestError;
+        const furthestMatch = cursor.allMatchedNodes[cursor.allMatchedNodes.length - 1];
+        if (furthestError && furthestMatch) {
+          if (furthestError.lastIndex > furthestMatch.endIndex) {
+            return furthestMatch.endIndex;
+          } else {
+            return furthestError.lastIndex;
+          }
+        }
+        if (furthestError == null && furthestMatch != null) {
+          return furthestMatch.endIndex;
+        }
+        if (furthestMatch == null && furthestError != null) {
+          return furthestError.lastIndex;
+        }
+        return 0;
       }
       suggestFor(text) {
         return this.suggestForWithCursor(new Cursor$1(text));
@@ -28535,11 +33536,24 @@ var require_index_001 = __commonJS({
         return finalResults;
       }
       _getOptionsFromErrors() {
-        const errors = this._cursor.errors.filter((e) => e.endIndex === this._cursor.length);
+        const errors = this._cursor.errors.filter((e) => e.lastIndex === this._cursor.length);
         const suggestions2 = errors.map((e) => {
           const tokens = this._getTokensForPattern(e.pattern);
-          const adjustedTokens = tokens.map((t) => t.slice(e.endIndex - e.startIndex));
-          return this._createSuggestions(e.endIndex, adjustedTokens);
+          const adjustedTokens = /* @__PURE__ */ new Set();
+          const currentText = this._cursor.getChars(e.startIndex, e.lastIndex);
+          tokens.forEach((token) => {
+            if (token.startsWith(currentText) && token.length > currentText.length) {
+              const difference = token.length - currentText.length;
+              const suggestedText = token.slice(-difference);
+              adjustedTokens.add(suggestedText);
+            }
+          });
+          return Array.from(adjustedTokens).map((t) => {
+            return {
+              text: t,
+              startIndex: e.lastIndex
+            };
+          });
         });
         return suggestions2.flat();
       }
@@ -28638,8 +33652,8 @@ var require_index_001 = __commonJS({
       if (str2.length < minLength) {
         minLength = str2.length;
       }
-      for (let i = 0; i < minLength; i++) {
-        if (str1[i] === str2[i]) {
+      for (let i2 = 0; i2 < minLength; i2++) {
+        if (str1[i2] === str2[i2]) {
           matchCount++;
         } else {
           break;
@@ -28709,29 +33723,389 @@ var require_index_001 = __commonJS({
         return this._pattern.test(text, record);
       }
       clone(name2 = this._name) {
-        const clone = new Context(name2, this._pattern, Object.values(this._patterns));
-        return clone;
+        const clone2 = new Context(name2, this._pattern, Object.values(this._patterns));
+        clone2._id = this._id;
+        return clone2;
       }
       getTokens() {
         return this._pattern.getTokens();
       }
-      getTokensAfter(childReference) {
-        return this._pattern.getTokensAfter(childReference);
+      getTokensAfter(_childReference) {
+        if (this._parent == null) {
+          return [];
+        }
+        return this._parent.getTokensAfter(this);
       }
       getNextTokens() {
-        return this._pattern.getNextTokens();
+        if (this._parent == null) {
+          return [];
+        }
+        return this._parent.getTokensAfter(this);
       }
       getPatterns() {
         return this._pattern.getPatterns();
       }
-      getPatternsAfter(childReference) {
-        return this._pattern.getPatternsAfter(childReference);
+      getPatternsAfter(_childReference) {
+        if (this._parent == null) {
+          return [];
+        }
+        return this._parent.getPatternsAfter(this);
       }
       getNextPatterns() {
-        return this._pattern.getNextPatterns();
+        if (this._parent == null) {
+          return [];
+        }
+        return this._parent.getPatternsAfter(this);
       }
       find(predicate) {
         return this._pattern.find(predicate);
+      }
+      isEqual(pattern2) {
+        return pattern2.type === this.type && this.children.every((c, index) => c.isEqual(pattern2.children[index]));
+      }
+    }
+    let indexId = 0;
+    const depthCache = new DepthCache();
+    function createNode(name2, children2) {
+      return new Node$1("expression", name2, 0, 0, children2, "");
+    }
+    var Association;
+    (function(Association2) {
+      Association2[Association2["left"] = 0] = "left";
+      Association2[Association2["right"] = 1] = "right";
+    })(Association || (Association = {}));
+    class ExpressionPattern {
+      get id() {
+        return this._id;
+      }
+      get type() {
+        return this._type;
+      }
+      get name() {
+        return this._name;
+      }
+      get parent() {
+        return this._parent;
+      }
+      set parent(pattern2) {
+        this._parent = pattern2;
+      }
+      get children() {
+        return this._patterns;
+      }
+      get unaryPatterns() {
+        return this._unaryPatterns;
+      }
+      get binaryPatterns() {
+        return this._binaryPatterns;
+      }
+      get recursivePatterns() {
+        return this._recursivePatterns;
+      }
+      constructor(name2, patterns) {
+        if (patterns.length === 0) {
+          throw new Error("Need at least one pattern with an 'expression' pattern.");
+        }
+        this._id = `expression-${indexId++}`;
+        this._type = "expression";
+        this._name = name2;
+        this._parent = null;
+        this._firstIndex = -1;
+        this._unaryPatterns = [];
+        this._binaryPatterns = [];
+        this._recursivePatterns = [];
+        this._recursiveNames = [];
+        this._binaryNames = [];
+        this._binaryAssociation = [];
+        this._precedenceMap = {};
+        this._originalPatterns = patterns;
+        this._patterns = this._organizePatterns(patterns);
+        if (this._unaryPatterns.length === 0) {
+          throw new Error("Need at least one operand pattern with an 'expression' pattern.");
+        }
+      }
+      _organizePatterns(patterns) {
+        const finalPatterns = [];
+        patterns.forEach((pattern2) => {
+          if (this._isBinary(pattern2)) {
+            const binaryName = this._extractName(pattern2);
+            const clone2 = this._extractDelimiter(pattern2).clone();
+            clone2.parent = this;
+            this._precedenceMap[binaryName] = this._binaryPatterns.length;
+            this._binaryPatterns.push(clone2);
+            this._binaryNames.push(binaryName);
+            if (pattern2.type === "right-associated") {
+              this._binaryAssociation.push(Association.right);
+            } else {
+              this._binaryAssociation.push(Association.left);
+            }
+            finalPatterns.push(clone2);
+          } else if (this._isRecursive(pattern2)) {
+            const name2 = this._extractName(pattern2);
+            const tail = this._extractRecursiveTail(pattern2);
+            tail.parent = this;
+            this._recursivePatterns.push(tail);
+            this._recursiveNames.push(name2);
+            finalPatterns.push(tail);
+          } else {
+            const clone2 = pattern2.clone();
+            clone2.parent = this;
+            this._unaryPatterns.push(clone2);
+            finalPatterns.push(clone2);
+          }
+        });
+        return finalPatterns;
+      }
+      _isBinary(pattern2) {
+        if (pattern2.type === "right-associated" && this._isBinaryPattern(pattern2.children[0])) {
+          return true;
+        }
+        return this._isBinaryPattern(pattern2);
+      }
+      _isBinaryPattern(pattern2) {
+        return pattern2.type === "sequence" && pattern2.children[0].type === "reference" && pattern2.children[0].name === this.name && pattern2.children[2].type === "reference" && pattern2.children[2].name === this.name && pattern2.children.length === 3;
+      }
+      _extractDelimiter(pattern2) {
+        if (pattern2.type === "right-associated") {
+          return pattern2.children[0].children[1];
+        }
+        return pattern2.children[1];
+      }
+      _extractName(pattern2) {
+        if (pattern2.type === "right-associated") {
+          return pattern2.children[0].name;
+        }
+        return pattern2.name;
+      }
+      _isRecursive(pattern2) {
+        if (pattern2.type === "right-associated" && this._isRecursivePattern(pattern2.children[0])) {
+          return true;
+        }
+        return this._isRecursivePattern(pattern2);
+      }
+      _isRecursivePattern(pattern2) {
+        return pattern2.type === "sequence" && pattern2.children[0].type === "reference" && pattern2.children[0].name === this.name && pattern2.children.length > 2;
+      }
+      _extractRecursiveTail(pattern2) {
+        if (pattern2.type === "right-associated") {
+          return new Sequence(`${pattern2.children[0].name}-tail`, pattern2.children[0].children.slice(1));
+        }
+        return new Sequence(`${pattern2.name}-tail`, pattern2.children.slice(1));
+      }
+      parse(cursor) {
+        this._firstIndex = cursor.index;
+        depthCache.incrementDepth(this._id, this._firstIndex);
+        this._firstIndex = cursor.index;
+        const node = this._tryToParse(cursor);
+        depthCache.decrementDepth(this._id, this._firstIndex);
+        if (node != null) {
+          cursor.moveTo(node.lastIndex);
+          cursor.resolveError();
+          return node;
+        }
+        cursor.recordErrorAt(this._firstIndex, this._firstIndex, this);
+        return null;
+      }
+      _tryToParse(cursor) {
+        if (depthCache.getDepth(this._id, this._firstIndex) > 2) {
+          cursor.recordErrorAt(this._firstIndex, this._firstIndex, this);
+          return null;
+        }
+        let lastUnaryNode = null;
+        let lastBinaryNode = null;
+        let onIndex = cursor.index;
+        outer: while (true) {
+          onIndex = cursor.index;
+          for (let i2 = 0; i2 < this._unaryPatterns.length; i2++) {
+            cursor.moveTo(onIndex);
+            const pattern2 = this._unaryPatterns[i2];
+            const node = pattern2.parse(cursor);
+            if (node != null) {
+              lastUnaryNode = node;
+              break;
+            } else {
+              lastUnaryNode = null;
+              cursor.resolveError();
+            }
+          }
+          if (lastUnaryNode == null) {
+            break;
+          }
+          if (cursor.hasNext()) {
+            cursor.next();
+          } else {
+            if (lastBinaryNode != null && lastUnaryNode != null) {
+              lastBinaryNode.appendChild(lastUnaryNode);
+            }
+            break;
+          }
+          onIndex = cursor.index;
+          for (let i2 = 0; i2 < this._recursivePatterns.length; i2++) {
+            const pattern2 = this._recursivePatterns[i2];
+            const node = pattern2.parse(cursor);
+            if (node != null) {
+              if (lastBinaryNode != null && lastUnaryNode != null) {
+                lastBinaryNode.appendChild(lastUnaryNode);
+              }
+              const frontExpression = lastBinaryNode == null ? lastUnaryNode : lastBinaryNode.findRoot();
+              const name2 = this._recursiveNames[i2];
+              const recursiveNode = createNode(name2, [frontExpression, ...node.children]);
+              recursiveNode.normalize(this._firstIndex);
+              return recursiveNode;
+            }
+            cursor.moveTo(onIndex);
+          }
+          onIndex = cursor.index;
+          for (let i2 = 0; i2 < this._binaryPatterns.length; i2++) {
+            cursor.moveTo(onIndex);
+            const pattern2 = this._binaryPatterns[i2];
+            const name2 = this._binaryNames[i2];
+            const delimiterNode = pattern2.parse(cursor);
+            if (delimiterNode == null) {
+              if (i2 === this._binaryPatterns.length - 1) {
+                if (lastBinaryNode == null) {
+                  return lastUnaryNode;
+                } else if (lastUnaryNode != null) {
+                  lastBinaryNode.appendChild(lastUnaryNode);
+                }
+              }
+              continue;
+            }
+            if (lastBinaryNode == null && lastUnaryNode != null && delimiterNode != null) {
+              const node = createNode(name2, [lastUnaryNode, delimiterNode]);
+              lastBinaryNode = node;
+            } else if (lastBinaryNode != null && lastUnaryNode != null && delimiterNode != null) {
+              const precedence = this._precedenceMap[name2];
+              const lastPrecendece = lastBinaryNode == null ? 0 : this._precedenceMap[lastBinaryNode.name];
+              const association = this._binaryAssociation[i2];
+              if (precedence === lastPrecendece && association === Association.right) {
+                const node = createNode(name2, [lastUnaryNode, delimiterNode]);
+                lastBinaryNode.appendChild(node);
+                lastBinaryNode = node;
+              } else if (precedence === lastPrecendece) {
+                const node = createNode(name2, []);
+                lastBinaryNode.replaceWith(node);
+                lastBinaryNode.appendChild(lastUnaryNode);
+                node.append(lastBinaryNode, delimiterNode);
+                lastBinaryNode = node;
+              } else if (precedence > lastPrecendece) {
+                const root2 = lastBinaryNode.findRoot();
+                lastBinaryNode.appendChild(lastUnaryNode);
+                if (root2 != null) {
+                  const node = createNode(name2, [root2, delimiterNode]);
+                  lastBinaryNode = node;
+                } else {
+                  const node = createNode(name2, [lastUnaryNode, delimiterNode]);
+                  lastBinaryNode = node;
+                }
+              } else {
+                const node = createNode(name2, [lastUnaryNode, delimiterNode]);
+                lastBinaryNode.appendChild(node);
+                lastBinaryNode = node;
+              }
+            }
+            if (cursor.hasNext()) {
+              cursor.next();
+            } else {
+              break outer;
+            }
+            break;
+          }
+          if (lastBinaryNode == null) {
+            break;
+          }
+        }
+        if (lastBinaryNode == null) {
+          return lastUnaryNode;
+        } else {
+          const root2 = lastBinaryNode.findAncestor((n) => n.parent == null) || lastBinaryNode;
+          if (lastBinaryNode.children.length < 3) {
+            lastBinaryNode.remove();
+            if (lastBinaryNode === root2) {
+              return lastUnaryNode;
+            }
+          }
+          root2.normalize(this._firstIndex);
+          return root2;
+        }
+      }
+      test(text) {
+        const cursor = new Cursor$1(text);
+        const ast = this.parse(cursor);
+        return (ast === null || ast === void 0 ? void 0 : ast.value) === text;
+      }
+      exec(text, record = false) {
+        const cursor = new Cursor$1(text);
+        record && cursor.startRecording();
+        const ast = this.parse(cursor);
+        return {
+          ast: (ast === null || ast === void 0 ? void 0 : ast.value) === text ? ast : null,
+          cursor
+        };
+      }
+      getTokens() {
+        return this.unaryPatterns.map((p) => p.getTokens()).flat();
+      }
+      getTokensAfter(childReference) {
+        if (this.unaryPatterns.indexOf(childReference)) {
+          const recursiveTokens = this._recursivePatterns.map((p) => p.getTokens()).flat();
+          const binaryTokens = this._binaryPatterns.map((p) => p.getTokens()).flat();
+          return [...recursiveTokens, ...binaryTokens];
+        }
+        if (this.recursivePatterns.indexOf(childReference)) {
+          return this._binaryPatterns.map((p) => p.getTokens()).flat();
+        }
+        if (this.binaryPatterns.indexOf(childReference)) {
+          const unaryTokens = this._unaryPatterns.map((p) => p.getTokens()).flat();
+          if (this._parent != null) {
+            const nextTokens = this._parent.getTokensAfter(this);
+            return [...unaryTokens, ...nextTokens];
+          }
+          return unaryTokens;
+        }
+        return [];
+      }
+      getNextTokens() {
+        if (this._parent == null) {
+          return [];
+        }
+        return this._parent.getTokensAfter(this);
+      }
+      getPatterns() {
+        return this.unaryPatterns.map((p) => p.getPatterns()).flat();
+      }
+      getPatternsAfter(childReference) {
+        if (this.unaryPatterns.indexOf(childReference)) {
+          const recursivePatterns = this._recursivePatterns.map((p) => p.getPatterns()).flat();
+          const binaryPatterns = this._binaryPatterns.map((p) => p.getPatterns()).flat();
+          return [...recursivePatterns, ...binaryPatterns];
+        }
+        if (this.recursivePatterns.indexOf(childReference)) {
+          return this._binaryPatterns.map((p) => p.getPatterns()).flat();
+        }
+        if (this.binaryPatterns.indexOf(childReference)) {
+          const unaryPatterns = this._unaryPatterns.map((p) => p.getPatterns()).flat();
+          if (this._parent != null) {
+            const nextPatterns = this._parent.getPatternsAfter(this);
+            return [...unaryPatterns, ...nextPatterns];
+          }
+          return unaryPatterns;
+        }
+        return [];
+      }
+      getNextPatterns() {
+        if (this._parent == null) {
+          return [];
+        }
+        return this._parent.getPatternsAfter(this);
+      }
+      find(predicate) {
+        return findPattern(this, predicate);
+      }
+      clone(name2 = this._name) {
+        const clone2 = new ExpressionPattern(name2, this._originalPatterns);
+        clone2._id = this._id;
+        return clone2;
       }
       isEqual(pattern2) {
         return pattern2.type === this.type && this.children.every((c, index) => c.isEqual(pattern2.children[index]));
@@ -28768,9 +34142,9 @@ var require_index_001 = __commonJS({
           greedyPatternNames: ["spaces", "optional-spaces", "whitespace", "new-line"]
         });
       }
-      import(path) {
+      import(path2) {
         return __awaiter(this, void 0, void 0, function* () {
-          const grammarFile = yield this._resolveImport(path, null);
+          const grammarFile = yield this._resolveImport(path2, null);
           const grammar2 = new Grammar({
             resolveImport: this._resolveImport,
             originResource: grammarFile.resource,
@@ -28885,7 +34259,7 @@ var require_index_001 = __commonJS({
         return new Literal(name2, this._resolveStringValue(node.value));
       }
       _resolveStringValue(value2) {
-        return value2.replace(/\\n/g, "\n").replace(/\\r/g, "\r").replace(/\\t/g, "	").replace(/\\b/g, "\b").replace(/\\f/g, "\f").replace(/\\v/g, "\v").replace(/\\0/g, "\0").replace(/\\x([0-9A-Fa-f]{2})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16))).replace(/\\u([0-9A-Fa-f]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16))).replace(/\\(.)/g, "$1").slice(1, -1);
+        return value2.replace(/\\n/g, "\n").replace(/\\r/g, "\r").replace(/\\t/g, "	").replace(/\\b/g, "\b").replace(/\\f/g, "\f").replace(/\\v/g, "\v").replace(/\\0/g, "\0").replace(/\\x([0-9A-Fa-f]{2})/g, (_, hex2) => String.fromCharCode(parseInt(hex2, 16))).replace(/\\u([0-9A-Fa-f]{4})/g, (_, hex2) => String.fromCharCode(parseInt(hex2, 16))).replace(/\\(.)/g, "$1").slice(1, -1);
       }
       _saveRegex(statementNode) {
         const nameNode = statementNode.find((n) => n.name === "name");
@@ -28909,8 +34283,25 @@ var require_index_001 = __commonJS({
         const patternNodes2 = node.children.filter((n) => n.name !== "default-divider" && n.name !== "greedy-divider");
         const isGreedy = node.find((n) => n.name === "greedy-divider") != null;
         const patterns = patternNodes2.map((n) => this._buildPattern(n));
+        const hasRecursivePattern = patterns.some((p) => this._isRecursive(name2, p));
+        if (hasRecursivePattern && !isGreedy) {
+          try {
+            const expression = new ExpressionPattern(name2, patterns);
+            return expression;
+          } catch (_a2) {
+          }
+        }
         const or = new Options(name2, patterns, isGreedy);
         return or;
+      }
+      _isRecursive(name2, pattern2) {
+        if (pattern2.type === "right-associated" && this._isRecursivePattern(name2, pattern2.children[0])) {
+          return true;
+        }
+        return this._isRecursivePattern(name2, pattern2);
+      }
+      _isRecursivePattern(name2, pattern2) {
+        return pattern2.type === "sequence" && pattern2.children[0].type === "reference" && pattern2.children[0].name === name2 && pattern2.children.length > 2;
       }
       _buildPattern(node) {
         const type = node.name;
@@ -29121,9 +34512,9 @@ var require_index_001 = __commonJS({
         const grammar2 = new Grammar(options);
         return grammar2.parse(expression);
       }
-      static import(path, options) {
+      static import(path2, options) {
         const grammar2 = new Grammar(options);
-        return grammar2.import(path);
+        return grammar2.import(path2);
       }
       static parseString(expression, options) {
         const grammar2 = new Grammar(options);
@@ -29156,11 +34547,11 @@ var require_index_001 = __commonJS({
     }
     var objectProto = Object.prototype;
     var hasOwnProperty = objectProto.hasOwnProperty;
-    function initCloneArray(array) {
-      var length = array.length, result = new array.constructor(length);
-      if (length && typeof array[0] == "string" && hasOwnProperty.call(array, "index")) {
-        result.index = array.index;
-        result.input = array.input;
+    function initCloneArray(array2) {
+      var length = array2.length, result = new array2.constructor(length);
+      if (length && typeof array2[0] == "string" && hasOwnProperty.call(array2, "index")) {
+        result.index = array2.index;
+        result.input = array2.input;
       }
       return result;
     }
@@ -30049,8 +35440,8 @@ var require_index_001 = __commonJS({
           mutationsMap.has(blot.domNode) && (blot instanceof ParentBlot$1 && blot.children.forEach(optimize), mutationsMap.delete(blot.domNode), blot.optimize(context));
         };
         let remaining = mutations;
-        for (let i = 0; remaining.length > 0; i += 1) {
-          if (i >= MAX_OPTIMIZE_ITERATIONS)
+        for (let i2 = 0; remaining.length > 0; i2 += 1) {
+          if (i2 >= MAX_OPTIMIZE_ITERATIONS)
             throw new Error("[Parchment] Maximum optimize iterations reached");
           for (remaining.forEach((mutation) => {
             const blot = this.find(mutation.target, true);
@@ -30195,12 +35586,12 @@ var require_index_001 = __commonJS({
         }
         var longtext = text1.length > text2.length ? text1 : text2;
         var shorttext = text1.length > text2.length ? text2 : text1;
-        var i = longtext.indexOf(shorttext);
-        if (i !== -1) {
+        var i2 = longtext.indexOf(shorttext);
+        if (i2 !== -1) {
           diffs = [
-            [DIFF_INSERT, longtext.substring(0, i)],
+            [DIFF_INSERT, longtext.substring(0, i2)],
             [DIFF_EQUAL, shorttext],
-            [DIFF_INSERT, longtext.substring(i + shorttext.length)]
+            [DIFF_INSERT, longtext.substring(i2 + shorttext.length)]
           ];
           if (text1.length > text2.length) {
             diffs[0][0] = diffs[2][0] = DIFF_DELETE;
@@ -30234,9 +35625,9 @@ var require_index_001 = __commonJS({
         var v_length = 2 * max_d;
         var v1 = new Array(v_length);
         var v2 = new Array(v_length);
-        for (var x = 0; x < v_length; x++) {
-          v1[x] = -1;
-          v2[x] = -1;
+        for (var x2 = 0; x2 < v_length; x2++) {
+          v1[x2] = -1;
+          v2[x2] = -1;
         }
         v1[v_offset + 1] = 0;
         v2[v_offset + 1] = 0;
@@ -30268,8 +35659,8 @@ var require_index_001 = __commonJS({
             } else if (front) {
               var k2_offset = v_offset + delta - k1;
               if (k2_offset >= 0 && k2_offset < v_length && v2[k2_offset] !== -1) {
-                var x2 = text1_length - v2[k2_offset];
-                if (x1 >= x2) {
+                var x22 = text1_length - v2[k2_offset];
+                if (x1 >= x22) {
                   return diff_bisectSplit_(text1, text2, x1, y1);
                 }
               }
@@ -30277,19 +35668,19 @@ var require_index_001 = __commonJS({
           }
           for (var k2 = -d + k2start; k2 <= d - k2end; k2 += 2) {
             var k2_offset = v_offset + k2;
-            var x2;
+            var x22;
             if (k2 === -d || k2 !== d && v2[k2_offset - 1] < v2[k2_offset + 1]) {
-              x2 = v2[k2_offset + 1];
+              x22 = v2[k2_offset + 1];
             } else {
-              x2 = v2[k2_offset - 1] + 1;
+              x22 = v2[k2_offset - 1] + 1;
             }
-            var y2 = x2 - k2;
-            while (x2 < text1_length && y2 < text2_length && text1.charAt(text1_length - x2 - 1) === text2.charAt(text2_length - y2 - 1)) {
-              x2++;
+            var y2 = x22 - k2;
+            while (x22 < text1_length && y2 < text2_length && text1.charAt(text1_length - x22 - 1) === text2.charAt(text2_length - y2 - 1)) {
+              x22++;
               y2++;
             }
-            v2[k2_offset] = x2;
-            if (x2 > text1_length) {
+            v2[k2_offset] = x22;
+            if (x22 > text1_length) {
               k2end += 2;
             } else if (y2 > text2_length) {
               k2start += 2;
@@ -30298,8 +35689,8 @@ var require_index_001 = __commonJS({
               if (k1_offset >= 0 && k1_offset < v_length && v1[k1_offset] !== -1) {
                 var x1 = v1[k1_offset];
                 var y1 = v_offset + x1 - k1_offset;
-                x2 = text1_length - x2;
-                if (x1 >= x2) {
+                x22 = text1_length - x22;
+                if (x1 >= x22) {
                   return diff_bisectSplit_(text1, text2, x1, y1);
                 }
               }
@@ -30311,11 +35702,11 @@ var require_index_001 = __commonJS({
           [DIFF_INSERT, text2]
         ];
       }
-      function diff_bisectSplit_(text1, text2, x, y) {
-        var text1a = text1.substring(0, x);
-        var text2a = text2.substring(0, y);
-        var text1b = text1.substring(x);
-        var text2b = text2.substring(y);
+      function diff_bisectSplit_(text1, text2, x2, y2) {
+        var text1a = text1.substring(0, x2);
+        var text2a = text2.substring(0, y2);
+        var text1b = text1.substring(x2);
+        var text2b = text2.substring(y2);
         var diffs = diff_main(text1a, text2a);
         var diffsb = diff_main(text1b, text2b);
         return diffs.concat(diffsb);
@@ -30400,24 +35791,24 @@ var require_index_001 = __commonJS({
         if (longtext.length < 4 || shorttext.length * 2 < longtext.length) {
           return null;
         }
-        function diff_halfMatchI_(longtext2, shorttext2, i) {
-          var seed = longtext2.substring(i, i + Math.floor(longtext2.length / 4));
+        function diff_halfMatchI_(longtext2, shorttext2, i2) {
+          var seed = longtext2.substring(i2, i2 + Math.floor(longtext2.length / 4));
           var j = -1;
           var best_common = "";
           var best_longtext_a, best_longtext_b, best_shorttext_a, best_shorttext_b;
           while ((j = shorttext2.indexOf(seed, j + 1)) !== -1) {
             var prefixLength = diff_commonPrefix(
-              longtext2.substring(i),
+              longtext2.substring(i2),
               shorttext2.substring(j)
             );
             var suffixLength = diff_commonSuffix(
-              longtext2.substring(0, i),
+              longtext2.substring(0, i2),
               shorttext2.substring(0, j)
             );
             if (best_common.length < suffixLength + prefixLength) {
               best_common = shorttext2.substring(j - suffixLength, j) + shorttext2.substring(j, j + prefixLength);
-              best_longtext_a = longtext2.substring(0, i - suffixLength);
-              best_longtext_b = longtext2.substring(i + prefixLength);
+              best_longtext_a = longtext2.substring(0, i2 - suffixLength);
+              best_longtext_b = longtext2.substring(i2 + prefixLength);
               best_shorttext_a = shorttext2.substring(0, j - suffixLength);
               best_shorttext_b = shorttext2.substring(j + prefixLength);
             }
@@ -30474,24 +35865,24 @@ var require_index_001 = __commonJS({
         var equalities = [];
         var equalitiesLength = 0;
         var lastequality = null;
-        var pointer = 0;
+        var pointer2 = 0;
         var length_insertions1 = 0;
         var length_deletions1 = 0;
         var length_insertions2 = 0;
         var length_deletions2 = 0;
-        while (pointer < diffs.length) {
-          if (diffs[pointer][0] == DIFF_EQUAL) {
-            equalities[equalitiesLength++] = pointer;
+        while (pointer2 < diffs.length) {
+          if (diffs[pointer2][0] == DIFF_EQUAL) {
+            equalities[equalitiesLength++] = pointer2;
             length_insertions1 = length_insertions2;
             length_deletions1 = length_deletions2;
             length_insertions2 = 0;
             length_deletions2 = 0;
-            lastequality = diffs[pointer][1];
+            lastequality = diffs[pointer2][1];
           } else {
-            if (diffs[pointer][0] == DIFF_INSERT) {
-              length_insertions2 += diffs[pointer][1].length;
+            if (diffs[pointer2][0] == DIFF_INSERT) {
+              length_insertions2 += diffs[pointer2][1].length;
             } else {
-              length_deletions2 += diffs[pointer][1].length;
+              length_deletions2 += diffs[pointer2][1].length;
             }
             if (lastequality && lastequality.length <= Math.max(length_insertions1, length_deletions1) && lastequality.length <= Math.max(length_insertions2, length_deletions2)) {
               diffs.splice(equalities[equalitiesLength - 1], 0, [
@@ -30501,7 +35892,7 @@ var require_index_001 = __commonJS({
               diffs[equalities[equalitiesLength - 1] + 1][0] = DIFF_INSERT;
               equalitiesLength--;
               equalitiesLength--;
-              pointer = equalitiesLength > 0 ? equalities[equalitiesLength - 1] : -1;
+              pointer2 = equalitiesLength > 0 ? equalities[equalitiesLength - 1] : -1;
               length_insertions1 = 0;
               length_deletions1 = 0;
               length_insertions2 = 0;
@@ -30510,51 +35901,51 @@ var require_index_001 = __commonJS({
               changes = true;
             }
           }
-          pointer++;
+          pointer2++;
         }
         if (changes) {
           diff_cleanupMerge(diffs);
         }
         diff_cleanupSemanticLossless(diffs);
-        pointer = 1;
-        while (pointer < diffs.length) {
-          if (diffs[pointer - 1][0] == DIFF_DELETE && diffs[pointer][0] == DIFF_INSERT) {
-            var deletion = diffs[pointer - 1][1];
-            var insertion = diffs[pointer][1];
+        pointer2 = 1;
+        while (pointer2 < diffs.length) {
+          if (diffs[pointer2 - 1][0] == DIFF_DELETE && diffs[pointer2][0] == DIFF_INSERT) {
+            var deletion = diffs[pointer2 - 1][1];
+            var insertion = diffs[pointer2][1];
             var overlap_length1 = diff_commonOverlap_(deletion, insertion);
             var overlap_length2 = diff_commonOverlap_(insertion, deletion);
             if (overlap_length1 >= overlap_length2) {
               if (overlap_length1 >= deletion.length / 2 || overlap_length1 >= insertion.length / 2) {
-                diffs.splice(pointer, 0, [
+                diffs.splice(pointer2, 0, [
                   DIFF_EQUAL,
                   insertion.substring(0, overlap_length1)
                 ]);
-                diffs[pointer - 1][1] = deletion.substring(
+                diffs[pointer2 - 1][1] = deletion.substring(
                   0,
                   deletion.length - overlap_length1
                 );
-                diffs[pointer + 1][1] = insertion.substring(overlap_length1);
-                pointer++;
+                diffs[pointer2 + 1][1] = insertion.substring(overlap_length1);
+                pointer2++;
               }
             } else {
               if (overlap_length2 >= deletion.length / 2 || overlap_length2 >= insertion.length / 2) {
-                diffs.splice(pointer, 0, [
+                diffs.splice(pointer2, 0, [
                   DIFF_EQUAL,
                   deletion.substring(0, overlap_length2)
                 ]);
-                diffs[pointer - 1][0] = DIFF_INSERT;
-                diffs[pointer - 1][1] = insertion.substring(
+                diffs[pointer2 - 1][0] = DIFF_INSERT;
+                diffs[pointer2 - 1][1] = insertion.substring(
                   0,
                   insertion.length - overlap_length2
                 );
-                diffs[pointer + 1][0] = DIFF_DELETE;
-                diffs[pointer + 1][1] = deletion.substring(overlap_length2);
-                pointer++;
+                diffs[pointer2 + 1][0] = DIFF_DELETE;
+                diffs[pointer2 + 1][1] = deletion.substring(overlap_length2);
+                pointer2++;
               }
             }
-            pointer++;
+            pointer2++;
           }
-          pointer++;
+          pointer2++;
         }
       }
       var nonAlphaNumericRegex_ = /[^a-zA-Z0-9]/;
@@ -30563,11 +35954,11 @@ var require_index_001 = __commonJS({
       var blanklineEndRegex_ = /\n\r?\n$/;
       var blanklineStartRegex_ = /^\r?\n\r?\n/;
       function diff_cleanupSemanticLossless(diffs) {
-        function diff_cleanupSemanticScore_(one, two) {
-          if (!one || !two) {
+        function diff_cleanupSemanticScore_(one2, two) {
+          if (!one2 || !two) {
             return 6;
           }
-          var char1 = one.charAt(one.length - 1);
+          var char1 = one2.charAt(one2.length - 1);
           var char2 = two.charAt(0);
           var nonAlphaNumeric1 = char1.match(nonAlphaNumericRegex_);
           var nonAlphaNumeric2 = char2.match(nonAlphaNumericRegex_);
@@ -30575,7 +35966,7 @@ var require_index_001 = __commonJS({
           var whitespace2 = nonAlphaNumeric2 && char2.match(whitespaceRegex_);
           var lineBreak1 = whitespace1 && char1.match(linebreakRegex_);
           var lineBreak2 = whitespace2 && char2.match(linebreakRegex_);
-          var blankLine1 = lineBreak1 && one.match(blanklineEndRegex_);
+          var blankLine1 = lineBreak1 && one2.match(blanklineEndRegex_);
           var blankLine2 = lineBreak2 && two.match(blanklineStartRegex_);
           if (blankLine1 || blankLine2) {
             return 5;
@@ -30590,12 +35981,12 @@ var require_index_001 = __commonJS({
           }
           return 0;
         }
-        var pointer = 1;
-        while (pointer < diffs.length - 1) {
-          if (diffs[pointer - 1][0] == DIFF_EQUAL && diffs[pointer + 1][0] == DIFF_EQUAL) {
-            var equality1 = diffs[pointer - 1][1];
-            var edit = diffs[pointer][1];
-            var equality2 = diffs[pointer + 1][1];
+        var pointer2 = 1;
+        while (pointer2 < diffs.length - 1) {
+          if (diffs[pointer2 - 1][0] == DIFF_EQUAL && diffs[pointer2 + 1][0] == DIFF_EQUAL) {
+            var equality1 = diffs[pointer2 - 1][1];
+            var edit = diffs[pointer2][1];
+            var equality2 = diffs[pointer2 + 1][1];
             var commonOffset = diff_commonSuffix(equality1, edit);
             if (commonOffset) {
               var commonString = edit.substring(edit.length - commonOffset);
@@ -30619,51 +36010,51 @@ var require_index_001 = __commonJS({
                 bestEquality2 = equality2;
               }
             }
-            if (diffs[pointer - 1][1] != bestEquality1) {
+            if (diffs[pointer2 - 1][1] != bestEquality1) {
               if (bestEquality1) {
-                diffs[pointer - 1][1] = bestEquality1;
+                diffs[pointer2 - 1][1] = bestEquality1;
               } else {
-                diffs.splice(pointer - 1, 1);
-                pointer--;
+                diffs.splice(pointer2 - 1, 1);
+                pointer2--;
               }
-              diffs[pointer][1] = bestEdit;
+              diffs[pointer2][1] = bestEdit;
               if (bestEquality2) {
-                diffs[pointer + 1][1] = bestEquality2;
+                diffs[pointer2 + 1][1] = bestEquality2;
               } else {
-                diffs.splice(pointer + 1, 1);
-                pointer--;
+                diffs.splice(pointer2 + 1, 1);
+                pointer2--;
               }
             }
           }
-          pointer++;
+          pointer2++;
         }
       }
       function diff_cleanupMerge(diffs, fix_unicode) {
         diffs.push([DIFF_EQUAL, ""]);
-        var pointer = 0;
+        var pointer2 = 0;
         var count_delete = 0;
         var count_insert = 0;
         var text_delete = "";
         var text_insert = "";
         var commonlength;
-        while (pointer < diffs.length) {
-          if (pointer < diffs.length - 1 && !diffs[pointer][1]) {
-            diffs.splice(pointer, 1);
+        while (pointer2 < diffs.length) {
+          if (pointer2 < diffs.length - 1 && !diffs[pointer2][1]) {
+            diffs.splice(pointer2, 1);
             continue;
           }
-          switch (diffs[pointer][0]) {
+          switch (diffs[pointer2][0]) {
             case DIFF_INSERT:
               count_insert++;
-              text_insert += diffs[pointer][1];
-              pointer++;
+              text_insert += diffs[pointer2][1];
+              pointer2++;
               break;
             case DIFF_DELETE:
               count_delete++;
-              text_delete += diffs[pointer][1];
-              pointer++;
+              text_delete += diffs[pointer2][1];
+              pointer2++;
               break;
             case DIFF_EQUAL:
-              var previous_equality = pointer - count_insert - count_delete - 1;
+              var previous_equality = pointer2 - count_insert - count_delete - 1;
               if (fix_unicode) {
                 if (previous_equality >= 0 && ends_with_pair_start(diffs[previous_equality][1])) {
                   var stray = diffs[previous_equality][1].slice(-1);
@@ -30675,7 +36066,7 @@ var require_index_001 = __commonJS({
                   text_insert = stray + text_insert;
                   if (!diffs[previous_equality][1]) {
                     diffs.splice(previous_equality, 1);
-                    pointer--;
+                    pointer2--;
                     var k = previous_equality - 1;
                     if (diffs[k] && diffs[k][0] === DIFF_INSERT) {
                       count_insert++;
@@ -30690,15 +36081,15 @@ var require_index_001 = __commonJS({
                     previous_equality = k;
                   }
                 }
-                if (starts_with_pair_end(diffs[pointer][1])) {
-                  var stray = diffs[pointer][1].charAt(0);
-                  diffs[pointer][1] = diffs[pointer][1].slice(1);
+                if (starts_with_pair_end(diffs[pointer2][1])) {
+                  var stray = diffs[pointer2][1].charAt(0);
+                  diffs[pointer2][1] = diffs[pointer2][1].slice(1);
                   text_delete += stray;
                   text_insert += stray;
                 }
               }
-              if (pointer < diffs.length - 1 && !diffs[pointer][1]) {
-                diffs.splice(pointer, 1);
+              if (pointer2 < diffs.length - 1 && !diffs[pointer2][1]) {
+                diffs.splice(pointer2, 1);
                 break;
               }
               if (text_delete.length > 0 || text_insert.length > 0) {
@@ -30715,14 +36106,14 @@ var require_index_001 = __commonJS({
                         DIFF_EQUAL,
                         text_insert.substring(0, commonlength)
                       ]);
-                      pointer++;
+                      pointer2++;
                     }
                     text_insert = text_insert.substring(commonlength);
                     text_delete = text_delete.substring(commonlength);
                   }
                   commonlength = diff_commonSuffix(text_insert, text_delete);
                   if (commonlength !== 0) {
-                    diffs[pointer][1] = text_insert.substring(text_insert.length - commonlength) + diffs[pointer][1];
+                    diffs[pointer2][1] = text_insert.substring(text_insert.length - commonlength) + diffs[pointer2][1];
                     text_insert = text_insert.substring(
                       0,
                       text_insert.length - commonlength
@@ -30735,29 +36126,29 @@ var require_index_001 = __commonJS({
                 }
                 var n = count_insert + count_delete;
                 if (text_delete.length === 0 && text_insert.length === 0) {
-                  diffs.splice(pointer - n, n);
-                  pointer = pointer - n;
+                  diffs.splice(pointer2 - n, n);
+                  pointer2 = pointer2 - n;
                 } else if (text_delete.length === 0) {
-                  diffs.splice(pointer - n, n, [DIFF_INSERT, text_insert]);
-                  pointer = pointer - n + 1;
+                  diffs.splice(pointer2 - n, n, [DIFF_INSERT, text_insert]);
+                  pointer2 = pointer2 - n + 1;
                 } else if (text_insert.length === 0) {
-                  diffs.splice(pointer - n, n, [DIFF_DELETE, text_delete]);
-                  pointer = pointer - n + 1;
+                  diffs.splice(pointer2 - n, n, [DIFF_DELETE, text_delete]);
+                  pointer2 = pointer2 - n + 1;
                 } else {
                   diffs.splice(
-                    pointer - n,
+                    pointer2 - n,
                     n,
                     [DIFF_DELETE, text_delete],
                     [DIFF_INSERT, text_insert]
                   );
-                  pointer = pointer - n + 2;
+                  pointer2 = pointer2 - n + 2;
                 }
               }
-              if (pointer !== 0 && diffs[pointer - 1][0] === DIFF_EQUAL) {
-                diffs[pointer - 1][1] += diffs[pointer][1];
-                diffs.splice(pointer, 1);
+              if (pointer2 !== 0 && diffs[pointer2 - 1][0] === DIFF_EQUAL) {
+                diffs[pointer2 - 1][1] += diffs[pointer2][1];
+                diffs.splice(pointer2, 1);
               } else {
-                pointer++;
+                pointer2++;
               }
               count_insert = 0;
               count_delete = 0;
@@ -30770,27 +36161,27 @@ var require_index_001 = __commonJS({
           diffs.pop();
         }
         var changes = false;
-        pointer = 1;
-        while (pointer < diffs.length - 1) {
-          if (diffs[pointer - 1][0] === DIFF_EQUAL && diffs[pointer + 1][0] === DIFF_EQUAL) {
-            if (diffs[pointer][1].substring(
-              diffs[pointer][1].length - diffs[pointer - 1][1].length
-            ) === diffs[pointer - 1][1]) {
-              diffs[pointer][1] = diffs[pointer - 1][1] + diffs[pointer][1].substring(
+        pointer2 = 1;
+        while (pointer2 < diffs.length - 1) {
+          if (diffs[pointer2 - 1][0] === DIFF_EQUAL && diffs[pointer2 + 1][0] === DIFF_EQUAL) {
+            if (diffs[pointer2][1].substring(
+              diffs[pointer2][1].length - diffs[pointer2 - 1][1].length
+            ) === diffs[pointer2 - 1][1]) {
+              diffs[pointer2][1] = diffs[pointer2 - 1][1] + diffs[pointer2][1].substring(
                 0,
-                diffs[pointer][1].length - diffs[pointer - 1][1].length
+                diffs[pointer2][1].length - diffs[pointer2 - 1][1].length
               );
-              diffs[pointer + 1][1] = diffs[pointer - 1][1] + diffs[pointer + 1][1];
-              diffs.splice(pointer - 1, 1);
+              diffs[pointer2 + 1][1] = diffs[pointer2 - 1][1] + diffs[pointer2 + 1][1];
+              diffs.splice(pointer2 - 1, 1);
               changes = true;
-            } else if (diffs[pointer][1].substring(0, diffs[pointer + 1][1].length) == diffs[pointer + 1][1]) {
-              diffs[pointer - 1][1] += diffs[pointer + 1][1];
-              diffs[pointer][1] = diffs[pointer][1].substring(diffs[pointer + 1][1].length) + diffs[pointer + 1][1];
-              diffs.splice(pointer + 1, 1);
+            } else if (diffs[pointer2][1].substring(0, diffs[pointer2 + 1][1].length) == diffs[pointer2 + 1][1]) {
+              diffs[pointer2 - 1][1] += diffs[pointer2 + 1][1];
+              diffs[pointer2][1] = diffs[pointer2][1].substring(diffs[pointer2 + 1][1].length) + diffs[pointer2 + 1][1];
+              diffs.splice(pointer2 + 1, 1);
               changes = true;
             }
           }
-          pointer++;
+          pointer2++;
         }
         if (changes) {
           diff_cleanupMerge(diffs, fix_unicode);
@@ -30810,9 +36201,9 @@ var require_index_001 = __commonJS({
       }
       function remove_empty_tuples(tuples) {
         var ret = [];
-        for (var i = 0; i < tuples.length; i++) {
-          if (tuples[i][1].length > 0) {
-            ret.push(tuples[i]);
+        for (var i2 = 0; i2 < tuples.length; i2++) {
+          if (tuples[i2][1].length > 0) {
+            ret.push(tuples[i2]);
           }
         }
         return ret;
@@ -30941,30 +36332,30 @@ var require_index_001 = __commonJS({
           map2.set(pair[0], pair[1]);
           return map2;
         }
-        function addSetEntry(set, value2) {
-          set.add(value2);
-          return set;
+        function addSetEntry(set2, value2) {
+          set2.add(value2);
+          return set2;
         }
-        function arrayEach2(array, iteratee) {
-          var index = -1, length = array ? array.length : 0;
+        function arrayEach2(array2, iteratee) {
+          var index = -1, length = array2 ? array2.length : 0;
           while (++index < length) {
-            if (iteratee(array[index], index, array) === false) {
+            if (iteratee(array2[index], index, array2) === false) {
               break;
             }
           }
-          return array;
+          return array2;
         }
-        function arrayPush2(array, values) {
-          var index = -1, length = values.length, offset = array.length;
+        function arrayPush2(array2, values) {
+          var index = -1, length = values.length, offset = array2.length;
           while (++index < length) {
-            array[offset + index] = values[index];
+            array2[offset + index] = values[index];
           }
-          return array;
+          return array2;
         }
-        function arrayReduce(array, iteratee, accumulator, initAccum) {
-          var index = -1, length = array ? array.length : 0;
+        function arrayReduce(array2, iteratee, accumulator, initAccum) {
+          var index = -1, length = array2 ? array2.length : 0;
           while (++index < length) {
-            accumulator = iteratee(accumulator, array[index], index, array);
+            accumulator = iteratee(accumulator, array2[index], index, array2);
           }
           return accumulator;
         }
@@ -31000,9 +36391,9 @@ var require_index_001 = __commonJS({
             return func(transform(arg));
           };
         }
-        function setToArray2(set) {
-          var index = -1, result = Array(set.size);
-          set.forEach(function(value2) {
+        function setToArray2(set2) {
+          var index = -1, result = Array(set2.size);
+          set2.forEach(function(value2) {
             result[++index] = value2;
           });
           return result;
@@ -31019,8 +36410,8 @@ var require_index_001 = __commonJS({
         var reIsNative2 = RegExp(
           "^" + funcToString2.call(hasOwnProperty2).replace(reRegExpChar2, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
         );
-        var Buffer3 = moduleExports2 ? root2.Buffer : void 0, Symbol2 = root2.Symbol, Uint8Array3 = root2.Uint8Array, getPrototype2 = overArg2(Object.getPrototypeOf, Object), objectCreate2 = Object.create, propertyIsEnumerable2 = objectProto2.propertyIsEnumerable, splice2 = arrayProto2.splice;
-        var nativeGetSymbols2 = Object.getOwnPropertySymbols, nativeIsBuffer2 = Buffer3 ? Buffer3.isBuffer : void 0, nativeKeys2 = overArg2(Object.keys, Object);
+        var Buffer2 = moduleExports2 ? root2.Buffer : void 0, Symbol2 = root2.Symbol, Uint8Array2 = root2.Uint8Array, getPrototype2 = overArg2(Object.getPrototypeOf, Object), objectCreate2 = Object.create, propertyIsEnumerable2 = objectProto2.propertyIsEnumerable, splice2 = arrayProto2.splice;
+        var nativeGetSymbols2 = Object.getOwnPropertySymbols, nativeIsBuffer2 = Buffer2 ? Buffer2.isBuffer : void 0, nativeKeys2 = overArg2(Object.keys, Object);
         var DataView2 = getNative2(root2, "DataView"), Map2 = getNative2(root2, "Map"), Promise2 = getNative2(root2, "Promise"), Set2 = getNative2(root2, "Set"), WeakMap2 = getNative2(root2, "WeakMap"), nativeCreate2 = getNative2(Object, "create");
         var dataViewCtorString2 = toSource2(DataView2), mapCtorString2 = toSource2(Map2), promiseCtorString2 = toSource2(Promise2), setCtorString2 = toSource2(Set2), weakMapCtorString2 = toSource2(WeakMap2);
         var symbolProto2 = Symbol2 ? Symbol2.prototype : void 0, symbolValueOf2 = symbolProto2 ? symbolProto2.valueOf : void 0;
@@ -31187,10 +36578,10 @@ var require_index_001 = __commonJS({
             object[key] = value2;
           }
         }
-        function assocIndexOf2(array, key) {
-          var length = array.length;
+        function assocIndexOf2(array2, key) {
+          var length = array2.length;
           while (length--) {
-            if (eq2(array[length][0], key)) {
+            if (eq2(array2[length][0], key)) {
               return length;
             }
           }
@@ -31293,7 +36684,7 @@ var require_index_001 = __commonJS({
         }
         function cloneArrayBuffer2(arrayBuffer) {
           var result = new arrayBuffer.constructor(arrayBuffer.byteLength);
-          new Uint8Array3(result).set(new Uint8Array3(arrayBuffer));
+          new Uint8Array2(result).set(new Uint8Array2(arrayBuffer));
           return result;
         }
         function cloneDataView2(dataView, isDeep) {
@@ -31301,17 +36692,17 @@ var require_index_001 = __commonJS({
           return new dataView.constructor(buffer, dataView.byteOffset, dataView.byteLength);
         }
         function cloneMap(map2, isDeep, cloneFunc) {
-          var array = isDeep ? cloneFunc(mapToArray2(map2), true) : mapToArray2(map2);
-          return arrayReduce(array, addMapEntry, new map2.constructor());
+          var array2 = isDeep ? cloneFunc(mapToArray2(map2), true) : mapToArray2(map2);
+          return arrayReduce(array2, addMapEntry, new map2.constructor());
         }
         function cloneRegExp2(regexp) {
           var result = new regexp.constructor(regexp.source, reFlags2.exec(regexp));
           result.lastIndex = regexp.lastIndex;
           return result;
         }
-        function cloneSet(set, isDeep, cloneFunc) {
-          var array = isDeep ? cloneFunc(setToArray2(set), true) : setToArray2(set);
-          return arrayReduce(array, addSetEntry, new set.constructor());
+        function cloneSet(set2, isDeep, cloneFunc) {
+          var array2 = isDeep ? cloneFunc(setToArray2(set2), true) : setToArray2(set2);
+          return arrayReduce(array2, addSetEntry, new set2.constructor());
         }
         function cloneSymbol2(symbol) {
           return symbolValueOf2 ? Object(symbolValueOf2.call(symbol)) : {};
@@ -31320,13 +36711,13 @@ var require_index_001 = __commonJS({
           var buffer = isDeep ? cloneArrayBuffer2(typedArray.buffer) : typedArray.buffer;
           return new typedArray.constructor(buffer, typedArray.byteOffset, typedArray.length);
         }
-        function copyArray2(source, array) {
+        function copyArray2(source, array2) {
           var index = -1, length = source.length;
-          array || (array = Array(length));
+          array2 || (array2 = Array(length));
           while (++index < length) {
-            array[index] = source[index];
+            array2[index] = source[index];
           }
-          return array;
+          return array2;
         }
         function copyObject2(source, props, object, customizer) {
           object || (object = {});
@@ -31374,11 +36765,11 @@ var require_index_001 = __commonJS({
             return result;
           };
         }
-        function initCloneArray2(array) {
-          var length = array.length, result = array.constructor(length);
-          if (length && typeof array[0] == "string" && hasOwnProperty2.call(array, "index")) {
-            result.index = array.index;
-            result.input = array.input;
+        function initCloneArray2(array2) {
+          var length = array2.length, result = array2.constructor(length);
+          if (length && typeof array2[0] == "string" && hasOwnProperty2.call(array2, "index")) {
+            result.index = array2.index;
+            result.input = array2.input;
           }
           return result;
         }
@@ -31523,27 +36914,27 @@ var require_index_001 = __commonJS({
           }
         }();
         var nodeIsTypedArray2 = nodeUtil2 && nodeUtil2.isTypedArray;
-        function arrayFilter2(array, predicate) {
-          var index = -1, length = array == null ? 0 : array.length, resIndex = 0, result = [];
+        function arrayFilter2(array2, predicate) {
+          var index = -1, length = array2 == null ? 0 : array2.length, resIndex = 0, result = [];
           while (++index < length) {
-            var value2 = array[index];
-            if (predicate(value2, index, array)) {
+            var value2 = array2[index];
+            if (predicate(value2, index, array2)) {
               result[resIndex++] = value2;
             }
           }
           return result;
         }
-        function arrayPush2(array, values) {
-          var index = -1, length = values.length, offset = array.length;
+        function arrayPush2(array2, values) {
+          var index = -1, length = values.length, offset = array2.length;
           while (++index < length) {
-            array[offset + index] = values[index];
+            array2[offset + index] = values[index];
           }
-          return array;
+          return array2;
         }
-        function arraySome2(array, predicate) {
-          var index = -1, length = array == null ? 0 : array.length;
+        function arraySome2(array2, predicate) {
+          var index = -1, length = array2 == null ? 0 : array2.length;
           while (++index < length) {
-            if (predicate(array[index], index, array)) {
+            if (predicate(array2[index], index, array2)) {
               return true;
             }
           }
@@ -31579,9 +36970,9 @@ var require_index_001 = __commonJS({
             return func(transform(arg));
           };
         }
-        function setToArray2(set) {
-          var index = -1, result = Array(set.size);
-          set.forEach(function(value2) {
+        function setToArray2(set2) {
+          var index = -1, result = Array(set2.size);
+          set2.forEach(function(value2) {
             result[++index] = value2;
           });
           return result;
@@ -31598,8 +36989,8 @@ var require_index_001 = __commonJS({
         var reIsNative2 = RegExp(
           "^" + funcToString2.call(hasOwnProperty2).replace(reRegExpChar2, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"
         );
-        var Buffer3 = moduleExports2 ? root2.Buffer : void 0, Symbol2 = root2.Symbol, Uint8Array3 = root2.Uint8Array, propertyIsEnumerable2 = objectProto2.propertyIsEnumerable, splice2 = arrayProto2.splice, symToStringTag2 = Symbol2 ? Symbol2.toStringTag : void 0;
-        var nativeGetSymbols2 = Object.getOwnPropertySymbols, nativeIsBuffer2 = Buffer3 ? Buffer3.isBuffer : void 0, nativeKeys2 = overArg2(Object.keys, Object);
+        var Buffer2 = moduleExports2 ? root2.Buffer : void 0, Symbol2 = root2.Symbol, Uint8Array2 = root2.Uint8Array, propertyIsEnumerable2 = objectProto2.propertyIsEnumerable, splice2 = arrayProto2.splice, symToStringTag2 = Symbol2 ? Symbol2.toStringTag : void 0;
+        var nativeGetSymbols2 = Object.getOwnPropertySymbols, nativeIsBuffer2 = Buffer2 ? Buffer2.isBuffer : void 0, nativeKeys2 = overArg2(Object.keys, Object);
         var DataView2 = getNative2(root2, "DataView"), Map2 = getNative2(root2, "Map"), Promise2 = getNative2(root2, "Promise"), Set2 = getNative2(root2, "Set"), WeakMap2 = getNative2(root2, "WeakMap"), nativeCreate2 = getNative2(Object, "create");
         var dataViewCtorString2 = toSource2(DataView2), mapCtorString2 = toSource2(Map2), promiseCtorString2 = toSource2(Promise2), setCtorString2 = toSource2(Set2), weakMapCtorString2 = toSource2(WeakMap2);
         var symbolProto2 = Symbol2 ? Symbol2.prototype : void 0, symbolValueOf2 = symbolProto2 ? symbolProto2.valueOf : void 0;
@@ -31797,10 +37188,10 @@ var require_index_001 = __commonJS({
           }
           return result;
         }
-        function assocIndexOf2(array, key) {
-          var length = array.length;
+        function assocIndexOf2(array2, key) {
+          var length = array2.length;
           while (length--) {
-            if (eq2(array[length][0], key)) {
+            if (eq2(array2[length][0], key)) {
               return length;
             }
           }
@@ -31880,22 +37271,22 @@ var require_index_001 = __commonJS({
           }
           return result;
         }
-        function equalArrays2(array, other, bitmask, customizer, equalFunc, stack) {
-          var isPartial = bitmask & COMPARE_PARTIAL_FLAG2, arrLength = array.length, othLength = other.length;
+        function equalArrays2(array2, other, bitmask, customizer, equalFunc, stack) {
+          var isPartial = bitmask & COMPARE_PARTIAL_FLAG2, arrLength = array2.length, othLength = other.length;
           if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
             return false;
           }
-          var stacked = stack.get(array);
+          var stacked = stack.get(array2);
           if (stacked && stack.get(other)) {
             return stacked == other;
           }
           var index = -1, result = true, seen = bitmask & COMPARE_UNORDERED_FLAG2 ? new SetCache2() : void 0;
-          stack.set(array, other);
-          stack.set(other, array);
+          stack.set(array2, other);
+          stack.set(other, array2);
           while (++index < arrLength) {
-            var arrValue = array[index], othValue = other[index];
+            var arrValue = array2[index], othValue = other[index];
             if (customizer) {
-              var compared = isPartial ? customizer(othValue, arrValue, index, other, array, stack) : customizer(arrValue, othValue, index, array, other, stack);
+              var compared = isPartial ? customizer(othValue, arrValue, index, other, array2, stack) : customizer(arrValue, othValue, index, array2, other, stack);
             }
             if (compared !== void 0) {
               if (compared) {
@@ -31918,7 +37309,7 @@ var require_index_001 = __commonJS({
               break;
             }
           }
-          stack["delete"](array);
+          stack["delete"](array2);
           stack["delete"](other);
           return result;
         }
@@ -31931,7 +37322,7 @@ var require_index_001 = __commonJS({
               object = object.buffer;
               other = other.buffer;
             case arrayBufferTag2:
-              if (object.byteLength != other.byteLength || !equalFunc(new Uint8Array3(object), new Uint8Array3(other))) {
+              if (object.byteLength != other.byteLength || !equalFunc(new Uint8Array2(object), new Uint8Array2(other))) {
                 return false;
               }
               return true;
@@ -32517,14 +37908,14 @@ var require_index_001 = __commonJS({
               return length + Op_1.default.length(elem);
             }, 0);
           }
-          slice(start = 0, end = Infinity) {
+          slice(start2 = 0, end = Infinity) {
             const ops = [];
             const iter = new OpIterator_1.default(this.ops);
             let index = 0;
             while (index < end && iter.hasNext()) {
               let nextOp;
-              if (index < start) {
-                nextOp = iter.next(start - index);
+              if (index < start2) {
+                nextOp = iter.next(start2 - index);
               } else {
                 nextOp = iter.next(end - index);
                 ops.push(nextOp);
@@ -32652,28 +38043,28 @@ var require_index_001 = __commonJS({
           eachLine(predicate, newline = "\n") {
             const iter = new OpIterator_1.default(this.ops);
             let line = new Delta2();
-            let i = 0;
+            let i2 = 0;
             while (iter.hasNext()) {
               if (iter.peekType() !== "insert") {
                 return;
               }
               const thisOp = iter.peek();
-              const start = Op_1.default.length(thisOp) - iter.peekLength();
-              const index = typeof thisOp.insert === "string" ? thisOp.insert.indexOf(newline, start) - start : -1;
+              const start2 = Op_1.default.length(thisOp) - iter.peekLength();
+              const index = typeof thisOp.insert === "string" ? thisOp.insert.indexOf(newline, start2) - start2 : -1;
               if (index < 0) {
                 line.push(iter.next());
               } else if (index > 0) {
                 line.push(iter.next(index));
               } else {
-                if (predicate(line, iter.next(1).attributes || {}, i) === false) {
+                if (predicate(line, iter.next(1).attributes || {}, i2) === false) {
                   return;
                 }
-                i += 1;
+                i2 += 1;
                 line = new Delta2();
               }
             }
             if (line.length() > 0) {
-              predicate(line, {}, i);
+              predicate(line, {}, i2);
             }
           }
           invert(base) {
@@ -32686,8 +38077,8 @@ var require_index_001 = __commonJS({
                 return baseIndex + op.retain;
               } else if (op.delete || typeof op.retain === "number") {
                 const length = op.delete || op.retain;
-                const slice = base.slice(baseIndex, baseIndex + length);
-                slice.forEach((baseOp) => {
+                const slice2 = base.slice(baseIndex, baseIndex + length);
+                slice2.forEach((baseOp) => {
                   if (op.delete) {
                     inverted.push(baseOp);
                   } else if (op.retain && op.attributes) {
@@ -32696,8 +38087,8 @@ var require_index_001 = __commonJS({
                 });
                 return baseIndex + length;
               } else if (typeof op.retain === "object" && op.retain !== null) {
-                const slice = base.slice(baseIndex, baseIndex + 1);
-                const baseOp = new OpIterator_1.default(slice.ops).next();
+                const slice2 = base.slice(baseIndex, baseIndex + 1);
+                const baseOp = new OpIterator_1.default(slice2.ops).next();
                 const [embedType, opData, baseOpData] = getEmbedTypeAndData(op.retain, baseOp.insert);
                 const handler = Delta2.getHandler(embedType);
                 inverted.retain({ [embedType]: handler.invert(opData, baseOpData) }, AttributeMap_1.default.invert(op.attributes, baseOp.attributes));
@@ -32946,13 +38337,13 @@ var require_index_001 = __commonJS({
       split(index) {
         let force = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
         if (force && (index === 0 || index >= this.length() - NEWLINE_LENGTH)) {
-          const clone = this.clone();
+          const clone2 = this.clone();
           if (index === 0) {
-            this.parent.insertBefore(clone, this);
+            this.parent.insertBefore(clone2, this);
             return this;
           }
-          this.parent.insertBefore(clone, this.next);
-          return clone;
+          this.parent.insertBefore(clone2, this.next);
+          return clone2;
         }
         const next = super.split(index, force);
         this.cache = {};
@@ -33006,40 +38397,40 @@ var require_index_001 = __commonJS({
     }
     BlockEmbed.scope = Scope.BLOCK_BLOT;
     function blockDelta(blot) {
-      let filter = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
+      let filter2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : true;
       return blot.descendants(LeafBlot$1).reduce((delta, leaf) => {
         if (leaf.length() === 0) {
           return delta;
         }
-        return delta.insert(leaf.value(), bubbleFormats(leaf, {}, filter));
+        return delta.insert(leaf.value(), bubbleFormats(leaf, {}, filter2));
       }, new Delta()).insert("\n", bubbleFormats(blot));
     }
     function bubbleFormats(blot) {
       let formats = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-      let filter = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : true;
+      let filter2 = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : true;
       if (blot == null) return formats;
       if ("formats" in blot && typeof blot.formats === "function") {
         formats = {
           ...formats,
           ...blot.formats()
         };
-        if (filter) {
+        if (filter2) {
           delete formats["code-token"];
         }
       }
       if (blot.parent == null || blot.parent.statics.blotName === "scroll" || blot.parent.statics.scope !== blot.statics.scope) {
         return formats;
       }
-      return bubbleFormats(blot.parent, formats, filter);
+      return bubbleFormats(blot.parent, formats, filter2);
     }
     const _Cursor = class _Cursor extends EmbedBlot$1 {
       // Zero width no break space
       static value() {
         return void 0;
       }
-      constructor(scroll, domNode, selection) {
+      constructor(scroll, domNode, selection2) {
         super(scroll, domNode);
-        this.selection = selection;
+        this.selection = selection2;
         this.textNode = document.createTextNode(_Cursor.CONTENTS);
         this.domNode.appendChild(this.textNode);
         this.savedLength = 0;
@@ -33125,12 +38516,12 @@ var require_index_001 = __commonJS({
             }
             return null;
           };
-          const start = remapOffset(range.start.node, range.start.offset);
+          const start2 = remapOffset(range.start.node, range.start.offset);
           const end = remapOffset(range.end.node, range.end.offset);
-          if (start !== null && end !== null) {
+          if (start2 !== null && end !== null) {
             return {
               startNode: mergedTextBlot.domNode,
-              startOffset: start,
+              startOffset: start2,
               endNode: mergedTextBlot.domNode,
               endOffset: end
             };
@@ -33186,7 +38577,7 @@ var require_index_001 = __commonJS({
       if (hasRequiredEventemitter3) return eventemitter3.exports;
       hasRequiredEventemitter3 = 1;
       (function(module2) {
-        var has = Object.prototype.hasOwnProperty, prefix = "~";
+        var has2 = Object.prototype.hasOwnProperty, prefix = "~";
         function Events() {
         }
         if (Object.create) {
@@ -33220,7 +38611,7 @@ var require_index_001 = __commonJS({
           var names2 = [], events, name2;
           if (this._eventsCount === 0) return names2;
           for (name2 in events = this._events) {
-            if (has.call(events, name2)) names2.push(prefix ? name2.slice(1) : name2);
+            if (has2.call(events, name2)) names2.push(prefix ? name2.slice(1) : name2);
           }
           if (Object.getOwnPropertySymbols) {
             return names2.concat(Object.getOwnPropertySymbols(events));
@@ -33231,8 +38622,8 @@ var require_index_001 = __commonJS({
           var evt = prefix ? prefix + event : event, handlers = this._events[evt];
           if (!handlers) return [];
           if (handlers.fn) return [handlers.fn];
-          for (var i = 0, l = handlers.length, ee = new Array(l); i < l; i++) {
-            ee[i] = handlers[i].fn;
+          for (var i2 = 0, l = handlers.length, ee = new Array(l); i2 < l; i2++) {
+            ee[i2] = handlers[i2].fn;
           }
           return ee;
         };
@@ -33245,7 +38636,7 @@ var require_index_001 = __commonJS({
         EventEmitter2.prototype.emit = function emit(event, a1, a2, a3, a4, a5) {
           var evt = prefix ? prefix + event : event;
           if (!this._events[evt]) return false;
-          var listeners = this._events[evt], len = arguments.length, args, i;
+          var listeners = this._events[evt], len = arguments.length, args, i2;
           if (listeners.fn) {
             if (listeners.once) this.removeListener(event, listeners.fn, void 0, true);
             switch (len) {
@@ -33262,32 +38653,32 @@ var require_index_001 = __commonJS({
               case 6:
                 return listeners.fn.call(listeners.context, a1, a2, a3, a4, a5), true;
             }
-            for (i = 1, args = new Array(len - 1); i < len; i++) {
-              args[i - 1] = arguments[i];
+            for (i2 = 1, args = new Array(len - 1); i2 < len; i2++) {
+              args[i2 - 1] = arguments[i2];
             }
             listeners.fn.apply(listeners.context, args);
           } else {
             var length = listeners.length, j;
-            for (i = 0; i < length; i++) {
-              if (listeners[i].once) this.removeListener(event, listeners[i].fn, void 0, true);
+            for (i2 = 0; i2 < length; i2++) {
+              if (listeners[i2].once) this.removeListener(event, listeners[i2].fn, void 0, true);
               switch (len) {
                 case 1:
-                  listeners[i].fn.call(listeners[i].context);
+                  listeners[i2].fn.call(listeners[i2].context);
                   break;
                 case 2:
-                  listeners[i].fn.call(listeners[i].context, a1);
+                  listeners[i2].fn.call(listeners[i2].context, a1);
                   break;
                 case 3:
-                  listeners[i].fn.call(listeners[i].context, a1, a2);
+                  listeners[i2].fn.call(listeners[i2].context, a1, a2);
                   break;
                 case 4:
-                  listeners[i].fn.call(listeners[i].context, a1, a2, a3);
+                  listeners[i2].fn.call(listeners[i2].context, a1, a2, a3);
                   break;
                 default:
                   if (!args) for (j = 1, args = new Array(len - 1); j < len; j++) {
                     args[j - 1] = arguments[j];
                   }
-                  listeners[i].fn.apply(listeners[i].context, args);
+                  listeners[i2].fn.apply(listeners[i2].context, args);
               }
             }
           }
@@ -33312,9 +38703,9 @@ var require_index_001 = __commonJS({
               clearEvent(this, evt);
             }
           } else {
-            for (var i = 0, events = [], length = listeners.length; i < length; i++) {
-              if (listeners[i].fn !== fn || once && !listeners[i].once || context && listeners[i].context !== context) {
-                events.push(listeners[i]);
+            for (var i2 = 0, events = [], length = listeners.length; i2 < length; i2++) {
+              if (listeners[i2].fn !== fn || once && !listeners[i2].once || context && listeners[i2].context !== context) {
+                events.push(listeners[i2]);
               }
             }
             if (events.length) this._events[evt] = events.length === 1 ? events[0] : events;
@@ -33606,9 +38997,9 @@ var require_index_001 = __commonJS({
         };
       }
       getNativeRange() {
-        const selection = document.getSelection();
-        if (selection == null || selection.rangeCount <= 0) return null;
-        const nativeRange = selection.getRangeAt(0);
+        const selection2 = document.getSelection();
+        if (selection2 == null || selection2.rangeCount <= 0) return null;
+        const nativeRange = selection2.getRangeAt(0);
         if (nativeRange == null) return null;
         const range = this.normalizeNative(nativeRange);
         debug$4.info("getNativeRange", range);
@@ -33645,8 +39036,8 @@ var require_index_001 = __commonJS({
           return index + blot.length();
         });
         const end = Math.min(Math.max(...indexes), this.scroll.length() - 1);
-        const start = Math.min(end, ...indexes);
-        return new Range(start, end - start);
+        const start2 = Math.min(end, ...indexes);
+        return new Range(start2, end - start2);
       }
       normalizeNative(nativeRange) {
         if (!contains(this.root, nativeRange.startContainer) || !nativeRange.collapsed && !contains(this.root, nativeRange.endContainer)) {
@@ -33708,8 +39099,8 @@ var require_index_001 = __commonJS({
         endNode.parentNode == null)) {
           return;
         }
-        const selection = document.getSelection();
-        if (selection == null) return;
+        const selection2 = document.getSelection();
+        if (selection2 == null) return;
         if (startNode != null) {
           if (!this.hasFocus()) this.root.focus({
             preventScroll: true
@@ -33729,11 +39120,11 @@ var require_index_001 = __commonJS({
             const range = document.createRange();
             range.setStart(startNode, startOffset);
             range.setEnd(endNode, endOffset);
-            selection.removeAllRanges();
-            selection.addRange(range);
+            selection2.removeAllRanges();
+            selection2.addRange(range);
           }
         } else {
-          selection.removeAllRanges();
+          selection2.removeAllRanges();
           this.root.blur();
         }
       }
@@ -33913,8 +39304,8 @@ var require_index_001 = __commonJS({
         let lines = [];
         let leaves = [];
         if (length === 0) {
-          this.scroll.path(index).forEach((path) => {
-            const [blot] = path;
+          this.scroll.path(index).forEach((path2) => {
+            const [blot] = path2;
             if (blot instanceof Block) {
               lines.push(blot);
             } else if (blot instanceof LeafBlot$1) {
@@ -34098,11 +39489,11 @@ var require_index_001 = __commonJS({
           outerHTML,
           innerHTML
         } = blot.domNode;
-        const [start, end] = outerHTML.split(`>${innerHTML}<`);
-        if (start === "<table") {
+        const [start2, end] = outerHTML.split(`>${innerHTML}<`);
+        if (start2 === "<table") {
           return `<table style="border: 1px solid #000;">${parts.join("")}<${end}`;
         }
-        return `${start}>${parts.join("")}<${end}`;
+        return `${start2}>${parts.join("")}<${end}`;
       }
       return blot.domNode instanceof Element ? blot.domNode.outerHTML : "";
     }
@@ -34441,14 +39832,14 @@ var require_index_001 = __commonJS({
             });
           }
         } else {
-          const path = arguments.length <= 0 ? void 0 : arguments[0];
+          const path2 = arguments.length <= 0 ? void 0 : arguments[0];
           const target = arguments.length <= 1 ? void 0 : arguments[1];
           const overwrite = !!(arguments.length <= 2 ? void 0 : arguments[2]);
-          if (this.imports[path] != null && !overwrite) {
-            debug$3.warn(`Overwriting ${path} with`, target);
+          if (this.imports[path2] != null && !overwrite) {
+            debug$3.warn(`Overwriting ${path2} with`, target);
           }
-          this.imports[path] = target;
-          if ((path.startsWith("blots/") || path.startsWith("formats/")) && target && typeof target !== "boolean" && target.blotName !== "abstract") {
+          this.imports[path2] = target;
+          if ((path2.startsWith("blots/") || path2.startsWith("formats/")) && target && typeof target !== "boolean" && target.blotName !== "abstract") {
             globalRegistry.register(target);
           }
           if (typeof target.register === "function") {
@@ -34826,8 +40217,8 @@ var require_index_001 = __commonJS({
       "core/theme": Theme
     });
     let Quill = _Quill;
-    function resolveSelector(selector) {
-      return typeof selector === "string" ? document.querySelector(selector) : selector;
+    function resolveSelector(selector2) {
+      return typeof selector2 === "string" ? document.querySelector(selector2) : selector2;
     }
     function expandModuleConfig(config2) {
       return Object.entries(config2 ?? {}).reduce((expanded, _ref) => {
@@ -34966,15 +40357,15 @@ var require_index_001 = __commonJS({
     function shiftRange(range, index, lengthOrSource, source) {
       const length = typeof lengthOrSource === "number" ? lengthOrSource : 0;
       if (range == null) return null;
-      let start;
+      let start2;
       let end;
       if (index && typeof index.transformPosition === "function") {
-        [start, end] = [range.index, range.index + range.length].map((pos) => (
+        [start2, end] = [range.index, range.index + range.length].map((pos) => (
           // @ts-expect-error -- TODO: add a better type guard around `index`
           index.transformPosition(pos, source !== Emitter.sources.USER)
         ));
       } else {
-        [start, end] = [range.index, range.index + range.length].map((pos) => {
+        [start2, end] = [range.index, range.index + range.length].map((pos) => {
           if (pos < index || pos === index && source === Emitter.sources.USER) return pos;
           if (length >= 0) {
             return pos + length;
@@ -34982,7 +40373,7 @@ var require_index_001 = __commonJS({
           return Math.max(index, pos + length);
         });
       }
-      return new Range(start, end - start);
+      return new Range(start2, end - start2);
     }
     class Container extends ContainerBlot$1 {
     }
@@ -35333,8 +40724,8 @@ var require_index_001 = __commonJS({
         let value2 = super.value(domNode);
         if (!value2.startsWith("rgb(")) return value2;
         value2 = value2.replace(/^[^\d]+/, "").replace(/[^\d]+$/, "");
-        const hex = value2.split(",").map((component) => `00${parseInt(component, 10).toString(16)}`.slice(-2)).join("");
-        return `#${hex}`;
+        const hex2 = value2.split(",").map((component) => `00${parseInt(component, 10).toString(16)}`.slice(-2)).join("");
+        return `#${hex2}`;
       }
     }
     const ColorClass = new ClassAttributor$1("color", "ql-color", {
@@ -35930,17 +41321,17 @@ ${escapeText(this.code(index, length))}
             index,
             length
           } = range;
-          lines.forEach((line, i) => {
+          lines.forEach((line, i2) => {
             if (indent) {
               line.insertAt(0, TAB);
-              if (i === 0) {
+              if (i2 === 0) {
                 index += TAB.length;
               } else {
                 length += TAB.length;
               }
             } else if (line.domNode.textContent.startsWith(TAB)) {
               line.deleteAt(0, TAB.length);
-              if (i === 0) {
+              if (i2 === 0) {
                 index -= TAB.length;
               } else {
                 length -= TAB.length;
@@ -36112,14 +41503,14 @@ ${escapeText(this.code(index, length))}
       if (!idMatch) {
         return null;
       }
-      const id = Number(idMatch[1]);
+      const id2 = Number(idMatch[1]);
       const indentMatch = style == null ? void 0 : style.match(indentRegexp);
       const indent = indentMatch ? Number(indentMatch[1]) : 1;
-      const typeRegexp = new RegExp(`@list l${id}:level${indent}\\s*\\{[^\\}]*mso-level-number-format:\\s*([\\w-]+)`, "i");
+      const typeRegexp = new RegExp(`@list l${id2}:level${indent}\\s*\\{[^\\}]*mso-level-number-format:\\s*([\\w-]+)`, "i");
       const typeMatch = html.match(typeRegexp);
       const type = typeMatch && typeMatch[1] === "bullet" ? "bullet" : "ordered";
       return {
-        id,
+        id: id2,
         indent,
         type,
         element
@@ -36208,12 +41599,12 @@ ${escapeText(this.code(index, length))}
         this.quill.root.addEventListener("paste", this.onCapturePaste.bind(this));
         this.matchers = [];
         CLIPBOARD_CONFIG.concat(this.options.matchers ?? []).forEach((_ref) => {
-          let [selector, matcher] = _ref;
-          this.addMatcher(selector, matcher);
+          let [selector2, matcher2] = _ref;
+          this.addMatcher(selector2, matcher2);
         });
       }
-      addMatcher(selector, matcher) {
-        this.matchers.push([selector, matcher]);
+      addMatcher(selector2, matcher2) {
+        this.matchers.push([selector2, matcher2]);
       }
       convert(_ref2) {
         let {
@@ -36352,21 +41743,21 @@ ${escapeText(this.code(index, length))}
         const elementMatchers = [];
         const textMatchers = [];
         this.matchers.forEach((pair) => {
-          const [selector, matcher] = pair;
-          switch (selector) {
+          const [selector2, matcher2] = pair;
+          switch (selector2) {
             case Node.TEXT_NODE:
-              textMatchers.push(matcher);
+              textMatchers.push(matcher2);
               break;
             case Node.ELEMENT_NODE:
-              elementMatchers.push(matcher);
+              elementMatchers.push(matcher2);
               break;
             default:
-              Array.from(container.querySelectorAll(selector)).forEach((node) => {
+              Array.from(container.querySelectorAll(selector2)).forEach((node) => {
                 if (nodeMatches.has(node)) {
                   const matches = nodeMatches.get(node);
-                  matches == null ? void 0 : matches.push(matcher);
+                  matches == null ? void 0 : matches.push(matcher2);
                 } else {
-                  nodeMatches.set(node, [matcher]);
+                  nodeMatches.set(node, [matcher2]);
                 }
               });
               break;
@@ -36398,8 +41789,8 @@ ${escapeText(this.code(index, length))}
     }
     function deltaEndsWith(delta, text) {
       let endText = "";
-      for (let i = delta.ops.length - 1; i >= 0 && endText.length < text.length; --i) {
-        const op = delta.ops[i];
+      for (let i2 = delta.ops.length - 1; i2 >= 0 && endText.length < text.length; --i2) {
+        const op = delta.ops[i2];
         if (typeof op.insert !== "string") break;
         endText = op.insert + endText;
       }
@@ -36428,19 +41819,19 @@ ${escapeText(this.code(index, length))}
     }
     function traverse(scroll, node, elementMatchers, textMatchers, nodeMatches) {
       if (node.nodeType === node.TEXT_NODE) {
-        return textMatchers.reduce((delta, matcher) => {
-          return matcher(node, delta, scroll);
+        return textMatchers.reduce((delta, matcher2) => {
+          return matcher2(node, delta, scroll);
         }, new Delta());
       }
       if (node.nodeType === node.ELEMENT_NODE) {
         return Array.from(node.childNodes || []).reduce((delta, childNode) => {
           let childrenDelta = traverse(scroll, childNode, elementMatchers, textMatchers, nodeMatches);
           if (childNode.nodeType === node.ELEMENT_NODE) {
-            childrenDelta = elementMatchers.reduce((reducedDelta, matcher) => {
-              return matcher(childNode, reducedDelta, scroll);
+            childrenDelta = elementMatchers.reduce((reducedDelta, matcher2) => {
+              return matcher2(childNode, reducedDelta, scroll);
             }, childrenDelta);
-            childrenDelta = (nodeMatches.get(childNode) || []).reduce((reducedDelta, matcher) => {
-              return matcher(childNode, reducedDelta, scroll);
+            childrenDelta = (nodeMatches.get(childNode) || []).reduce((reducedDelta, matcher2) => {
+              return matcher2(childNode, reducedDelta, scroll);
             }, childrenDelta);
           }
           return delta.concat(childrenDelta);
@@ -36756,15 +42147,15 @@ ${escapeText(this.code(index, length))}
     });
     function transformStack(stack, delta) {
       let remoteDelta = delta;
-      for (let i = stack.length - 1; i >= 0; i -= 1) {
-        const oldItem = stack[i];
-        stack[i] = {
+      for (let i2 = stack.length - 1; i2 >= 0; i2 -= 1) {
+        const oldItem = stack[i2];
+        stack[i2] = {
           delta: remoteDelta.transform(oldItem.delta, true),
           range: oldItem.range && transformRange(oldItem.range, remoteDelta)
         };
         remoteDelta = oldItem.delta.transform(remoteDelta);
-        if (stack[i].delta.length() === 0) {
-          stack.splice(i, 1);
+        if (stack[i2].delta.length() === 0) {
+          stack.splice(i2, 1);
         }
       }
     }
@@ -36793,11 +42184,11 @@ ${escapeText(this.code(index, length))}
     }
     function transformRange(range, delta) {
       if (!range) return range;
-      const start = delta.transformPosition(range.index);
+      const start2 = delta.transformPosition(range.index);
       const end = delta.transformPosition(range.index + range.length);
       return {
-        index: start,
-        length: end - start
+        index: start2,
+        length: end - start2
       };
     }
     class Uploader extends Module {
@@ -37000,17 +42391,17 @@ ${escapeText(this.code(index, length))}
         });
       }
       handleSelectionChange() {
-        const selection = document.getSelection();
-        if (!selection) return;
-        const range = selection.getRangeAt(0);
+        const selection2 = document.getSelection();
+        if (!selection2) return;
+        const range = selection2.getRangeAt(0);
         if (range.collapsed !== true || range.startOffset !== 0) return;
         const line = this.quill.scroll.find(range.startContainer);
         if (!(line instanceof ParentBlot$1) || !line.uiNode) return;
         const newRange = document.createRange();
         newRange.setStartAfter(line.uiNode);
         newRange.setEndAfter(line.uiNode);
-        selection.removeAllRanges();
-        selection.addRange(newRange);
+        selection2.removeAllRanges();
+        selection2.addRange(newRange);
       }
     }
     Quill.register({
@@ -37500,14 +42891,14 @@ ${escapeText(this.code(index, length))}
         });
       }
       initTimer() {
-        let timer = null;
+        let timer2 = null;
         this.quill.on(Quill.events.SCROLL_OPTIMIZE, () => {
-          if (timer) {
-            clearTimeout(timer);
+          if (timer2) {
+            clearTimeout(timer2);
           }
-          timer = setTimeout(() => {
+          timer2 = setTimeout(() => {
             this.highlight();
-            timer = null;
+            timer2 = null;
           }, this.options.interval);
         });
       }
@@ -37530,8 +42921,8 @@ ${escapeText(this.code(index, length))}
         let language = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "plain";
         language = this.languages[language] ? language : "plain";
         if (language === "plain") {
-          return escapeText(text).split("\n").reduce((delta, line, i) => {
-            if (i !== 0) {
+          return escapeText(text).split("\n").reduce((delta, line, i2) => {
+            if (i2 !== 0) {
               delta.insert("\n", {
                 [CodeBlock.blotName]: language
               });
@@ -37551,8 +42942,8 @@ ${escapeText(this.code(index, length))}
           }
           return delta;
         }], [(node, delta) => {
-          return node.data.split("\n").reduce((memo, nodeText, i) => {
-            if (i !== 0) memo.insert("\n", {
+          return node.data.split("\n").reduce((memo, nodeText, i2) => {
+            if (i2 !== 0) memo.insert("\n", {
               [CodeBlock.blotName]: language
             });
             return memo.insert(nodeText);
@@ -37742,10 +43133,10 @@ ${escapeText(this.code(index, length))}
       insertRow(index) {
         const [body2] = this.descendant(TableBody);
         if (body2 == null || body2.children.head == null) return;
-        const id = tableId();
+        const id2 = tableId();
         const row = this.scroll.create(TableRow.blotName);
         body2.children.head.children.forEach(() => {
-          const cell = this.scroll.create(TableCell.blotName, id);
+          const cell = this.scroll.create(TableCell.blotName, id2);
           row.appendChild(cell);
         });
         const ref = body2.children.at(index);
@@ -37766,8 +43157,8 @@ ${escapeText(this.code(index, length))}
     TableRow.allowedChildren = [TableCell];
     TableCell.requiredContainer = TableRow;
     function tableId() {
-      const id = Math.random().toString(36).slice(2, 6);
-      return `row-${id}`;
+      const id2 = Math.random().toString(36).slice(2, 6);
+      return `row-${id2}`;
     }
     class Table extends Module {
       static register() {
@@ -38824,10 +44215,10 @@ ${escapeText(this.code(index, length))}
         this.quill.on(Emitter.events.SELECTION_CHANGE, (range, oldRange, source) => {
           if (range == null) return;
           if (range.length === 0 && source === Emitter.sources.USER) {
-            const [link, offset] = this.quill.scroll.descendant(Link, range.index);
-            if (link != null) {
-              this.linkRange = new Range(range.index - offset, link.length());
-              const preview = Link.formats(link.domNode);
+            const [link2, offset] = this.quill.scroll.descendant(Link, range.index);
+            if (link2 != null) {
+              this.linkRange = new Range(range.index - offset, link2.length());
+              const preview = Link.formats(link2.domNode);
               this.preview.textContent = preview;
               this.preview.setAttribute("href", preview);
               this.show();
@@ -38976,16 +44367,16 @@ ${escapeText(this.code(index, length))}
             toolbar: false
           }
         });
-        this._editor.clipboard.addMatcher(Node.ELEMENT_NODE, (node, delta) => {
-          node.removeAttribute("style");
-          node.className = "";
-          const children = Array.from(node.childNodes);
-          children.forEach((child) => {
-            if (child.nodeType === Node.ELEMENT_NODE) {
-              child.removeAttribute("style");
-              child.className = "";
+        this._editor.clipboard.addMatcher(Node.ELEMENT_NODE, (_, delta) => {
+          let ops = [];
+          delta.ops.forEach((op) => {
+            if (op.insert && typeof op.insert === "string") {
+              ops.push({
+                insert: op.insert
+              });
             }
           });
+          delta.ops = ops;
           return delta;
         });
         this.editor.setText(this._defaultText);
@@ -38996,8 +44387,8 @@ ${escapeText(this.code(index, length))}
       getText() {
         return this.editor.getText();
       }
-      syntaxHighlight(start, end, className) {
-        this.editor.formatText(start, end - start, "syntax-highlight", className);
+      syntaxHighlight(start2, end, className) {
+        this.editor.formatText(start2, end - start2, "syntax-highlight", className);
       }
       clearFormatting() {
         const length = this.editor.getLength();
@@ -39023,12 +44414,14 @@ ${escapeText(this.code(index, length))}
     class TestEditorPresenter {
       constructor(options = {}) {
         __publicField(this, "_options");
+        __publicField(this, "_astJson");
         __publicField(this, "_ast");
         __publicField(this, "_selectedPattern");
         __publicField(this, "_patterns");
         __publicField(this, "textEditor");
         this._options = options;
-        this._ast = new Signal("");
+        this._astJson = new Signal("");
+        this._ast = new Signal(null);
         this._selectedPattern = new Signal(null);
         this._patterns = new Signal({});
         this.textEditor = new TextEditorPresenter();
@@ -39038,6 +44431,9 @@ ${escapeText(this.code(index, length))}
       }
       get selectedPatternBroadcast() {
         return this._selectedPattern.broadcast;
+      }
+      get astJsonBroadcast() {
+        return this._astJson.broadcast;
       }
       get astBroadcast() {
         return this._ast.broadcast;
@@ -39067,19 +44463,23 @@ ${escapeText(this.code(index, length))}
           const text = this.textEditor.getText();
           const startTime = performance.now();
           try {
-            const { ast, cursor } = editorPattern.exec(text);
+            const { ast, cursor } = editorPattern.exec(text, true);
             const parseDuration = performance.now() - startTime;
             console.log("Test Parse Time: ", parseDuration);
             if (ast != null) {
               const rootAst = ast.children[0];
-              this._ast.set(rootAst.toJson(2));
+              this._astJson.set(rootAst.toJson(2));
+              this._ast.set(rootAst);
             } else {
-              this._ast.set("");
-              if (cursor.furthestError != null) {
-                const { endIndex: startIndex } = cursor.furthestError;
+              this._astJson.set("");
+              this._ast.set(null);
+              const nodes = cursor.allMatchedNodes.slice();
+              nodes.sort((a, b) => a.endIndex - b.endIndex);
+              const furthestMatch = nodes[nodes.length - 1];
+              if (furthestMatch != null) {
+                const { endIndex: startIndex } = furthestMatch;
                 const endIndex = cursor.length;
                 this.textEditor.syntaxHighlight(startIndex, endIndex, "syntax-error");
-                console.log(startIndex);
               } else {
                 this.textEditor.syntaxHighlight(0, cursor.length, "syntax-error");
               }
@@ -39225,12 +44625,12 @@ ${escapeText(this.code(index, length))}
             resolveImport: async (resource2, originResource) => {
               const origin = originResource == null ? "/" : originResource;
               const url = new URL(resource2, window.location.origin + origin);
-              const path = url.pathname;
+              const path2 = url.pathname;
               try {
-                const expression = await this._fileSystem.readFile(path);
-                return { expression, resource: path };
+                const expression = await this._fileSystem.readFile(path2);
+                return { expression, resource: path2 };
               } catch {
-                throw new Error(`File not found: ${path}`);
+                throw new Error(`File not found: ${path2}`);
               }
             }
           });
@@ -39275,7 +44675,7 @@ ${escapeText(this.code(index, length))}
       _highlight() {
         const textEditor = this.textEditor;
         const text = textEditor.getText();
-        const { ast, cursor } = grammar.exec(text);
+        const { ast, cursor } = grammar.exec(text, true);
         if (ast != null) {
           textEditor.clearFormatting();
           ast.walkDown((node) => {
@@ -39284,21 +44684,24 @@ ${escapeText(this.code(index, length))}
             }
           });
         } else {
-          if (cursor.furthestError != null) {
-            const { endIndex: startIndex } = cursor.furthestError;
+          const nodes = cursor.allMatchedNodes.slice();
+          nodes.sort((a, b) => a.endIndex - b.endIndex);
+          const furthestMatch = nodes[nodes.length - 1];
+          if (furthestMatch != null) {
+            const { endIndex: startIndex } = furthestMatch;
             const endIndex = cursor.length;
-            textEditor.syntaxHighlight(startIndex, endIndex, "syntax-error");
+            this.textEditor.syntaxHighlight(startIndex, endIndex, "syntax-error");
           } else {
-            textEditor.syntaxHighlight(0, cursor.length, "syntax-error");
+            this.textEditor.syntaxHighlight(0, cursor.length, "syntax-error");
           }
         }
       }
       disable() {
         this.textEditor.editor.disable();
       }
-      setText(text, path) {
+      setText(text, path2) {
         this.textEditor.editor.enable();
-        this._path = path;
+        this._path = path2;
         this.textEditor.setText(text);
         this._processGrammar();
         this._highlight();
@@ -39313,7 +44716,7 @@ ${escapeText(this.code(index, length))}
       }
     }
     class FileCreation {
-      constructor(path, fileSystem, onComplete, onAbort) {
+      constructor(path2, fileSystem, onComplete, onAbort) {
         __publicField(this, "_fileSystem");
         __publicField(this, "_name");
         __publicField(this, "_error");
@@ -39321,7 +44724,7 @@ ${escapeText(this.code(index, length))}
         __publicField(this, "_onComplete");
         __publicField(this, "_onAbort");
         this._fileSystem = fileSystem;
-        this._path = path;
+        this._path = path2;
         this._name = new Signal("");
         this._error = new Signal(null);
         this._onComplete = onComplete;
@@ -39364,14 +44767,14 @@ ${escapeText(this.code(index, length))}
       }
     }
     class DirectoryCreation {
-      constructor(path, fileSystem, onComplete) {
+      constructor(path2, fileSystem, onComplete) {
         __publicField(this, "_fileSystem");
         __publicField(this, "_name");
         __publicField(this, "_error");
         __publicField(this, "_path");
         __publicField(this, "_onComplete");
         this._fileSystem = fileSystem;
-        this._path = path;
+        this._path = path2;
         this._name = new Signal("");
         this._error = new Signal(null);
         this._onComplete = onComplete;
@@ -39613,11 +45016,11 @@ ${escapeText(this.code(index, length))}
           items: []
         });
         await this._fileSystem.walk((itemMeta) => {
-          const path = this._makePathFromMetaData(itemMeta);
-          const name2 = this._fileSystem.getName(path);
-          const directoryPath = this._fileSystem.getDirectoryPath(path);
+          const path2 = this._makePathFromMetaData(itemMeta);
+          const name2 = this._fileSystem.getName(path2);
+          const directoryPath = this._fileSystem.getDirectoryPath(path2);
           const isFile = itemMeta.type === "file";
-          if (path === "/") {
+          if (path2 === "/") {
             return;
           }
           let directory = directories.get(directoryPath);
@@ -39630,15 +45033,15 @@ ${escapeText(this.code(index, length))}
               type: "file",
               directory: directoryPath,
               name: name2,
-              path
+              path: path2
             };
             directory.items.push(file);
-            files.set(path, file);
+            files.set(path2, file);
           } else {
-            let childDirectory = directories.get(path);
+            let childDirectory = directories.get(path2);
             if (childDirectory == null) {
-              childDirectory = this._makeDirectoryFromPath(path);
-              directories.set(path, childDirectory);
+              childDirectory = this._makeDirectoryFromPath(path2);
+              directories.set(path2, childDirectory);
             }
             directory.items.push(childDirectory);
           }
@@ -39675,37 +45078,37 @@ ${escapeText(this.code(index, length))}
           parts.unshift(item.name);
           item = item.parent;
         }
-        const path = "/" + parts.join("/");
+        const path2 = "/" + parts.join("/");
         if (metaData.type === "directory") {
-          return path + "/";
+          return path2 + "/";
         }
-        return path;
+        return path2;
       }
-      _makeDirectoryFromPath(path) {
+      _makeDirectoryFromPath(path2) {
         return {
           type: "directory",
-          directory: this._fileSystem.getDirectoryPath(path),
-          name: this._fileSystem.getName(path),
-          path,
+          directory: this._fileSystem.getDirectoryPath(path2),
+          name: this._fileSystem.getName(path2),
+          path: path2,
           items: []
         };
       }
-      focus(path) {
-        const file = this._files.get(path);
+      focus(path2) {
+        const file = this._files.get(path2);
         const focusedItem = this._focusedItem.get();
         const oldPath = focusedItem == null ? null : focusedItem.path;
-        if (oldPath === path) {
+        if (oldPath === path2) {
           return;
         }
         if (file != null) {
           this._focusedItem.set(file);
-          this._onPathFocus(path, oldPath);
+          this._onPathFocus(path2, oldPath);
           return;
         }
-        const directory = this._directories.get(path);
+        const directory = this._directories.get(path2);
         if (directory != null) {
           this._focusedItem.set(directory);
-          this._onPathFocus(path, oldPath);
+          this._onPathFocus(path2, oldPath);
           return;
         }
       }
@@ -39721,13 +45124,13 @@ ${escapeText(this.code(index, length))}
       }
       startFileCreation() {
         const currentDirectory = this._focusedItem.get();
-        let path = "/";
+        let path2 = "/";
         if (currentDirectory && currentDirectory.type === "file") {
-          path = currentDirectory.directory;
+          path2 = currentDirectory.directory;
         } else if (currentDirectory && currentDirectory.type === "directory") {
-          path = currentDirectory.path;
+          path2 = currentDirectory.path;
         }
-        this._pendingFileCreation.set(new FileCreation(path, this._fileSystem, async (filePath) => {
+        this._pendingFileCreation.set(new FileCreation(path2, this._fileSystem, async (filePath) => {
           this._pendingFileCreation.set(null);
           await this.refresh();
           this.focus(filePath);
@@ -39738,16 +45141,16 @@ ${escapeText(this.code(index, length))}
       }
       startDirectoryCreation() {
         const currentDirectory = this._focusedItem.get();
-        let path = "/";
+        let path2 = "/";
         if (currentDirectory && currentDirectory.type === "file") {
-          path = currentDirectory.directory;
+          path2 = currentDirectory.directory;
         } else if (currentDirectory && currentDirectory.type === "directory") {
-          path = currentDirectory.path;
+          path2 = currentDirectory.path;
         }
-        this._pendingDirectoryCreation.set(new DirectoryCreation(path, this._fileSystem, async () => {
+        this._pendingDirectoryCreation.set(new DirectoryCreation(path2, this._fileSystem, async () => {
           this._pendingDirectoryCreation.set(null);
           await this.refresh();
-          this.focus(path);
+          this.focus(path2);
         }));
       }
       startRenamingDirectory(filePath) {
@@ -39772,15 +45175,15 @@ ${escapeText(this.code(index, length))}
         }
         await this._updateDirectories();
       }
-      async deleteFile(path) {
+      async deleteFile(path2) {
         try {
-          await this._fileSystem.deleteFile(path);
+          await this._fileSystem.deleteFile(path2);
         } catch (_) {
         }
         await this._updateDirectories();
       }
-      async updateFile(path, content) {
-        await this._fileSystem.writeFile(path, content);
+      async updateFile(path2, content) {
+        await this._fileSystem.writeFile(path2, content);
         await this._updateDirectories();
       }
       async createDirectory(name2) {
@@ -39795,25 +45198,25 @@ ${escapeText(this.code(index, length))}
         }
         await this._updateDirectories();
       }
-      async deleteDirectory(path) {
-        await this._fileSystem.deleteDirectory(path);
+      async deleteDirectory(path2) {
+        await this._fileSystem.deleteDirectory(path2);
         await this._updateDirectories();
       }
-      openDirectory(path) {
+      openDirectory(path2) {
         this._openDirectories.transform((m) => {
-          m.set(path, true);
+          m.set(path2, true);
           return m;
         });
       }
-      closeDirectory(path) {
+      closeDirectory(path2) {
         this._openDirectories.transform((m) => {
-          m.set(path, false);
+          m.set(path2, false);
           return m;
         });
       }
-      toggleDirectory(path) {
+      toggleDirectory(path2) {
         this._openDirectories.transform((m) => {
-          m.set(path, !m.get(path));
+          m.set(path2, !m.get(path2));
           return m;
         });
       }
@@ -39869,67 +45272,67 @@ ${escapeText(this.code(index, length))}
         callback(item, fromDirectory);
         if (item.type === "directory") {
           const directories = [];
-          item.items.forEach((i) => {
-            if (i.type === "file") {
-              this._walkDown(i, callback, item);
+          item.items.forEach((i2) => {
+            if (i2.type === "file") {
+              this._walkDown(i2, callback, item);
             } else {
-              directories.push(i);
+              directories.push(i2);
             }
           });
           directories.forEach((d) => this._walkDown(d, callback, item));
         }
       }
-      getMetaDataForPath(path) {
-        if (path.startsWith("/")) {
-          path = path.slice(1);
+      getMetaDataForPath(path2) {
+        if (path2.startsWith("/")) {
+          path2 = path2.slice(1);
         }
-        if (path.endsWith("/")) {
-          path = path.slice(0, -1);
+        if (path2.endsWith("/")) {
+          path2 = path2.slice(0, -1);
         }
-        const parts = path.split("/");
+        const parts = path2.split("/");
         let directory = this._meta;
         parts.slice(0, -1).forEach((part) => {
-          const match2 = directory.items.find((i) => i.name === part);
+          const match2 = directory.items.find((i2) => i2.name === part);
           if (match2 == null || match2.type === "file") {
             throw new Error("Not Found");
           }
           directory = match2;
         });
-        const result = directory.items.find((i) => i.name === parts[parts.length - 1]);
+        const result = directory.items.find((i2) => i2.name === parts[parts.length - 1]);
         if (result == null) {
           throw new Error("Not Found");
         }
         return result;
       }
-      async isFile(path) {
-        return this.getMetaDataForPath(path).type === "file";
+      async isFile(path2) {
+        return this.getMetaDataForPath(path2).type === "file";
       }
-      async hasFile(path) {
+      async hasFile(path2) {
         try {
-          return await this.isFile(path);
+          return await this.isFile(path2);
         } catch {
           return false;
         }
       }
-      async readFile(path) {
-        const metaData = this.getMetaDataForPath(path);
+      async readFile(path2) {
+        const metaData = this.getMetaDataForPath(path2);
         if (metaData.type === "directory") {
           throw new Error("File Not Found");
         }
         return this._storage.getItem(metaData.guid) || "";
       }
-      async writeFile(path, content) {
-        path = this._normalizeFile(path);
-        const name2 = this.getName(path);
-        const directoryPath = this.getDirectoryPath(path);
+      async writeFile(path2, content) {
+        path2 = this._normalizeFile(path2);
+        const name2 = this.getName(path2);
+        const directoryPath = this.getDirectoryPath(path2);
         try {
-          const metaItem = this.getMetaDataForPath(path);
+          const metaItem = this.getMetaDataForPath(path2);
           if (metaItem.type === "directory") {
             throw new Error("Cannot Write File");
           }
           this._storage.setItem(metaItem.guid, content);
         } catch {
-          this._actIfPathIsEmpty(path, () => {
+          this._actIfPathIsEmpty(path2, () => {
             const directory = this._createDirectoriesForPath(directoryPath);
             const guid = generateGUID();
             directory.items.push({
@@ -39943,8 +45346,8 @@ ${escapeText(this.code(index, length))}
           });
         }
       }
-      async renameFile(path, newName) {
-        const metaData = this.getMetaDataForPath(path);
+      async renameFile(path2, newName) {
+        const metaData = this.getMetaDataForPath(path2);
         if (metaData.type === "directory") {
           throw new Error("File Not Found");
         }
@@ -39954,8 +45357,8 @@ ${escapeText(this.code(index, length))}
         metaData.name = newName;
         this._persist();
       }
-      async deleteFile(path) {
-        const metaData = this.getMetaDataForPath(path);
+      async deleteFile(path2) {
+        const metaData = this.getMetaDataForPath(path2);
         if (metaData.type === "directory") {
           throw new Error("File Not Found");
         }
@@ -39968,8 +45371,8 @@ ${escapeText(this.code(index, length))}
           this._persist();
         }
       }
-      async move(path, newPath) {
-        const metaData = this.getMetaDataForPath(path);
+      async move(path2, newPath) {
+        const metaData = this.getMetaDataForPath(path2);
         this._actIfPathIsEmpty(newPath, () => {
           if (metaData.parent != null) {
             const index = metaData.parent.items.indexOf(metaData);
@@ -39983,21 +45386,21 @@ ${escapeText(this.code(index, length))}
           }
         });
       }
-      async isDirectory(path) {
-        return this.getMetaDataForPath(path).type === "directory";
+      async isDirectory(path2) {
+        return this.getMetaDataForPath(path2).type === "directory";
       }
-      async hasDirectory(path) {
+      async hasDirectory(path2) {
         try {
-          return await this.isDirectory(path);
+          return await this.isDirectory(path2);
         } catch {
           return false;
         }
       }
-      async createDirectory(path) {
-        path = this._normalizeDirectory(path);
-        const name2 = this.getName(path);
-        const directoryPath = this.getDirectoryPath(path);
-        this._actIfPathIsEmpty(path, () => {
+      async createDirectory(path2) {
+        path2 = this._normalizeDirectory(path2);
+        const name2 = this.getName(path2);
+        const directoryPath = this.getDirectoryPath(path2);
+        this._actIfPathIsEmpty(path2, () => {
           const directory = this._createDirectoriesForPath(directoryPath);
           const meta = {
             type: "directory",
@@ -40009,14 +45412,14 @@ ${escapeText(this.code(index, length))}
           this._persist();
         });
       }
-      _createDirectoriesForPath(path) {
-        const parts = this._normalizeDirectory(path).split("/").slice(1, -1);
+      _createDirectoriesForPath(path2) {
+        const parts = this._normalizeDirectory(path2).split("/").slice(1, -1);
         let directory = this._meta;
-        if (path === "/") {
+        if (path2 === "/") {
           return this._meta;
         }
         parts.forEach((part) => {
-          let match2 = directory.items.find((i) => i.name === part);
+          let match2 = directory.items.find((i2) => i2.name === part);
           if (match2 == null) {
             match2 = {
               type: "directory",
@@ -40033,45 +45436,45 @@ ${escapeText(this.code(index, length))}
         this._persist();
         return directory;
       }
-      _normalizeDirectory(path) {
-        path = path.trim();
-        if (!path.endsWith("/")) {
-          path = path + "/";
+      _normalizeDirectory(path2) {
+        path2 = path2.trim();
+        if (!path2.endsWith("/")) {
+          path2 = path2 + "/";
         }
-        if (!path.startsWith("/")) {
-          return "/" + path;
+        if (!path2.startsWith("/")) {
+          return "/" + path2;
         }
-        return path;
+        return path2;
       }
-      _normalizeFile(path) {
-        path = path.trim();
-        if (path.endsWith("/")) {
-          path = path.slice(0, -1);
+      _normalizeFile(path2) {
+        path2 = path2.trim();
+        if (path2.endsWith("/")) {
+          path2 = path2.slice(0, -1);
         }
-        if (!path.startsWith("/")) {
-          return "/" + path;
+        if (!path2.startsWith("/")) {
+          return "/" + path2;
         }
-        return path;
+        return path2;
       }
-      getName(path) {
-        if (path.endsWith("/")) {
-          path = this._normalizeDirectory(path);
-          path = path.slice(0, -1);
+      getName(path2) {
+        if (path2.endsWith("/")) {
+          path2 = this._normalizeDirectory(path2);
+          path2 = path2.slice(0, -1);
         } else {
-          path = this._normalizeFile(path);
+          path2 = this._normalizeFile(path2);
         }
-        return path.split("/").slice(-1)[0];
+        return path2.split("/").slice(-1)[0];
       }
-      getDirectoryPath(path) {
-        if (path.endsWith("/")) {
-          path = path.slice(0, -1);
+      getDirectoryPath(path2) {
+        if (path2.endsWith("/")) {
+          path2 = path2.slice(0, -1);
         }
-        return path.split("/").slice(0, -1).join("/") + "/";
+        return path2.split("/").slice(0, -1).join("/") + "/";
       }
-      _actIfPathIsEmpty(path, action) {
+      _actIfPathIsEmpty(path2, action) {
         let metaData = null;
         try {
-          metaData = this.getMetaDataForPath(path);
+          metaData = this.getMetaDataForPath(path2);
         } catch {
           action();
           return;
@@ -40082,16 +45485,16 @@ ${escapeText(this.code(index, length))}
           throw new Error("Directory Already Exists");
         }
       }
-      async renameDirectory(path, newName) {
-        const metaData = this.getMetaDataForPath(path);
+      async renameDirectory(path2, newName) {
+        const metaData = this.getMetaDataForPath(path2);
         if (metaData.type === "file") {
           throw new Error("Directory Not Found");
         }
         metaData.name = newName;
         this._persist();
       }
-      async deleteDirectory(path) {
-        const metaData = this.getMetaDataForPath(path);
+      async deleteDirectory(path2) {
+        const metaData = this.getMetaDataForPath(path2);
         if (metaData.type === "file") {
           throw new Error("Directory Not Found");
         }
@@ -40105,16 +45508,16 @@ ${escapeText(this.code(index, length))}
         }
       }
       _recursiveFileDelete(meta) {
-        meta.items.forEach((i) => {
-          if (i.type === "file") {
-            this._storage.removeItem(i.guid);
+        meta.items.forEach((i2) => {
+          if (i2.type === "file") {
+            this._storage.removeItem(i2.guid);
           } else {
-            this._recursiveFileDelete(i);
+            this._recursiveFileDelete(i2);
           }
         });
       }
-      async readDirectory(path) {
-        const directory = this.getMetaDataForPath(path);
+      async readDirectory(path2) {
+        const directory = this.getMetaDataForPath(path2);
         if (directory.type === "file") {
           throw new Error("Directory Not Found");
         }
@@ -40173,14 +45576,16 @@ ${escapeText(this.code(index, length))}
           const { ast, cursor } = this._pattern.exec(this._text, true);
           this._steps = generateSteps(this._pattern, cursor.records);
           if (ast == null) {
-            const furthestError = cursor.furthestError;
+            const nodes = cursor.allMatchedNodes.slice();
+            nodes.sort((a, b) => a.endIndex - b.endIndex);
+            const furthestMatch = nodes[nodes.length - 1];
             this._steps.push({
               type: "error",
               path: "_",
               pattern: this._pattern,
               record: {
                 ast: null,
-                error: new ParseError((furthestError == null ? void 0 : furthestError.startIndex) || 0, this._text.length, this._pattern),
+                error: new ParseError((furthestMatch == null ? void 0 : furthestMatch.endIndex) || 0, this._text.length, this._pattern),
                 pattern: this._pattern
               }
             });
@@ -40304,6 +45709,7 @@ ${escapeText(this.code(index, length))}
         __publicField(this, "_fileSystem");
         __publicField(this, "_currentPath");
         __publicField(this, "_currentPathMetaData");
+        __publicField(this, "_astView");
         __publicField(this, "grammarEditor");
         __publicField(this, "testEditor");
         __publicField(this, "diagramPresenter");
@@ -40317,6 +45723,7 @@ ${escapeText(this.code(index, length))}
         this._currentPath = new Signal(null);
         this._currentPathMetaData = new Signal(null);
         this._isDocumentationOpen = new Signal(false);
+        this._astView = new Signal("json");
         this.grammarEditor = new GrammarEditorPresenter({
           onGrammarProcess: (patterns) => {
             this.testEditor.setPatterns(patterns);
@@ -40360,21 +45767,21 @@ ${escapeText(this.code(index, length))}
         this.diagramPresenter = new DiagramPresenter();
         this.fileExplorer = new FileExplorerPresenter({
           fileSystem: this._fileSystem,
-          onPathFocus: async (path, oldPath) => {
+          onPathFocus: async (path2, oldPath) => {
             this.cacheTestEditoryContent();
             const selectedPatternName = this.testEditor.selectedPatternBroadcast.get();
             const currentPath = this._currentPath.get();
             if (currentPath != null && selectedPatternName != null) {
               this.pathToSelectedPatternName[currentPath] = selectedPatternName;
             }
-            let newSelectedPatternName = this.pathToSelectedPatternName[path] || null;
+            let newSelectedPatternName = this.pathToSelectedPatternName[path2] || null;
             let metaData = null;
             try {
-              metaData = this._fileSystem.getMetaDataForPath(path);
+              metaData = this._fileSystem.getMetaDataForPath(path2);
             } catch {
             }
             console.log(newSelectedPatternName);
-            this._currentPath.set(path);
+            this._currentPath.set(path2);
             this._currentPathMetaData.set(metaData);
             this.testEditor.selectPattern(newSelectedPatternName);
             this.setTestContent();
@@ -40390,10 +45797,10 @@ ${escapeText(this.code(index, length))}
               }
             }
             try {
-              const content = await this._fileSystem.readFile(path);
-              this.grammarEditor.setText(content, path);
+              const content = await this._fileSystem.readFile(path2);
+              this.grammarEditor.setText(content, path2);
             } catch {
-              this.grammarEditor.setText("", path);
+              this.grammarEditor.setText("", path2);
               this.grammarEditor.disable();
             }
           }
@@ -40409,6 +45816,9 @@ ${escapeText(this.code(index, length))}
       get currentPathMetaDataBroadcast() {
         return this._currentPathMetaData.broadcast;
       }
+      get astViewBroadcast() {
+        return this._astView.broadcast;
+      }
       async initialize() {
         var _a2;
         await this.fileExplorer.initialize();
@@ -40421,25 +45831,25 @@ ${escapeText(this.code(index, length))}
         }
       }
       cacheTestEditoryContent() {
-        const path = this._currentPath.get();
+        const path2 = this._currentPath.get();
         const selectedPattern = this.testEditor.selectedPatternBroadcast.get();
-        if (path != null && selectedPattern != null) {
-          let map2 = this.pathToTestPatternContent[path];
+        if (path2 != null && selectedPattern != null) {
+          let map2 = this.pathToTestPatternContent[path2];
           if (map2 == null) {
             map2 = {};
-            this.pathToTestPatternContent[path] = map2;
+            this.pathToTestPatternContent[path2] = map2;
           }
           map2[selectedPattern] = this.testEditor.textEditor.getText();
         }
       }
       setTestContent() {
-        const path = this._currentPath.get();
+        const path2 = this._currentPath.get();
         const selectedPattern = this.testEditor.selectedPatternBroadcast.get();
-        if (path != null && selectedPattern != null) {
-          let map2 = this.pathToTestPatternContent[path];
+        if (path2 != null && selectedPattern != null) {
+          let map2 = this.pathToTestPatternContent[path2];
           if (map2 == null) {
             map2 = {};
-            this.pathToTestPatternContent[path] = map2;
+            this.pathToTestPatternContent[path2] = map2;
           }
           this.testEditor.textEditor.setText(map2[selectedPattern]);
         }
@@ -40463,6 +45873,9 @@ ${escapeText(this.code(index, length))}
           this._fileSystem.writeFile(currentPath, this.grammarEditor.textEditor.getText());
         }
       }
+      setAstView(view) {
+        this._astView.set(view);
+      }
       dispose() {
       }
     }
@@ -40473,4 +45886,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-6XKwC6_z.js.map
+//# sourceMappingURL=index-rbaPcnmV.js.map
