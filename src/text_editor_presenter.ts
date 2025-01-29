@@ -28,7 +28,6 @@ export class TextEditorPresenter {
         this._editorElement = element;
         this._editor = new Quill(element, {
             theme: 'snow',
-
             modules: {
                 keyboard: {
                     list: null,
@@ -36,18 +35,16 @@ export class TextEditorPresenter {
                 toolbar: false
             },
         });
-        this._editor.clipboard.addMatcher(Node.ELEMENT_NODE, (node: any, delta) => {
-            node.removeAttribute('style');
-            node.className = "";
-
-            const children = Array.from(node.childNodes);
-            children.forEach((child: any) => {
-                if (child.nodeType === Node.ELEMENT_NODE) {
-                    child.removeAttribute('style');
-                    child.className = "";
-                }
+        this._editor.clipboard.addMatcher(Node.ELEMENT_NODE, (_: any, delta) => {
+            let ops: any[] = [];
+            delta.ops.forEach(op => {
+              if (op.insert && typeof op.insert === 'string') {
+                ops.push({
+                  insert: op.insert
+                });
+              }
             });
-
+            delta.ops = ops;
             return delta;
         });
 

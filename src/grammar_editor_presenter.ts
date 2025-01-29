@@ -177,7 +177,7 @@ export class GrammarEditorPresenter {
         const textEditor = this.textEditor;
         const text = textEditor.getText();
         //const [start, end] = this._getDeltaIndex(delta);
-        const { ast, cursor } = grammar.exec(text);
+        const { ast, cursor } = grammar.exec(text, true);
 
         if (ast != null) {
             textEditor.clearFormatting();
@@ -187,13 +187,16 @@ export class GrammarEditorPresenter {
                 }
             });
         } else {
+            const nodes = cursor.allMatchedNodes.slice();
+            nodes.sort((a, b) => a.endIndex - b.endIndex);
+            const furthestMatch = nodes[nodes.length - 1];
 
-            if (cursor.furthestError != null) {
-                const { endIndex: startIndex } = cursor.furthestError;
+            if (furthestMatch != null) {
+                const { endIndex: startIndex } = furthestMatch;
                 const endIndex = cursor.length;
-                textEditor.syntaxHighlight(startIndex, endIndex, "syntax-error");
+                this.textEditor.syntaxHighlight(startIndex, endIndex, "syntax-error");
             } else {
-                textEditor.syntaxHighlight(0, cursor.length, "syntax-error");
+                this.textEditor.syntaxHighlight(0, cursor.length, "syntax-error");
             }
         }
     }

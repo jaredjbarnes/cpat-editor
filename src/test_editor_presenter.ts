@@ -1,4 +1,4 @@
-import { Optional, Pattern, Regex, Sequence } from "clarity-pattern-parser";
+import { Optional, Pattern, Regex, Sequence, Node } from "clarity-pattern-parser";
 import { TextEditorPresenter } from "./text_editor_presenter.ts";
 import { Signal } from "@tcn/state";
 
@@ -8,7 +8,8 @@ export interface TestEditorPresenterOptions {
 
 export class TestEditorPresenter {
     private _options: TestEditorPresenterOptions;
-    private _ast: Signal<string>;
+    private _astJson: Signal<string>;
+    private _ast: Signal<Node | null>;
     private _selectedPattern: Signal<string | null>;
     private _patterns: Signal<Record<string, Pattern>>;
     readonly textEditor: TextEditorPresenter;
@@ -19,6 +20,10 @@ export class TestEditorPresenter {
 
     get selectedPatternBroadcast() {
         return this._selectedPattern.broadcast;
+    }
+
+    get astJsonBroadcast() {
+        return this._astJson.broadcast;
     }
 
     get astBroadcast() {
@@ -32,7 +37,8 @@ export class TestEditorPresenter {
 
     constructor(options: TestEditorPresenterOptions = {}) {
         this._options = options;
-        this._ast = new Signal("");
+        this._astJson = new Signal("");
+        this._ast = new Signal<Node | null>(null);
         this._selectedPattern = new Signal<string | null>(null);
         this._patterns = new Signal({});
         this.textEditor = new TextEditorPresenter();
@@ -69,12 +75,14 @@ export class TestEditorPresenter {
                 console.log("Test Parse Time: ", parseDuration);
                 if (ast != null) {
                     const rootAst = ast.children[0];
-                    this._ast.set(rootAst.toJson(2));
+                    this._astJson.set(rootAst.toJson(2));
+                    this._ast.set(rootAst);
                 } else {
-                    this._ast.set("");
+                    this._astJson.set("");
+                    this._ast.set(null);
                     const nodes = cursor.allMatchedNodes.slice();
-                    nodes.sort((a, b) => a.endIndex - b.endIndex );
-                    const furthestMatch = nodes[nodes.length -1];
+                    nodes.sort((a, b) => a.endIndex - b.endIndex);
+                    const furthestMatch = nodes[nodes.length - 1];
 
                     if (furthestMatch != null) {
                         const { endIndex: startIndex } = furthestMatch;

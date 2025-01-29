@@ -12,6 +12,7 @@ export class AppPresenter {
     private _fileSystem: FileSystem;
     private _currentPath: Signal<string | null>;
     private _currentPathMetaData: Signal<DirectoryMeta | FileMeta | null>;
+    private _astView: Signal<'json' | 'tree'>;
     readonly grammarEditor: GrammarEditorPresenter;
     readonly testEditor: TestEditorPresenter;
     readonly diagramPresenter: DiagramPresenter;
@@ -19,6 +20,7 @@ export class AppPresenter {
     readonly debuggerPresenter: Signal<DebuggerPresenter | null>;
     readonly pathToSelectedPatternName: Record<string, string>;
     readonly pathToTestPatternContent: Record<string, Record<string, string>>;
+
 
     get isDocumentationOpenBroadcast() {
         return this._isDocumentationOpen.broadcast;
@@ -29,7 +31,11 @@ export class AppPresenter {
     }
 
     get currentPathMetaDataBroadcast() {
-        return this._currentPathMetaData.broadcast
+        return this._currentPathMetaData.broadcast;
+    }
+
+    get astViewBroadcast() {
+        return this._astView.broadcast;
     }
 
     constructor() {
@@ -39,6 +45,8 @@ export class AppPresenter {
         this._currentPath = new Signal<string | null>(null);
         this._currentPathMetaData = new Signal<DirectoryMeta | FileMeta | null>(null);
         this._isDocumentationOpen = new Signal(false);
+        this._astView = new Signal<'json' | 'tree'>("json");
+
         this.grammarEditor = new GrammarEditorPresenter({
             onGrammarProcess: (patterns) => {
                 this.testEditor.setPatterns(patterns);
@@ -198,6 +206,10 @@ export class AppPresenter {
         if (currentPath != null) {
             this._fileSystem.writeFile(currentPath, this.grammarEditor.textEditor.getText());
         }
+    }
+
+    setAstView(view: "json" | "tree") {
+        this._astView.set(view);
     }
 
     dispose() {

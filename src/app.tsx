@@ -13,6 +13,7 @@ import { FileExplorer } from "./file_explorer/file_explorer.tsx";
 import { useLayoutEffect } from "react";
 import QuestionIcon from "./icons/question.svg?react";
 import { Debugger } from "./debugger/debugger.tsx";
+import { AstTree } from "./ast_tree.tsx";
 
 export interface AppProps {
   presenter: AppPresenter;
@@ -22,7 +23,9 @@ export function App({ presenter }: AppProps) {
   useSignalValue(presenter.testEditor.selectedPatternBroadcast);
   useSignalValue(presenter.currentPathBroadcast);
 
+  const astJson = useSignalValue(presenter.testEditor.astJsonBroadcast);
   const ast = useSignalValue(presenter.testEditor.astBroadcast);
+
   const currentPathMetaData = useSignalValue(
     presenter.currentPathMetaDataBroadcast
   );
@@ -32,6 +35,7 @@ export function App({ presenter }: AppProps) {
   const debuggerPresenter = useSignalValue(presenter.debuggerPresenter);
   const canDebug = presenter.testEditor.selectedPattern != null;
   const canSave = currentPathMetaData && currentPathMetaData.type === "file";
+  const astView = useSignalValue(presenter.astViewBroadcast);
 
   function toggleDocumentation() {
     presenter.toggleDocumentation();
@@ -58,7 +62,7 @@ export function App({ presenter }: AppProps) {
   }
 
   function copyAst() {
-    navigator.clipboard.writeText(ast);
+    navigator.clipboard.writeText(astJson);
   }
 
   function copyGrammar() {
@@ -67,6 +71,14 @@ export function App({ presenter }: AppProps) {
 
   function copyTest() {
     navigator.clipboard.writeText(presenter.testEditor.textEditor.getText());
+  }
+
+  function showTreeView() {
+    presenter.setAstView("tree");
+  }
+
+  function showJsonView() {
+    presenter.setAstView("json");
   }
 
   return (
@@ -178,19 +190,47 @@ export function App({ presenter }: AppProps) {
                   </FlexBox>
                   <Box width="50%" enableResizeOnStart>
                     <ZStack>
-                      <Ast text={ast}></Ast>
+                      {astView === "tree" && <AstTree ast={ast} />}
+                      {astView === "json" && (
+                        <>
+                          <Ast text={astJson}></Ast>
+
+                          <VStack
+                            padding="8px"
+                            verticalAlignment="end"
+                            horizontalAlignment="end"
+                            style={{ pointerEvents: "none" }}
+                          >
+                            <Button
+                              onClick={copyAst}
+                              style={{ pointerEvents: "auto" }}
+                            >
+                              Copy
+                            </Button>
+                          </VStack>
+                        </>
+                      )}
                       <VStack
                         padding="8px"
-                        verticalAlignment="end"
-                        horizontalAlignment="end"
+                        verticalAlignment="start"
+                        horizontalAlignment="center"
                         style={{ pointerEvents: "none" }}
                       >
-                        <Button
-                          onClick={copyAst}
-                          style={{ pointerEvents: "auto" }}
-                        >
-                          Copy
-                        </Button>
+                        <ButtonGroup>
+                          <Button
+                            onClick={showJsonView}
+                            style={{ pointerEvents: "auto" }}
+                          >
+                            JSON
+                          </Button>
+
+                          <Button
+                            onClick={showTreeView}
+                            style={{ pointerEvents: "auto" }}
+                          >
+                            Tree
+                          </Button>
+                        </ButtonGroup>
                       </VStack>
                     </ZStack>
                   </Box>

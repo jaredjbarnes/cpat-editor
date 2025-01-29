@@ -1,5 +1,5 @@
 import { Signal } from "@tcn/state";
-import { Literal, Pattern, Regex } from "clarity-pattern-parser";
+import { ExpressionPattern, Literal, Pattern, Reference, Regex } from "clarity-pattern-parser";
 import "./railroad_diagrams/railroad.css";
 import { Choice, Diagram, OneOrMore, Terminal, Sequence, Optional, Group } from "./railroad_diagrams/railroad.js";
 import { generatePath } from "./debugger/step_generator.js";
@@ -49,7 +49,7 @@ export class DiagramPresenter {
         this._focusNodePath = new Signal<string | null>(null);
     }
 
-    private _buildDiagram(pattern: Pattern){
+    private _buildDiagram(pattern: Pattern) {
         switch (pattern.type) {
             case "literal": {
                 const diagram = new Diagram(new Group(this._buildPattern(pattern), pattern.name));
@@ -81,6 +81,33 @@ export class DiagramPresenter {
                 options.attrs.id = pattern.id;
 
                 const diagram = new Diagram(new Group(options, pattern.name));
+                diagram.attrs.id = pattern.id;
+
+                return diagram;
+            }
+            case "expression": {
+                const expressionPattern = pattern as ExpressionPattern;
+
+                const unaryPatterns = expressionPattern.unaryPatterns;
+                const binaryPatterns = expressionPattern.binaryPatterns;
+                const recursivePatterns = expressionPattern.recursivePatterns;
+
+                const unaryChildren = unaryPatterns.map(p => this._buildPattern(p));
+                const binaryChildren = binaryPatterns.map(p => this._buildPattern(p));
+                const recursiveChildren = recursivePatterns.map(p => this._buildPattern(p));
+
+                const unaryOptions = new Choice(0, ...unaryChildren);
+                const expressionOptions = new Optional(new Choice(0, ...recursiveChildren, ...binaryChildren));
+                const children: any[] = [unaryOptions];
+
+                if (binaryChildren.length + recursiveChildren.length > 0) {
+                    children.push(expressionOptions);
+                }
+
+                const expression = new OneOrMore(new Sequence(...children));
+                expression.attrs.id = pattern.id;
+
+                const diagram = new Diagram(new Group(expression, pattern.name));
                 diagram.attrs.id = pattern.id;
 
                 return diagram;
@@ -242,6 +269,62 @@ export class DiagramPresenter {
                     return terminal;
                 }
             }
+            case "expression": {
+                const text = pattern.name;
+                const path = generatePath(pattern);
+
+                if (this._expandedPatternPaths.get(path)) {
+                    const expressionPattern = pattern as ExpressionPattern;
+
+                    const unaryPatterns = expressionPattern.unaryPatterns;
+                    const binaryPatterns = expressionPattern.binaryPatterns;
+                    const recursivePatterns = expressionPattern.recursivePatterns;
+
+                    const unaryChildren = unaryPatterns.map(p => this._buildPattern(p));
+                    const binaryChildren = binaryPatterns.map(p => this._buildPattern(p));
+                    const recursiveChildren = recursivePatterns.map(p => this._buildPattern(p));
+
+                    const unaryOptions = new Choice(0, ...unaryChildren);
+                    const expressionOptions = new Optional(new Choice(0, ...recursiveChildren, ...binaryChildren));
+                    const children: any[] = [unaryOptions];
+
+                    if (binaryChildren.length + recursiveChildren.length > 0) {
+                        children.push(expressionOptions);
+                    }
+
+                    const expression = new OneOrMore(new Sequence(...children));
+                    expression.attrs.id = pattern.id;
+
+                    const terminalOptions: any = {};
+                    const classNames = this._classNames.get(path);
+                    if (classNames != null) {
+                        terminalOptions.cls = classNames;
+                    }
+
+                    const label = new Terminal(`${text}:`, terminalOptions);
+                    label.attrs.id = path;
+                    label.attrs["data-group"] = "true";
+                    label.attrs["data-type"] = "expression";
+
+                    const group = new Sequence(label, expression);
+                    group.attrs.id = path;
+                    group.attrs["data-group"] = "true";
+
+                    return group;
+                } else {
+                    const terminalOptions: any = {};
+                    const classNames = this._classNames.get(path);
+                    if (classNames != null) {
+                        terminalOptions.cls = classNames;
+                    }
+
+                    const terminal = new Terminal(text, terminalOptions);
+                    terminal.attrs.id = path;
+                    terminal.attrs["data-type"] = "expression";
+
+                    return terminal;
+                }
+            }
             case "context": {
                 return this._buildPattern(pattern.children[pattern.children.length - 1]);
             }
@@ -249,7 +332,7 @@ export class DiagramPresenter {
                 const path = generatePath(pattern);
 
                 if (this._expandedPatternPaths.get(path)) {
-                    const refPattern = (pattern as any)._getPatternSafely();
+                    const refPattern = (pattern as Reference).getReferencePatternSafely();
                     this._expandedPatternPaths.set(generatePath(refPattern), true);
 
                     const node = this._buildPattern(refPattern);
