@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-BNYvOPCQ.js"(exports, module) {
+  "assets/index-C_ix7SYk.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -33981,9 +33981,9 @@ var require_index_001 = __commonJS({
             cursor.resolveError();
             cursor.moveTo(onIndex);
           }
-          cursor.resolveError();
           onIndex = cursor.index;
           for (let i2 = 0; i2 < this._binaryPatterns.length; i2++) {
+            cursor.resolveError();
             cursor.moveTo(onIndex);
             const pattern2 = this._binaryPatterns[i2];
             const name2 = this._binaryNames[i2];
@@ -45924,4 +45924,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BNYvOPCQ.js.map
+//# sourceMappingURL=index-C_ix7SYk.js.map
