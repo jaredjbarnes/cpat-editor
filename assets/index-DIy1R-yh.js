@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-cAv624MP.js"(exports, module) {
+  "assets/index-DIy1R-yh.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -33815,6 +33815,7 @@ var require_index_001 = __commonJS({
         this._binaryPatterns = [];
         this._recursivePatterns = [];
         this._recursiveNames = [];
+        this._endsInRecursion = [];
         this._binaryNames = [];
         this._binaryAssociation = [];
         this._precedenceMap = {};
@@ -33846,6 +33847,7 @@ var require_index_001 = __commonJS({
             tail.parent = this;
             this._recursivePatterns.push(tail);
             this._recursiveNames.push(name2);
+            this._endsInRecursion.push(this._endsWithRecursion(pattern2));
             finalPatterns.push(tail);
           } else {
             const clone2 = pattern2.clone();
@@ -33891,6 +33893,13 @@ var require_index_001 = __commonJS({
           return new Sequence(`${pattern2.children[0].name}-tail`, pattern2.children[0].children.slice(1));
         }
         return new Sequence(`${pattern2.name}-tail`, pattern2.children.slice(1));
+      }
+      _endsWithRecursion(pattern2) {
+        if (pattern2.type === "right-associated") {
+          pattern2 = pattern2.children[0];
+        }
+        const lastChild = pattern2.children[pattern2.children.length - 1];
+        return pattern2.type === "sequence" && pattern2.children.length > 1 && lastChild.type === "reference" && lastChild.name === this.name;
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
@@ -33948,11 +33957,18 @@ var require_index_001 = __commonJS({
               if (lastBinaryNode != null && lastUnaryNode != null) {
                 lastBinaryNode.appendChild(lastUnaryNode);
               }
-              const frontExpression = lastBinaryNode == null ? lastUnaryNode : lastBinaryNode.findRoot();
               const name2 = this._recursiveNames[i2];
-              const recursiveNode = createNode(name2, [frontExpression, ...node.children]);
-              recursiveNode.normalize(this._firstIndex);
-              return recursiveNode;
+              if (this._endsInRecursion[i2]) {
+                const frontExpression = lastBinaryNode == null ? lastUnaryNode : lastBinaryNode.findRoot();
+                const recursiveNode = createNode(name2, [frontExpression, ...node.children]);
+                recursiveNode.normalize(this._firstIndex);
+                return recursiveNode;
+              } else {
+                const recursiveNode = createNode(name2, [lastUnaryNode, ...node.children]);
+                recursiveNode.normalize(lastUnaryNode.startIndex);
+                lastUnaryNode = recursiveNode;
+                break;
+              }
             }
             cursor.moveTo(onIndex);
           }
@@ -33978,7 +33994,7 @@ var require_index_001 = __commonJS({
               lastBinaryNode = node;
             } else if (lastBinaryNode != null && lastUnaryNode != null && delimiterNode != null) {
               const precedence = this._precedenceMap[name2];
-              const lastPrecendece = lastBinaryNode == null ? 0 : this._precedenceMap[lastBinaryNode.name];
+              const lastPrecendece = lastBinaryNode == null ? 0 : this._precedenceMap[lastBinaryNode.name] || -1;
               const association = this._binaryAssociation[i2];
               if (precedence === lastPrecendece && association === Association.right) {
                 const node = createNode(name2, [lastUnaryNode, delimiterNode]);
@@ -45899,4 +45915,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-cAv624MP.js.map
+//# sourceMappingURL=index-DIy1R-yh.js.map
