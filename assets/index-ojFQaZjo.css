@@ -3343,6 +3343,7 @@ body ._select_26c5629 {
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   background-color: var(--surface-input-color);
+  padding-bottom: 50px;
 }
 
 svg.railroad-diagram path {
