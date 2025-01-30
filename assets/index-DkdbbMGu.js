@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-C7-MBCDn.js"(exports, module) {
+  "assets/index-DkdbbMGu.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -33954,11 +33954,11 @@ var require_index_001 = __commonJS({
             const pattern2 = this._recursivePatterns[i2];
             const node = pattern2.parse(cursor);
             if (node != null) {
-              if (lastBinaryNode != null && lastUnaryNode != null) {
-                lastBinaryNode.appendChild(lastUnaryNode);
-              }
               const name2 = this._recursiveNames[i2];
               if (this._endsInRecursion[i2]) {
+                if (lastBinaryNode != null && lastUnaryNode != null) {
+                  lastBinaryNode.appendChild(lastUnaryNode);
+                }
                 const frontExpression = lastBinaryNode == null ? lastUnaryNode : lastBinaryNode.findRoot();
                 const recursiveNode = createNode(name2, [frontExpression, ...node.children]);
                 recursiveNode.normalize(this._firstIndex);
@@ -45923,4 +45923,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-C7-MBCDn.js.map
+//# sourceMappingURL=index-DkdbbMGu.js.map
