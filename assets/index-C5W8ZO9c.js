@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-VPpAqwQn.js"(exports, module) {
+  "assets/index-C5W8ZO9c.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -34025,7 +34025,7 @@ var require_index_001 = __commonJS({
               lastBinaryNode = node;
             } else if (lastBinaryNode != null && lastUnaryNode != null && delimiterNode != null) {
               const precedence = this._precedenceMap[name2];
-              const lastPrecendece = lastBinaryNode == null ? 0 : this._precedenceMap[lastBinaryNode.name] || -1;
+              const lastPrecendece = lastBinaryNode == null ? 0 : this._precedenceMap[lastBinaryNode.name] == null ? -1 : this._precedenceMap[lastBinaryNode.name];
               const association = this._binaryAssociation[i2];
               if (precedence === lastPrecendece && association === Association.right) {
                 const node = createNode(name2, [lastUnaryNode, delimiterNode]);
@@ -45946,4 +45946,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-VPpAqwQn.js.map
+//# sourceMappingURL=index-C5W8ZO9c.js.map
