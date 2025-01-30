@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DIy1R-yh.js"(exports, module) {
+  "assets/index-v0rqG3LP.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -33967,6 +33967,9 @@ var require_index_001 = __commonJS({
                 const recursiveNode = createNode(name2, [lastUnaryNode, ...node.children]);
                 recursiveNode.normalize(lastUnaryNode.startIndex);
                 lastUnaryNode = recursiveNode;
+                if (cursor.hasNext()) {
+                  cursor.next();
+                }
                 break;
               }
             }
@@ -45915,4 +45918,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DIy1R-yh.js.map
+//# sourceMappingURL=index-v0rqG3LP.js.map
