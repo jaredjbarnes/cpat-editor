@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-rbaPcnmV.js"(exports, module) {
+  "assets/index-CSjwlopr.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -33989,10 +33989,21 @@ var require_index_001 = __commonJS({
                 node.append(lastBinaryNode, delimiterNode);
                 lastBinaryNode = node;
               } else if (precedence > lastPrecendece) {
-                const root2 = lastBinaryNode.findRoot();
+                let ancestor = lastBinaryNode.parent;
+                let root2 = lastBinaryNode;
+                while (ancestor != null) {
+                  const nodePrecedence = this._precedenceMap[ancestor.name];
+                  if (nodePrecedence > precedence) {
+                    break;
+                  }
+                  root2 = ancestor;
+                  ancestor = ancestor.parent;
+                }
                 lastBinaryNode.appendChild(lastUnaryNode);
                 if (root2 != null) {
-                  const node = createNode(name2, [root2, delimiterNode]);
+                  const node = createNode(name2, []);
+                  root2.replaceWith(node);
+                  node.append(root2, delimiterNode);
                   lastBinaryNode = node;
                 } else {
                   const node = createNode(name2, [lastUnaryNode, delimiterNode]);
@@ -45886,4 +45897,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-rbaPcnmV.js.map
+//# sourceMappingURL=index-CSjwlopr.js.map
