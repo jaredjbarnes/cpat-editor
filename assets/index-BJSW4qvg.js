@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-BZ1XZu53.js"(exports, module) {
+  "assets/index-BJSW4qvg.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -31415,6 +31415,10 @@ var require_index_001 = __commonJS({
         this._lastIndex = Math.max(startIndex + length - 1, 0);
         return length;
       }
+      compact() {
+        this._value = this.toString();
+        this._children.length = 0;
+      }
       toString() {
         if (this._children.length === 0) {
           return this._value;
@@ -31721,6 +31725,7 @@ var require_index_001 = __commonJS({
         return [];
       }
       constructor(name2, value2) {
+        this.shouldCompactAst = false;
         if (value2.length === 0) {
           throw new Error("Value Cannot be empty.");
         }
@@ -31790,6 +31795,7 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         const clone2 = new Literal(name2, this._token);
         clone2._id = this._id;
+        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       getTokens() {
@@ -31852,6 +31858,7 @@ var require_index_001 = __commonJS({
         this._firstIndex = -1;
         this._substring = "";
         this._tokens = [];
+        this.shouldCompactAst = false;
         this._id = `regex-${idIndex$8++}`;
         this._type = "regex";
         this._name = name2;
@@ -31920,6 +31927,7 @@ var require_index_001 = __commonJS({
         const clone2 = new Regex(name2, this._originalRegexString);
         clone2._tokens = this._tokens.slice();
         clone2._id = this._id;
+        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       getTokens() {
@@ -31996,6 +32004,7 @@ var require_index_001 = __commonJS({
         return this._children;
       }
       constructor(name2) {
+        this.shouldCompactAst = false;
         this._id = `reference-${idIndex$7++}`;
         this._type = "reference";
         this._name = name2;
@@ -32114,6 +32123,7 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         const clone2 = new Reference(name2);
         clone2._id = this._id;
+        clone2.shouldCompactAst = this.shouldCompactAst;
         if (this._pattern != null) {
           clone2._cachedPattern = this._pattern;
         }
@@ -32184,6 +32194,7 @@ var require_index_001 = __commonJS({
         return this._children;
       }
       constructor(name2, options, isGreedy = false) {
+        this.shouldCompactAst = false;
         if (options.length === 0) {
           throw new Error("Need at least one pattern with an 'options' pattern.");
         }
@@ -32225,6 +32236,9 @@ var require_index_001 = __commonJS({
         if (node != null) {
           cursor.moveTo(node.lastIndex);
           cursor.resolveError();
+          if (this.shouldCompactAst) {
+            node.compact();
+          }
           return node;
         }
         cursor.recordErrorAt(this._firstIndex, this._firstIndex, this);
@@ -32299,9 +32313,10 @@ var require_index_001 = __commonJS({
         return findPattern(this, predicate);
       }
       clone(name2 = this._name) {
-        const or = new Options(name2, this._children, this._isGreedy);
-        or._id = this._id;
-        return or;
+        const clone2 = new Options(name2, this._children, this._isGreedy);
+        clone2._id = this._id;
+        clone2.shouldCompactAst = this.shouldCompactAst;
+        return clone2;
       }
       isEqual(pattern2) {
         return pattern2.type === this.type && this.children.every((c, index) => c.isEqual(pattern2.children[index]));
@@ -32334,6 +32349,7 @@ var require_index_001 = __commonJS({
         return this._max;
       }
       constructor(name2, pattern2, options = {}) {
+        this.shouldCompactAst = false;
         this._id = `finite-repeat-${idIndex$5++}`;
         this._type = "finite-repeat";
         this._name = name2;
@@ -32362,17 +32378,17 @@ var require_index_001 = __commonJS({
         for (let i2 = 0; i2 < this._children.length; i2++) {
           const childPattern = this._children[i2];
           const runningIndex = cursor.index;
-          const node = childPattern.parse(cursor);
+          const node2 = childPattern.parse(cursor);
           if (cursor.hasError) {
             break;
           }
           if (i2 % modulo === 0 && !cursor.hasError) {
             matchCount++;
           }
-          if (node == null) {
+          if (node2 == null) {
             cursor.moveTo(runningIndex);
           } else {
-            nodes.push(node);
+            nodes.push(node2);
             if (cursor.hasNext()) {
               cursor.next();
             } else {
@@ -32383,8 +32399,8 @@ var require_index_001 = __commonJS({
         if (this._trimDivider && this._hasDivider) {
           const isDividerLastMatch = this.children.length > 1 && nodes.length > 1 && nodes[nodes.length - 1].name === this.children[1].name;
           if (isDividerLastMatch) {
-            const node = nodes.pop();
-            cursor.moveTo(node.firstIndex);
+            const node2 = nodes.pop();
+            cursor.moveTo(node2.firstIndex);
           }
         }
         if (matchCount < this._min) {
@@ -32401,7 +32417,11 @@ var require_index_001 = __commonJS({
         const lastIndex = nodes[nodes.length - 1].lastIndex;
         cursor.resolveError();
         cursor.moveTo(lastIndex);
-        return new Node$1(this._type, this.name, firstIndex, lastIndex, nodes);
+        const node = new Node$1(this._type, this.name, firstIndex, lastIndex, nodes);
+        if (this.shouldCompactAst) {
+          node.compact();
+        }
+        return node;
       }
       test(text) {
         const cursor = new Cursor$1(text);
@@ -32427,6 +32447,7 @@ var require_index_001 = __commonJS({
           trimDivider: this._trimDivider
         });
         clone2._id = this._id;
+        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       getTokens() {
@@ -32499,6 +32520,7 @@ var require_index_001 = __commonJS({
         return this._min;
       }
       constructor(name2, pattern2, options = {}) {
+        this.shouldCompactAst = false;
         const min2 = options.min != null ? Math.max(options.min, 1) : 1;
         const divider2 = options.divider;
         let children2;
@@ -32549,6 +32571,9 @@ var require_index_001 = __commonJS({
           if (node != null) {
             cursor.moveTo(node.lastIndex);
             cursor.recordMatch(this, node);
+            if (this.shouldCompactAst) {
+              node.compact();
+            }
           }
           return node;
         }
@@ -32714,6 +32739,7 @@ var require_index_001 = __commonJS({
           trimDivider: this._trimDivider
         });
         clone2._id = this._id;
+        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       isEqual(pattern2) {
@@ -32722,6 +32748,13 @@ var require_index_001 = __commonJS({
     }
     let idIndex$3 = 0;
     class Repeat {
+      get shouldCompactAst() {
+        return this._shouldCompactAst;
+      }
+      set shouldCompactAst(value2) {
+        this._shouldCompactAst = value2;
+        this._repeatPattern.shouldCompactAst = value2;
+      }
       get id() {
         return this._id;
       }
@@ -32750,6 +32783,7 @@ var require_index_001 = __commonJS({
         this._id = `repeat-${idIndex$3++}`;
         this._pattern = pattern2;
         this._parent = null;
+        this._shouldCompactAst = false;
         this._options = Object.assign(Object.assign({}, options), { min: options.min == null ? 1 : options.min, max: options.max == null ? Infinity : options.max });
         if (this._options.max !== Infinity) {
           this._repeatPattern = new FiniteRepeat(name2, pattern2, this._options);
@@ -32772,6 +32806,7 @@ var require_index_001 = __commonJS({
         let min2 = this._options.min;
         const clone2 = new Repeat(name2, this._pattern, Object.assign(Object.assign({}, this._options), { min: min2 }));
         clone2._id = this._id;
+        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       getTokens() {
@@ -32844,6 +32879,7 @@ var require_index_001 = __commonJS({
         return this._children;
       }
       constructor(name2, sequence) {
+        this.shouldCompactAst = false;
         if (sequence.length === 0) {
           throw new Error("Need at least one pattern with a 'sequence' pattern.");
         }
@@ -32886,6 +32922,9 @@ var require_index_001 = __commonJS({
           const node = this.createNode(cursor);
           if (node !== null) {
             cursor.recordMatch(this, node);
+            if (this.shouldCompactAst) {
+              node.compact();
+            }
           }
           return node;
         }
@@ -33042,6 +33081,7 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         const clone2 = new Sequence(name2, this._children);
         clone2._id = this._id;
+        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       isEqual(pattern2) {
@@ -33095,6 +33135,7 @@ var require_index_001 = __commonJS({
         return this._children;
       }
       constructor(name2, pattern2) {
+        this.shouldCompactAst = false;
         this._id = `optional-${idIndex$1++}`;
         this._type = "optional";
         this._name = name2;
@@ -33124,13 +33165,17 @@ var require_index_001 = __commonJS({
           cursor.moveTo(firstIndex);
           return null;
         } else {
+          if (node != null && this.shouldCompactAst) {
+            node.compact();
+          }
           return node;
         }
       }
       clone(name2 = this._name) {
-        const optional = new Optional(name2, this._children[0]);
-        optional._id = this._id;
-        return optional;
+        const clone2 = new Optional(name2, this._children[0]);
+        clone2._id = this._id;
+        clone2.shouldCompactAst = this.shouldCompactAst;
+        return clone2;
       }
       getTokens() {
         return this._children[0].getTokens();
@@ -33273,13 +33318,17 @@ var require_index_001 = __commonJS({
     ], true);
     const optionalSpaces$2 = new Optional("optional-spaces", spaces$1);
     const assignOperator = new Literal("assign-operator", "=");
+    const compact = new Literal("compact", "compact");
+    const compactModifier = new Sequence("compact-modifier", [lineSpaces$1, compact]);
+    const optionalCompactModifier = new Optional("optional-compact-modifier", compactModifier);
     const assignStatement = new Sequence("assign-statement", [
       optionalSpaces$2,
       name$1,
       optionalSpaces$2,
       assignOperator,
       optionalSpaces$2,
-      pattern
+      pattern,
+      optionalCompactModifier
     ]);
     const statement = new Options("statement", [assignStatement, name$1.clone("export-name")]);
     const bodyLineContent = new Options("body-line-content", [
@@ -33396,6 +33445,7 @@ var require_index_001 = __commonJS({
         return this._children;
       }
       constructor(name2, pattern2) {
+        this.shouldCompactAst = false;
         this._id = `not-${idIndex++}`;
         this._type = "not";
         this._name = name2;
@@ -33730,6 +33780,7 @@ var require_index_001 = __commonJS({
         return Object.assign({}, this._patterns);
       }
       constructor(name2, pattern2, context = []) {
+        this.shouldCompactAst = false;
         this._id = `context-${contextId++}`;
         this._type = "context";
         this._name = name2;
@@ -33753,6 +33804,7 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         const clone2 = new Context(name2, this._pattern, Object.values(this._patterns));
         clone2._id = this._id;
+        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       getTokens() {
@@ -33831,6 +33883,7 @@ var require_index_001 = __commonJS({
         return this._recursivePatterns;
       }
       constructor(name2, patterns) {
+        this.shouldCompactAst = false;
         if (patterns.length === 0) {
           throw new Error("Need at least one pattern with an 'expression' pattern.");
         }
@@ -33848,6 +33901,7 @@ var require_index_001 = __commonJS({
         this._binaryAssociation = [];
         this._precedenceMap = {};
         this._originalPatterns = patterns;
+        this._shouldCompactPatternsMap = {};
         this._patterns = this._organizePatterns(patterns);
         if (this._unaryPatterns.length === 0) {
           throw new Error("Need at least one operand pattern with an 'expression' pattern.");
@@ -33856,6 +33910,7 @@ var require_index_001 = __commonJS({
       _organizePatterns(patterns) {
         const finalPatterns = [];
         patterns.forEach((pattern2) => {
+          this._shouldCompactPatternsMap[pattern2.name] = pattern2.shouldCompactAst;
           if (this._isBinary(pattern2)) {
             const binaryName = this._extractName(pattern2);
             const clone2 = this._extractDelimiter(pattern2).clone();
@@ -33938,10 +33993,28 @@ var require_index_001 = __commonJS({
         if (node != null) {
           cursor.moveTo(node.lastIndex);
           cursor.resolveError();
+          this._compactResult(node);
           return node;
         }
         cursor.recordErrorAt(this._firstIndex, this._firstIndex, this);
         return null;
+      }
+      _compactResult(node) {
+        if (node == null) {
+          return;
+        }
+        if (this.shouldCompactAst) {
+          node.compact();
+          return;
+        }
+        const isCompactingNeeded = Object.values(this._shouldCompactPatternsMap).some((p) => p);
+        if (isCompactingNeeded) {
+          node.walkBreadthFirst((n) => {
+            if (this._shouldCompactPatternsMap[n.name]) {
+              n.compact();
+            }
+          });
+        }
       }
       _tryToParse(cursor) {
         if (depthCache.getDepth(this._id, this._firstIndex) > 2) {
@@ -34171,6 +34244,7 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         const clone2 = new ExpressionPattern(name2, this._originalPatterns);
         clone2._id = this._id;
+        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       isEqual(pattern2) {
@@ -34340,9 +34414,13 @@ var require_index_001 = __commonJS({
       }
       _saveOptions(statementNode) {
         const nameNode = statementNode.find((n) => n.name === "name");
+        const shouldCompactAst = statementNode.find((n) => n.name === "compact");
         const name2 = nameNode.value;
         const optionsNode = statementNode.find((n) => n.name === "options-literal");
         const options = this._buildOptions(name2, optionsNode);
+        if (shouldCompactAst != null) {
+          options.shouldCompactAst = true;
+        }
         this._parseContext.patternsByName.set(name2, options);
       }
       _buildOptions(name2, node) {
@@ -34399,9 +34477,13 @@ var require_index_001 = __commonJS({
       }
       _saveSequence(statementNode) {
         const nameNode = statementNode.find((n) => n.name === "name");
+        const shouldCompactAst = statementNode.find((n) => n.name === "compact");
         const name2 = nameNode.value;
         const sequenceNode = statementNode.find((n) => n.name === "sequence-literal");
         const sequence = this._buildSequence(name2, sequenceNode);
+        if (shouldCompactAst != null) {
+          sequence.shouldCompactAst = true;
+        }
         this._parseContext.patternsByName.set(name2, sequence);
       }
       _buildSequence(name2, node) {
@@ -34421,9 +34503,13 @@ var require_index_001 = __commonJS({
       }
       _saveRepeat(statementNode) {
         const nameNode = statementNode.find((n) => n.name === "name");
+        const shouldCompactAst = statementNode.find((n) => n.name === "compact");
         const name2 = nameNode.value;
         const repeatNode = statementNode.find((n) => n.name === "repeat-literal");
         const repeat = this._buildRepeat(name2, repeatNode);
+        if (shouldCompactAst != null) {
+          repeat.shouldCompactAst = true;
+        }
         this._parseContext.patternsByName.set(name2, repeat);
       }
       _buildRepeat(name2, repeatNode) {
@@ -34568,10 +34654,14 @@ var require_index_001 = __commonJS({
       }
       _saveAlias(statementNode) {
         const nameNode = statementNode.find((n) => n.name === "name");
+        const shouldCompactAst = statementNode.find((n) => n.name === "compact");
         const aliasNode = statementNode.find((n) => n.name === "alias-literal");
         const aliasName = aliasNode.value;
         const name2 = nameNode.value;
         const alias = this._getPattern(aliasName).clone(name2);
+        if (shouldCompactAst != null) {
+          alias.shouldCompactAst = true;
+        }
         this._parseContext.patternsByName.set(name2, alias);
       }
       static parse(expression, options) {
@@ -45952,4 +46042,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BZ1XZu53.js.map
+//# sourceMappingURL=index-BJSW4qvg.js.map
