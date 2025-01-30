@@ -29,6 +29,8 @@ export function AstTree({ ast }: AstTreeProps) {
         data={[finalAst]}
         orientation="vertical"
         translate={{ x: dimensions.width / 2, y: 100 }}
+        pathFunc={"step"}
+        separation={{ siblings: 2, nonSiblings: 2.5 }}
       ></Tree>
     </div>
   );

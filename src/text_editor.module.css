@@ -3,6 +3,7 @@
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
   background-color: var(--surface-input-color);
+  padding-bottom: 50px;
 }
 
 :global(svg):global(.railroad-diagram) path {
