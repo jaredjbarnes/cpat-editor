@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-C-0Qi_x9.js"(exports, module) {
+  "assets/index-4XlVOsT3.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -29278,7 +29278,8 @@ var require_index_001 = __commonJS({
         {
           data: [finalAst],
           orientation: "vertical",
-          translate: { x: dimensions.width / 2, y: 100 }
+          translate: { x: dimensions.width / 2, y: 100 },
+          pathFunc: "step"
         }
       ) });
     }
@@ -45924,4 +45925,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-C-0Qi_x9.js.map
+//# sourceMappingURL=index-4XlVOsT3.js.map
