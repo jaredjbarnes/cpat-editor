@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-CSjwlopr.js"(exports, module) {
+  "assets/index-BdYTYWjG.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -33863,7 +33863,7 @@ var require_index_001 = __commonJS({
         return this._isBinaryPattern(pattern2);
       }
       _isBinaryPattern(pattern2) {
-        return pattern2.type === "sequence" && pattern2.children[0].type === "reference" && pattern2.children[0].name === this.name && pattern2.children[2].type === "reference" && pattern2.children[2].name === this.name && pattern2.children.length === 3;
+        return pattern2.type === "sequence" && pattern2.children.length === 3 && pattern2.children[0].type === "reference" && pattern2.children[0].name === this.name && pattern2.children[2].type === "reference" && pattern2.children[2].name === this.name;
       }
       _extractDelimiter(pattern2) {
         if (pattern2.type === "right-associated") {
@@ -45897,4 +45897,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-CSjwlopr.js.map
+//# sourceMappingURL=index-BdYTYWjG.js.map
