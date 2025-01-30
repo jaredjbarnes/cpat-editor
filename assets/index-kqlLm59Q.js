@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-4XlVOsT3.js"(exports, module) {
+  "assets/index-kqlLm59Q.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -29279,7 +29279,8 @@ var require_index_001 = __commonJS({
           data: [finalAst],
           orientation: "vertical",
           translate: { x: dimensions.width / 2, y: 100 },
-          pathFunc: "step"
+          pathFunc: "step",
+          separation: { siblings: 2, nonSiblings: 2.5 }
         }
       ) });
     }
@@ -45925,4 +45926,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-4XlVOsT3.js.map
+//# sourceMappingURL=index-kqlLm59Q.js.map
