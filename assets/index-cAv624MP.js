@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-D8ZUWarh.js"(exports, module) {
+  "assets/index-cAv624MP.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -33915,6 +33915,7 @@ var require_index_001 = __commonJS({
         let lastBinaryNode = null;
         let onIndex = cursor.index;
         outer: while (true) {
+          cursor.resolveError();
           onIndex = cursor.index;
           for (let i2 = 0; i2 < this._unaryPatterns.length; i2++) {
             cursor.moveTo(onIndex);
@@ -33955,6 +33956,7 @@ var require_index_001 = __commonJS({
             }
             cursor.moveTo(onIndex);
           }
+          cursor.resolveError();
           onIndex = cursor.index;
           for (let i2 = 0; i2 < this._binaryPatterns.length; i2++) {
             cursor.moveTo(onIndex);
@@ -45897,4 +45899,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-D8ZUWarh.js.map
+//# sourceMappingURL=index-cAv624MP.js.map
