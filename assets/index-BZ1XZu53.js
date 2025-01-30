@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-C5W8ZO9c.js"(exports, module) {
+  "assets/index-BZ1XZu53.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -31400,10 +31400,16 @@ var require_index_001 = __commonJS({
       }
       normalize(startIndex = this._firstIndex) {
         let length = 0;
+        let runningOffset = startIndex;
         if (this.children.length === 0) {
           length = this._value.length;
         } else {
-          length = this.children.reduce((acc, c) => acc + c.normalize(acc + startIndex), startIndex) - startIndex;
+          for (let x2 = 0; x2 < this.children.length; x2++) {
+            const child = this.children[x2];
+            const childLength = child.normalize(runningOffset);
+            runningOffset += childLength;
+            length += childLength;
+          }
         }
         this._firstIndex = startIndex;
         this._lastIndex = Math.max(startIndex + length - 1, 0);
@@ -45946,4 +45952,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-C5W8ZO9c.js.map
+//# sourceMappingURL=index-BZ1XZu53.js.map
