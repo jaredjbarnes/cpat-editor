@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-kqlLm59Q.js"(exports, module) {
+  "assets/index-VPpAqwQn.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -29259,11 +29259,32 @@ var require_index_001 = __commonJS({
       centeringTransitionDuration: 800,
       dataKey: void 0
     };
+    function walk(node, callback) {
+      var _a2;
+      callback(node);
+      const children2 = (_a2 = node.children) == null ? void 0 : _a2.slice();
+      if (children2 == null) {
+        return;
+      }
+      for (let x2 = 0; x2 < children2.length; x2++) {
+        walk(children2[x2], callback);
+      }
+    }
     function AstTree({ ast }) {
       const clone2 = (ast == null ? void 0 : ast.toCycleFreeObject()) || null;
       const finalAst = clone2 == null ? [] : clone2;
       const treeContainer = reactExports.useRef(null);
       const [dimensions, setDimensions] = reactExports.useState({ width: 800, height: 600 });
+      if (finalAst != null) {
+        walk(finalAst, (n) => {
+          if (n.children && n.children.length === 0) {
+            n.name = n.value;
+          } else if (n.children && n.children.length === 1) {
+            n.name = n.value;
+            n.children.length = 0;
+          }
+        });
+      }
       reactExports.useEffect(() => {
         if (treeContainer.current) {
           const { width, height } = treeContainer.current.getBoundingClientRect();
@@ -29279,7 +29300,6 @@ var require_index_001 = __commonJS({
           data: [finalAst],
           orientation: "vertical",
           translate: { x: dimensions.width / 2, y: 100 },
-          pathFunc: "step",
           separation: { siblings: 2, nonSiblings: 2.5 }
         }
       ) });
@@ -45926,4 +45946,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-kqlLm59Q.js.map
+//# sourceMappingURL=index-VPpAqwQn.js.map
