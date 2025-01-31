@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-C5VCZn2L.js"(exports, module) {
+  "assets/index-Cpvi3FLL.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -34144,6 +34144,7 @@ var require_index_001 = __commonJS({
         this._firstIndex = cursor.index;
         const node = this._tryToParse(cursor);
         if (node != null) {
+          node.normalize(this._firstIndex);
           cursor.moveTo(node.lastIndex);
           cursor.resolveError();
           this._compactResult(node);
@@ -34244,14 +34245,12 @@ var require_index_001 = __commonJS({
                 }
                 const frontExpression = lastBinaryNode == null ? lastAtomNode : lastBinaryNode.findRoot();
                 const recursiveNode = createNode(name2, [frontExpression, ...node.children]);
-                recursiveNode.normalize(this._firstIndex);
                 return recursiveNode;
               } else {
                 if (prefix != null) {
                   lastAtomNode = createNode(prefixName, [prefix, lastAtomNode]);
                 }
                 const recursiveNode = createNode(name2, [lastAtomNode, ...node.children]);
-                recursiveNode.normalize(lastAtomNode.startIndex);
                 lastAtomNode = recursiveNode;
                 if (cursor.hasNext()) {
                   cursor.next();
@@ -34351,7 +34350,6 @@ var require_index_001 = __commonJS({
               return lastAtomNode;
             }
           }
-          root2.normalize(this._firstIndex);
           return root2;
         }
       }
@@ -46243,4 +46241,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-C5VCZn2L.js.map
+//# sourceMappingURL=index-Cpvi3FLL.js.map
