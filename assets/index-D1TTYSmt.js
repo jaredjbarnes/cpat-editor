@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-BzoXm7Sz.js"(exports, module) {
+  "assets/index-D1TTYSmt.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -30911,7 +30911,7 @@ var require_index_001 = __commonJS({
                   unaryOptions,
                   new Optional$1(
                     new OneOrMore(
-                      new Choice(...tails)
+                      new Choice(0, ...tails)
                     )
                   )
                 ),
@@ -30923,7 +30923,7 @@ var require_index_001 = __commonJS({
                   unaryOptions,
                   new Optional$1(
                     new OneOrMore(
-                      new Choice(...tails)
+                      new Choice(0, ...tails)
                     )
                   )
                 )
@@ -30937,11 +30937,11 @@ var require_index_001 = __commonJS({
               tailsSequence = new OneOrMore(unaryOptions);
             }
             if (eTails.length > 0) {
-              eTailsSequence = new Sequence$1(unaryOptions, new Optional$1(new OneOrMore(new Choice(...eTails))));
+              eTailsSequence = new Sequence$1(unaryOptions, new Optional$1(new OneOrMore(new Choice(0, ...eTails))));
             }
             let expression;
             if (eTails.length > 0 && tails.length > 0) {
-              expression = new Choice(eTailsSequence, tailsSequence);
+              expression = new Choice(0, eTailsSequence, tailsSequence);
             } else if (eTails.length > 0 && tails.length === 0) {
               expression = eTailsSequence;
             } else if (tails.length > 0 && eTails.length === 0) {
@@ -31109,7 +31109,7 @@ var require_index_001 = __commonJS({
                     unaryOptions,
                     new Optional$1(
                       new OneOrMore(
-                        new Choice(...tails)
+                        new Choice(0, ...tails)
                       )
                     )
                   ),
@@ -31121,7 +31121,7 @@ var require_index_001 = __commonJS({
                     unaryOptions,
                     new Optional$1(
                       new OneOrMore(
-                        new Choice(...tails)
+                        new Choice(0, ...tails)
                       )
                     )
                   )
@@ -31135,11 +31135,11 @@ var require_index_001 = __commonJS({
                 tailsSequence = new OneOrMore(unaryOptions);
               }
               if (eTails.length > 0) {
-                eTailsSequence = new Sequence$1(unaryOptions, new Optional$1(new OneOrMore(new Choice(...eTails))));
+                eTailsSequence = new Sequence$1(unaryOptions, new Optional$1(new OneOrMore(new Choice(0, ...eTails))));
               }
               let expression;
               if (eTails.length > 0 && tails.length > 0) {
-                expression = new Choice(eTailsSequence, tailsSequence);
+                expression = new Choice(0, eTailsSequence, tailsSequence);
               } else if (eTails.length > 0 && tails.length === 0) {
                 expression = eTailsSequence;
               } else if (tails.length > 0 && eTails.length === 0) {
@@ -46136,4 +46136,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BzoXm7Sz.js.map
+//# sourceMappingURL=index-D1TTYSmt.js.map
