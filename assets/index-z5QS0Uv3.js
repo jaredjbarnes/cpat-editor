@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-BLqtsVZK.js"(exports, module) {
+  "assets/index-z5QS0Uv3.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -34047,6 +34047,7 @@ var require_index_001 = __commonJS({
             const unaryPrefix = this._extractUnaryPrefixPattern(pattern2).clone();
             this._unaryPrefixPatterns.push(pattern2);
             this._unaryPrefixNames.push(pattern2.name);
+            unaryPrefix.parent = this;
             finalPatterns.push(unaryPrefix);
           } else if (this._isBinary(pattern2)) {
             const binaryName = this._extractName(pattern2);
@@ -46236,4 +46237,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BLqtsVZK.js.map
+//# sourceMappingURL=index-z5QS0Uv3.js.map
