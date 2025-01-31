@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-z5QS0Uv3.js"(exports, module) {
+  "assets/index-NuqD_Tzu.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -30894,10 +30894,10 @@ var require_index_001 = __commonJS({
           }
           case "expression": {
             const expressionPattern = pattern2;
-            const unaryPatterns = expressionPattern.unaryPatterns;
+            const atomPatterns = expressionPattern.atomPatterns;
             const binaryPatterns = expressionPattern.binaryPatterns;
             const recursivePatterns = expressionPattern.recursivePatterns;
-            const unaryChildren = unaryPatterns.map((p) => this._buildPattern(p));
+            const unaryChildren = atomPatterns.map((p) => this._buildPattern(p));
             const binaryChildren = binaryPatterns.map((p) => this._buildPattern(p));
             const eTails = recursivePatterns.filter((p) => this._hasExpressionTail(p)).map((p) => this._buildPattern(p));
             const tails = recursivePatterns.filter((p) => !this._hasExpressionTail(p)).map((p) => this._buildPattern(p));
@@ -31092,10 +31092,10 @@ var require_index_001 = __commonJS({
             const path2 = generatePath(pattern2);
             if (this._expandedPatternPaths.get(path2)) {
               const expressionPattern = pattern2;
-              const unaryPatterns = expressionPattern.unaryPatterns;
+              const atomPatterns = expressionPattern.atomPatterns;
               const binaryPatterns = expressionPattern.binaryPatterns;
               const recursivePatterns = expressionPattern.recursivePatterns;
-              const unaryChildren = unaryPatterns.map((p) => this._buildPattern(p));
+              const unaryChildren = atomPatterns.map((p) => this._buildPattern(p));
               const binaryChildren = binaryPatterns.map((p) => this._buildPattern(p));
               const eTails = recursivePatterns.filter((p) => this._hasExpressionTail(p)).map((p) => this._buildPattern(p));
               const tails = recursivePatterns.filter((p) => !this._hasExpressionTail(p)).map((p) => this._buildPattern(p));
@@ -34000,7 +34000,10 @@ var require_index_001 = __commonJS({
       get children() {
         return this._patterns;
       }
-      get unaryPatterns() {
+      get unaryPrefixPatterns() {
+        return this._unaryPrefixPatterns;
+      }
+      get atomPatterns() {
         return this._atomPatterns;
       }
       get binaryPatterns() {
@@ -34045,7 +34048,7 @@ var require_index_001 = __commonJS({
           this._shouldCompactPatternsMap[pattern2.name] = pattern2.shouldCompactAst;
           if (this._isUnary(pattern2)) {
             const unaryPrefix = this._extractUnaryPrefixPattern(pattern2).clone();
-            this._unaryPrefixPatterns.push(pattern2);
+            this._unaryPrefixPatterns.push(unaryPrefix);
             this._unaryPrefixNames.push(pattern2.name);
             unaryPrefix.parent = this;
             finalPatterns.push(unaryPrefix);
@@ -34378,10 +34381,10 @@ var require_index_001 = __commonJS({
         };
       }
       getTokens() {
-        return this.unaryPatterns.map((p) => p.getTokens()).flat();
+        return this.atomPatterns.map((p) => p.getTokens()).flat();
       }
       getTokensAfter(childReference) {
-        if (this.unaryPatterns.indexOf(childReference)) {
+        if (this.atomPatterns.indexOf(childReference)) {
           const recursiveTokens = this._recursivePatterns.map((p) => p.getTokens()).flat();
           const binaryTokens = this._binaryPatterns.map((p) => p.getTokens()).flat();
           return [...recursiveTokens, ...binaryTokens];
@@ -34406,10 +34409,10 @@ var require_index_001 = __commonJS({
         return this._parent.getTokensAfter(this);
       }
       getPatterns() {
-        return this.unaryPatterns.map((p) => p.getPatterns()).flat();
+        return this.atomPatterns.map((p) => p.getPatterns()).flat();
       }
       getPatternsAfter(childReference) {
-        if (this.unaryPatterns.indexOf(childReference)) {
+        if (this.atomPatterns.indexOf(childReference)) {
           const recursivePatterns = this._recursivePatterns.map((p) => p.getPatterns()).flat();
           const binaryPatterns = this._binaryPatterns.map((p) => p.getPatterns()).flat();
           return [...recursivePatterns, ...binaryPatterns];
@@ -46237,4 +46240,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-z5QS0Uv3.js.map
+//# sourceMappingURL=index-NuqD_Tzu.js.map
