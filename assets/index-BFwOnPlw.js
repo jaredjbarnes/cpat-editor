@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-BJSW4qvg.js"(exports, module) {
+  "assets/index-BFwOnPlw.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -34076,7 +34076,9 @@ var require_index_001 = __commonJS({
                   }
                   break outer;
                 }
-                break;
+                onIndex = cursor.index;
+                i2 = -1;
+                continue;
               }
             }
             cursor.resolveError();
@@ -46042,4 +46044,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BJSW4qvg.js.map
+//# sourceMappingURL=index-BFwOnPlw.js.map
