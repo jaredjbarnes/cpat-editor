@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-BFwOnPlw.js"(exports, module) {
+  "assets/index-BzoXm7Sz.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -30899,14 +30899,58 @@ var require_index_001 = __commonJS({
             const recursivePatterns = expressionPattern.recursivePatterns;
             const unaryChildren = unaryPatterns.map((p) => this._buildPattern(p));
             const binaryChildren = binaryPatterns.map((p) => this._buildPattern(p));
-            const recursiveChildren = recursivePatterns.map((p) => this._buildPattern(p));
+            const eTails = recursivePatterns.filter((p) => this._hasExpressionTail(p)).map((p) => this._buildPattern(p));
+            const tails = recursivePatterns.filter((p) => !this._hasExpressionTail(p)).map((p) => this._buildPattern(p));
             const unaryOptions = new Choice(0, ...unaryChildren);
-            const expressionOptions = new Optional$1(new Choice(0, ...recursiveChildren, ...binaryChildren));
-            const children2 = [unaryOptions];
-            if (binaryChildren.length + recursiveChildren.length > 0) {
-              children2.push(expressionOptions);
+            const binaryOptions = new Choice(0, ...binaryChildren);
+            let eTailsSequence;
+            let tailsSequence;
+            if (tails.length > 0 && binaryChildren.length > 0) {
+              tailsSequence = new OneOrMore(
+                new Sequence$1(
+                  unaryOptions,
+                  new Optional$1(
+                    new OneOrMore(
+                      new Choice(...tails)
+                    )
+                  )
+                ),
+                binaryOptions
+              );
+            } else if (tails.length > 0 && binaryChildren.length === 0) {
+              tailsSequence = new OneOrMore(
+                new Sequence$1(
+                  unaryOptions,
+                  new Optional$1(
+                    new OneOrMore(
+                      new Choice(...tails)
+                    )
+                  )
+                )
+              );
+            } else if (tails.length === 0 && binaryChildren.length > 0) {
+              tailsSequence = new OneOrMore(
+                unaryOptions,
+                binaryOptions
+              );
+            } else {
+              tailsSequence = new OneOrMore(unaryOptions);
             }
-            const expression = new OneOrMore(new Sequence$1(...children2));
+            if (eTails.length > 0) {
+              eTailsSequence = new Sequence$1(unaryOptions, new Optional$1(new OneOrMore(new Choice(...eTails))));
+            }
+            let expression;
+            if (eTails.length > 0 && tails.length > 0) {
+              expression = new Choice(eTailsSequence, tailsSequence);
+            } else if (eTails.length > 0 && tails.length === 0) {
+              expression = eTailsSequence;
+            } else if (tails.length > 0 && eTails.length === 0) {
+              expression = tailsSequence;
+            } else if (binaryChildren.length > 0) {
+              expression = new OneOrMore(unaryOptions, binaryOptions);
+            } else {
+              expression = unaryOptions;
+            }
             expression.attrs.id = pattern2.id;
             const diagram2 = new Diagram(new Group(expression, pattern2.name));
             diagram2.attrs.id = pattern2.id;
@@ -31053,14 +31097,58 @@ var require_index_001 = __commonJS({
               const recursivePatterns = expressionPattern.recursivePatterns;
               const unaryChildren = unaryPatterns.map((p) => this._buildPattern(p));
               const binaryChildren = binaryPatterns.map((p) => this._buildPattern(p));
-              const recursiveChildren = recursivePatterns.map((p) => this._buildPattern(p));
+              const eTails = recursivePatterns.filter((p) => this._hasExpressionTail(p)).map((p) => this._buildPattern(p));
+              const tails = recursivePatterns.filter((p) => !this._hasExpressionTail(p)).map((p) => this._buildPattern(p));
               const unaryOptions = new Choice(0, ...unaryChildren);
-              const expressionOptions = new Optional$1(new Choice(0, ...recursiveChildren, ...binaryChildren));
-              const children2 = [unaryOptions];
-              if (binaryChildren.length + recursiveChildren.length > 0) {
-                children2.push(expressionOptions);
+              const binaryOptions = new Choice(0, ...binaryChildren);
+              let eTailsSequence;
+              let tailsSequence;
+              if (tails.length > 0 && binaryChildren.length > 0) {
+                tailsSequence = new OneOrMore(
+                  new Sequence$1(
+                    unaryOptions,
+                    new Optional$1(
+                      new OneOrMore(
+                        new Choice(...tails)
+                      )
+                    )
+                  ),
+                  binaryOptions
+                );
+              } else if (tails.length > 0 && binaryChildren.length === 0) {
+                tailsSequence = new OneOrMore(
+                  new Sequence$1(
+                    unaryOptions,
+                    new Optional$1(
+                      new OneOrMore(
+                        new Choice(...tails)
+                      )
+                    )
+                  )
+                );
+              } else if (tails.length === 0 && binaryChildren.length > 0) {
+                tailsSequence = new OneOrMore(
+                  unaryOptions,
+                  binaryOptions
+                );
+              } else {
+                tailsSequence = new OneOrMore(unaryOptions);
               }
-              const expression = new OneOrMore(new Sequence$1(...children2));
+              if (eTails.length > 0) {
+                eTailsSequence = new Sequence$1(unaryOptions, new Optional$1(new OneOrMore(new Choice(...eTails))));
+              }
+              let expression;
+              if (eTails.length > 0 && tails.length > 0) {
+                expression = new Choice(eTailsSequence, tailsSequence);
+              } else if (eTails.length > 0 && tails.length === 0) {
+                expression = eTailsSequence;
+              } else if (tails.length > 0 && eTails.length === 0) {
+                expression = tailsSequence;
+              } else if (binaryChildren.length > 0) {
+                expression = new OneOrMore(unaryOptions, binaryOptions);
+              } else {
+                expression = unaryOptions;
+              }
               expression.attrs.id = pattern2.id;
               const terminalOptions = {};
               const classNames2 = this._classNames.get(path2);
@@ -31155,6 +31243,10 @@ var require_index_001 = __commonJS({
             return repeat;
           }
         }
+      }
+      _hasExpressionTail(pattern2) {
+        const lastPattern = pattern2.children[pattern2.children.length - 1];
+        return lastPattern.type === pattern2.type && lastPattern.name === pattern2.name;
       }
       replaceSpecialCharacters(value2) {
         return value2.replace(/[\s\S]/g, (char) => {
@@ -46044,4 +46136,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BFwOnPlw.js.map
+//# sourceMappingURL=index-BzoXm7Sz.js.map
