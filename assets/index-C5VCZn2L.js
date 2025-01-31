@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-NuqD_Tzu.js"(exports, module) {
+  "assets/index-C5VCZn2L.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -34227,6 +34227,9 @@ var require_index_001 = __commonJS({
             break;
           }
           onIndex = cursor.index;
+          if (prefix != null && this._recursivePatterns.length === 0) {
+            lastAtomNode = createNode(prefixName, [prefix, lastAtomNode]);
+          }
           for (let i2 = 0; i2 < this._recursivePatterns.length; i2++) {
             const pattern2 = this._recursivePatterns[i2];
             const node = pattern2.parse(cursor);
@@ -46240,4 +46243,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-NuqD_Tzu.js.map
+//# sourceMappingURL=index-C5VCZn2L.js.map
