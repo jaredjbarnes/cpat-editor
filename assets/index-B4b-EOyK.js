@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-D1TTYSmt.js"(exports, module) {
+  "assets/index-B4b-EOyK.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -31816,6 +31816,9 @@ var require_index_001 = __commonJS({
       get children() {
         return [];
       }
+      get startedOnIndex() {
+        return this._firstIndex;
+      }
       constructor(name2, value2) {
         this.shouldCompactAst = false;
         if (value2.length === 0) {
@@ -31944,10 +31947,13 @@ var require_index_001 = __commonJS({
       get children() {
         return [];
       }
+      get startedOnIndex() {
+        return this._firstIndex;
+      }
       constructor(name2, regex) {
         this._node = null;
         this._cursor = null;
-        this._firstIndex = -1;
+        this._firstIndex = 0;
         this._substring = "";
         this._tokens = [];
         this.shouldCompactAst = false;
@@ -32095,6 +32101,9 @@ var require_index_001 = __commonJS({
       get children() {
         return this._children;
       }
+      get startedOnIndex() {
+        return this._firstIndex;
+      }
       constructor(name2) {
         this.shouldCompactAst = false;
         this._id = `reference-${idIndex$7++}`;
@@ -32104,6 +32113,7 @@ var require_index_001 = __commonJS({
         this._pattern = null;
         this._cachedPattern = null;
         this._children = [];
+        this._firstIndex = 0;
       }
       test(text) {
         const cursor = new Cursor$1(text);
@@ -32120,6 +32130,7 @@ var require_index_001 = __commonJS({
         };
       }
       parse(cursor) {
+        this._firstIndex = cursor.index;
         return this.getReferencePatternSafely().parse(cursor);
       }
       getReferencePatternSafely() {
@@ -32228,28 +32239,6 @@ var require_index_001 = __commonJS({
     function clonePatterns(patterns) {
       return patterns.map((p) => p.clone());
     }
-    class DepthCache {
-      constructor() {
-        this._depthMap = {};
-      }
-      getDepth(name2, cursorIndex) {
-        if (this._depthMap[name2] == null) {
-          this._depthMap[name2] = {};
-        }
-        if (this._depthMap[name2][cursorIndex] == null) {
-          this._depthMap[name2][cursorIndex] = 0;
-        }
-        return this._depthMap[name2][cursorIndex];
-      }
-      incrementDepth(name2, cursorIndex) {
-        const depth = this.getDepth(name2, cursorIndex);
-        this._depthMap[name2][cursorIndex] = depth + 1;
-      }
-      decrementDepth(name2, cursorIndex) {
-        const depth = this.getDepth(name2, cursorIndex);
-        this._depthMap[name2][cursorIndex] = depth - 1;
-      }
-    }
     function isRecursivePattern(pattern2) {
       let onPattern = pattern2.parent;
       let depth = 0;
@@ -32264,7 +32253,6 @@ var require_index_001 = __commonJS({
       }
       return false;
     }
-    const depthCache$2 = new DepthCache();
     let idIndex$6 = 0;
     class Options {
       get id() {
@@ -32284,6 +32272,9 @@ var require_index_001 = __commonJS({
       }
       get children() {
         return this._children;
+      }
+      get startedOnIndex() {
+        return this._firstIndex;
       }
       constructor(name2, options, isGreedy = false) {
         this.shouldCompactAst = false;
@@ -32321,10 +32312,7 @@ var require_index_001 = __commonJS({
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
-        depthCache$2.incrementDepth(this._id, this._firstIndex);
-        this._firstIndex = cursor.index;
         const node = this._tryToParse(cursor);
-        depthCache$2.decrementDepth(this._id, this._firstIndex);
         if (node != null) {
           cursor.moveTo(node.lastIndex);
           cursor.resolveError();
@@ -32337,7 +32325,7 @@ var require_index_001 = __commonJS({
         return null;
       }
       _tryToParse(cursor) {
-        if (depthCache$2.getDepth(this._id, this._firstIndex) > 2) {
+        if (this._isBeyondRecursiveAllowance()) {
           return null;
         }
         const results = [];
@@ -32356,6 +32344,20 @@ var require_index_001 = __commonJS({
         const nonNullResults = results.filter((r) => r != null);
         nonNullResults.sort((a, b) => b.endIndex - a.endIndex);
         return nonNullResults[0] || null;
+      }
+      _isBeyondRecursiveAllowance() {
+        let depth = 0;
+        let pattern2 = this;
+        while (pattern2 != null) {
+          if (pattern2.id === this.id && pattern2.startedOnIndex === this.startedOnIndex) {
+            depth++;
+          }
+          if (depth > 2) {
+            return true;
+          }
+          pattern2 = pattern2.parent;
+        }
+        return false;
       }
       getTokens() {
         const tokens = [];
@@ -32440,6 +32442,9 @@ var require_index_001 = __commonJS({
       get max() {
         return this._max;
       }
+      get startedOnIndex() {
+        return this._firstIndex;
+      }
       constructor(name2, pattern2, options = {}) {
         this.shouldCompactAst = false;
         this._id = `finite-repeat-${idIndex$5++}`;
@@ -32451,6 +32456,7 @@ var require_index_001 = __commonJS({
         this._min = options.min != null ? Math.max(options.min, 1) : 1;
         this._max = Math.max(this.min, options.max || this.min);
         this._trimDivider = options.trimDivider == null ? false : options.trimDivider;
+        this._firstIndex = 0;
         for (let i2 = 0; i2 < this._max; i2++) {
           const child = pattern2.clone();
           child.parent = this;
@@ -32463,6 +32469,7 @@ var require_index_001 = __commonJS({
         }
       }
       parse(cursor) {
+        this._firstIndex = cursor.index;
         const startIndex = cursor.index;
         const nodes = [];
         const modulo = this._hasDivider ? 2 : 1;
@@ -32610,6 +32617,9 @@ var require_index_001 = __commonJS({
       }
       get min() {
         return this._min;
+      }
+      get startedOnIndex() {
+        return this._firstIndex;
       }
       constructor(name2, pattern2, options = {}) {
         this.shouldCompactAst = false;
@@ -32871,6 +32881,9 @@ var require_index_001 = __commonJS({
       get max() {
         return this._options.max;
       }
+      get startedOnIndex() {
+        return this._repeatPattern.startedOnIndex;
+      }
       constructor(name2, pattern2, options = {}) {
         this._id = `repeat-${idIndex$3++}`;
         this._pattern = pattern2;
@@ -32949,7 +32962,6 @@ var require_index_001 = __commonJS({
       }
       return filteredNodes;
     }
-    const depthCache$1 = new DepthCache();
     let idIndex$2 = 0;
     class Sequence {
       get id() {
@@ -32969,6 +32981,9 @@ var require_index_001 = __commonJS({
       }
       get children() {
         return this._children;
+      }
+      get startedOnIndex() {
+        return this._firstIndex;
       }
       constructor(name2, sequence) {
         this.shouldCompactAst = false;
@@ -33006,10 +33021,8 @@ var require_index_001 = __commonJS({
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
-        depthCache$1.incrementDepth(this._id, this._firstIndex);
         this._nodes = [];
         const passed = this.tryToParse(cursor);
-        depthCache$1.decrementDepth(this._id, this._firstIndex);
         if (passed) {
           const node = this.createNode(cursor);
           if (node !== null) {
@@ -33023,7 +33036,7 @@ var require_index_001 = __commonJS({
         return null;
       }
       tryToParse(cursor) {
-        if (depthCache$1.getDepth(this._id, this._firstIndex) > 1) {
+        if (this._isBeyondRecursiveAllowance()) {
           cursor.recordErrorAt(this._firstIndex, this._firstIndex, this);
           return false;
         }
@@ -33076,6 +33089,20 @@ var require_index_001 = __commonJS({
           return null;
         }
         return nodes[nodes.length - 1];
+      }
+      _isBeyondRecursiveAllowance() {
+        let depth = 0;
+        let pattern2 = this;
+        while (pattern2 != null) {
+          if (pattern2.id === this.id && pattern2.startedOnIndex === this.startedOnIndex) {
+            depth++;
+          }
+          if (depth > 1) {
+            return true;
+          }
+          pattern2 = pattern2.parent;
+        }
+        return false;
       }
       areRemainingPatternsOptional(fromIndex) {
         const startOnIndex = fromIndex + 1;
@@ -33225,6 +33252,9 @@ var require_index_001 = __commonJS({
       }
       get children() {
         return this._children;
+      }
+      get startedOnIndex() {
+        return this._children[0].startedOnIndex;
       }
       constructor(name2, pattern2) {
         this.shouldCompactAst = false;
@@ -33535,6 +33565,9 @@ var require_index_001 = __commonJS({
       }
       get children() {
         return this._children;
+      }
+      get startedOnIndex() {
+        return this.children[0].startedOnIndex;
       }
       constructor(name2, pattern2) {
         this.shouldCompactAst = false;
@@ -33865,6 +33898,9 @@ var require_index_001 = __commonJS({
       get children() {
         return this._children;
       }
+      get startedOnIndex() {
+        return this.children[0].startedOnIndex;
+      }
       getPatternWithinContext(name2) {
         return this._patterns[name2] || null;
       }
@@ -33937,7 +33973,6 @@ var require_index_001 = __commonJS({
       }
     }
     let indexId = 0;
-    const depthCache = new DepthCache();
     function createNode(name2, children2) {
       return new Node$1("expression", name2, 0, 0, children2, "");
     }
@@ -33973,6 +34008,9 @@ var require_index_001 = __commonJS({
       }
       get recursivePatterns() {
         return this._recursivePatterns;
+      }
+      get startedOnIndex() {
+        return this._firstIndex;
       }
       constructor(name2, patterns) {
         this.shouldCompactAst = false;
@@ -34078,10 +34116,7 @@ var require_index_001 = __commonJS({
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
-        depthCache.incrementDepth(this._id, this._firstIndex);
-        this._firstIndex = cursor.index;
         const node = this._tryToParse(cursor);
-        depthCache.decrementDepth(this._id, this._firstIndex);
         if (node != null) {
           cursor.moveTo(node.lastIndex);
           cursor.resolveError();
@@ -34109,7 +34144,7 @@ var require_index_001 = __commonJS({
         }
       }
       _tryToParse(cursor) {
-        if (depthCache.getDepth(this._id, this._firstIndex) > 2) {
+        if (this._isBeyondRecursiveAllowance()) {
           cursor.recordErrorAt(this._firstIndex, this._firstIndex, this);
           return null;
         }
@@ -34261,6 +34296,20 @@ var require_index_001 = __commonJS({
           root2.normalize(this._firstIndex);
           return root2;
         }
+      }
+      _isBeyondRecursiveAllowance() {
+        let depth = 0;
+        let pattern2 = this;
+        while (pattern2 != null) {
+          if (pattern2.id === this.id && pattern2.startedOnIndex === this.startedOnIndex) {
+            depth++;
+          }
+          if (depth > 2) {
+            return true;
+          }
+          pattern2 = pattern2.parent;
+        }
+        return false;
       }
       test(text) {
         const cursor = new Cursor$1(text);
@@ -46136,4 +46185,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-D1TTYSmt.js.map
+//# sourceMappingURL=index-B4b-EOyK.js.map
