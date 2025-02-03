@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-Cpvi3FLL.js"(exports, module) {
+  "assets/index-kl86TYuE.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -30894,62 +30894,29 @@ var require_index_001 = __commonJS({
           }
           case "expression": {
             const expressionPattern = pattern2;
+            const prefixPatterns = expressionPattern.prefixPatterns;
             const atomPatterns = expressionPattern.atomPatterns;
+            const postfixPatterns = expressionPattern.postfixPatterns;
             const binaryPatterns = expressionPattern.binaryPatterns;
-            const recursivePatterns = expressionPattern.recursivePatterns;
-            const unaryChildren = atomPatterns.map((p) => this._buildPattern(p));
+            const prefixChildren = prefixPatterns.map((p) => this._buildPattern(p));
+            const atomChildren = atomPatterns.map((p) => this._buildPattern(p));
+            const postfixChildren = postfixPatterns.map((p) => this._buildPattern(p));
             const binaryChildren = binaryPatterns.map((p) => this._buildPattern(p));
-            const eTails = recursivePatterns.filter((p) => this._hasExpressionTail(p)).map((p) => this._buildPattern(p));
-            const tails = recursivePatterns.filter((p) => !this._hasExpressionTail(p)).map((p) => this._buildPattern(p));
-            const unaryOptions = new Choice(0, ...unaryChildren);
-            const binaryOptions = new Choice(0, ...binaryChildren);
-            let eTailsSequence;
-            let tailsSequence;
-            if (tails.length > 0 && binaryChildren.length > 0) {
-              tailsSequence = new OneOrMore(
-                new Sequence$1(
-                  unaryOptions,
-                  new Optional$1(
-                    new OneOrMore(
-                      new Choice(0, ...tails)
-                    )
-                  )
-                ),
-                binaryOptions
-              );
-            } else if (tails.length > 0 && binaryChildren.length === 0) {
-              tailsSequence = new OneOrMore(
-                new Sequence$1(
-                  unaryOptions,
-                  new Optional$1(
-                    new OneOrMore(
-                      new Choice(0, ...tails)
-                    )
-                  )
-                )
-              );
-            } else if (tails.length === 0 && binaryChildren.length > 0) {
-              tailsSequence = new OneOrMore(
-                unaryOptions,
-                binaryOptions
-              );
-            } else {
-              tailsSequence = new OneOrMore(unaryOptions);
+            const children2 = [];
+            if (prefixPatterns.length > 0) {
+              const prefixOptions = new Optional$1(new OneOrMore(new Choice(0, ...prefixChildren)));
+              children2.push(prefixOptions);
             }
-            if (eTails.length > 0) {
-              eTailsSequence = new Sequence$1(unaryOptions, new Optional$1(new OneOrMore(new Choice(0, ...eTails))));
+            const atomOptions = new Choice(0, ...atomChildren);
+            children2.push(atomOptions);
+            if (postfixPatterns.length > 0) {
+              const postfixOptions = new Optional$1(new OneOrMore(new Choice(0, ...postfixChildren)));
+              children2.push(postfixOptions);
             }
-            let expression;
-            if (eTails.length > 0 && tails.length > 0) {
-              expression = new Choice(0, eTailsSequence, tailsSequence);
-            } else if (eTails.length > 0 && tails.length === 0) {
-              expression = eTailsSequence;
-            } else if (tails.length > 0 && eTails.length === 0) {
-              expression = tailsSequence;
-            } else if (binaryChildren.length > 0) {
-              expression = new OneOrMore(unaryOptions, binaryOptions);
-            } else {
-              expression = unaryOptions;
+            let expression = new Sequence$1(...children2);
+            if (binaryPatterns.length > 0) {
+              const binaryOptions = new Choice(0, ...binaryChildren);
+              expression = new OneOrMore(expression, binaryOptions);
             }
             expression.attrs.id = pattern2.id;
             const diagram2 = new Diagram(new Group(expression, pattern2.name));
@@ -31092,62 +31059,29 @@ var require_index_001 = __commonJS({
             const path2 = generatePath(pattern2);
             if (this._expandedPatternPaths.get(path2)) {
               const expressionPattern = pattern2;
+              const prefixPatterns = expressionPattern.prefixPatterns;
               const atomPatterns = expressionPattern.atomPatterns;
+              const postfixPatterns = expressionPattern.postfixPatterns;
               const binaryPatterns = expressionPattern.binaryPatterns;
-              const recursivePatterns = expressionPattern.recursivePatterns;
-              const unaryChildren = atomPatterns.map((p) => this._buildPattern(p));
+              const prefixChildren = prefixPatterns.map((p) => this._buildPattern(p));
+              const atomChildren = atomPatterns.map((p) => this._buildPattern(p));
+              const postfixChildren = postfixPatterns.map((p) => this._buildPattern(p));
               const binaryChildren = binaryPatterns.map((p) => this._buildPattern(p));
-              const eTails = recursivePatterns.filter((p) => this._hasExpressionTail(p)).map((p) => this._buildPattern(p));
-              const tails = recursivePatterns.filter((p) => !this._hasExpressionTail(p)).map((p) => this._buildPattern(p));
-              const unaryOptions = new Choice(0, ...unaryChildren);
-              const binaryOptions = new Choice(0, ...binaryChildren);
-              let eTailsSequence;
-              let tailsSequence;
-              if (tails.length > 0 && binaryChildren.length > 0) {
-                tailsSequence = new OneOrMore(
-                  new Sequence$1(
-                    unaryOptions,
-                    new Optional$1(
-                      new OneOrMore(
-                        new Choice(0, ...tails)
-                      )
-                    )
-                  ),
-                  binaryOptions
-                );
-              } else if (tails.length > 0 && binaryChildren.length === 0) {
-                tailsSequence = new OneOrMore(
-                  new Sequence$1(
-                    unaryOptions,
-                    new Optional$1(
-                      new OneOrMore(
-                        new Choice(0, ...tails)
-                      )
-                    )
-                  )
-                );
-              } else if (tails.length === 0 && binaryChildren.length > 0) {
-                tailsSequence = new OneOrMore(
-                  unaryOptions,
-                  binaryOptions
-                );
-              } else {
-                tailsSequence = new OneOrMore(unaryOptions);
+              const children2 = [];
+              if (prefixPatterns.length > 0) {
+                const prefixOptions = new Optional$1(new OneOrMore(new Choice(0, ...prefixChildren)));
+                children2.push(prefixOptions);
               }
-              if (eTails.length > 0) {
-                eTailsSequence = new Sequence$1(unaryOptions, new Optional$1(new OneOrMore(new Choice(0, ...eTails))));
+              const atomOptions = new Choice(0, ...atomChildren);
+              children2.push(atomOptions);
+              if (postfixPatterns.length > 0) {
+                const postfixOptions = new Optional$1(new OneOrMore(new Choice(0, ...postfixChildren)));
+                children2.push(postfixOptions);
               }
-              let expression;
-              if (eTails.length > 0 && tails.length > 0) {
-                expression = new Choice(0, eTailsSequence, tailsSequence);
-              } else if (eTails.length > 0 && tails.length === 0) {
-                expression = eTailsSequence;
-              } else if (tails.length > 0 && eTails.length === 0) {
-                expression = tailsSequence;
-              } else if (binaryChildren.length > 0) {
-                expression = new OneOrMore(unaryOptions, binaryOptions);
-              } else {
-                expression = unaryOptions;
+              let expression = new Sequence$1(...children2);
+              if (binaryPatterns.length > 0) {
+                const binaryOptions = new Choice(0, ...binaryChildren);
+                expression = new OneOrMore(expression, binaryOptions);
               }
               expression.attrs.id = pattern2.id;
               const terminalOptions = {};
@@ -31243,10 +31177,6 @@ var require_index_001 = __commonJS({
             return repeat;
           }
         }
-      }
-      _hasExpressionTail(pattern2) {
-        const lastPattern = pattern2.children[pattern2.children.length - 1];
-        return lastPattern.type === pattern2.type && lastPattern.name === pattern2.name;
       }
       replaceSpecialCharacters(value2) {
         return value2.replace(/[\s\S]/g, (char) => {
@@ -31362,6 +31292,8 @@ var require_index_001 = __commonJS({
         const index = this.findChildIndex(referenceNode);
         if (index > -1) {
           this.spliceChildren(index, 1, newNode);
+          newNode._parent = this;
+          referenceNode._parent = null;
         }
       }
       replaceWith(newNode) {
@@ -31533,12 +31465,12 @@ var require_index_001 = __commonJS({
       isEqual(node) {
         return node.toJson(0) === this.toJson(0);
       }
-      static createValueNode(name2, value2) {
-        return new Node2("custom-value-node", name2, 0, 0, [], value2);
+      static createValueNode(type, name2, value2 = "") {
+        return new Node2(type, name2, 0, 0, [], value2);
       }
-      static createNode(name2, children2) {
+      static createNode(type, name2, children2 = []) {
         const value2 = children2.map((c) => c.toString()).join("");
-        return new Node2("custom-node", name2, 0, 0, children2, value2);
+        return new Node2(type, name2, 0, 0, children2, value2);
       }
     };
     function __awaiter(thisArg, _arguments, P, generator) {
@@ -31793,6 +31725,22 @@ var require_index_001 = __commonJS({
         this._history.stopRecording();
       }
     };
+    function execPattern(pattern2, text, record = false) {
+      const cursor = new Cursor$1(text);
+      record && cursor.startRecording();
+      const ast = pattern2.parse(cursor);
+      const isMatch = (ast === null || ast === void 0 ? void 0 : ast.value.length) === text.length;
+      return {
+        ast: isMatch ? ast : null,
+        cursor
+      };
+    }
+    function testPattern(pattern2, text, record = false) {
+      const cursor = new Cursor$1(text);
+      record && cursor.startRecording();
+      const ast = pattern2.parse(cursor);
+      return (ast === null || ast === void 0 ? void 0 : ast.value.length) === text.length;
+    }
     let idIndex$9 = 0;
     class Literal {
       get id() {
@@ -31820,7 +31768,6 @@ var require_index_001 = __commonJS({
         return this._firstIndex;
       }
       constructor(name2, value2) {
-        this.shouldCompactAst = false;
         if (value2.length === 0) {
           throw new Error("Value Cannot be empty.");
         }
@@ -31835,19 +31782,10 @@ var require_index_001 = __commonJS({
         this._endIndex = 0;
       }
       test(text, record = false) {
-        const cursor = new Cursor$1(text);
-        record && cursor.startRecording();
-        const ast = this.parse(cursor);
-        return (ast === null || ast === void 0 ? void 0 : ast.value) === text;
+        return testPattern(this, text, record);
       }
       exec(text, record = false) {
-        const cursor = new Cursor$1(text);
-        record && cursor.startRecording();
-        const ast = this.parse(cursor);
-        return {
-          ast: (ast === null || ast === void 0 ? void 0 : ast.value) === text ? ast : null,
-          cursor
-        };
+        return execPattern(this, text, record);
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
@@ -31890,7 +31828,6 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         const clone2 = new Literal(name2, this._token);
         clone2._id = this._id;
-        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       getTokens() {
@@ -31956,7 +31893,6 @@ var require_index_001 = __commonJS({
         this._firstIndex = 0;
         this._substring = "";
         this._tokens = [];
-        this.shouldCompactAst = false;
         this._id = `regex-${idIndex$8++}`;
         this._type = "regex";
         this._name = name2;
@@ -31976,19 +31912,11 @@ var require_index_001 = __commonJS({
           throw new Error("Invalid Arguments: The regex string cannot end with a '$' because it is expected to be in the middle of a string.");
         }
       }
-      test(text) {
-        const cursor = new Cursor$1(text);
-        const ast = this.parse(cursor);
-        return (ast === null || ast === void 0 ? void 0 : ast.value) === text;
+      test(text, record = false) {
+        return testPattern(this, text, record);
       }
       exec(text, record = false) {
-        const cursor = new Cursor$1(text);
-        record && cursor.startRecording();
-        const ast = this.parse(cursor);
-        return {
-          ast: (ast === null || ast === void 0 ? void 0 : ast.value) === text ? ast : null,
-          cursor
-        };
+        return execPattern(this, text, record);
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
@@ -32025,7 +31953,6 @@ var require_index_001 = __commonJS({
         const clone2 = new Regex(name2, this._originalRegexString);
         clone2._tokens = this._tokens.slice();
         clone2._id = this._id;
-        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       getTokens() {
@@ -32105,7 +32032,6 @@ var require_index_001 = __commonJS({
         return this._firstIndex;
       }
       constructor(name2) {
-        this.shouldCompactAst = false;
         this._id = `reference-${idIndex$7++}`;
         this._type = "reference";
         this._name = name2;
@@ -32115,19 +32041,11 @@ var require_index_001 = __commonJS({
         this._children = [];
         this._firstIndex = 0;
       }
-      test(text) {
-        const cursor = new Cursor$1(text);
-        const ast = this.parse(cursor);
-        return (ast === null || ast === void 0 ? void 0 : ast.value) === text;
+      test(text, record = false) {
+        return testPattern(this, text, record);
       }
       exec(text, record = false) {
-        const cursor = new Cursor$1(text);
-        record && cursor.startRecording();
-        const ast = this.parse(cursor);
-        return {
-          ast: (ast === null || ast === void 0 ? void 0 : ast.value) === text ? ast : null,
-          cursor
-        };
+        return execPattern(this, text, record);
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
@@ -32226,7 +32144,6 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         const clone2 = new Reference(name2);
         clone2._id = this._id;
-        clone2.shouldCompactAst = this.shouldCompactAst;
         if (this._pattern != null) {
           clone2._cachedPattern = this._pattern;
         }
@@ -32277,7 +32194,6 @@ var require_index_001 = __commonJS({
         return this._firstIndex;
       }
       constructor(name2, options, isGreedy = false) {
-        this.shouldCompactAst = false;
         if (options.length === 0) {
           throw new Error("Need at least one pattern with an 'options' pattern.");
         }
@@ -32296,19 +32212,11 @@ var require_index_001 = __commonJS({
           child.parent = this;
         }
       }
-      test(text) {
-        const cursor = new Cursor$1(text);
-        const ast = this.parse(cursor);
-        return (ast === null || ast === void 0 ? void 0 : ast.value) === text;
+      test(text, record = false) {
+        return testPattern(this, text, record);
       }
       exec(text, record = false) {
-        const cursor = new Cursor$1(text);
-        record && cursor.startRecording();
-        const ast = this.parse(cursor);
-        return {
-          ast: (ast === null || ast === void 0 ? void 0 : ast.value) === text ? ast : null,
-          cursor
-        };
+        return execPattern(this, text, record);
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
@@ -32316,9 +32224,6 @@ var require_index_001 = __commonJS({
         if (node != null) {
           cursor.moveTo(node.lastIndex);
           cursor.resolveError();
-          if (this.shouldCompactAst) {
-            node.compact();
-          }
           return node;
         }
         cursor.recordErrorAt(this._firstIndex, this._firstIndex, this);
@@ -32409,7 +32314,6 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         const clone2 = new Options(name2, this._children, this._isGreedy);
         clone2._id = this._id;
-        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       isEqual(pattern2) {
@@ -32446,7 +32350,6 @@ var require_index_001 = __commonJS({
         return this._firstIndex;
       }
       constructor(name2, pattern2, options = {}) {
-        this.shouldCompactAst = false;
         this._id = `finite-repeat-${idIndex$5++}`;
         this._type = "finite-repeat";
         this._name = name2;
@@ -32517,24 +32420,13 @@ var require_index_001 = __commonJS({
         cursor.resolveError();
         cursor.moveTo(lastIndex);
         const node = new Node$1(this._type, this.name, firstIndex, lastIndex, nodes);
-        if (this.shouldCompactAst) {
-          node.compact();
-        }
         return node;
       }
-      test(text) {
-        const cursor = new Cursor$1(text);
-        const ast = this.parse(cursor);
-        return (ast === null || ast === void 0 ? void 0 : ast.value) === text;
+      test(text, record = false) {
+        return testPattern(this, text, record);
       }
       exec(text, record = false) {
-        const cursor = new Cursor$1(text);
-        record && cursor.startRecording();
-        const ast = this.parse(cursor);
-        return {
-          ast: (ast === null || ast === void 0 ? void 0 : ast.value) === text ? ast : null,
-          cursor
-        };
+        return execPattern(this, text, record);
       }
       clone(name2 = this._name) {
         let min2 = this._min;
@@ -32546,7 +32438,6 @@ var require_index_001 = __commonJS({
           trimDivider: this._trimDivider
         });
         clone2._id = this._id;
-        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       getTokens() {
@@ -32622,7 +32513,6 @@ var require_index_001 = __commonJS({
         return this._firstIndex;
       }
       constructor(name2, pattern2, options = {}) {
-        this.shouldCompactAst = false;
         const min2 = options.min != null ? Math.max(options.min, 1) : 1;
         const divider2 = options.divider;
         let children2;
@@ -32649,19 +32539,11 @@ var require_index_001 = __commonJS({
           child.parent = this;
         }
       }
-      test(text) {
-        const cursor = new Cursor$1(text);
-        const ast = this.parse(cursor);
-        return (ast === null || ast === void 0 ? void 0 : ast.value) === text;
+      test(text, record = false) {
+        return testPattern(this, text, record);
       }
       exec(text, record = false) {
-        const cursor = new Cursor$1(text);
-        record && cursor.startRecording();
-        const ast = this.parse(cursor);
-        return {
-          ast: (ast === null || ast === void 0 ? void 0 : ast.value) === text ? ast : null,
-          cursor
-        };
+        return execPattern(this, text, record);
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
@@ -32673,9 +32555,6 @@ var require_index_001 = __commonJS({
           if (node != null) {
             cursor.moveTo(node.lastIndex);
             cursor.recordMatch(this, node);
-            if (this.shouldCompactAst) {
-              node.compact();
-            }
           }
           return node;
         }
@@ -32841,7 +32720,6 @@ var require_index_001 = __commonJS({
           trimDivider: this._trimDivider
         });
         clone2._id = this._id;
-        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       isEqual(pattern2) {
@@ -32850,13 +32728,6 @@ var require_index_001 = __commonJS({
     }
     let idIndex$3 = 0;
     class Repeat {
-      get shouldCompactAst() {
-        return this._shouldCompactAst;
-      }
-      set shouldCompactAst(value2) {
-        this._shouldCompactAst = value2;
-        this._repeatPattern.shouldCompactAst = value2;
-      }
       get id() {
         return this._id;
       }
@@ -32888,7 +32759,6 @@ var require_index_001 = __commonJS({
         this._id = `repeat-${idIndex$3++}`;
         this._pattern = pattern2;
         this._parent = null;
-        this._shouldCompactAst = false;
         this._options = Object.assign(Object.assign({}, options), { min: options.min == null ? 1 : options.min, max: options.max == null ? Infinity : options.max });
         if (this._options.max !== Infinity) {
           this._repeatPattern = new FiniteRepeat(name2, pattern2, this._options);
@@ -32911,7 +32781,6 @@ var require_index_001 = __commonJS({
         let min2 = this._options.min;
         const clone2 = new Repeat(name2, this._pattern, Object.assign(Object.assign({}, this._options), { min: min2 }));
         clone2._id = this._id;
-        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       getTokens() {
@@ -32986,7 +32855,6 @@ var require_index_001 = __commonJS({
         return this._firstIndex;
       }
       constructor(name2, sequence) {
-        this.shouldCompactAst = false;
         if (sequence.length === 0) {
           throw new Error("Need at least one pattern with a 'sequence' pattern.");
         }
@@ -33005,19 +32873,11 @@ var require_index_001 = __commonJS({
           child.parent = this;
         }
       }
-      test(text) {
-        const cursor = new Cursor$1(text);
-        const ast = this.parse(cursor);
-        return (ast === null || ast === void 0 ? void 0 : ast.value) === text;
+      test(text, record = false) {
+        return testPattern(this, text, record);
       }
       exec(text, record = false) {
-        const cursor = new Cursor$1(text);
-        record && cursor.startRecording();
-        const ast = this.parse(cursor);
-        return {
-          ast: (ast === null || ast === void 0 ? void 0 : ast.value) === text ? ast : null,
-          cursor
-        };
+        return execPattern(this, text, record);
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
@@ -33027,9 +32887,6 @@ var require_index_001 = __commonJS({
           const node = this.createNode(cursor);
           if (node !== null) {
             cursor.recordMatch(this, node);
-            if (this.shouldCompactAst) {
-              node.compact();
-            }
           }
           return node;
         }
@@ -33200,7 +33057,6 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         const clone2 = new Sequence(name2, this._children);
         clone2._id = this._id;
-        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       isEqual(pattern2) {
@@ -33257,7 +33113,6 @@ var require_index_001 = __commonJS({
         return this._children[0].startedOnIndex;
       }
       constructor(name2, pattern2) {
-        this.shouldCompactAst = false;
         this._id = `optional-${idIndex$1++}`;
         this._type = "optional";
         this._name = name2;
@@ -33287,16 +33142,12 @@ var require_index_001 = __commonJS({
           cursor.moveTo(firstIndex);
           return null;
         } else {
-          if (node != null && this.shouldCompactAst) {
-            node.compact();
-          }
           return node;
         }
       }
       clone(name2 = this._name) {
         const clone2 = new Optional(name2, this._children[0]);
         clone2._id = this._id;
-        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       getTokens() {
@@ -33440,17 +33291,13 @@ var require_index_001 = __commonJS({
     ], true);
     const optionalSpaces$2 = new Optional("optional-spaces", spaces$1);
     const assignOperator = new Literal("assign-operator", "=");
-    const compact = new Literal("compact", "compact");
-    const compactModifier = new Sequence("compact-modifier", [lineSpaces$1, compact]);
-    const optionalCompactModifier = new Optional("optional-compact-modifier", compactModifier);
     const assignStatement = new Sequence("assign-statement", [
       optionalSpaces$2,
       name$1,
       optionalSpaces$2,
       assignOperator,
       optionalSpaces$2,
-      pattern,
-      optionalCompactModifier
+      pattern
     ]);
     const statement = new Options("statement", [assignStatement, name$1.clone("export-name")]);
     const bodyLineContent = new Options("body-line-content", [
@@ -33570,7 +33417,6 @@ var require_index_001 = __commonJS({
         return this.children[0].startedOnIndex;
       }
       constructor(name2, pattern2) {
-        this.shouldCompactAst = false;
         this._id = `not-${idIndex++}`;
         this._type = "not";
         this._name = name2;
@@ -33578,19 +33424,11 @@ var require_index_001 = __commonJS({
         this._children = [pattern2.clone()];
         this._children[0].parent = this;
       }
-      test(text) {
-        const cursor = new Cursor$1(text);
-        this.parse(cursor);
-        return !cursor.hasError;
+      test(text, record = false) {
+        return testPattern(this, text, record);
       }
       exec(text, record = false) {
-        const cursor = new Cursor$1(text);
-        record && cursor.startRecording();
-        const ast = this.parse(cursor);
-        return {
-          ast: (ast === null || ast === void 0 ? void 0 : ast.value) === text ? ast : null,
-          cursor
-        };
+        return execPattern(this, text, record);
       }
       parse(cursor) {
         const firstIndex = cursor.index;
@@ -33972,15 +33810,158 @@ var require_index_001 = __commonJS({
         return pattern2.type === this.type && this.children.every((c, index) => c.isEqual(pattern2.children[index]));
       }
     }
-    let indexId = 0;
-    function createNode(name2, children2) {
-      return new Node$1("expression", name2, 0, 0, children2, "");
-    }
     var Association;
     (function(Association2) {
       Association2[Association2["left"] = 0] = "left";
       Association2[Association2["right"] = 1] = "right";
     })(Association || (Association = {}));
+    class PrecedenceTree {
+      constructor(precedenceMap = {}, associationMap = {}) {
+        this._prefixPlaceholder = Node$1.createNode("placeholder", "prefix-placeholder");
+        this._prefixNode = null;
+        this._postfixPlaceholder = Node$1.createNode("placeholder", "postfix-placeholder");
+        this._postfixNode = null;
+        this._binaryPlaceholder = Node$1.createNode("placeholder", "binary-placeholder");
+        this._atomNode = null;
+        this._binaryNode = null;
+        this._orphanedAtom = null;
+        this._precedenceMap = precedenceMap;
+        this._associationMap = associationMap;
+      }
+      addPrefix(name2, ...prefix) {
+        const lastPrefixNode = this._prefixNode;
+        if (lastPrefixNode == null) {
+          const node2 = Node$1.createNode("expression", name2, [...prefix]);
+          this._prefixNode = node2;
+          this._prefixNode.append(this._prefixPlaceholder);
+          return;
+        }
+        const node = Node$1.createNode("expression", name2, [...prefix]);
+        this._prefixPlaceholder.replaceWith(node);
+        node.append(this._prefixPlaceholder);
+        this._prefixNode = node;
+      }
+      addPostfix(name2, ...postfix) {
+        const lastPostfixNode = this._postfixNode;
+        if (lastPostfixNode == null) {
+          const node2 = Node$1.createNode("expression", name2, [this._postfixPlaceholder, ...postfix]);
+          this._postfixNode = node2;
+          return;
+        }
+        const node = Node$1.createNode("expression", name2, [lastPostfixNode, ...postfix]);
+        this._postfixNode = node;
+      }
+      addBinary(name2, ...delimiterNode) {
+        const lastBinaryNode = this._binaryNode;
+        const lastPrecendece = this._getPrecedenceFromNode(this._binaryNode);
+        const precedence = this._getPrecedence(name2);
+        const association = this._associationMap[name2];
+        const lastAtomNode = this._compileAtomNode();
+        if (lastAtomNode == null) {
+          throw new Error("Cannot add a binary without an atom node.");
+        }
+        this._binaryPlaceholder.remove();
+        this._orphanedAtom = lastAtomNode;
+        if (lastBinaryNode == null) {
+          const node = Node$1.createNode("expression", name2, [lastAtomNode, ...delimiterNode, this._binaryPlaceholder]);
+          this._binaryNode = node;
+          return;
+        }
+        if (precedence === lastPrecendece && association === Association.right) {
+          const node = Node$1.createNode("expression", name2, [lastAtomNode, ...delimiterNode, this._binaryPlaceholder]);
+          lastBinaryNode.appendChild(node);
+          this._binaryNode = node;
+        } else if (precedence === lastPrecendece) {
+          const node = Node$1.createNode("expression", name2, []);
+          lastBinaryNode.replaceWith(node);
+          lastBinaryNode.appendChild(lastAtomNode);
+          node.append(lastBinaryNode, ...delimiterNode, this._binaryPlaceholder);
+          this._binaryNode = node;
+        } else if (precedence > lastPrecendece) {
+          let ancestor = lastBinaryNode.parent;
+          let root2 = lastBinaryNode;
+          while (ancestor != null) {
+            const nodePrecedence = this._precedenceMap[ancestor.name];
+            if (nodePrecedence > precedence) {
+              break;
+            }
+            root2 = ancestor;
+            ancestor = ancestor.parent;
+          }
+          lastBinaryNode.appendChild(lastAtomNode);
+          const node = Node$1.createNode("expression", name2, []);
+          root2.replaceWith(node);
+          node.append(root2, ...delimiterNode, this._binaryPlaceholder);
+          this._binaryNode = node;
+        } else {
+          const node = Node$1.createNode("expression", name2, [lastAtomNode, ...delimiterNode, this._binaryPlaceholder]);
+          lastBinaryNode.appendChild(node);
+          this._binaryNode = node;
+        }
+      }
+      _getPrecedenceFromNode(node) {
+        if (node == null) {
+          return 0;
+        }
+        return this._getPrecedence(node.name);
+      }
+      _getPrecedence(name2) {
+        if (this._precedenceMap[name2] != null) {
+          return this._precedenceMap[name2];
+        }
+        return 0;
+      }
+      _compileAtomNode() {
+        let node = this._atomNode;
+        if (this._prefixNode != null && this._atomNode != null) {
+          node = this._prefixNode;
+          this._prefixPlaceholder.replaceWith(this._atomNode);
+        }
+        if (this._postfixNode != null && node != null) {
+          this._postfixPlaceholder.replaceWith(node);
+          node = this._postfixNode;
+        }
+        this._prefixNode = null;
+        this._atomNode = null;
+        this._postfixNode = null;
+        if (node == null) {
+          return null;
+        }
+        return node.findRoot();
+      }
+      addAtom(node) {
+        this._atomNode = node;
+      }
+      hasAtom() {
+        return this._atomNode != null;
+      }
+      commit() {
+        var _a2;
+        if (this._binaryNode == null) {
+          return this._compileAtomNode();
+        }
+        const atomNode = this._compileAtomNode();
+        if (atomNode == null) {
+          let root2 = this._binaryPlaceholder.findRoot();
+          (_a2 = this._binaryPlaceholder.parent) === null || _a2 === void 0 ? void 0 : _a2.replaceWith(this._orphanedAtom);
+          this.reset();
+          return root2;
+        } else {
+          this._binaryPlaceholder.replaceWith(atomNode);
+          const root2 = this._binaryNode.findRoot();
+          this.reset();
+          return root2;
+        }
+      }
+      reset() {
+        this._prefixNode = null;
+        this._atomNode = null;
+        this._orphanedAtom = null;
+        this._postfixNode = null;
+        this._binaryNode = null;
+      }
+    }
+    let indexId = 0;
     class ExpressionPattern {
       get id() {
         return this._id;
@@ -34000,23 +33981,22 @@ var require_index_001 = __commonJS({
       get children() {
         return this._patterns;
       }
-      get unaryPrefixPatterns() {
-        return this._unaryPrefixPatterns;
+      get prefixPatterns() {
+        return this._prefixPatterns;
       }
       get atomPatterns() {
         return this._atomPatterns;
       }
+      get postfixPatterns() {
+        return this._postfixPatterns;
+      }
       get binaryPatterns() {
         return this._binaryPatterns;
-      }
-      get recursivePatterns() {
-        return this._recursivePatterns;
       }
       get startedOnIndex() {
         return this._firstIndex;
       }
       constructor(name2, patterns) {
-        this.shouldCompactAst = false;
         if (patterns.length === 0) {
           throw new Error("Need at least one pattern with an 'expression' pattern.");
         }
@@ -34026,76 +34006,60 @@ var require_index_001 = __commonJS({
         this._parent = null;
         this._firstIndex = -1;
         this._atomPatterns = [];
-        this._unaryPrefixPatterns = [];
-        this._unaryPrefixNames = [];
+        this._prefixPatterns = [];
+        this._prefixNames = [];
+        this._postfixPatterns = [];
+        this._postfixNames = [];
         this._binaryPatterns = [];
-        this._recursivePatterns = [];
-        this._recursiveNames = [];
-        this._endsInRecursion = [];
         this._binaryNames = [];
-        this._binaryAssociation = [];
+        this.associationMap = {};
         this._precedenceMap = {};
         this._originalPatterns = patterns;
-        this._shouldCompactPatternsMap = {};
         this._patterns = this._organizePatterns(patterns);
+        this._shouldStopParsing = false;
+        this._precedenceTree = new PrecedenceTree(this._precedenceMap, this.associationMap);
         if (this._atomPatterns.length === 0) {
-          throw new Error("Need at least one operand pattern with an 'expression' pattern.");
+          throw new Error("Need at least one terminating pattern with an 'expression' pattern.");
         }
       }
       _organizePatterns(patterns) {
         const finalPatterns = [];
         patterns.forEach((pattern2) => {
-          this._shouldCompactPatternsMap[pattern2.name] = pattern2.shouldCompactAst;
-          if (this._isUnary(pattern2)) {
-            const unaryPrefix = this._extractUnaryPrefixPattern(pattern2).clone();
-            this._unaryPrefixPatterns.push(unaryPrefix);
-            this._unaryPrefixNames.push(pattern2.name);
-            unaryPrefix.parent = this;
-            finalPatterns.push(unaryPrefix);
-          } else if (this._isBinary(pattern2)) {
-            const binaryName = this._extractName(pattern2);
-            const clone2 = this._extractDelimiter(pattern2).clone();
-            clone2.parent = this;
-            this._precedenceMap[binaryName] = this._binaryPatterns.length;
-            this._binaryPatterns.push(clone2);
-            this._binaryNames.push(binaryName);
-            if (pattern2.type === "right-associated") {
-              this._binaryAssociation.push(Association.right);
-            } else {
-              this._binaryAssociation.push(Association.left);
-            }
-            finalPatterns.push(clone2);
-          } else if (this._isRecursive(pattern2)) {
+          if (this._isAtom(pattern2)) {
+            const atom = pattern2.clone();
+            atom.parent = this;
+            this._atomPatterns.push(atom);
+            finalPatterns.push(atom);
+          } else if (this._isPrefix(pattern2)) {
             const name2 = this._extractName(pattern2);
-            const tail = this._extractRecursiveTail(pattern2);
-            tail.parent = this;
-            this._recursivePatterns.push(tail);
-            this._recursiveNames.push(name2);
-            this._endsInRecursion.push(this._endsWithRecursion(pattern2));
-            finalPatterns.push(tail);
-          } else {
-            const clone2 = pattern2.clone();
+            const prefix = this._extractPrefix(pattern2);
+            prefix.parent = this;
+            this._prefixPatterns.push(prefix);
+            this._prefixNames.push(name2);
+            finalPatterns.push(prefix);
+          } else if (this._isPostfix(pattern2)) {
+            const name2 = this._extractName(pattern2);
+            const postfix = this._extractPostfix(pattern2);
+            postfix.parent = this;
+            this._postfixPatterns.push(postfix);
+            this._postfixNames.push(name2);
+            finalPatterns.push(postfix);
+          } else if (this._isBinary(pattern2)) {
+            const name2 = this._extractName(pattern2);
+            const clone2 = this._extractBinary(pattern2);
             clone2.parent = this;
-            this._atomPatterns.push(clone2);
+            this._precedenceMap[name2] = this._binaryPatterns.length;
+            this._binaryPatterns.push(clone2);
+            this._binaryNames.push(name2);
+            if (pattern2.type === "right-associated") {
+              this.associationMap[name2] = Association.right;
+            } else {
+              this.associationMap[name2] = Association.left;
+            }
             finalPatterns.push(clone2);
           }
         });
         return finalPatterns;
-      }
-      _isBinary(pattern2) {
-        if (pattern2.type === "right-associated" && this._isBinaryPattern(pattern2.children[0])) {
-          return true;
-        }
-        return this._isBinaryPattern(pattern2);
-      }
-      _isBinaryPattern(pattern2) {
-        return pattern2.type === "sequence" && pattern2.children.length === 3 && pattern2.children[0].type === "reference" && pattern2.children[0].name === this.name && pattern2.children[2].type === "reference" && pattern2.children[2].name === this.name;
-      }
-      _extractDelimiter(pattern2) {
-        if (pattern2.type === "right-associated") {
-          return pattern2.children[0].children[1];
-        }
-        return pattern2.children[1];
       }
       _extractName(pattern2) {
         if (pattern2.type === "right-associated") {
@@ -34103,42 +34067,64 @@ var require_index_001 = __commonJS({
         }
         return pattern2.name;
       }
-      _isUnary(pattern2) {
-        if (pattern2.type === "right-associated" && this._isUnaryPattern(pattern2.children[0])) {
-          return true;
-        }
-        return this._isUnaryPattern(pattern2);
-      }
-      _isUnaryPattern(pattern2) {
-        return pattern2.type === "sequence" && pattern2.children[0].type !== "reference" && pattern2.children[0].name !== this.name && pattern2.children[1].type === "reference" && pattern2.children[1].name === this.name && pattern2.children.length === 2;
-      }
-      _extractUnaryPrefixPattern(pattern2) {
-        if (pattern2.type === "right-associated") {
-          return pattern2.children[0].children[0];
-        }
-        return pattern2.children[0];
-      }
-      _isRecursive(pattern2) {
-        if (pattern2.type === "right-associated" && this._isRecursivePattern(pattern2.children[0])) {
-          return true;
-        }
-        return this._isRecursivePattern(pattern2);
-      }
-      _isRecursivePattern(pattern2) {
-        return pattern2.type === "sequence" && pattern2.children[0].type === "reference" && pattern2.children[0].name === this.name && pattern2.children.length > 2;
-      }
-      _extractRecursiveTail(pattern2) {
-        if (pattern2.type === "right-associated") {
-          return new Sequence(`${pattern2.children[0].name}-tail`, pattern2.children[0].children.slice(1));
-        }
-        return new Sequence(`${pattern2.name}-tail`, pattern2.children.slice(1));
-      }
-      _endsWithRecursion(pattern2) {
-        if (pattern2.type === "right-associated") {
-          pattern2 = pattern2.children[0];
-        }
+      _isPrefix(pattern2) {
+        pattern2 = this._unwrapAssociationIfNecessary(pattern2);
         const lastChild = pattern2.children[pattern2.children.length - 1];
-        return pattern2.type === "sequence" && pattern2.children.length > 1 && lastChild.type === "reference" && lastChild.name === this.name;
+        const referenceCount = this._referenceCount(pattern2);
+        const lastChildIsReference = this._isRecursiveReference(lastChild);
+        return lastChildIsReference && referenceCount === 1;
+      }
+      _extractPrefix(pattern2) {
+        pattern2 = this._unwrapAssociationIfNecessary(pattern2);
+        return new Sequence(`${pattern2.name}-prefix`, pattern2.children.slice(0, -1));
+      }
+      _isAtom(pattern2) {
+        pattern2 = this._unwrapAssociationIfNecessary(pattern2);
+        const firstChild = pattern2.children[0];
+        const lastChild = pattern2.children[1];
+        const firstChildIsReference = this._isRecursiveReference(firstChild);
+        const lastChildIsReference = this._isRecursiveReference(lastChild);
+        return !firstChildIsReference && !lastChildIsReference;
+      }
+      _isPostfix(pattern2) {
+        pattern2 = this._unwrapAssociationIfNecessary(pattern2);
+        const firstChild = pattern2.children[0];
+        const referenceCount = this._referenceCount(pattern2);
+        const firstChildIsReference = this._isRecursiveReference(firstChild);
+        return firstChildIsReference && referenceCount === 1;
+      }
+      _extractPostfix(pattern2) {
+        pattern2 = this._unwrapAssociationIfNecessary(pattern2);
+        return new Sequence(`${pattern2.name}-postfix`, pattern2.children.slice(1));
+      }
+      _isBinary(pattern2) {
+        pattern2 = this._unwrapAssociationIfNecessary(pattern2);
+        const firstChild = pattern2.children[0];
+        const lastChild = pattern2.children[pattern2.children.length - 1];
+        const firstChildIsReference = this._isRecursiveReference(firstChild);
+        const lastChildIsReference = this._isRecursiveReference(lastChild);
+        return firstChildIsReference && lastChildIsReference && pattern2.children.length > 2;
+      }
+      _extractBinary(pattern2) {
+        pattern2 = this._unwrapAssociationIfNecessary(pattern2);
+        const children2 = pattern2.children.slice(1, -1);
+        const binarySequence = new Sequence(`${pattern2.name}-delimiter`, children2);
+        return binarySequence;
+      }
+      _unwrapAssociationIfNecessary(pattern2) {
+        if (pattern2.type === "right-associated") {
+          return pattern2.children[0];
+        }
+        return pattern2;
+      }
+      _referenceCount(pattern2) {
+        return pattern2.children.filter((p) => this._isRecursiveReference(p)).length;
+      }
+      _isRecursiveReference(pattern2) {
+        if (pattern2 == null) {
+          return false;
+        }
+        return pattern2.type === "reference" && pattern2.name === this.name;
       }
       parse(cursor) {
         this._firstIndex = cursor.index;
@@ -34147,210 +34133,135 @@ var require_index_001 = __commonJS({
           node.normalize(this._firstIndex);
           cursor.moveTo(node.lastIndex);
           cursor.resolveError();
-          this._compactResult(node);
           return node;
         }
         cursor.recordErrorAt(this._firstIndex, this._firstIndex, this);
         return null;
-      }
-      _compactResult(node) {
-        if (node == null) {
-          return;
-        }
-        if (this.shouldCompactAst) {
-          node.compact();
-          return;
-        }
-        const isCompactingNeeded = Object.values(this._shouldCompactPatternsMap).some((p) => p);
-        if (isCompactingNeeded) {
-          node.walkBreadthFirst((n) => {
-            if (this._shouldCompactPatternsMap[n.name]) {
-              n.compact();
-            }
-          });
-        }
       }
       _tryToParse(cursor) {
         if (this._isBeyondRecursiveAllowance()) {
           cursor.recordErrorAt(this._firstIndex, this._firstIndex, this);
           return null;
         }
-        let lastAtomNode = null;
-        let lastBinaryNode = null;
-        let onIndex = cursor.index;
-        outer: while (true) {
+        this._shouldStopParsing = false;
+        while (true) {
           cursor.resolveError();
-          onIndex = cursor.index;
-          let prefix = null;
-          let prefixName = "";
-          for (let i2 = 0; i2 < this._unaryPrefixPatterns.length; i2++) {
-            cursor.moveTo(onIndex);
-            const pattern2 = this._unaryPrefixPatterns[i2];
-            const node = pattern2.parse(cursor);
-            if (node != null) {
-              prefix = node;
-              prefixName = this._unaryPrefixNames[i2];
-              if (cursor.hasNext()) {
-                cursor.next();
-              } else {
-                break outer;
-              }
-              break;
-            } else {
-              cursor.resolveError();
-            }
-          }
-          onIndex = cursor.index;
-          for (let i2 = 0; i2 < this._atomPatterns.length; i2++) {
-            cursor.moveTo(onIndex);
-            const pattern2 = this._atomPatterns[i2];
-            const node = pattern2.parse(cursor);
-            if (node != null) {
-              lastAtomNode = node;
-              break;
-            } else {
-              lastAtomNode = null;
-              cursor.resolveError();
-            }
-          }
-          if (lastAtomNode == null) {
+          this._tryToMatchPrefix(cursor);
+          if (this._shouldStopParsing) {
             break;
           }
-          if (cursor.hasNext()) {
-            cursor.next();
+          this._tryToMatchAtom(cursor);
+          if (this._shouldStopParsing) {
+            break;
+          }
+          this._tryToMatchPostfix(cursor);
+          if (this._shouldStopParsing) {
+            break;
+          }
+          if (this._precedenceTree.hasAtom()) {
+            this._tryToMatchBinary(cursor);
+            if (this._shouldStopParsing) {
+              break;
+            }
           } else {
-            if (lastBinaryNode != null && lastAtomNode != null) {
-              if (prefix != null) {
-                lastAtomNode = createNode(prefixName, [prefix, lastAtomNode]);
-              }
-              lastBinaryNode.appendChild(lastAtomNode);
-            }
-            break;
-          }
-          onIndex = cursor.index;
-          if (prefix != null && this._recursivePatterns.length === 0) {
-            lastAtomNode = createNode(prefixName, [prefix, lastAtomNode]);
-          }
-          for (let i2 = 0; i2 < this._recursivePatterns.length; i2++) {
-            const pattern2 = this._recursivePatterns[i2];
-            const node = pattern2.parse(cursor);
-            if (node != null) {
-              const name2 = this._recursiveNames[i2];
-              if (this._endsInRecursion[i2]) {
-                if (lastBinaryNode != null && lastAtomNode != null) {
-                  if (prefix != null) {
-                    lastAtomNode = createNode(prefixName, [prefix, lastAtomNode]);
-                  }
-                  lastBinaryNode.appendChild(lastAtomNode);
-                }
-                const frontExpression = lastBinaryNode == null ? lastAtomNode : lastBinaryNode.findRoot();
-                const recursiveNode = createNode(name2, [frontExpression, ...node.children]);
-                return recursiveNode;
-              } else {
-                if (prefix != null) {
-                  lastAtomNode = createNode(prefixName, [prefix, lastAtomNode]);
-                }
-                const recursiveNode = createNode(name2, [lastAtomNode, ...node.children]);
-                lastAtomNode = recursiveNode;
-                if (cursor.hasNext()) {
-                  cursor.next();
-                } else {
-                  if (lastBinaryNode != null && lastAtomNode != null) {
-                    lastBinaryNode.appendChild(lastAtomNode);
-                  }
-                  break outer;
-                }
-                onIndex = cursor.index;
-                i2 = -1;
-                continue;
-              }
-            }
-            cursor.resolveError();
-            cursor.moveTo(onIndex);
-          }
-          onIndex = cursor.index;
-          for (let i2 = 0; i2 < this._binaryPatterns.length; i2++) {
-            cursor.resolveError();
-            cursor.moveTo(onIndex);
-            const pattern2 = this._binaryPatterns[i2];
-            const name2 = this._binaryNames[i2];
-            const delimiterNode = pattern2.parse(cursor);
-            if (delimiterNode == null) {
-              if (i2 === this._binaryPatterns.length - 1) {
-                if (lastBinaryNode == null) {
-                  return lastAtomNode;
-                } else if (lastAtomNode != null) {
-                  lastBinaryNode.appendChild(lastAtomNode);
-                }
-              }
-              continue;
-            }
-            if (lastBinaryNode == null && lastAtomNode != null && delimiterNode != null) {
-              const node = createNode(name2, [lastAtomNode, delimiterNode]);
-              lastBinaryNode = node;
-            } else if (lastBinaryNode != null && lastAtomNode != null && delimiterNode != null) {
-              const precedence = this._precedenceMap[name2];
-              const lastPrecendece = lastBinaryNode == null ? 0 : this._precedenceMap[lastBinaryNode.name] == null ? -1 : this._precedenceMap[lastBinaryNode.name];
-              const association = this._binaryAssociation[i2];
-              if (precedence === lastPrecendece && association === Association.right) {
-                const node = createNode(name2, [lastAtomNode, delimiterNode]);
-                lastBinaryNode.appendChild(node);
-                lastBinaryNode = node;
-              } else if (precedence === lastPrecendece) {
-                const node = createNode(name2, []);
-                lastBinaryNode.replaceWith(node);
-                lastBinaryNode.appendChild(lastAtomNode);
-                node.append(lastBinaryNode, delimiterNode);
-                lastBinaryNode = node;
-              } else if (precedence > lastPrecendece) {
-                let ancestor = lastBinaryNode.parent;
-                let root2 = lastBinaryNode;
-                while (ancestor != null) {
-                  const nodePrecedence = this._precedenceMap[ancestor.name];
-                  if (nodePrecedence > precedence) {
-                    break;
-                  }
-                  root2 = ancestor;
-                  ancestor = ancestor.parent;
-                }
-                lastBinaryNode.appendChild(lastAtomNode);
-                if (root2 != null) {
-                  const node = createNode(name2, []);
-                  root2.replaceWith(node);
-                  node.append(root2, delimiterNode);
-                  lastBinaryNode = node;
-                } else {
-                  const node = createNode(name2, [lastAtomNode, delimiterNode]);
-                  lastBinaryNode = node;
-                }
-              } else {
-                const node = createNode(name2, [lastAtomNode, delimiterNode]);
-                lastBinaryNode.appendChild(node);
-                lastBinaryNode = node;
-              }
-            }
-            if (cursor.hasNext()) {
-              cursor.next();
-            } else {
-              break outer;
-            }
-            break;
-          }
-          if (lastBinaryNode == null) {
             break;
           }
         }
-        if (lastBinaryNode == null) {
-          return lastAtomNode;
-        } else {
-          const root2 = lastBinaryNode.findAncestor((n) => n.parent == null) || lastBinaryNode;
-          if (lastBinaryNode.children.length < 3) {
-            lastBinaryNode.remove();
-            if (lastBinaryNode === root2) {
-              return lastAtomNode;
+        return this._precedenceTree.commit();
+      }
+      _tryToMatchPrefix(cursor) {
+        let onIndex = cursor.index;
+        for (let i2 = 0; i2 < this._prefixPatterns.length; i2++) {
+          const pattern2 = this._prefixPatterns[i2];
+          const name2 = this._prefixNames[i2];
+          const node = pattern2.parse(cursor);
+          if (node != null) {
+            this._precedenceTree.addPrefix(name2, ...node.children);
+            if (cursor.hasNext()) {
+              cursor.next();
+              onIndex = cursor.index;
+              i2 = -1;
+              continue;
+            } else {
+              this._shouldStopParsing = true;
+              break;
             }
+          } else {
+            cursor.moveTo(onIndex);
+            cursor.resolveError();
           }
-          return root2;
+        }
+      }
+      _tryToMatchAtom(cursor) {
+        let onIndex = cursor.index;
+        for (let i2 = 0; i2 < this._atomPatterns.length; i2++) {
+          cursor.moveTo(onIndex);
+          const pattern2 = this._atomPatterns[i2];
+          const node = pattern2.parse(cursor);
+          if (node != null) {
+            this._precedenceTree.addAtom(node);
+            if (cursor.hasNext()) {
+              cursor.next();
+            } else {
+              this._shouldStopParsing = true;
+            }
+            break;
+          } else {
+            cursor.resolveError();
+            cursor.moveTo(onIndex);
+          }
+        }
+      }
+      _tryToMatchPostfix(cursor) {
+        let onIndex = cursor.index;
+        for (let i2 = 0; i2 < this._postfixPatterns.length; i2++) {
+          const pattern2 = this._postfixPatterns[i2];
+          const name2 = this._postfixNames[i2];
+          const node = pattern2.parse(cursor);
+          if (node != null) {
+            this._precedenceTree.addPostfix(name2, ...node.children);
+            if (cursor.hasNext()) {
+              cursor.next();
+              onIndex = cursor.index;
+              i2 = -1;
+              continue;
+            } else {
+              this._shouldStopParsing = true;
+              break;
+            }
+          } else {
+            cursor.moveTo(onIndex);
+            cursor.resolveError();
+          }
+        }
+      }
+      _tryToMatchBinary(cursor) {
+        let onIndex = cursor.index;
+        let foundMatch = false;
+        if (this.binaryPatterns.length === 0) {
+          this._shouldStopParsing = true;
+        }
+        for (let i2 = 0; i2 < this._binaryPatterns.length; i2++) {
+          cursor.moveTo(onIndex);
+          const pattern2 = this._binaryPatterns[i2];
+          const name2 = this._binaryNames[i2];
+          const node = pattern2.parse(cursor);
+          if (node != null) {
+            foundMatch = true;
+            this._precedenceTree.addBinary(name2, ...node.children);
+            if (cursor.hasNext()) {
+              cursor.next();
+            } else {
+              this._shouldStopParsing = true;
+            }
+            break;
+          } else {
+            cursor.resolveError();
+            cursor.moveTo(onIndex);
+          }
+        }
+        if (!foundMatch) {
+          this._shouldStopParsing = true;
         }
       }
       _isBeyondRecursiveAllowance() {
@@ -34367,40 +34278,16 @@ var require_index_001 = __commonJS({
         }
         return false;
       }
-      test(text) {
-        const cursor = new Cursor$1(text);
-        const ast = this.parse(cursor);
-        return (ast === null || ast === void 0 ? void 0 : ast.value) === text;
+      test(text, record = false) {
+        return testPattern(this, text, record);
       }
       exec(text, record = false) {
-        const cursor = new Cursor$1(text);
-        record && cursor.startRecording();
-        const ast = this.parse(cursor);
-        return {
-          ast: (ast === null || ast === void 0 ? void 0 : ast.value) === text ? ast : null,
-          cursor
-        };
+        return execPattern(this, text, record);
       }
       getTokens() {
         return this.atomPatterns.map((p) => p.getTokens()).flat();
       }
-      getTokensAfter(childReference) {
-        if (this.atomPatterns.indexOf(childReference)) {
-          const recursiveTokens = this._recursivePatterns.map((p) => p.getTokens()).flat();
-          const binaryTokens = this._binaryPatterns.map((p) => p.getTokens()).flat();
-          return [...recursiveTokens, ...binaryTokens];
-        }
-        if (this.recursivePatterns.indexOf(childReference)) {
-          return this._binaryPatterns.map((p) => p.getTokens()).flat();
-        }
-        if (this.binaryPatterns.indexOf(childReference)) {
-          const unaryTokens = this._atomPatterns.map((p) => p.getTokens()).flat();
-          if (this._parent != null) {
-            const nextTokens = this._parent.getTokensAfter(this);
-            return [...unaryTokens, ...nextTokens];
-          }
-          return unaryTokens;
-        }
+      getTokensAfter(_childReference) {
         return [];
       }
       getNextTokens() {
@@ -34412,23 +34299,7 @@ var require_index_001 = __commonJS({
       getPatterns() {
         return this.atomPatterns.map((p) => p.getPatterns()).flat();
       }
-      getPatternsAfter(childReference) {
-        if (this.atomPatterns.indexOf(childReference)) {
-          const recursivePatterns = this._recursivePatterns.map((p) => p.getPatterns()).flat();
-          const binaryPatterns = this._binaryPatterns.map((p) => p.getPatterns()).flat();
-          return [...recursivePatterns, ...binaryPatterns];
-        }
-        if (this.recursivePatterns.indexOf(childReference)) {
-          return this._binaryPatterns.map((p) => p.getPatterns()).flat();
-        }
-        if (this.binaryPatterns.indexOf(childReference)) {
-          const unaryPatterns = this._atomPatterns.map((p) => p.getPatterns()).flat();
-          if (this._parent != null) {
-            const nextPatterns = this._parent.getPatternsAfter(this);
-            return [...unaryPatterns, ...nextPatterns];
-          }
-          return unaryPatterns;
-        }
+      getPatternsAfter(_childReference) {
         return [];
       }
       getNextPatterns() {
@@ -34443,7 +34314,6 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         const clone2 = new ExpressionPattern(name2, this._originalPatterns);
         clone2._id = this._id;
-        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       isEqual(pattern2) {
@@ -34613,13 +34483,9 @@ var require_index_001 = __commonJS({
       }
       _saveOptions(statementNode) {
         const nameNode = statementNode.find((n) => n.name === "name");
-        const shouldCompactAst = statementNode.find((n) => n.name === "compact");
         const name2 = nameNode.value;
         const optionsNode = statementNode.find((n) => n.name === "options-literal");
         const options = this._buildOptions(name2, optionsNode);
-        if (shouldCompactAst != null) {
-          options.shouldCompactAst = true;
-        }
         this._parseContext.patternsByName.set(name2, options);
       }
       _buildOptions(name2, node) {
@@ -34676,13 +34542,9 @@ var require_index_001 = __commonJS({
       }
       _saveSequence(statementNode) {
         const nameNode = statementNode.find((n) => n.name === "name");
-        const shouldCompactAst = statementNode.find((n) => n.name === "compact");
         const name2 = nameNode.value;
         const sequenceNode = statementNode.find((n) => n.name === "sequence-literal");
         const sequence = this._buildSequence(name2, sequenceNode);
-        if (shouldCompactAst != null) {
-          sequence.shouldCompactAst = true;
-        }
         this._parseContext.patternsByName.set(name2, sequence);
       }
       _buildSequence(name2, node) {
@@ -34702,13 +34564,9 @@ var require_index_001 = __commonJS({
       }
       _saveRepeat(statementNode) {
         const nameNode = statementNode.find((n) => n.name === "name");
-        const shouldCompactAst = statementNode.find((n) => n.name === "compact");
         const name2 = nameNode.value;
         const repeatNode = statementNode.find((n) => n.name === "repeat-literal");
         const repeat = this._buildRepeat(name2, repeatNode);
-        if (shouldCompactAst != null) {
-          repeat.shouldCompactAst = true;
-        }
         this._parseContext.patternsByName.set(name2, repeat);
       }
       _buildRepeat(name2, repeatNode) {
@@ -34853,14 +34711,10 @@ var require_index_001 = __commonJS({
       }
       _saveAlias(statementNode) {
         const nameNode = statementNode.find((n) => n.name === "name");
-        const shouldCompactAst = statementNode.find((n) => n.name === "compact");
         const aliasNode = statementNode.find((n) => n.name === "alias-literal");
         const aliasName = aliasNode.value;
         const name2 = nameNode.value;
         const alias = this._getPattern(aliasName).clone(name2);
-        if (shouldCompactAst != null) {
-          alias.shouldCompactAst = true;
-        }
         this._parseContext.patternsByName.set(name2, alias);
       }
       static parse(expression, options) {
@@ -46241,4 +46095,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-Cpvi3FLL.js.map
+//# sourceMappingURL=index-kl86TYuE.js.map
