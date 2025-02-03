@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-BNanYDwp.js"(exports, module) {
+  "assets/index-B_4FF_0s.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -33825,9 +33825,10 @@ var require_index_001 = __commonJS({
         this._binaryPlaceholder = Node$1.createNode("placeholder", "binary-placeholder");
         this._atomNode = null;
         this._binaryNode = null;
-        this._orphanedAtom = null;
         this._precedenceMap = precedenceMap;
         this._associationMap = associationMap;
+        this._revertBinary = () => {
+        };
       }
       addPrefix(name2, ...prefix) {
         const lastPrefixNode = this._prefixNode;
@@ -33862,21 +33863,33 @@ var require_index_001 = __commonJS({
           throw new Error("Cannot add a binary without an atom node.");
         }
         this._binaryPlaceholder.remove();
-        this._orphanedAtom = lastAtomNode;
         if (lastBinaryNode == null) {
           const node = Node$1.createNode("expression", name2, [lastAtomNode, ...delimiterNode, this._binaryPlaceholder]);
           this._binaryNode = node;
+          this._revertBinary = () => {
+            lastAtomNode.remove();
+            this._binaryNode = lastAtomNode;
+          };
           return;
         }
         if (precedence === lastPrecendece && association === Association.right) {
           const node = Node$1.createNode("expression", name2, [lastAtomNode, ...delimiterNode, this._binaryPlaceholder]);
           lastBinaryNode.appendChild(node);
+          this._revertBinary = () => {
+            node.replaceWith(lastAtomNode);
+            this._binaryNode = lastBinaryNode;
+          };
           this._binaryNode = node;
         } else if (precedence === lastPrecendece) {
           const node = Node$1.createNode("expression", name2, []);
           lastBinaryNode.replaceWith(node);
           lastBinaryNode.appendChild(lastAtomNode);
           node.append(lastBinaryNode, ...delimiterNode, this._binaryPlaceholder);
+          this._revertBinary = () => {
+            lastBinaryNode.remove();
+            node.replaceWith(lastBinaryNode);
+            this._binaryNode = lastBinaryNode;
+          };
           this._binaryNode = node;
         } else if (precedence > lastPrecendece) {
           let ancestor = lastBinaryNode.parent;
@@ -33893,10 +33906,20 @@ var require_index_001 = __commonJS({
           const node = Node$1.createNode("expression", name2, []);
           root2.replaceWith(node);
           node.append(root2, ...delimiterNode, this._binaryPlaceholder);
+          this._revertBinary = () => {
+            root2.remove();
+            node.replaceWith(root2);
+            this._binaryNode = root2;
+          };
           this._binaryNode = node;
         } else {
           const node = Node$1.createNode("expression", name2, [lastAtomNode, ...delimiterNode, this._binaryPlaceholder]);
           lastBinaryNode.appendChild(node);
+          this._revertBinary = () => {
+            lastAtomNode.remove();
+            node.replaceWith(lastAtomNode);
+            this._binaryNode = lastBinaryNode;
+          };
           this._binaryNode = node;
         }
       }
@@ -33937,14 +33960,13 @@ var require_index_001 = __commonJS({
         return this._atomNode != null;
       }
       commit() {
-        var _a2;
         if (this._binaryNode == null) {
           return this._compileAtomNode();
         }
         const atomNode = this._compileAtomNode();
         if (atomNode == null) {
-          let root2 = this._binaryPlaceholder.findRoot();
-          (_a2 = this._binaryPlaceholder.parent) === null || _a2 === void 0 ? void 0 : _a2.replaceWith(this._orphanedAtom);
+          this._revertBinary();
+          let root2 = this._binaryNode.findRoot();
           this.reset();
           return root2;
         } else {
@@ -33957,7 +33979,6 @@ var require_index_001 = __commonJS({
       reset() {
         this._prefixNode = null;
         this._atomNode = null;
-        this._orphanedAtom = null;
         this._postfixNode = null;
         this._binaryNode = null;
       }
@@ -46191,4 +46212,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-BNanYDwp.js.map
+//# sourceMappingURL=index-B_4FF_0s.js.map
