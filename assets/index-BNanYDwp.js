@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-kl86TYuE.js"(exports, module) {
+  "assets/index-BNanYDwp.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -33269,7 +33269,10 @@ var require_index_001 = __commonJS({
     const sequenceLiteral = new Repeat("sequence-literal", pattern$1, { divider: divider$1, min: 2, trimDivider: true });
     const patternName = name$1.clone("pattern-name");
     patternName.setTokens(["[PATTERN_NAME]"]);
-    const patterns$1 = new Options("options-patterns", [patternName, anonymousPattern]);
+    const patterns$1 = new Sequence("patterns", [
+      new Options("options-patterns", [patternName, anonymousPattern]),
+      new Optional("optional-right-associated", new Literal("right-associated", " right"))
+    ]);
     const defaultDivider = new Regex("default-divider", "\\s*[|]\\s*");
     defaultDivider.setTokens(["|"]);
     const greedyDivider = new Regex("greedy-divider", "\\s*[<][|][>]\\s*");
@@ -33746,7 +33749,6 @@ var require_index_001 = __commonJS({
         return Object.assign({}, this._patterns);
       }
       constructor(name2, pattern2, context = []) {
-        this.shouldCompactAst = false;
         this._id = `context-${contextId++}`;
         this._type = "context";
         this._name = name2;
@@ -33770,7 +33772,6 @@ var require_index_001 = __commonJS({
       clone(name2 = this._name) {
         const clone2 = new Context(name2, this._pattern, Object.values(this._patterns));
         clone2._id = this._id;
-        clone2.shouldCompactAst = this.shouldCompactAst;
         return clone2;
       }
       getTokens() {
@@ -33914,7 +33915,7 @@ var require_index_001 = __commonJS({
       _compileAtomNode() {
         let node = this._atomNode;
         if (this._prefixNode != null && this._atomNode != null) {
-          node = this._prefixNode;
+          node = this._prefixNode.findRoot();
           this._prefixPlaceholder.replaceWith(this._atomNode);
         }
         if (this._postfixNode != null && node != null) {
@@ -33961,7 +33962,7 @@ var require_index_001 = __commonJS({
         this._binaryNode = null;
       }
     }
-    let indexId = 0;
+    let indexId$1 = 0;
     class ExpressionPattern {
       get id() {
         return this._id;
@@ -34000,7 +34001,7 @@ var require_index_001 = __commonJS({
         if (patterns.length === 0) {
           throw new Error("Need at least one pattern with an 'expression' pattern.");
         }
-        this._id = `expression-${indexId++}`;
+        this._id = `expression-${indexId$1++}`;
         this._type = "expression";
         this._name = name2;
         this._parent = null;
@@ -34135,6 +34136,7 @@ var require_index_001 = __commonJS({
           cursor.resolveError();
           return node;
         }
+        cursor.moveTo(this._firstIndex);
         cursor.recordErrorAt(this._firstIndex, this._firstIndex, this);
         return null;
       }
@@ -34256,8 +34258,8 @@ var require_index_001 = __commonJS({
             }
             break;
           } else {
-            cursor.resolveError();
             cursor.moveTo(onIndex);
+            cursor.resolveError();
           }
         }
         if (!foundMatch) {
@@ -34315,6 +34317,87 @@ var require_index_001 = __commonJS({
         const clone2 = new ExpressionPattern(name2, this._originalPatterns);
         clone2._id = this._id;
         return clone2;
+      }
+      isEqual(pattern2) {
+        return pattern2.type === this.type && this.children.every((c, index) => c.isEqual(pattern2.children[index]));
+      }
+    }
+    let indexId = 0;
+    class RightAssociatedPattern {
+      get id() {
+        return this._id;
+      }
+      get type() {
+        return this._type;
+      }
+      get name() {
+        return this._name;
+      }
+      get parent() {
+        return this._parent;
+      }
+      set parent(pattern2) {
+        this._parent = pattern2;
+      }
+      get children() {
+        return this._children;
+      }
+      get startedOnIndex() {
+        return this._children[0].startedOnIndex;
+      }
+      constructor(pattern2) {
+        this._id = `right-associated-${indexId++}`;
+        this._type = "right-associated";
+        this._name = "";
+        this._parent = null;
+        this._children = [pattern2.clone()];
+      }
+      parse(cursor) {
+        return this.children[0].parse(cursor);
+      }
+      exec(text, record) {
+        return this.children[0].exec(text, record);
+      }
+      test(text, record) {
+        return this.children[0].test(text, record);
+      }
+      clone(_name) {
+        const clone2 = new RightAssociatedPattern(this.children[0]);
+        clone2._id = this._id;
+        return clone2;
+      }
+      getTokens() {
+        return this.children[0].getTokens();
+      }
+      getTokensAfter(_childReference) {
+        if (this._parent == null) {
+          return [];
+        }
+        return this._parent.getTokensAfter(this);
+      }
+      getNextTokens() {
+        if (this._parent == null) {
+          return [];
+        }
+        return this._parent.getTokensAfter(this);
+      }
+      getPatterns() {
+        return this.children[0].getPatterns();
+      }
+      getPatternsAfter(_childReference) {
+        if (this._parent == null) {
+          return [];
+        }
+        return this._parent.getPatternsAfter(this);
+      }
+      getNextPatterns() {
+        if (this._parent == null) {
+          return [];
+        }
+        return this._parent.getPatternsAfter(this);
+      }
+      find(predicate) {
+        return this.children[0].find(predicate);
       }
       isEqual(pattern2) {
         return pattern2.type === this.type && this.children.every((c, index) => c.isEqual(pattern2.children[index]));
@@ -34491,7 +34574,14 @@ var require_index_001 = __commonJS({
       _buildOptions(name2, node) {
         const patternNodes2 = node.children.filter((n) => n.name !== "default-divider" && n.name !== "greedy-divider");
         const isGreedy = node.find((n) => n.name === "greedy-divider") != null;
-        const patterns = patternNodes2.map((n) => this._buildPattern(n));
+        const patterns = patternNodes2.map((n) => {
+          const rightAssociated = n.find((n2) => n2.name === "right-associated");
+          if (rightAssociated != null) {
+            return new RightAssociatedPattern(this._buildPattern(n.children[0]));
+          } else {
+            return this._buildPattern(n.children[0]);
+          }
+        });
         const hasRecursivePattern = patterns.some((p) => this._isRecursive(name2, p));
         if (hasRecursivePattern && !isGreedy) {
           try {
@@ -34510,7 +34600,13 @@ var require_index_001 = __commonJS({
         return this._isRecursivePattern(name2, pattern2);
       }
       _isRecursivePattern(name2, pattern2) {
-        return pattern2.type === "sequence" && pattern2.children[0].type === "reference" && pattern2.children[0].name === name2 && pattern2.children.length > 2;
+        if (pattern2.children.length === 0) {
+          return false;
+        }
+        const firstChild = pattern2.children[0];
+        const lastChild = pattern2.children[pattern2.children.length - 1];
+        const isLongEnough = pattern2.children.length >= 2;
+        return pattern2.type === "sequence" && isLongEnough && (firstChild.type === "reference" && firstChild.name === name2) || lastChild.type === "reference" && lastChild.name === name2;
       }
       _buildPattern(node) {
         const type = node.name;
@@ -46095,4 +46191,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-kl86TYuE.js.map
+//# sourceMappingURL=index-BNanYDwp.js.map
