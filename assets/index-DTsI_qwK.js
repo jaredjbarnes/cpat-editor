@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-Cf589W5W.js"(exports, module) {
+  "assets/index-DTsI_qwK.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -23486,20 +23486,34 @@ var require_index_001 = __commonJS({
     }
     function TestEditor({ presenter: presenter2 }) {
       const patterns = useSignalValue(presenter2.patternsBroadcast);
-      const selectedPatternName = useSignalValue(presenter2.selectedPatternBroadcast);
+      const selectedPatternName = useSignalValue(
+        presenter2.selectedPatternBroadcast
+      );
       const options = Object.keys(patterns).map((key, index) => {
         return /* @__PURE__ */ jsxRuntimeExports.jsx("option", { children: key }, index);
       });
+      const parseDuration = useSignalValue(presenter2.parseDurationBroadcast);
       function selectPattern(value2) {
         presenter2.selectPattern(value2);
       }
-      options.unshift(/* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "null", children: "-- Choose Pattern To Test --" }, "null"));
+      options.unshift(
+        /* @__PURE__ */ jsxRuntimeExports.jsx("option", { value: "null", children: "-- Choose Pattern To Test --" }, "null")
+      );
       reactExports.useLayoutEffect(() => {
         presenter2.initialize();
       }, [presenter2]);
-      return /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Select, { value: String(selectedPatternName), onChange: selectPattern, children: options }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(TextEditor, { presenter: presenter2.textEditor }) })
+      return /* @__PURE__ */ jsxRuntimeExports.jsxs(ZStack, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Select, { value: String(selectedPatternName), onChange: selectPattern, children: options }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(FlexBox, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(TextEditor, { presenter: presenter2.textEditor }) })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(VStack, { style: { pointerEvents: "none" }, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, {}),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(HStack, { height: "auto", padding: "8px", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(BodyText, { variant: "small", children: `Parse Time: ${parseDuration}ms` }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Spacer, { width: "150px" })
+          ] })
+        ] })
       ] });
     }
     function GrammarEditor({ presenter: presenter2 }) {
@@ -44778,6 +44792,7 @@ ${escapeText(this.code(index, length))}
         __publicField(this, "_ast");
         __publicField(this, "_selectedPattern");
         __publicField(this, "_patterns");
+        __publicField(this, "_parseDuration");
         __publicField(this, "textEditor");
         this._options = options;
         this._astJson = new Signal("");
@@ -44785,6 +44800,7 @@ ${escapeText(this.code(index, length))}
         this._selectedPattern = new Signal(null);
         this._patterns = new Signal({});
         this.textEditor = new TextEditorPresenter();
+        this._parseDuration = new Signal(0);
       }
       get patternsBroadcast() {
         return this._patterns.broadcast;
@@ -44801,6 +44817,9 @@ ${escapeText(this.code(index, length))}
       get selectedPattern() {
         const name2 = this.selectedPatternBroadcast.get();
         return this._patterns.get()[String(name2)] || null;
+      }
+      get parseDurationBroadcast() {
+        return this._parseDuration.broadcast;
       }
       initialize() {
         this.textEditor.onChange((_d, _od, source) => {
@@ -44825,7 +44844,7 @@ ${escapeText(this.code(index, length))}
           try {
             const { ast, cursor } = editorPattern.exec(text, true);
             const parseDuration = performance.now() - startTime;
-            console.log("Test Parse Time: ", parseDuration);
+            this._parseDuration.set(parseDuration);
             if (ast != null) {
               const rootAst = ast.children[0];
               this._astJson.set(rootAst.toJson(2));
@@ -46246,4 +46265,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-Cf589W5W.js.map
+//# sourceMappingURL=index-DTsI_qwK.js.map
