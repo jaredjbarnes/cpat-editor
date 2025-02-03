@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DYvqsPct.js"(exports, module) {
+  "assets/index-DLYiWv7C.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -29293,7 +29293,7 @@ var require_index_001 = __commonJS({
         walk(finalAst, (n) => {
           if (n.children && n.children.length === 0) {
             n.name = n.value;
-          } else if (n.type !== "sequence" && !n.type.includes("repeat") && n.children && n.children.length === 1) {
+          } else if (n.type && n.type !== "sequence" && !n.type.includes("repeat") && n.children && n.children.length === 1) {
             n.name = n.value;
             n.children.length = 0;
           }
@@ -46265,4 +46265,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DYvqsPct.js.map
+//# sourceMappingURL=index-DLYiWv7C.js.map
