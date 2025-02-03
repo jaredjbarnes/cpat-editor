@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-B_4FF_0s.js"(exports, module) {
+  "assets/index-Cf589W5W.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -34034,12 +34034,12 @@ var require_index_001 = __commonJS({
         this._postfixNames = [];
         this._binaryPatterns = [];
         this._binaryNames = [];
-        this.associationMap = {};
+        this._associationMap = {};
         this._precedenceMap = {};
         this._originalPatterns = patterns;
         this._patterns = this._organizePatterns(patterns);
         this._shouldStopParsing = false;
-        this._precedenceTree = new PrecedenceTree(this._precedenceMap, this.associationMap);
+        this._precedenceTree = new PrecedenceTree(this._precedenceMap, this._associationMap);
         if (this._atomPatterns.length === 0) {
           throw new Error("Need at least one terminating pattern with an 'expression' pattern.");
         }
@@ -34074,9 +34074,9 @@ var require_index_001 = __commonJS({
             this._binaryPatterns.push(clone2);
             this._binaryNames.push(name2);
             if (pattern2.type === "right-associated") {
-              this.associationMap[name2] = Association.right;
+              this._associationMap[name2] = Association.right;
             } else {
-              this.associationMap[name2] = Association.left;
+              this._associationMap[name2] = Association.left;
             }
             finalPatterns.push(clone2);
           }
@@ -34310,7 +34310,24 @@ var require_index_001 = __commonJS({
       getTokens() {
         return this.atomPatterns.map((p) => p.getTokens()).flat();
       }
-      getTokensAfter(_childReference) {
+      getTokensAfter(childReference) {
+        if (this._prefixPatterns.includes(childReference) || this._binaryPatterns.includes(childReference)) {
+          const atomTokens = this._atomPatterns.map((p) => p.getTokens()).flat();
+          const prefixTokens = this.prefixPatterns.map((p) => p.getTokens()).flat();
+          return [...prefixTokens, ...atomTokens];
+        }
+        if (this._atomPatterns.includes(childReference)) {
+          const postfixTokens = this.prefixPatterns.map((p) => p.getTokens()).flat();
+          if (postfixTokens.length === 0) {
+            return this._binaryPatterns.map((p) => p.getTokens()).flat();
+          }
+          return postfixTokens;
+        }
+        if (this._postfixPatterns.includes(childReference)) {
+          const postfixTokens = this.postfixPatterns.map((p) => p.getTokens()).flat();
+          const binaryTokens = this._binaryPatterns.map((p) => p.getTokens()).flat();
+          return [...postfixTokens, ...binaryTokens];
+        }
         return [];
       }
       getNextTokens() {
@@ -34322,7 +34339,24 @@ var require_index_001 = __commonJS({
       getPatterns() {
         return this.atomPatterns.map((p) => p.getPatterns()).flat();
       }
-      getPatternsAfter(_childReference) {
+      getPatternsAfter(childReference) {
+        if (this._prefixPatterns.includes(childReference) || this._binaryPatterns.includes(childReference)) {
+          const atomPatterns = this._atomPatterns.map((p) => p.getPatterns()).flat();
+          const prefixPatterns = this.prefixPatterns.map((p) => p.getPatterns()).flat();
+          return [...prefixPatterns, ...atomPatterns];
+        }
+        if (this._atomPatterns.includes(childReference)) {
+          const postfixPatterns = this.prefixPatterns.map((p) => p.getPatterns()).flat();
+          if (postfixPatterns.length === 0) {
+            return this._binaryPatterns.map((p) => p.getPatterns()).flat();
+          }
+          return postfixPatterns;
+        }
+        if (this._postfixPatterns.includes(childReference)) {
+          const postfixPaterns = this.postfixPatterns.map((p) => p.getPatterns()).flat();
+          const binaryPatterns = this._binaryPatterns.map((p) => p.getPatterns()).flat();
+          return [...postfixPaterns, ...binaryPatterns];
+        }
         return [];
       }
       getNextPatterns() {
@@ -46212,4 +46246,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-B_4FF_0s.js.map
+//# sourceMappingURL=index-Cf589W5W.js.map
