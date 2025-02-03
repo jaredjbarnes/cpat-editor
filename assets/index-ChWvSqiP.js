@@ -6,7 +6,7 @@ var __commonJS = (cb, mod) => function __require() {
 };
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 var require_index_001 = __commonJS({
-  "assets/index-DLYiWv7C.js"(exports, module) {
+  "assets/index-ChWvSqiP.js"(exports, module) {
     var _a;
     (function polyfill2() {
       const relList = document.createElement("link").relList;
@@ -34117,7 +34117,7 @@ var require_index_001 = __commonJS({
       _isAtom(pattern2) {
         pattern2 = this._unwrapAssociationIfNecessary(pattern2);
         const firstChild = pattern2.children[0];
-        const lastChild = pattern2.children[1];
+        const lastChild = pattern2.children[pattern2.children.length - 1];
         const firstChildIsReference = this._isRecursiveReference(firstChild);
         const lastChildIsReference = this._isRecursiveReference(lastChild);
         return !firstChildIsReference && !lastChildIsReference;
@@ -46265,4 +46265,4 @@ ${escapeText(this.code(index, length))}
   }
 });
 export default require_index_001();
-//# sourceMappingURL=index-DLYiWv7C.js.map
+//# sourceMappingURL=index-ChWvSqiP.js.map
