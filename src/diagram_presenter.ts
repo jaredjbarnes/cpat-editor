@@ -3,6 +3,7 @@ import { Expression, Literal, Pattern, Reference, Regex } from "clarity-pattern-
 import "./railroad_diagrams/railroad.css";
 import { Choice, Diagram, OneOrMore, Terminal, Sequence, Optional, Group } from "./railroad_diagrams/railroad.js";
 import { generatePath } from "./debugger/step_generator.js";
+import { Position } from "@tcn/ui-core";
 
 const charMap: { [key: string]: string } = {
     '\r': "\\r",
@@ -23,6 +24,8 @@ export class DiagramPresenter {
     private _classNames: Map<string, string>;
     private _expandedPatternPaths: Map<string, boolean>;
     private _focusNodePath: Signal<string | null>;
+    private _scale: Signal<number>;
+    private _translate: Signal<Position>;
 
     get patterns() {
         return this._patterns.broadcast;
@@ -40,6 +43,14 @@ export class DiagramPresenter {
         return this._focusNodePath.broadcast;
     }
 
+    get scaleBroadcast() {
+        return this._scale.broadcast;
+    }
+
+    get translateBroadcast() {
+        return this._translate.broadcast;
+    }
+
     constructor() {
         this._patterns = new Signal({});
         this._viewingPatterns = new Signal<Pattern[]>([]);
@@ -47,6 +58,11 @@ export class DiagramPresenter {
         this._classNames = new Map();
         this._expandedPatternPaths = new Map();
         this._focusNodePath = new Signal<string | null>(null);
+        this._scale = new Signal(1);
+        this._translate = new Signal<Position>({
+            x: 0,
+            y: 0
+        });
     }
 
     private _buildDiagram(pattern: Pattern) {
@@ -293,35 +309,35 @@ export class DiagramPresenter {
                     const atomPatterns = expressionPattern.atomPatterns;
                     const postfixPatterns = expressionPattern.postfixPatterns;
                     const binaryPatterns = expressionPattern.binaryPatterns;
-    
+
                     const prefixChildren = prefixPatterns.map(p => this._buildPattern(p));
                     const atomChildren = atomPatterns.map(p => this._buildPattern(p));
                     const postfixChildren = postfixPatterns.map(p => this._buildPattern(p));
                     const binaryChildren = binaryPatterns.map(p => this._buildPattern(p));
-    
+
                     const children: any = [];
-    
+
                     if (prefixPatterns.length > 0) {
                         const prefixOptions = new Optional(new OneOrMore(new Choice(0, ...prefixChildren)));
                         children.push(prefixOptions);
                     }
-    
+
                     const atomOptions = new Choice(0, ...atomChildren);
                     children.push(atomOptions);
-    
+
                     if (postfixPatterns.length > 0) {
                         const postfixOptions = new Optional(new OneOrMore(new Choice(0, ...postfixChildren)));
                         children.push(postfixOptions);
                     }
-    
+
                     let expression: any = new Sequence(...children);
-    
+
                     if (binaryPatterns.length > 0) {
                         const binaryOptions = new Choice(0, ...binaryChildren);
                         expression = new OneOrMore(expression, binaryOptions);
                     }
-    
-                    expression.attrs.id = pattern.id;    
+
+                    expression.attrs.id = pattern.id;
 
                     const terminalOptions: any = {};
                     const classNames = this._classNames.get(path);
@@ -493,4 +509,15 @@ export class DiagramPresenter {
         this._focusNodePath.set(path);
     }
 
+    setScale(value: number) {
+        this._scale.set(value);
+    }
+
+    setTranslate(x: number, y: number) {
+        this._translate.transform((v) => {
+            v.x = x;
+            v.y = y;
+            return v;
+        });
+    }
 }

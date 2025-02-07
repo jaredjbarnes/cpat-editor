@@ -14,6 +14,8 @@ export class TestEditorPresenter {
     private _selectedPattern: Signal<string | null>;
     private _patterns: Signal<Record<string, Pattern>>;
     private _parseDuration: Signal<number>;
+    private _removeSpaces: Signal<boolean>;
+
     readonly textEditor: EditorPresenter;
 
     get patternsBroadcast() {
@@ -30,6 +32,10 @@ export class TestEditorPresenter {
 
     get astBroadcast() {
         return this._ast.broadcast;
+    }
+
+    get removeSpacesBroadcast() {
+        return this._removeSpaces.broadcast;
     }
 
     get selectedPattern(): Pattern | null {
@@ -49,6 +55,7 @@ export class TestEditorPresenter {
         this._patterns = new Signal({});
         this.textEditor = new EditorPresenter("test");
         this._parseDuration = new Signal(0);
+        this._removeSpaces = new Signal(false);
     }
 
     initialize() {
@@ -78,6 +85,8 @@ export class TestEditorPresenter {
                 this._parseDuration.set(parseDuration);
                 if (ast != null) {
                     const rootAst = ast.children[0];
+
+                    this._cleanAst(rootAst);
                     this._astJson.set(rootAst.toJson(2));
                     this._ast.set(rootAst);
                     this.textEditor.clearMarkers();
@@ -108,6 +117,24 @@ export class TestEditorPresenter {
         }
     }
 
+    private _cleanAst(ast: Node) {
+        if (this._removeSpaces.get()) {
+            ast.walkBreadthFirst(n => {
+                if (n.value.trim().length === 0) {
+                    n.remove();
+                }
+
+            });
+        }
+
+        ast.walkBreadthFirst(n => {
+            const firstChild = n.children[0];
+            if (n.children.length === 1 && firstChild.children.length === 0) {
+                n.replaceWith(firstChild);
+            }
+        });
+    }
+
     setPatterns(patterns: Record<string, Pattern>) {
         this._patterns.set(patterns);
         this._process(this.textEditor.getText());
@@ -117,6 +144,11 @@ export class TestEditorPresenter {
         const oldName = this._selectedPattern.get();
         this._selectedPattern.set(name);
         this._options.onPatternChange && this._options.onPatternChange(oldName, name);
+        this._process(this.textEditor.getText());
+    }
+
+    toggleRemoveSpaces() {
+        this._removeSpaces.transform(v => !v);
         this._process(this.textEditor.getText());
     }
 

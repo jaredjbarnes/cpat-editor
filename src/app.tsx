@@ -6,8 +6,8 @@ import { useSignalValue } from "@tcn/state";
 import { TestEditor } from "./test_editor.tsx";
 import { GrammarEditor } from "./grammar_editor.tsx";
 import styles from "./app.module.css";
-import { Button, ButtonGroup } from "@tcn/ui-controls";
-import { Header } from "@tcn/ui-core";
+import { Button, ButtonGroup, Checkbox } from "@tcn/ui-controls";
+import { BodyText, Header } from "@tcn/ui-core";
 import { SnippetsSidePanel } from "./snippets_side_panel.tsx";
 import { FileExplorer } from "./file_explorer/file_explorer.tsx";
 import { useLayoutEffect } from "react";
@@ -36,6 +36,9 @@ export function App({ presenter }: AppProps) {
   const canDebug = presenter.testEditor.selectedPattern != null;
   const canSave = currentPathMetaData && currentPathMetaData.type === "file";
   const astView = useSignalValue(presenter.astViewBroadcast);
+  const removeSpaces = useSignalValue(
+    presenter.testEditor.removeSpacesBroadcast
+  );
 
   function toggleDocumentation() {
     presenter.toggleDocumentation();
@@ -83,6 +86,7 @@ export function App({ presenter }: AppProps) {
 
   function updateSize() {
     presenter.grammarEditor.textEditor.updateSize();
+    presenter.testEditor.textEditor.updateSize();
   }
 
   return (
@@ -193,7 +197,11 @@ export function App({ presenter }: AppProps) {
                       </VStack>
                     </ZStack>
                   </FlexBox>
-                  <Box width="50%" enableResizeOnStart onWidthResize={updateSize}>
+                  <Box
+                    width="50%"
+                    enableResizeOnStart
+                    onWidthResize={updateSize}
+                  >
                     <ZStack>
                       {astView === "tree" && <AstTree ast={ast} />}
                       {astView === "json" && (
@@ -221,21 +229,35 @@ export function App({ presenter }: AppProps) {
                         horizontalAlignment="center"
                         style={{ pointerEvents: "none" }}
                       >
-                        <ButtonGroup>
-                          <Button
-                            onClick={showJsonView}
-                            style={{ pointerEvents: "auto" }}
-                          >
-                            JSON
-                          </Button>
+                        <HStack height="auto">
+                          <Spacer />
+                          <ButtonGroup>
+                            <Button
+                              onClick={showJsonView}
+                              style={{ pointerEvents: "auto" }}
+                            >
+                              JSON
+                            </Button>
 
-                          <Button
-                            onClick={showTreeView}
-                            style={{ pointerEvents: "auto" }}
-                          >
-                            Tree
-                          </Button>
-                        </ButtonGroup>
+                            <Button
+                              onClick={showTreeView}
+                              style={{ pointerEvents: "auto" }}
+                            >
+                              Tree
+                            </Button>
+                          </ButtonGroup>
+                          <Spacer />
+                          <HStack height="auto" width="auto" gap="4px">
+                            <BodyText>Remove Spaces:</BodyText>
+                            <Checkbox
+                              checked={removeSpaces}
+                              style={{ pointerEvents: "auto" }}
+                              onClick={() => {
+                                presenter.testEditor.toggleRemoveSpaces();
+                              }}
+                            />
+                          </HStack>
+                        </HStack>
                       </VStack>
                     </ZStack>
                   </Box>
