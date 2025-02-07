@@ -85,6 +85,12 @@ export interface Marker {
     message: string;
 }
 
+export interface Decoration {
+    start: number;
+    end: number;
+    className: string;
+}
+
 
 export interface EditorPresenterOptions {
     language: string;
@@ -94,6 +100,7 @@ export class EditorPresenter {
     private _editor: monaco.editor.IStandaloneCodeEditor | null;
     private _language: string;
     private _onSave: (text: string) => void;
+    private _decorationsCollection: monaco.editor.IEditorDecorationsCollection | null;
 
     get editor() {
         if (this._editor == null) {
@@ -107,6 +114,7 @@ export class EditorPresenter {
         this._editor = null;
         this._language = language;
         this._onSave = onSave;
+        this._decorationsCollection = null;
     }
 
     initialize(element: HTMLElement) {
@@ -125,6 +133,8 @@ export class EditorPresenter {
             monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS,
             this._onSave
         );
+
+        this._decorationsCollection = this.editor.createDecorationsCollection();
     }
 
     dispose() {
@@ -196,6 +206,45 @@ export class EditorPresenter {
         if (model != null) {
             monaco.editor.setModelMarkers(model, 'owner', []);
         }
+    }
+
+    setDecorations(decorations: Decoration[]) {
+        if (this._decorationsCollection == null) {
+            return;
+        }
+
+        this._decorationsCollection.clear();
+
+        const model = this.editor.getModel();
+
+        if (model == null) {
+            return;
+        }
+
+        const monacoDecorations = decorations.map((d) => {
+            const startPosition = model.getPositionAt(d.start);
+            const endPosition = model.getPositionAt(d.end);
+
+            const range = new monaco.Range(
+                startPosition.lineNumber,
+                startPosition.column,
+                endPosition.lineNumber,
+                endPosition.column
+            );
+
+            return {
+                range,
+                options: {
+                    inlineClassName: d.className
+                }
+            };
+        });
+
+        this._decorationsCollection.append(monacoDecorations);
+    }
+
+    clearDecorations() {
+        this.editor.createDecorationsCollection([]);
     }
 
     enable() {

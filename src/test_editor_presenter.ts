@@ -86,6 +86,12 @@ export class TestEditorPresenter {
                     this._ast.set(null);
                     const nodes = cursor.allMatchedNodes.slice();
                     nodes.sort((a, b) => a.endIndex - b.endIndex);
+
+                    if (nodes.length === 0) {
+                        this.textEditor.clearMarkers();
+                        return;
+                    }
+
                     const furthestMatch = nodes[nodes.length - 1];
 
                     this.textEditor.setMarkers([{

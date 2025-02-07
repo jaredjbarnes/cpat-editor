@@ -14,20 +14,20 @@
   pointer-events: auto;
 }
 
-:global(.move),
-:global(.error),
-:global(.match) {
-  fill: white;
+:global(.highlight-move),
+:global(.highlight-error),
+:global(.highlight-match) {
+  color: white !important;
 }
 
-:global(.move) > rect {
-  fill: var(--default-accent-color) !important;
+:global(.highlight-move) {
+  background-color: var(--default-accent-color) !important;
 }
 
-:global(.error) > rect {
-  fill: var(--default-error-color) !important;
+:global(.highlight-error) {
+  background-color: var(--default-error-color) !important;
 }
 
-:global(.match) > rect {
-  fill: #67c71e !important;
+:global(.highlight-match) {
+  background-color: #67c71e !important;
 }

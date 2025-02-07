@@ -3,9 +3,9 @@ import { DebuggerPresenter } from "./debugger_presenter.ts";
 import { Diagram } from "../diagram.tsx";
 import { Button, ButtonGroup, Slider } from "@tcn/ui-controls";
 import styles from "./debugger.module.css";
-import { TextEditor } from "../text_editor.tsx";
 import { useLayoutEffect } from "react";
 import { useSignalValue } from "@tcn/state";
+import { Editor } from "../monaco_editor/editor.tsx";
 
 export interface DebuggerProps {
   presenter: DebuggerPresenter;
@@ -91,7 +91,7 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
       </HStack>
       <HStack flex>
         <FlexBox>
-          <TextEditor presenter={presenter.textEditorPresenter} />
+          <Editor presenter={presenter.textEditor} />
         </FlexBox>
         <Box width="50%" enableResizeOnStart>
           <Diagram

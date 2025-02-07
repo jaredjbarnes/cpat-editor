@@ -14,7 +14,6 @@ import { useLayoutEffect } from "react";
 import QuestionIcon from "./icons/question.svg?react";
 import { Debugger } from "./debugger/debugger.tsx";
 import { AstTree } from "./ast_tree.tsx";
-import { Editor } from "./monaco_editor/editor.tsx";
 
 export interface AppProps {
   presenter: AppPresenter;

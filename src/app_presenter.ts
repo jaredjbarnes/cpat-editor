@@ -6,7 +6,6 @@ import { FileExplorerPresenter } from "./file_explorer/file_explorer_presenter.t
 import { DirectoryMeta, FileMeta, FileSystem } from "./file_explorer/file_system.ts";
 import { Pattern } from "clarity-pattern-parser";
 import { DebuggerPresenter } from "./debugger/debugger_presenter.ts";
-import { EditorPresenter } from "./monaco_editor/editor_presenter.ts";
 
 export class AppPresenter {
     private _isDocumentationOpen: Signal<boolean>;

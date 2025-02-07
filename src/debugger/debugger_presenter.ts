@@ -1,8 +1,8 @@
 import { Optional, ParseError, Pattern, Regex, Sequence } from "clarity-pattern-parser";
 import { DiagramPresenter } from "../diagram_presenter.ts";
-import { TextEditorPresenter } from "../text_editor_presenter.ts";
 import { DebuggerStep, generateSteps } from "./step_generator.ts";
 import { Signal } from "@tcn/state";
+import { Decoration, EditorPresenter } from "../monaco_editor/editor_presenter.ts";
 
 export class DebuggerPresenter {
     private _text: string;
@@ -13,7 +13,7 @@ export class DebuggerPresenter {
     private _isPlaying: Signal<boolean>;
     private _playbackSpeed: Signal<number>;
     readonly diagramPresenter: DiagramPresenter;
-    readonly textEditorPresenter: TextEditorPresenter;
+    readonly textEditor: EditorPresenter;
 
     get isPlayingBroadcast() {
         return this._isPlaying.broadcast;
@@ -31,7 +31,7 @@ export class DebuggerPresenter {
         this._isPlaying = new Signal(false);
         this._playbackSpeed = new Signal(500);
         this.diagramPresenter = new DiagramPresenter();
-        this.textEditorPresenter = new TextEditorPresenter();
+        this.textEditor = new EditorPresenter("test");
 
         this._pattern = new Sequence("editor-pattern-wrapper", [
             new Optional("optional-space", new Regex("space", "\\s+")),
@@ -41,8 +41,8 @@ export class DebuggerPresenter {
     }
 
     initialize() {
-        this.textEditorPresenter.setText(this._text);
-        this.textEditorPresenter.disable();
+        this.textEditor.setText(this._text);
+        this.textEditor.disable();
         this._onStep.set(0);
 
         this.diagramPresenter.selectPattern([this._pattern]);
@@ -53,9 +53,9 @@ export class DebuggerPresenter {
 
             if (ast == null) {
                 const nodes = cursor.allMatchedNodes.slice();
-                nodes.sort((a, b) => a.endIndex - b.endIndex );
-                const furthestMatch = nodes[nodes.length -1];
-    
+                nodes.sort((a, b) => a.endIndex - b.endIndex);
+                const furthestMatch = nodes[nodes.length - 1];
+
                 this._steps.push({
                     type: "error",
                     path: "_",
@@ -146,42 +146,49 @@ export class DebuggerPresenter {
 
     private _updateTextStyles() {
         const step = this._steps[this._onStep.get()];
-        this.textEditorPresenter.clearFormatting();
+        const decorations: Decoration[] = [];
 
         if (step.type === "move") {
             if (step.record.ast != null) {
                 const startIndex = step.record.ast.firstIndex;
-                this.textEditorPresenter.syntaxHighlight(
-                    startIndex, startIndex + 1,
-                    "highlight-move"
-                );
+                decorations.push({
+                    start: startIndex,
+                    end: startIndex + 1,
+                    className: "highlight-move"
+                });
             } else if (step.record.error != null) {
                 const startIndex = step.record.error.startIndex;
-                this.textEditorPresenter.syntaxHighlight(
-                    startIndex, startIndex + 1,
-                    "highlight-move"
-                );
+                decorations.push({
+                    start: startIndex,
+                    end: startIndex + 1,
+                    className: "highlight-move"
+                });
             }
         } else if (step.type === "match") {
             if (step.record.ast != null) {
                 const startIndex = step.record.ast.firstIndex;
                 const endIndex = step.record.ast.endIndex;
-                this.textEditorPresenter.syntaxHighlight(
-                    startIndex, endIndex,
-                    "highlight-match"
-                );
+
+                decorations.push({
+                    start: startIndex,
+                    end: endIndex,
+                    className: "highlight-match"
+                });
+
             }
         } else if (step.type === "error") {
             if (step.record.error != null) {
                 const startIndex = step.record.error.startIndex;
                 const endIndex = step.record.error.endIndex;
-                this.textEditorPresenter.syntaxHighlight(
-                    startIndex, endIndex + 1,
-                    "highlight-error"
-                );
+                decorations.push({
+                    start: startIndex,
+                    end: endIndex,
+                    className: "highlight-error"
+                });
             }
         }
 
+        this.textEditor.setDecorations(decorations);
     }
 
     setPlaybackSpeed(value: number) {
