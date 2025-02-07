@@ -1,10 +1,10 @@
 import { FlexBox, HStack, Spacer, VStack, ZStack } from "@tcn/ui-layout";
 import { TestEditorPresenter } from "./test_editor_presenter.ts";
 import { Select } from "@tcn/ui-controls";
-import { TextEditor } from "./text_editor.tsx";
 import { useSignalValue } from "@tcn/state";
 import { useLayoutEffect } from "react";
 import { BodyText } from "@tcn/ui-core";
+import { Editor } from "./monaco_editor/editor.tsx";
 
 export interface TestEditorProps {
   presenter: TestEditorPresenter;
@@ -41,7 +41,7 @@ export function TestEditor({ presenter }: TestEditorProps) {
           {options}
         </Select>
         <FlexBox>
-          <TextEditor presenter={presenter.textEditor} />
+          <Editor presenter={presenter.textEditor} />
         </FlexBox>
       </VStack>
       <VStack style={{ pointerEvents: "none" }}>

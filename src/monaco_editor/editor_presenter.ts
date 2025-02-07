@@ -78,22 +78,53 @@ monaco.languages.registerDocumentSemanticTokensProvider('cpat', {
     }
 });
 
+export interface Marker {
+    start: number;
+    end: number;
+    severity: monaco.MarkerSeverity;
+    message: string;
+}
+
+
+export interface EditorPresenterOptions {
+    language: string;
+}
 
 export class EditorPresenter {
     private _editor: monaco.editor.IStandaloneCodeEditor | null;
+    private _language: string;
+    private _onSave: (text: string) => void;
 
-    constructor() {
+    get editor() {
+        if (this._editor == null) {
+            throw new Error("Editor isn't ready yet.");
+        }
+
+        return this._editor;
+    }
+
+    constructor(language: string, onSave: (text: string) => void = () => { }) {
         this._editor = null;
+        this._language = language;
+        this._onSave = onSave;
     }
 
     initialize(element: HTMLElement) {
 
         this._editor = monaco.editor.create(element, {
             value: ``,
-            language: 'cpat', // Ensure this matches the registered language
+            language: this._language,
             theme: 'vs',
-            "semanticHighlighting.enabled": true
+            "semanticHighlighting.enabled": true,
+            minimap: {
+                enabled: false, // Disable the minimap
+            },
         });
+
+        this._editor.addCommand(
+            monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS,
+            this._onSave
+        );
     }
 
     dispose() {
@@ -101,14 +132,77 @@ export class EditorPresenter {
     }
 
     setText(value: string) {
-        this._editor?.setValue(value);
+        const oldModel = this.editor.getModel();
+
+        if (oldModel != null) {
+            const newModel = monaco.editor.createModel(value, oldModel.getLanguageId());
+            this.editor.setModel(newModel);
+            oldModel.dispose();
+        }
+
     }
 
     getText() {
-        return this._editor?.getValue();
+        return this.editor.getValue() || "";
     }
 
-    updateSize(){
-        this._editor?.layout();
+    getSelection() {
+        return this.editor.getSelection();
+    }
+
+    updateSize() {
+        this.editor.layout();
+    }
+
+    onChange(callback: (value: string, model: monaco.editor.ITextModel | null) => void) {
+        this.editor.onDidChangeModelContent(() => {
+            callback(this.editor.getValue(), this.editor.getModel());
+        });
+    }
+
+    onSelectionChange(callback: (selection: monaco.Selection, model: monaco.editor.ITextModel | null) => void) {
+        this.editor.onDidChangeCursorSelection((event) => {
+            callback(event.selection, this.editor.getModel());
+        });
+    }
+
+    setMarkers(markers: Marker[]) {
+        const model = this.editor.getModel();
+
+        if (model != null) {
+            const monacoMarkers = markers.map((marker) => {
+
+                const startPos = model.getPositionAt(marker.start);
+                const endPos = model.getPositionAt(marker.end);
+
+                return {
+                    startLineNumber: startPos.lineNumber,
+                    startColumn: startPos.column,
+                    endLineNumber: endPos.lineNumber,
+                    endColumn: endPos.column,
+                    severity: marker.severity,
+                    message: marker.message,
+                };
+            });
+
+            monaco.editor.setModelMarkers(model, 'owner', monacoMarkers);
+        }
+
+    }
+
+    clearMarkers() {
+        const model = this.editor.getModel();
+
+        if (model != null) {
+            monaco.editor.setModelMarkers(model, 'owner', []);
+        }
+    }
+
+    enable() {
+        this.editor.updateOptions({ readOnly: false });
+    }
+
+    disable() {
+        this.editor.updateOptions({ readOnly: true });
     }
 }

@@ -1,6 +1,7 @@
 import { Optional, Pattern, Regex, Sequence, Node } from "clarity-pattern-parser";
-import { TextEditorPresenter } from "./text_editor_presenter.ts";
 import { Signal } from "@tcn/state";
+import { EditorPresenter } from "./monaco_editor/editor_presenter.ts";
+import { MarkerSeverity } from "monaco-editor";
 
 export interface TestEditorPresenterOptions {
     onPatternChange?: (oldName: string | null, newName: string | null) => void;
@@ -13,7 +14,7 @@ export class TestEditorPresenter {
     private _selectedPattern: Signal<string | null>;
     private _patterns: Signal<Record<string, Pattern>>;
     private _parseDuration: Signal<number>;
-    readonly textEditor: TextEditorPresenter;
+    readonly textEditor: EditorPresenter;
 
     get patternsBroadcast() {
         return this._patterns.broadcast;
@@ -46,19 +47,18 @@ export class TestEditorPresenter {
         this._ast = new Signal<Node | null>(null);
         this._selectedPattern = new Signal<string | null>(null);
         this._patterns = new Signal({});
-        this.textEditor = new TextEditorPresenter();
+        this.textEditor = new EditorPresenter("test");
         this._parseDuration = new Signal(0);
     }
 
     initialize() {
-        this.textEditor.onChange((_d, _od, source) => {
-            if (source === "user") {
-                this._process();
-            }
+        this.textEditor.onChange((value: string) => {
+            this._process(value);
         });
+
     }
 
-    private _process() {
+    private _process(text: string) {
         const patterns = this._patterns.get();
         const testPatternName = this._selectedPattern.get();
         const pattern = patterns[String(testPatternName)];
@@ -70,9 +70,6 @@ export class TestEditorPresenter {
                 new Optional("optional-space", new Regex("space", "\\s+"))
             ]);
 
-            this.textEditor.clearFormatting();
-
-            const text = this.textEditor.getText();
             const startTime = performance.now();
             try {
                 const { ast, cursor } = editorPattern.exec(text, true);
@@ -83,6 +80,7 @@ export class TestEditorPresenter {
                     const rootAst = ast.children[0];
                     this._astJson.set(rootAst.toJson(2));
                     this._ast.set(rootAst);
+                    this.textEditor.clearMarkers();
                 } else {
                     this._astJson.set("");
                     this._ast.set(null);
@@ -90,13 +88,13 @@ export class TestEditorPresenter {
                     nodes.sort((a, b) => a.endIndex - b.endIndex);
                     const furthestMatch = nodes[nodes.length - 1];
 
-                    if (furthestMatch != null) {
-                        const { endIndex: startIndex } = furthestMatch;
-                        const endIndex = cursor.length;
-                        this.textEditor.syntaxHighlight(startIndex, endIndex, "syntax-error");
-                    } else {
-                        this.textEditor.syntaxHighlight(0, cursor.length, "syntax-error");
-                    }
+                    this.textEditor.setMarkers([{
+                        start: furthestMatch.endIndex,
+                        end: cursor.length,
+                        severity: MarkerSeverity.Error,
+                        message: "Syntax Error"
+                    }]);
+
                 }
             } catch (e) {
                 console.log(e);
@@ -106,14 +104,14 @@ export class TestEditorPresenter {
 
     setPatterns(patterns: Record<string, Pattern>) {
         this._patterns.set(patterns);
-        this._process();
+        this._process(this.textEditor.getText());
     }
 
     selectPattern(name: string | null) {
         const oldName = this._selectedPattern.get();
         this._selectedPattern.set(name);
         this._options.onPatternChange && this._options.onPatternChange(oldName, name);
-        this._process();
+        this._process(this.textEditor.getText());
     }
 
     dispose() {

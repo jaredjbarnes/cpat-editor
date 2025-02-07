@@ -83,7 +83,7 @@ export function App({ presenter }: AppProps) {
   }
 
   function updateSize() {
-    presenter.monacoEditor.updateSize();
+    presenter.grammarEditor.textEditor.updateSize();
   }
 
   return (
@@ -122,10 +122,9 @@ export function App({ presenter }: AppProps) {
               <HStack flex className={styles.top}>
                 <FlexBox minWidth="200px" className={styles.left}>
                   <ZStack>
-                    <Editor presenter={presenter.monacoEditor}></Editor>
-                    {/* <GrammarEditor
+                    <GrammarEditor
                       presenter={presenter.grammarEditor}
-                    ></GrammarEditor> */}
+                    ></GrammarEditor>
                     <VStack
                       padding="8px"
                       verticalAlignment="end"

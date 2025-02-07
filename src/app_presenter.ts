@@ -14,7 +14,6 @@ export class AppPresenter {
     private _currentPath: Signal<string | null>;
     private _currentPathMetaData: Signal<DirectoryMeta | FileMeta | null>;
     private _astView: Signal<'json' | 'tree'>;
-    readonly monacoEditor: EditorPresenter;
     readonly grammarEditor: GrammarEditorPresenter;
     readonly testEditor: TestEditorPresenter;
     readonly diagramPresenter: DiagramPresenter;
@@ -22,7 +21,6 @@ export class AppPresenter {
     readonly debuggerPresenter: Signal<DebuggerPresenter | null>;
     readonly pathToSelectedPatternName: Record<string, string>;
     readonly pathToTestPatternContent: Record<string, Record<string, string>>;
-
 
     get isDocumentationOpenBroadcast() {
         return this._isDocumentationOpen.broadcast;
@@ -48,9 +46,6 @@ export class AppPresenter {
         this._currentPathMetaData = new Signal<DirectoryMeta | FileMeta | null>(null);
         this._isDocumentationOpen = new Signal(false);
         this._astView = new Signal<'json' | 'tree'>("json");
-
-        this.monacoEditor = new EditorPresenter();
-
         this.grammarEditor = new GrammarEditorPresenter({
             onGrammarProcess: (patterns) => {
                 this.testEditor.setPatterns(patterns);

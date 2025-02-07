@@ -1,7 +1,7 @@
-import { useLayoutEffect } from 'react';
-import { GrammarEditorPresenter } from './grammar_editor_presenter.ts';
-import { TextEditor } from './text_editor.tsx';
+import { useLayoutEffect } from "react";
+import { GrammarEditorPresenter } from "./grammar_editor_presenter.ts";
 import "./grammar_editor.css";
+import { Editor } from "./monaco_editor/editor.tsx";
 
 export interface GrammarEditorProps {
   presenter: GrammarEditorPresenter;
@@ -12,5 +12,5 @@ export function GrammarEditor({ presenter }: GrammarEditorProps) {
     presenter.initialize();
   }, [presenter]);
 
-  return <TextEditor presenter={presenter.textEditor}></TextEditor>;
+  return <Editor presenter={presenter.textEditor}></Editor>;
 }
