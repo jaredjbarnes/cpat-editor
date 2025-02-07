@@ -1153,10 +1153,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clarity-pattern-parser@npm:^10.3.1":
-  version: 10.3.1
-  resolution: "clarity-pattern-parser@npm:10.3.1"
-  checksum: 10c0/0015f5784976c6b0d27f3ef227dae85b3cc23dd3e6f41c9483ded8c4c009e67e043402be93dd4da0d1be4611d55223b370663985d6e82a01d5cc974b581d01d6
+"clarity-pattern-parser@npm:^11.0.7":
+  version: 11.0.7
+  resolution: "clarity-pattern-parser@npm:11.0.7"
+  checksum: 10c0/9397a5a369383176c7789bacdc810181d69a2a21c98aa1312ccfde06744a4d8a342d5c040c9529b0813c9fcdfd63f224c14e39f7c32af0f2478572da10936b8a
   languageName: node
   linkType: hard
 
@@ -1241,10 +1241,11 @@ __metadata:
     "@types/react": "npm:^18.2.70"
     "@types/react-dom": "npm:^18.2.22"
     "@vitejs/plugin-react": "npm:^4.3.4"
-    clarity-pattern-parser: "npm:^10.3.1"
+    clarity-pattern-parser: "npm:^11.0.7"
     classnames: "npm:^2.5.1"
     gh-pages: "npm:^6.3.0"
     globals: "npm:^15.14.0"
+    monaco-editor: "npm:^0.52.2"
     quill: "npm:^2.0.3"
     react: "npm:^18.2.0"
     react-d3-tree: "npm:^3.6.2"
@@ -2296,6 +2297,13 @@ __metadata:
   bin:
     mkdirp: dist/cjs/src/bin.js
   checksum: 10c0/9f2b975e9246351f5e3a40dcfac99fcd0baa31fbfab615fe059fb11e51f10e4803c63de1f384c54d656e4db31d000e4767e9ef076a22e12a641357602e31d57d
+  languageName: node
+  linkType: hard
+
+"monaco-editor@npm:^0.52.2":
+  version: 0.52.2
+  resolution: "monaco-editor@npm:0.52.2"
+  checksum: 10c0/5a92da64f1e2ab375c0ce99364137f794d057c97bed10ecc65a08d6e6846804b8ecbd377eacf01e498f7dfbe1b21e8be64f728256681448f0484df90e767b435
   languageName: node
   linkType: hard
 

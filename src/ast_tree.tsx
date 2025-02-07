@@ -30,7 +30,7 @@ export function AstTree({ ast }: AstTreeProps) {
     walk(finalAst, (n) => {
       if (n.children && n.children.length === 0) {
         n.name = n.value;
-      } else if (n.children && n.children.length === 1) {
+      } else if (n.type && n.type !== "sequence" && !n.type.includes("repeat") && n.children && n.children.length === 1) {
         n.name = n.value;
         n.children.length = 0;
       }

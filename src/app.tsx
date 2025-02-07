@@ -14,6 +14,7 @@ import { useLayoutEffect } from "react";
 import QuestionIcon from "./icons/question.svg?react";
 import { Debugger } from "./debugger/debugger.tsx";
 import { AstTree } from "./ast_tree.tsx";
+import { Editor } from "./monaco_editor/editor.tsx";
 
 export interface AppProps {
   presenter: AppPresenter;
@@ -81,6 +82,10 @@ export function App({ presenter }: AppProps) {
     presenter.setAstView("json");
   }
 
+  function updateSize() {
+    presenter.monacoEditor.updateSize();
+  }
+
   return (
     <>
       <ZStack>
@@ -109,6 +114,7 @@ export function App({ presenter }: AppProps) {
               minWidth="100px"
               width="300px"
               enableResizeOnEnd
+              onHeightResize={updateSize}
             >
               <FileExplorer presenter={presenter.fileExplorer} />
             </Box>
@@ -116,9 +122,10 @@ export function App({ presenter }: AppProps) {
               <HStack flex className={styles.top}>
                 <FlexBox minWidth="200px" className={styles.left}>
                   <ZStack>
-                    <GrammarEditor
+                    <Editor presenter={presenter.monacoEditor}></Editor>
+                    {/* <GrammarEditor
                       presenter={presenter.grammarEditor}
-                    ></GrammarEditor>
+                    ></GrammarEditor> */}
                     <VStack
                       padding="8px"
                       verticalAlignment="end"
@@ -150,7 +157,7 @@ export function App({ presenter }: AppProps) {
                     )}
                   </ZStack>
                 </FlexBox>
-                <Box width="50%" enableResizeOnStart>
+                <Box width="50%" enableResizeOnStart onWidthResize={updateSize}>
                   <Diagram
                     presenter={presenter.diagramPresenter}
                     onPatternClick={(path) => {
@@ -159,7 +166,7 @@ export function App({ presenter }: AppProps) {
                   ></Diagram>
                 </Box>
               </HStack>
-              <Box height="50%" enableResizeOnTop>
+              <Box height="50%" enableResizeOnTop onHeightResize={updateSize}>
                 <HStack>
                   <FlexBox minWidth="200px" className={styles.left}>
                     <ZStack>
@@ -188,7 +195,7 @@ export function App({ presenter }: AppProps) {
                       </VStack>
                     </ZStack>
                   </FlexBox>
-                  <Box width="50%" enableResizeOnStart>
+                  <Box width="50%" enableResizeOnStart onWidthResize={updateSize}>
                     <ZStack>
                       {astView === "tree" && <AstTree ast={ast} />}
                       {astView === "json" && (
@@ -243,6 +250,7 @@ export function App({ presenter }: AppProps) {
                 minWidth="100px"
                 width="33%"
                 enableResizeOnStart
+                onResize={updateSize}
               >
                 <SnippetsSidePanel onClose={closeDocumenation} />
               </Box>

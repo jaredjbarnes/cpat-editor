@@ -6,6 +6,7 @@ import { FileExplorerPresenter } from "./file_explorer/file_explorer_presenter.t
 import { DirectoryMeta, FileMeta, FileSystem } from "./file_explorer/file_system.ts";
 import { Pattern } from "clarity-pattern-parser";
 import { DebuggerPresenter } from "./debugger/debugger_presenter.ts";
+import { EditorPresenter } from "./monaco_editor/editor_presenter.ts";
 
 export class AppPresenter {
     private _isDocumentationOpen: Signal<boolean>;
@@ -13,6 +14,7 @@ export class AppPresenter {
     private _currentPath: Signal<string | null>;
     private _currentPathMetaData: Signal<DirectoryMeta | FileMeta | null>;
     private _astView: Signal<'json' | 'tree'>;
+    readonly monacoEditor: EditorPresenter;
     readonly grammarEditor: GrammarEditorPresenter;
     readonly testEditor: TestEditorPresenter;
     readonly diagramPresenter: DiagramPresenter;
@@ -46,6 +48,8 @@ export class AppPresenter {
         this._currentPathMetaData = new Signal<DirectoryMeta | FileMeta | null>(null);
         this._isDocumentationOpen = new Signal(false);
         this._astView = new Signal<'json' | 'tree'>("json");
+
+        this.monacoEditor = new EditorPresenter();
 
         this.grammarEditor = new GrammarEditorPresenter({
             onGrammarProcess: (patterns) => {

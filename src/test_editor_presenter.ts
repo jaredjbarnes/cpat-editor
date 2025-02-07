@@ -12,6 +12,7 @@ export class TestEditorPresenter {
     private _ast: Signal<Node | null>;
     private _selectedPattern: Signal<string | null>;
     private _patterns: Signal<Record<string, Pattern>>;
+    private _parseDuration: Signal<number>;
     readonly textEditor: TextEditorPresenter;
 
     get patternsBroadcast() {
@@ -35,6 +36,10 @@ export class TestEditorPresenter {
         return this._patterns.get()[String(name)] || null;
     }
 
+    get parseDurationBroadcast() {
+        return this._parseDuration.broadcast;
+    }
+
     constructor(options: TestEditorPresenterOptions = {}) {
         this._options = options;
         this._astJson = new Signal("");
@@ -42,6 +47,7 @@ export class TestEditorPresenter {
         this._selectedPattern = new Signal<string | null>(null);
         this._patterns = new Signal({});
         this.textEditor = new TextEditorPresenter();
+        this._parseDuration = new Signal(0);
     }
 
     initialize() {
@@ -72,7 +78,7 @@ export class TestEditorPresenter {
                 const { ast, cursor } = editorPattern.exec(text, true);
                 const parseDuration = performance.now() - startTime;
 
-                console.log("Test Parse Time: ", parseDuration);
+                this._parseDuration.set(parseDuration);
                 if (ast != null) {
                     const rootAst = ast.children[0];
                     this._astJson.set(rootAst.toJson(2));

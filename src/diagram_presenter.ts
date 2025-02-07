@@ -1,5 +1,5 @@
 import { Signal } from "@tcn/state";
-import { ExpressionPattern, Literal, Pattern, Reference, Regex } from "clarity-pattern-parser";
+import { Expression, Literal, Pattern, Reference, Regex } from "clarity-pattern-parser";
 import "./railroad_diagrams/railroad.css";
 import { Choice, Diagram, OneOrMore, Terminal, Sequence, Optional, Group } from "./railroad_diagrams/railroad.js";
 import { generatePath } from "./debugger/step_generator.js";
@@ -86,25 +86,39 @@ export class DiagramPresenter {
                 return diagram;
             }
             case "expression": {
-                const expressionPattern = pattern as ExpressionPattern;
-
-                const unaryPatterns = expressionPattern.unaryPatterns;
+                const expressionPattern = pattern as Expression;
+                const prefixPatterns = expressionPattern.prefixPatterns;
+                const atomPatterns = expressionPattern.atomPatterns;
+                const postfixPatterns = expressionPattern.postfixPatterns;
                 const binaryPatterns = expressionPattern.binaryPatterns;
-                const recursivePatterns = expressionPattern.recursivePatterns;
 
-                const unaryChildren = unaryPatterns.map(p => this._buildPattern(p));
+                const prefixChildren = prefixPatterns.map(p => this._buildPattern(p));
+                const atomChildren = atomPatterns.map(p => this._buildPattern(p));
+                const postfixChildren = postfixPatterns.map(p => this._buildPattern(p));
                 const binaryChildren = binaryPatterns.map(p => this._buildPattern(p));
-                const recursiveChildren = recursivePatterns.map(p => this._buildPattern(p));
 
-                const unaryOptions = new Choice(0, ...unaryChildren);
-                const expressionOptions = new Optional(new Choice(0, ...recursiveChildren, ...binaryChildren));
-                const children: any[] = [unaryOptions];
+                const children: any = [];
 
-                if (binaryChildren.length + recursiveChildren.length > 0) {
-                    children.push(expressionOptions);
+                if (prefixPatterns.length > 0) {
+                    const prefixOptions = new Optional(new OneOrMore(new Choice(0, ...prefixChildren)));
+                    children.push(prefixOptions);
                 }
 
-                const expression = new OneOrMore(new Sequence(...children));
+                const atomOptions = new Choice(0, ...atomChildren);
+                children.push(atomOptions);
+
+                if (postfixPatterns.length > 0) {
+                    const postfixOptions = new Optional(new OneOrMore(new Choice(0, ...postfixChildren)));
+                    children.push(postfixOptions);
+                }
+
+                let expression: any = new Sequence(...children);
+
+                if (binaryPatterns.length > 0) {
+                    const binaryOptions = new Choice(0, ...binaryChildren);
+                    expression = new OneOrMore(expression, binaryOptions);
+                }
+
                 expression.attrs.id = pattern.id;
 
                 const diagram = new Diagram(new Group(expression, pattern.name));
@@ -274,26 +288,40 @@ export class DiagramPresenter {
                 const path = generatePath(pattern);
 
                 if (this._expandedPatternPaths.get(path)) {
-                    const expressionPattern = pattern as ExpressionPattern;
-
-                    const unaryPatterns = expressionPattern.unaryPatterns;
+                    const expressionPattern = pattern as Expression;
+                    const prefixPatterns = expressionPattern.prefixPatterns;
+                    const atomPatterns = expressionPattern.atomPatterns;
+                    const postfixPatterns = expressionPattern.postfixPatterns;
                     const binaryPatterns = expressionPattern.binaryPatterns;
-                    const recursivePatterns = expressionPattern.recursivePatterns;
-
-                    const unaryChildren = unaryPatterns.map(p => this._buildPattern(p));
+    
+                    const prefixChildren = prefixPatterns.map(p => this._buildPattern(p));
+                    const atomChildren = atomPatterns.map(p => this._buildPattern(p));
+                    const postfixChildren = postfixPatterns.map(p => this._buildPattern(p));
                     const binaryChildren = binaryPatterns.map(p => this._buildPattern(p));
-                    const recursiveChildren = recursivePatterns.map(p => this._buildPattern(p));
-
-                    const unaryOptions = new Choice(0, ...unaryChildren);
-                    const expressionOptions = new Optional(new Choice(0, ...recursiveChildren, ...binaryChildren));
-                    const children: any[] = [unaryOptions];
-
-                    if (binaryChildren.length + recursiveChildren.length > 0) {
-                        children.push(expressionOptions);
+    
+                    const children: any = [];
+    
+                    if (prefixPatterns.length > 0) {
+                        const prefixOptions = new Optional(new OneOrMore(new Choice(0, ...prefixChildren)));
+                        children.push(prefixOptions);
                     }
-
-                    const expression = new OneOrMore(new Sequence(...children));
-                    expression.attrs.id = pattern.id;
+    
+                    const atomOptions = new Choice(0, ...atomChildren);
+                    children.push(atomOptions);
+    
+                    if (postfixPatterns.length > 0) {
+                        const postfixOptions = new Optional(new OneOrMore(new Choice(0, ...postfixChildren)));
+                        children.push(postfixOptions);
+                    }
+    
+                    let expression: any = new Sequence(...children);
+    
+                    if (binaryPatterns.length > 0) {
+                        const binaryOptions = new Choice(0, ...binaryChildren);
+                        expression = new OneOrMore(expression, binaryOptions);
+                    }
+    
+                    expression.attrs.id = pattern.id;    
 
                     const terminalOptions: any = {};
                     const classNames = this._classNames.get(path);
