@@ -1,4 +1,4 @@
-import * as monaco from "monaco-editor";
+import * as monaco from "monaco-editor-core";
 import { grammar } from "clarity-pattern-parser";
 import { tokensMap } from "./tokens_map.ts";
 

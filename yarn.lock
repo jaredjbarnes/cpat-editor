@@ -1153,10 +1153,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clarity-pattern-parser@npm:^11.0.8":
-  version: 11.0.8
-  resolution: "clarity-pattern-parser@npm:11.0.8"
-  checksum: 10c0/3863092c2df62164572315872a7d27e43b2c5e1e6c6659bca2bf4a94072c8ff659113b78af08bf2133de9888e4c1a10dec995fef21e0a952c40393441adec21d
+"clarity-pattern-parser@npm:^11.0.14":
+  version: 11.0.14
+  resolution: "clarity-pattern-parser@npm:11.0.14"
+  checksum: 10c0/3ca070fe3c55d01af1a069a6c21186443aa9c24dd9779ac958c9abb5f27d1702c7dd92eff522c6c479d223d71f99c504bc74b1f34cf767ecf62a46fb00a36da7
   languageName: node
   linkType: hard
 
@@ -1241,14 +1241,15 @@ __metadata:
     "@types/react": "npm:^18.2.70"
     "@types/react-dom": "npm:^18.2.22"
     "@vitejs/plugin-react": "npm:^4.3.4"
-    clarity-pattern-parser: "npm:^11.0.8"
+    clarity-pattern-parser: "npm:^11.0.14"
     classnames: "npm:^2.5.1"
     gh-pages: "npm:^6.3.0"
     globals: "npm:^15.14.0"
-    monaco-editor: "npm:^0.52.2"
+    monaco-editor-core: "npm:^0.52.2"
     react: "npm:^18.2.0"
     react-d3-tree: "npm:^3.6.2"
     react-dom: "npm:^18.2.0"
+    react-zoom-pan-pinch: "npm:^3.7.0"
     typescript: "npm:~5.7.2"
     vite: "npm:^6.0.5"
     vite-css-modules: "npm:^1.8.0"
@@ -2271,10 +2272,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"monaco-editor@npm:^0.52.2":
+"monaco-editor-core@npm:^0.52.2":
   version: 0.52.2
-  resolution: "monaco-editor@npm:0.52.2"
-  checksum: 10c0/5a92da64f1e2ab375c0ce99364137f794d057c97bed10ecc65a08d6e6846804b8ecbd377eacf01e498f7dfbe1b21e8be64f728256681448f0484df90e767b435
+  resolution: "monaco-editor-core@npm:0.52.2"
+  checksum: 10c0/502891e44581c9ccce96963b09d392c10cdda6d40bb570d5f5c6519d263e0b2c248f84defc37eedb4b3bc69261a1088ac54a2a05f82934a0021cd3649ec6d103
   languageName: node
   linkType: hard
 
@@ -2651,6 +2652,16 @@ __metadata:
   version: 0.14.2
   resolution: "react-refresh@npm:0.14.2"
   checksum: 10c0/875b72ef56b147a131e33f2abd6ec059d1989854b3ff438898e4f9310bfcc73acff709445b7ba843318a953cb9424bcc2c05af2b3d80011cee28f25aef3e2ebb
+  languageName: node
+  linkType: hard
+
+"react-zoom-pan-pinch@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "react-zoom-pan-pinch@npm:3.7.0"
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  checksum: 10c0/96889849800a953128fe7f9e42bed0d5cbc48d03024995b136f5e972146236688efb24d7381d8e6f09598f5512b4897d2420f62d828a665fdf24b745b7d55911
   languageName: node
   linkType: hard
 

@@ -1,7 +1,7 @@
 import { Optional, Pattern, Regex, Sequence, Node } from "clarity-pattern-parser";
 import { Signal } from "@tcn/state";
 import { EditorPresenter } from "./monaco_editor/editor_presenter.ts";
-import { MarkerSeverity } from "monaco-editor";
+import { MarkerSeverity } from "monaco-editor-core";
 
 export interface TestEditorPresenterOptions {
     onPatternChange?: (oldName: string | null, newName: string | null) => void;

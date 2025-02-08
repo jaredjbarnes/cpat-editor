@@ -152,7 +152,7 @@ export class FileExplorerPresenter {
                 } else if (a.type === "directory" && b.type === "file") {
                     return -1;
                 } else if (a.type === "file" && b.type === "file") {
-                    return 1;
+                    return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
                 } else {
                     return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
                 }

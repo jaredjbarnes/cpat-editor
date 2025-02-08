@@ -1,7 +1,7 @@
 import { grammar, Grammar, Pattern } from "clarity-pattern-parser";
 import { FileSystem } from "./file_explorer/file_system.ts";
 import { EditorPresenter } from "./monaco_editor/editor_presenter.ts";
-import { MarkerSeverity } from "monaco-editor";
+import { MarkerSeverity } from "monaco-editor-core";
 
 export interface GrammarEditorOptions {
     fileSystem: FileSystem;

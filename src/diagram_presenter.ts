@@ -51,6 +51,7 @@ export class DiagramPresenter {
         return this._translate.broadcast;
     }
 
+
     constructor() {
         this._patterns = new Signal({});
         this._viewingPatterns = new Signal<Pattern[]>([]);

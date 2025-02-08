@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react";
 import { useSignalValue, useSignalValueEffect } from "@tcn/state";
 import { Diagram as RailroadDiagram } from "./railroad_diagrams/railroad.js";
 import styles from "./diagram.module.css";
+import { ZStack } from "@tcn/ui-layout";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 export interface DiagramProps {
   presenter: DiagramPresenter;
@@ -12,8 +14,6 @@ export interface DiagramProps {
 export function Diagram({ presenter, onPatternClick }: DiagramProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const focusPath = useSignalValue(presenter.focusNodePathBroadcast);
-  const scale = useSignalValue(presenter.scaleBroadcast);
-  const translate = useSignalValue(presenter.translateBroadcast);
 
   useSignalValueEffect((diagrams: RailroadDiagram[]) => {
     const div = ref.current;
@@ -55,66 +55,22 @@ export function Diagram({ presenter, onPatternClick }: DiagramProps) {
     }
   }, [focusPath]);
 
-  function handleScale(event) {
-    const scaleFactor = 0.003;
-    const minScale = 0.5;
-    const maxScale = 3;
-    const absDelta = Math.abs(event.deltaY);
-    let newScale = scale;
-
-    if (event.deltaY < 0) {
-      newScale = scale + scaleFactor * absDelta;
-    } else {
-      newScale = scale - scaleFactor * absDelta;
-    }
-
-    newScale = Math.min(Math.max(minScale, newScale), maxScale);
-    presenter.setScale(newScale);
-  }
-
-  function startDrag(event) {
-    const y = translate.y;
-    const x = translate.x;
-    const startX = event.clientX;
-    const startY = event.clientY;
-
-    function move(event: MouseEvent) {
-      const deltaX = event.clientX - startX;
-      const deltaY = event.clientY - startY;
-      const newX = x + deltaX;
-      const newY = y + deltaY;
-
-      presenter.setTranslate(newX, newY);
-
-      event.preventDefault();
-    }
-
-    function end(event: MouseEvent) {
-      window.document.removeEventListener("mousemove", move);
-      window.document.removeEventListener("mouseleave", end);
-      window.document.removeEventListener("mouseup", end);
-      event.preventDefault();
-    }
-
-    window.document.addEventListener("mousemove", move);
-    window.document.addEventListener("mouseleave", end);
-    window.document.addEventListener("mouseup", end);
-  }
-
   return (
-    <div
-      className={styles.diagram}
-      onClick={handleClick}
-      onMouseDown={startDrag}
-      onWheel={handleScale}
-    >
-      <div
-        ref={ref}
-        style={{
-          display: "inline-block",
-          transform: `translate(${translate.x}px, ${translate.y}px) scale(${scale})`,
-        }}
-      ></div>
-    </div>
+    <ZStack className={styles.diagram} overflow="hidden">
+      <TransformWrapper
+        initialScale={1}
+        minScale={0.12}
+        maxScale={3}
+        wheel={{ step: 0.03 }}
+        panning={{ velocityDisabled: true }}
+        limitToBounds={false}
+      >
+        <TransformComponent>
+          <div className={styles["diagram-container"]} onClick={handleClick}>
+            <div ref={ref} style={{ display: "inline-block" }}></div>
+          </div>
+        </TransformComponent>
+      </TransformWrapper>
+    </ZStack>
   );
 }

@@ -1,9 +1,13 @@
 .diagram {
   background-color: var(--surface-tertiary-color);
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
   cursor: grab;
+}
+
+.diagram-container {
+  background-color: var(--surface-tertiary-color);
+  overflow: visible;
+  width: auto;
+  height: auto;
 }
 
 :global(.terminal):not([data-type="literal"]) {
@@ -12,5 +16,5 @@
 }
 
 :global(.terminal):hover:not([data-type="literal"]) > rect {
-    fill: var(--surface-secondary-color);
+  fill: var(--surface-secondary-color);
 }

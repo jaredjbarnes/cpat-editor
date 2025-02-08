@@ -35,8 +35,15 @@ export function DirectoryItem({ directory, presenter }: DirectoryItemProps) {
     presenter.pendingDirectoryCreationBroadcast
   );
 
-  const isPending =
-    pendingDirectoryCreation != null || pendingFileCreation != null;
+  const isDirectoryPending =
+    pendingDirectoryCreation != null &&
+    pendingDirectoryCreation.directory === directory.path;
+
+  const isFilePending =
+    pendingFileCreation != null &&
+    pendingFileCreation.directory === directory.path;
+
+  const isPending = isDirectoryPending || isFilePending;
   const isOpen = openMap.get(directory.path);
   const path = directory.path;
   const isRenaming = renamingDirectoryPath?.directoryPath === directory.path;
