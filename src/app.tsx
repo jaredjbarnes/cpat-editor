@@ -117,7 +117,7 @@ export function App({ presenter }: AppProps) {
               minWidth="100px"
               width="300px"
               enableResizeOnEnd
-              onHeightResize={updateSize}
+              onWidthResize={updateSize}
             >
               <FileExplorer presenter={presenter.fileExplorer} />
             </Box>

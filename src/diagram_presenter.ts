@@ -104,6 +104,8 @@ export class DiagramPresenter {
             }
             case "expression": {
                 const expressionPattern = pattern as Expression;
+                expressionPattern.build();
+
                 const prefixPatterns = expressionPattern.prefixPatterns;
                 const atomPatterns = expressionPattern.atomPatterns;
                 const postfixPatterns = expressionPattern.postfixPatterns;
@@ -306,6 +308,8 @@ export class DiagramPresenter {
 
                 if (this._expandedPatternPaths.get(path)) {
                     const expressionPattern = pattern as Expression;
+                    expressionPattern.build();
+                    
                     const prefixPatterns = expressionPattern.prefixPatterns;
                     const atomPatterns = expressionPattern.atomPatterns;
                     const postfixPatterns = expressionPattern.postfixPatterns;

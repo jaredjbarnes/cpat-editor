@@ -3,11 +3,10 @@
   cursor: grab;
 }
 
-.diagram-container {
-  background-color: var(--surface-tertiary-color);
-  overflow: visible;
-  width: auto;
-  height: auto;
+.diagram > * {
+  overflow: visible !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 :global(.terminal):not([data-type="literal"]) {
