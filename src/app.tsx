@@ -3,7 +3,7 @@ import { AppPresenter } from "./app_presenter.ts";
 import { Diagram } from "./diagram.tsx";
 import { Ast } from "./ast.tsx";
 import { useSignalValue } from "@tcn/state";
-import { TestEditor } from "./test_editor.tsx";
+import { TestEditor } from "./tester/test_editor.tsx";
 import { GrammarEditor } from "./grammar_editor.tsx";
 import styles from "./app.module.css";
 import { Button, ButtonGroup, Checkbox } from "@tcn/ui-controls";
@@ -33,7 +33,6 @@ export function App({ presenter }: AppProps) {
     presenter.isDocumentationOpenBroadcast
   );
   const debuggerPresenter = useSignalValue(presenter.debuggerPresenter);
-  const canDebug = presenter.testEditor.selectedPattern != null;
   const canSave = currentPathMetaData && currentPathMetaData.type === "file";
   const astView = useSignalValue(presenter.astViewBroadcast);
   const removeSpaces = useSignalValue(
@@ -52,10 +51,6 @@ export function App({ presenter }: AppProps) {
     presenter.toggleDocumentation();
   }
 
-  function showDebug() {
-    presenter.showDebugger();
-  }
-
   function closeDebug() {
     presenter.closeDebugger();
   }
@@ -72,10 +67,6 @@ export function App({ presenter }: AppProps) {
     navigator.clipboard.writeText(presenter.grammarEditor.textEditor.getText());
   }
 
-  function copyTest() {
-    navigator.clipboard.writeText(presenter.testEditor.textEditor.getText());
-  }
-
   function showTreeView() {
     presenter.setAstView("tree");
   }
@@ -86,7 +77,7 @@ export function App({ presenter }: AppProps) {
 
   function updateSize() {
     presenter.grammarEditor.textEditor.updateSize();
-    presenter.testEditor.textEditor.updateSize();
+    presenter.testEditor.updateSize();
   }
 
   return (
@@ -114,7 +105,7 @@ export function App({ presenter }: AppProps) {
             <Box
               zIndex={2}
               className={styles.examples}
-              minWidth="100px"
+              minWidth="250px"
               width="300px"
               enableResizeOnEnd
               onWidthResize={updateSize}
@@ -122,7 +113,7 @@ export function App({ presenter }: AppProps) {
               <FileExplorer presenter={presenter.fileExplorer} />
             </Box>
             <VStack zIndex={1} flex overflowX="hidden">
-              <HStack flex className={styles.top}>
+              <HStack zIndex={1} flex className={styles.top}>
                 <FlexBox minWidth="200px" className={styles.left}>
                   <ZStack>
                     <GrammarEditor
@@ -168,34 +159,10 @@ export function App({ presenter }: AppProps) {
                   ></Diagram>
                 </Box>
               </HStack>
-              <Box height="50%" enableResizeOnTop onHeightResize={updateSize}>
+              <Box zIndex={2} height="50%" enableResizeOnTop onHeightResize={updateSize}>
                 <HStack>
                   <FlexBox minWidth="200px" className={styles.left}>
-                    <ZStack>
-                      <TestEditor presenter={presenter.testEditor} />
-                      <VStack
-                        padding="8px"
-                        verticalAlignment="end"
-                        horizontalAlignment="end"
-                        style={{ pointerEvents: "none" }}
-                      >
-                        <ButtonGroup>
-                          <Button
-                            onClick={copyTest}
-                            style={{ pointerEvents: "auto" }}
-                          >
-                            Copy
-                          </Button>
-                          <Button
-                            disabled={!canDebug}
-                            onClick={showDebug}
-                            style={{ pointerEvents: "auto" }}
-                          >
-                            Debug
-                          </Button>
-                        </ButtonGroup>
-                      </VStack>
-                    </ZStack>
+                    <TestEditor presenter={presenter.testEditor} />
                   </FlexBox>
                   <Box
                     width="50%"

@@ -1,5 +1,5 @@
 import { DiagramPresenter } from "./diagram_presenter.ts";
-import { TestEditorPresenter } from "./test_editor_presenter.ts";
+import { TestEditorPresenter } from "./tester/test_editor_presenter.ts";
 import { GrammarEditorPresenter } from "./grammar_editor_presenter.ts";
 import { Signal } from "@tcn/state";
 import { FileExplorerPresenter } from "./file_explorer/file_explorer_presenter.ts";
@@ -19,7 +19,6 @@ export class AppPresenter {
     readonly fileExplorer: FileExplorerPresenter;
     readonly debuggerPresenter: Signal<DebuggerPresenter | null>;
     readonly pathToSelectedPatternName: Record<string, string>;
-    readonly pathToTestPatternContent: Record<string, Record<string, string>>;
 
     get isDocumentationOpenBroadcast() {
         return this._isDocumentationOpen.broadcast;
@@ -39,7 +38,6 @@ export class AppPresenter {
 
     constructor() {
         this.pathToSelectedPatternName = {};
-        this.pathToTestPatternContent = {};
         this._fileSystem = new FileSystem();
         this._currentPath = new Signal<string | null>(null);
         this._currentPathMetaData = new Signal<DirectoryMeta | FileMeta | null>(null);
@@ -62,37 +60,16 @@ export class AppPresenter {
             }
         });
         this.testEditor = new TestEditorPresenter({
-            onPatternChange: (oldName, newName) => {
-                const currentPath = this._currentPath.get();
-                const currentContent = this.testEditor.textEditor.getText();
-
-                if (currentPath != null && oldName != null) {
-                    let map = this.pathToTestPatternContent[currentPath];
-                    if (map == null) {
-                        map = {};
-                        this.pathToTestPatternContent[currentPath] = map;
-                    }
-                    map[oldName] = currentContent;
-                }
-
-                if (currentPath != null && newName != null) {
-                    let map = this.pathToTestPatternContent[currentPath];
-                    if (map == null) {
-                        map = {};
-                        this.pathToTestPatternContent[currentPath] = map;
-                    }
-                    this.testEditor.textEditor.setText(map[newName] || "");
-                    return;
-                }
-
-                this.testEditor.textEditor.setText("");
+            patternFilePath: this._currentPath.get(),
+            onDebug: () => {
+                this.showDebugger();
             }
         });
         this.diagramPresenter = new DiagramPresenter();
         this.fileExplorer = new FileExplorerPresenter({
             fileSystem: this._fileSystem,
             onPathFocus: async (path, oldPath) => {
-                this.cacheTestEditoryContent();
+                this.testEditor.setPatternFilePath(path);
 
                 const selectedPatternName = this.testEditor.selectedPatternBroadcast.get();
                 const currentPath = this._currentPath.get();
@@ -112,7 +89,6 @@ export class AppPresenter {
                 this._currentPath.set(path);
                 this._currentPathMetaData.set(metaData);
                 this.testEditor.selectPattern(newSelectedPatternName);
-                this.setTestContent();
 
                 if (oldPath != null) {
                     try {
@@ -148,36 +124,6 @@ export class AppPresenter {
             this.fileExplorer.focus("/examples.cpat");
         } else {
             this.fileExplorer.focus(directory.items[0]?.path);
-        }
-    }
-
-    private cacheTestEditoryContent() {
-        const path = this._currentPath.get();
-        const selectedPattern = this.testEditor.selectedPatternBroadcast.get();
-
-        if (path != null && selectedPattern != null) {
-            let map = this.pathToTestPatternContent[path];
-            if (map == null) {
-                map = {};
-                this.pathToTestPatternContent[path] = map;
-            }
-
-            map[selectedPattern] = this.testEditor.textEditor.getText();
-        }
-    }
-
-    private setTestContent() {
-        const path = this._currentPath.get();
-        const selectedPattern = this.testEditor.selectedPatternBroadcast.get();
-
-        if (path != null && selectedPattern != null) {
-            let map = this.pathToTestPatternContent[path];
-            if (map == null) {
-                map = {};
-                this.pathToTestPatternContent[path] = map;
-            }
-
-            this.testEditor.textEditor.setText(map[selectedPattern]);
         }
     }
 

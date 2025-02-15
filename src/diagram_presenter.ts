@@ -309,7 +309,7 @@ export class DiagramPresenter {
                 if (this._expandedPatternPaths.get(path)) {
                     const expressionPattern = pattern as Expression;
                     expressionPattern.build();
-                    
+
                     const prefixPatterns = expressionPattern.prefixPatterns;
                     const atomPatterns = expressionPattern.atomPatterns;
                     const postfixPatterns = expressionPattern.postfixPatterns;
@@ -382,6 +382,7 @@ export class DiagramPresenter {
 
                 if (this._expandedPatternPaths.get(path)) {
                     const refPattern = (pattern as Reference).getReferencePatternSafely();
+
                     this._expandedPatternPaths.set(generatePath(refPattern), true);
 
                     const node = this._buildPattern(refPattern);

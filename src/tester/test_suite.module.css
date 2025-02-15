@@ -1,0 +1,13 @@
+.test-suite-side-panel {
+  border-inline-end: 1px solid var(--border-primary-color);
+  overflow: hidden;
+}
+
+.panel-header {
+  z-index: 2;
+}
+
+.panel-body {
+  z-index: 1;
+  overflow-y: auto;
+}

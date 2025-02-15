@@ -1,10 +1,14 @@
-import { Optional, Pattern, Regex, Sequence, Node } from "clarity-pattern-parser";
+import { Optional, Pattern, Regex, Sequence, Node, generateErrorMessage } from "clarity-pattern-parser";
 import { Signal } from "@tcn/state";
-import { EditorPresenter } from "./monaco_editor/editor_presenter.ts";
-import { MarkerSeverity } from "monaco-editor-core";
+import { EditorPresenter } from "../monaco_editor/editor_presenter.ts";
+import { IDisposable, MarkerSeverity } from "monaco-editor-core";
+import { TestSuitePresenter } from "./test_suite_presenter.ts";
+
+const QUICK_TEST_PREFIX = '$__quick_test__$:';
 
 export interface TestEditorPresenterOptions {
-    onPatternChange?: (oldName: string | null, newName: string | null) => void;
+    patternFilePath: string | null;
+    onDebug: () => void;
 }
 
 export class TestEditorPresenter {
@@ -15,6 +19,10 @@ export class TestEditorPresenter {
     private _patterns: Signal<Record<string, Pattern>>;
     private _parseDuration: Signal<number>;
     private _removeSpaces: Signal<boolean>;
+    private _testSuitePresenter: Signal<TestSuitePresenter | null>;
+    private _changeListener: IDisposable;
+    private _blurListener: IDisposable;
+    private _errorMessage: Signal<string | null>;
 
     readonly textEditor: EditorPresenter;
 
@@ -47,7 +55,19 @@ export class TestEditorPresenter {
         return this._parseDuration.broadcast;
     }
 
-    constructor(options: TestEditorPresenterOptions = {}) {
+    get testSuitePresenterBroadcast() {
+        return this._testSuitePresenter.broadcast;
+    }
+
+    get errorMessageBroadcast() {
+        return this._errorMessage.broadcast;
+    }
+
+    get _storageKey() {
+        return `${QUICK_TEST_PREFIX}${this._options.patternFilePath}[${this.selectedPatternBroadcast.get()}]`;
+    }
+
+    constructor(options: TestEditorPresenterOptions) {
         this._options = options;
         this._astJson = new Signal("");
         this._ast = new Signal<Node | null>(null);
@@ -56,13 +76,32 @@ export class TestEditorPresenter {
         this.textEditor = new EditorPresenter("test");
         this._parseDuration = new Signal(0);
         this._removeSpaces = new Signal(false);
+        this._testSuitePresenter = new Signal<TestSuitePresenter | null>(null);
+        this._changeListener = { dispose: () => { } };
+        this._blurListener = { dispose: () => { } };
+        this._errorMessage = new Signal<string | null>(null);
     }
 
     initialize() {
-        this.textEditor.onChange((value: string) => {
+        const key = this._storageKey;
+        const content = window.localStorage.getItem(key);
+
+        this._changeListener = this.textEditor.onChange((value: string) => {
             this._process(value);
+            window.localStorage.setItem(this._storageKey, value);
         });
 
+        this._blurListener = this.textEditor.onChange((value: string) => {
+            if (this._options.patternFilePath == null || this.selectedPatternBroadcast.get() == null) {
+                return;
+            }
+
+            window.localStorage.setItem(this._storageKey, value);
+        });
+
+        if (content != null) {
+            this.textEditor.setText(content);
+        }
     }
 
     private _process(text: string) {
@@ -82,10 +121,11 @@ export class TestEditorPresenter {
                 const { ast, cursor } = editorPattern.exec(text, true);
                 const parseDuration = performance.now() - startTime;
 
-                this._parseDuration.set(parseDuration);
+                this._parseDuration.set(Number(parseDuration.toFixed(2)));
                 if (ast != null) {
                     const rootAst = ast.children[0];
 
+                    this._errorMessage.set(null);
                     this._cleanAst(rootAst);
                     this._astJson.set(rootAst.toJson(2));
                     this._ast.set(rootAst);
@@ -93,7 +133,10 @@ export class TestEditorPresenter {
                 } else {
                     this._astJson.set("");
                     this._ast.set(null);
+                    this._errorMessage.set(generateErrorMessage(editorPattern, cursor));
+
                     const nodes = cursor.allMatchedNodes.slice();
+
                     nodes.sort((a, b) => a.endIndex - b.endIndex);
 
                     if (nodes.length === 0) {
@@ -140,11 +183,25 @@ export class TestEditorPresenter {
         this._process(this.textEditor.getText());
     }
 
+    setPatternFilePath(patternFilePath: string) {
+        this._options.patternFilePath = patternFilePath;
+    }
+
     selectPattern(name: string | null) {
-        const oldName = this._selectedPattern.get();
+        const savedQuickTestContent = window.localStorage.getItem(`${QUICK_TEST_PREFIX}${this._options.patternFilePath}[${name}]`);
+
+        if (name != null && savedQuickTestContent != null) {
+            this.textEditor.setText(savedQuickTestContent);
+        }
+
         this._selectedPattern.set(name);
-        this._options.onPatternChange && this._options.onPatternChange(oldName, name);
         this._process(this.textEditor.getText());
+
+        const testSuitePresenter = this._testSuitePresenter.get();
+
+        if (testSuitePresenter != null) {
+            testSuitePresenter.setContext(this._options.patternFilePath, this.selectedPatternBroadcast.get());
+        }
     }
 
     toggleRemoveSpaces() {
@@ -152,7 +209,29 @@ export class TestEditorPresenter {
         this._process(this.textEditor.getText());
     }
 
-    dispose() {
+    showTestSuite() {
+        if (this._options.patternFilePath != null) {
+            this._testSuitePresenter.set(new TestSuitePresenter(this._options.patternFilePath, this.selectedPatternBroadcast.get(), (value) => {
+                this._process(value);
+            }));
+        }
+    }
 
+    showQuickTest() {
+        this._testSuitePresenter.set(null);
+    }
+
+    updateSize() {
+        this.textEditor.updateSize();
+        this._testSuitePresenter.get()?.updateSize();
+    }
+
+    debug() {
+        this._options.onDebug();
+    }
+
+    dispose() {
+        this._changeListener.dispose();
+        this._blurListener.dispose();
     }
 }

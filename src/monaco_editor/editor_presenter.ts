@@ -165,13 +165,19 @@ export class EditorPresenter {
     }
 
     onChange(callback: (value: string, model: monaco.editor.ITextModel | null) => void) {
-        this.editor.onDidChangeModelContent(() => {
+        return this.editor.onDidChangeModelContent(() => {
+            callback(this.editor.getValue(), this.editor.getModel());
+        });
+    }
+
+    onBlur(callback: (value: string, model: monaco.editor.ITextModel | null) => void) {
+        return this.editor.onDidBlurEditorWidget(() => {
             callback(this.editor.getValue(), this.editor.getModel());
         });
     }
 
     onSelectionChange(callback: (selection: monaco.Selection, model: monaco.editor.ITextModel | null) => void) {
-        this.editor.onDidChangeCursorSelection((event) => {
+        return this.editor.onDidChangeCursorSelection((event) => {
             callback(event.selection, this.editor.getModel());
         });
     }

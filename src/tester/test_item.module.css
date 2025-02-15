@@ -1,0 +1,10 @@
+.test-item {
+  padding-block: 4px;
+  padding-inline: 8px;
+  cursor: pointer;
+}
+
+.test-item[data-is-focused="true"] {
+  background-color: var(--default-accent-color);
+  color: white;
+}

@@ -9,7 +9,7 @@ export function Ast({ text }: AstProps) {
     <StyleBox
       overflow="auto"
       backgroundColor="var(--surface-tertiary-color)"
-      fontSize="16px"
+      fontSize="14px"
       fontFamily="'Courier New', Courier, monospace"
       fontWeight="bold"
     >
