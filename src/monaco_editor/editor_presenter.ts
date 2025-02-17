@@ -11,7 +11,7 @@ monaco.languages.register({ id: 'cpat' });
 monaco.languages.registerDocumentSemanticTokensProvider('cpat', {
     getLegend: function (): monaco.languages.SemanticTokensLegend {
         return {
-            tokenTypes: ["keyword", "type", "string", "comment", "number", "operator", "variable", "regexp"],
+            tokenTypes: ["keyword", "type", "string", "comment", "number", "operator", "variable", "regexp", "method", "property"],
             tokenModifiers: [],
         };
     },

@@ -8,6 +8,8 @@ enum Legends {
     OPERATOR,
     VARIABLE,
     REGEXP,
+    METHOD,
+    PROPERTY,
 }
 
 export const tokensMap = {
@@ -24,6 +26,15 @@ export const tokensMap = {
 
     // Comments
     comment: Legends.COMMENT,
+
+    // Decorators
+    "decorator-name": Legends.METHOD,
+    "decorator-prefix": Legends.METHOD,
+    "string-literal": Legends.STRING,
+    "number-literal": Legends.NUMBER,
+    "boolean-literal": Legends.KEYWORD,
+    "object-key": Legends.PROPERTY,
+    "null": Legends.KEYWORD,
 
     // Names
     name: Legends.VARIABLE,
