@@ -35,7 +35,12 @@ export function TestSuite({ presenter }: TestSuiteProps) {
 
   return (
     <HStack>
-      <Box width="200px" enableResizeOnEnd onWidthResize={updateSize}>
+      <Box
+        zIndex={1}
+        width="200px"
+        enableResizeOnEnd
+        onWidthResize={updateSize}
+      >
         <VStack className={styles["test-suite-side-panel"]}>
           <PanelHeader className={styles["panel-header"]}>
             <HStack>
@@ -53,7 +58,7 @@ export function TestSuite({ presenter }: TestSuiteProps) {
           </FlexBox>
         </VStack>
       </Box>
-      <FlexBox>
+      <FlexBox zIndex={2}>
         <Editor presenter={presenter.editorPresenter} />
       </FlexBox>
     </HStack>

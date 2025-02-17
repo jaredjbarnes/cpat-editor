@@ -4,10 +4,8 @@
 }
 
 .panel-header {
-  z-index: 2;
 }
 
 .panel-body {
-  z-index: 1;
   overflow-y: auto;
 }

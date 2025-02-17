@@ -139,6 +139,10 @@ export class TestSuitePresenter {
             }]);
         }
 
+        if (this._focusedTest.get()?.name === name) {
+            this.focus(this._tests.get()[0]);
+        }
+
         this._persist();
     }
 
@@ -176,12 +180,12 @@ export class TestSuitePresenter {
             return;
         }
 
-        this._pendingTestCreation.set(new TestPresenter(test, (test: Test) => {
+        this._pendingTestRenaming.set(new TestPresenter(test, (test: Test) => {
             this.saveTest(test.name, test.syntax);
-            this._pendingTestCreation.set(null);
+            this._pendingTestRenaming.set(null);
         }, (test: Test) => {
             this.saveTest(test.name, test.syntax);
-            this._pendingTestCreation.set(null);
+            this._pendingTestRenaming.set(null);
         }));
     }
 
@@ -191,12 +195,16 @@ export class TestSuitePresenter {
 
     focus(test: Test) {
         const prevTest = this._focusedTest.get();
-        if (prevTest != null) {
+        if (prevTest != null && this.hasTest(prevTest)) {
             this.saveTest(prevTest.name, this._editorPresenter.getText());
         }
         this._focusedTest.set(test);
         this._editorPresenter.setText(test.syntax);
         this._onChange(test.syntax);
+    }
+
+    hasTest(test: Test) {
+        return this._tests.get().find(t => t === test) != null;
     }
 
     setContext(patternFilePath: string | null, selectedPattern: string | null) {

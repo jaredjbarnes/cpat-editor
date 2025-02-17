@@ -48,18 +48,18 @@ export function TestEditor({ presenter }: TestEditorProps) {
     presenter.showTestSuite();
   }
 
-  function debug(){
+  function debug() {
     presenter.debug();
   }
 
   return (
-    <VStack >
+    <VStack>
       <HStack
         height="auto"
         padding="8px"
         minHeight="40px"
         style={{ borderBottom: "1px solid var(--border-primary-color)" }}
-        zIndex={2}
+        zIndex={1}
       >
         <Select
           value={String(selectedPatternName)}
@@ -85,8 +85,12 @@ export function TestEditor({ presenter }: TestEditorProps) {
         <Spacer />
         <Button onClick={debug}>Debug</Button>
       </HStack>
-      <FlexBox zIndex={1}>
-        <ZStack>
+      <FlexBox zIndex={2}>
+        <ZStack
+          style={{
+            visibility: selectedPatternName == null ? "hidden" : "visible",
+          }}
+        >
           <Editor presenter={presenter.textEditor} />
           {testSuitePresenter && <TestSuite presenter={testSuitePresenter} />}
         </ZStack>
@@ -109,30 +113,5 @@ export function TestEditor({ presenter }: TestEditorProps) {
         </HStack>
       </Box>
     </VStack>
-    // <ZStack>
-    //   <VStack>
-    //     <Select value={String(selectedPatternName)} onChange={selectPattern}>
-    //       {options}
-    //     </Select>
-    //     <FlexBox>
-    //       <ZStack>
-    //         <Editor presenter={presenter.textEditor} />
-    //         {testSuitePresenter && <TestSuite presenter={testSuitePresenter} />}
-    //       </ZStack>
-    //     </FlexBox>
-    //   </VStack>
-    //   <VStack style={{ pointerEvents: "none" }}>
-    //     <Spacer />
-    //     <HStack height="auto" padding="8px">
-    //       <BodyText variant="small">{`Parse Time: ${parseDuration}ms`}</BodyText>
-    //       <Spacer width="150px" />
-    //       <ButtonGroup style={{ pointerEvents: "auto" }}>
-    //         <Button onClick={showQuickTest}>Quick Test</Button>
-    //         <Button onClick={showTestSuite}>Test Suite</Button>
-    //       </ButtonGroup>
-    //       <Spacer width="150px" />
-    //     </HStack>
-    //   </VStack>
-    // </ZStack>
   );
 }

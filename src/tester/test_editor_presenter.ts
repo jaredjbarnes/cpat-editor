@@ -185,6 +185,10 @@ export class TestEditorPresenter {
 
     setPatternFilePath(patternFilePath: string) {
         this._options.patternFilePath = patternFilePath;
+
+        this._testSuitePresenter.set(null);
+        this.selectPattern(null);
+        this.textEditor.setText("");
     }
 
     selectPattern(name: string | null) {

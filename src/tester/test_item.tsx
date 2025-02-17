@@ -19,7 +19,7 @@ export function TestItem({ test, presenter }: TestItemProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState<Position | null>(null);
   const isRenaming = renamingTest?.name === test.name;
-
+console.log(renamingTest);
   function selectItem(event: React.MouseEvent<HTMLElement>) {
     presenter.focus(test);
     event.preventDefault();

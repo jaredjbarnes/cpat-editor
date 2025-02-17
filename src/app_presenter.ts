@@ -85,7 +85,6 @@ export class AppPresenter {
                     metaData = this._fileSystem.getMetaDataForPath(path);
                 } catch { }
 
-                console.log(newSelectedPatternName);
                 this._currentPath.set(path);
                 this._currentPathMetaData.set(metaData);
                 this.testEditor.selectPattern(newSelectedPatternName);
