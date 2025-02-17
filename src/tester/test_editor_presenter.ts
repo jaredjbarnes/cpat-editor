@@ -3,8 +3,14 @@ import { Signal } from "@tcn/state";
 import { EditorPresenter } from "../monaco_editor/editor_presenter.ts";
 import { IDisposable, MarkerSeverity } from "monaco-editor-core";
 import { TestSuitePresenter } from "./test_suite_presenter.ts";
+import * as monaco from "monaco-editor-core";
+import { TestSemanticTokensProvider } from "./test_semantic_token_provider.ts";
 
 const QUICK_TEST_PREFIX = '$__quick_test__$:';
+const testSemanticTokensProvider = new TestSemanticTokensProvider();
+
+monaco.languages.register({ id: 'test' });
+monaco.languages.registerDocumentSemanticTokensProvider('test', testSemanticTokensProvider);
 
 export interface TestEditorPresenterOptions {
     patternFilePath: string | null;
@@ -178,7 +184,9 @@ export class TestEditorPresenter {
         });
     }
 
-    setPatterns(patterns: Record<string, Pattern>) {
+    setPatterns(patterns: Record<string, Pattern>, tokensMap: Record<string, number>) {
+        testSemanticTokensProvider.setTokensMap(tokensMap);
+
         this._patterns.set(patterns);
         this._process(this.textEditor.getText());
     }
@@ -194,8 +202,12 @@ export class TestEditorPresenter {
     selectPattern(name: string | null) {
         const savedQuickTestContent = window.localStorage.getItem(`${QUICK_TEST_PREFIX}${this._options.patternFilePath}[${name}]`);
 
-        if (name != null && savedQuickTestContent != null) {
-            this.textEditor.setText(savedQuickTestContent);
+        if (name != null) {
+            testSemanticTokensProvider.setGrammar(this._patterns.get()[name]);
+
+            if (savedQuickTestContent != null) {
+                this.textEditor.setText(savedQuickTestContent);
+            }
         }
 
         this._selectedPattern.set(name);

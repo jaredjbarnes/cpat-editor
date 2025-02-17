@@ -1,5 +1,5 @@
 
-enum Legends {
+export enum Legends {
     KEYWORD = 0,
     TYPE,
     STRING,
@@ -11,6 +11,19 @@ enum Legends {
     METHOD,
     PROPERTY,
 }
+
+export const legendsMap = {
+    keyword: 0,
+    type: 1,
+    string: 2,
+    comment: 3,
+    number: 4,
+    operator: 5,
+    variable: 6,
+    regexp: 7,
+    method: 8,
+    property: 9,
+};
 
 export const tokensMap = {
     // String Literals

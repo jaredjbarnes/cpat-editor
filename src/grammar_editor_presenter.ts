@@ -2,10 +2,11 @@ import { grammar, Grammar, Pattern } from "clarity-pattern-parser";
 import { FileSystem } from "./file_explorer/file_system.ts";
 import { EditorPresenter } from "./monaco_editor/editor_presenter.ts";
 import { MarkerSeverity } from "monaco-editor-core";
+import { legendsMap } from "./monaco_editor/tokens_map.ts";
 
 export interface GrammarEditorOptions {
     fileSystem: FileSystem;
-    onGrammarProcess: (patterns: Record<string, Pattern>) => void;
+    onGrammarProcess: (patterns: Record<string, Pattern>, tokensMap: Record<string, number>) => void;
     onSave: (content: string) => void;
     onPattern: (pattern: Pattern | null) => void;
 }
@@ -14,9 +15,10 @@ export class GrammarEditorPresenter {
     private _fileSystem: FileSystem;
     private _cursorPosition: number | null;
     private _path: string;
-    private _onGrammarProcess: (patterns: Record<string, Pattern>) => void;
+    private _onGrammarProcess: (patterns: Record<string, Pattern>, tokensMap: Record<string, number>) => void;
     private _allPatterns: Record<string, Pattern>;
     private _onPattern: (pattern: Pattern | null) => void;
+    private _tokensMap: Record<string, number>;
     readonly textEditor: EditorPresenter;
 
     constructor({ onGrammarProcess, onSave, fileSystem, onPattern }: GrammarEditorOptions) {
@@ -27,6 +29,7 @@ export class GrammarEditorPresenter {
         this._allPatterns = {};
         this.textEditor = new EditorPresenter("cpat", onSave);
         this._onPattern = onPattern;
+        this._tokensMap = {};
     }
 
     initialize() {
@@ -53,6 +56,7 @@ export class GrammarEditorPresenter {
     private async _processGrammar() {
         const text = this.textEditor.getText();
         try {
+            this._tokensMap = {};
             const allPatterns = await Grammar.parse(text, {
                 originResource: this._path,
                 resolveImport: async (resource, originResource) => {
@@ -66,19 +70,26 @@ export class GrammarEditorPresenter {
                     } catch {
                         throw new Error(`File not found: ${path}`);
                     }
+                },
+                decorators: {
+                    syntaxHighlight: (pattern: Pattern, arg: any) => {
+                        if (typeof arg === "string" && legendsMap[arg] != null) {
+                            this._tokensMap[pattern.name] = legendsMap[arg];
+                        }
+                    }
                 }
             });
 
             this._allPatterns = allPatterns;
             this._processCursorToPattern();
-            this._onGrammarProcess(allPatterns);
+            this._onGrammarProcess(allPatterns, this._tokensMap);
         } catch (e: any) {
             console.log("Grammar Error:", e.message.replaceAll("\n", "\\n"));
         }
 
         if (text === "") {
             this._allPatterns = {};
-            this._onGrammarProcess({});
+            this._onGrammarProcess({}, {});
         }
     }
 
@@ -121,9 +132,9 @@ export class GrammarEditorPresenter {
     private _markErrors() {
         const textEditor = this.textEditor;
         const text = textEditor.getText();
-        const {ast,  cursor } = grammar.exec(text, true);
+        const { ast, cursor } = grammar.exec(text, true);
 
-        if (ast != null){
+        if (ast != null) {
             this.textEditor.clearMarkers();
             return;
         }
