@@ -7,6 +7,8 @@ import { DirectoryMeta, FileMeta, FileSystem } from "./file_explorer/file_system
 import { Pattern } from "clarity-pattern-parser";
 import { DebuggerPresenter } from "./debugger/debugger_presenter.ts";
 
+const CURRENT_PATH_SELECTED_KEY = "$__file_system__$selected-path";
+
 export class AppPresenter {
     private _isDocumentationOpen: Signal<boolean>;
     private _fileSystem: FileSystem;
@@ -39,7 +41,7 @@ export class AppPresenter {
     constructor() {
         this.pathToSelectedPatternName = {};
         this._fileSystem = new FileSystem();
-        this._currentPath = new Signal<string | null>(null);
+        this._currentPath = new Signal<string | null>(window.localStorage.getItem(CURRENT_PATH_SELECTED_KEY));
         this._currentPathMetaData = new Signal<DirectoryMeta | FileMeta | null>(null);
         this._isDocumentationOpen = new Signal(false);
         this._astView = new Signal<'json' | 'tree'>("json");
@@ -68,7 +70,7 @@ export class AppPresenter {
         this.diagramPresenter = new DiagramPresenter();
         this.fileExplorer = new FileExplorerPresenter({
             fileSystem: this._fileSystem,
-            onPathFocus: async (path, oldPath) => {
+            onPathFocus: async (path) => {
                 this.testEditor.setPatternFilePath(path);
 
                 const selectedPatternName = this.testEditor.selectedPatternBroadcast.get();
@@ -89,18 +91,7 @@ export class AppPresenter {
                 this._currentPathMetaData.set(metaData);
                 this.testEditor.selectPattern(newSelectedPatternName);
 
-                if (oldPath != null) {
-                    try {
-                        const hasFile = await this._fileSystem.hasFile(oldPath);
-
-                        if (!hasFile) {
-                            throw new Error("File Not Found.");
-                        }
-
-                        const content = this.grammarEditor.textEditor.getText();
-                        await this._fileSystem.writeFile(oldPath, content);
-                    } catch { }
-                }
+                window.localStorage.setItem(CURRENT_PATH_SELECTED_KEY, path);
 
                 try {
                     const content = await this._fileSystem.readFile(path);
@@ -118,11 +109,18 @@ export class AppPresenter {
     async initialize() {
         await this.fileExplorer.initialize();
         const directory = this.fileExplorer.directoryBroadcast.get();
+
         if (directory.items.length === 0) {
             await this.fileExplorer.createFile("examples.cpat");
             this.fileExplorer.focus("/examples.cpat");
         } else {
-            this.fileExplorer.focus(directory.items[0]?.path);
+            const currentPath = this._currentPath.get();
+
+            if (currentPath == null) {
+                this.fileExplorer.focus(directory.items[0]?.path);
+            } else {
+                this.fileExplorer.focus(currentPath);
+            }
         }
     }
 

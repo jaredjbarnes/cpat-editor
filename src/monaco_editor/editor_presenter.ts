@@ -2,12 +2,9 @@ import * as monaco from "monaco-editor-core";
 import { grammar } from "clarity-pattern-parser";
 import { tokensMap } from "./tokens_map.ts";
 
-
-// 1️⃣ Register a custom language
 monaco.languages.register({ id: 'cpat' });
 
 
-// 2️⃣ Register a semantic token provider
 monaco.languages.registerDocumentSemanticTokensProvider('cpat', {
     getLegend: function (): monaco.languages.SemanticTokensLegend {
         return {
@@ -97,6 +94,7 @@ export interface EditorPresenterOptions {
 }
 
 export class EditorPresenter {
+    private _text: string;
     private _editor: monaco.editor.IStandaloneCodeEditor | null;
     private _language: string;
     private _onSave: (text: string) => void;
@@ -111,6 +109,7 @@ export class EditorPresenter {
     }
 
     constructor(language: string, onSave: (text: string) => void = () => { }) {
+        this._text = "";
         this._editor = null;
         this._language = language;
         this._onSave = onSave;
@@ -120,7 +119,7 @@ export class EditorPresenter {
     initialize(element: HTMLElement) {
 
         this._editor = monaco.editor.create(element, {
-            value: ``,
+            value: this._text,
             language: this._language,
             theme: 'vs',
             "semanticHighlighting.enabled": true,
@@ -134,6 +133,7 @@ export class EditorPresenter {
             this._onSave
         );
 
+
         this._decorationsCollection = this.editor.createDecorationsCollection();
     }
 
@@ -142,14 +142,12 @@ export class EditorPresenter {
     }
 
     setText(value: string) {
-        const oldModel = this.editor.getModel();
-
-        if (oldModel != null) {
-            const newModel = monaco.editor.createModel(value, oldModel.getLanguageId());
-            this.editor.setModel(newModel);
-            oldModel.dispose();
+        this._text = value;
+        const model = this.editor.getModel();
+        if (model) {
+            model.setValue(value);
+            model.pushStackElement();
         }
-
     }
 
     getText() {
