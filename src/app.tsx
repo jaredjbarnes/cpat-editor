@@ -26,14 +26,10 @@ export function App({ presenter }: AppProps) {
   const astJson = useSignalValue(presenter.testEditor.astJsonBroadcast);
   const ast = useSignalValue(presenter.testEditor.astBroadcast);
 
-  const currentPathMetaData = useSignalValue(
-    presenter.currentPathMetaDataBroadcast
-  );
   const isDocumentationOpen = useSignalValue(
     presenter.isDocumentationOpenBroadcast
   );
   const debuggerPresenter = useSignalValue(presenter.debuggerPresenter);
-  const canSave = currentPathMetaData && currentPathMetaData.type === "file";
   const astView = useSignalValue(presenter.astViewBroadcast);
   const removeSpaces = useSignalValue(
     presenter.testEditor.removeSpacesBroadcast
@@ -57,10 +53,6 @@ export function App({ presenter }: AppProps) {
 
   function copyAst() {
     navigator.clipboard.writeText(astJson);
-  }
-
-  function copyGrammar() {
-    navigator.clipboard.writeText(presenter.grammarEditor.textEditor.getText());
   }
 
   function showTreeView() {

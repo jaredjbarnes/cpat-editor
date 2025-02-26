@@ -128,9 +128,9 @@ export class TestEditorPresenter {
                 const parseDuration = performance.now() - startTime;
 
                 this._parseDuration.set(Number(parseDuration.toFixed(2)));
-                if (ast != null) {
-                    const rootAst = ast.children[0];
+                const rootAst = ast?.children.find(n => !n.name.includes("space"));
 
+                if (ast != null && rootAst != null) {
                     this._errorMessage.set(null);
                     this._cleanAst(rootAst);
                     this._astJson.set(rootAst.toJson(2));
