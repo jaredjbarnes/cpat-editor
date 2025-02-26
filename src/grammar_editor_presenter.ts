@@ -19,12 +19,14 @@ export class GrammarEditorPresenter {
     private _allPatterns: Record<string, Pattern>;
     private _onPattern: (pattern: Pattern | null) => void;
     private _tokensMap: Record<string, number>;
+    private _onSave: (content: string) => void;
     readonly textEditor: EditorPresenter;
 
     constructor({ onGrammarProcess, onSave, fileSystem, onPattern }: GrammarEditorOptions) {
         this._fileSystem = fileSystem;
         this._cursorPosition = null;
         this._path = "";
+        this._onSave = onSave;
         this._onGrammarProcess = onGrammarProcess;
         this._allPatterns = {};
         this.textEditor = new EditorPresenter("cpat", onSave);
@@ -33,7 +35,7 @@ export class GrammarEditorPresenter {
     }
 
     initialize() {
-        this.textEditor.onChange((_, model) => {
+        this.textEditor.onChange((text, model) => {
             this._processGrammar();
             this._markErrors();
             const range = this.textEditor.editor.getSelection();
@@ -42,6 +44,7 @@ export class GrammarEditorPresenter {
                 this._cursorPosition = model.getOffsetAt(range.getStartPosition());
             }
             this._processCursorToPattern();
+            this._onSave(text);
         });
 
         this.textEditor.onSelectionChange((range, model) => {

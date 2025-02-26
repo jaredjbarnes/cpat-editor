@@ -47,8 +47,8 @@ export class AppPresenter {
             onGrammarProcess: (patterns, tokensMap) => {
                 this.testEditor.setPatterns(patterns, tokensMap);
             },
-            onSave: () => {
-                this.save();
+            onSave: (text: string) => {
+                this.save(text);
             },
             fileSystem: this._fileSystem,
             onPattern: (pattern: Pattern | null) => {
@@ -143,11 +143,11 @@ export class AppPresenter {
         this.debuggerPresenter.set(null);
     }
 
-    save() {
+    save(text: string) {
         const currentPath = this._currentPath.get();
 
         if (currentPath != null) {
-            this._fileSystem.writeFile(currentPath, this.grammarEditor.textEditor.getText());
+            this._fileSystem.writeFile(currentPath, text);
         }
     }
 

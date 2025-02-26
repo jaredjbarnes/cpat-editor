@@ -55,10 +55,6 @@ export function App({ presenter }: AppProps) {
     presenter.closeDebugger();
   }
 
-  function save() {
-    presenter.save();
-  }
-
   function copyAst() {
     navigator.clipboard.writeText(astJson);
   }
@@ -115,40 +111,9 @@ export function App({ presenter }: AppProps) {
             <VStack zIndex={1} flex overflowX="hidden">
               <HStack zIndex={1} flex className={styles.top}>
                 <FlexBox minWidth="200px" className={styles.left}>
-                  <ZStack>
-                    <GrammarEditor
-                      presenter={presenter.grammarEditor}
-                    ></GrammarEditor>
-                    <VStack
-                      padding="8px"
-                      verticalAlignment="end"
-                      horizontalAlignment="end"
-                      style={{ pointerEvents: "none" }}
-                    >
-                      <ButtonGroup>
-                        <Button
-                          onClick={copyGrammar}
-                          style={{ pointerEvents: "auto" }}
-                        >
-                          Copy
-                        </Button>
-                        <Button
-                          disabled={!canSave}
-                          onClick={save}
-                          style={{ pointerEvents: "auto" }}
-                        >
-                          Save
-                        </Button>
-                      </ButtonGroup>
-                    </VStack>
-                    {!canSave && (
-                      <ZStack className={styles["select-file"]}>
-                        <div className={styles["select-file-message"]}>
-                          <Header>Select a File</Header>
-                        </div>
-                      </ZStack>
-                    )}
-                  </ZStack>
+                  <GrammarEditor
+                    presenter={presenter.grammarEditor}
+                  ></GrammarEditor>
                 </FlexBox>
                 <Box width="50%" enableResizeOnStart onWidthResize={updateSize}>
                   <Diagram
@@ -159,7 +124,12 @@ export function App({ presenter }: AppProps) {
                   ></Diagram>
                 </Box>
               </HStack>
-              <Box zIndex={2} height="50%" enableResizeOnTop onHeightResize={updateSize}>
+              <Box
+                zIndex={2}
+                height="50%"
+                enableResizeOnTop
+                onHeightResize={updateSize}
+              >
                 <HStack>
                   <FlexBox minWidth="200px" className={styles.left}>
                     <TestEditor presenter={presenter.testEditor} />

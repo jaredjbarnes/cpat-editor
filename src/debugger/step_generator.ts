@@ -17,6 +17,10 @@ export function generateSteps(rootPattern: Pattern, records: HistoryRecord[]) {
         const to = record.pattern;
         const prevRecord = records[index - 1];
 
+        if (to.parent?.type === "take-until") {
+            return;
+        }
+
         currentPattern = to;
 
         if (prevRecord != null &&
