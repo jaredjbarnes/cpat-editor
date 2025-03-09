@@ -1,5 +1,4 @@
-import { Pattern } from "clarity-pattern-parser";
-import { HistoryRecord } from "clarity-pattern-parser/dist/patterns/CursorHistory";
+import { HistoryRecord, Pattern } from "clarity-pattern-parser";
 
 export interface DebuggerStep {
     type: "move" | "match" | "error";

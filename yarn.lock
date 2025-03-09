@@ -1153,10 +1153,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clarity-pattern-parser@npm:^11.2.2":
-  version: 11.2.2
-  resolution: "clarity-pattern-parser@npm:11.2.2"
-  checksum: 10c0/11ff1469905bdebf709b27a3f4a312149d85cad5a84c6f13e48173f6dcee80691579376856401cf77d4d53623c82d6ea5dbdecf880d0f91b1c29162cb44a10a8
+"clarity-pattern-parser@npm:^11.3.2":
+  version: 11.3.2
+  resolution: "clarity-pattern-parser@npm:11.3.2"
+  checksum: 10c0/d319fc76d920a6afedc3efb7a21069f56e2001b07d00eca304d61c7c5fedaa5b10c96fe45c1f946334833085baac9a15c6b86f84eea4cc651e14e5496c85fdf2
   languageName: node
   linkType: hard
 
@@ -1241,7 +1241,7 @@ __metadata:
     "@types/react": "npm:^18.2.70"
     "@types/react-dom": "npm:^18.2.22"
     "@vitejs/plugin-react": "npm:^4.3.4"
-    clarity-pattern-parser: "npm:^11.2.2"
+    clarity-pattern-parser: "npm:^11.3.2"
     classnames: "npm:^2.5.1"
     gh-pages: "npm:^6.3.0"
     globals: "npm:^15.14.0"

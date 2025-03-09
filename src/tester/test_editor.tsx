@@ -80,7 +80,7 @@ export function TestEditor({ presenter }: TestEditorProps) {
           }}
         >
           <option value="quick-test">Quick Test</option>
-          <option value="test-suite">Test Siute</option>
+          <option value="test-suite">Test Suite</option>
         </SelectGroup>
         <Spacer />
         <Button onClick={debug}>Debug</Button>
