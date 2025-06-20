@@ -53,6 +53,22 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
     onComplete();
   }
 
+  function nextError() {
+    presenter.nextError();
+  }
+
+  function previousError() {
+    presenter.previousError();
+  }
+
+  function firstError() {
+    presenter.firstError();
+  }
+
+  function lastError() {
+    presenter.lastError();
+  }
+
   function updatePlaybackSpeed(value: string) {
     const numberValue = Number(value);
     presenter.setPlaybackSpeed(1000 - numberValue + 300);
@@ -66,6 +82,12 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
         horizontalAlignment="center"
         padding="8px"
       >
+        <ButtonGroup>
+          <Button onClick={firstError}>First Error</Button>
+          <Button onClick={previousError}>Previous Error</Button>
+          <Button onClick={nextError}>Next Error</Button>
+          <Button onClick={lastError}>Last Error</Button>
+        </ButtonGroup>
         <Spacer />
         <ButtonGroup>
           <Button onClick={start}>Start</Button>

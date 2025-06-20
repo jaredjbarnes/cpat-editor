@@ -47,6 +47,7 @@ export function generateSteps(rootPattern: Pattern, records: HistoryRecord[]) {
                     pattern.type === "finite-repeat" ||
                     pattern.type === "optional" ||
                     pattern.type === "reference" ||
+                    pattern.type === "context" ||
                     (pattern.parent?.type === "optional" && record.error != null)
                 ) {
                     return;

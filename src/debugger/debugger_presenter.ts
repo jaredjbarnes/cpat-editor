@@ -109,6 +109,52 @@ export class DebuggerPresenter {
         }
     }
 
+    nextError() {
+        for (let i = this._onStep.get() + 1; i < this._steps.length; i++) {
+            if (this._steps[i].type === "error") {
+                this._onStep.set(i);
+                this._update();
+                return;
+            }
+        }
+    }
+
+    previousError() {
+        for (let i = this._onStep.get() - 1; i > -1; i--) {
+            if (this._steps[i].type === "error") {
+                this._onStep.set(i);
+                this._update();
+                return;
+            }
+        }
+    }
+
+    firstError() {
+        const firstStep = this._steps.findIndex(step => step.type === "error");
+        if (firstStep > -1) {
+            this._onStep.set(firstStep);
+            this._update();
+        }
+    }
+
+    lastError() {
+        let furthestErrorStep = -1;
+        let furthestIndex = -1;
+
+        for (let i = 0; i < this._steps.length; i++) {
+            const step = this._steps[i];
+            if (step.type === "error" && (step.record.error != null && step.record.error.firstIndex > furthestIndex)) {
+                furthestErrorStep = i;
+                furthestIndex = step.record.error.firstIndex;
+            }
+        }
+
+        if (furthestErrorStep > -1) {
+            this._onStep.set(furthestErrorStep);
+            this._update();
+        }
+    }
+
     previous() {
         const onStep = this._onStep.get() - 1;
 

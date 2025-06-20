@@ -117,9 +117,9 @@ export class TestEditorPresenter {
 
         if (pattern != null) {
             const editorPattern = new Sequence("editor-pattern-wrapper", [
-                new Optional("optional-space", new Regex("space", "\\s+")),
+                new Optional("optional-space", new Regex("$editor-space$", "\\s+")),
                 pattern,
-                new Optional("optional-space", new Regex("space", "\\s+"))
+                new Optional("optional-space", new Regex("$editor-space$", "\\s+"))
             ]);
 
             const startTime = performance.now();
@@ -128,7 +128,7 @@ export class TestEditorPresenter {
                 const parseDuration = performance.now() - startTime;
 
                 this._parseDuration.set(Number(parseDuration.toFixed(2)));
-                const rootAst = ast?.children.find(n => !n.name.includes("space"));
+                const rootAst = ast?.children.find(n => n.name !== ("$editor-space$"));
 
                 if (ast != null && rootAst != null) {
                     this._errorMessage.set(null);
