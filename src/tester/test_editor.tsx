@@ -1,11 +1,11 @@
-import { Box, FlexBox, HStack, Spacer, VStack, ZStack } from "@tcn/ui-layout";
-import { TestEditorPresenter } from "./test_editor_presenter.ts";
-import { Button, Select, SelectGroup } from "@tcn/ui-controls";
-import { useSignalValue } from "@tcn/state";
-import { useLayoutEffect } from "react";
-import { BodyText } from "@tcn/ui-core";
-import { Editor } from "../monaco_editor/editor.tsx";
-import { TestSuite } from "./test_suite.tsx";
+import { Box, FlexBox, HStack, Spacer, VStack, ZStack } from '@tcn/ui-layout';
+import { TestEditorPresenter } from './test_editor_presenter.ts';
+import { Button, Select, SelectGroup } from '@tcn/ui-controls';
+import { useSignalValue } from '@tcn/state';
+import { useLayoutEffect } from 'react';
+import { BodyText } from '@tcn/ui-core';
+import { Editor } from '../monaco_editor/editor.tsx';
+import { TestSuite } from './test_suite.tsx';
 
 export interface TestEditorProps {
   presenter: TestEditorPresenter;
@@ -14,17 +14,13 @@ export interface TestEditorProps {
 export function TestEditor({ presenter }: TestEditorProps) {
   const patterns = useSignalValue(presenter.patternsBroadcast);
   const errorMessage = useSignalValue(presenter.errorMessageBroadcast);
-  const testSuitePresenter = useSignalValue(
-    presenter.testSuitePresenterBroadcast
-  );
-  const selectedPatternName = useSignalValue(
-    presenter.selectedPatternBroadcast
-  );
+  const testSuitePresenter = useSignalValue(presenter.testSuitePresenterBroadcast);
+  const selectedPatternName = useSignalValue(presenter.selectedPatternBroadcast);
   const options = Object.keys(patterns).map((key, index) => {
     return <option key={index}>{key}</option>;
   });
   const parseDuration = useSignalValue(presenter.parseDurationBroadcast);
-  const view = testSuitePresenter == null ? "quick-test" : "test-suite";
+  const view = testSuitePresenter == null ? 'quick-test' : 'test-suite';
   function selectPattern(value: string) {
     presenter.selectPattern(value);
   }
@@ -58,21 +54,17 @@ export function TestEditor({ presenter }: TestEditorProps) {
         height="auto"
         padding="8px"
         minHeight="40px"
-        style={{ borderBottom: "1px solid var(--border-primary-color)" }}
+        style={{ borderBottom: '1px solid var(--border-primary-color)' }}
         zIndex={1}
       >
-        <Select
-          value={String(selectedPatternName)}
-          onChange={selectPattern}
-          width="auto"
-        >
+        <Select value={String(selectedPatternName)} onChange={selectPattern} width="auto">
           {options}
         </Select>
         <Spacer />
         <SelectGroup
           value={[view]}
-          onChange={(value) => {
-            if (value.includes("quick-test")) {
+          onChange={value => {
+            if (value.includes('quick-test')) {
               showQuickTest();
             } else {
               showTestSuite();
@@ -88,7 +80,7 @@ export function TestEditor({ presenter }: TestEditorProps) {
       <FlexBox zIndex={2}>
         <ZStack
           style={{
-            visibility: selectedPatternName == null ? "hidden" : "visible",
+            visibility: selectedPatternName == null ? 'hidden' : 'visible',
           }}
         >
           <Editor presenter={presenter.textEditor} />
@@ -98,16 +90,14 @@ export function TestEditor({ presenter }: TestEditorProps) {
       <Box
         height="auto"
         padding="4px"
-        style={{ background: "var(--surface-secondary-color)" }}
+        style={{ background: 'var(--surface-secondary-color)' }}
       >
         <HStack
           height="auto"
           padding="4px"
-          style={{ boxShadow: "var(--inset-box-shadow)" }}
+          style={{ boxShadow: 'var(--inset-box-shadow)' }}
         >
-          {errorMessage && (
-            <BodyText variant="small">{`${errorMessage}`}</BodyText>
-          )}
+          {errorMessage && <BodyText variant="small">{`${errorMessage}`}</BodyText>}
           <Spacer />
           <BodyText variant="small">{`Parse Time: ${parseDuration}ms`}</BodyText>
         </HStack>

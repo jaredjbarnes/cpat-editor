@@ -1,8 +1,8 @@
-import { VStack } from "@tcn/ui-layout";
-import { Input } from "@tcn/ui-controls";
-import { useSignalValue } from "@tcn/state";
-import { useEffect, useRef } from "react";
-import { TestPresenter } from "./test_presenter.ts";
+import { VStack } from '@tcn/ui-layout';
+import { Input } from '@tcn/ui-controls';
+import { useSignalValue } from '@tcn/state';
+import { useEffect, useRef } from 'react';
+import { TestPresenter } from './test_presenter.ts';
 
 export interface PendingTestCreationProps {
   presenter: TestPresenter;
@@ -14,9 +14,9 @@ export function PendingTestCreation({ presenter }: PendingTestCreationProps) {
   const name = test.name;
 
   function checkForEnter(event: React.KeyboardEvent) {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       presenter.commit();
-    } else if (event.key === "Escape") {
+    } else if (event.key === 'Escape') {
       presenter.abort();
     }
   }

@@ -1,11 +1,11 @@
-import { Box, FlexBox, HStack, Spacer, VStack } from "@tcn/ui-layout";
-import { DebuggerPresenter } from "./debugger_presenter.ts";
-import { Diagram } from "../diagram.tsx";
-import { Button, ButtonGroup, Slider } from "@tcn/ui-controls";
-import styles from "./debugger.module.css";
-import { useLayoutEffect } from "react";
-import { useSignalValue } from "@tcn/state";
-import { Editor } from "../monaco_editor/editor.tsx";
+import { Box, FlexBox, HStack, Spacer, VStack, ZStack } from '@tcn/ui-layout';
+import { DebuggerPresenter } from './debugger_presenter.ts';
+import { Diagram } from '../diagram.tsx';
+import { Button, ButtonGroup, Slider } from '@tcn/ui-controls';
+import styles from './debugger.module.css';
+import { useLayoutEffect } from 'react';
+import { useSignalValue } from '@tcn/state';
+import { Editor } from '../monaco_editor/editor.tsx';
 
 export interface DebuggerProps {
   presenter: DebuggerPresenter;
@@ -14,8 +14,7 @@ export interface DebuggerProps {
 
 export function Debugger({ presenter, onComplete }: DebuggerProps) {
   const isPlaying = useSignalValue(presenter.isPlayingBroadcast);
-  const playbackSpeed =
-    1000 - useSignalValue(presenter.playbackSpeedBroadcast) + 300;
+  const playbackSpeed = 1000 - useSignalValue(presenter.playbackSpeedBroadcast) + 300;
 
   useLayoutEffect(() => {
     presenter.initialize();
@@ -76,19 +75,34 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
 
   return (
     <VStack zIndex={2}>
-      <HStack
-        height="40px"
-        className={styles["debugger-header"]}
-        horizontalAlignment="center"
-        padding="8px"
-      >
-        <ButtonGroup>
-          <Button onClick={firstError}>First Error</Button>
-          <Button onClick={previousError}>Previous Error</Button>
-          <Button onClick={nextError}>Next Error</Button>
-          <Button onClick={lastError}>Last Error</Button>
-        </ButtonGroup>
-        <Spacer />
+      <ZStack height="40px" className={styles['debugger-header']}>
+        <HStack
+          height="40px"
+          horizontalAlignment="center"
+          padding="8px"
+        >
+          <ButtonGroup>
+            <Button onClick={firstError}>First Error</Button>
+            <Button onClick={previousError}>Previous Error</Button>
+            <Button onClick={nextError}>Next Error</Button>
+            <Button onClick={lastError}>Last Error</Button>
+          </ButtonGroup>
+          <Spacer />
+
+          <Spacer />
+          <HStack flex horizontalAlignment="center">
+            <Slider
+              width="200px"
+              min="300"
+              max="1000"
+              value={String(playbackSpeed)}
+              onChange={updatePlaybackSpeed}
+              style={{ pointerEvents: 'auto', width: '200px' }}
+            />
+            <Spacer />
+            <Button onClick={close}>Close</Button>
+          </HStack>
+        </HStack>
         <ButtonGroup>
           <Button onClick={start}>Start</Button>
           <Button onClick={prev}>Previous</Button>
@@ -100,17 +114,8 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
           <Button onClick={next}>Next</Button>
           <Button onClick={end}>End</Button>
         </ButtonGroup>
-        <HStack flex horizontalAlignment="center">
-          <Slider
-            min="300"
-            max="1000"
-            value={String(playbackSpeed)}
-            onChange={updatePlaybackSpeed}
-            style={{ pointerEvents: "auto", width: "200px" }}
-          />
-        </HStack>
-        <Button onClick={close}>Close</Button>
-      </HStack>
+      </ZStack>
+
       <HStack flex>
         <FlexBox>
           <Editor presenter={presenter.textEditor} />
@@ -118,7 +123,7 @@ export function Debugger({ presenter, onComplete }: DebuggerProps) {
         <Box width="50%" enableResizeOnStart>
           <Diagram
             presenter={presenter.diagramPresenter}
-            onPatternClick={(patternPath) => {
+            onPatternClick={patternPath => {
               presenter.diagramPresenter.togglePatternPath(patternPath);
             }}
           />

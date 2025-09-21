@@ -20,12 +20,12 @@ export function SnippetsSidePanel({ onClose }: SnippetsSidePanelProps) {
     >
       <PanelHeader className={styles['panel-header']}>
         <HStack height="auto">
-          SNIPPETS
+          Documentation
           <Spacer />
           <IconButton iconSize="22px" iconName="cross" onClick={close} />
         </HStack>
       </PanelHeader>
-      <Snippets className={styles['panel-body']} />
+      <Snippets/>
     </VStack>
   );
 }

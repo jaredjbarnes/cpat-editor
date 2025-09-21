@@ -1,7 +1,7 @@
-import { useLayoutEffect } from "react";
-import { GrammarEditorPresenter } from "./grammar_editor_presenter.ts";
-import "./grammar_editor.css";
-import { Editor } from "./monaco_editor/editor.tsx";
+import { useLayoutEffect } from 'react';
+import { GrammarEditorPresenter } from './grammar_editor_presenter.ts';
+import './grammar_editor.css';
+import { Editor } from './monaco_editor/editor.tsx';
 
 export interface GrammarEditorProps {
   presenter: GrammarEditorPresenter;

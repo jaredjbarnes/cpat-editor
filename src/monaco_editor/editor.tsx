@@ -1,6 +1,6 @@
-import { useLayoutEffect, useRef } from "react";
-import { EditorPresenter } from "./editor_presenter.ts";
-import { Box } from "@tcn/ui-layout";
+import { useLayoutEffect, useRef } from 'react';
+import { EditorPresenter } from './editor_presenter.ts';
+import { Box } from '@tcn/ui-layout';
 
 export interface EditorProps {
   presenter: EditorPresenter;
@@ -24,9 +24,9 @@ export function Editor({ presenter }: EditorProps) {
       presenter.updateSize();
     }
 
-    window.addEventListener("resize", updateSize);
+    window.addEventListener('resize', updateSize);
     return () => {
-      window.removeEventListener("resize", updateSize);
+      window.removeEventListener('resize', updateSize);
     };
   }, [presenter]);
 

@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { useSignalValue } from "@tcn/state";
-import { ContextMenu, MenuItem } from "@tcn/ui-controls";
-import { Position, BodyText } from "@tcn/ui-core";
-import { HStack } from "@tcn/ui-layout";
-import styles from "./test_item.module.css";
-import { Test, TestSuitePresenter } from "./test_suite_presenter.ts";
-import { PendingTestRenaming } from "./pending_test_renaming.tsx";
+import { useState } from 'react';
+import { useSignalValue } from '@tcn/state';
+import { ContextMenu, MenuItem } from '@tcn/ui-controls';
+import { Position, BodyText } from '@tcn/ui-core';
+import { HStack } from '@tcn/ui-layout';
+import styles from './test_item.module.css';
+import { Test, TestSuitePresenter } from './test_suite_presenter.ts';
+import { PendingTestRenaming } from './pending_test_renaming.tsx';
 
 export interface TestItemProps {
   test: Test;
@@ -19,7 +19,7 @@ export function TestItem({ test, presenter }: TestItemProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState<Position | null>(null);
   const isRenaming = renamingTest?.name === test.name;
-console.log(renamingTest);
+  console.log(renamingTest);
   function selectItem(event: React.MouseEvent<HTMLElement>) {
     presenter.focus(test);
     event.preventDefault();
@@ -51,7 +51,7 @@ console.log(renamingTest);
   return (
     <>
       <HStack
-        className={styles["test-item"]}
+        className={styles['test-item']}
         data-is-focused={isFocused}
         height="auto"
         onContextMenu={placeMenu}

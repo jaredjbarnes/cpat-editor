@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.1/schema.json",
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
   "css": {
     "parser": {
       "cssModules": true
@@ -75,6 +75,7 @@
         "noUnreachableSuper": "warn",
         "noUnusedLabels": "warn",
         "noUnusedVariables": "warn",
+        "noUnusedImports": "warn",
         "useArrayLiterals": "warn",
         "useExhaustiveDependencies": "error",
         "useHookAtTopLevel": "error",
@@ -189,7 +190,8 @@
       "bracketSameLine": false,
       "quoteStyle": "single",
       "attributePosition": "auto"
-    }
+    },
+    "jsxRuntime": "reactClassic"
   },
   "overrides": [
     {
@@ -221,6 +223,7 @@
             "noPrecisionLoss": "error",
             "noUndeclaredVariables": "off",
             "noUnusedVariables": "warn",
+            "noUnusedImports": "warn",
             "useArrayLiterals": "off"
           },
           "style": {

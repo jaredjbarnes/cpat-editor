@@ -1,6 +1,6 @@
-import Tree from "react-d3-tree";
-import { Node } from "clarity-pattern-parser";
-import { useEffect, useRef, useState } from "react";
+import Tree from 'react-d3-tree';
+import { Node } from 'clarity-pattern-parser';
+import { useEffect, useRef, useState } from 'react';
 
 export interface AstTreeProps {
   ast: Node | null;
@@ -27,10 +27,16 @@ export function AstTree({ ast }: AstTreeProps) {
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
 
   if (finalAst != null) {
-    walk(finalAst, (n) => {
+    walk(finalAst, n => {
       if (n.children && n.children.length === 0) {
         n.name = n.value;
-      } else if (n.type && n.type !== "sequence" && !n.type.includes("repeat") && n.children && n.children.length === 1) {
+      } else if (
+        n.type &&
+        n.type !== 'sequence' &&
+        !n.type.includes('repeat') &&
+        n.children &&
+        n.children.length === 1
+      ) {
         n.name = n.value;
         n.children.length = 0;
       }
@@ -49,7 +55,7 @@ export function AstTree({ ast }: AstTreeProps) {
   }
 
   return (
-    <div ref={treeContainer} style={{ width: "100%", height: "100%" }}>
+    <div ref={treeContainer} style={{ width: '100%', height: '100%' }}>
       <Tree
         data={[finalAst]}
         orientation="vertical"

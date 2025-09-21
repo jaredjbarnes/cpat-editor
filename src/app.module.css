@@ -44,7 +44,7 @@
 .select-file-message {
   display: inline;
   padding: 8px;
-  width:auto;
+  width: auto;
   height: auto;
   box-shadow: var(--inset-box-shadow);
   border-radius: 8px;

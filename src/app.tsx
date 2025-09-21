@@ -1,19 +1,19 @@
-import { Box, FlexBox, HStack, Spacer, VStack, ZStack } from "@tcn/ui-layout";
-import { AppPresenter } from "./app_presenter.ts";
-import { Diagram } from "./diagram.tsx";
-import { Ast } from "./ast.tsx";
-import { useSignalValue } from "@tcn/state";
-import { TestEditor } from "./tester/test_editor.tsx";
-import { GrammarEditor } from "./grammar_editor.tsx";
-import styles from "./app.module.css";
-import { Button, ButtonGroup, Checkbox } from "@tcn/ui-controls";
-import { BodyText, Header } from "@tcn/ui-core";
-import { SnippetsSidePanel } from "./snippets_side_panel.tsx";
-import { FileExplorer } from "./file_explorer/file_explorer.tsx";
-import { useLayoutEffect } from "react";
-import QuestionIcon from "./icons/question.svg?react";
-import { Debugger } from "./debugger/debugger.tsx";
-import { AstTree } from "./ast_tree.tsx";
+import { Box, FlexBox, HStack, Spacer, VStack, ZStack } from '@tcn/ui-layout';
+import { AppPresenter } from './app_presenter.ts';
+import { Diagram } from './diagram.tsx';
+import { Ast } from './ast.tsx';
+import { useSignalValue } from '@tcn/state';
+import { TestEditor } from './tester/test_editor.tsx';
+import { GrammarEditor } from './grammar_editor.tsx';
+import styles from './app.module.css';
+import { Button, ButtonGroup, Checkbox } from '@tcn/ui-controls';
+import { BodyText, Header } from '@tcn/ui-core';
+import { SnippetsSidePanel } from './snippets_side_panel.tsx';
+import { FileExplorer } from './file_explorer/file_explorer.tsx';
+import { useLayoutEffect } from 'react';
+import QuestionIcon from './icons/question.svg?react';
+import { Debugger } from './debugger/debugger.tsx';
+import { AstTree } from './ast_tree.tsx';
 
 export interface AppProps {
   presenter: AppPresenter;
@@ -26,14 +26,10 @@ export function App({ presenter }: AppProps) {
   const astJson = useSignalValue(presenter.testEditor.astJsonBroadcast);
   const ast = useSignalValue(presenter.testEditor.astBroadcast);
 
-  const isDocumentationOpen = useSignalValue(
-    presenter.isDocumentationOpenBroadcast
-  );
+  const isDocumentationOpen = useSignalValue(presenter.isDocumentationOpenBroadcast);
   const debuggerPresenter = useSignalValue(presenter.debuggerPresenter);
   const astView = useSignalValue(presenter.astViewBroadcast);
-  const removeSpaces = useSignalValue(
-    presenter.testEditor.removeSpacesBroadcast
-  );
+  const removeSpaces = useSignalValue(presenter.testEditor.removeSpacesBroadcast);
 
   function toggleDocumentation() {
     presenter.toggleDocumentation();
@@ -56,11 +52,11 @@ export function App({ presenter }: AppProps) {
   }
 
   function showTreeView() {
-    presenter.setAstView("tree");
+    presenter.setAstView('tree');
   }
 
   function showJsonView() {
-    presenter.setAstView("json");
+    presenter.setAstView('json');
   }
 
   function updateSize() {
@@ -80,11 +76,8 @@ export function App({ presenter }: AppProps) {
             <Header>CPAT Playground</Header>
             <Spacer />
             <HStack width="auto">
-              <Button
-                className={styles["icon-button"]}
-                onClick={toggleDocumentation}
-              >
-                <QuestionIcon className={styles["icon"]} />
+              <Button className={styles['icon-button']} onClick={toggleDocumentation}>
+                <QuestionIcon className={styles['icon']} />
               </Button>
               <Spacer width="8px" />
             </HStack>
@@ -103,37 +96,26 @@ export function App({ presenter }: AppProps) {
             <VStack zIndex={1} flex overflowX="hidden">
               <HStack zIndex={1} flex className={styles.top}>
                 <FlexBox minWidth="200px" className={styles.left}>
-                  <GrammarEditor
-                    presenter={presenter.grammarEditor}
-                  ></GrammarEditor>
+                  <GrammarEditor presenter={presenter.grammarEditor}></GrammarEditor>
                 </FlexBox>
                 <Box width="50%" enableResizeOnStart onWidthResize={updateSize}>
                   <Diagram
                     presenter={presenter.diagramPresenter}
-                    onPatternClick={(path) => {
+                    onPatternClick={path => {
                       presenter.diagramPresenter.togglePatternPath(path);
                     }}
                   ></Diagram>
                 </Box>
               </HStack>
-              <Box
-                zIndex={2}
-                height="50%"
-                enableResizeOnTop
-                onHeightResize={updateSize}
-              >
+              <Box zIndex={2} height="50%" enableResizeOnTop onHeightResize={updateSize}>
                 <HStack>
                   <FlexBox minWidth="200px" className={styles.left}>
                     <TestEditor presenter={presenter.testEditor} />
                   </FlexBox>
-                  <Box
-                    width="50%"
-                    enableResizeOnStart
-                    onWidthResize={updateSize}
-                  >
+                  <Box width="50%" enableResizeOnStart onWidthResize={updateSize}>
                     <ZStack>
-                      {astView === "tree" && <AstTree ast={ast} />}
-                      {astView === "json" && (
+                      {astView === 'tree' && <AstTree ast={ast} />}
+                      {astView === 'json' && (
                         <>
                           <Ast text={astJson}></Ast>
 
@@ -141,12 +123,9 @@ export function App({ presenter }: AppProps) {
                             padding="8px"
                             verticalAlignment="end"
                             horizontalAlignment="end"
-                            style={{ pointerEvents: "none" }}
+                            style={{ pointerEvents: 'none' }}
                           >
-                            <Button
-                              onClick={copyAst}
-                              style={{ pointerEvents: "auto" }}
-                            >
+                            <Button onClick={copyAst} style={{ pointerEvents: 'auto' }}>
                               Copy
                             </Button>
                           </VStack>
@@ -156,21 +135,21 @@ export function App({ presenter }: AppProps) {
                         padding="8px"
                         verticalAlignment="start"
                         horizontalAlignment="center"
-                        style={{ pointerEvents: "none" }}
+                        style={{ pointerEvents: 'none' }}
                       >
                         <HStack height="auto">
                           <Spacer />
                           <ButtonGroup>
                             <Button
                               onClick={showJsonView}
-                              style={{ pointerEvents: "auto" }}
+                              style={{ pointerEvents: 'auto' }}
                             >
                               JSON
                             </Button>
 
                             <Button
                               onClick={showTreeView}
-                              style={{ pointerEvents: "auto" }}
+                              style={{ pointerEvents: 'auto' }}
                             >
                               Tree
                             </Button>
@@ -180,7 +159,7 @@ export function App({ presenter }: AppProps) {
                             <BodyText>Remove Spaces:</BodyText>
                             <Checkbox
                               checked={removeSpaces}
-                              style={{ pointerEvents: "auto" }}
+                              style={{ pointerEvents: 'auto' }}
                               onClick={() => {
                                 presenter.testEditor.toggleRemoveSpaces();
                               }}
@@ -199,7 +178,7 @@ export function App({ presenter }: AppProps) {
                 minWidth="100px"
                 width="33%"
                 enableResizeOnStart
-                onResize={updateSize}
+                onWidthResize={updateSize}
               >
                 <SnippetsSidePanel onClose={closeDocumenation} />
               </Box>
