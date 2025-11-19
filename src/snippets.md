@@ -102,7 +102,7 @@ comma = ","
 digits = (digit, comma)*
 ```
 
-### Zero or More with Trimmed Trailing Delimiter
+### One or More with Trimmed Trailing Delimiter
 
 ```grammar
 digit = /\d/
@@ -151,7 +151,7 @@ Expressions support **prefix**, **infix**, **postfix**, and **right-associative*
 
 ```grammar
 increment = "++"
-integer = /[1-9][0-9]?/
+integer = /[1-9][0-9]*/
 space = /\s+/
 
 prefix-expr = increment + space? + expr
@@ -169,7 +169,7 @@ Examples:
 ```grammar
 add-sub = "+" | "-"
 mul-div = "*" | "/"
-integer = /[1-9][0-9]?/
+integer = /[1-9][0-9]*/
 space = /\s+/
 
 add-sub-expr = expr + space? + add-sub + space? + expr
@@ -211,7 +211,7 @@ factorial = "!"
 add-sub = "+" | "-"
 mul-div = "*" | "/"
 
-integer = /[1-9][0-9]?/
+integer = /[1-9][0-9]*/
 space = /\s+/
 
 prefix-expr   = increment + space? + expr
@@ -251,7 +251,7 @@ Some operators must associate to the **right**. Mark the operator with `right` t
 
 ```grammar
 power = "^"
-integer = /[1-9][0-9]?/
+integer = /[1-9][0-9]*/
 space = /\s+/
 
 power-expr = expr + space? + power + space? + expr

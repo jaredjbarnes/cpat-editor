@@ -48,8 +48,8 @@ export class AppPresenter {
     this._isDocumentationOpen = new Signal(false);
     this._astView = new Signal<'json' | 'tree'>('json');
     this.grammarEditor = new GrammarEditorPresenter({
-      onGrammarProcess: (patterns, tokensMap) => {
-        this.testEditor.setPatterns(patterns, tokensMap);
+      onGrammarProcess: (patterns, tokensMap, refreshSyntaxHighlighting) => {
+        this.testEditor.setPatterns(patterns, tokensMap, refreshSyntaxHighlighting);
       },
       onSave: (text: string) => {
         this.save(text);

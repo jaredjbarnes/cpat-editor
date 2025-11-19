@@ -93,8 +93,8 @@ export class TestEditorPresenter {
     this._parseDuration = new Signal(0);
     this._removeSpaces = new Signal(false);
     this._testSuitePresenter = new Signal<TestSuitePresenter | null>(null);
-    this._changeListener = { dispose: () => {} };
-    this._blurListener = { dispose: () => {} };
+    this._changeListener = { dispose: () => { } };
+    this._blurListener = { dispose: () => { } };
     this._errorMessage = new Signal<string | null>(null);
   }
 
@@ -197,12 +197,22 @@ export class TestEditorPresenter {
     });
   }
 
-  setPatterns(patterns: Record<string, Pattern>, tokensMap: Record<string, number>) {
+  setPatterns(patterns: Record<string, Pattern>, tokensMap: Record<string, number>, refreshSyntaxHighlighting: boolean) {
     testSemanticTokensProvider.setTokensMap(tokensMap);
 
     this._patterns.set(patterns);
-    this._process(this.textEditor.getText());
+    const selectedPattern = this._selectedPattern.get();
+
+    if (selectedPattern != null) {
+      testSemanticTokensProvider.setGrammar(this._patterns.get()[selectedPattern]);
+    }
+
+    if (refreshSyntaxHighlighting) {
+      const text = this.textEditor.getText();
+      this.textEditor.setText(text);
+    }
   }
+
 
   setPatternFilePath(patternFilePath: string) {
     this._options.patternFilePath = patternFilePath;

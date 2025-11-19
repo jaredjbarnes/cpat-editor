@@ -10,7 +10,7 @@ import { Button, ButtonGroup, Checkbox } from '@tcn/ui-controls';
 import { BodyText, Header } from '@tcn/ui-core';
 import { SnippetsSidePanel } from './snippets_side_panel.tsx';
 import { FileExplorer } from './file_explorer/file_explorer.tsx';
-import { useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import QuestionIcon from './icons/question.svg?react';
 import { Debugger } from './debugger/debugger.tsx';
 import { AstTree } from './ast_tree.tsx';
@@ -63,6 +63,12 @@ export function App({ presenter }: AppProps) {
     presenter.grammarEditor.textEditor.updateSize();
     presenter.testEditor.updateSize();
   }
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    presenter.grammarEditor.textEditor.updateSize();
+    presenter.testEditor.updateSize();
+  }, [isDocumentationOpen, presenter]);
 
   return (
     <>

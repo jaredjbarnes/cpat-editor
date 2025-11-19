@@ -8,7 +8,8 @@ export interface GrammarEditorOptions {
   fileSystem: FileSystem;
   onGrammarProcess: (
     patterns: Record<string, Pattern>,
-    tokensMap: Record<string, number>
+    tokensMap: Record<string, number>,
+    refreshSyntaxHighlighting: boolean
   ) => void;
   onSave: (content: string) => void;
   onPattern: (pattern: Pattern | null) => void;
@@ -20,7 +21,8 @@ export class GrammarEditorPresenter {
   private _path: string;
   private _onGrammarProcess: (
     patterns: Record<string, Pattern>,
-    tokensMap: Record<string, number>
+    tokensMap: Record<string, number>,
+    refreshSyntaxHighlighting: boolean
   ) => void;
   private _allPatterns: Record<string, Pattern>;
   private _onPattern: (pattern: Pattern | null) => void;
@@ -63,7 +65,10 @@ export class GrammarEditorPresenter {
 
   private async _processGrammar() {
     const text = this.textEditor.getText();
+    let refreshSyntaxHighlighting = false;
+
     try {
+      const oldTokensMap = this._tokensMap;
       this._tokensMap = {};
       const allPatterns = await Grammar.parse(text, {
         originResource: this._path,
@@ -81,23 +86,34 @@ export class GrammarEditorPresenter {
         },
         decorators: {
           syntaxHighlight: (pattern: Pattern, arg: any) => {
-            if (typeof arg === 'string' && legendsMap[arg] != null) {
+            if (typeof arg === 'string' &&
+              legendsMap[arg] != null) {
               this._tokensMap[pattern.name] = legendsMap[arg];
+
+              if (oldTokensMap[pattern.name] == null || oldTokensMap[pattern.name] !== legendsMap[arg]) {
+                refreshSyntaxHighlighting = true;
+              }
+
+              delete oldTokensMap[pattern.name];
             }
           },
         },
       });
 
+      if (Object.keys(oldTokensMap).length > 0) {
+        refreshSyntaxHighlighting = true;
+      }
+
       this._allPatterns = allPatterns;
       this._processCursorToPattern();
-      this._onGrammarProcess(allPatterns, this._tokensMap);
+      this._onGrammarProcess(allPatterns, this._tokensMap, refreshSyntaxHighlighting);
     } catch (e: any) {
       console.log('Grammar Error:', e.message.replaceAll('\n', '\\n'));
     }
 
     if (text === '') {
       this._allPatterns = {};
-      this._onGrammarProcess({}, {});
+      this._onGrammarProcess({}, {}, refreshSyntaxHighlighting);
     }
   }
 
@@ -138,7 +154,7 @@ export class GrammarEditorPresenter {
           this._onPattern(pattern);
         }
       }
-    } catch {}
+    } catch { }
   }
 
   private _markErrors() {
