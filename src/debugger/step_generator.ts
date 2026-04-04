@@ -50,6 +50,7 @@ export function generateSteps(rootPattern: Pattern, records: HistoryRecord[]) {
           pattern.type === 'optional' ||
           pattern.type === 'reference' ||
           pattern.type === 'context' ||
+          pattern.type === 'block' ||
           (pattern.parent?.type === 'optional' && record.error != null)
         ) {
           return;

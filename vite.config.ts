@@ -11,7 +11,7 @@ export default defineConfig({
     host: 'localhost',
   },
   build: {
-    sourcemap: true,
+    sourcemap: false,
     minify: false,
   },
 });

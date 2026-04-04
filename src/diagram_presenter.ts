@@ -177,6 +177,16 @@ export class DiagramPresenter {
 
         return diagram;
       }
+      case 'block': {
+        const children = pattern.children.map(p => this._buildPattern(p));
+        const sequence = new Sequence(...children);
+        sequence.attrs.id = pattern.id;
+
+        const diagram = new Diagram(new Group(sequence, pattern.name));
+        diagram.attrs.id = pattern.id;
+
+        return diagram;
+      }
       case 'finite-repeat': {
         const children = pattern.children[0].children.map(p => this._buildPattern(p));
         const repeat = new OneOrMore(...children);
@@ -452,6 +462,43 @@ export class DiagramPresenter {
           const terminal = new Terminal(text, terminalOptions);
           terminal.attrs.id = path;
           terminal.attrs['data-type'] = 'sequence';
+
+          return terminal;
+        }
+      }
+      case 'block': {
+        const text = pattern.name;
+        const path = generatePath(pattern);
+
+        if (this._expandedPatternPaths.get(path)) {
+          const children = pattern.children.map(p => this._buildPattern(p));
+          const sequence = new Sequence(...children);
+
+          const terminalOptions: any = {};
+          const classNames = this._classNames.get(path);
+          if (classNames != null) {
+            terminalOptions.cls = classNames;
+          }
+          const label = new Terminal(`${text}:`, terminalOptions);
+          label.attrs.id = path;
+          label.attrs['data-group'] = 'true';
+          label.attrs['data-type'] = 'block';
+
+          const group = new Sequence(label, sequence);
+          group.attrs.id = path;
+          group.attrs['data-group'] = 'true';
+
+          return group;
+        } else {
+          const terminalOptions: any = {};
+          const classNames = this._classNames.get(path);
+          if (classNames != null) {
+            terminalOptions.cls = classNames;
+          }
+
+          const terminal = new Terminal(text, terminalOptions);
+          terminal.attrs.id = path;
+          terminal.attrs['data-type'] = 'block';
 
           return terminal;
         }

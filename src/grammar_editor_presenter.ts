@@ -131,7 +131,7 @@ export class GrammarEditorPresenter {
       if (ast != null) {
         let node = ast.find(
           n =>
-            (n.name === 'assign-statement' || n.name === 'export-name') &&
+            (n.name === 'patternAssignment' || n.name === 'exportPattern') &&
             index >= n.startIndex &&
             index < n.endIndex
         );
@@ -140,15 +140,15 @@ export class GrammarEditorPresenter {
           // This takes the last pattern if there is one.
           node =
             ast
-              .findAll(n => n.name === 'assign-statement' || n.name === 'export-name')
+              .findAll(n => n.name === 'patternAssignment' || n.name === 'exportPattern')
               .slice(-1)[0] || null;
         }
 
-        if (node != null && node.name === 'assign-statement') {
+        if (node != null && node.name === 'patternAssignment') {
           const name = node.children[0].value;
           const pattern = this._allPatterns[name];
           this._onPattern(pattern);
-        } else if (node != null && node.name === 'export-name') {
+        } else if (node != null && node.name === 'exportPattern') {
           const name = node.value;
           const pattern = this._allPatterns[name];
           this._onPattern(pattern);
